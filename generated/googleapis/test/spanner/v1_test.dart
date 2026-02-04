@@ -7357,8 +7357,9 @@ void main() {
   unittest.group('resource-ProjectsInstanceConfigsSsdCachesOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instanceConfigs.ssdCaches.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instanceConfigs.ssdCaches.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7411,8 +7412,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instanceConfigs.ssdCaches.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instanceConfigs.ssdCaches.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7465,8 +7467,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instanceConfigs.ssdCaches.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instanceConfigs.ssdCaches.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7519,8 +7522,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instanceConfigs.ssdCaches.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instanceConfigs.ssdCaches.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -10048,8 +10052,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesDatabasesBackupSchedulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_request = buildBackupSchedule();
       final arg_parent = 'foo';
       final arg_backupScheduleId = 'foo';
@@ -10118,8 +10123,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10172,8 +10178,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10226,8 +10233,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10290,8 +10298,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10361,8 +10370,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_request = buildBackupSchedule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10431,8 +10441,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10495,8 +10506,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.backupSchedules;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.backupSchedules;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10563,8 +10575,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesDatabasesDatabaseRolesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.databaseRoles;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.databaseRoles;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10632,8 +10645,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.databases.databaseRoles;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.databases.databaseRoles;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -12072,8 +12086,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SpannerApi(mock).projects.instances.instancePartitionOperations;
+        final res = api.SpannerApi(
+          mock,
+        ).projects.instances.instancePartitionOperations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_instancePartitionDeadline = 'foo';
@@ -12478,8 +12493,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesInstancePartitionsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.instancePartitions.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.instancePartitions.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12532,8 +12548,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.instancePartitions.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.instancePartitions.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12586,8 +12603,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.instancePartitions.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.instancePartitions.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12640,8 +12658,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SpannerApi(mock).projects.instances.instancePartitions.operations;
+      final res = api.SpannerApi(
+        mock,
+      ).projects.instances.instancePartitions.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

@@ -84,7 +84,7 @@ class AmpUrlsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/ampUrls:batchGet';
@@ -122,11 +122,16 @@ class AmpUrl {
         originalUrl: json_['originalUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ampUrl != null) 'ampUrl': ampUrl!,
-    if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl!,
-    if (originalUrl != null) 'originalUrl': originalUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ampUrl = this.ampUrl;
+    final cdnAmpUrl = this.cdnAmpUrl;
+    final originalUrl = this.originalUrl;
+    return {
+      'ampUrl': ?ampUrl,
+      'cdnAmpUrl': ?cdnAmpUrl,
+      'originalUrl': ?originalUrl,
+    };
+  }
 }
 
 /// AMP URL Error resource for a requested URL that couldn't be found.
@@ -163,11 +168,16 @@ class AmpUrlError {
         originalUrl: json_['originalUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (originalUrl != null) 'originalUrl': originalUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorMessage = this.errorMessage;
+    final originalUrl = this.originalUrl;
+    return {
+      'errorCode': ?errorCode,
+      'errorMessage': ?errorMessage,
+      'originalUrl': ?originalUrl,
+    };
+  }
 }
 
 /// AMP URL request for a batch of URLs.
@@ -196,16 +206,16 @@ class BatchGetAmpUrlsRequest {
   BatchGetAmpUrlsRequest.fromJson(core.Map json_)
     : this(
         lookupStrategy: json_['lookupStrategy'] as core.String?,
-        urls:
-            (json_['urls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        urls: (json_['urls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
-    if (urls != null) 'urls': urls!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lookupStrategy = this.lookupStrategy;
+    final urls = this.urls;
+    return {'lookupStrategy': ?lookupStrategy, 'urls': ?urls};
+  }
 }
 
 /// Batch AMP URL response.
@@ -224,26 +234,24 @@ class BatchGetAmpUrlsResponse {
 
   BatchGetAmpUrlsResponse.fromJson(core.Map json_)
     : this(
-        ampUrls:
-            (json_['ampUrls'] as core.List?)
-                ?.map(
-                  (value) => AmpUrl.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        urlErrors:
-            (json_['urlErrors'] as core.List?)
-                ?.map(
-                  (value) => AmpUrlError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ampUrls: (json_['ampUrls'] as core.List?)
+            ?.map(
+              (value) =>
+                  AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        urlErrors: (json_['urlErrors'] as core.List?)
+            ?.map(
+              (value) => AmpUrlError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ampUrls != null) 'ampUrls': ampUrls!,
-    if (urlErrors != null) 'urlErrors': urlErrors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ampUrls = this.ampUrls;
+    final urlErrors = this.urlErrors;
+    return {'ampUrls': ?ampUrls, 'urlErrors': ?urlErrors};
+  }
 }

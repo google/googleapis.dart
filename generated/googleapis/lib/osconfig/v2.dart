@@ -168,10 +168,11 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (policyOrchestratorId != null)
-        'policyOrchestratorId': [policyOrchestratorId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'policyOrchestratorId': ?policyOrchestratorId == null
+          ? null
+          : [policyOrchestratorId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -228,9 +229,9 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -266,7 +267,7 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -317,11 +318,11 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -385,8 +386,8 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -443,7 +444,7 @@ class FoldersLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -481,7 +482,7 @@ class FoldersLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -517,7 +518,7 @@ class FoldersLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -572,12 +573,13 @@ class FoldersLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -686,10 +688,11 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (policyOrchestratorId != null)
-        'policyOrchestratorId': [policyOrchestratorId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'policyOrchestratorId': ?policyOrchestratorId == null
+          ? null
+          : [policyOrchestratorId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -747,9 +750,9 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -785,7 +788,7 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -837,11 +840,11 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -905,8 +908,8 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -963,7 +966,7 @@ class OrganizationsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1001,7 +1004,7 @@ class OrganizationsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1037,7 +1040,7 @@ class OrganizationsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1092,12 +1095,13 @@ class OrganizationsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1204,10 +1208,11 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (policyOrchestratorId != null)
-        'policyOrchestratorId': [policyOrchestratorId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'policyOrchestratorId': ?policyOrchestratorId == null
+          ? null
+          : [policyOrchestratorId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1264,9 +1269,9 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1302,7 +1307,7 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1353,11 +1358,11 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1421,8 +1426,8 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1479,7 +1484,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1517,7 +1522,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1553,7 +1558,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1608,12 +1613,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1660,15 +1666,15 @@ class GoogleCloudOsconfigV2OrchestrationScopeLocationSelector {
   GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
     core.Map json_,
   ) : this(
-        includedLocations:
-            (json_['includedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        includedLocations: (json_['includedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includedLocations != null) 'includedLocations': includedLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedLocations = this.includedLocations;
+    return {'includedLocations': ?includedLocations};
+  }
 }
 
 /// Selector containing Cloud Resource Manager resource hierarchy nodes.
@@ -1695,20 +1701,22 @@ class GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector {
   GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
     core.Map json_,
   ) : this(
-        includedFolders:
-            (json_['includedFolders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        includedProjects:
-            (json_['includedProjects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        includedFolders: (json_['includedFolders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedProjects: (json_['includedProjects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includedFolders != null) 'includedFolders': includedFolders!,
-    if (includedProjects != null) 'includedProjects': includedProjects!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedFolders = this.includedFolders;
+    final includedProjects = this.includedProjects;
+    return {
+      'includedFolders': ?includedFolders,
+      'includedProjects': ?includedProjects,
+    };
+  }
 }
 
 /// Selector for the resources in scope of orchestration.
@@ -1727,27 +1735,29 @@ class GoogleCloudOsconfigV2OrchestrationScopeSelector {
 
   GoogleCloudOsconfigV2OrchestrationScopeSelector.fromJson(core.Map json_)
     : this(
-        locationSelector:
-            json_.containsKey('locationSelector')
-                ? GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
-                  json_['locationSelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        locationSelector: json_.containsKey('locationSelector')
+            ? GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
+                json_['locationSelector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resourceHierarchySelector:
             json_.containsKey('resourceHierarchySelector')
-                ? GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
-                  json_['resourceHierarchySelector']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
+                json_['resourceHierarchySelector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationSelector != null) 'locationSelector': locationSelector!,
-    if (resourceHierarchySelector != null)
-      'resourceHierarchySelector': resourceHierarchySelector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationSelector = this.locationSelector;
+    final resourceHierarchySelector = this.resourceHierarchySelector;
+    return {
+      'locationSelector': ?locationSelector,
+      'resourceHierarchySelector': ?resourceHierarchySelector,
+    };
+  }
 }
 
 /// Describes the state of a single iteration of the orchestrator.
@@ -1816,12 +1826,11 @@ class GoogleCloudOsconfigV2PolicyOrchestratorIterationState {
 
   GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(core.Map json_)
     : this(
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         failedActions: json_['failedActions'] as core.String?,
         finishTime: json_['finishTime'] as core.String?,
         iterationId: json_['iterationId'] as core.String?,
@@ -1831,16 +1840,26 @@ class GoogleCloudOsconfigV2PolicyOrchestratorIterationState {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (failedActions != null) 'failedActions': failedActions!,
-    if (finishTime != null) 'finishTime': finishTime!,
-    if (iterationId != null) 'iterationId': iterationId!,
-    if (performedActions != null) 'performedActions': performedActions!,
-    if (progress != null) 'progress': progress!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final failedActions = this.failedActions;
+    final finishTime = this.finishTime;
+    final iterationId = this.iterationId;
+    final performedActions = this.performedActions;
+    final progress = this.progress;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'error': ?error,
+      'failedActions': ?failedActions,
+      'finishTime': ?finishTime,
+      'iterationId': ?iterationId,
+      'performedActions': ?performedActions,
+      'progress': ?progress,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Describes the state of the orchestration process.
@@ -1863,28 +1882,28 @@ class GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState {
   GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState.fromJson(
     core.Map json_,
   ) : this(
-        currentIterationState:
-            json_.containsKey('currentIterationState')
-                ? GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
-                  json_['currentIterationState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        previousIterationState:
-            json_.containsKey('previousIterationState')
-                ? GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
-                  json_['previousIterationState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        currentIterationState: json_.containsKey('currentIterationState')
+            ? GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
+                json_['currentIterationState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        previousIterationState: json_.containsKey('previousIterationState')
+            ? GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
+                json_['previousIterationState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentIterationState != null)
-      'currentIterationState': currentIterationState!,
-    if (previousIterationState != null)
-      'previousIterationState': previousIterationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentIterationState = this.currentIterationState;
+    final previousIterationState = this.previousIterationState;
+    return {
+      'currentIterationState': ?currentIterationState,
+      'previousIterationState': ?previousIterationState,
+    };
+  }
 }
 
 /// Response for the list policy orchestrator resources.
@@ -1909,26 +1928,28 @@ class GoogleCloudOsconfigV2ListPolicyOrchestratorsResponse {
   GoogleCloudOsconfigV2ListPolicyOrchestratorsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        policyOrchestrators:
-            (json_['policyOrchestrators'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudOsconfigV2PolicyOrchestrator.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        policyOrchestrators: (json_['policyOrchestrators'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudOsconfigV2PolicyOrchestrator.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (policyOrchestrators != null)
-      'policyOrchestrators': policyOrchestrators!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final policyOrchestrators = this.policyOrchestrators;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'policyOrchestrators': ?policyOrchestrators,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Represents a resource that is being orchestrated by the policy orchestrator.
@@ -1968,18 +1989,21 @@ class GoogleCloudOsconfigV2OrchestratedResource {
         id: json_['id'] as core.String?,
         osPolicyAssignmentV1Payload:
             json_.containsKey('osPolicyAssignmentV1Payload')
-                ? OSPolicyAssignment.fromJson(
-                  json_['osPolicyAssignmentV1Payload']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? OSPolicyAssignment.fromJson(
+                json_['osPolicyAssignmentV1Payload']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (osPolicyAssignmentV1Payload != null)
-      'osPolicyAssignmentV1Payload': osPolicyAssignmentV1Payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final osPolicyAssignmentV1Payload = this.osPolicyAssignmentV1Payload;
+    return {
+      'id': ?id,
+      'osPolicyAssignmentV1Payload': ?osPolicyAssignmentV1Payload,
+    };
+  }
 }
 
 /// Defines a set of selectors which drive which resources are in scope of
@@ -1998,20 +2022,20 @@ class GoogleCloudOsconfigV2OrchestrationScope {
 
   GoogleCloudOsconfigV2OrchestrationScope.fromJson(core.Map json_)
     : this(
-        selectors:
-            (json_['selectors'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudOsconfigV2OrchestrationScopeSelector.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        selectors: (json_['selectors'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudOsconfigV2OrchestrationScopeSelector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (selectors != null) 'selectors': selectors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final selectors = this.selectors;
+    return {'selectors': ?selectors};
+  }
 }
 
 /// PolicyOrchestrator helps managing project+zone level policy resources (e.g.
@@ -2145,47 +2169,57 @@ class GoogleCloudOsconfigV2PolicyOrchestrator {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        orchestratedResource:
-            json_.containsKey('orchestratedResource')
-                ? GoogleCloudOsconfigV2OrchestratedResource.fromJson(
-                  json_['orchestratedResource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        orchestrationScope:
-            json_.containsKey('orchestrationScope')
-                ? GoogleCloudOsconfigV2OrchestrationScope.fromJson(
-                  json_['orchestrationScope']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        orchestrationState:
-            json_.containsKey('orchestrationState')
-                ? GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState.fromJson(
-                  json_['orchestrationState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        orchestratedResource: json_.containsKey('orchestratedResource')
+            ? GoogleCloudOsconfigV2OrchestratedResource.fromJson(
+                json_['orchestratedResource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orchestrationScope: json_.containsKey('orchestrationScope')
+            ? GoogleCloudOsconfigV2OrchestrationScope.fromJson(
+                json_['orchestrationScope']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orchestrationState: json_.containsKey('orchestrationState')
+            ? GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState.fromJson(
+                json_['orchestrationState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (orchestratedResource != null)
-      'orchestratedResource': orchestratedResource!,
-    if (orchestrationScope != null) 'orchestrationScope': orchestrationScope!,
-    if (orchestrationState != null) 'orchestrationState': orchestrationState!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final labels = this.labels;
+    final name = this.name;
+    final orchestratedResource = this.orchestratedResource;
+    final orchestrationScope = this.orchestrationScope;
+    final orchestrationState = this.orchestrationState;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'action': ?action,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'orchestratedResource': ?orchestratedResource,
+      'orchestrationScope': ?orchestrationScope,
+      'orchestrationState': ?orchestrationState,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2213,25 +2247,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// An OS policy defines the desired state configuration for a VM.
@@ -2295,24 +2332,29 @@ class OSPolicy {
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         mode: json_['mode'] as core.String?,
-        resourceGroups:
-            (json_['resourceGroups'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyResourceGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resourceGroups: (json_['resourceGroups'] as core.List?)
+            ?.map(
+              (value) => OSPolicyResourceGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowNoResourceGroupMatch != null)
-      'allowNoResourceGroupMatch': allowNoResourceGroupMatch!,
-    if (description != null) 'description': description!,
-    if (id != null) 'id': id!,
-    if (mode != null) 'mode': mode!,
-    if (resourceGroups != null) 'resourceGroups': resourceGroups!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowNoResourceGroupMatch = this.allowNoResourceGroupMatch;
+    final description = this.description;
+    final id = this.id;
+    final mode = this.mode;
+    final resourceGroups = this.resourceGroups;
+    return {
+      'allowNoResourceGroupMatch': ?allowNoResourceGroupMatch,
+      'description': ?description,
+      'id': ?id,
+      'mode': ?mode,
+      'resourceGroups': ?resourceGroups,
+    };
+  }
 }
 
 /// OS policy assignment is an API resource that is used to apply a set of OS
@@ -2433,50 +2475,61 @@ class OSPolicyAssignment {
         deleted: json_['deleted'] as core.bool?,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
-        instanceFilter:
-            json_.containsKey('instanceFilter')
-                ? OSPolicyAssignmentInstanceFilter.fromJson(
-                  json_['instanceFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        instanceFilter: json_.containsKey('instanceFilter')
+            ? OSPolicyAssignmentInstanceFilter.fromJson(
+                json_['instanceFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        osPolicies:
-            (json_['osPolicies'] as core.List?)
-                ?.map(
-                  (value) => OSPolicy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        osPolicies: (json_['osPolicies'] as core.List?)
+            ?.map(
+              (value) => OSPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         reconciling: json_['reconciling'] as core.bool?,
         revisionCreateTime: json_['revisionCreateTime'] as core.String?,
         revisionId: json_['revisionId'] as core.String?,
-        rollout:
-            json_.containsKey('rollout')
-                ? OSPolicyAssignmentRollout.fromJson(
-                  json_['rollout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rollout: json_.containsKey('rollout')
+            ? OSPolicyAssignmentRollout.fromJson(
+                json_['rollout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rolloutState: json_['rolloutState'] as core.String?,
         uid: json_['uid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseline != null) 'baseline': baseline!,
-    if (deleted != null) 'deleted': deleted!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (instanceFilter != null) 'instanceFilter': instanceFilter!,
-    if (name != null) 'name': name!,
-    if (osPolicies != null) 'osPolicies': osPolicies!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
-    if (revisionId != null) 'revisionId': revisionId!,
-    if (rollout != null) 'rollout': rollout!,
-    if (rolloutState != null) 'rolloutState': rolloutState!,
-    if (uid != null) 'uid': uid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseline = this.baseline;
+    final deleted = this.deleted;
+    final description = this.description;
+    final etag = this.etag;
+    final instanceFilter = this.instanceFilter;
+    final name = this.name;
+    final osPolicies = this.osPolicies;
+    final reconciling = this.reconciling;
+    final revisionCreateTime = this.revisionCreateTime;
+    final revisionId = this.revisionId;
+    final rollout = this.rollout;
+    final rolloutState = this.rolloutState;
+    final uid = this.uid;
+    return {
+      'baseline': ?baseline,
+      'deleted': ?deleted,
+      'description': ?description,
+      'etag': ?etag,
+      'instanceFilter': ?instanceFilter,
+      'name': ?name,
+      'osPolicies': ?osPolicies,
+      'reconciling': ?reconciling,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'rollout': ?rollout,
+      'rolloutState': ?rolloutState,
+      'uid': ?uid,
+    };
+  }
 }
 
 /// Filters to select target VMs for an assignment.
@@ -2517,38 +2570,41 @@ class OSPolicyAssignmentInstanceFilter {
   OSPolicyAssignmentInstanceFilter.fromJson(core.Map json_)
     : this(
         all: json_['all'] as core.bool?,
-        exclusionLabels:
-            (json_['exclusionLabels'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyAssignmentLabelSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        inclusionLabels:
-            (json_['inclusionLabels'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyAssignmentLabelSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        inventories:
-            (json_['inventories'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyAssignmentInstanceFilterInventory.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        exclusionLabels: (json_['exclusionLabels'] as core.List?)
+            ?.map(
+              (value) => OSPolicyAssignmentLabelSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        inclusionLabels: (json_['inclusionLabels'] as core.List?)
+            ?.map(
+              (value) => OSPolicyAssignmentLabelSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        inventories: (json_['inventories'] as core.List?)
+            ?.map(
+              (value) => OSPolicyAssignmentInstanceFilterInventory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (all != null) 'all': all!,
-    if (exclusionLabels != null) 'exclusionLabels': exclusionLabels!,
-    if (inclusionLabels != null) 'inclusionLabels': inclusionLabels!,
-    if (inventories != null) 'inventories': inventories!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final all = this.all;
+    final exclusionLabels = this.exclusionLabels;
+    final inclusionLabels = this.inclusionLabels;
+    final inventories = this.inventories;
+    return {
+      'all': ?all,
+      'exclusionLabels': ?exclusionLabels,
+      'inclusionLabels': ?inclusionLabels,
+      'inventories': ?inventories,
+    };
+  }
 }
 
 /// VM inventory details.
@@ -2585,20 +2641,23 @@ class OSPolicyAssignmentRollout {
 
   OSPolicyAssignmentRollout.fromJson(core.Map json_)
     : this(
-        disruptionBudget:
-            json_.containsKey('disruptionBudget')
-                ? FixedOrPercent.fromJson(
-                  json_['disruptionBudget']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        disruptionBudget: json_.containsKey('disruptionBudget')
+            ? FixedOrPercent.fromJson(
+                json_['disruptionBudget']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         minWaitDuration: json_['minWaitDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disruptionBudget != null) 'disruptionBudget': disruptionBudget!,
-    if (minWaitDuration != null) 'minWaitDuration': minWaitDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disruptionBudget = this.disruptionBudget;
+    final minWaitDuration = this.minWaitDuration;
+    return {
+      'disruptionBudget': ?disruptionBudget,
+      'minWaitDuration': ?minWaitDuration,
+    };
+  }
 }
 
 /// Filtering criteria to select VMs based on inventory details.
@@ -2636,40 +2695,43 @@ class OSPolicyResource {
 
   OSPolicyResource.fromJson(core.Map json_)
     : this(
-        exec:
-            json_.containsKey('exec')
-                ? OSPolicyResourceExecResource.fromJson(
-                  json_['exec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        file:
-            json_.containsKey('file')
-                ? OSPolicyResourceFileResource.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        exec: json_.containsKey('exec')
+            ? OSPolicyResourceExecResource.fromJson(
+                json_['exec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        file: json_.containsKey('file')
+            ? OSPolicyResourceFileResource.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        pkg:
-            json_.containsKey('pkg')
-                ? OSPolicyResourcePackageResource.fromJson(
-                  json_['pkg'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        repository:
-            json_.containsKey('repository')
-                ? OSPolicyResourceRepositoryResource.fromJson(
-                  json_['repository'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pkg: json_.containsKey('pkg')
+            ? OSPolicyResourcePackageResource.fromJson(
+                json_['pkg'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        repository: json_.containsKey('repository')
+            ? OSPolicyResourceRepositoryResource.fromJson(
+                json_['repository'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exec != null) 'exec': exec!,
-    if (file != null) 'file': file!,
-    if (id != null) 'id': id!,
-    if (pkg != null) 'pkg': pkg!,
-    if (repository != null) 'repository': repository!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exec = this.exec;
+    final file = this.file;
+    final id = this.id;
+    final pkg = this.pkg;
+    final repository = this.repository;
+    return {
+      'exec': ?exec,
+      'file': ?file,
+      'id': ?id,
+      'pkg': ?pkg,
+      'repository': ?repository,
+    };
+  }
 }
 
 /// A resource that allows executing scripts on the VM.
@@ -2712,24 +2774,23 @@ class OSPolicyResourceExecResource {
 
   OSPolicyResourceExecResource.fromJson(core.Map json_)
     : this(
-        enforce:
-            json_.containsKey('enforce')
-                ? OSPolicyResourceExecResourceExec.fromJson(
-                  json_['enforce'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        validate:
-            json_.containsKey('validate')
-                ? OSPolicyResourceExecResourceExec.fromJson(
-                  json_['validate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        enforce: json_.containsKey('enforce')
+            ? OSPolicyResourceExecResourceExec.fromJson(
+                json_['enforce'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validate: json_.containsKey('validate')
+            ? OSPolicyResourceExecResourceExec.fromJson(
+                json_['validate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enforce != null) 'enforce': enforce!,
-    if (validate != null) 'validate': validate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enforce = this.enforce;
+    final validate = this.validate;
+    return {'enforce': ?enforce, 'validate': ?validate};
+  }
 }
 
 /// A file or script to execute.
@@ -2777,28 +2838,33 @@ class OSPolicyResourceExecResourceExec {
 
   OSPolicyResourceExecResourceExec.fromJson(core.Map json_)
     : this(
-        args:
-            (json_['args'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        file:
-            json_.containsKey('file')
-                ? OSPolicyResourceFile.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        file: json_.containsKey('file')
+            ? OSPolicyResourceFile.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         interpreter: json_['interpreter'] as core.String?,
         outputFilePath: json_['outputFilePath'] as core.String?,
         script: json_['script'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (args != null) 'args': args!,
-    if (file != null) 'file': file!,
-    if (interpreter != null) 'interpreter': interpreter!,
-    if (outputFilePath != null) 'outputFilePath': outputFilePath!,
-    if (script != null) 'script': script!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final file = this.file;
+    final interpreter = this.interpreter;
+    final outputFilePath = this.outputFilePath;
+    final script = this.script;
+    return {
+      'args': ?args,
+      'file': ?file,
+      'interpreter': ?interpreter,
+      'outputFilePath': ?outputFilePath,
+      'script': ?script,
+    };
+  }
 }
 
 /// A remote or local file.
@@ -2829,27 +2895,31 @@ class OSPolicyResourceFile {
   OSPolicyResourceFile.fromJson(core.Map json_)
     : this(
         allowInsecure: json_['allowInsecure'] as core.bool?,
-        gcs:
-            json_.containsKey('gcs')
-                ? OSPolicyResourceFileGcs.fromJson(
-                  json_['gcs'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcs: json_.containsKey('gcs')
+            ? OSPolicyResourceFileGcs.fromJson(
+                json_['gcs'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localPath: json_['localPath'] as core.String?,
-        remote:
-            json_.containsKey('remote')
-                ? OSPolicyResourceFileRemote.fromJson(
-                  json_['remote'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        remote: json_.containsKey('remote')
+            ? OSPolicyResourceFileRemote.fromJson(
+                json_['remote'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowInsecure != null) 'allowInsecure': allowInsecure!,
-    if (gcs != null) 'gcs': gcs!,
-    if (localPath != null) 'localPath': localPath!,
-    if (remote != null) 'remote': remote!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowInsecure = this.allowInsecure;
+    final gcs = this.gcs;
+    final localPath = this.localPath;
+    final remote = this.remote;
+    return {
+      'allowInsecure': ?allowInsecure,
+      'gcs': ?gcs,
+      'localPath': ?localPath,
+      'remote': ?remote,
+    };
+  }
 }
 
 /// Specifies a file available as a Cloud Storage Object.
@@ -2906,24 +2976,30 @@ class OSPolicyResourceFileResource {
   OSPolicyResourceFileResource.fromJson(core.Map json_)
     : this(
         content: json_['content'] as core.String?,
-        file:
-            json_.containsKey('file')
-                ? OSPolicyResourceFile.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        file: json_.containsKey('file')
+            ? OSPolicyResourceFile.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         path: json_['path'] as core.String?,
         permissions: json_['permissions'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (file != null) 'file': file!,
-    if (path != null) 'path': path!,
-    if (permissions != null) 'permissions': permissions!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final file = this.file;
+    final path = this.path;
+    final permissions = this.permissions;
+    final state = this.state;
+    return {
+      'content': ?content,
+      'file': ?file,
+      'path': ?path,
+      'permissions': ?permissions,
+      'state': ?state,
+    };
+  }
 }
 
 /// Resource groups provide a mechanism to group OS policy resources.
@@ -2955,28 +3031,27 @@ class OSPolicyResourceGroup {
 
   OSPolicyResourceGroup.fromJson(core.Map json_)
     : this(
-        inventoryFilters:
-            (json_['inventoryFilters'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyInventoryFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => OSPolicyResource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        inventoryFilters: (json_['inventoryFilters'] as core.List?)
+            ?.map(
+              (value) => OSPolicyInventoryFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => OSPolicyResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inventoryFilters != null) 'inventoryFilters': inventoryFilters!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inventoryFilters = this.inventoryFilters;
+    final resources = this.resources;
+    return {'inventoryFilters': ?inventoryFilters, 'resources': ?resources};
+  }
 }
 
 /// A resource that manages a system package.
@@ -3025,61 +3100,64 @@ class OSPolicyResourcePackageResource {
 
   OSPolicyResourcePackageResource.fromJson(core.Map json_)
     : this(
-        apt:
-            json_.containsKey('apt')
-                ? OSPolicyResourcePackageResourceAPT.fromJson(
-                  json_['apt'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deb:
-            json_.containsKey('deb')
-                ? OSPolicyResourcePackageResourceDeb.fromJson(
-                  json_['deb'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apt: json_.containsKey('apt')
+            ? OSPolicyResourcePackageResourceAPT.fromJson(
+                json_['apt'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deb: json_.containsKey('deb')
+            ? OSPolicyResourcePackageResourceDeb.fromJson(
+                json_['deb'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         desiredState: json_['desiredState'] as core.String?,
-        googet:
-            json_.containsKey('googet')
-                ? OSPolicyResourcePackageResourceGooGet.fromJson(
-                  json_['googet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        msi:
-            json_.containsKey('msi')
-                ? OSPolicyResourcePackageResourceMSI.fromJson(
-                  json_['msi'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rpm:
-            json_.containsKey('rpm')
-                ? OSPolicyResourcePackageResourceRPM.fromJson(
-                  json_['rpm'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        yum:
-            json_.containsKey('yum')
-                ? OSPolicyResourcePackageResourceYUM.fromJson(
-                  json_['yum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        zypper:
-            json_.containsKey('zypper')
-                ? OSPolicyResourcePackageResourceZypper.fromJson(
-                  json_['zypper'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        googet: json_.containsKey('googet')
+            ? OSPolicyResourcePackageResourceGooGet.fromJson(
+                json_['googet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        msi: json_.containsKey('msi')
+            ? OSPolicyResourcePackageResourceMSI.fromJson(
+                json_['msi'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rpm: json_.containsKey('rpm')
+            ? OSPolicyResourcePackageResourceRPM.fromJson(
+                json_['rpm'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        yum: json_.containsKey('yum')
+            ? OSPolicyResourcePackageResourceYUM.fromJson(
+                json_['yum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        zypper: json_.containsKey('zypper')
+            ? OSPolicyResourcePackageResourceZypper.fromJson(
+                json_['zypper'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apt != null) 'apt': apt!,
-    if (deb != null) 'deb': deb!,
-    if (desiredState != null) 'desiredState': desiredState!,
-    if (googet != null) 'googet': googet!,
-    if (msi != null) 'msi': msi!,
-    if (rpm != null) 'rpm': rpm!,
-    if (yum != null) 'yum': yum!,
-    if (zypper != null) 'zypper': zypper!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apt = this.apt;
+    final deb = this.deb;
+    final desiredState = this.desiredState;
+    final googet = this.googet;
+    final msi = this.msi;
+    final rpm = this.rpm;
+    final yum = this.yum;
+    final zypper = this.zypper;
+    return {
+      'apt': ?apt,
+      'deb': ?deb,
+      'desiredState': ?desiredState,
+      'googet': ?googet,
+      'msi': ?msi,
+      'rpm': ?rpm,
+      'yum': ?yum,
+      'zypper': ?zypper,
+    };
+  }
 }
 
 /// A package managed by APT.
@@ -3108,18 +3186,18 @@ class OSPolicyResourcePackageResourceDeb {
   OSPolicyResourcePackageResourceDeb.fromJson(core.Map json_)
     : this(
         pullDeps: json_['pullDeps'] as core.bool?,
-        source:
-            json_.containsKey('source')
-                ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        source: json_.containsKey('source')
+            ? OSPolicyResourceFile.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pullDeps != null) 'pullDeps': pullDeps!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pullDeps = this.pullDeps;
+    final source = this.source;
+    return {'pullDeps': ?pullDeps, 'source': ?source};
+  }
 }
 
 /// A package managed by GooGet.
@@ -3147,22 +3225,21 @@ class OSPolicyResourcePackageResourceMSI {
 
   OSPolicyResourcePackageResourceMSI.fromJson(core.Map json_)
     : this(
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        source:
-            json_.containsKey('source')
-                ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        properties: (json_['properties'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        source: json_.containsKey('source')
+            ? OSPolicyResourceFile.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (properties != null) 'properties': properties!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final properties = this.properties;
+    final source = this.source;
+    return {'properties': ?properties, 'source': ?source};
+  }
 }
 
 /// An RPM package file.
@@ -3185,18 +3262,18 @@ class OSPolicyResourcePackageResourceRPM {
   OSPolicyResourcePackageResourceRPM.fromJson(core.Map json_)
     : this(
         pullDeps: json_['pullDeps'] as core.bool?,
-        source:
-            json_.containsKey('source')
-                ? OSPolicyResourceFile.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        source: json_.containsKey('source')
+            ? OSPolicyResourceFile.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pullDeps != null) 'pullDeps': pullDeps!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pullDeps = this.pullDeps;
+    final source = this.source;
+    return {'pullDeps': ?pullDeps, 'source': ?source};
+  }
 }
 
 /// A package managed by YUM.
@@ -3232,38 +3309,35 @@ class OSPolicyResourceRepositoryResource {
 
   OSPolicyResourceRepositoryResource.fromJson(core.Map json_)
     : this(
-        apt:
-            json_.containsKey('apt')
-                ? OSPolicyResourceRepositoryResourceAptRepository.fromJson(
-                  json_['apt'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        goo:
-            json_.containsKey('goo')
-                ? OSPolicyResourceRepositoryResourceGooRepository.fromJson(
-                  json_['goo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        yum:
-            json_.containsKey('yum')
-                ? OSPolicyResourceRepositoryResourceYumRepository.fromJson(
-                  json_['yum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        zypper:
-            json_.containsKey('zypper')
-                ? OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
-                  json_['zypper'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apt: json_.containsKey('apt')
+            ? OSPolicyResourceRepositoryResourceAptRepository.fromJson(
+                json_['apt'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        goo: json_.containsKey('goo')
+            ? OSPolicyResourceRepositoryResourceGooRepository.fromJson(
+                json_['goo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        yum: json_.containsKey('yum')
+            ? OSPolicyResourceRepositoryResourceYumRepository.fromJson(
+                json_['yum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        zypper: json_.containsKey('zypper')
+            ? OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
+                json_['zypper'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apt != null) 'apt': apt!,
-    if (goo != null) 'goo': goo!,
-    if (yum != null) 'yum': yum!,
-    if (zypper != null) 'zypper': zypper!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apt = this.apt;
+    final goo = this.goo;
+    final yum = this.yum;
+    final zypper = this.zypper;
+    return {'apt': ?apt, 'goo': ?goo, 'yum': ?yum, 'zypper': ?zypper};
+  }
 }
 
 /// Represents a single apt package repository.
@@ -3342,30 +3416,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

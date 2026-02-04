@@ -104,7 +104,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -157,11 +157,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -207,7 +207,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -243,7 +243,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -298,12 +298,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -363,8 +364,8 @@ class ProjectsLocationsWorkflowsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (workflowId != null) 'workflowId': [workflowId],
-      if ($fields != null) 'fields': [$fields],
+      'workflowId': ?workflowId == null ? null : [workflowId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workflows';
@@ -405,7 +406,7 @@ class ProjectsLocationsWorkflowsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -450,8 +451,8 @@ class ProjectsLocationsWorkflowsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (revisionId != null) 'revisionId': [revisionId],
-      if ($fields != null) 'fields': [$fields],
+      'revisionId': ?revisionId == null ? null : [revisionId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -513,11 +514,11 @@ class ProjectsLocationsWorkflowsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workflows';
@@ -565,9 +566,9 @@ class ProjectsLocationsWorkflowsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listRevisions';
@@ -620,8 +621,8 @@ class ProjectsLocationsWorkflowsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -656,21 +657,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -698,25 +699,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the ListWorkflowRevisions method.
@@ -734,20 +738,20 @@ class ListWorkflowRevisionsResponse {
   ListWorkflowRevisionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        workflows:
-            (json_['workflows'] as core.List?)
-                ?.map(
-                  (value) => Workflow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        workflows: (json_['workflows'] as core.List?)
+            ?.map(
+              (value) => Workflow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (workflows != null) 'workflows': workflows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final workflows = this.workflows;
+    return {'nextPageToken': ?nextPageToken, 'workflows': ?workflows};
+  }
 }
 
 /// Response for the ListWorkflows method.
@@ -768,25 +772,28 @@ class ListWorkflowsResponse {
   ListWorkflowsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workflows:
-            (json_['workflows'] as core.List?)
-                ?.map(
-                  (value) => Workflow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workflows: (json_['workflows'] as core.List?)
+            ?.map(
+              (value) => Workflow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workflows != null) 'workflows': workflows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workflows = this.workflows;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workflows': ?workflows,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -840,30 +847,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Describes an error related to the current state of the workflow.
@@ -1064,14 +1075,12 @@ class Workflow {
 
   Workflow.fromJson(core.Map json_)
     : this(
-        allKmsKeys:
-            (json_['allKmsKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        allKmsKeysVersions:
-            (json_['allKmsKeysVersions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allKmsKeys: (json_['allKmsKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        allKmsKeysVersions: (json_['allKmsKeysVersions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         callLogLevel: json_['callLogLevel'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         cryptoKeyName: json_['cryptoKeyName'] as core.String?,
@@ -1087,41 +1096,61 @@ class Workflow {
         serviceAccount: json_['serviceAccount'] as core.String?,
         sourceContents: json_['sourceContents'] as core.String?,
         state: json_['state'] as core.String?,
-        stateError:
-            json_.containsKey('stateError')
-                ? StateError.fromJson(
-                  json_['stateError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stateError: json_.containsKey('stateError')
+            ? StateError.fromJson(
+                json_['stateError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         updateTime: json_['updateTime'] as core.String?,
-        userEnvVars: (json_['userEnvVars']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        userEnvVars:
+            (json_['userEnvVars'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allKmsKeys != null) 'allKmsKeys': allKmsKeys!,
-    if (allKmsKeysVersions != null) 'allKmsKeysVersions': allKmsKeysVersions!,
-    if (callLogLevel != null) 'callLogLevel': callLogLevel!,
-    if (createTime != null) 'createTime': createTime!,
-    if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
-    if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
-    if (description != null) 'description': description!,
-    if (executionHistoryLevel != null)
-      'executionHistoryLevel': executionHistoryLevel!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
-    if (revisionId != null) 'revisionId': revisionId!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (sourceContents != null) 'sourceContents': sourceContents!,
-    if (state != null) 'state': state!,
-    if (stateError != null) 'stateError': stateError!,
-    if (tags != null) 'tags': tags!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (userEnvVars != null) 'userEnvVars': userEnvVars!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allKmsKeys = this.allKmsKeys;
+    final allKmsKeysVersions = this.allKmsKeysVersions;
+    final callLogLevel = this.callLogLevel;
+    final createTime = this.createTime;
+    final cryptoKeyName = this.cryptoKeyName;
+    final cryptoKeyVersion = this.cryptoKeyVersion;
+    final description = this.description;
+    final executionHistoryLevel = this.executionHistoryLevel;
+    final labels = this.labels;
+    final name = this.name;
+    final revisionCreateTime = this.revisionCreateTime;
+    final revisionId = this.revisionId;
+    final serviceAccount = this.serviceAccount;
+    final sourceContents = this.sourceContents;
+    final state = this.state;
+    final stateError = this.stateError;
+    final tags = this.tags;
+    final updateTime = this.updateTime;
+    final userEnvVars = this.userEnvVars;
+    return {
+      'allKmsKeys': ?allKmsKeys,
+      'allKmsKeysVersions': ?allKmsKeysVersions,
+      'callLogLevel': ?callLogLevel,
+      'createTime': ?createTime,
+      'cryptoKeyName': ?cryptoKeyName,
+      'cryptoKeyVersion': ?cryptoKeyVersion,
+      'description': ?description,
+      'executionHistoryLevel': ?executionHistoryLevel,
+      'labels': ?labels,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'serviceAccount': ?serviceAccount,
+      'sourceContents': ?sourceContents,
+      'state': ?state,
+      'stateError': ?stateError,
+      'tags': ?tags,
+      'updateTime': ?updateTime,
+      'userEnvVars': ?userEnvVars,
+    };
+  }
 }

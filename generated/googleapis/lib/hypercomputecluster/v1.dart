@@ -98,7 +98,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -151,11 +151,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -214,9 +214,9 @@ class ProjectsLocationsClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (clusterId != null) 'clusterId': [clusterId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'clusterId': ?clusterId == null ? null : [clusterId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
@@ -259,8 +259,8 @@ class ProjectsLocationsClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -294,7 +294,7 @@ class ProjectsLocationsClustersResource {
   /// this method will complete with the same error.
   async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -350,11 +350,11 @@ class ProjectsLocationsClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
@@ -408,9 +408,9 @@ class ProjectsLocationsClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -467,7 +467,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -505,7 +505,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -541,7 +541,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -596,12 +596,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -641,10 +642,11 @@ class BootDisk {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sizeGb = this.sizeGb;
+    final type = this.type;
+    return {'sizeGb': ?sizeGb, 'type': ?type};
+  }
 }
 
 /// A reference to a [Google Cloud Storage](https://cloud.google.com/storage)
@@ -660,9 +662,10 @@ class BucketReference {
   BucketReference.fromJson(core.Map json_)
     : this(bucket: json_['bucket'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    return {'bucket': ?bucket};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -765,64 +768,75 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
     : this(
-        computeResources: (json_['computeResources']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                ComputeResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        computeResources:
+            (json_['computeResources'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ComputeResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        networkResources: (json_['networkResources']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                NetworkResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        networkResources:
+            (json_['networkResources'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    NetworkResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        orchestrator:
-            json_.containsKey('orchestrator')
-                ? Orchestrator.fromJson(
-                  json_['orchestrator'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        orchestrator: json_.containsKey('orchestrator')
+            ? Orchestrator.fromJson(
+                json_['orchestrator'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
-        storageResources: (json_['storageResources']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                StorageResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        storageResources:
+            (json_['storageResources'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    StorageResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeResources != null) 'computeResources': computeResources!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (networkResources != null) 'networkResources': networkResources!,
-    if (orchestrator != null) 'orchestrator': orchestrator!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (storageResources != null) 'storageResources': storageResources!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeResources = this.computeResources;
+    final createTime = this.createTime;
+    final description = this.description;
+    final labels = this.labels;
+    final name = this.name;
+    final networkResources = this.networkResources;
+    final orchestrator = this.orchestrator;
+    final reconciling = this.reconciling;
+    final storageResources = this.storageResources;
+    final updateTime = this.updateTime;
+    return {
+      'computeResources': ?computeResources,
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'networkResources': ?networkResources,
+      'orchestrator': ?orchestrator,
+      'reconciling': ?reconciling,
+      'storageResources': ?storageResources,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Details about a Compute Engine
@@ -839,9 +853,10 @@ class ComputeInstance {
   ComputeInstance.fromJson(core.Map json_)
     : this(instance: json_['instance'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instance != null) 'instance': instance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instance = this.instance;
+    return {'instance': ?instance};
+  }
 }
 
 /// When set in a SlurmNodeSet, indicates that the nodeset should be backed by
@@ -870,23 +885,27 @@ class ComputeInstanceSlurmNodeSet {
 
   ComputeInstanceSlurmNodeSet.fromJson(core.Map json_)
     : this(
-        bootDisk:
-            json_.containsKey('bootDisk')
-                ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bootDisk: json_.containsKey('bootDisk')
+            ? BootDisk.fromJson(
+                json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         startupScript: json_['startupScript'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bootDisk != null) 'bootDisk': bootDisk!,
-    if (labels != null) 'labels': labels!,
-    if (startupScript != null) 'startupScript': startupScript!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDisk = this.bootDisk;
+    final labels = this.labels;
+    final startupScript = this.startupScript;
+    return {
+      'bootDisk': ?bootDisk,
+      'labels': ?labels,
+      'startupScript': ?startupScript,
+    };
+  }
 }
 
 /// A resource defining how virtual machines and accelerators should be
@@ -902,17 +921,17 @@ class ComputeResource {
 
   ComputeResource.fromJson(core.Map json_)
     : this(
-        config:
-            json_.containsKey('config')
-                ? ComputeResourceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? ComputeResourceConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (config != null) 'config': config!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    return {'config': ?config};
+  }
 }
 
 /// Describes how a compute resource should be created at runtime.
@@ -946,45 +965,44 @@ class ComputeResourceConfig {
 
   ComputeResourceConfig.fromJson(core.Map json_)
     : this(
-        newFlexStartInstances:
-            json_.containsKey('newFlexStartInstances')
-                ? NewFlexStartInstancesConfig.fromJson(
-                  json_['newFlexStartInstances']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newOnDemandInstances:
-            json_.containsKey('newOnDemandInstances')
-                ? NewOnDemandInstancesConfig.fromJson(
-                  json_['newOnDemandInstances']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newReservedInstances:
-            json_.containsKey('newReservedInstances')
-                ? NewReservedInstancesConfig.fromJson(
-                  json_['newReservedInstances']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newSpotInstances:
-            json_.containsKey('newSpotInstances')
-                ? NewSpotInstancesConfig.fromJson(
-                  json_['newSpotInstances']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        newFlexStartInstances: json_.containsKey('newFlexStartInstances')
+            ? NewFlexStartInstancesConfig.fromJson(
+                json_['newFlexStartInstances']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newOnDemandInstances: json_.containsKey('newOnDemandInstances')
+            ? NewOnDemandInstancesConfig.fromJson(
+                json_['newOnDemandInstances']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newReservedInstances: json_.containsKey('newReservedInstances')
+            ? NewReservedInstancesConfig.fromJson(
+                json_['newReservedInstances']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newSpotInstances: json_.containsKey('newSpotInstances')
+            ? NewSpotInstancesConfig.fromJson(
+                json_['newSpotInstances']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newFlexStartInstances != null)
-      'newFlexStartInstances': newFlexStartInstances!,
-    if (newOnDemandInstances != null)
-      'newOnDemandInstances': newOnDemandInstances!,
-    if (newReservedInstances != null)
-      'newReservedInstances': newReservedInstances!,
-    if (newSpotInstances != null) 'newSpotInstances': newSpotInstances!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newFlexStartInstances = this.newFlexStartInstances;
+    final newOnDemandInstances = this.newOnDemandInstances;
+    final newReservedInstances = this.newReservedInstances;
+    final newSpotInstances = this.newSpotInstances;
+    return {
+      'newFlexStartInstances': ?newFlexStartInstances,
+      'newOnDemandInstances': ?newOnDemandInstances,
+      'newReservedInstances': ?newReservedInstances,
+      'newSpotInstances': ?newSpotInstances,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1009,9 +1027,10 @@ class ExistingBucketConfig {
   ExistingBucketConfig.fromJson(core.Map json_)
     : this(bucket: json_['bucket'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    return {'bucket': ?bucket};
+  }
 }
 
 /// When set in a StorageResourceConfig, indicates that an existing
@@ -1028,9 +1047,10 @@ class ExistingFilestoreConfig {
   ExistingFilestoreConfig.fromJson(core.Map json_)
     : this(filestore: json_['filestore'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filestore != null) 'filestore': filestore!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filestore = this.filestore;
+    return {'filestore': ?filestore};
+  }
 }
 
 /// When set in a StorageResourceConfig, indicates that an existing
@@ -1048,9 +1068,10 @@ class ExistingLustreConfig {
   ExistingLustreConfig.fromJson(core.Map json_)
     : this(lustre: json_['lustre'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lustre != null) 'lustre': lustre!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lustre = this.lustre;
+    return {'lustre': ?lustre};
+  }
 }
 
 /// When set in a NetworkResourceConfig, indicates that an existing network
@@ -1076,10 +1097,11 @@ class ExistingNetworkConfig {
         subnetwork: json_['subnetwork'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final subnetwork = this.subnetwork;
+    return {'network': ?network, 'subnetwork': ?subnetwork};
+  }
 }
 
 /// Message describing filestore configuration
@@ -1105,10 +1127,11 @@ class FileShareConfig {
         fileShare: json_['fileShare'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacityGb != null) 'capacityGb': capacityGb!,
-    if (fileShare != null) 'fileShare': fileShare!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityGb = this.capacityGb;
+    final fileShare = this.fileShare;
+    return {'capacityGb': ?capacityGb, 'fileShare': ?fileShare};
+  }
 }
 
 /// A reference to a [Filestore](https://cloud.google.com/filestore) instance.
@@ -1124,9 +1147,10 @@ class FilestoreReference {
   FilestoreReference.fromJson(core.Map json_)
     : this(filestore: json_['filestore'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filestore != null) 'filestore': filestore!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filestore = this.filestore;
+    return {'filestore': ?filestore};
+  }
 }
 
 /// Message describing Google Cloud Storage autoclass configuration
@@ -1152,11 +1176,11 @@ class GcsAutoclassConfig {
         terminalStorageClass: json_['terminalStorageClass'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (terminalStorageClass != null)
-      'terminalStorageClass': terminalStorageClass!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final terminalStorageClass = this.terminalStorageClass;
+    return {'enabled': ?enabled, 'terminalStorageClass': ?terminalStorageClass};
+  }
 }
 
 /// Message describing Google Cloud Storage hierarchical namespace configuration
@@ -1171,9 +1195,10 @@ class GcsHierarchicalNamespaceConfig {
   GcsHierarchicalNamespaceConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// Response message for ListClusters.
@@ -1193,26 +1218,29 @@ class ListClustersResponse {
 
   ListClustersResponse.fromJson(core.Map json_)
     : this(
-        clusters:
-            (json_['clusters'] as core.List?)
-                ?.map(
-                  (value) => Cluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        clusters: (json_['clusters'] as core.List?)
+            ?.map(
+              (value) => Cluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusters != null) 'clusters': clusters!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusters = this.clusters;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'clusters': ?clusters,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -1227,21 +1255,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -1269,25 +1297,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1307,9 +1338,10 @@ class LustreReference {
   LustreReference.fromJson(core.Map json_)
     : this(lustre: json_['lustre'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lustre != null) 'lustre': lustre!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lustre = this.lustre;
+    return {'lustre': ?lustre};
+  }
 }
 
 /// A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in
@@ -1335,10 +1367,11 @@ class NetworkReference {
         subnetwork: json_['subnetwork'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final subnetwork = this.subnetwork;
+    return {'network': ?network, 'subnetwork': ?subnetwork};
+  }
 }
 
 /// A resource representing a network that connects the various components of a
@@ -1361,24 +1394,23 @@ class NetworkResource {
 
   NetworkResource.fromJson(core.Map json_)
     : this(
-        config:
-            json_.containsKey('config')
-                ? NetworkResourceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        network:
-            json_.containsKey('network')
-                ? NetworkReference.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? NetworkResourceConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        network: json_.containsKey('network')
+            ? NetworkReference.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (config != null) 'config': config!,
-    if (network != null) 'network': network!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    final network = this.network;
+    return {'config': ?config, 'network': ?network};
+  }
 }
 
 /// Describes how a network resource should be initialized.
@@ -1400,25 +1432,23 @@ class NetworkResourceConfig {
 
   NetworkResourceConfig.fromJson(core.Map json_)
     : this(
-        existingNetwork:
-            json_.containsKey('existingNetwork')
-                ? ExistingNetworkConfig.fromJson(
-                  json_['existingNetwork']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newNetwork:
-            json_.containsKey('newNetwork')
-                ? NewNetworkConfig.fromJson(
-                  json_['newNetwork'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        existingNetwork: json_.containsKey('existingNetwork')
+            ? ExistingNetworkConfig.fromJson(
+                json_['existingNetwork'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newNetwork: json_.containsKey('newNetwork')
+            ? NewNetworkConfig.fromJson(
+                json_['newNetwork'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (existingNetwork != null) 'existingNetwork': existingNetwork!,
-    if (newNetwork != null) 'newNetwork': newNetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final existingNetwork = this.existingNetwork;
+    final newNetwork = this.newNetwork;
+    return {'existingNetwork': ?existingNetwork, 'newNetwork': ?newNetwork};
+  }
 }
 
 /// When set in a StorageResourceConfig, indicates that a new
@@ -1464,30 +1494,33 @@ class NewBucketConfig {
 
   NewBucketConfig.fromJson(core.Map json_)
     : this(
-        autoclass:
-            json_.containsKey('autoclass')
-                ? GcsAutoclassConfig.fromJson(
-                  json_['autoclass'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoclass: json_.containsKey('autoclass')
+            ? GcsAutoclassConfig.fromJson(
+                json_['autoclass'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bucket: json_['bucket'] as core.String?,
-        hierarchicalNamespace:
-            json_.containsKey('hierarchicalNamespace')
-                ? GcsHierarchicalNamespaceConfig.fromJson(
-                  json_['hierarchicalNamespace']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        hierarchicalNamespace: json_.containsKey('hierarchicalNamespace')
+            ? GcsHierarchicalNamespaceConfig.fromJson(
+                json_['hierarchicalNamespace']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         storageClass: json_['storageClass'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoclass != null) 'autoclass': autoclass!,
-    if (bucket != null) 'bucket': bucket!,
-    if (hierarchicalNamespace != null)
-      'hierarchicalNamespace': hierarchicalNamespace!,
-    if (storageClass != null) 'storageClass': storageClass!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoclass = this.autoclass;
+    final bucket = this.bucket;
+    final hierarchicalNamespace = this.hierarchicalNamespace;
+    final storageClass = this.storageClass;
+    return {
+      'autoclass': ?autoclass,
+      'bucket': ?bucket,
+      'hierarchicalNamespace': ?hierarchicalNamespace,
+      'storageClass': ?storageClass,
+    };
+  }
 }
 
 /// When set in a StorageResourceConfig, indicates that a new
@@ -1546,26 +1579,32 @@ class NewFilestoreConfig {
   NewFilestoreConfig.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
-        fileShares:
-            (json_['fileShares'] as core.List?)
-                ?.map(
-                  (value) => FileShareConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fileShares: (json_['fileShares'] as core.List?)
+            ?.map(
+              (value) => FileShareConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         filestore: json_['filestore'] as core.String?,
         protocol: json_['protocol'] as core.String?,
         tier: json_['tier'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (fileShares != null) 'fileShares': fileShares!,
-    if (filestore != null) 'filestore': filestore!,
-    if (protocol != null) 'protocol': protocol!,
-    if (tier != null) 'tier': tier!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final fileShares = this.fileShares;
+    final filestore = this.filestore;
+    final protocol = this.protocol;
+    final tier = this.tier;
+    return {
+      'description': ?description,
+      'fileShares': ?fileShares,
+      'filestore': ?filestore,
+      'protocol': ?protocol,
+      'tier': ?tier,
+    };
+  }
 }
 
 /// When set in a ComputeResourceConfig, indicates that VM instances should be
@@ -1603,11 +1642,16 @@ class NewFlexStartInstancesConfig {
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-    if (maxDuration != null) 'maxDuration': maxDuration!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final maxDuration = this.maxDuration;
+    final zone = this.zone;
+    return {
+      'machineType': ?machineType,
+      'maxDuration': ?maxDuration,
+      'zone': ?zone,
+    };
+  }
 }
 
 /// When set in a StorageResourceConfig, indicates that a new
@@ -1658,12 +1702,18 @@ class NewLustreConfig {
         lustre: json_['lustre'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacityGb != null) 'capacityGb': capacityGb!,
-    if (description != null) 'description': description!,
-    if (filesystem != null) 'filesystem': filesystem!,
-    if (lustre != null) 'lustre': lustre!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityGb = this.capacityGb;
+    final description = this.description;
+    final filesystem = this.filesystem;
+    final lustre = this.lustre;
+    return {
+      'capacityGb': ?capacityGb,
+      'description': ?description,
+      'filesystem': ?filesystem,
+      'lustre': ?lustre,
+    };
+  }
 }
 
 /// When set in a NetworkResourceConfig, indicates that a new network should be
@@ -1690,10 +1740,11 @@ class NewNetworkConfig {
         network: json_['network'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (network != null) 'network': network!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final network = this.network;
+    return {'description': ?description, 'network': ?network};
+  }
 }
 
 /// When set in a ComputeResourceConfig, indicates that on-demand (i.e., using
@@ -1722,10 +1773,11 @@ class NewOnDemandInstancesConfig {
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final zone = this.zone;
+    return {'machineType': ?machineType, 'zone': ?zone};
+  }
 }
 
 /// When set in a ComputeResourceConfig, indicates that VM instances should be
@@ -1743,9 +1795,10 @@ class NewReservedInstancesConfig {
   NewReservedInstancesConfig.fromJson(core.Map json_)
     : this(reservation: json_['reservation'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reservation != null) 'reservation': reservation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reservation = this.reservation;
+    return {'reservation': ?reservation};
+  }
 }
 
 /// When set in a ComputeResourceConfig, indicates that
@@ -1785,11 +1838,16 @@ class NewSpotInstancesConfig {
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-    if (terminationAction != null) 'terminationAction': terminationAction!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final terminationAction = this.terminationAction;
+    final zone = this.zone;
+    return {
+      'machineType': ?machineType,
+      'terminationAction': ?terminationAction,
+      'zone': ?zone,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1840,30 +1898,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The component responsible for scheduling and running workloads on the
@@ -1879,17 +1941,17 @@ class Orchestrator {
 
   Orchestrator.fromJson(core.Map json_)
     : this(
-        slurm:
-            json_.containsKey('slurm')
-                ? SlurmOrchestrator.fromJson(
-                  json_['slurm'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        slurm: json_.containsKey('slurm')
+            ? SlurmOrchestrator.fromJson(
+                json_['slurm'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (slurm != null) 'slurm': slurm!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final slurm = this.slurm;
+    return {'slurm': ?slurm};
+  }
 }
 
 /// Configuration for Slurm
@@ -1978,51 +2040,60 @@ class SlurmLoginNodes {
 
   SlurmLoginNodes.fromJson(core.Map json_)
     : this(
-        bootDisk:
-            json_.containsKey('bootDisk')
-                ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bootDisk: json_.containsKey('bootDisk')
+            ? BootDisk.fromJson(
+                json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         count: json_['count'] as core.String?,
         enableOsLogin: json_['enableOsLogin'] as core.bool?,
         enablePublicIps: json_['enablePublicIps'] as core.bool?,
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => ComputeInstance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => ComputeInstance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         machineType: json_['machineType'] as core.String?,
         startupScript: json_['startupScript'] as core.String?,
-        storageConfigs:
-            (json_['storageConfigs'] as core.List?)
-                ?.map(
-                  (value) => StorageConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storageConfigs: (json_['storageConfigs'] as core.List?)
+            ?.map(
+              (value) => StorageConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bootDisk != null) 'bootDisk': bootDisk!,
-    if (count != null) 'count': count!,
-    if (enableOsLogin != null) 'enableOsLogin': enableOsLogin!,
-    if (enablePublicIps != null) 'enablePublicIps': enablePublicIps!,
-    if (instances != null) 'instances': instances!,
-    if (labels != null) 'labels': labels!,
-    if (machineType != null) 'machineType': machineType!,
-    if (startupScript != null) 'startupScript': startupScript!,
-    if (storageConfigs != null) 'storageConfigs': storageConfigs!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDisk = this.bootDisk;
+    final count = this.count;
+    final enableOsLogin = this.enableOsLogin;
+    final enablePublicIps = this.enablePublicIps;
+    final instances = this.instances;
+    final labels = this.labels;
+    final machineType = this.machineType;
+    final startupScript = this.startupScript;
+    final storageConfigs = this.storageConfigs;
+    final zone = this.zone;
+    return {
+      'bootDisk': ?bootDisk,
+      'count': ?count,
+      'enableOsLogin': ?enableOsLogin,
+      'enablePublicIps': ?enablePublicIps,
+      'instances': ?instances,
+      'labels': ?labels,
+      'machineType': ?machineType,
+      'startupScript': ?startupScript,
+      'storageConfigs': ?storageConfigs,
+      'zone': ?zone,
+    };
+  }
 }
 
 /// Configuration for Slurm nodesets in the cluster.
@@ -2090,35 +2161,39 @@ class SlurmNodeSet {
   SlurmNodeSet.fromJson(core.Map json_)
     : this(
         computeId: json_['computeId'] as core.String?,
-        computeInstance:
-            json_.containsKey('computeInstance')
-                ? ComputeInstanceSlurmNodeSet.fromJson(
-                  json_['computeInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        computeInstance: json_.containsKey('computeInstance')
+            ? ComputeInstanceSlurmNodeSet.fromJson(
+                json_['computeInstance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
         maxDynamicNodeCount: json_['maxDynamicNodeCount'] as core.String?,
         staticNodeCount: json_['staticNodeCount'] as core.String?,
-        storageConfigs:
-            (json_['storageConfigs'] as core.List?)
-                ?.map(
-                  (value) => StorageConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storageConfigs: (json_['storageConfigs'] as core.List?)
+            ?.map(
+              (value) => StorageConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeId != null) 'computeId': computeId!,
-    if (computeInstance != null) 'computeInstance': computeInstance!,
-    if (id != null) 'id': id!,
-    if (maxDynamicNodeCount != null)
-      'maxDynamicNodeCount': maxDynamicNodeCount!,
-    if (staticNodeCount != null) 'staticNodeCount': staticNodeCount!,
-    if (storageConfigs != null) 'storageConfigs': storageConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeId = this.computeId;
+    final computeInstance = this.computeInstance;
+    final id = this.id;
+    final maxDynamicNodeCount = this.maxDynamicNodeCount;
+    final staticNodeCount = this.staticNodeCount;
+    final storageConfigs = this.storageConfigs;
+    return {
+      'computeId': ?computeId,
+      'computeInstance': ?computeInstance,
+      'id': ?id,
+      'maxDynamicNodeCount': ?maxDynamicNodeCount,
+      'staticNodeCount': ?staticNodeCount,
+      'storageConfigs': ?storageConfigs,
+    };
+  }
 }
 
 /// When set in Orchestrator, indicates that the cluster should use
@@ -2185,46 +2260,49 @@ class SlurmOrchestrator {
   SlurmOrchestrator.fromJson(core.Map json_)
     : this(
         defaultPartition: json_['defaultPartition'] as core.String?,
-        epilogBashScripts:
-            (json_['epilogBashScripts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        loginNodes:
-            json_.containsKey('loginNodes')
-                ? SlurmLoginNodes.fromJson(
-                  json_['loginNodes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeSets:
-            (json_['nodeSets'] as core.List?)
-                ?.map(
-                  (value) => SlurmNodeSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        partitions:
-            (json_['partitions'] as core.List?)
-                ?.map(
-                  (value) => SlurmPartition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        prologBashScripts:
-            (json_['prologBashScripts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        epilogBashScripts: (json_['epilogBashScripts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        loginNodes: json_.containsKey('loginNodes')
+            ? SlurmLoginNodes.fromJson(
+                json_['loginNodes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeSets: (json_['nodeSets'] as core.List?)
+            ?.map(
+              (value) => SlurmNodeSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        partitions: (json_['partitions'] as core.List?)
+            ?.map(
+              (value) => SlurmPartition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        prologBashScripts: (json_['prologBashScripts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultPartition != null) 'defaultPartition': defaultPartition!,
-    if (epilogBashScripts != null) 'epilogBashScripts': epilogBashScripts!,
-    if (loginNodes != null) 'loginNodes': loginNodes!,
-    if (nodeSets != null) 'nodeSets': nodeSets!,
-    if (partitions != null) 'partitions': partitions!,
-    if (prologBashScripts != null) 'prologBashScripts': prologBashScripts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultPartition = this.defaultPartition;
+    final epilogBashScripts = this.epilogBashScripts;
+    final loginNodes = this.loginNodes;
+    final nodeSets = this.nodeSets;
+    final partitions = this.partitions;
+    final prologBashScripts = this.prologBashScripts;
+    return {
+      'defaultPartition': ?defaultPartition,
+      'epilogBashScripts': ?epilogBashScripts,
+      'loginNodes': ?loginNodes,
+      'nodeSets': ?nodeSets,
+      'partitions': ?partitions,
+      'prologBashScripts': ?prologBashScripts,
+    };
+  }
 }
 
 /// Configuration for Slurm partitions in the cluster.
@@ -2253,16 +2331,16 @@ class SlurmPartition {
   SlurmPartition.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
-        nodeSetIds:
-            (json_['nodeSetIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nodeSetIds: (json_['nodeSetIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (nodeSetIds != null) 'nodeSetIds': nodeSetIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final nodeSetIds = this.nodeSetIds;
+    return {'id': ?id, 'nodeSetIds': ?nodeSetIds};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2296,10 +2374,11 @@ class StorageConfig {
         localMount: json_['localMount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (localMount != null) 'localMount': localMount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final localMount = this.localMount;
+    return {'id': ?id, 'localMount': ?localMount};
+  }
 }
 
 /// A resource representing a form of persistent storage that is accessible to
@@ -2337,38 +2416,40 @@ class StorageResource {
 
   StorageResource.fromJson(core.Map json_)
     : this(
-        bucket:
-            json_.containsKey('bucket')
-                ? BucketReference.fromJson(
-                  json_['bucket'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        config:
-            json_.containsKey('config')
-                ? StorageResourceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        filestore:
-            json_.containsKey('filestore')
-                ? FilestoreReference.fromJson(
-                  json_['filestore'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lustre:
-            json_.containsKey('lustre')
-                ? LustreReference.fromJson(
-                  json_['lustre'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bucket: json_.containsKey('bucket')
+            ? BucketReference.fromJson(
+                json_['bucket'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        config: json_.containsKey('config')
+            ? StorageResourceConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        filestore: json_.containsKey('filestore')
+            ? FilestoreReference.fromJson(
+                json_['filestore'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lustre: json_.containsKey('lustre')
+            ? LustreReference.fromJson(
+                json_['lustre'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (config != null) 'config': config!,
-    if (filestore != null) 'filestore': filestore!,
-    if (lustre != null) 'lustre': lustre!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final config = this.config;
+    final filestore = this.filestore;
+    final lustre = this.lustre;
+    return {
+      'bucket': ?bucket,
+      'config': ?config,
+      'filestore': ?filestore,
+      'lustre': ?lustre,
+    };
+  }
 }
 
 /// Describes how a storage resource should be initialized.
@@ -2419,53 +2500,53 @@ class StorageResourceConfig {
 
   StorageResourceConfig.fromJson(core.Map json_)
     : this(
-        existingBucket:
-            json_.containsKey('existingBucket')
-                ? ExistingBucketConfig.fromJson(
-                  json_['existingBucket']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        existingFilestore:
-            json_.containsKey('existingFilestore')
-                ? ExistingFilestoreConfig.fromJson(
-                  json_['existingFilestore']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        existingLustre:
-            json_.containsKey('existingLustre')
-                ? ExistingLustreConfig.fromJson(
-                  json_['existingLustre']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newBucket:
-            json_.containsKey('newBucket')
-                ? NewBucketConfig.fromJson(
-                  json_['newBucket'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newFilestore:
-            json_.containsKey('newFilestore')
-                ? NewFilestoreConfig.fromJson(
-                  json_['newFilestore'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newLustre:
-            json_.containsKey('newLustre')
-                ? NewLustreConfig.fromJson(
-                  json_['newLustre'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        existingBucket: json_.containsKey('existingBucket')
+            ? ExistingBucketConfig.fromJson(
+                json_['existingBucket'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        existingFilestore: json_.containsKey('existingFilestore')
+            ? ExistingFilestoreConfig.fromJson(
+                json_['existingFilestore']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        existingLustre: json_.containsKey('existingLustre')
+            ? ExistingLustreConfig.fromJson(
+                json_['existingLustre'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newBucket: json_.containsKey('newBucket')
+            ? NewBucketConfig.fromJson(
+                json_['newBucket'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newFilestore: json_.containsKey('newFilestore')
+            ? NewFilestoreConfig.fromJson(
+                json_['newFilestore'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newLustre: json_.containsKey('newLustre')
+            ? NewLustreConfig.fromJson(
+                json_['newLustre'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (existingBucket != null) 'existingBucket': existingBucket!,
-    if (existingFilestore != null) 'existingFilestore': existingFilestore!,
-    if (existingLustre != null) 'existingLustre': existingLustre!,
-    if (newBucket != null) 'newBucket': newBucket!,
-    if (newFilestore != null) 'newFilestore': newFilestore!,
-    if (newLustre != null) 'newLustre': newLustre!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final existingBucket = this.existingBucket;
+    final existingFilestore = this.existingFilestore;
+    final existingLustre = this.existingLustre;
+    final newBucket = this.newBucket;
+    final newFilestore = this.newFilestore;
+    final newLustre = this.newLustre;
+    return {
+      'existingBucket': ?existingBucket,
+      'existingFilestore': ?existingFilestore,
+      'existingLustre': ?existingLustre,
+      'newBucket': ?newBucket,
+      'newFilestore': ?newFilestore,
+      'newLustre': ?newLustre,
+    };
+  }
 }

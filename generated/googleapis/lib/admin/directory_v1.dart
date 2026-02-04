@@ -259,7 +259,7 @@ class AspsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -301,7 +301,7 @@ class AspsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -337,7 +337,7 @@ class AspsResource {
   /// this method will complete with the same error.
   async.Future<Asps> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -376,7 +376,7 @@ class ChannelsResource {
   async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory_v1/channels/stop';
@@ -445,7 +445,7 @@ class ChromeosdevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -503,8 +503,8 @@ class ChromeosdevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (projection != null) 'projection': [projection],
-      if ($fields != null) 'fields': [$fields],
+      'projection': ?projection == null ? null : [projection],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -599,16 +599,17 @@ class ChromeosdevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeChildOrgunits != null)
-        'includeChildOrgunits': ['${includeChildOrgunits}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (projection != null) 'projection': [projection],
-      if (query != null) 'query': [query],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if ($fields != null) 'fields': [$fields],
+      'includeChildOrgunits': ?includeChildOrgunits == null
+          ? null
+          : ['${includeChildOrgunits}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'orgUnitPath': ?orgUnitPath == null ? null : [orgUnitPath],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'projection': ?projection == null ? null : [projection],
+      'query': ?query == null ? null : [query],
+      'sortOrder': ?sortOrder == null ? null : [sortOrder],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -655,7 +656,7 @@ class ChromeosdevicesResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'orgUnitPath': [orgUnitPath],
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -719,8 +720,8 @@ class ChromeosdevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (projection != null) 'projection': [projection],
-      if ($fields != null) 'fields': [$fields],
+      'projection': ?projection == null ? null : [projection],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -784,8 +785,8 @@ class ChromeosdevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (projection != null) 'projection': [projection],
-      if ($fields != null) 'fields': [$fields],
+      'projection': ?projection == null ? null : [projection],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -860,7 +861,7 @@ class CustomerDevicesChromeosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -907,7 +908,7 @@ class CustomerDevicesChromeosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -962,7 +963,7 @@ class CustomerDevicesChromeosCommandsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1012,7 +1013,7 @@ class CustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1052,7 +1053,7 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1093,7 +1094,7 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1155,7 +1156,7 @@ class CustomersChromePrintServersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1203,7 +1204,7 @@ class CustomersChromePrintServersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1250,7 +1251,7 @@ class CustomersChromePrintServersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1289,7 +1290,7 @@ class CustomersChromePrintServersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1326,7 +1327,7 @@ class CustomersChromePrintServersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1393,12 +1394,12 @@ class CustomersChromePrintServersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'orgUnitId': ?orgUnitId == null ? null : [orgUnitId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1447,8 +1448,8 @@ class CustomersChromePrintServersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1498,7 +1499,7 @@ class CustomersChromePrintersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1544,7 +1545,7 @@ class CustomersChromePrintersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1590,7 +1591,7 @@ class CustomersChromePrintersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1627,7 +1628,7 @@ class CustomersChromePrintersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1660,7 +1661,7 @@ class CustomersChromePrintersResource {
   /// this method will complete with the same error.
   async.Future<Printer> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1722,12 +1723,12 @@ class CustomersChromePrintersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'orgUnitId': ?orgUnitId == null ? null : [orgUnitId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1780,10 +1781,10 @@ class CustomersChromePrintersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1839,9 +1840,9 @@ class CustomersChromePrintersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (clearMask != null) 'clearMask': [clearMask],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'clearMask': ?clearMask == null ? null : [clearMask],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
@@ -1883,7 +1884,7 @@ class DomainAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1931,7 +1932,7 @@ class DomainAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1975,7 +1976,7 @@ class DomainAliasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2026,8 +2027,8 @@ class DomainAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (parentDomainName != null) 'parentDomainName': [parentDomainName],
-      if ($fields != null) 'fields': [$fields],
+      'parentDomainName': ?parentDomainName == null ? null : [parentDomainName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2073,7 +2074,7 @@ class DomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2121,7 +2122,7 @@ class DomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2163,7 +2164,7 @@ class DomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2208,7 +2209,7 @@ class DomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2252,7 +2253,7 @@ class GroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2285,7 +2286,7 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> get(core.String groupKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2318,7 +2319,7 @@ class GroupsResource {
   async.Future<Group> insert(Group request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/groups';
@@ -2395,15 +2396,15 @@ class GroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customer != null) 'customer': [customer],
-      if (domain != null) 'domain': [domain],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if (userKey != null) 'userKey': [userKey],
-      if ($fields != null) 'fields': [$fields],
+      'customer': ?customer == null ? null : [customer],
+      'domain': ?domain == null ? null : [domain],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'sortOrder': ?sortOrder == null ? null : [sortOrder],
+      'userKey': ?userKey == null ? null : [userKey],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/groups';
@@ -2445,7 +2446,7 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2486,7 +2487,7 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2530,7 +2531,7 @@ class GroupsAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2573,7 +2574,7 @@ class GroupsAliasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2612,7 +2613,7 @@ class GroupsAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2659,7 +2660,7 @@ class MembersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2703,7 +2704,7 @@ class MembersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2753,7 +2754,7 @@ class MembersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2798,7 +2799,7 @@ class MembersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2855,12 +2856,13 @@ class MembersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDerivedMembership != null)
-        'includeDerivedMembership': ['${includeDerivedMembership}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (roles != null) 'roles': [roles],
-      if ($fields != null) 'fields': [$fields],
+      'includeDerivedMembership': ?includeDerivedMembership == null
+          ? null
+          : ['${includeDerivedMembership}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'roles': ?roles == null ? null : [roles],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2910,7 +2912,7 @@ class MembersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2959,7 +2961,7 @@ class MembersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3016,7 +3018,7 @@ class MobiledevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3062,7 +3064,7 @@ class MobiledevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3115,8 +3117,8 @@ class MobiledevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (projection != null) 'projection': [projection],
-      if ($fields != null) 'fields': [$fields],
+      'projection': ?projection == null ? null : [projection],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3206,13 +3208,13 @@ class MobiledevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (projection != null) 'projection': [projection],
-      if (query != null) 'query': [query],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'projection': ?projection == null ? null : [projection],
+      'query': ?query == null ? null : [query],
+      'sortOrder': ?sortOrder == null ? null : [sortOrder],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3264,7 +3266,7 @@ class OrgunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3311,7 +3313,7 @@ class OrgunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3357,7 +3359,7 @@ class OrgunitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3412,9 +3414,9 @@ class OrgunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
-      if (type != null) 'type': [type],
-      if ($fields != null) 'fields': [$fields],
+      'orgUnitPath': ?orgUnitPath == null ? null : [orgUnitPath],
+      'type': ?type == null ? null : [type],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3467,7 +3469,7 @@ class OrgunitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3519,7 +3521,7 @@ class OrgunitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3571,7 +3573,7 @@ class PrivilegesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3632,7 +3634,7 @@ class ResourcesBuildingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3675,7 +3677,7 @@ class ResourcesBuildingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3730,8 +3732,10 @@ class ResourcesBuildingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
-      if ($fields != null) 'fields': [$fields],
+      'coordinatesSource': ?coordinatesSource == null
+          ? null
+          : [coordinatesSource],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3778,9 +3782,9 @@ class ResourcesBuildingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3837,8 +3841,10 @@ class ResourcesBuildingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
-      if ($fields != null) 'fields': [$fields],
+      'coordinatesSource': ?coordinatesSource == null
+          ? null
+          : [coordinatesSource],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3897,8 +3903,10 @@ class ResourcesBuildingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
-      if ($fields != null) 'fields': [$fields],
+      'coordinatesSource': ?coordinatesSource == null
+          ? null
+          : [coordinatesSource],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3946,7 +3954,7 @@ class ResourcesCalendarsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3989,7 +3997,7 @@ class ResourcesCalendarsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4035,7 +4043,7 @@ class ResourcesCalendarsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4105,11 +4113,11 @@ class ResourcesCalendarsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4157,7 +4165,7 @@ class ResourcesCalendarsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4211,7 +4219,7 @@ class ResourcesCalendarsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4261,7 +4269,7 @@ class ResourcesFeaturesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4304,7 +4312,7 @@ class ResourcesFeaturesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4348,7 +4356,7 @@ class ResourcesFeaturesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4395,9 +4403,9 @@ class ResourcesFeaturesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4443,7 +4451,7 @@ class ResourcesFeaturesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4489,7 +4497,7 @@ class ResourcesFeaturesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4538,7 +4546,7 @@ class ResourcesFeaturesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4584,7 +4592,7 @@ class RoleAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4632,7 +4640,7 @@ class RoleAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4676,7 +4684,7 @@ class RoleAssignmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4745,13 +4753,14 @@ class RoleAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeIndirectRoleAssignments != null)
-        'includeIndirectRoleAssignments': ['${includeIndirectRoleAssignments}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (roleId != null) 'roleId': [roleId],
-      if (userKey != null) 'userKey': [userKey],
-      if ($fields != null) 'fields': [$fields],
+      'includeIndirectRoleAssignments': ?includeIndirectRoleAssignments == null
+          ? null
+          : ['${includeIndirectRoleAssignments}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'roleId': ?roleId == null ? null : [roleId],
+      'userKey': ?userKey == null ? null : [userKey],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4797,7 +4806,7 @@ class RolesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4845,7 +4854,7 @@ class RolesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4887,7 +4896,7 @@ class RolesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4939,9 +4948,9 @@ class RolesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4985,7 +4994,7 @@ class RolesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5031,7 +5040,7 @@ class RolesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5077,7 +5086,7 @@ class SchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5125,7 +5134,7 @@ class SchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5167,7 +5176,7 @@ class SchemasResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5212,7 +5221,7 @@ class SchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5256,7 +5265,7 @@ class SchemasResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5302,7 +5311,7 @@ class SchemasResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5349,7 +5358,7 @@ class TokensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5391,7 +5400,7 @@ class TokensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5428,7 +5437,7 @@ class TokensResource {
   /// this method will complete with the same error.
   async.Future<Tokens> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5471,7 +5480,7 @@ class TwoStepVerificationResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5522,7 +5531,7 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/users:createGuest';
@@ -5553,7 +5562,7 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5612,10 +5621,10 @@ class UsersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
-      if (projection != null) 'projection': [projection],
-      if (viewType != null) 'viewType': [viewType],
-      if ($fields != null) 'fields': [$fields],
+      'customFieldMask': ?customFieldMask == null ? null : [customFieldMask],
+      'projection': ?projection == null ? null : [projection],
+      'viewType': ?viewType == null ? null : [viewType],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5668,9 +5677,10 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (resolveConflictAccount != null)
-        'resolveConflictAccount': ['${resolveConflictAccount}'],
-      if ($fields != null) 'fields': [$fields],
+      'resolveConflictAccount': ?resolveConflictAccount == null
+          ? null
+          : ['${resolveConflictAccount}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/users';
@@ -5782,19 +5792,19 @@ class UsersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
-      if (customer != null) 'customer': [customer],
-      if (domain != null) 'domain': [domain],
-      if (event != null) 'event': [event],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (projection != null) 'projection': [projection],
-      if (query != null) 'query': [query],
-      if (showDeleted != null) 'showDeleted': [showDeleted],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if (viewType != null) 'viewType': [viewType],
-      if ($fields != null) 'fields': [$fields],
+      'customFieldMask': ?customFieldMask == null ? null : [customFieldMask],
+      'customer': ?customer == null ? null : [customer],
+      'domain': ?domain == null ? null : [domain],
+      'event': ?event == null ? null : [event],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'projection': ?projection == null ? null : [projection],
+      'query': ?query == null ? null : [query],
+      'showDeleted': ?showDeleted == null ? null : [showDeleted],
+      'sortOrder': ?sortOrder == null ? null : [sortOrder],
+      'viewType': ?viewType == null ? null : [viewType],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/users';
@@ -5831,7 +5841,7 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5882,7 +5892,7 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5921,7 +5931,7 @@ class UsersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5960,7 +5970,7 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6012,7 +6022,7 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6119,19 +6129,19 @@ class UsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
-      if (customer != null) 'customer': [customer],
-      if (domain != null) 'domain': [domain],
-      if (event != null) 'event': [event],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (projection != null) 'projection': [projection],
-      if (query != null) 'query': [query],
-      if (showDeleted != null) 'showDeleted': [showDeleted],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if (viewType != null) 'viewType': [viewType],
-      if ($fields != null) 'fields': [$fields],
+      'customFieldMask': ?customFieldMask == null ? null : [customFieldMask],
+      'customer': ?customer == null ? null : [customer],
+      'domain': ?domain == null ? null : [domain],
+      'event': ?event == null ? null : [event],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'projection': ?projection == null ? null : [projection],
+      'query': ?query == null ? null : [query],
+      'showDeleted': ?showDeleted == null ? null : [showDeleted],
+      'sortOrder': ?sortOrder == null ? null : [sortOrder],
+      'viewType': ?viewType == null ? null : [viewType],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'admin/directory/v1/users/watch';
@@ -6174,7 +6184,7 @@ class UsersAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6217,7 +6227,7 @@ class UsersAliasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6262,8 +6272,8 @@ class UsersAliasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (event != null) 'event': [event],
-      if ($fields != null) 'fields': [$fields],
+      'event': ?event == null ? null : [event],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6310,8 +6320,8 @@ class UsersAliasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (event != null) 'event': [event],
-      if ($fields != null) 'fields': [$fields],
+      'event': ?event == null ? null : [event],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6351,7 +6361,7 @@ class UsersPhotosResource {
   /// this method will complete with the same error.
   async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6389,7 +6399,7 @@ class UsersPhotosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6434,7 +6444,7 @@ class UsersPhotosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6477,7 +6487,7 @@ class UsersPhotosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6519,7 +6529,7 @@ class VerificationCodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6554,7 +6564,7 @@ class VerificationCodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6593,7 +6603,7 @@ class VerificationCodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6631,13 +6641,20 @@ class Alias {
         primaryEmail: json_['primaryEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final primaryEmail = this.primaryEmail;
+    return {
+      'alias': ?alias,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'primaryEmail': ?primaryEmail,
+    };
+  }
 }
 
 /// JSON response template to list aliases in Directory API.
@@ -6654,17 +6671,19 @@ class Aliases {
 
   Aliases.fromJson(core.Map json_)
     : this(
-        aliases:
-            json_.containsKey('aliases') ? json_['aliases'] as core.List : null,
+        aliases: json_.containsKey('aliases')
+            ? json_['aliases'] as core.List
+            : null,
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aliases != null) 'aliases': aliases!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aliases = this.aliases;
+    final etag = this.etag;
+    final kind = this.kind;
+    return {'aliases': ?aliases, 'etag': ?etag, 'kind': ?kind};
+  }
 }
 
 /// An application-specific password (ASP) is used with applications that do not
@@ -6725,15 +6744,24 @@ class Asp {
         userKey: json_['userKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (codeId != null) 'codeId': codeId!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (lastTimeUsed != null) 'lastTimeUsed': lastTimeUsed!,
-    if (name != null) 'name': name!,
-    if (userKey != null) 'userKey': userKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeId = this.codeId;
+    final creationTime = this.creationTime;
+    final etag = this.etag;
+    final kind = this.kind;
+    final lastTimeUsed = this.lastTimeUsed;
+    final name = this.name;
+    final userKey = this.userKey;
+    return {
+      'codeId': ?codeId,
+      'creationTime': ?creationTime,
+      'etag': ?etag,
+      'kind': ?kind,
+      'lastTimeUsed': ?lastTimeUsed,
+      'name': ?name,
+      'userKey': ?userKey,
+    };
+  }
 }
 
 class Asps {
@@ -6753,22 +6781,21 @@ class Asps {
   Asps.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Asp.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Asp.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
 }
 
 /// Auxiliary message about issues with printers or settings.
@@ -6801,11 +6828,16 @@ class AuxiliaryMessage {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auxiliaryMessage != null) 'auxiliaryMessage': auxiliaryMessage!,
-    if (fieldMask != null) 'fieldMask': fieldMask!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auxiliaryMessage = this.auxiliaryMessage;
+    final fieldMask = this.fieldMask;
+    final severity = this.severity;
+    return {
+      'auxiliaryMessage': ?auxiliaryMessage,
+      'fieldMask': ?fieldMask,
+      'severity': ?severity,
+    };
+  }
 }
 
 /// Information about the device's backlights.
@@ -6836,11 +6868,16 @@ class BacklightInfo {
         path: json_['path'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brightness != null) 'brightness': brightness!,
-    if (maxBrightness != null) 'maxBrightness': maxBrightness!,
-    if (path != null) 'path': path!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brightness = this.brightness;
+    final maxBrightness = this.maxBrightness;
+    final path = this.path;
+    return {
+      'brightness': ?brightness,
+      'maxBrightness': ?maxBrightness,
+      'path': ?path,
+    };
+  }
 }
 
 /// A request for changing the status of a batch of ChromeOS devices.
@@ -6925,18 +6962,22 @@ class BatchChangeChromeOsDeviceStatusRequest {
         changeChromeOsDeviceStatusAction:
             json_['changeChromeOsDeviceStatusAction'] as core.String?,
         deprovisionReason: json_['deprovisionReason'] as core.String?,
-        deviceIds:
-            (json_['deviceIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        deviceIds: (json_['deviceIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changeChromeOsDeviceStatusAction != null)
-      'changeChromeOsDeviceStatusAction': changeChromeOsDeviceStatusAction!,
-    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-    if (deviceIds != null) 'deviceIds': deviceIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeChromeOsDeviceStatusAction =
+        this.changeChromeOsDeviceStatusAction;
+    final deprovisionReason = this.deprovisionReason;
+    final deviceIds = this.deviceIds;
+    return {
+      'changeChromeOsDeviceStatusAction': ?changeChromeOsDeviceStatusAction,
+      'deprovisionReason': ?deprovisionReason,
+      'deviceIds': ?deviceIds,
+    };
+  }
 }
 
 /// The response of changing the status of a batch of ChromeOS devices.
@@ -6961,10 +7002,13 @@ class BatchChangeChromeOsDeviceStatusResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changeChromeOsDeviceStatusResults != null)
-      'changeChromeOsDeviceStatusResults': changeChromeOsDeviceStatusResults!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeChromeOsDeviceStatusResults =
+        this.changeChromeOsDeviceStatusResults;
+    return {
+      'changeChromeOsDeviceStatusResults': ?changeChromeOsDeviceStatusResults,
+    };
+  }
 }
 
 /// Request to add multiple new print servers in a batch.
@@ -6978,19 +7022,19 @@ class BatchCreatePrintServersRequest {
 
   BatchCreatePrintServersRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => CreatePrintServerRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => CreatePrintServerRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 class BatchCreatePrintServersResponse {
@@ -7006,28 +7050,27 @@ class BatchCreatePrintServersResponse {
 
   BatchCreatePrintServersResponse.fromJson(core.Map json_)
     : this(
-        failures:
-            (json_['failures'] as core.List?)
-                ?.map(
-                  (value) => PrintServerFailureInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        printServers:
-            (json_['printServers'] as core.List?)
-                ?.map(
-                  (value) => PrintServer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        failures: (json_['failures'] as core.List?)
+            ?.map(
+              (value) => PrintServerFailureInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        printServers: (json_['printServers'] as core.List?)
+            ?.map(
+              (value) => PrintServer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failures != null) 'failures': failures!,
-    if (printServers != null) 'printServers': printServers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failures = this.failures;
+    final printServers = this.printServers;
+    return {'failures': ?failures, 'printServers': ?printServers};
+  }
 }
 
 /// Request for adding new printers in batch.
@@ -7041,19 +7084,19 @@ class BatchCreatePrintersRequest {
 
   BatchCreatePrintersRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => CreatePrinterRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => CreatePrinterRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 /// Response for adding new printers in batch.
@@ -7070,28 +7113,27 @@ class BatchCreatePrintersResponse {
 
   BatchCreatePrintersResponse.fromJson(core.Map json_)
     : this(
-        failures:
-            (json_['failures'] as core.List?)
-                ?.map(
-                  (value) => FailureInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        printers:
-            (json_['printers'] as core.List?)
-                ?.map(
-                  (value) => Printer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        failures: (json_['failures'] as core.List?)
+            ?.map(
+              (value) => FailureInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        printers: (json_['printers'] as core.List?)
+            ?.map(
+              (value) => Printer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failures != null) 'failures': failures!,
-    if (printers != null) 'printers': printers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failures = this.failures;
+    final printers = this.printers;
+    return {'failures': ?failures, 'printers': ?printers};
+  }
 }
 
 /// Request to delete multiple existing print servers in a batch.
@@ -7103,15 +7145,15 @@ class BatchDeletePrintServersRequest {
 
   BatchDeletePrintServersRequest.fromJson(core.Map json_)
     : this(
-        printServerIds:
-            (json_['printServerIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        printServerIds: (json_['printServerIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (printServerIds != null) 'printServerIds': printServerIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final printServerIds = this.printServerIds;
+    return {'printServerIds': ?printServerIds};
+  }
 }
 
 class BatchDeletePrintServersResponse {
@@ -7128,24 +7170,26 @@ class BatchDeletePrintServersResponse {
 
   BatchDeletePrintServersResponse.fromJson(core.Map json_)
     : this(
-        failedPrintServers:
-            (json_['failedPrintServers'] as core.List?)
-                ?.map(
-                  (value) => PrintServerFailureInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        printServerIds:
-            (json_['printServerIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        failedPrintServers: (json_['failedPrintServers'] as core.List?)
+            ?.map(
+              (value) => PrintServerFailureInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        printServerIds: (json_['printServerIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedPrintServers != null) 'failedPrintServers': failedPrintServers!,
-    if (printServerIds != null) 'printServerIds': printServerIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedPrintServers = this.failedPrintServers;
+    final printServerIds = this.printServerIds;
+    return {
+      'failedPrintServers': ?failedPrintServers,
+      'printServerIds': ?printServerIds,
+    };
+  }
 }
 
 /// Request for deleting existing printers in batch.
@@ -7159,15 +7203,15 @@ class BatchDeletePrintersRequest {
 
   BatchDeletePrintersRequest.fromJson(core.Map json_)
     : this(
-        printerIds:
-            (json_['printerIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        printerIds: (json_['printerIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (printerIds != null) 'printerIds': printerIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final printerIds = this.printerIds;
+    return {'printerIds': ?printerIds};
+  }
 }
 
 /// Response for deleting existing printers in batch.
@@ -7182,24 +7226,23 @@ class BatchDeletePrintersResponse {
 
   BatchDeletePrintersResponse.fromJson(core.Map json_)
     : this(
-        failedPrinters:
-            (json_['failedPrinters'] as core.List?)
-                ?.map(
-                  (value) => FailureInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        printerIds:
-            (json_['printerIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        failedPrinters: (json_['failedPrinters'] as core.List?)
+            ?.map(
+              (value) => FailureInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        printerIds: (json_['printerIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedPrinters != null) 'failedPrinters': failedPrinters!,
-    if (printerIds != null) 'printerIds': printerIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedPrinters = this.failedPrinters;
+    final printerIds = this.printerIds;
+    return {'failedPrinters': ?failedPrinters, 'printerIds': ?printerIds};
+  }
 }
 
 /// Information about a device's Bluetooth adapter.
@@ -7222,11 +7265,11 @@ class BluetoothAdapterInfo {
         numConnectedDevices: json_['numConnectedDevices'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (numConnectedDevices != null)
-      'numConnectedDevices': numConnectedDevices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final numConnectedDevices = this.numConnectedDevices;
+    return {'address': ?address, 'numConnectedDevices': ?numConnectedDevices};
+  }
 }
 
 /// Public API: Resources.buildings
@@ -7284,39 +7327,46 @@ class Building {
 
   Building.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? BuildingAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? BuildingAddress.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         buildingId: json_['buildingId'] as core.String?,
         buildingName: json_['buildingName'] as core.String?,
-        coordinates:
-            json_.containsKey('coordinates')
-                ? BuildingCoordinates.fromJson(
-                  json_['coordinates'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        coordinates: json_.containsKey('coordinates')
+            ? BuildingCoordinates.fromJson(
+                json_['coordinates'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         etags: json_['etags'] as core.String?,
-        floorNames:
-            (json_['floorNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        floorNames: (json_['floorNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (buildingId != null) 'buildingId': buildingId!,
-    if (buildingName != null) 'buildingName': buildingName!,
-    if (coordinates != null) 'coordinates': coordinates!,
-    if (description != null) 'description': description!,
-    if (etags != null) 'etags': etags!,
-    if (floorNames != null) 'floorNames': floorNames!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final buildingId = this.buildingId;
+    final buildingName = this.buildingName;
+    final coordinates = this.coordinates;
+    final description = this.description;
+    final etags = this.etags;
+    final floorNames = this.floorNames;
+    final kind = this.kind;
+    return {
+      'address': ?address,
+      'buildingId': ?buildingId,
+      'buildingName': ?buildingName,
+      'coordinates': ?coordinates,
+      'description': ?description,
+      'etags': ?etags,
+      'floorNames': ?floorNames,
+      'kind': ?kind,
+    };
+  }
 }
 
 /// Public API: Resources.buildings
@@ -7371,10 +7421,9 @@ class BuildingAddress {
 
   BuildingAddress.fromJson(core.Map json_)
     : this(
-        addressLines:
-            (json_['addressLines'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        addressLines: (json_['addressLines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         administrativeArea: json_['administrativeArea'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         locality: json_['locality'] as core.String?,
@@ -7383,15 +7432,24 @@ class BuildingAddress {
         sublocality: json_['sublocality'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressLines != null) 'addressLines': addressLines!,
-    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (locality != null) 'locality': locality!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (sublocality != null) 'sublocality': sublocality!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressLines = this.addressLines;
+    final administrativeArea = this.administrativeArea;
+    final languageCode = this.languageCode;
+    final locality = this.locality;
+    final postalCode = this.postalCode;
+    final regionCode = this.regionCode;
+    final sublocality = this.sublocality;
+    return {
+      'addressLines': ?addressLines,
+      'administrativeArea': ?administrativeArea,
+      'languageCode': ?languageCode,
+      'locality': ?locality,
+      'postalCode': ?postalCode,
+      'regionCode': ?regionCode,
+      'sublocality': ?sublocality,
+    };
+  }
 }
 
 /// Public API: Resources.buildings
@@ -7410,10 +7468,11 @@ class BuildingCoordinates {
         longitude: (json_['longitude'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latitude = this.latitude;
+    final longitude = this.longitude;
+    return {'latitude': ?latitude, 'longitude': ?longitude};
+  }
 }
 
 /// Public API: Resources.buildings
@@ -7437,25 +7496,30 @@ class Buildings {
 
   Buildings.fromJson(core.Map json_)
     : this(
-        buildings:
-            (json_['buildings'] as core.List?)
-                ?.map(
-                  (value) => Building.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buildings: (json_['buildings'] as core.List?)
+            ?.map(
+              (value) => Building.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buildings != null) 'buildings': buildings!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildings = this.buildings;
+    final etag = this.etag;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'buildings': ?buildings,
+      'etag': ?etag,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Represents a data capacity with some amount of current usage in bytes.
@@ -7478,10 +7542,11 @@ class ByteUsage {
         usedBytes: json_['usedBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacityBytes != null) 'capacityBytes': capacityBytes!,
-    if (usedBytes != null) 'usedBytes': usedBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityBytes = this.capacityBytes;
+    final usedBytes = this.usedBytes;
+    return {'capacityBytes': ?capacityBytes, 'usedBytes': ?usedBytes};
+  }
 }
 
 /// Public API: Resources.calendars
@@ -7583,26 +7648,40 @@ class CalendarResource {
         userVisibleDescription: json_['userVisibleDescription'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buildingId != null) 'buildingId': buildingId!,
-    if (capacity != null) 'capacity': capacity!,
-    if (etags != null) 'etags': etags!,
-    if (featureInstances != null) 'featureInstances': featureInstances!,
-    if (floorName != null) 'floorName': floorName!,
-    if (floorSection != null) 'floorSection': floorSection!,
-    if (generatedResourceName != null)
-      'generatedResourceName': generatedResourceName!,
-    if (kind != null) 'kind': kind!,
-    if (resourceCategory != null) 'resourceCategory': resourceCategory!,
-    if (resourceDescription != null)
-      'resourceDescription': resourceDescription!,
-    if (resourceEmail != null) 'resourceEmail': resourceEmail!,
-    if (resourceId != null) 'resourceId': resourceId!,
-    if (resourceName != null) 'resourceName': resourceName!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (userVisibleDescription != null)
-      'userVisibleDescription': userVisibleDescription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildingId = this.buildingId;
+    final capacity = this.capacity;
+    final etags = this.etags;
+    final featureInstances = this.featureInstances;
+    final floorName = this.floorName;
+    final floorSection = this.floorSection;
+    final generatedResourceName = this.generatedResourceName;
+    final kind = this.kind;
+    final resourceCategory = this.resourceCategory;
+    final resourceDescription = this.resourceDescription;
+    final resourceEmail = this.resourceEmail;
+    final resourceId = this.resourceId;
+    final resourceName = this.resourceName;
+    final resourceType = this.resourceType;
+    final userVisibleDescription = this.userVisibleDescription;
+    return {
+      'buildingId': ?buildingId,
+      'capacity': ?capacity,
+      'etags': ?etags,
+      'featureInstances': ?featureInstances,
+      'floorName': ?floorName,
+      'floorSection': ?floorSection,
+      'generatedResourceName': ?generatedResourceName,
+      'kind': ?kind,
+      'resourceCategory': ?resourceCategory,
+      'resourceDescription': ?resourceDescription,
+      'resourceEmail': ?resourceEmail,
+      'resourceId': ?resourceId,
+      'resourceName': ?resourceName,
+      'resourceType': ?resourceType,
+      'userVisibleDescription': ?userVisibleDescription,
+    };
+  }
 }
 
 /// Public API: Resources.calendars
@@ -7630,24 +7709,29 @@ class CalendarResources {
   CalendarResources.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => CalendarResource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => CalendarResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The result of a single ChromeOS device for a Change state operation.
@@ -7666,25 +7750,24 @@ class ChangeChromeOsDeviceStatusResult {
   ChangeChromeOsDeviceStatusResult.fromJson(core.Map json_)
     : this(
         deviceId: json_['deviceId'] as core.String?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        response:
-            json_.containsKey('response')
-                ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        response: json_.containsKey('response')
+            ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
+                json_['response'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceId != null) 'deviceId': deviceId!,
-    if (error != null) 'error': error!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceId = this.deviceId;
+    final error = this.error;
+    final response = this.response;
+    return {'deviceId': ?deviceId, 'error': ?error, 'response': ?response};
+  }
 }
 
 /// Response for a successful ChromeOS device status change.
@@ -7766,18 +7849,30 @@ class Channel {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (expiration != null) 'expiration': expiration!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (params != null) 'params': params!,
-    if (payload != null) 'payload': payload!,
-    if (resourceId != null) 'resourceId': resourceId!,
-    if (resourceUri != null) 'resourceUri': resourceUri!,
-    if (token != null) 'token': token!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final expiration = this.expiration;
+    final id = this.id;
+    final kind = this.kind;
+    final params = this.params;
+    final payload = this.payload;
+    final resourceId = this.resourceId;
+    final resourceUri = this.resourceUri;
+    final token = this.token;
+    final type = this.type;
+    return {
+      'address': ?address,
+      'expiration': ?expiration,
+      'id': ?id,
+      'kind': ?kind,
+      'params': ?params,
+      'payload': ?payload,
+      'resourceId': ?resourceId,
+      'resourceUri': ?resourceUri,
+      'token': ?token,
+      'type': ?type,
+    };
+  }
 }
 
 class ChromeOsDeviceActiveTimeRanges {
@@ -7792,18 +7887,21 @@ class ChromeOsDeviceActiveTimeRanges {
   ChromeOsDeviceActiveTimeRanges.fromJson(core.Map json_)
     : this(
         activeTime: json_['activeTime'] as core.int?,
-        date:
-            json_.containsKey('date')
-                ? core.DateTime.parse(json_['date'] as core.String)
-                : null,
+        date: json_.containsKey('date')
+            ? core.DateTime.parse(json_['date'] as core.String)
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeTime != null) 'activeTime': activeTime!,
-    if (date != null)
-      'date':
-          "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeTime = this.activeTime;
+    final date = this.date;
+    return {
+      'activeTime': ?activeTime,
+      'date': ?date == null
+          ? null
+          : "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+    };
+  }
 }
 
 /// Status of a single C-state.
@@ -7828,10 +7926,11 @@ class ChromeOsDeviceCpuInfoLogicalCpusCStates {
         sessionDuration: json_['sessionDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (sessionDuration != null) 'sessionDuration': sessionDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final sessionDuration = this.sessionDuration;
+    return {'displayName': ?displayName, 'sessionDuration': ?sessionDuration};
+  }
 }
 
 /// Status of a single logical CPU.
@@ -7859,28 +7958,31 @@ class ChromeOsDeviceCpuInfoLogicalCpus {
 
   ChromeOsDeviceCpuInfoLogicalCpus.fromJson(core.Map json_)
     : this(
-        cStates:
-            (json_['cStates'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cStates: (json_['cStates'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         currentScalingFrequencyKhz:
             json_['currentScalingFrequencyKhz'] as core.int?,
         idleDuration: json_['idleDuration'] as core.String?,
         maxScalingFrequencyKhz: json_['maxScalingFrequencyKhz'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cStates != null) 'cStates': cStates!,
-    if (currentScalingFrequencyKhz != null)
-      'currentScalingFrequencyKhz': currentScalingFrequencyKhz!,
-    if (idleDuration != null) 'idleDuration': idleDuration!,
-    if (maxScalingFrequencyKhz != null)
-      'maxScalingFrequencyKhz': maxScalingFrequencyKhz!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cStates = this.cStates;
+    final currentScalingFrequencyKhz = this.currentScalingFrequencyKhz;
+    final idleDuration = this.idleDuration;
+    final maxScalingFrequencyKhz = this.maxScalingFrequencyKhz;
+    return {
+      'cStates': ?cStates,
+      'currentScalingFrequencyKhz': ?currentScalingFrequencyKhz,
+      'idleDuration': ?idleDuration,
+      'maxScalingFrequencyKhz': ?maxScalingFrequencyKhz,
+    };
+  }
 }
 
 /// CPU specs for a CPU.
@@ -7907,24 +8009,29 @@ class ChromeOsDeviceCpuInfo {
   ChromeOsDeviceCpuInfo.fromJson(core.Map json_)
     : this(
         architecture: json_['architecture'] as core.String?,
-        logicalCpus:
-            (json_['logicalCpus'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        logicalCpus: (json_['logicalCpus'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         maxClockSpeedKhz: json_['maxClockSpeedKhz'] as core.int?,
         model: json_['model'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (architecture != null) 'architecture': architecture!,
-    if (logicalCpus != null) 'logicalCpus': logicalCpus!,
-    if (maxClockSpeedKhz != null) 'maxClockSpeedKhz': maxClockSpeedKhz!,
-    if (model != null) 'model': model!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final architecture = this.architecture;
+    final logicalCpus = this.logicalCpus;
+    final maxClockSpeedKhz = this.maxClockSpeedKhz;
+    final model = this.model;
+    return {
+      'architecture': ?architecture,
+      'logicalCpus': ?logicalCpus,
+      'maxClockSpeedKhz': ?maxClockSpeedKhz,
+      'model': ?model,
+    };
+  }
 }
 
 class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
@@ -7945,10 +8052,11 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
         temperature: json_['temperature'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (temperature != null) 'temperature': temperature!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final label = this.label;
+    final temperature = this.temperature;
+    return {'label': ?label, 'temperature': ?temperature};
+  }
 }
 
 class ChromeOsDeviceCpuStatusReports {
@@ -7968,31 +8076,33 @@ class ChromeOsDeviceCpuStatusReports {
 
   ChromeOsDeviceCpuStatusReports.fromJson(core.Map json_)
     : this(
-        cpuTemperatureInfo:
-            (json_['cpuTemperatureInfo'] as core.List?)
-                ?.map(
-                  (value) =>
-                      ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        cpuTemperatureInfo: (json_['cpuTemperatureInfo'] as core.List?)
+            ?.map(
+              (value) =>
+                  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         cpuUtilizationPercentageInfo:
             (json_['cpuUtilizationPercentageInfo'] as core.List?)
                 ?.map((value) => value as core.int)
                 .toList(),
-        reportTime:
-            json_.containsKey('reportTime')
-                ? core.DateTime.parse(json_['reportTime'] as core.String)
-                : null,
+        reportTime: json_.containsKey('reportTime')
+            ? core.DateTime.parse(json_['reportTime'] as core.String)
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuTemperatureInfo != null) 'cpuTemperatureInfo': cpuTemperatureInfo!,
-    if (cpuUtilizationPercentageInfo != null)
-      'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo!,
-    if (reportTime != null) 'reportTime': reportTime!.toUtc().toIso8601String(),
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuTemperatureInfo = this.cpuTemperatureInfo;
+    final cpuUtilizationPercentageInfo = this.cpuUtilizationPercentageInfo;
+    final reportTime = this.reportTime;
+    return {
+      'cpuTemperatureInfo': ?cpuTemperatureInfo,
+      'cpuUtilizationPercentageInfo': ?cpuUtilizationPercentageInfo,
+      'reportTime': ?reportTime?.toUtc().toIso8601String(),
+    };
+  }
 }
 
 class ChromeOsDeviceDeviceFiles {
@@ -8017,21 +8127,26 @@ class ChromeOsDeviceDeviceFiles {
 
   ChromeOsDeviceDeviceFiles.fromJson(core.Map json_)
     : this(
-        createTime:
-            json_.containsKey('createTime')
-                ? core.DateTime.parse(json_['createTime'] as core.String)
-                : null,
+        createTime: json_.containsKey('createTime')
+            ? core.DateTime.parse(json_['createTime'] as core.String)
+            : null,
         downloadUrl: json_['downloadUrl'] as core.String?,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!.toUtc().toIso8601String(),
-    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final downloadUrl = this.downloadUrl;
+    final name = this.name;
+    final type = this.type;
+    return {
+      'createTime': ?createTime?.toUtc().toIso8601String(),
+      'downloadUrl': ?downloadUrl,
+      'name': ?name,
+      'type': ?type,
+    };
+  }
 }
 
 class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
@@ -8057,11 +8172,16 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
         volumeId: json_['volumeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storageFree != null) 'storageFree': storageFree!,
-    if (storageTotal != null) 'storageTotal': storageTotal!,
-    if (volumeId != null) 'volumeId': volumeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storageFree = this.storageFree;
+    final storageTotal = this.storageTotal;
+    final volumeId = this.volumeId;
+    return {
+      'storageFree': ?storageFree,
+      'storageTotal': ?storageTotal,
+      'volumeId': ?volumeId,
+    };
+  }
 }
 
 class ChromeOsDeviceDiskVolumeReports {
@@ -8072,19 +8192,19 @@ class ChromeOsDeviceDiskVolumeReports {
 
   ChromeOsDeviceDiskVolumeReports.fromJson(core.Map json_)
     : this(
-        volumeInfo:
-            (json_['volumeInfo'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        volumeInfo: (json_['volumeInfo'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (volumeInfo != null) 'volumeInfo': volumeInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final volumeInfo = this.volumeInfo;
+    return {'volumeInfo': ?volumeInfo};
+  }
 }
 
 /// Information for an ip address.
@@ -8103,10 +8223,11 @@ class ChromeOsDeviceLastKnownNetwork {
         wanIpAddress: json_['wanIpAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (wanIpAddress != null) 'wanIpAddress': wanIpAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final wanIpAddress = this.wanIpAddress;
+    return {'ipAddress': ?ipAddress, 'wanIpAddress': ?wanIpAddress};
+  }
 }
 
 /// A list of recent device users, in descending order, by last login time.
@@ -8127,10 +8248,11 @@ class ChromeOsDeviceRecentUsers {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final type = this.type;
+    return {'email': ?email, 'type': ?type};
+  }
 }
 
 class ChromeOsDeviceScreenshotFiles {
@@ -8155,21 +8277,26 @@ class ChromeOsDeviceScreenshotFiles {
 
   ChromeOsDeviceScreenshotFiles.fromJson(core.Map json_)
     : this(
-        createTime:
-            json_.containsKey('createTime')
-                ? core.DateTime.parse(json_['createTime'] as core.String)
-                : null,
+        createTime: json_.containsKey('createTime')
+            ? core.DateTime.parse(json_['createTime'] as core.String)
+            : null,
         downloadUrl: json_['downloadUrl'] as core.String?,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!.toUtc().toIso8601String(),
-    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final downloadUrl = this.downloadUrl;
+    final name = this.name;
+    final type = this.type;
+    return {
+      'createTime': ?createTime?.toUtc().toIso8601String(),
+      'downloadUrl': ?downloadUrl,
+      'name': ?name,
+      'type': ?type,
+    };
+  }
 }
 
 class ChromeOsDeviceSystemRamFreeReports {
@@ -8181,20 +8308,22 @@ class ChromeOsDeviceSystemRamFreeReports {
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map json_)
     : this(
-        reportTime:
-            json_.containsKey('reportTime')
-                ? core.DateTime.parse(json_['reportTime'] as core.String)
-                : null,
-        systemRamFreeInfo:
-            (json_['systemRamFreeInfo'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        reportTime: json_.containsKey('reportTime')
+            ? core.DateTime.parse(json_['reportTime'] as core.String)
+            : null,
+        systemRamFreeInfo: (json_['systemRamFreeInfo'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reportTime != null) 'reportTime': reportTime!.toUtc().toIso8601String(),
-    if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reportTime = this.reportTime;
+    final systemRamFreeInfo = this.systemRamFreeInfo;
+    return {
+      'reportTime': ?reportTime?.toUtc().toIso8601String(),
+      'systemRamFreeInfo': ?systemRamFreeInfo,
+    };
+  }
 }
 
 /// Trusted Platform Module (TPM) (Read-only)
@@ -8241,14 +8370,22 @@ class ChromeOsDeviceTpmVersionInfo {
         vendorSpecific: json_['vendorSpecific'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (family != null) 'family': family!,
-    if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-    if (manufacturer != null) 'manufacturer': manufacturer!,
-    if (specLevel != null) 'specLevel': specLevel!,
-    if (tpmModel != null) 'tpmModel': tpmModel!,
-    if (vendorSpecific != null) 'vendorSpecific': vendorSpecific!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final family = this.family;
+    final firmwareVersion = this.firmwareVersion;
+    final manufacturer = this.manufacturer;
+    final specLevel = this.specLevel;
+    final tpmModel = this.tpmModel;
+    final vendorSpecific = this.vendorSpecific;
+    return {
+      'family': ?family,
+      'firmwareVersion': ?firmwareVersion,
+      'manufacturer': ?manufacturer,
+      'specLevel': ?specLevel,
+      'tpmModel': ?tpmModel,
+      'vendorSpecific': ?vendorSpecific,
+    };
+  }
 }
 
 /// Google Chrome devices run on the
@@ -8635,79 +8772,70 @@ class ChromeOsDevice {
 
   ChromeOsDevice.fromJson(core.Map json_)
     : this(
-        activeTimeRanges:
-            (json_['activeTimeRanges'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceActiveTimeRanges.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        activeTimeRanges: (json_['activeTimeRanges'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceActiveTimeRanges.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         annotatedAssetId: json_['annotatedAssetId'] as core.String?,
         annotatedLocation: json_['annotatedLocation'] as core.String?,
         annotatedUser: json_['annotatedUser'] as core.String?,
         autoUpdateExpiration: json_['autoUpdateExpiration'] as core.String?,
         autoUpdateThrough: json_['autoUpdateThrough'] as core.String?,
-        backlightInfo:
-            (json_['backlightInfo'] as core.List?)
-                ?.map(
-                  (value) => BacklightInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bluetoothAdapterInfo:
-            (json_['bluetoothAdapterInfo'] as core.List?)
-                ?.map(
-                  (value) => BluetoothAdapterInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        backlightInfo: (json_['backlightInfo'] as core.List?)
+            ?.map(
+              (value) => BacklightInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bluetoothAdapterInfo: (json_['bluetoothAdapterInfo'] as core.List?)
+            ?.map(
+              (value) => BluetoothAdapterInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         bootMode: json_['bootMode'] as core.String?,
         chromeOsType: json_['chromeOsType'] as core.String?,
-        cpuInfo:
-            (json_['cpuInfo'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceCpuInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        cpuStatusReports:
-            (json_['cpuStatusReports'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceCpuStatusReports.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cpuInfo: (json_['cpuInfo'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceCpuInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        cpuStatusReports: (json_['cpuStatusReports'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceCpuStatusReports.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         deprovisionReason: json_['deprovisionReason'] as core.String?,
-        deviceFiles:
-            (json_['deviceFiles'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceDeviceFiles.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deviceFiles: (json_['deviceFiles'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceDeviceFiles.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         deviceId: json_['deviceId'] as core.String?,
         deviceLicenseType: json_['deviceLicenseType'] as core.String?,
-        diskSpaceUsage:
-            json_.containsKey('diskSpaceUsage')
-                ? ByteUsage.fromJson(
-                  json_['diskSpaceUsage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diskVolumeReports:
-            (json_['diskVolumeReports'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceDiskVolumeReports.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        diskSpaceUsage: json_.containsKey('diskSpaceUsage')
+            ? ByteUsage.fromJson(
+                json_['diskSpaceUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diskVolumeReports: (json_['diskVolumeReports'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceDiskVolumeReports.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         dockMacAddress: json_['dockMacAddress'] as core.String?,
         etag: json_['etag'] as core.String?,
         ethernetMacAddress: json_['ethernetMacAddress'] as core.String?,
@@ -8715,37 +8843,31 @@ class ChromeOsDevice {
         extendedSupportEligible: json_['extendedSupportEligible'] as core.bool?,
         extendedSupportEnabled: json_['extendedSupportEnabled'] as core.bool?,
         extendedSupportStart: json_['extendedSupportStart'] as core.String?,
-        fanInfo:
-            (json_['fanInfo'] as core.List?)
-                ?.map(
-                  (value) => FanInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fanInfo: (json_['fanInfo'] as core.List?)
+            ?.map(
+              (value) => FanInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         firmwareVersion: json_['firmwareVersion'] as core.String?,
         firstEnrollmentTime: json_['firstEnrollmentTime'] as core.String?,
         kind: json_['kind'] as core.String?,
         lastDeprovisionTimestamp:
             json_['lastDeprovisionTimestamp'] as core.String?,
-        lastEnrollmentTime:
-            json_.containsKey('lastEnrollmentTime')
-                ? core.DateTime.parse(
-                  json_['lastEnrollmentTime'] as core.String,
-                )
-                : null,
-        lastKnownNetwork:
-            (json_['lastKnownNetwork'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceLastKnownNetwork.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        lastSync:
-            json_.containsKey('lastSync')
-                ? core.DateTime.parse(json_['lastSync'] as core.String)
-                : null,
+        lastEnrollmentTime: json_.containsKey('lastEnrollmentTime')
+            ? core.DateTime.parse(json_['lastEnrollmentTime'] as core.String)
+            : null,
+        lastKnownNetwork: (json_['lastKnownNetwork'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceLastKnownNetwork.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        lastSync: json_.containsKey('lastSync')
+            ? core.DateTime.parse(json_['lastSync'] as core.String)
+            : null,
         macAddress: json_['macAddress'] as core.String?,
         manufactureDate: json_['manufactureDate'] as core.String?,
         meid: json_['meid'] as core.String?,
@@ -8754,125 +8876,161 @@ class ChromeOsDevice {
         orderNumber: json_['orderNumber'] as core.String?,
         orgUnitId: json_['orgUnitId'] as core.String?,
         orgUnitPath: json_['orgUnitPath'] as core.String?,
-        osUpdateStatus:
-            json_.containsKey('osUpdateStatus')
-                ? OsUpdateStatus.fromJson(
-                  json_['osUpdateStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        osUpdateStatus: json_.containsKey('osUpdateStatus')
+            ? OsUpdateStatus.fromJson(
+                json_['osUpdateStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         osVersion: json_['osVersion'] as core.String?,
         osVersionCompliance: json_['osVersionCompliance'] as core.String?,
         platformVersion: json_['platformVersion'] as core.String?,
-        recentUsers:
-            (json_['recentUsers'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceRecentUsers.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        screenshotFiles:
-            (json_['screenshotFiles'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceScreenshotFiles.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        recentUsers: (json_['recentUsers'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceRecentUsers.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        screenshotFiles: (json_['screenshotFiles'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceScreenshotFiles.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serialNumber: json_['serialNumber'] as core.String?,
         status: json_['status'] as core.String?,
-        supportEndDate:
-            json_.containsKey('supportEndDate')
-                ? core.DateTime.parse(json_['supportEndDate'] as core.String)
-                : null,
-        systemRamFreeReports:
-            (json_['systemRamFreeReports'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        supportEndDate: json_.containsKey('supportEndDate')
+            ? core.DateTime.parse(json_['supportEndDate'] as core.String)
+            : null,
+        systemRamFreeReports: (json_['systemRamFreeReports'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         systemRamTotal: json_['systemRamTotal'] as core.String?,
-        tpmVersionInfo:
-            json_.containsKey('tpmVersionInfo')
-                ? ChromeOsDeviceTpmVersionInfo.fromJson(
-                  json_['tpmVersionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        tpmVersionInfo: json_.containsKey('tpmVersionInfo')
+            ? ChromeOsDeviceTpmVersionInfo.fromJson(
+                json_['tpmVersionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         willAutoRenew: json_['willAutoRenew'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeTimeRanges != null) 'activeTimeRanges': activeTimeRanges!,
-    if (annotatedAssetId != null) 'annotatedAssetId': annotatedAssetId!,
-    if (annotatedLocation != null) 'annotatedLocation': annotatedLocation!,
-    if (annotatedUser != null) 'annotatedUser': annotatedUser!,
-    if (autoUpdateExpiration != null)
-      'autoUpdateExpiration': autoUpdateExpiration!,
-    if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
-    if (backlightInfo != null) 'backlightInfo': backlightInfo!,
-    if (bluetoothAdapterInfo != null)
-      'bluetoothAdapterInfo': bluetoothAdapterInfo!,
-    if (bootMode != null) 'bootMode': bootMode!,
-    if (chromeOsType != null) 'chromeOsType': chromeOsType!,
-    if (cpuInfo != null) 'cpuInfo': cpuInfo!,
-    if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
-    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-    if (deviceFiles != null) 'deviceFiles': deviceFiles!,
-    if (deviceId != null) 'deviceId': deviceId!,
-    if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
-    if (diskSpaceUsage != null) 'diskSpaceUsage': diskSpaceUsage!,
-    if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
-    if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
-    if (etag != null) 'etag': etag!,
-    if (ethernetMacAddress != null) 'ethernetMacAddress': ethernetMacAddress!,
-    if (ethernetMacAddress0 != null)
-      'ethernetMacAddress0': ethernetMacAddress0!,
-    if (extendedSupportEligible != null)
-      'extendedSupportEligible': extendedSupportEligible!,
-    if (extendedSupportEnabled != null)
-      'extendedSupportEnabled': extendedSupportEnabled!,
-    if (extendedSupportStart != null)
-      'extendedSupportStart': extendedSupportStart!,
-    if (fanInfo != null) 'fanInfo': fanInfo!,
-    if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-    if (firstEnrollmentTime != null)
-      'firstEnrollmentTime': firstEnrollmentTime!,
-    if (kind != null) 'kind': kind!,
-    if (lastDeprovisionTimestamp != null)
-      'lastDeprovisionTimestamp': lastDeprovisionTimestamp!,
-    if (lastEnrollmentTime != null)
-      'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
-    if (lastKnownNetwork != null) 'lastKnownNetwork': lastKnownNetwork!,
-    if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
-    if (macAddress != null) 'macAddress': macAddress!,
-    if (manufactureDate != null) 'manufactureDate': manufactureDate!,
-    if (meid != null) 'meid': meid!,
-    if (model != null) 'model': model!,
-    if (notes != null) 'notes': notes!,
-    if (orderNumber != null) 'orderNumber': orderNumber!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-    if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
-    if (osVersion != null) 'osVersion': osVersion!,
-    if (osVersionCompliance != null)
-      'osVersionCompliance': osVersionCompliance!,
-    if (platformVersion != null) 'platformVersion': platformVersion!,
-    if (recentUsers != null) 'recentUsers': recentUsers!,
-    if (screenshotFiles != null) 'screenshotFiles': screenshotFiles!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (status != null) 'status': status!,
-    if (supportEndDate != null)
-      'supportEndDate': supportEndDate!.toUtc().toIso8601String(),
-    if (systemRamFreeReports != null)
-      'systemRamFreeReports': systemRamFreeReports!,
-    if (systemRamTotal != null) 'systemRamTotal': systemRamTotal!,
-    if (tpmVersionInfo != null) 'tpmVersionInfo': tpmVersionInfo!,
-    if (willAutoRenew != null) 'willAutoRenew': willAutoRenew!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeTimeRanges = this.activeTimeRanges;
+    final annotatedAssetId = this.annotatedAssetId;
+    final annotatedLocation = this.annotatedLocation;
+    final annotatedUser = this.annotatedUser;
+    final autoUpdateExpiration = this.autoUpdateExpiration;
+    final autoUpdateThrough = this.autoUpdateThrough;
+    final backlightInfo = this.backlightInfo;
+    final bluetoothAdapterInfo = this.bluetoothAdapterInfo;
+    final bootMode = this.bootMode;
+    final chromeOsType = this.chromeOsType;
+    final cpuInfo = this.cpuInfo;
+    final cpuStatusReports = this.cpuStatusReports;
+    final deprovisionReason = this.deprovisionReason;
+    final deviceFiles = this.deviceFiles;
+    final deviceId = this.deviceId;
+    final deviceLicenseType = this.deviceLicenseType;
+    final diskSpaceUsage = this.diskSpaceUsage;
+    final diskVolumeReports = this.diskVolumeReports;
+    final dockMacAddress = this.dockMacAddress;
+    final etag = this.etag;
+    final ethernetMacAddress = this.ethernetMacAddress;
+    final ethernetMacAddress0 = this.ethernetMacAddress0;
+    final extendedSupportEligible = this.extendedSupportEligible;
+    final extendedSupportEnabled = this.extendedSupportEnabled;
+    final extendedSupportStart = this.extendedSupportStart;
+    final fanInfo = this.fanInfo;
+    final firmwareVersion = this.firmwareVersion;
+    final firstEnrollmentTime = this.firstEnrollmentTime;
+    final kind = this.kind;
+    final lastDeprovisionTimestamp = this.lastDeprovisionTimestamp;
+    final lastEnrollmentTime = this.lastEnrollmentTime;
+    final lastKnownNetwork = this.lastKnownNetwork;
+    final lastSync = this.lastSync;
+    final macAddress = this.macAddress;
+    final manufactureDate = this.manufactureDate;
+    final meid = this.meid;
+    final model = this.model;
+    final notes = this.notes;
+    final orderNumber = this.orderNumber;
+    final orgUnitId = this.orgUnitId;
+    final orgUnitPath = this.orgUnitPath;
+    final osUpdateStatus = this.osUpdateStatus;
+    final osVersion = this.osVersion;
+    final osVersionCompliance = this.osVersionCompliance;
+    final platformVersion = this.platformVersion;
+    final recentUsers = this.recentUsers;
+    final screenshotFiles = this.screenshotFiles;
+    final serialNumber = this.serialNumber;
+    final status = this.status;
+    final supportEndDate = this.supportEndDate;
+    final systemRamFreeReports = this.systemRamFreeReports;
+    final systemRamTotal = this.systemRamTotal;
+    final tpmVersionInfo = this.tpmVersionInfo;
+    final willAutoRenew = this.willAutoRenew;
+    return {
+      'activeTimeRanges': ?activeTimeRanges,
+      'annotatedAssetId': ?annotatedAssetId,
+      'annotatedLocation': ?annotatedLocation,
+      'annotatedUser': ?annotatedUser,
+      'autoUpdateExpiration': ?autoUpdateExpiration,
+      'autoUpdateThrough': ?autoUpdateThrough,
+      'backlightInfo': ?backlightInfo,
+      'bluetoothAdapterInfo': ?bluetoothAdapterInfo,
+      'bootMode': ?bootMode,
+      'chromeOsType': ?chromeOsType,
+      'cpuInfo': ?cpuInfo,
+      'cpuStatusReports': ?cpuStatusReports,
+      'deprovisionReason': ?deprovisionReason,
+      'deviceFiles': ?deviceFiles,
+      'deviceId': ?deviceId,
+      'deviceLicenseType': ?deviceLicenseType,
+      'diskSpaceUsage': ?diskSpaceUsage,
+      'diskVolumeReports': ?diskVolumeReports,
+      'dockMacAddress': ?dockMacAddress,
+      'etag': ?etag,
+      'ethernetMacAddress': ?ethernetMacAddress,
+      'ethernetMacAddress0': ?ethernetMacAddress0,
+      'extendedSupportEligible': ?extendedSupportEligible,
+      'extendedSupportEnabled': ?extendedSupportEnabled,
+      'extendedSupportStart': ?extendedSupportStart,
+      'fanInfo': ?fanInfo,
+      'firmwareVersion': ?firmwareVersion,
+      'firstEnrollmentTime': ?firstEnrollmentTime,
+      'kind': ?kind,
+      'lastDeprovisionTimestamp': ?lastDeprovisionTimestamp,
+      'lastEnrollmentTime': ?lastEnrollmentTime?.toUtc().toIso8601String(),
+      'lastKnownNetwork': ?lastKnownNetwork,
+      'lastSync': ?lastSync?.toUtc().toIso8601String(),
+      'macAddress': ?macAddress,
+      'manufactureDate': ?manufactureDate,
+      'meid': ?meid,
+      'model': ?model,
+      'notes': ?notes,
+      'orderNumber': ?orderNumber,
+      'orgUnitId': ?orgUnitId,
+      'orgUnitPath': ?orgUnitPath,
+      'osUpdateStatus': ?osUpdateStatus,
+      'osVersion': ?osVersion,
+      'osVersionCompliance': ?osVersionCompliance,
+      'platformVersion': ?platformVersion,
+      'recentUsers': ?recentUsers,
+      'screenshotFiles': ?screenshotFiles,
+      'serialNumber': ?serialNumber,
+      'status': ?status,
+      'supportEndDate': ?supportEndDate?.toUtc().toIso8601String(),
+      'systemRamFreeReports': ?systemRamFreeReports,
+      'systemRamTotal': ?systemRamTotal,
+      'tpmVersionInfo': ?tpmVersionInfo,
+      'willAutoRenew': ?willAutoRenew,
+    };
+  }
 }
 
 /// Data about an update to the status of a Chrome OS device.
@@ -8895,10 +9053,11 @@ class ChromeOsDeviceAction {
         deprovisionReason: json_['deprovisionReason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final deprovisionReason = this.deprovisionReason;
+    return {'action': ?action, 'deprovisionReason': ?deprovisionReason};
+  }
 }
 
 class ChromeOsDevices {
@@ -8926,25 +9085,30 @@ class ChromeOsDevices {
 
   ChromeOsDevices.fromJson(core.Map json_)
     : this(
-        chromeosdevices:
-            (json_['chromeosdevices'] as core.List?)
-                ?.map(
-                  (value) => ChromeOsDevice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        chromeosdevices: (json_['chromeosdevices'] as core.List?)
+            ?.map(
+              (value) => ChromeOsDevice.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chromeosdevices != null) 'chromeosdevices': chromeosdevices!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chromeosdevices = this.chromeosdevices;
+    final etag = this.etag;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'chromeosdevices': ?chromeosdevices,
+      'etag': ?etag,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class ChromeOsMoveDevicesToOu {
@@ -8955,15 +9119,15 @@ class ChromeOsMoveDevicesToOu {
 
   ChromeOsMoveDevicesToOu.fromJson(core.Map json_)
     : this(
-        deviceIds:
-            (json_['deviceIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        deviceIds: (json_['deviceIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceIds != null) 'deviceIds': deviceIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceIds = this.deviceIds;
+    return {'deviceIds': ?deviceIds};
+  }
 }
 
 /// Request for adding a new print server.
@@ -8992,18 +9156,18 @@ class CreatePrintServerRequest {
   CreatePrintServerRequest.fromJson(core.Map json_)
     : this(
         parent: json_['parent'] as core.String?,
-        printServer:
-            json_.containsKey('printServer')
-                ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        printServer: json_.containsKey('printServer')
+            ? PrintServer.fromJson(
+                json_['printServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parent != null) 'parent': parent!,
-    if (printServer != null) 'printServer': printServer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
+    final printServer = this.printServer;
+    return {'parent': ?parent, 'printServer': ?printServer};
+  }
 }
 
 /// Request for adding a new printer.
@@ -9029,18 +9193,18 @@ class CreatePrinterRequest {
   CreatePrinterRequest.fromJson(core.Map json_)
     : this(
         parent: json_['parent'] as core.String?,
-        printer:
-            json_.containsKey('printer')
-                ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        printer: json_.containsKey('printer')
+            ? Printer.fromJson(
+                json_['printer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parent != null) 'parent': parent!,
-    if (printer != null) 'printer': printer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
+    final printer = this.printer;
+    return {'parent': ?parent, 'printer': ?printer};
+  }
 }
 
 class Customer {
@@ -9101,38 +9265,44 @@ class Customer {
   Customer.fromJson(core.Map json_)
     : this(
         alternateEmail: json_['alternateEmail'] as core.String?,
-        customerCreationTime:
-            json_.containsKey('customerCreationTime')
-                ? core.DateTime.parse(
-                  json_['customerCreationTime'] as core.String,
-                )
-                : null,
+        customerCreationTime: json_.containsKey('customerCreationTime')
+            ? core.DateTime.parse(json_['customerCreationTime'] as core.String)
+            : null,
         customerDomain: json_['customerDomain'] as core.String?,
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         language: json_['language'] as core.String?,
         phoneNumber: json_['phoneNumber'] as core.String?,
-        postalAddress:
-            json_.containsKey('postalAddress')
-                ? CustomerPostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        postalAddress: json_.containsKey('postalAddress')
+            ? CustomerPostalAddress.fromJson(
+                json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternateEmail != null) 'alternateEmail': alternateEmail!,
-    if (customerCreationTime != null)
-      'customerCreationTime': customerCreationTime!.toUtc().toIso8601String(),
-    if (customerDomain != null) 'customerDomain': customerDomain!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (language != null) 'language': language!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (postalAddress != null) 'postalAddress': postalAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternateEmail = this.alternateEmail;
+    final customerCreationTime = this.customerCreationTime;
+    final customerDomain = this.customerDomain;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final language = this.language;
+    final phoneNumber = this.phoneNumber;
+    final postalAddress = this.postalAddress;
+    return {
+      'alternateEmail': ?alternateEmail,
+      'customerCreationTime': ?customerCreationTime?.toUtc().toIso8601String(),
+      'customerDomain': ?customerDomain,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'language': ?language,
+      'phoneNumber': ?phoneNumber,
+      'postalAddress': ?postalAddress,
+    };
+  }
 }
 
 class CustomerPostalAddress {
@@ -9201,17 +9371,28 @@ class CustomerPostalAddress {
         region: json_['region'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressLine1 != null) 'addressLine1': addressLine1!,
-    if (addressLine2 != null) 'addressLine2': addressLine2!,
-    if (addressLine3 != null) 'addressLine3': addressLine3!,
-    if (contactName != null) 'contactName': contactName!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (locality != null) 'locality': locality!,
-    if (organizationName != null) 'organizationName': organizationName!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (region != null) 'region': region!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressLine1 = this.addressLine1;
+    final addressLine2 = this.addressLine2;
+    final addressLine3 = this.addressLine3;
+    final contactName = this.contactName;
+    final countryCode = this.countryCode;
+    final locality = this.locality;
+    final organizationName = this.organizationName;
+    final postalCode = this.postalCode;
+    final region = this.region;
+    return {
+      'addressLine1': ?addressLine1,
+      'addressLine2': ?addressLine2,
+      'addressLine3': ?addressLine3,
+      'contactName': ?contactName,
+      'countryCode': ?countryCode,
+      'locality': ?locality,
+      'organizationName': ?organizationName,
+      'postalCode': ?postalCode,
+      'region': ?region,
+    };
+  }
 }
 
 /// Information regarding a command that was issued to a device.
@@ -9295,27 +9476,35 @@ class DirectoryChromeosdevicesCommand {
     : this(
         commandExpireTime: json_['commandExpireTime'] as core.String?,
         commandId: json_['commandId'] as core.String?,
-        commandResult:
-            json_.containsKey('commandResult')
-                ? DirectoryChromeosdevicesCommandResult.fromJson(
-                  json_['commandResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        commandResult: json_.containsKey('commandResult')
+            ? DirectoryChromeosdevicesCommandResult.fromJson(
+                json_['commandResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issueTime: json_['issueTime'] as core.String?,
         payload: json_['payload'] as core.String?,
         state: json_['state'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commandExpireTime != null) 'commandExpireTime': commandExpireTime!,
-    if (commandId != null) 'commandId': commandId!,
-    if (commandResult != null) 'commandResult': commandResult!,
-    if (issueTime != null) 'issueTime': issueTime!,
-    if (payload != null) 'payload': payload!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commandExpireTime = this.commandExpireTime;
+    final commandId = this.commandId;
+    final commandResult = this.commandResult;
+    final issueTime = this.issueTime;
+    final payload = this.payload;
+    final state = this.state;
+    final type = this.type;
+    return {
+      'commandExpireTime': ?commandExpireTime,
+      'commandId': ?commandId,
+      'commandResult': ?commandResult,
+      'issueTime': ?issueTime,
+      'payload': ?payload,
+      'state': ?state,
+      'type': ?type,
+    };
+  }
 }
 
 /// The result of executing a command.
@@ -9366,13 +9555,18 @@ class DirectoryChromeosdevicesCommandResult {
         result: json_['result'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commandResultPayload != null)
-      'commandResultPayload': commandResultPayload!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (executeTime != null) 'executeTime': executeTime!,
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commandResultPayload = this.commandResultPayload;
+    final errorMessage = this.errorMessage;
+    final executeTime = this.executeTime;
+    final result = this.result;
+    return {
+      'commandResultPayload': ?commandResultPayload,
+      'errorMessage': ?errorMessage,
+      'executeTime': ?executeTime,
+      'result': ?result,
+    };
+  }
 }
 
 /// A request for issuing a command.
@@ -9457,10 +9651,11 @@ class DirectoryChromeosdevicesIssueCommandRequest {
         payload: json_['payload'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commandType != null) 'commandType': commandType!,
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commandType = this.commandType;
+    final payload = this.payload;
+    return {'commandType': ?commandType, 'payload': ?payload};
+  }
 }
 
 /// A response for issuing a command.
@@ -9473,9 +9668,10 @@ class DirectoryChromeosdevicesIssueCommandResponse {
   DirectoryChromeosdevicesIssueCommandResponse.fromJson(core.Map json_)
     : this(commandId: json_['commandId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commandId != null) 'commandId': commandId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commandId = this.commandId;
+    return {'commandId': ?commandId};
+  }
 }
 
 /// Directory users guest creation request message.
@@ -9498,10 +9694,11 @@ class DirectoryUsersCreateGuestRequest {
         primaryGuestEmail: json_['primaryGuestEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customer != null) 'customer': customer!,
-    if (primaryGuestEmail != null) 'primaryGuestEmail': primaryGuestEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customer = this.customer;
+    final primaryGuestEmail = this.primaryGuestEmail;
+    return {'customer': ?customer, 'primaryGuestEmail': ?primaryGuestEmail};
+  }
 }
 
 class DomainAlias {
@@ -9548,14 +9745,22 @@ class DomainAlias {
         verified: json_['verified'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (domainAliasName != null) 'domainAliasName': domainAliasName!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (parentDomainName != null) 'parentDomainName': parentDomainName!,
-    if (verified != null) 'verified': verified!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTime = this.creationTime;
+    final domainAliasName = this.domainAliasName;
+    final etag = this.etag;
+    final kind = this.kind;
+    final parentDomainName = this.parentDomainName;
+    final verified = this.verified;
+    return {
+      'creationTime': ?creationTime,
+      'domainAliasName': ?domainAliasName,
+      'etag': ?etag,
+      'kind': ?kind,
+      'parentDomainName': ?parentDomainName,
+      'verified': ?verified,
+    };
+  }
 }
 
 class DomainAliases {
@@ -9572,23 +9777,23 @@ class DomainAliases {
 
   DomainAliases.fromJson(core.Map json_)
     : this(
-        domainAliases:
-            (json_['domainAliases'] as core.List?)
-                ?.map(
-                  (value) => DomainAlias.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domainAliases: (json_['domainAliases'] as core.List?)
+            ?.map(
+              (value) => DomainAlias.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainAliases != null) 'domainAliases': domainAliases!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainAliases = this.domainAliases;
+    final etag = this.etag;
+    final kind = this.kind;
+    return {'domainAliases': ?domainAliases, 'etag': ?etag, 'kind': ?kind};
+  }
 }
 
 class Domains {
@@ -9633,14 +9838,13 @@ class Domains {
   Domains.fromJson(core.Map json_)
     : this(
         creationTime: json_['creationTime'] as core.String?,
-        domainAliases:
-            (json_['domainAliases'] as core.List?)
-                ?.map(
-                  (value) => DomainAlias.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domainAliases: (json_['domainAliases'] as core.List?)
+            ?.map(
+              (value) => DomainAlias.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         domainName: json_['domainName'] as core.String?,
         etag: json_['etag'] as core.String?,
         isPrimary: json_['isPrimary'] as core.bool?,
@@ -9648,15 +9852,24 @@ class Domains {
         verified: json_['verified'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (domainAliases != null) 'domainAliases': domainAliases!,
-    if (domainName != null) 'domainName': domainName!,
-    if (etag != null) 'etag': etag!,
-    if (isPrimary != null) 'isPrimary': isPrimary!,
-    if (kind != null) 'kind': kind!,
-    if (verified != null) 'verified': verified!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTime = this.creationTime;
+    final domainAliases = this.domainAliases;
+    final domainName = this.domainName;
+    final etag = this.etag;
+    final isPrimary = this.isPrimary;
+    final kind = this.kind;
+    final verified = this.verified;
+    return {
+      'creationTime': ?creationTime,
+      'domainAliases': ?domainAliases,
+      'domainName': ?domainName,
+      'etag': ?etag,
+      'isPrimary': ?isPrimary,
+      'kind': ?kind,
+      'verified': ?verified,
+    };
+  }
 }
 
 class Domains2 {
@@ -9673,23 +9886,23 @@ class Domains2 {
 
   Domains2.fromJson(core.Map json_)
     : this(
-        domains:
-            (json_['domains'] as core.List?)
-                ?.map(
-                  (value) => Domains.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domains: (json_['domains'] as core.List?)
+            ?.map(
+              (value) => Domains.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domains != null) 'domains': domains!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domains = this.domains;
+    final etag = this.etag;
+    final kind = this.kind;
+    return {'domains': ?domains, 'etag': ?etag, 'kind': ?kind};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -9805,21 +10018,26 @@ class FailureInfo {
     : this(
         errorCode: json_['errorCode'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
-        printer:
-            json_.containsKey('printer')
-                ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        printer: json_.containsKey('printer')
+            ? Printer.fromJson(
+                json_['printer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         printerId: json_['printerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (printer != null) 'printer': printer!,
-    if (printerId != null) 'printerId': printerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorMessage = this.errorMessage;
+    final printer = this.printer;
+    final printerId = this.printerId;
+    return {
+      'errorCode': ?errorCode,
+      'errorMessage': ?errorMessage,
+      'printer': ?printer,
+      'printerId': ?printerId,
+    };
+  }
 }
 
 /// Information about the device's fan.
@@ -9834,9 +10052,10 @@ class FanInfo {
   FanInfo.fromJson(core.Map json_)
     : this(speedRpm: json_['speedRpm'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (speedRpm != null) 'speedRpm': speedRpm!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final speedRpm = this.speedRpm;
+    return {'speedRpm': ?speedRpm};
+  }
 }
 
 /// JSON template for Feature object in Directory API.
@@ -9859,11 +10078,12 @@ class Feature {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etags != null) 'etags': etags!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etags = this.etags;
+    final kind = this.kind;
+    final name = this.name;
+    return {'etags': ?etags, 'kind': ?kind, 'name': ?name};
+  }
 }
 
 class FeatureRename {
@@ -9875,9 +10095,10 @@ class FeatureRename {
   FeatureRename.fromJson(core.Map json_)
     : this(newName: json_['newName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newName != null) 'newName': newName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newName = this.newName;
+    return {'newName': ?newName};
+  }
 }
 
 /// Public API: Resources.features
@@ -9902,24 +10123,29 @@ class Features {
   Features.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        features:
-            (json_['features'] as core.List?)
-                ?.map(
-                  (value) => Feature.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        features: (json_['features'] as core.List?)
+            ?.map(
+              (value) => Feature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (features != null) 'features': features!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final features = this.features;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'features': ?features,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Google Groups provide your users the ability to send messages to groups of
@@ -10013,10 +10239,9 @@ class Group {
   Group.fromJson(core.Map json_)
     : this(
         adminCreated: json_['adminCreated'] as core.bool?,
-        aliases:
-            (json_['aliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        aliases: (json_['aliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         description: json_['description'] as core.String?,
         directMembersCount: json_['directMembersCount'] as core.String?,
         email: json_['email'] as core.String?,
@@ -10024,24 +10249,35 @@ class Group {
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
-        nonEditableAliases:
-            (json_['nonEditableAliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nonEditableAliases: (json_['nonEditableAliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminCreated != null) 'adminCreated': adminCreated!,
-    if (aliases != null) 'aliases': aliases!,
-    if (description != null) 'description': description!,
-    if (directMembersCount != null) 'directMembersCount': directMembersCount!,
-    if (email != null) 'email': email!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (nonEditableAliases != null) 'nonEditableAliases': nonEditableAliases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminCreated = this.adminCreated;
+    final aliases = this.aliases;
+    final description = this.description;
+    final directMembersCount = this.directMembersCount;
+    final email = this.email;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final nonEditableAliases = this.nonEditableAliases;
+    return {
+      'adminCreated': ?adminCreated,
+      'aliases': ?aliases,
+      'description': ?description,
+      'directMembersCount': ?directMembersCount,
+      'email': ?email,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'nonEditableAliases': ?nonEditableAliases,
+    };
+  }
 }
 
 class Groups {
@@ -10062,24 +10298,28 @@ class Groups {
   Groups.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        groups:
-            (json_['groups'] as core.List?)
-                ?.map(
-                  (value) => Group.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        groups: (json_['groups'] as core.List?)
+            ?.map(
+              (value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (groups != null) 'groups': groups!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final groups = this.groups;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'groups': ?groups,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Account info specific to Guest users.
@@ -10094,9 +10334,10 @@ class GuestAccountInfo {
   GuestAccountInfo.fromJson(core.Map json_)
     : this(primaryGuestEmail: json_['primaryGuestEmail'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (primaryGuestEmail != null) 'primaryGuestEmail': primaryGuestEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final primaryGuestEmail = this.primaryGuestEmail;
+    return {'primaryGuestEmail': ?primaryGuestEmail};
+  }
 }
 
 class ListPrintServersResponse {
@@ -10114,20 +10355,20 @@ class ListPrintServersResponse {
   ListPrintServersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        printServers:
-            (json_['printServers'] as core.List?)
-                ?.map(
-                  (value) => PrintServer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        printServers: (json_['printServers'] as core.List?)
+            ?.map(
+              (value) => PrintServer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (printServers != null) 'printServers': printServers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final printServers = this.printServers;
+    return {'nextPageToken': ?nextPageToken, 'printServers': ?printServers};
+  }
 }
 
 /// Response for listing allowed printer models.
@@ -10147,20 +10388,20 @@ class ListPrinterModelsResponse {
   ListPrinterModelsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        printerModels:
-            (json_['printerModels'] as core.List?)
-                ?.map(
-                  (value) => PrinterModel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        printerModels: (json_['printerModels'] as core.List?)
+            ?.map(
+              (value) => PrinterModel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (printerModels != null) 'printerModels': printerModels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final printerModels = this.printerModels;
+    return {'nextPageToken': ?nextPageToken, 'printerModels': ?printerModels};
+  }
 }
 
 /// Response for listing printers.
@@ -10182,20 +10423,20 @@ class ListPrintersResponse {
   ListPrintersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        printers:
-            (json_['printers'] as core.List?)
-                ?.map(
-                  (value) => Printer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        printers: (json_['printers'] as core.List?)
+            ?.map(
+              (value) => Printer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (printers != null) 'printers': printers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final printers = this.printers;
+    return {'nextPageToken': ?nextPageToken, 'printers': ?printers};
+  }
 }
 
 /// A Google Groups member can be a user or another group.
@@ -10267,16 +10508,26 @@ class Member {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deliverySettings != null) 'delivery_settings': deliverySettings!,
-    if (email != null) 'email': email!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (role != null) 'role': role!,
-    if (status != null) 'status': status!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deliverySettings = this.deliverySettings;
+    final email = this.email;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final role = this.role;
+    final status = this.status;
+    final type = this.type;
+    return {
+      'delivery_settings': ?deliverySettings,
+      'email': ?email,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'role': ?role,
+      'status': ?status,
+      'type': ?type,
+    };
+  }
 }
 
 class Members {
@@ -10298,23 +10549,27 @@ class Members {
     : this(
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
-        members:
-            (json_['members'] as core.List?)
-                ?.map(
-                  (value) => Member.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        members: (json_['members'] as core.List?)
+            ?.map(
+              (value) =>
+                  Member.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (members != null) 'members': members!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final members = this.members;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'kind': ?kind,
+      'members': ?members,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// JSON template for Has Member response in Directory API.
@@ -10331,9 +10586,10 @@ class MembersHasMember {
   MembersHasMember.fromJson(core.Map json_)
     : this(isMember: json_['isMember'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isMember != null) 'isMember': isMember!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isMember = this.isMember;
+    return {'isMember': ?isMember};
+  }
 }
 
 class MobileDeviceApplications {
@@ -10378,21 +10634,27 @@ class MobileDeviceApplications {
     : this(
         displayName: json_['displayName'] as core.String?,
         packageName: json_['packageName'] as core.String?,
-        permission:
-            (json_['permission'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        permission: (json_['permission'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         versionCode: json_['versionCode'] as core.int?,
         versionName: json_['versionName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (packageName != null) 'packageName': packageName!,
-    if (permission != null) 'permission': permission!,
-    if (versionCode != null) 'versionCode': versionCode!,
-    if (versionName != null) 'versionName': versionName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final packageName = this.packageName;
+    final permission = this.permission;
+    final versionCode = this.versionCode;
+    final versionName = this.versionName;
+    return {
+      'displayName': ?displayName,
+      'packageName': ?packageName,
+      'permission': ?permission,
+      'versionCode': ?versionCode,
+      'versionName': ?versionName,
+    };
+  }
 }
 
 /// Google Workspace Mobile Management includes Android,
@@ -10613,14 +10875,13 @@ class MobileDevice {
   MobileDevice.fromJson(core.Map json_)
     : this(
         adbStatus: json_['adbStatus'] as core.bool?,
-        applications:
-            (json_['applications'] as core.List?)
-                ?.map(
-                  (value) => MobileDeviceApplications.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        applications: (json_['applications'] as core.List?)
+            ?.map(
+              (value) => MobileDeviceApplications.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         basebandVersion: json_['basebandVersion'] as core.String?,
         bootloaderVersion: json_['bootloaderVersion'] as core.String?,
         brand: json_['brand'] as core.String?,
@@ -10631,40 +10892,35 @@ class MobileDevice {
             json_['deviceCompromisedStatus'] as core.String?,
         deviceId: json_['deviceId'] as core.String?,
         devicePasswordStatus: json_['devicePasswordStatus'] as core.String?,
-        email:
-            (json_['email'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        email: (json_['email'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         encryptionStatus: json_['encryptionStatus'] as core.String?,
         etag: json_['etag'] as core.String?,
-        firstSync:
-            json_.containsKey('firstSync')
-                ? core.DateTime.parse(json_['firstSync'] as core.String)
-                : null,
+        firstSync: json_.containsKey('firstSync')
+            ? core.DateTime.parse(json_['firstSync'] as core.String)
+            : null,
         hardware: json_['hardware'] as core.String?,
         hardwareId: json_['hardwareId'] as core.String?,
         imei: json_['imei'] as core.String?,
         kernelVersion: json_['kernelVersion'] as core.String?,
         kind: json_['kind'] as core.String?,
-        lastSync:
-            json_.containsKey('lastSync')
-                ? core.DateTime.parse(json_['lastSync'] as core.String)
-                : null,
+        lastSync: json_.containsKey('lastSync')
+            ? core.DateTime.parse(json_['lastSync'] as core.String)
+            : null,
         managedAccountIsOnOwnerProfile:
             json_['managedAccountIsOnOwnerProfile'] as core.bool?,
         manufacturer: json_['manufacturer'] as core.String?,
         meid: json_['meid'] as core.String?,
         model: json_['model'] as core.String?,
-        name:
-            (json_['name'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        name: (json_['name'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         networkOperator: json_['networkOperator'] as core.String?,
         os: json_['os'] as core.String?,
-        otherAccountsInfo:
-            (json_['otherAccountsInfo'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        otherAccountsInfo: (json_['otherAccountsInfo'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         privilege: json_['privilege'] as core.String?,
         releaseVersion: json_['releaseVersion'] as core.String?,
         resourceId: json_['resourceId'] as core.String?,
@@ -10678,54 +10934,90 @@ class MobileDevice {
         wifiMacAddress: json_['wifiMacAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adbStatus != null) 'adbStatus': adbStatus!,
-    if (applications != null) 'applications': applications!,
-    if (basebandVersion != null) 'basebandVersion': basebandVersion!,
-    if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
-    if (brand != null) 'brand': brand!,
-    if (buildNumber != null) 'buildNumber': buildNumber!,
-    if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
-    if (developerOptionsStatus != null)
-      'developerOptionsStatus': developerOptionsStatus!,
-    if (deviceCompromisedStatus != null)
-      'deviceCompromisedStatus': deviceCompromisedStatus!,
-    if (deviceId != null) 'deviceId': deviceId!,
-    if (devicePasswordStatus != null)
-      'devicePasswordStatus': devicePasswordStatus!,
-    if (email != null) 'email': email!,
-    if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
-    if (etag != null) 'etag': etag!,
-    if (firstSync != null) 'firstSync': firstSync!.toUtc().toIso8601String(),
-    if (hardware != null) 'hardware': hardware!,
-    if (hardwareId != null) 'hardwareId': hardwareId!,
-    if (imei != null) 'imei': imei!,
-    if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-    if (kind != null) 'kind': kind!,
-    if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
-    if (managedAccountIsOnOwnerProfile != null)
-      'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile!,
-    if (manufacturer != null) 'manufacturer': manufacturer!,
-    if (meid != null) 'meid': meid!,
-    if (model != null) 'model': model!,
-    if (name != null) 'name': name!,
-    if (networkOperator != null) 'networkOperator': networkOperator!,
-    if (os != null) 'os': os!,
-    if (otherAccountsInfo != null) 'otherAccountsInfo': otherAccountsInfo!,
-    if (privilege != null) 'privilege': privilege!,
-    if (releaseVersion != null) 'releaseVersion': releaseVersion!,
-    if (resourceId != null) 'resourceId': resourceId!,
-    if (securityPatchLevel != null) 'securityPatchLevel': securityPatchLevel!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (status != null) 'status': status!,
-    if (supportsWorkProfile != null)
-      'supportsWorkProfile': supportsWorkProfile!,
-    if (type != null) 'type': type!,
-    if (unknownSourcesStatus != null)
-      'unknownSourcesStatus': unknownSourcesStatus!,
-    if (userAgent != null) 'userAgent': userAgent!,
-    if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adbStatus = this.adbStatus;
+    final applications = this.applications;
+    final basebandVersion = this.basebandVersion;
+    final bootloaderVersion = this.bootloaderVersion;
+    final brand = this.brand;
+    final buildNumber = this.buildNumber;
+    final defaultLanguage = this.defaultLanguage;
+    final developerOptionsStatus = this.developerOptionsStatus;
+    final deviceCompromisedStatus = this.deviceCompromisedStatus;
+    final deviceId = this.deviceId;
+    final devicePasswordStatus = this.devicePasswordStatus;
+    final email = this.email;
+    final encryptionStatus = this.encryptionStatus;
+    final etag = this.etag;
+    final firstSync = this.firstSync;
+    final hardware = this.hardware;
+    final hardwareId = this.hardwareId;
+    final imei = this.imei;
+    final kernelVersion = this.kernelVersion;
+    final kind = this.kind;
+    final lastSync = this.lastSync;
+    final managedAccountIsOnOwnerProfile = this.managedAccountIsOnOwnerProfile;
+    final manufacturer = this.manufacturer;
+    final meid = this.meid;
+    final model = this.model;
+    final name = this.name;
+    final networkOperator = this.networkOperator;
+    final os = this.os;
+    final otherAccountsInfo = this.otherAccountsInfo;
+    final privilege = this.privilege;
+    final releaseVersion = this.releaseVersion;
+    final resourceId = this.resourceId;
+    final securityPatchLevel = this.securityPatchLevel;
+    final serialNumber = this.serialNumber;
+    final status = this.status;
+    final supportsWorkProfile = this.supportsWorkProfile;
+    final type = this.type;
+    final unknownSourcesStatus = this.unknownSourcesStatus;
+    final userAgent = this.userAgent;
+    final wifiMacAddress = this.wifiMacAddress;
+    return {
+      'adbStatus': ?adbStatus,
+      'applications': ?applications,
+      'basebandVersion': ?basebandVersion,
+      'bootloaderVersion': ?bootloaderVersion,
+      'brand': ?brand,
+      'buildNumber': ?buildNumber,
+      'defaultLanguage': ?defaultLanguage,
+      'developerOptionsStatus': ?developerOptionsStatus,
+      'deviceCompromisedStatus': ?deviceCompromisedStatus,
+      'deviceId': ?deviceId,
+      'devicePasswordStatus': ?devicePasswordStatus,
+      'email': ?email,
+      'encryptionStatus': ?encryptionStatus,
+      'etag': ?etag,
+      'firstSync': ?firstSync?.toUtc().toIso8601String(),
+      'hardware': ?hardware,
+      'hardwareId': ?hardwareId,
+      'imei': ?imei,
+      'kernelVersion': ?kernelVersion,
+      'kind': ?kind,
+      'lastSync': ?lastSync?.toUtc().toIso8601String(),
+      'managedAccountIsOnOwnerProfile': ?managedAccountIsOnOwnerProfile,
+      'manufacturer': ?manufacturer,
+      'meid': ?meid,
+      'model': ?model,
+      'name': ?name,
+      'networkOperator': ?networkOperator,
+      'os': ?os,
+      'otherAccountsInfo': ?otherAccountsInfo,
+      'privilege': ?privilege,
+      'releaseVersion': ?releaseVersion,
+      'resourceId': ?resourceId,
+      'securityPatchLevel': ?securityPatchLevel,
+      'serialNumber': ?serialNumber,
+      'status': ?status,
+      'supportsWorkProfile': ?supportsWorkProfile,
+      'type': ?type,
+      'unknownSourcesStatus': ?unknownSourcesStatus,
+      'userAgent': ?userAgent,
+      'wifiMacAddress': ?wifiMacAddress,
+    };
+  }
 }
 
 class MobileDeviceAction {
@@ -10737,9 +11029,10 @@ class MobileDeviceAction {
   MobileDeviceAction.fromJson(core.Map json_)
     : this(action: json_['action'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    return {'action': ?action};
+  }
 }
 
 class MobileDevices {
@@ -10761,23 +11054,28 @@ class MobileDevices {
     : this(
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
-        mobiledevices:
-            (json_['mobiledevices'] as core.List?)
-                ?.map(
-                  (value) => MobileDevice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mobiledevices: (json_['mobiledevices'] as core.List?)
+            ?.map(
+              (value) => MobileDevice.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (mobiledevices != null) 'mobiledevices': mobiledevices!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final mobiledevices = this.mobiledevices;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'kind': ?kind,
+      'mobiledevices': ?mobiledevices,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Managing your account's organizational units allows you to configure your
@@ -10866,17 +11164,28 @@ class OrgUnit {
         parentOrgUnitPath: json_['parentOrgUnitPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blockInheritance != null) 'blockInheritance': blockInheritance!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-    if (parentOrgUnitId != null) 'parentOrgUnitId': parentOrgUnitId!,
-    if (parentOrgUnitPath != null) 'parentOrgUnitPath': parentOrgUnitPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blockInheritance = this.blockInheritance;
+    final description = this.description;
+    final etag = this.etag;
+    final kind = this.kind;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final orgUnitPath = this.orgUnitPath;
+    final parentOrgUnitId = this.parentOrgUnitId;
+    final parentOrgUnitPath = this.parentOrgUnitPath;
+    return {
+      'blockInheritance': ?blockInheritance,
+      'description': ?description,
+      'etag': ?etag,
+      'kind': ?kind,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'orgUnitPath': ?orgUnitPath,
+      'parentOrgUnitId': ?parentOrgUnitId,
+      'parentOrgUnitPath': ?parentOrgUnitPath,
+    };
+  }
 }
 
 class OrgUnits {
@@ -10897,21 +11206,25 @@ class OrgUnits {
     : this(
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
-        organizationUnits:
-            (json_['organizationUnits'] as core.List?)
-                ?.map(
-                  (value) => OrgUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        organizationUnits: (json_['organizationUnits'] as core.List?)
+            ?.map(
+              (value) => OrgUnit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (organizationUnits != null) 'organizationUnits': organizationUnits!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final organizationUnits = this.organizationUnits;
+    return {
+      'etag': ?etag,
+      'kind': ?kind,
+      'organizationUnits': ?organizationUnits,
+    };
+  }
 }
 
 /// Contains information regarding the current OS update status.
@@ -10966,15 +11279,22 @@ class OsUpdateStatus {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rebootTime != null) 'rebootTime': rebootTime!,
-    if (state != null) 'state': state!,
-    if (targetKioskAppVersion != null)
-      'targetKioskAppVersion': targetKioskAppVersion!,
-    if (targetOsVersion != null) 'targetOsVersion': targetOsVersion!,
-    if (updateCheckTime != null) 'updateCheckTime': updateCheckTime!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rebootTime = this.rebootTime;
+    final state = this.state;
+    final targetKioskAppVersion = this.targetKioskAppVersion;
+    final targetOsVersion = this.targetOsVersion;
+    final updateCheckTime = this.updateCheckTime;
+    final updateTime = this.updateTime;
+    return {
+      'rebootTime': ?rebootTime,
+      'state': ?state,
+      'targetKioskAppVersion': ?targetKioskAppVersion,
+      'targetOsVersion': ?targetOsVersion,
+      'updateCheckTime': ?updateCheckTime,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Configuration for a print server.
@@ -11041,15 +11361,24 @@ class PrintServer {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final id = this.id;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final uri = this.uri;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'id': ?id,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Info about failures
@@ -11157,21 +11486,26 @@ class PrintServerFailureInfo {
     : this(
         errorCode: json_['errorCode'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
-        printServer:
-            json_.containsKey('printServer')
-                ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        printServer: json_.containsKey('printServer')
+            ? PrintServer.fromJson(
+                json_['printServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         printServerId: json_['printServerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (printServer != null) 'printServer': printServer!,
-    if (printServerId != null) 'printServerId': printServerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorMessage = this.errorMessage;
+    final printServer = this.printServer;
+    final printServerId = this.printServerId;
+    return {
+      'errorCode': ?errorCode,
+      'errorMessage': ?errorMessage,
+      'printServer': ?printServer,
+      'printServerId': ?printServerId,
+    };
+  }
 }
 
 /// Printer configuration.
@@ -11244,14 +11578,13 @@ class Printer {
 
   Printer.fromJson(core.Map json_)
     : this(
-        auxiliaryMessages:
-            (json_['auxiliaryMessages'] as core.List?)
-                ?.map(
-                  (value) => AuxiliaryMessage.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auxiliaryMessages: (json_['auxiliaryMessages'] as core.List?)
+            ?.map(
+              (value) => AuxiliaryMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -11263,19 +11596,30 @@ class Printer {
         useDriverlessConfig: json_['useDriverlessConfig'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auxiliaryMessages != null) 'auxiliaryMessages': auxiliaryMessages!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (makeAndModel != null) 'makeAndModel': makeAndModel!,
-    if (name != null) 'name': name!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (uri != null) 'uri': uri!,
-    if (useDriverlessConfig != null)
-      'useDriverlessConfig': useDriverlessConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auxiliaryMessages = this.auxiliaryMessages;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final id = this.id;
+    final makeAndModel = this.makeAndModel;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final uri = this.uri;
+    final useDriverlessConfig = this.useDriverlessConfig;
+    return {
+      'auxiliaryMessages': ?auxiliaryMessages,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'id': ?id,
+      'makeAndModel': ?makeAndModel,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'uri': ?uri,
+      'useDriverlessConfig': ?useDriverlessConfig,
+    };
+  }
 }
 
 /// Printer manufacturer and model
@@ -11304,11 +11648,16 @@ class PrinterModel {
         manufacturer: json_['manufacturer'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (makeAndModel != null) 'makeAndModel': makeAndModel!,
-    if (manufacturer != null) 'manufacturer': manufacturer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final makeAndModel = this.makeAndModel;
+    final manufacturer = this.manufacturer;
+    return {
+      'displayName': ?displayName,
+      'makeAndModel': ?makeAndModel,
+      'manufacturer': ?manufacturer,
+    };
+  }
 }
 
 class Privilege {
@@ -11353,14 +11702,13 @@ class Privilege {
 
   Privilege.fromJson(core.Map json_)
     : this(
-        childPrivileges:
-            (json_['childPrivileges'] as core.List?)
-                ?.map(
-                  (value) => Privilege.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        childPrivileges: (json_['childPrivileges'] as core.List?)
+            ?.map(
+              (value) => Privilege.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         isOuScopable: json_['isOuScopable'] as core.bool?,
         kind: json_['kind'] as core.String?,
@@ -11369,15 +11717,24 @@ class Privilege {
         serviceName: json_['serviceName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (childPrivileges != null) 'childPrivileges': childPrivileges!,
-    if (etag != null) 'etag': etag!,
-    if (isOuScopable != null) 'isOuScopable': isOuScopable!,
-    if (kind != null) 'kind': kind!,
-    if (privilegeName != null) 'privilegeName': privilegeName!,
-    if (serviceId != null) 'serviceId': serviceId!,
-    if (serviceName != null) 'serviceName': serviceName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final childPrivileges = this.childPrivileges;
+    final etag = this.etag;
+    final isOuScopable = this.isOuScopable;
+    final kind = this.kind;
+    final privilegeName = this.privilegeName;
+    final serviceId = this.serviceId;
+    final serviceName = this.serviceName;
+    return {
+      'childPrivileges': ?childPrivileges,
+      'etag': ?etag,
+      'isOuScopable': ?isOuScopable,
+      'kind': ?kind,
+      'privilegeName': ?privilegeName,
+      'serviceId': ?serviceId,
+      'serviceName': ?serviceName,
+    };
+  }
 }
 
 class Privileges {
@@ -11397,22 +11754,22 @@ class Privileges {
   Privileges.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Privilege.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Privilege.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
 }
 
 class RoleRolePrivileges {
@@ -11433,10 +11790,11 @@ class RoleRolePrivileges {
         serviceId: json_['serviceId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (privilegeName != null) 'privilegeName': privilegeName!,
-    if (serviceId != null) 'serviceId': serviceId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final privilegeName = this.privilegeName;
+    final serviceId = this.serviceId;
+    return {'privilegeName': ?privilegeName, 'serviceId': ?serviceId};
+  }
 }
 
 class Role {
@@ -11486,26 +11844,35 @@ class Role {
         roleDescription: json_['roleDescription'] as core.String?,
         roleId: json_['roleId'] as core.String?,
         roleName: json_['roleName'] as core.String?,
-        rolePrivileges:
-            (json_['rolePrivileges'] as core.List?)
-                ?.map(
-                  (value) => RoleRolePrivileges.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rolePrivileges: (json_['rolePrivileges'] as core.List?)
+            ?.map(
+              (value) => RoleRolePrivileges.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole!,
-    if (isSystemRole != null) 'isSystemRole': isSystemRole!,
-    if (kind != null) 'kind': kind!,
-    if (roleDescription != null) 'roleDescription': roleDescription!,
-    if (roleId != null) 'roleId': roleId!,
-    if (roleName != null) 'roleName': roleName!,
-    if (rolePrivileges != null) 'rolePrivileges': rolePrivileges!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final isSuperAdminRole = this.isSuperAdminRole;
+    final isSystemRole = this.isSystemRole;
+    final kind = this.kind;
+    final roleDescription = this.roleDescription;
+    final roleId = this.roleId;
+    final roleName = this.roleName;
+    final rolePrivileges = this.rolePrivileges;
+    return {
+      'etag': ?etag,
+      'isSuperAdminRole': ?isSuperAdminRole,
+      'isSystemRole': ?isSystemRole,
+      'kind': ?kind,
+      'roleDescription': ?roleDescription,
+      'roleId': ?roleId,
+      'roleName': ?roleName,
+      'rolePrivileges': ?rolePrivileges,
+    };
+  }
 }
 
 /// Defines an assignment of a role.
@@ -11602,17 +11969,28 @@ class RoleAssignment {
         scopeType: json_['scopeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignedTo != null) 'assignedTo': assignedTo!,
-    if (assigneeType != null) 'assigneeType': assigneeType!,
-    if (condition != null) 'condition': condition!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (roleAssignmentId != null) 'roleAssignmentId': roleAssignmentId!,
-    if (roleId != null) 'roleId': roleId!,
-    if (scopeType != null) 'scopeType': scopeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignedTo = this.assignedTo;
+    final assigneeType = this.assigneeType;
+    final condition = this.condition;
+    final etag = this.etag;
+    final kind = this.kind;
+    final orgUnitId = this.orgUnitId;
+    final roleAssignmentId = this.roleAssignmentId;
+    final roleId = this.roleId;
+    final scopeType = this.scopeType;
+    return {
+      'assignedTo': ?assignedTo,
+      'assigneeType': ?assigneeType,
+      'condition': ?condition,
+      'etag': ?etag,
+      'kind': ?kind,
+      'orgUnitId': ?orgUnitId,
+      'roleAssignmentId': ?roleAssignmentId,
+      'roleId': ?roleId,
+      'scopeType': ?scopeType,
+    };
+  }
 }
 
 class RoleAssignments {
@@ -11633,24 +12011,29 @@ class RoleAssignments {
   RoleAssignments.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => RoleAssignment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => RoleAssignment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class Roles {
@@ -11671,24 +12054,28 @@ class Roles {
   Roles.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Role.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Role.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The type of API resource.
@@ -11729,27 +12116,34 @@ class Schema {
     : this(
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map(
-                  (value) => SchemaFieldSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => SchemaFieldSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         schemaId: json_['schemaId'] as core.String?,
         schemaName: json_['schemaName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (fields != null) 'fields': fields!,
-    if (kind != null) 'kind': kind!,
-    if (schemaId != null) 'schemaId': schemaId!,
-    if (schemaName != null) 'schemaName': schemaName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final fields = this.fields;
+    final kind = this.kind;
+    final schemaId = this.schemaId;
+    final schemaName = this.schemaName;
+    return {
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'fields': ?fields,
+      'kind': ?kind,
+      'schemaId': ?schemaId,
+      'schemaName': ?schemaName,
+    };
+  }
 }
 
 /// Indexing spec for a numeric field.
@@ -11777,10 +12171,11 @@ class SchemaFieldSpecNumericIndexingSpec {
         minValue: (json_['minValue'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxValue != null) 'maxValue': maxValue!,
-    if (minValue != null) 'minValue': minValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxValue = this.maxValue;
+    final minValue = this.minValue;
+    return {'maxValue': ?maxValue, 'minValue': ?minValue};
+  }
 }
 
 /// You can use schemas to add custom fields to user profiles.
@@ -11857,29 +12252,39 @@ class SchemaFieldSpec {
         indexed: json_['indexed'] as core.bool?,
         kind: json_['kind'] as core.String?,
         multiValued: json_['multiValued'] as core.bool?,
-        numericIndexingSpec:
-            json_.containsKey('numericIndexingSpec')
-                ? SchemaFieldSpecNumericIndexingSpec.fromJson(
-                  json_['numericIndexingSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        numericIndexingSpec: json_.containsKey('numericIndexingSpec')
+            ? SchemaFieldSpecNumericIndexingSpec.fromJson(
+                json_['numericIndexingSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         readAccessType: json_['readAccessType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (fieldId != null) 'fieldId': fieldId!,
-    if (fieldName != null) 'fieldName': fieldName!,
-    if (fieldType != null) 'fieldType': fieldType!,
-    if (indexed != null) 'indexed': indexed!,
-    if (kind != null) 'kind': kind!,
-    if (multiValued != null) 'multiValued': multiValued!,
-    if (numericIndexingSpec != null)
-      'numericIndexingSpec': numericIndexingSpec!,
-    if (readAccessType != null) 'readAccessType': readAccessType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final fieldId = this.fieldId;
+    final fieldName = this.fieldName;
+    final fieldType = this.fieldType;
+    final indexed = this.indexed;
+    final kind = this.kind;
+    final multiValued = this.multiValued;
+    final numericIndexingSpec = this.numericIndexingSpec;
+    final readAccessType = this.readAccessType;
+    return {
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'fieldId': ?fieldId,
+      'fieldName': ?fieldName,
+      'fieldType': ?fieldType,
+      'indexed': ?indexed,
+      'kind': ?kind,
+      'multiValued': ?multiValued,
+      'numericIndexingSpec': ?numericIndexingSpec,
+      'readAccessType': ?readAccessType,
+    };
+  }
 }
 
 /// JSON response template for List Schema operation in Directory API.
@@ -11899,21 +12304,20 @@ class Schemas {
     : this(
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
-        schemas:
-            (json_['schemas'] as core.List?)
-                ?.map(
-                  (value) => Schema.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        schemas: (json_['schemas'] as core.List?)
+            ?.map(
+              (value) =>
+                  Schema.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (schemas != null) 'schemas': schemas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final schemas = this.schemas;
+    return {'etag': ?etag, 'kind': ?kind, 'schemas': ?schemas};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -11977,23 +12381,32 @@ class Token {
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
         nativeApp: json_['nativeApp'] as core.bool?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        scopes: (json_['scopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         userKey: json_['userKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (anonymous != null) 'anonymous': anonymous!,
-    if (clientId != null) 'clientId': clientId!,
-    if (displayText != null) 'displayText': displayText!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (nativeApp != null) 'nativeApp': nativeApp!,
-    if (scopes != null) 'scopes': scopes!,
-    if (userKey != null) 'userKey': userKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final anonymous = this.anonymous;
+    final clientId = this.clientId;
+    final displayText = this.displayText;
+    final etag = this.etag;
+    final kind = this.kind;
+    final nativeApp = this.nativeApp;
+    final scopes = this.scopes;
+    final userKey = this.userKey;
+    return {
+      'anonymous': ?anonymous,
+      'clientId': ?clientId,
+      'displayText': ?displayText,
+      'etag': ?etag,
+      'kind': ?kind,
+      'nativeApp': ?nativeApp,
+      'scopes': ?scopes,
+      'userKey': ?userKey,
+    };
+  }
 }
 
 /// JSON response template for List tokens operation in Directory API.
@@ -12014,22 +12427,21 @@ class Tokens {
   Tokens.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Token.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Token.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
 }
 
 /// The Directory API allows you to create and manage your account's users, user
@@ -12422,41 +12834,37 @@ class User {
     : this(
         addresses: json_['addresses'],
         agreedToTerms: json_['agreedToTerms'] as core.bool?,
-        aliases:
-            (json_['aliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        aliases: (json_['aliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         archived: json_['archived'] as core.bool?,
         changePasswordAtNextLogin:
             json_['changePasswordAtNextLogin'] as core.bool?,
-        creationTime:
-            json_.containsKey('creationTime')
-                ? core.DateTime.parse(json_['creationTime'] as core.String)
-                : null,
-        customSchemas: (json_['customSchemas']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            ),
+        creationTime: json_.containsKey('creationTime')
+            ? core.DateTime.parse(json_['creationTime'] as core.String)
+            : null,
+        customSchemas:
+            (json_['customSchemas'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                ),
         customerId: json_['customerId'] as core.String?,
-        deletionTime:
-            json_.containsKey('deletionTime')
-                ? core.DateTime.parse(json_['deletionTime'] as core.String)
-                : null,
+        deletionTime: json_.containsKey('deletionTime')
+            ? core.DateTime.parse(json_['deletionTime'] as core.String)
+            : null,
         emails: json_['emails'],
         etag: json_['etag'] as core.String?,
         externalIds: json_['externalIds'],
         gender: json_['gender'],
-        guestAccountInfo:
-            json_.containsKey('guestAccountInfo')
-                ? GuestAccountInfo.fromJson(
-                  json_['guestAccountInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        guestAccountInfo: json_.containsKey('guestAccountInfo')
+            ? GuestAccountInfo.fromJson(
+                json_['guestAccountInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hashFunction: json_['hashFunction'] as core.String?,
         id: json_['id'] as core.String?,
         ims: json_['ims'],
@@ -12472,21 +12880,18 @@ class User {
         keywords: json_['keywords'],
         kind: json_['kind'] as core.String?,
         languages: json_['languages'],
-        lastLoginTime:
-            json_.containsKey('lastLoginTime')
-                ? core.DateTime.parse(json_['lastLoginTime'] as core.String)
-                : null,
+        lastLoginTime: json_.containsKey('lastLoginTime')
+            ? core.DateTime.parse(json_['lastLoginTime'] as core.String)
+            : null,
         locations: json_['locations'],
-        name:
-            json_.containsKey('name')
-                ? UserName.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nonEditableAliases:
-            (json_['nonEditableAliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        name: json_.containsKey('name')
+            ? UserName.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nonEditableAliases: (json_['nonEditableAliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         notes: json_['notes'],
         orgUnitPath: json_['orgUnitPath'] as core.String?,
         organizations: json_['organizations'],
@@ -12505,61 +12910,106 @@ class User {
         websites: json_['websites'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addresses != null) 'addresses': addresses!,
-    if (agreedToTerms != null) 'agreedToTerms': agreedToTerms!,
-    if (aliases != null) 'aliases': aliases!,
-    if (archived != null) 'archived': archived!,
-    if (changePasswordAtNextLogin != null)
-      'changePasswordAtNextLogin': changePasswordAtNextLogin!,
-    if (creationTime != null)
-      'creationTime': creationTime!.toUtc().toIso8601String(),
-    if (customSchemas != null) 'customSchemas': customSchemas!,
-    if (customerId != null) 'customerId': customerId!,
-    if (deletionTime != null)
-      'deletionTime': deletionTime!.toUtc().toIso8601String(),
-    if (emails != null) 'emails': emails!,
-    if (etag != null) 'etag': etag!,
-    if (externalIds != null) 'externalIds': externalIds!,
-    if (gender != null) 'gender': gender!,
-    if (guestAccountInfo != null) 'guestAccountInfo': guestAccountInfo!,
-    if (hashFunction != null) 'hashFunction': hashFunction!,
-    if (id != null) 'id': id!,
-    if (ims != null) 'ims': ims!,
-    if (includeInGlobalAddressList != null)
-      'includeInGlobalAddressList': includeInGlobalAddressList!,
-    if (ipWhitelisted != null) 'ipWhitelisted': ipWhitelisted!,
-    if (isAdmin != null) 'isAdmin': isAdmin!,
-    if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin!,
-    if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv!,
-    if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv!,
-    if (isGuestUser != null) 'isGuestUser': isGuestUser!,
-    if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup!,
-    if (keywords != null) 'keywords': keywords!,
-    if (kind != null) 'kind': kind!,
-    if (languages != null) 'languages': languages!,
-    if (lastLoginTime != null)
-      'lastLoginTime': lastLoginTime!.toUtc().toIso8601String(),
-    if (locations != null) 'locations': locations!,
-    if (name != null) 'name': name!,
-    if (nonEditableAliases != null) 'nonEditableAliases': nonEditableAliases!,
-    if (notes != null) 'notes': notes!,
-    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-    if (organizations != null) 'organizations': organizations!,
-    if (password != null) 'password': password!,
-    if (phones != null) 'phones': phones!,
-    if (posixAccounts != null) 'posixAccounts': posixAccounts!,
-    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-    if (recoveryEmail != null) 'recoveryEmail': recoveryEmail!,
-    if (recoveryPhone != null) 'recoveryPhone': recoveryPhone!,
-    if (relations != null) 'relations': relations!,
-    if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
-    if (suspended != null) 'suspended': suspended!,
-    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-    if (thumbnailPhotoEtag != null) 'thumbnailPhotoEtag': thumbnailPhotoEtag!,
-    if (thumbnailPhotoUrl != null) 'thumbnailPhotoUrl': thumbnailPhotoUrl!,
-    if (websites != null) 'websites': websites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addresses = this.addresses;
+    final agreedToTerms = this.agreedToTerms;
+    final aliases = this.aliases;
+    final archived = this.archived;
+    final changePasswordAtNextLogin = this.changePasswordAtNextLogin;
+    final creationTime = this.creationTime;
+    final customSchemas = this.customSchemas;
+    final customerId = this.customerId;
+    final deletionTime = this.deletionTime;
+    final emails = this.emails;
+    final etag = this.etag;
+    final externalIds = this.externalIds;
+    final gender = this.gender;
+    final guestAccountInfo = this.guestAccountInfo;
+    final hashFunction = this.hashFunction;
+    final id = this.id;
+    final ims = this.ims;
+    final includeInGlobalAddressList = this.includeInGlobalAddressList;
+    final ipWhitelisted = this.ipWhitelisted;
+    final isAdmin = this.isAdmin;
+    final isDelegatedAdmin = this.isDelegatedAdmin;
+    final isEnforcedIn2Sv = this.isEnforcedIn2Sv;
+    final isEnrolledIn2Sv = this.isEnrolledIn2Sv;
+    final isGuestUser = this.isGuestUser;
+    final isMailboxSetup = this.isMailboxSetup;
+    final keywords = this.keywords;
+    final kind = this.kind;
+    final languages = this.languages;
+    final lastLoginTime = this.lastLoginTime;
+    final locations = this.locations;
+    final name = this.name;
+    final nonEditableAliases = this.nonEditableAliases;
+    final notes = this.notes;
+    final orgUnitPath = this.orgUnitPath;
+    final organizations = this.organizations;
+    final password = this.password;
+    final phones = this.phones;
+    final posixAccounts = this.posixAccounts;
+    final primaryEmail = this.primaryEmail;
+    final recoveryEmail = this.recoveryEmail;
+    final recoveryPhone = this.recoveryPhone;
+    final relations = this.relations;
+    final sshPublicKeys = this.sshPublicKeys;
+    final suspended = this.suspended;
+    final suspensionReason = this.suspensionReason;
+    final thumbnailPhotoEtag = this.thumbnailPhotoEtag;
+    final thumbnailPhotoUrl = this.thumbnailPhotoUrl;
+    final websites = this.websites;
+    return {
+      'addresses': ?addresses,
+      'agreedToTerms': ?agreedToTerms,
+      'aliases': ?aliases,
+      'archived': ?archived,
+      'changePasswordAtNextLogin': ?changePasswordAtNextLogin,
+      'creationTime': ?creationTime?.toUtc().toIso8601String(),
+      'customSchemas': ?customSchemas,
+      'customerId': ?customerId,
+      'deletionTime': ?deletionTime?.toUtc().toIso8601String(),
+      'emails': ?emails,
+      'etag': ?etag,
+      'externalIds': ?externalIds,
+      'gender': ?gender,
+      'guestAccountInfo': ?guestAccountInfo,
+      'hashFunction': ?hashFunction,
+      'id': ?id,
+      'ims': ?ims,
+      'includeInGlobalAddressList': ?includeInGlobalAddressList,
+      'ipWhitelisted': ?ipWhitelisted,
+      'isAdmin': ?isAdmin,
+      'isDelegatedAdmin': ?isDelegatedAdmin,
+      'isEnforcedIn2Sv': ?isEnforcedIn2Sv,
+      'isEnrolledIn2Sv': ?isEnrolledIn2Sv,
+      'isGuestUser': ?isGuestUser,
+      'isMailboxSetup': ?isMailboxSetup,
+      'keywords': ?keywords,
+      'kind': ?kind,
+      'languages': ?languages,
+      'lastLoginTime': ?lastLoginTime?.toUtc().toIso8601String(),
+      'locations': ?locations,
+      'name': ?name,
+      'nonEditableAliases': ?nonEditableAliases,
+      'notes': ?notes,
+      'orgUnitPath': ?orgUnitPath,
+      'organizations': ?organizations,
+      'password': ?password,
+      'phones': ?phones,
+      'posixAccounts': ?posixAccounts,
+      'primaryEmail': ?primaryEmail,
+      'recoveryEmail': ?recoveryEmail,
+      'recoveryPhone': ?recoveryPhone,
+      'relations': ?relations,
+      'sshPublicKeys': ?sshPublicKeys,
+      'suspended': ?suspended,
+      'suspensionReason': ?suspensionReason,
+      'thumbnailPhotoEtag': ?thumbnailPhotoEtag,
+      'thumbnailPhotoUrl': ?thumbnailPhotoUrl,
+      'websites': ?websites,
+    };
+  }
 }
 
 /// JSON template for a set of custom properties (i.e. all fields in a
@@ -12575,9 +13025,10 @@ class UserMakeAdmin {
   UserMakeAdmin.fromJson(core.Map json_)
     : this(status: json_['status'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    return {'status': ?status};
+  }
 }
 
 class UserName {
@@ -12610,12 +13061,18 @@ class UserName {
         givenName: json_['givenName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (familyName != null) 'familyName': familyName!,
-    if (fullName != null) 'fullName': fullName!,
-    if (givenName != null) 'givenName': givenName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final familyName = this.familyName;
+    final fullName = this.fullName;
+    final givenName = this.givenName;
+    return {
+      'displayName': ?displayName,
+      'familyName': ?familyName,
+      'fullName': ?fullName,
+      'givenName': ?givenName,
+    };
+  }
 }
 
 class UserPhoto {
@@ -12689,16 +13146,26 @@ class UserPhoto {
         width: json_['width'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (height != null) 'height': height!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (photoData != null) 'photoData': photoData!,
-    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-    if (width != null) 'width': width!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final height = this.height;
+    final id = this.id;
+    final kind = this.kind;
+    final mimeType = this.mimeType;
+    final photoData = this.photoData;
+    final primaryEmail = this.primaryEmail;
+    final width = this.width;
+    return {
+      'etag': ?etag,
+      'height': ?height,
+      'id': ?id,
+      'kind': ?kind,
+      'mimeType': ?mimeType,
+      'photoData': ?photoData,
+      'primaryEmail': ?primaryEmail,
+      'width': ?width,
+    };
+  }
 }
 
 class UserUndelete {
@@ -12710,9 +13177,10 @@ class UserUndelete {
   UserUndelete.fromJson(core.Map json_)
     : this(orgUnitPath: json_['orgUnitPath'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final orgUnitPath = this.orgUnitPath;
+    return {'orgUnitPath': ?orgUnitPath};
+  }
 }
 
 class Users {
@@ -12747,23 +13215,28 @@ class Users {
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         triggerEvent: json_['trigger_event'] as core.String?,
-        users:
-            (json_['users'] as core.List?)
-                ?.map(
-                  (value) => User.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (triggerEvent != null) 'trigger_event': triggerEvent!,
-    if (users != null) 'users': users!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final triggerEvent = this.triggerEvent;
+    final users = this.users;
+    return {
+      'etag': ?etag,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'trigger_event': ?triggerEvent,
+      'users': ?users,
+    };
+  }
 }
 
 /// The Directory API allows you to view, generate, and invalidate backup
@@ -12796,12 +13269,18 @@ class VerificationCode {
         verificationCode: json_['verificationCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (userId != null) 'userId': userId!,
-    if (verificationCode != null) 'verificationCode': verificationCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final kind = this.kind;
+    final userId = this.userId;
+    final verificationCode = this.verificationCode;
+    return {
+      'etag': ?etag,
+      'kind': ?kind,
+      'userId': ?userId,
+      'verificationCode': ?verificationCode,
+    };
+  }
 }
 
 /// JSON response template for list verification codes operation in Directory
@@ -12823,20 +13302,20 @@ class VerificationCodes {
   VerificationCodes.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => VerificationCode.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => VerificationCode.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
 }

@@ -7,7 +7,7 @@
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
 - Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
-- Require `sdk: ^3.7.0`
+- Require `sdk: ^3.9.0`
 
 ## 1.0.0
 

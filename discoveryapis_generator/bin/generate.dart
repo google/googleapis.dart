@@ -8,81 +8,75 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 
-ArgParser packageCommandArgParser() =>
-    ArgParser()
-      ..addOption(
-        'input-dir',
-        abbr: 'i',
-        help: 'Input directory of discovery documents.',
-        defaultsTo: 'googleapis-discovery-documents',
-      )
-      ..addOption(
-        'output-dir',
-        abbr: 'o',
-        help: 'Output directory of the generated API package.',
-        defaultsTo: 'googleapis',
-      )
-      ..addOption(
-        'package-name',
-        help: 'Name of the generated API package.',
-        defaultsTo: 'googleapis',
-      )
-      ..addOption(
-        'package-version',
-        help:
-            'Version of the generated API package. '
-            'If omitted, the package will be flagged as `publish_to: none`.',
-      )
-      ..addOption(
-        'package-description',
-        help: 'Description of the generated API package.',
-        defaultsTo: 'Auto-generated client libraries.',
-      )
-      ..addOption(
-        'package-author',
-        help: 'Author of the generated API package.',
-      )
-      ..addOption(
-        'package-repository',
-        help: 'Homepage of the generated API package.',
-      )
-      ..addOption(
-        'package-resolution',
-        help: 'How the package should be resolved.',
-      );
+ArgParser packageCommandArgParser() => ArgParser()
+  ..addOption(
+    'input-dir',
+    abbr: 'i',
+    help: 'Input directory of discovery documents.',
+    defaultsTo: 'googleapis-discovery-documents',
+  )
+  ..addOption(
+    'output-dir',
+    abbr: 'o',
+    help: 'Output directory of the generated API package.',
+    defaultsTo: 'googleapis',
+  )
+  ..addOption(
+    'package-name',
+    help: 'Name of the generated API package.',
+    defaultsTo: 'googleapis',
+  )
+  ..addOption(
+    'package-version',
+    help:
+        'Version of the generated API package. '
+        'If omitted, the package will be flagged as `publish_to: none`.',
+  )
+  ..addOption(
+    'package-description',
+    help: 'Description of the generated API package.',
+    defaultsTo: 'Auto-generated client libraries.',
+  )
+  ..addOption('package-author', help: 'Author of the generated API package.')
+  ..addOption(
+    'package-repository',
+    help: 'Homepage of the generated API package.',
+  )
+  ..addOption(
+    'package-resolution',
+    help: 'How the package should be resolved.',
+  );
 
-ArgParser filesCommandArgParser() =>
-    ArgParser()
-      ..addOption(
-        'input-dir',
-        abbr: 'i',
-        help: 'Input directory of discovery documents.',
-      )
-      ..addOption(
-        'output-dir',
-        abbr: 'o',
-        help: 'Output directory of the generated API files.',
-      )
-      ..addOption(
-        'update-pubspec',
-        abbr: 'u',
-        help:
-            'Update the pubspec.yaml file with required '
-            'dependencies. This will remove comments and might '
-            'change the layout of the pubspec.yaml file.',
-        defaultsTo: 'false',
-      )
-      ..addFlag(
-        'core-prefixes',
-        defaultsTo: true,
-        help: 'Use or remove an import prefix for dart:core',
-      );
+ArgParser filesCommandArgParser() => ArgParser()
+  ..addOption(
+    'input-dir',
+    abbr: 'i',
+    help: 'Input directory of discovery documents.',
+  )
+  ..addOption(
+    'output-dir',
+    abbr: 'o',
+    help: 'Output directory of the generated API files.',
+  )
+  ..addOption(
+    'update-pubspec',
+    abbr: 'u',
+    help:
+        'Update the pubspec.yaml file with required '
+        'dependencies. This will remove comments and might '
+        'change the layout of the pubspec.yaml file.',
+    defaultsTo: 'false',
+  )
+  ..addFlag(
+    'core-prefixes',
+    defaultsTo: true,
+    help: 'Use or remove an import prefix for dart:core',
+  );
 
-ArgParser globalArgParser() =>
-    ArgParser()
-      ..addCommand('package', packageCommandArgParser())
-      ..addCommand('files', filesCommandArgParser())
-      ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
+ArgParser globalArgParser() => ArgParser()
+  ..addCommand('package', packageCommandArgParser())
+  ..addCommand('files', filesCommandArgParser())
+  ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
 
 //ignore: missing_return
 ArgResults parseArguments(ArgParser parser, List<String> arguments) {
@@ -157,11 +151,10 @@ void main(List<String> arguments) {
         ),
       );
     case 'files':
-      final updatePubspec =
-          (commandOptions['update-pubspec'] as String)
-              .toLowerCase()
-              .replaceAll('=', '')
-              .trim();
+      final updatePubspec = (commandOptions['update-pubspec'] as String)
+          .toLowerCase()
+          .replaceAll('=', '')
+          .trim();
       printResults(
         generateApiFiles(
           commandOptions['input-dir'] as String,

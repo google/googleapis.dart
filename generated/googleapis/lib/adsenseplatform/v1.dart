@@ -107,7 +107,7 @@ class PlatformsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':close';
@@ -150,7 +150,7 @@ class PlatformsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accounts';
@@ -184,7 +184,7 @@ class PlatformsAccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -230,9 +230,9 @@ class PlatformsAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accounts';
@@ -277,8 +277,10 @@ class PlatformsAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (creationRequestId != null) 'creationRequestId': [creationRequestId],
-      if ($fields != null) 'fields': [$fields],
+      'creationRequestId': ?creationRequestId == null
+          ? null
+          : [creationRequestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accounts:lookup';
@@ -327,7 +329,7 @@ class PlatformsAccountsEventsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/events';
@@ -375,7 +377,7 @@ class PlatformsAccountsSitesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sites';
@@ -410,7 +412,7 @@ class PlatformsAccountsSitesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -444,7 +446,7 @@ class PlatformsAccountsSitesResource {
   /// this method will complete with the same error.
   async.Future<Site> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -491,9 +493,9 @@ class PlatformsAccountsSitesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sites';
@@ -537,7 +539,7 @@ class PlatformsAccountsSitesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':requestReview';
@@ -632,23 +634,31 @@ class Account {
         name: json_['name'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
         state: json_['state'] as core.String?,
-        timeZone:
-            json_.containsKey('timeZone')
-                ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeZone: json_.containsKey('timeZone')
+            ? TimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (creationRequestId != null) 'creationRequestId': creationRequestId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (state != null) 'state': state!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final creationRequestId = this.creationRequestId;
+    final displayName = this.displayName;
+    final name = this.name;
+    final regionCode = this.regionCode;
+    final state = this.state;
+    final timeZone = this.timeZone;
+    return {
+      'createTime': ?createTime,
+      'creationRequestId': ?creationRequestId,
+      'displayName': ?displayName,
+      'name': ?name,
+      'regionCode': ?regionCode,
+      'state': ?state,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// Address data.
@@ -726,18 +736,30 @@ class Address {
         zip: json_['zip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address1 != null) 'address1': address1!,
-    if (address2 != null) 'address2': address2!,
-    if (city != null) 'city': city!,
-    if (company != null) 'company': company!,
-    if (contact != null) 'contact': contact!,
-    if (fax != null) 'fax': fax!,
-    if (phone != null) 'phone': phone!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (state != null) 'state': state!,
-    if (zip != null) 'zip': zip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address1 = this.address1;
+    final address2 = this.address2;
+    final city = this.city;
+    final company = this.company;
+    final contact = this.contact;
+    final fax = this.fax;
+    final phone = this.phone;
+    final regionCode = this.regionCode;
+    final state = this.state;
+    final zip = this.zip;
+    return {
+      'address1': ?address1,
+      'address2': ?address2,
+      'city': ?city,
+      'company': ?company,
+      'contact': ?contact,
+      'fax': ?fax,
+      'phone': ?phone,
+      'regionCode': ?regionCode,
+      'state': ?state,
+      'zip': ?zip,
+    };
+  }
 }
 
 /// Request definition for the account close rpc.
@@ -780,21 +802,25 @@ class Event {
 
   Event.fromJson(core.Map json_)
     : this(
-        eventInfo:
-            json_.containsKey('eventInfo')
-                ? EventInfo.fromJson(
-                  json_['eventInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        eventInfo: json_.containsKey('eventInfo')
+            ? EventInfo.fromJson(
+                json_['eventInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         eventTime: json_['eventTime'] as core.String?,
         eventType: json_['eventType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eventInfo != null) 'eventInfo': eventInfo!,
-    if (eventTime != null) 'eventTime': eventTime!,
-    if (eventType != null) 'eventType': eventType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventInfo = this.eventInfo;
+    final eventTime = this.eventTime;
+    final eventType = this.eventType;
+    return {
+      'eventInfo': ?eventInfo,
+      'eventTime': ?eventTime,
+      'eventType': ?eventType,
+    };
+  }
 }
 
 /// Private information for partner recorded events (PII).
@@ -813,20 +839,19 @@ class EventInfo {
 
   EventInfo.fromJson(core.Map json_)
     : this(
-        billingAddress:
-            json_.containsKey('billingAddress')
-                ? Address.fromJson(
-                  json_['billingAddress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        billingAddress: json_.containsKey('billingAddress')
+            ? Address.fromJson(
+                json_['billingAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         email: json_['email'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (billingAddress != null) 'billingAddress': billingAddress!,
-    if (email != null) 'email': email!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingAddress = this.billingAddress;
+    final email = this.email;
+    return {'billingAddress': ?billingAddress, 'email': ?email};
+  }
 }
 
 /// Response definition for the list accounts rpc.
@@ -847,21 +872,21 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the site list rpc.
@@ -880,20 +905,19 @@ class ListSitesResponse {
   ListSitesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sites:
-            (json_['sites'] as core.List?)
-                ?.map(
-                  (value) => Site.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sites: (json_['sites'] as core.List?)
+            ?.map(
+              (value) =>
+                  Site.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sites != null) 'sites': sites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sites = this.sites;
+    return {'nextPageToken': ?nextPageToken, 'sites': ?sites};
+  }
 }
 
 /// Response definition for the lookup account rpc.
@@ -906,9 +930,10 @@ class LookupAccountResponse {
   LookupAccountResponse.fromJson(core.Map json_)
     : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// Response definition for the site request review rpc.
@@ -958,11 +983,12 @@ class Site {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final name = this.name;
+    final state = this.state;
+    return {'domain': ?domain, 'name': ?name, 'state': ?state};
+  }
 }
 
 /// Represents a time zone from the

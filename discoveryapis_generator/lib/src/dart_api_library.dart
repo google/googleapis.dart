@@ -107,8 +107,10 @@ class DartApiLibrary extends BaseApiLibrary {
       exportedClasses.addAll(exportedMediaClasses);
     }
 
-    var libraryComments =
-        _commentFromRestDescription(description, apiClass).asDartDoc(0).trim();
+    var libraryComments = _commentFromRestDescription(
+      description,
+      apiClass,
+    ).asDartDoc(0).trim();
 
     if (libraryComments.isNotEmpty) {
       libraryComments = '$libraryComments\nlibrary;';

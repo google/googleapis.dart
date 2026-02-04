@@ -4512,8 +4512,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesBackupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_request = buildBackup();
       final arg_parent = 'foo';
       final arg_backupId = 'foo';
@@ -4588,8 +4589,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -4651,8 +4653,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4705,8 +4708,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4768,8 +4772,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4849,8 +4854,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.backups;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.backups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4915,8 +4921,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesDatabasesResource', () {
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.databases;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.databases;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4978,8 +4985,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(mock).projects.locations.services.databases;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.databases;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5044,10 +5052,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesDatabasesTablesResource', () {
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.databases.tables;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.databases.tables;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -5109,10 +5116,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.databases.tables;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.databases.tables;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5177,10 +5183,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesMetadataImportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.metadataImports;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.metadataImports;
       final arg_request = buildMetadataImport();
       final arg_parent = 'foo';
       final arg_metadataImportId = 'foo';
@@ -5255,10 +5260,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.metadataImports;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.metadataImports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5311,10 +5315,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.metadataImports;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.metadataImports;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5396,10 +5399,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.metadataImports;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.metadataImports;
       final arg_request = buildMetadataImport();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5476,10 +5478,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesMigrationExecutionsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.migrationExecutions;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.migrationExecutions;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5541,10 +5542,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.migrationExecutions;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.migrationExecutions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5597,10 +5597,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocMetastoreApi(
-            mock,
-          ).projects.locations.services.migrationExecutions;
+      final res = api.DataprocMetastoreApi(
+        mock,
+      ).projects.locations.services.migrationExecutions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

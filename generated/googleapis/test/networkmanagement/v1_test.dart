@@ -3370,10 +3370,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsGlobalOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.global.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3436,10 +3435,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3492,10 +3490,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3548,10 +3545,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.global.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3633,10 +3629,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsVpcFlowLogsConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.vpcFlowLogsConfigs;
       final arg_request = buildVpcFlowLogsConfig();
       final arg_parent = 'foo';
       final arg_vpcFlowLogsConfigId = 'foo';
@@ -3705,10 +3700,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.vpcFlowLogsConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3761,10 +3755,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.vpcFlowLogsConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3817,10 +3810,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.vpcFlowLogsConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3904,10 +3896,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).organizations.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).organizations.locations.vpcFlowLogsConfigs;
       final arg_request = buildVpcFlowLogsConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4113,10 +4104,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalConnectivityTestsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_request = buildConnectivityTest();
       final arg_parent = 'foo';
       final arg_testId = 'foo';
@@ -4185,10 +4175,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4241,10 +4230,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4297,10 +4285,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4362,10 +4349,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4449,10 +4435,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_request = buildConnectivityTest();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4521,10 +4506,9 @@ void main() {
 
     unittest.test('method--rerun', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_request = buildRerunConnectivityTestRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4587,10 +4571,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4653,10 +4636,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(
-            mock,
-          ).projects.locations.global.connectivityTests;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.connectivityTests;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4723,8 +4705,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4787,8 +4770,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4841,8 +4825,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4895,8 +4880,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.global.operations;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4978,8 +4964,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVpcFlowLogsConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_request = buildVpcFlowLogsConfig();
       final arg_parent = 'foo';
       final arg_vpcFlowLogsConfigId = 'foo';
@@ -5048,8 +5035,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5102,8 +5090,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5156,8 +5145,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5241,8 +5231,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_request = buildVpcFlowLogsConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5311,8 +5302,9 @@ void main() {
 
     unittest.test('method--queryOrgVpcFlowLogsConfigs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5390,8 +5382,9 @@ void main() {
 
     unittest.test('method--showEffectiveFlowLogsConfigs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkManagementApi(mock).projects.locations.vpcFlowLogsConfigs;
+      final res = api.NetworkManagementApi(
+        mock,
+      ).projects.locations.vpcFlowLogsConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

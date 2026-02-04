@@ -94,7 +94,7 @@ extension ClientExtensions on Client {
 
     if (response.statusCode != 200) {
       final error = _errorStringFromJsonResponse(jsonMap);
-      final message = [errorHeader, if (error != null) error].join(' ');
+      final message = [errorHeader, ?error].join(' ');
       throw ServerRequestFailedException(
         message,
         statusCode: response.statusCode,
@@ -148,10 +148,9 @@ Future<void> _expectJsonResponse(StreamedResponse response) async {
       /// We're already going to throw below
     }
 
-    final message =
-        contentType == null
-            ? 'Server responded without a content type header.'
-            : 'Server responded with invalid content type: $contentType. ';
+    final message = contentType == null
+        ? 'Server responded without a content type header.'
+        : 'Server responded with invalid content type: $contentType. ';
 
     throw ServerRequestFailedException(
       '$message Expected a JSON response.',

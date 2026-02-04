@@ -109,7 +109,7 @@ class OperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -146,7 +146,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -204,7 +204,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -249,7 +249,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -304,12 +304,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -353,7 +354,7 @@ class TextResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/text:synthesize';
@@ -402,8 +403,8 @@ class VoicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/voices';
@@ -456,12 +457,16 @@ class AdvancedVoiceOptions {
         relaxSafetyFilters: json_['relaxSafetyFilters'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableTextnorm != null) 'enableTextnorm': enableTextnorm!,
-    if (lowLatencyJourneySynthesis != null)
-      'lowLatencyJourneySynthesis': lowLatencyJourneySynthesis!,
-    if (relaxSafetyFilters != null) 'relaxSafetyFilters': relaxSafetyFilters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableTextnorm = this.enableTextnorm;
+    final lowLatencyJourneySynthesis = this.lowLatencyJourneySynthesis;
+    final relaxSafetyFilters = this.relaxSafetyFilters;
+    return {
+      'enableTextnorm': ?enableTextnorm,
+      'lowLatencyJourneySynthesis': ?lowLatencyJourneySynthesis,
+      'relaxSafetyFilters': ?relaxSafetyFilters,
+    };
+  }
 }
 
 /// Description of audio data to be synthesized.
@@ -558,24 +563,31 @@ class AudioConfig {
   AudioConfig.fromJson(core.Map json_)
     : this(
         audioEncoding: json_['audioEncoding'] as core.String?,
-        effectsProfileId:
-            (json_['effectsProfileId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        effectsProfileId: (json_['effectsProfileId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         pitch: (json_['pitch'] as core.num?)?.toDouble(),
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
         volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioEncoding != null) 'audioEncoding': audioEncoding!,
-    if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
-    if (pitch != null) 'pitch': pitch!,
-    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-    if (speakingRate != null) 'speakingRate': speakingRate!,
-    if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioEncoding = this.audioEncoding;
+    final effectsProfileId = this.effectsProfileId;
+    final pitch = this.pitch;
+    final sampleRateHertz = this.sampleRateHertz;
+    final speakingRate = this.speakingRate;
+    final volumeGainDb = this.volumeGainDb;
+    return {
+      'audioEncoding': ?audioEncoding,
+      'effectsProfileId': ?effectsProfileId,
+      'pitch': ?pitch,
+      'sampleRateHertz': ?sampleRateHertz,
+      'speakingRate': ?speakingRate,
+      'volumeGainDb': ?volumeGainDb,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -629,11 +641,16 @@ class CustomPronunciationParams {
         pronunciation: json_['pronunciation'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (phoneticEncoding != null) 'phoneticEncoding': phoneticEncoding!,
-    if (phrase != null) 'phrase': phrase!,
-    if (pronunciation != null) 'pronunciation': pronunciation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final phoneticEncoding = this.phoneticEncoding;
+    final phrase = this.phrase;
+    final pronunciation = this.pronunciation;
+    return {
+      'phoneticEncoding': ?phoneticEncoding,
+      'phrase': ?phrase,
+      'pronunciation': ?pronunciation,
+    };
+  }
 }
 
 /// A collection of pronunciation customizations.
@@ -645,19 +662,19 @@ class CustomPronunciations {
 
   CustomPronunciations.fromJson(core.Map json_)
     : this(
-        pronunciations:
-            (json_['pronunciations'] as core.List?)
-                ?.map(
-                  (value) => CustomPronunciationParams.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pronunciations: (json_['pronunciations'] as core.List?)
+            ?.map(
+              (value) => CustomPronunciationParams.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pronunciations != null) 'pronunciations': pronunciations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pronunciations = this.pronunciations;
+    return {'pronunciations': ?pronunciations};
+  }
 }
 
 /// Description of the custom voice to be synthesized.
@@ -692,10 +709,11 @@ class CustomVoiceParams {
         reportedUsage: json_['reportedUsage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-    if (reportedUsage != null) 'reportedUsage': reportedUsage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final model = this.model;
+    final reportedUsage = this.reportedUsage;
+    return {'model': ?model, 'reportedUsage': ?reportedUsage};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -731,25 +749,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The message returned to the client by the `ListVoices` method.
@@ -761,19 +782,18 @@ class ListVoicesResponse {
 
   ListVoicesResponse.fromJson(core.Map json_)
     : this(
-        voices:
-            (json_['voices'] as core.List?)
-                ?.map(
-                  (value) => Voice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        voices: (json_['voices'] as core.List?)
+            ?.map(
+              (value) =>
+                  Voice.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (voices != null) 'voices': voices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final voices = this.voices;
+    return {'voices': ?voices};
+  }
 }
 
 /// A collection of turns for multi-speaker synthesis.
@@ -787,19 +807,18 @@ class MultiSpeakerMarkup {
 
   MultiSpeakerMarkup.fromJson(core.Map json_)
     : this(
-        turns:
-            (json_['turns'] as core.List?)
-                ?.map(
-                  (value) => Turn.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        turns: (json_['turns'] as core.List?)
+            ?.map(
+              (value) =>
+                  Turn.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (turns != null) 'turns': turns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final turns = this.turns;
+    return {'turns': ?turns};
+  }
 }
 
 /// Configuration for a multi-speaker text-to-speech setup.
@@ -817,20 +836,19 @@ class MultiSpeakerVoiceConfig {
 
   MultiSpeakerVoiceConfig.fromJson(core.Map json_)
     : this(
-        speakerVoiceConfigs:
-            (json_['speakerVoiceConfigs'] as core.List?)
-                ?.map(
-                  (value) => MultispeakerPrebuiltVoice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        speakerVoiceConfigs: (json_['speakerVoiceConfigs'] as core.List?)
+            ?.map(
+              (value) => MultispeakerPrebuiltVoice.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (speakerVoiceConfigs != null)
-      'speakerVoiceConfigs': speakerVoiceConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final speakerVoiceConfigs = this.speakerVoiceConfigs;
+    return {'speakerVoiceConfigs': ?speakerVoiceConfigs};
+  }
 }
 
 /// Configuration for a single speaker in a Gemini TTS multi-speaker setup.
@@ -861,10 +879,11 @@ class MultispeakerPrebuiltVoice {
         speakerId: json_['speakerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (speakerAlias != null) 'speakerAlias': speakerAlias!,
-    if (speakerId != null) 'speakerId': speakerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final speakerAlias = this.speakerAlias;
+    final speakerId = this.speakerId;
+    return {'speakerAlias': ?speakerAlias, 'speakerId': ?speakerId};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -915,30 +934,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1006,35 +1029,40 @@ class SynthesisInput {
 
   SynthesisInput.fromJson(core.Map json_)
     : this(
-        customPronunciations:
-            json_.containsKey('customPronunciations')
-                ? CustomPronunciations.fromJson(
-                  json_['customPronunciations']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customPronunciations: json_.containsKey('customPronunciations')
+            ? CustomPronunciations.fromJson(
+                json_['customPronunciations']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         markup: json_['markup'] as core.String?,
-        multiSpeakerMarkup:
-            json_.containsKey('multiSpeakerMarkup')
-                ? MultiSpeakerMarkup.fromJson(
-                  json_['multiSpeakerMarkup']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        multiSpeakerMarkup: json_.containsKey('multiSpeakerMarkup')
+            ? MultiSpeakerMarkup.fromJson(
+                json_['multiSpeakerMarkup']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         prompt: json_['prompt'] as core.String?,
         ssml: json_['ssml'] as core.String?,
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customPronunciations != null)
-      'customPronunciations': customPronunciations!,
-    if (markup != null) 'markup': markup!,
-    if (multiSpeakerMarkup != null) 'multiSpeakerMarkup': multiSpeakerMarkup!,
-    if (prompt != null) 'prompt': prompt!,
-    if (ssml != null) 'ssml': ssml!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customPronunciations = this.customPronunciations;
+    final markup = this.markup;
+    final multiSpeakerMarkup = this.multiSpeakerMarkup;
+    final prompt = this.prompt;
+    final ssml = this.ssml;
+    final text = this.text;
+    return {
+      'customPronunciations': ?customPronunciations,
+      'markup': ?markup,
+      'multiSpeakerMarkup': ?multiSpeakerMarkup,
+      'prompt': ?prompt,
+      'ssml': ?ssml,
+      'text': ?text,
+    };
+  }
 }
 
 /// The top-level message sent by the client for the `SynthesizeLongAudio`
@@ -1072,33 +1100,36 @@ class SynthesizeLongAudioRequest {
 
   SynthesizeLongAudioRequest.fromJson(core.Map json_)
     : this(
-        audioConfig:
-            json_.containsKey('audioConfig')
-                ? AudioConfig.fromJson(
-                  json_['audioConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        input:
-            json_.containsKey('input')
-                ? SynthesisInput.fromJson(
-                  json_['input'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        audioConfig: json_.containsKey('audioConfig')
+            ? AudioConfig.fromJson(
+                json_['audioConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        input: json_.containsKey('input')
+            ? SynthesisInput.fromJson(
+                json_['input'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outputGcsUri: json_['outputGcsUri'] as core.String?,
-        voice:
-            json_.containsKey('voice')
-                ? VoiceSelectionParams.fromJson(
-                  json_['voice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        voice: json_.containsKey('voice')
+            ? VoiceSelectionParams.fromJson(
+                json_['voice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioConfig != null) 'audioConfig': audioConfig!,
-    if (input != null) 'input': input!,
-    if (outputGcsUri != null) 'outputGcsUri': outputGcsUri!,
-    if (voice != null) 'voice': voice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioConfig = this.audioConfig;
+    final input = this.input;
+    final outputGcsUri = this.outputGcsUri;
+    final voice = this.voice;
+    return {
+      'audioConfig': ?audioConfig,
+      'input': ?input,
+      'outputGcsUri': ?outputGcsUri,
+      'voice': ?voice,
+    };
+  }
 }
 
 /// The top-level message sent by the client for the `SynthesizeSpeech` method.
@@ -1132,40 +1163,41 @@ class SynthesizeSpeechRequest {
 
   SynthesizeSpeechRequest.fromJson(core.Map json_)
     : this(
-        advancedVoiceOptions:
-            json_.containsKey('advancedVoiceOptions')
-                ? AdvancedVoiceOptions.fromJson(
-                  json_['advancedVoiceOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        audioConfig:
-            json_.containsKey('audioConfig')
-                ? AudioConfig.fromJson(
-                  json_['audioConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        input:
-            json_.containsKey('input')
-                ? SynthesisInput.fromJson(
-                  json_['input'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        voice:
-            json_.containsKey('voice')
-                ? VoiceSelectionParams.fromJson(
-                  json_['voice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        advancedVoiceOptions: json_.containsKey('advancedVoiceOptions')
+            ? AdvancedVoiceOptions.fromJson(
+                json_['advancedVoiceOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        audioConfig: json_.containsKey('audioConfig')
+            ? AudioConfig.fromJson(
+                json_['audioConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        input: json_.containsKey('input')
+            ? SynthesisInput.fromJson(
+                json_['input'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        voice: json_.containsKey('voice')
+            ? VoiceSelectionParams.fromJson(
+                json_['voice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advancedVoiceOptions != null)
-      'advancedVoiceOptions': advancedVoiceOptions!,
-    if (audioConfig != null) 'audioConfig': audioConfig!,
-    if (input != null) 'input': input!,
-    if (voice != null) 'voice': voice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advancedVoiceOptions = this.advancedVoiceOptions;
+    final audioConfig = this.audioConfig;
+    final input = this.input;
+    final voice = this.voice;
+    return {
+      'advancedVoiceOptions': ?advancedVoiceOptions,
+      'audioConfig': ?audioConfig,
+      'input': ?input,
+      'voice': ?voice,
+    };
+  }
 }
 
 /// The message returned to the client by the `SynthesizeSpeech` method.
@@ -1192,9 +1224,10 @@ class SynthesizeSpeechResponse {
   SynthesizeSpeechResponse.fromJson(core.Map json_)
     : this(audioContent: json_['audioContent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioContent != null) 'audioContent': audioContent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioContent = this.audioContent;
+    return {'audioContent': ?audioContent};
+  }
 }
 
 /// A multi-speaker turn.
@@ -1219,10 +1252,11 @@ class Turn {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (speaker != null) 'speaker': speaker!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final speaker = this.speaker;
+    final text = this.text;
+    return {'speaker': ?speaker, 'text': ?text};
+  }
 }
 
 /// Description of a voice supported by the TTS service.
@@ -1261,22 +1295,26 @@ class Voice {
 
   Voice.fromJson(core.Map json_)
     : this(
-        languageCodes:
-            (json_['languageCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        languageCodes: (json_['languageCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
         naturalSampleRateHertz: json_['naturalSampleRateHertz'] as core.int?,
         ssmlGender: json_['ssmlGender'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCodes != null) 'languageCodes': languageCodes!,
-    if (name != null) 'name': name!,
-    if (naturalSampleRateHertz != null)
-      'naturalSampleRateHertz': naturalSampleRateHertz!,
-    if (ssmlGender != null) 'ssmlGender': ssmlGender!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCodes = this.languageCodes;
+    final name = this.name;
+    final naturalSampleRateHertz = this.naturalSampleRateHertz;
+    final ssmlGender = this.ssmlGender;
+    return {
+      'languageCodes': ?languageCodes,
+      'name': ?name,
+      'naturalSampleRateHertz': ?naturalSampleRateHertz,
+      'ssmlGender': ?ssmlGender,
+    };
+  }
 }
 
 /// The configuration of Voice Clone feature.
@@ -1291,9 +1329,10 @@ class VoiceCloneParams {
   VoiceCloneParams.fromJson(core.Map json_)
     : this(voiceCloningKey: json_['voiceCloningKey'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (voiceCloningKey != null) 'voiceCloningKey': voiceCloningKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final voiceCloningKey = this.voiceCloningKey;
+    return {'voiceCloningKey': ?voiceCloningKey};
+  }
 }
 
 /// Description of which voice to use for a synthesis request.
@@ -1379,39 +1418,44 @@ class VoiceSelectionParams {
 
   VoiceSelectionParams.fromJson(core.Map json_)
     : this(
-        customVoice:
-            json_.containsKey('customVoice')
-                ? CustomVoiceParams.fromJson(
-                  json_['customVoice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customVoice: json_.containsKey('customVoice')
+            ? CustomVoiceParams.fromJson(
+                json_['customVoice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         languageCode: json_['languageCode'] as core.String?,
         modelName: json_['modelName'] as core.String?,
-        multiSpeakerVoiceConfig:
-            json_.containsKey('multiSpeakerVoiceConfig')
-                ? MultiSpeakerVoiceConfig.fromJson(
-                  json_['multiSpeakerVoiceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        multiSpeakerVoiceConfig: json_.containsKey('multiSpeakerVoiceConfig')
+            ? MultiSpeakerVoiceConfig.fromJson(
+                json_['multiSpeakerVoiceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         ssmlGender: json_['ssmlGender'] as core.String?,
-        voiceClone:
-            json_.containsKey('voiceClone')
-                ? VoiceCloneParams.fromJson(
-                  json_['voiceClone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        voiceClone: json_.containsKey('voiceClone')
+            ? VoiceCloneParams.fromJson(
+                json_['voiceClone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customVoice != null) 'customVoice': customVoice!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (modelName != null) 'modelName': modelName!,
-    if (multiSpeakerVoiceConfig != null)
-      'multiSpeakerVoiceConfig': multiSpeakerVoiceConfig!,
-    if (name != null) 'name': name!,
-    if (ssmlGender != null) 'ssmlGender': ssmlGender!,
-    if (voiceClone != null) 'voiceClone': voiceClone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customVoice = this.customVoice;
+    final languageCode = this.languageCode;
+    final modelName = this.modelName;
+    final multiSpeakerVoiceConfig = this.multiSpeakerVoiceConfig;
+    final name = this.name;
+    final ssmlGender = this.ssmlGender;
+    final voiceClone = this.voiceClone;
+    return {
+      'customVoice': ?customVoice,
+      'languageCode': ?languageCode,
+      'modelName': ?modelName,
+      'multiSpeakerVoiceConfig': ?multiSpeakerVoiceConfig,
+      'name': ?name,
+      'ssmlGender': ?ssmlGender,
+      'voiceClone': ?voiceClone,
+    };
+  }
 }

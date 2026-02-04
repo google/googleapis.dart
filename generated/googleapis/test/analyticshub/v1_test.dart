@@ -2248,10 +2248,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo(od);
       });
     },
@@ -2264,10 +2264,10 @@ void main() {
         final o =
             buildGoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo(
           od,
         );
@@ -2282,10 +2282,10 @@ void main() {
         final o =
             buildGoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo(od);
       });
     },
@@ -2298,10 +2298,10 @@ void main() {
         final o =
             buildGoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo(
           od,
         );
@@ -2774,8 +2774,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsDataExchangesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).organizations.locations.dataExchanges;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).organizations.locations.dataExchanges;
       final arg_organization = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3493,8 +3494,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataExchangesListingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildListing();
       final arg_parent = 'foo';
       final arg_listingId = 'foo';
@@ -3563,8 +3565,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_name = 'foo';
       final arg_deleteCommercial = true;
       final arg_$fields = 'foo';
@@ -3626,8 +3629,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3680,8 +3684,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3744,8 +3749,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3813,8 +3819,9 @@ void main() {
 
     unittest.test('method--listSubscriptions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_resource = 'foo';
       final arg_includeDeletedSubscriptions = true;
       final arg_pageSize = 42;
@@ -3892,8 +3899,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildListing();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3962,8 +3970,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4026,8 +4035,9 @@ void main() {
 
     unittest.test('method--subscribe', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildSubscribeListingRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4090,8 +4100,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(mock).projects.locations.dataExchanges.listings;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.listings;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4158,10 +4169,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataExchangesQueryTemplatesResource', () {
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_request = buildApproveQueryTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4224,10 +4234,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_request = buildQueryTemplate();
       final arg_parent = 'foo';
       final arg_queryTemplateId = 'foo';
@@ -4296,10 +4305,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4352,10 +4360,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4408,10 +4415,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4481,10 +4487,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_request = buildQueryTemplate();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4553,10 +4558,9 @@ void main() {
 
     unittest.test('method--submit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AnalyticsHubApi(
-            mock,
-          ).projects.locations.dataExchanges.queryTemplates;
+      final res = api.AnalyticsHubApi(
+        mock,
+      ).projects.locations.dataExchanges.queryTemplates;
       final arg_request = buildSubmitQueryTemplateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

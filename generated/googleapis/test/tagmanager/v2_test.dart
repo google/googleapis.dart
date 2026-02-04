@@ -5942,10 +5942,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesBuiltInVariablesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.builtInVariables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.builtInVariables;
       final arg_parent = 'foo';
       final arg_type = buildUnnamed63();
       final arg_$fields = 'foo';
@@ -6008,10 +6007,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.builtInVariables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.builtInVariables;
       final arg_path = 'foo';
       final arg_type = buildUnnamed64();
       final arg_$fields = 'foo';
@@ -6065,10 +6063,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.builtInVariables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.builtInVariables;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -6134,10 +6131,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.builtInVariables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.builtInVariables;
       final arg_path = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
@@ -6202,8 +6198,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesClientsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_request = buildClient();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6266,8 +6263,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6319,8 +6317,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6373,8 +6372,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -6436,8 +6436,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -6499,8 +6500,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.clients;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.clients;
       final arg_request = buildClient();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -6571,8 +6573,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesFoldersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_request = buildFolder();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6635,8 +6638,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6688,8 +6692,9 @@ void main() {
 
     unittest.test('method--entities', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_path = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -6751,8 +6756,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6805,8 +6811,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -6868,8 +6875,9 @@ void main() {
 
     unittest.test('method--moveEntitiesToFolder', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_request = buildFolder();
       final arg_path = 'foo';
       final arg_tagId = buildUnnamed65();
@@ -6946,8 +6954,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -7009,8 +7018,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.folders;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.folders;
       final arg_request = buildFolder();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -7081,8 +7091,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesGtagConfigResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.gtagConfig;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.gtagConfig;
       final arg_request = buildGtagConfig();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7145,8 +7156,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.gtagConfig;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.gtagConfig;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7198,8 +7210,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.gtagConfig;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.gtagConfig;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7252,8 +7265,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.gtagConfig;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.gtagConfig;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -7315,8 +7329,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.gtagConfig;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.gtagConfig;
       final arg_request = buildGtagConfig();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -7750,8 +7765,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesTemplatesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_request = buildCustomTemplate();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7814,8 +7830,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7867,8 +7884,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7921,8 +7939,9 @@ void main() {
 
     unittest.test('method--importFromGallery', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_parent = 'foo';
       final arg_acknowledgePermissions = true;
       final arg_galleryOwner = 'foo';
@@ -8002,8 +8021,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -8065,8 +8085,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -8128,8 +8149,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.templates;
       final arg_request = buildCustomTemplate();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -8200,10 +8222,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesTransformationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_request = buildTransformation();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8266,10 +8287,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8321,10 +8341,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8377,10 +8396,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -8444,10 +8462,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -8511,10 +8528,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(
-            mock,
-          ).accounts.containers.workspaces.transformations;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.transformations;
       final arg_request = buildTransformation();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -8585,8 +8601,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesTriggersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_request = buildTrigger();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8649,8 +8666,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8702,8 +8720,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8756,8 +8775,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -8819,8 +8839,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -8882,8 +8903,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.triggers;
       final arg_request = buildTrigger();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
@@ -8954,8 +8976,9 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesVariablesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_request = buildVariable();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9018,8 +9041,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9071,8 +9095,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_path = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9125,8 +9150,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_parent = 'foo';
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -9188,8 +9214,9 @@ void main() {
 
     unittest.test('method--revert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';
       final arg_$fields = 'foo';
@@ -9251,8 +9278,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TagManagerApi(mock).accounts.containers.workspaces.variables;
+      final res = api.TagManagerApi(
+        mock,
+      ).accounts.containers.workspaces.variables;
       final arg_request = buildVariable();
       final arg_path = 'foo';
       final arg_fingerprint = 'foo';

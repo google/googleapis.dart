@@ -112,7 +112,7 @@ class JwksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -175,7 +175,7 @@ class OauthClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -238,7 +238,7 @@ class OauthClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -300,7 +300,7 @@ class OauthClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -361,7 +361,7 @@ class OauthClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -441,7 +441,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -523,7 +523,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -586,7 +586,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -638,7 +638,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -698,7 +698,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -750,7 +750,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -801,7 +801,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -852,7 +852,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -908,7 +908,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -959,7 +959,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1013,7 +1013,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1074,7 +1074,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1130,7 +1130,7 @@ class ProjectsAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1190,8 +1190,8 @@ class ProjectsAppsAppAttestConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1233,7 +1233,7 @@ class ProjectsAppsAppAttestConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1283,8 +1283,8 @@ class ProjectsAppsAppAttestConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1339,7 +1339,7 @@ class ProjectsAppsDebugTokensResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
@@ -1384,7 +1384,7 @@ class ProjectsAppsDebugTokensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1427,7 +1427,7 @@ class ProjectsAppsDebugTokensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1482,9 +1482,9 @@ class ProjectsAppsDebugTokensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
@@ -1536,8 +1536,8 @@ class ProjectsAppsDebugTokensResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1597,8 +1597,8 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1644,7 +1644,7 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1696,8 +1696,8 @@ class ProjectsAppsDeviceCheckConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1754,8 +1754,8 @@ class ProjectsAppsPlayIntegrityConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1798,7 +1798,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1849,8 +1849,8 @@ class ProjectsAppsPlayIntegrityConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -1916,8 +1916,8 @@ class ProjectsAppsRecaptchaConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1965,7 +1965,7 @@ class ProjectsAppsRecaptchaConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2019,8 +2019,8 @@ class ProjectsAppsRecaptchaConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2080,8 +2080,8 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2124,7 +2124,7 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2175,8 +2175,8 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2236,8 +2236,8 @@ class ProjectsAppsRecaptchaV3ConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2283,7 +2283,7 @@ class ProjectsAppsRecaptchaV3ConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2335,8 +2335,8 @@ class ProjectsAppsRecaptchaV3ConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2399,8 +2399,8 @@ class ProjectsAppsSafetyNetConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (names != null) 'names': names,
-      if ($fields != null) 'fields': [$fields],
+      'names': ?names,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2445,7 +2445,7 @@ class ProjectsAppsSafetyNetConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2498,8 +2498,8 @@ class ProjectsAppsSafetyNetConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2555,7 +2555,7 @@ class ProjectsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2602,7 +2602,7 @@ class ProjectsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2657,9 +2657,9 @@ class ProjectsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
@@ -2712,8 +2712,8 @@ class ProjectsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2767,7 +2767,7 @@ class ProjectsServicesResourcePoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2817,7 +2817,7 @@ class ProjectsServicesResourcePoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2869,8 +2869,8 @@ class ProjectsServicesResourcePoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2913,7 +2913,7 @@ class ProjectsServicesResourcePoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -2982,10 +2982,10 @@ class ProjectsServicesResourcePoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3038,8 +3038,8 @@ class ProjectsServicesResourcePoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -3086,10 +3086,11 @@ class GoogleFirebaseAppcheckV1betaAppAttestConfig {
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final tokenTtl = this.tokenTtl;
+    return {'name': ?name, 'tokenTtl': ?tokenTtl};
+  }
 }
 
 /// Encapsulates an *App Check token*, which are used to access backend services
@@ -3138,11 +3139,16 @@ class GoogleFirebaseAppcheckV1betaAppCheckToken {
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationToken != null) 'attestationToken': attestationToken!,
-    if (token != null) 'token': token!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestationToken = this.attestationToken;
+    final token = this.token;
+    final ttl = this.ttl;
+    return {
+      'attestationToken': ?attestationToken,
+      'token': ?token,
+      'ttl': ?ttl,
+    };
+  }
 }
 
 /// Encapsulates an *App Check token*, which are used to access Firebase
@@ -3173,10 +3179,11 @@ class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationToken != null) 'attestationToken': attestationToken!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestationToken = this.attestationToken;
+    final ttl = this.ttl;
+    return {'attestationToken': ?attestationToken, 'ttl': ?ttl};
+  }
 }
 
 /// Response message for the BatchGetAppAttestConfigs method.
@@ -3189,20 +3196,19 @@ class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetDeviceCheckConfigs method.
@@ -3217,20 +3223,19 @@ class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetPlayIntegrityConfigs method.
@@ -3245,20 +3250,20 @@ class GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetRecaptchaConfigs method.
@@ -3271,20 +3276,19 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetRecaptchaEnterpriseConfigs method.
@@ -3299,20 +3303,20 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetRecaptchaV3Configs method.
@@ -3327,20 +3331,19 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Response message for the BatchGetSafetyNetConfigs method.
@@ -3353,20 +3356,19 @@ class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
   GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse.fromJson(
     core.Map json_,
   ) : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    return {'configs': ?configs};
+  }
 }
 
 /// Request message for the BatchUpdateResourcePolicies method.
@@ -3396,22 +3398,22 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
   GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest.fromJson(
     core.Map json_,
   ) : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    final updateMask = this.updateMask;
+    return {'requests': ?requests, 'updateMask': ?updateMask};
+  }
 }
 
 /// Response message for the BatchUpdateResourcePolicies method.
@@ -3426,20 +3428,19 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse {
   GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse.fromJson(
     core.Map json_,
   ) : this(
-        resourcePolicies:
-            (json_['resourcePolicies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        resourcePolicies: (json_['resourcePolicies'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourcePolicies = this.resourcePolicies;
+    return {'resourcePolicies': ?resourcePolicies};
+  }
 }
 
 /// Request message for the BatchUpdateServices method.
@@ -3468,22 +3469,22 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest.fromJson(
     core.Map json_,
   ) : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    final updateMask = this.updateMask;
+    return {'requests': ?requests, 'updateMask': ?updateMask};
+  }
 }
 
 /// Response message for the BatchUpdateServices method.
@@ -3496,19 +3497,19 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse.fromJson(
     core.Map json_,
   ) : this(
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppcheckV1betaService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (services != null) 'services': services!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final services = this.services;
+    return {'services': ?services};
+  }
 }
 
 /// A *debug token* is a secret used during the development or integration
@@ -3560,12 +3561,18 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (token != null) 'token': token!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final name = this.name;
+    final token = this.token;
+    final updateTime = this.updateTime;
+    return {
+      'displayName': ?displayName,
+      'name': ?name,
+      'token': ?token,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An app's DeviceCheck configuration object.
@@ -3630,13 +3637,20 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyId != null) 'keyId': keyId!,
-    if (name != null) 'name': name!,
-    if (privateKey != null) 'privateKey': privateKey!,
-    if (privateKeySet != null) 'privateKeySet': privateKeySet!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyId = this.keyId;
+    final name = this.name;
+    final privateKey = this.privateKey;
+    final privateKeySet = this.privateKeySet;
+    final tokenTtl = this.tokenTtl;
+    return {
+      'keyId': ?keyId,
+      'name': ?name,
+      'privateKey': ?privateKey,
+      'privateKeySet': ?privateKeySet,
+      'tokenTtl': ?tokenTtl,
+    };
+  }
 }
 
 /// Request message for the ExchangeAppAttestAssertion method.
@@ -3704,12 +3718,18 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifact != null) 'artifact': artifact!,
-    if (assertion != null) 'assertion': assertion!,
-    if (challenge != null) 'challenge': challenge!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifact = this.artifact;
+    final assertion = this.assertion;
+    final challenge = this.challenge;
+    final limitedUse = this.limitedUse;
+    return {
+      'artifact': ?artifact,
+      'assertion': ?assertion,
+      'challenge': ?challenge,
+      'limitedUse': ?limitedUse,
+    };
+  }
 }
 
 /// Request message for the ExchangeAppAttestAttestation method.
@@ -3780,13 +3800,18 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationStatement != null)
-      'attestationStatement': attestationStatement!,
-    if (challenge != null) 'challenge': challenge!,
-    if (keyId != null) 'keyId': keyId!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestationStatement = this.attestationStatement;
+    final challenge = this.challenge;
+    final keyId = this.keyId;
+    final limitedUse = this.limitedUse;
+    return {
+      'attestationStatement': ?attestationStatement,
+      'challenge': ?challenge,
+      'keyId': ?keyId,
+      'limitedUse': ?limitedUse,
+    };
+  }
 }
 
 /// Response message for the ExchangeAppAttestAttestation method.
@@ -3821,27 +3846,30 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse.fromJson(
     core.Map json_,
   ) : this(
-        appCheckToken:
-            json_.containsKey('appCheckToken')
-                ? GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-                  json_['appCheckToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appCheckToken: json_.containsKey('appCheckToken')
+            ? GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
+                json_['appCheckToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         artifact: json_['artifact'] as core.String?,
-        attestationToken:
-            json_.containsKey('attestationToken')
-                ? GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
-                  json_['attestationToken']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attestationToken: json_.containsKey('attestationToken')
+            ? GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+                json_['attestationToken']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appCheckToken != null) 'appCheckToken': appCheckToken!,
-    if (artifact != null) 'artifact': artifact!,
-    if (attestationToken != null) 'attestationToken': attestationToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appCheckToken = this.appCheckToken;
+    final artifact = this.artifact;
+    final attestationToken = this.attestationToken;
+    return {
+      'appCheckToken': ?appCheckToken,
+      'artifact': ?artifact,
+      'attestationToken': ?attestationToken,
+    };
+  }
 }
 
 /// Request message for the ExchangeCustomToken method.
@@ -3893,11 +3921,16 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customToken != null) 'customToken': customToken!,
-    if (jti != null) 'jti': jti!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customToken = this.customToken;
+    final jti = this.jti;
+    final limitedUse = this.limitedUse;
+    return {
+      'customToken': ?customToken,
+      'jti': ?jti,
+      'limitedUse': ?limitedUse,
+    };
+  }
 }
 
 /// Request message for the ExchangeDebugToken method.
@@ -3928,10 +3961,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (debugToken != null) 'debugToken': debugToken!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final debugToken = this.debugToken;
+    final limitedUse = this.limitedUse;
+    return {'debugToken': ?debugToken, 'limitedUse': ?limitedUse};
+  }
 }
 
 /// Request message for the ExchangeDeviceCheckToken method.
@@ -3963,10 +3997,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceToken != null) 'deviceToken': deviceToken!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceToken = this.deviceToken;
+    final limitedUse = this.limitedUse;
+    return {'deviceToken': ?deviceToken, 'limitedUse': ?limitedUse};
+  }
 }
 
 /// Request message for the ExchangePlayIntegrityToken method.
@@ -3997,10 +4032,14 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
         playIntegrityToken: json_['playIntegrityToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (playIntegrityToken != null) 'playIntegrityToken': playIntegrityToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final limitedUse = this.limitedUse;
+    final playIntegrityToken = this.playIntegrityToken;
+    return {
+      'limitedUse': ?limitedUse,
+      'playIntegrityToken': ?playIntegrityToken,
+    };
+  }
 }
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
@@ -4031,11 +4070,14 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
             json_['recaptchaEnterpriseToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (recaptchaEnterpriseToken != null)
-      'recaptchaEnterpriseToken': recaptchaEnterpriseToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final limitedUse = this.limitedUse;
+    final recaptchaEnterpriseToken = this.recaptchaEnterpriseToken;
+    return {
+      'limitedUse': ?limitedUse,
+      'recaptchaEnterpriseToken': ?recaptchaEnterpriseToken,
+    };
+  }
 }
 
 /// Request message for the ExchangeRecaptchaToken method.
@@ -4054,9 +4096,10 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
     core.Map json_,
   ) : this(recaptchaToken: json_['recaptchaToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recaptchaToken = this.recaptchaToken;
+    return {'recaptchaToken': ?recaptchaToken};
+  }
 }
 
 /// Request message for the ExchangeRecaptchaV3Token method.
@@ -4086,10 +4129,11 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
         recaptchaV3Token: json_['recaptchaV3Token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (recaptchaV3Token != null) 'recaptchaV3Token': recaptchaV3Token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final limitedUse = this.limitedUse;
+    final recaptchaV3Token = this.recaptchaV3Token;
+    return {'limitedUse': ?limitedUse, 'recaptchaV3Token': ?recaptchaV3Token};
+  }
 }
 
 /// Request message for the ExchangeSafetyNetToken method.
@@ -4109,9 +4153,10 @@ class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest {
     core.Map json_,
   ) : this(safetyNetToken: json_['safetyNetToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final safetyNetToken = this.safetyNetToken;
+    return {'safetyNetToken': ?safetyNetToken};
+  }
 }
 
 /// Request message for the GenerateAppAttestChallenge method.
@@ -4149,10 +4194,11 @@ class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse {
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challenge = this.challenge;
+    final ttl = this.ttl;
+    return {'challenge': ?challenge, 'ttl': ?ttl};
+  }
 }
 
 /// Request message for the GeneratePlayIntegrityChallenge method.
@@ -4185,10 +4231,11 @@ class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse {
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challenge = this.challenge;
+    final ttl = this.ttl;
+    return {'challenge': ?challenge, 'ttl': ?ttl};
+  }
 }
 
 /// Response message for the ListDebugTokens method.
@@ -4212,21 +4259,21 @@ class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
 
   GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(core.Map json_)
     : this(
-        debugTokens:
-            (json_['debugTokens'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        debugTokens: (json_['debugTokens'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (debugTokens != null) 'debugTokens': debugTokens!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final debugTokens = this.debugTokens;
+    final nextPageToken = this.nextPageToken;
+    return {'debugTokens': ?debugTokens, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListResourcePolicies method.
@@ -4252,21 +4299,23 @@ class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
     core.Map json_,
   ) : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        resourcePolicies:
-            (json_['resourcePolicies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        resourcePolicies: (json_['resourcePolicies'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final resourcePolicies = this.resourcePolicies;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'resourcePolicies': ?resourcePolicies,
+    };
+  }
 }
 
 /// Response message for the ListServices method.
@@ -4291,20 +4340,20 @@ class GoogleFirebaseAppcheckV1betaListServicesResponse {
   GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppcheckV1betaService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (services != null) 'services': services!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final services = this.services;
+    return {'nextPageToken': ?nextPageToken, 'services': ?services};
+  }
 }
 
 /// An app's Play Integrity configuration object.
@@ -4380,37 +4429,39 @@ class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig {
 
   GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(core.Map json_)
     : this(
-        accountDetails:
-            json_.containsKey('accountDetails')
-                ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails.fromJson(
-                  json_['accountDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        appIntegrity:
-            json_.containsKey('appIntegrity')
-                ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity.fromJson(
-                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deviceIntegrity:
-            json_.containsKey('deviceIntegrity')
-                ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity.fromJson(
-                  json_['deviceIntegrity']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accountDetails: json_.containsKey('accountDetails')
+            ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails.fromJson(
+                json_['accountDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        appIntegrity: json_.containsKey('appIntegrity')
+            ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity.fromJson(
+                json_['appIntegrity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceIntegrity: json_.containsKey('deviceIntegrity')
+            ? GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity.fromJson(
+                json_['deviceIntegrity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountDetails != null) 'accountDetails': accountDetails!,
-    if (appIntegrity != null) 'appIntegrity': appIntegrity!,
-    if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountDetails = this.accountDetails;
+    final appIntegrity = this.appIntegrity;
+    final deviceIntegrity = this.deviceIntegrity;
+    final name = this.name;
+    final tokenTtl = this.tokenTtl;
+    return {
+      'accountDetails': ?accountDetails,
+      'appIntegrity': ?appIntegrity,
+      'deviceIntegrity': ?deviceIntegrity,
+      'name': ?name,
+      'tokenTtl': ?tokenTtl,
+    };
+  }
 }
 
 /// A settings object specifying account requirements for Android devices
@@ -4442,9 +4493,10 @@ class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails {
     core.Map json_,
   ) : this(requireLicensed: json_['requireLicensed'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requireLicensed != null) 'requireLicensed': requireLicensed!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requireLicensed = this.requireLicensed;
+    return {'requireLicensed': ?requireLicensed};
+  }
 }
 
 /// A settings object specifying application integrity requirements for Android
@@ -4483,10 +4535,10 @@ class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity {
             json_['allowUnrecognizedVersion'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowUnrecognizedVersion != null)
-      'allowUnrecognizedVersion': allowUnrecognizedVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowUnrecognizedVersion = this.allowUnrecognizedVersion;
+    return {'allowUnrecognizedVersion': ?allowUnrecognizedVersion};
+  }
 }
 
 /// A settings object specifying device integrity requirements for Android
@@ -4563,10 +4615,10 @@ class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity {
             json_['minDeviceRecognitionLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (minDeviceRecognitionLevel != null)
-      'minDeviceRecognitionLevel': minDeviceRecognitionLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final minDeviceRecognitionLevel = this.minDeviceRecognitionLevel;
+    return {'minDeviceRecognitionLevel': ?minDeviceRecognitionLevel};
+  }
 }
 
 /// A JWK as specified by
@@ -4616,14 +4668,22 @@ class GoogleFirebaseAppcheckV1betaPublicJwk {
         use: json_['use'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alg != null) 'alg': alg!,
-    if (e != null) 'e': e!,
-    if (kid != null) 'kid': kid!,
-    if (kty != null) 'kty': kty!,
-    if (n != null) 'n': n!,
-    if (use != null) 'use': use!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alg = this.alg;
+    final e = this.e;
+    final kid = this.kid;
+    final kty = this.kty;
+    final n = this.n;
+    final use = this.use;
+    return {
+      'alg': ?alg,
+      'e': ?e,
+      'kid': ?kid,
+      'kty': ?kty,
+      'n': ?n,
+      'use': ?use,
+    };
+  }
 }
 
 /// The currently active set of public keys that can be used to verify App Check
@@ -4643,19 +4703,19 @@ class GoogleFirebaseAppcheckV1betaPublicJwkSet {
 
   GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(core.Map json_)
     : this(
-        keys:
-            (json_['keys'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        keys: (json_['keys'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keys != null) 'keys': keys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keys = this.keys;
+    return {'keys': ?keys};
+  }
 }
 
 /// An app's reCAPTCHA v3 configuration object.
@@ -4720,13 +4780,20 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (minValidScore != null) 'minValidScore': minValidScore!,
-    if (name != null) 'name': name!,
-    if (siteSecret != null) 'siteSecret': siteSecret!,
-    if (siteSecretSet != null) 'siteSecretSet': siteSecretSet!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final minValidScore = this.minValidScore;
+    final name = this.name;
+    final siteSecret = this.siteSecret;
+    final siteSecretSet = this.siteSecretSet;
+    final tokenTtl = this.tokenTtl;
+    return {
+      'minValidScore': ?minValidScore,
+      'name': ?name,
+      'siteSecret': ?siteSecret,
+      'siteSecretSet': ?siteSecretSet,
+      'tokenTtl': ?tokenTtl,
+    };
+  }
 }
 
 /// An app's reCAPTCHA Enterprise configuration object.
@@ -4778,22 +4845,27 @@ class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
   GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        riskAnalysis:
-            json_.containsKey('riskAnalysis')
-                ? GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis.fromJson(
-                  json_['riskAnalysis'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        riskAnalysis: json_.containsKey('riskAnalysis')
+            ? GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis.fromJson(
+                json_['riskAnalysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         siteKey: json_['siteKey'] as core.String?,
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
-    if (siteKey != null) 'siteKey': siteKey!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final riskAnalysis = this.riskAnalysis;
+    final siteKey = this.siteKey;
+    final tokenTtl = this.tokenTtl;
+    return {
+      'name': ?name,
+      'riskAnalysis': ?riskAnalysis,
+      'siteKey': ?siteKey,
+      'tokenTtl': ?tokenTtl,
+    };
+  }
 }
 
 /// A settings object specifying risk tolerance and requirements for your
@@ -4820,9 +4892,10 @@ class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis {
     core.Map json_,
   ) : this(minValidScore: (json_['minValidScore'] as core.num?)?.toDouble());
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (minValidScore != null) 'minValidScore': minValidScore!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final minValidScore = this.minValidScore;
+    return {'minValidScore': ?minValidScore};
+  }
 }
 
 /// An app's reCAPTCHA v3 configuration object.
@@ -4887,13 +4960,20 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (minValidScore != null) 'minValidScore': minValidScore!,
-    if (name != null) 'name': name!,
-    if (siteSecret != null) 'siteSecret': siteSecret!,
-    if (siteSecretSet != null) 'siteSecretSet': siteSecretSet!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final minValidScore = this.minValidScore;
+    final name = this.name;
+    final siteSecret = this.siteSecret;
+    final siteSecretSet = this.siteSecretSet;
+    final tokenTtl = this.tokenTtl;
+    return {
+      'minValidScore': ?minValidScore,
+      'name': ?name,
+      'siteSecret': ?siteSecret,
+      'siteSecretSet': ?siteSecretSet,
+      'tokenTtl': ?tokenTtl,
+    };
+  }
 }
 
 /// App Check enforcement policy for a specific resource of a Google service
@@ -4996,13 +5076,20 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enforcementMode != null) 'enforcementMode': enforcementMode!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (targetResource != null) 'targetResource': targetResource!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enforcementMode = this.enforcementMode;
+    final etag = this.etag;
+    final name = this.name;
+    final targetResource = this.targetResource;
+    final updateTime = this.updateTime;
+    return {
+      'enforcementMode': ?enforcementMode,
+      'etag': ?etag,
+      'name': ?name,
+      'targetResource': ?targetResource,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An app's SafetyNet configuration object.
@@ -5035,10 +5122,11 @@ class GoogleFirebaseAppcheckV1betaSafetyNetConfig {
         tokenTtl: json_['tokenTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final tokenTtl = this.tokenTtl;
+    return {'name': ?name, 'tokenTtl': ?tokenTtl};
+  }
 }
 
 /// The enforcement configuration for a Firebase service supported by App Check.
@@ -5124,12 +5212,18 @@ class GoogleFirebaseAppcheckV1betaService {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enforcementMode != null) 'enforcementMode': enforcementMode!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enforcementMode = this.enforcementMode;
+    final etag = this.etag;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'enforcementMode': ?enforcementMode,
+      'etag': ?etag,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Request message for the UpdateResourcePolicy method as well as an individual
@@ -5162,20 +5256,19 @@ class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest {
   GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest.fromJson(
     core.Map json_,
   ) : this(
-        resourcePolicy:
-            json_.containsKey('resourcePolicy')
-                ? GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
-                  json_['resourcePolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resourcePolicy: json_.containsKey('resourcePolicy')
+            ? GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                json_['resourcePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourcePolicy != null) 'resourcePolicy': resourcePolicy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourcePolicy = this.resourcePolicy;
+    final updateMask = this.updateMask;
+    return {'resourcePolicy': ?resourcePolicy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Request message for the UpdateService method as well as an individual update
@@ -5212,19 +5305,19 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
 
   GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(core.Map json_)
     : this(
-        service:
-            json_.containsKey('service')
-                ? GoogleFirebaseAppcheckV1betaService.fromJson(
-                  json_['service'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        service: json_.containsKey('service')
+            ? GoogleFirebaseAppcheckV1betaService.fromJson(
+                json_['service'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (service != null) 'service': service!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final service = this.service;
+    final updateMask = this.updateMask;
+    return {'service': ?service, 'updateMask': ?updateMask};
+  }
 }
 
 /// Request message for the VerifyAppCheckToken method.
@@ -5243,9 +5336,10 @@ class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest {
     core.Map json_,
   ) : this(appCheckToken: json_['appCheckToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appCheckToken != null) 'appCheckToken': appCheckToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appCheckToken = this.appCheckToken;
+    return {'appCheckToken': ?appCheckToken};
+  }
 }
 
 /// Response message for the VerifyAppCheckToken method.
@@ -5268,9 +5362,10 @@ class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse {
     core.Map json_,
   ) : this(alreadyConsumed: json_['alreadyConsumed'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alreadyConsumed != null) 'alreadyConsumed': alreadyConsumed!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alreadyConsumed = this.alreadyConsumed;
+    return {'alreadyConsumed': ?alreadyConsumed};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

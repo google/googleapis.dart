@@ -129,7 +129,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -164,7 +164,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -223,11 +223,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -288,9 +288,9 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -337,7 +337,7 @@ class ProjectsLocationsAssetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -380,7 +380,7 @@ class ProjectsLocationsAssetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assets:batchDelete';
@@ -420,7 +420,7 @@ class ProjectsLocationsAssetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assets:batchUpdate';
@@ -472,8 +472,8 @@ class ProjectsLocationsAssetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -523,8 +523,8 @@ class ProjectsLocationsAssetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -592,13 +592,13 @@ class ProjectsLocationsAssetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showHidden != null) 'showHidden': ['${showHidden}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showHidden': ?showHidden == null ? null : ['${showHidden}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assets';
@@ -660,9 +660,9 @@ class ProjectsLocationsAssetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -705,8 +705,8 @@ class ProjectsLocationsAssetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (source != null) 'source': [source],
-      if ($fields != null) 'fields': [$fields],
+      'source': ?source == null ? null : [source],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -773,9 +773,11 @@ class ProjectsLocationsAssetsExportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (assetsExportJobId != null) 'assetsExportJobId': [assetsExportJobId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'assetsExportJobId': ?assetsExportJobId == null
+          ? null
+          : [assetsExportJobId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assetsExportJobs';
@@ -812,7 +814,7 @@ class ProjectsLocationsAssetsExportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -848,7 +850,7 @@ class ProjectsLocationsAssetsExportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -894,9 +896,9 @@ class ProjectsLocationsAssetsExportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assetsExportJobs';
@@ -938,7 +940,7 @@ class ProjectsLocationsAssetsExportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
@@ -1005,9 +1007,11 @@ class ProjectsLocationsDiscoveryClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (discoveryClientId != null) 'discoveryClientId': [discoveryClientId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'discoveryClientId': ?discoveryClientId == null
+          ? null
+          : [discoveryClientId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/discoveryClients';
@@ -1057,8 +1061,8 @@ class ProjectsLocationsDiscoveryClientsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1094,7 +1098,7 @@ class ProjectsLocationsDiscoveryClientsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1148,11 +1152,11 @@ class ProjectsLocationsDiscoveryClientsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/discoveryClients';
@@ -1214,9 +1218,9 @@ class ProjectsLocationsDiscoveryClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1260,7 +1264,7 @@ class ProjectsLocationsDiscoveryClientsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':sendHeartbeat';
@@ -1308,7 +1312,7 @@ class ProjectsLocationsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$group') + ':addAssets';
@@ -1368,9 +1372,9 @@ class ProjectsLocationsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (groupId != null) 'groupId': [groupId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'groupId': ?groupId == null ? null : [groupId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/groups';
@@ -1420,8 +1424,8 @@ class ProjectsLocationsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1454,7 +1458,7 @@ class ProjectsLocationsGroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1504,11 +1508,11 @@ class ProjectsLocationsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/groups';
@@ -1570,9 +1574,9 @@ class ProjectsLocationsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1613,7 +1617,7 @@ class ProjectsLocationsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$group') + ':removeAssets';
@@ -1679,9 +1683,9 @@ class ProjectsLocationsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (importJobId != null) 'importJobId': [importJobId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'importJobId': ?importJobId == null ? null : [importJobId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
@@ -1736,9 +1740,9 @@ class ProjectsLocationsImportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1785,8 +1789,8 @@ class ProjectsLocationsImportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1847,12 +1851,12 @@ class ProjectsLocationsImportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
@@ -1914,9 +1918,9 @@ class ProjectsLocationsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1957,7 +1961,7 @@ class ProjectsLocationsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
@@ -1998,7 +2002,7 @@ class ProjectsLocationsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':validate';
@@ -2063,9 +2067,9 @@ class ProjectsLocationsImportJobsImportDataFilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (importDataFileId != null) 'importDataFileId': [importDataFileId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'importDataFileId': ?importDataFileId == null ? null : [importDataFileId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importDataFiles';
@@ -2115,8 +2119,8 @@ class ProjectsLocationsImportJobsImportDataFilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2152,7 +2156,7 @@ class ProjectsLocationsImportJobsImportDataFilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2209,11 +2213,11 @@ class ProjectsLocationsImportJobsImportDataFilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importDataFiles';
@@ -2271,7 +2275,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -2309,7 +2313,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2345,7 +2349,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2400,12 +2404,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2473,9 +2478,9 @@ class ProjectsLocationsPreferenceSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (preferenceSetId != null) 'preferenceSetId': [preferenceSetId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'preferenceSetId': ?preferenceSetId == null ? null : [preferenceSetId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/preferenceSets';
@@ -2525,8 +2530,8 @@ class ProjectsLocationsPreferenceSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2562,7 +2567,7 @@ class ProjectsLocationsPreferenceSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2612,10 +2617,10 @@ class ProjectsLocationsPreferenceSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/preferenceSets';
@@ -2677,9 +2682,9 @@ class ProjectsLocationsPreferenceSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2720,7 +2725,7 @@ class ProjectsLocationsRelationsResource {
   /// this method will complete with the same error.
   async.Future<Relation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2770,11 +2775,11 @@ class ProjectsLocationsRelationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/relations';
@@ -2845,9 +2850,9 @@ class ProjectsLocationsReportConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (reportConfigId != null) 'reportConfigId': [reportConfigId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'reportConfigId': ?reportConfigId == null ? null : [reportConfigId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reportConfigs';
@@ -2902,9 +2907,9 @@ class ProjectsLocationsReportConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2940,7 +2945,7 @@ class ProjectsLocationsReportConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2992,11 +2997,11 @@ class ProjectsLocationsReportConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reportConfigs';
@@ -3065,9 +3070,9 @@ class ProjectsLocationsReportConfigsReportsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (reportId != null) 'reportId': [reportId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'reportId': ?reportId == null ? null : [reportId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reports';
@@ -3117,8 +3122,8 @@ class ProjectsLocationsReportConfigsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3166,8 +3171,8 @@ class ProjectsLocationsReportConfigsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3231,12 +3236,12 @@ class ProjectsLocationsReportConfigsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reports';
@@ -3307,9 +3312,9 @@ class ProjectsLocationsSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (sourceId != null) 'sourceId': [sourceId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'sourceId': ?sourceId == null ? null : [sourceId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
@@ -3359,8 +3364,8 @@ class ProjectsLocationsSourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3393,7 +3398,7 @@ class ProjectsLocationsSourcesResource {
   /// this method will complete with the same error.
   async.Future<Source> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3444,11 +3449,11 @@ class ProjectsLocationsSourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
@@ -3510,9 +3515,9 @@ class ProjectsLocationsSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3567,8 +3572,8 @@ class ProjectsLocationsSourcesErrorFramesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3625,10 +3630,10 @@ class ProjectsLocationsSourcesErrorFramesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/errorFrames';
@@ -3685,20 +3690,24 @@ class AddAssetsToGroupRequest {
   AddAssetsToGroupRequest.fromJson(core.Map json_)
     : this(
         allowExisting: json_['allowExisting'] as core.bool?,
-        assets:
-            json_.containsKey('assets')
-                ? AssetList.fromJson(
-                  json_['assets'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assets: json_.containsKey('assets')
+            ? AssetList.fromJson(
+                json_['assets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowExisting != null) 'allowExisting': allowExisting!,
-    if (assets != null) 'assets': assets!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowExisting = this.allowExisting;
+    final assets = this.assets;
+    final requestId = this.requestId;
+    return {
+      'allowExisting': ?allowExisting,
+      'assets': ?assets,
+      'requestId': ?requestId,
+    };
+  }
 }
 
 /// A request to aggregate one or more values.
@@ -3728,23 +3737,27 @@ class AggregateAssetsValuesRequest {
 
   AggregateAssetsValuesRequest.fromJson(core.Map json_)
     : this(
-        aggregations:
-            (json_['aggregations'] as core.List?)
-                ?.map(
-                  (value) => Aggregation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        aggregations: (json_['aggregations'] as core.List?)
+            ?.map(
+              (value) => Aggregation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         filter: json_['filter'] as core.String?,
         showHidden: json_['showHidden'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregations != null) 'aggregations': aggregations!,
-    if (filter != null) 'filter': filter!,
-    if (showHidden != null) 'showHidden': showHidden!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregations = this.aggregations;
+    final filter = this.filter;
+    final showHidden = this.showHidden;
+    return {
+      'aggregations': ?aggregations,
+      'filter': ?filter,
+      'showHidden': ?showHidden,
+    };
+  }
 }
 
 /// A response to a request to aggregated assets values.
@@ -3756,19 +3769,19 @@ class AggregateAssetsValuesResponse {
 
   AggregateAssetsValuesResponse.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => AggregationResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => AggregationResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
 }
 
 /// Message describing an aggregation.
@@ -3801,40 +3814,43 @@ class Aggregation {
 
   Aggregation.fromJson(core.Map json_)
     : this(
-        count:
-            json_.containsKey('count')
-                ? AggregationCount.fromJson(
-                  json_['count'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        count: json_.containsKey('count')
+            ? AggregationCount.fromJson(
+                json_['count'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         field: json_['field'] as core.String?,
-        frequency:
-            json_.containsKey('frequency')
-                ? AggregationFrequency.fromJson(
-                  json_['frequency'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        histogram:
-            json_.containsKey('histogram')
-                ? AggregationHistogram.fromJson(
-                  json_['histogram'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sum:
-            json_.containsKey('sum')
-                ? AggregationSum.fromJson(
-                  json_['sum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequency: json_.containsKey('frequency')
+            ? AggregationFrequency.fromJson(
+                json_['frequency'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        histogram: json_.containsKey('histogram')
+            ? AggregationHistogram.fromJson(
+                json_['histogram'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sum: json_.containsKey('sum')
+            ? AggregationSum.fromJson(
+                json_['sum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (field != null) 'field': field!,
-    if (frequency != null) 'frequency': frequency!,
-    if (histogram != null) 'histogram': histogram!,
-    if (sum != null) 'sum': sum!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final field = this.field;
+    final frequency = this.frequency;
+    final histogram = this.histogram;
+    final sum = this.sum;
+    return {
+      'count': ?count,
+      'field': ?field,
+      'frequency': ?frequency,
+      'histogram': ?histogram,
+      'sum': ?sum,
+    };
+  }
 }
 
 /// Object count.
@@ -3859,15 +3875,15 @@ class AggregationHistogram {
 
   AggregationHistogram.fromJson(core.Map json_)
     : this(
-        lowerBounds:
-            (json_['lowerBounds'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
+        lowerBounds: (json_['lowerBounds'] as core.List?)
+            ?.map((value) => (value as core.num).toDouble())
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lowerBounds != null) 'lowerBounds': lowerBounds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lowerBounds = this.lowerBounds;
+    return {'lowerBounds': ?lowerBounds};
+  }
 }
 
 /// Message describing a result of an aggregation.
@@ -3888,40 +3904,43 @@ class AggregationResult {
 
   AggregationResult.fromJson(core.Map json_)
     : this(
-        count:
-            json_.containsKey('count')
-                ? AggregationResultCount.fromJson(
-                  json_['count'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        count: json_.containsKey('count')
+            ? AggregationResultCount.fromJson(
+                json_['count'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         field: json_['field'] as core.String?,
-        frequency:
-            json_.containsKey('frequency')
-                ? AggregationResultFrequency.fromJson(
-                  json_['frequency'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        histogram:
-            json_.containsKey('histogram')
-                ? AggregationResultHistogram.fromJson(
-                  json_['histogram'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sum:
-            json_.containsKey('sum')
-                ? AggregationResultSum.fromJson(
-                  json_['sum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequency: json_.containsKey('frequency')
+            ? AggregationResultFrequency.fromJson(
+                json_['frequency'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        histogram: json_.containsKey('histogram')
+            ? AggregationResultHistogram.fromJson(
+                json_['histogram'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sum: json_.containsKey('sum')
+            ? AggregationResultSum.fromJson(
+                json_['sum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (field != null) 'field': field!,
-    if (frequency != null) 'frequency': frequency!,
-    if (histogram != null) 'histogram': histogram!,
-    if (sum != null) 'sum': sum!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final field = this.field;
+    final frequency = this.frequency;
+    final histogram = this.histogram;
+    final sum = this.sum;
+    return {
+      'count': ?count,
+      'field': ?field,
+      'frequency': ?frequency,
+      'histogram': ?histogram,
+      'sum': ?sum,
+    };
+  }
 }
 
 /// The result of a count aggregation.
@@ -3933,9 +3952,10 @@ class AggregationResultCount {
   AggregationResultCount.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// The result of a frequency distribution aggregation.
@@ -3951,9 +3971,10 @@ class AggregationResultFrequency {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// The result of a bucketed histogram aggregation.
@@ -3970,19 +3991,19 @@ class AggregationResultHistogram {
 
   AggregationResultHistogram.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => AggregationResultHistogramBucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) => AggregationResultHistogramBucket.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    return {'buckets': ?buckets};
+  }
 }
 
 /// A histogram bucket with a lower and upper bound, and a count of items with a
@@ -4013,11 +4034,16 @@ class AggregationResultHistogramBucket {
         upperBound: (json_['upperBound'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (lowerBound != null) 'lowerBound': lowerBound!,
-    if (upperBound != null) 'upperBound': upperBound!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final lowerBound = this.lowerBound;
+    final upperBound = this.upperBound;
+    return {
+      'count': ?count,
+      'lowerBound': ?lowerBound,
+      'upperBound': ?upperBound,
+    };
+  }
 }
 
 /// The result of a sum aggregation.
@@ -4029,9 +4055,10 @@ class AggregationResultSum {
   AggregationResultSum.fromJson(core.Map json_)
     : this(value: (json_['value'] as core.num?)?.toDouble());
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// Sum of field values.
@@ -4138,82 +4165,91 @@ class Asset {
 
   Asset.fromJson(core.Map json_)
     : this(
-        assignedGroups:
-            (json_['assignedGroups'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        assignedGroups: (json_['assignedGroups'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         databaseDeploymentDetails:
             json_.containsKey('databaseDeploymentDetails')
-                ? DatabaseDeploymentDetails.fromJson(
-                  json_['databaseDeploymentDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        databaseDetails:
-            json_.containsKey('databaseDetails')
-                ? DatabaseDetails.fromJson(
-                  json_['databaseDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DatabaseDeploymentDetails.fromJson(
+                json_['databaseDeploymentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        databaseDetails: json_.containsKey('databaseDetails')
+            ? DatabaseDetails.fromJson(
+                json_['databaseDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hidden: json_['hidden'] as core.bool?,
         hideReason: json_['hideReason'] as core.String?,
         hideTime: json_['hideTime'] as core.String?,
-        insightList:
-            json_.containsKey('insightList')
-                ? InsightList.fromJson(
-                  json_['insightList'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        insightList: json_.containsKey('insightList')
+            ? InsightList.fromJson(
+                json_['insightList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        machineDetails:
-            json_.containsKey('machineDetails')
-                ? MachineDetails.fromJson(
-                  json_['machineDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machineDetails: json_.containsKey('machineDetails')
+            ? MachineDetails.fromJson(
+                json_['machineDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        performanceData:
-            json_.containsKey('performanceData')
-                ? AssetPerformanceData.fromJson(
-                  json_['performanceData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sources:
-            (json_['sources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        performanceData: json_.containsKey('performanceData')
+            ? AssetPerformanceData.fromJson(
+                json_['performanceData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sources: (json_['sources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         title: json_['title'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignedGroups != null) 'assignedGroups': assignedGroups!,
-    if (attributes != null) 'attributes': attributes!,
-    if (createTime != null) 'createTime': createTime!,
-    if (databaseDeploymentDetails != null)
-      'databaseDeploymentDetails': databaseDeploymentDetails!,
-    if (databaseDetails != null) 'databaseDetails': databaseDetails!,
-    if (hidden != null) 'hidden': hidden!,
-    if (hideReason != null) 'hideReason': hideReason!,
-    if (hideTime != null) 'hideTime': hideTime!,
-    if (insightList != null) 'insightList': insightList!,
-    if (labels != null) 'labels': labels!,
-    if (machineDetails != null) 'machineDetails': machineDetails!,
-    if (name != null) 'name': name!,
-    if (performanceData != null) 'performanceData': performanceData!,
-    if (sources != null) 'sources': sources!,
-    if (title != null) 'title': title!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignedGroups = this.assignedGroups;
+    final attributes = this.attributes;
+    final createTime = this.createTime;
+    final databaseDeploymentDetails = this.databaseDeploymentDetails;
+    final databaseDetails = this.databaseDetails;
+    final hidden = this.hidden;
+    final hideReason = this.hideReason;
+    final hideTime = this.hideTime;
+    final insightList = this.insightList;
+    final labels = this.labels;
+    final machineDetails = this.machineDetails;
+    final name = this.name;
+    final performanceData = this.performanceData;
+    final sources = this.sources;
+    final title = this.title;
+    final updateTime = this.updateTime;
+    return {
+      'assignedGroups': ?assignedGroups,
+      'attributes': ?attributes,
+      'createTime': ?createTime,
+      'databaseDeploymentDetails': ?databaseDeploymentDetails,
+      'databaseDetails': ?databaseDetails,
+      'hidden': ?hidden,
+      'hideReason': ?hideReason,
+      'hideTime': ?hideTime,
+      'insightList': ?insightList,
+      'labels': ?labels,
+      'machineDetails': ?machineDetails,
+      'name': ?name,
+      'performanceData': ?performanceData,
+      'sources': ?sources,
+      'title': ?title,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Contains data reported from an inventory source on an asset.
@@ -4274,58 +4310,64 @@ class AssetFrame {
 
   AssetFrame.fromJson(core.Map json_)
     : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         collectionType: json_['collectionType'] as core.String?,
         databaseDeploymentDetails:
             json_.containsKey('databaseDeploymentDetails')
-                ? DatabaseDeploymentDetails.fromJson(
-                  json_['databaseDeploymentDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        databaseDetails:
-            json_.containsKey('databaseDetails')
-                ? DatabaseDetails.fromJson(
-                  json_['databaseDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DatabaseDeploymentDetails.fromJson(
+                json_['databaseDeploymentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        databaseDetails: json_.containsKey('databaseDetails')
+            ? DatabaseDetails.fromJson(
+                json_['databaseDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        machineDetails:
-            json_.containsKey('machineDetails')
-                ? MachineDetails.fromJson(
-                  json_['machineDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        performanceSamples:
-            (json_['performanceSamples'] as core.List?)
-                ?.map(
-                  (value) => PerformanceSample.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        machineDetails: json_.containsKey('machineDetails')
+            ? MachineDetails.fromJson(
+                json_['machineDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        performanceSamples: (json_['performanceSamples'] as core.List?)
+            ?.map(
+              (value) => PerformanceSample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         reportTime: json_['reportTime'] as core.String?,
         traceToken: json_['traceToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (collectionType != null) 'collectionType': collectionType!,
-    if (databaseDeploymentDetails != null)
-      'databaseDeploymentDetails': databaseDeploymentDetails!,
-    if (databaseDetails != null) 'databaseDetails': databaseDetails!,
-    if (labels != null) 'labels': labels!,
-    if (machineDetails != null) 'machineDetails': machineDetails!,
-    if (performanceSamples != null) 'performanceSamples': performanceSamples!,
-    if (reportTime != null) 'reportTime': reportTime!,
-    if (traceToken != null) 'traceToken': traceToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final collectionType = this.collectionType;
+    final databaseDeploymentDetails = this.databaseDeploymentDetails;
+    final databaseDetails = this.databaseDetails;
+    final labels = this.labels;
+    final machineDetails = this.machineDetails;
+    final performanceSamples = this.performanceSamples;
+    final reportTime = this.reportTime;
+    final traceToken = this.traceToken;
+    return {
+      'attributes': ?attributes,
+      'collectionType': ?collectionType,
+      'databaseDeploymentDetails': ?databaseDeploymentDetails,
+      'databaseDetails': ?databaseDetails,
+      'labels': ?labels,
+      'machineDetails': ?machineDetails,
+      'performanceSamples': ?performanceSamples,
+      'reportTime': ?reportTime,
+      'traceToken': ?traceToken,
+    };
+  }
 }
 
 /// Lists the asset IDs of all assets.
@@ -4339,15 +4381,15 @@ class AssetList {
 
   AssetList.fromJson(core.Map json_)
     : this(
-        assetIds:
-            (json_['assetIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        assetIds: (json_['assetIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assetIds != null) 'assetIds': assetIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assetIds = this.assetIds;
+    return {'assetIds': ?assetIds};
+  }
 }
 
 /// Performance data for an asset.
@@ -4372,10 +4414,10 @@ class AssetPerformanceData {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dailyResourceUsageAggregations != null)
-      'dailyResourceUsageAggregations': dailyResourceUsageAggregations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dailyResourceUsageAggregations = this.dailyResourceUsageAggregations;
+    return {'dailyResourceUsageAggregations': ?dailyResourceUsageAggregations};
+  }
 }
 
 /// Assets export job message.
@@ -4453,71 +4495,75 @@ class AssetsExportJob {
 
   AssetsExportJob.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? AssetsExportJobExportCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        condition: json_.containsKey('condition')
+            ? AssetsExportJobExportCondition.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        inventory:
-            json_.containsKey('inventory')
-                ? AssetsExportJobInventory.fromJson(
-                  json_['inventory'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inventory: json_.containsKey('inventory')
+            ? AssetsExportJobInventory.fromJson(
+                json_['inventory'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        networkDependencies:
-            json_.containsKey('networkDependencies')
-                ? AssetsExportJobNetworkDependencies.fromJson(
-                  json_['networkDependencies']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        performanceData:
-            json_.containsKey('performanceData')
-                ? AssetsExportJobPerformanceData.fromJson(
-                  json_['performanceData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        recentExecutions:
-            (json_['recentExecutions'] as core.List?)
-                ?.map(
-                  (value) => AssetsExportJobExecution.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        networkDependencies: json_.containsKey('networkDependencies')
+            ? AssetsExportJobNetworkDependencies.fromJson(
+                json_['networkDependencies']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        performanceData: json_.containsKey('performanceData')
+            ? AssetsExportJobPerformanceData.fromJson(
+                json_['performanceData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        recentExecutions: (json_['recentExecutions'] as core.List?)
+            ?.map(
+              (value) => AssetsExportJobExecution.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         showHidden: json_['showHidden'] as core.bool?,
-        signedUriDestination:
-            json_.containsKey('signedUriDestination')
-                ? SignedUriDestination.fromJson(
-                  json_['signedUriDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signedUriDestination: json_.containsKey('signedUriDestination')
+            ? SignedUriDestination.fromJson(
+                json_['signedUriDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (createTime != null) 'createTime': createTime!,
-    if (inventory != null) 'inventory': inventory!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (networkDependencies != null)
-      'networkDependencies': networkDependencies!,
-    if (performanceData != null) 'performanceData': performanceData!,
-    if (recentExecutions != null) 'recentExecutions': recentExecutions!,
-    if (showHidden != null) 'showHidden': showHidden!,
-    if (signedUriDestination != null)
-      'signedUriDestination': signedUriDestination!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final createTime = this.createTime;
+    final inventory = this.inventory;
+    final labels = this.labels;
+    final name = this.name;
+    final networkDependencies = this.networkDependencies;
+    final performanceData = this.performanceData;
+    final recentExecutions = this.recentExecutions;
+    final showHidden = this.showHidden;
+    final signedUriDestination = this.signedUriDestination;
+    final updateTime = this.updateTime;
+    return {
+      'condition': ?condition,
+      'createTime': ?createTime,
+      'inventory': ?inventory,
+      'labels': ?labels,
+      'name': ?name,
+      'networkDependencies': ?networkDependencies,
+      'performanceData': ?performanceData,
+      'recentExecutions': ?recentExecutions,
+      'showHidden': ?showHidden,
+      'signedUriDestination': ?signedUriDestination,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Execution status of assets export job.
@@ -4568,24 +4614,30 @@ class AssetsExportJobExecution {
         executionId: json_['executionId'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         requestedAssetCount: json_['requestedAssetCount'] as core.int?,
-        result:
-            json_.containsKey('result')
-                ? AssetsExportJobExecutionResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        result: json_.containsKey('result')
+            ? AssetsExportJobExecutionResult.fromJson(
+                json_['result'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (executionId != null) 'executionId': executionId!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (requestedAssetCount != null)
-      'requestedAssetCount': requestedAssetCount!,
-    if (result != null) 'result': result!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final executionId = this.executionId;
+    final expireTime = this.expireTime;
+    final requestedAssetCount = this.requestedAssetCount;
+    final result = this.result;
+    final startTime = this.startTime;
+    return {
+      'endTime': ?endTime,
+      'executionId': ?executionId,
+      'expireTime': ?expireTime,
+      'requestedAssetCount': ?requestedAssetCount,
+      'result': ?result,
+      'startTime': ?startTime,
+    };
+  }
 }
 
 /// Contains the result of the assets export.
@@ -4613,31 +4665,33 @@ class AssetsExportJobExecutionResult {
 
   AssetsExportJobExecutionResult.fromJson(core.Map json_)
     : this(
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        outputFiles:
-            json_.containsKey('outputFiles')
-                ? OutputFileList.fromJson(
-                  json_['outputFiles'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        signedUris:
-            json_.containsKey('signedUris')
-                ? SignedUris.fromJson(
-                  json_['signedUris'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        outputFiles: json_.containsKey('outputFiles')
+            ? OutputFileList.fromJson(
+                json_['outputFiles'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signedUris: json_.containsKey('signedUris')
+            ? SignedUris.fromJson(
+                json_['signedUris'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (outputFiles != null) 'outputFiles': outputFiles!,
-    if (signedUris != null) 'signedUris': signedUris!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final outputFiles = this.outputFiles;
+    final signedUris = this.signedUris;
+    return {
+      'error': ?error,
+      'outputFiles': ?outputFiles,
+      'signedUris': ?signedUris,
+    };
+  }
 }
 
 /// Conditions for selecting assets to export.
@@ -4652,9 +4706,10 @@ class AssetsExportJobExportCondition {
   AssetsExportJobExportCondition.fromJson(core.Map json_)
     : this(filter: json_['filter'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filter != null) 'filter': filter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filter = this.filter;
+    return {'filter': ?filter};
+  }
 }
 
 /// Configuration for asset inventory details exports.
@@ -4680,9 +4735,10 @@ class AssetsExportJobPerformanceData {
   AssetsExportJobPerformanceData.fromJson(core.Map json_)
     : this(maxDays: json_['maxDays'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxDays != null) 'maxDays': maxDays!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxDays = this.maxDays;
+    return {'maxDays': ?maxDays};
+  }
 }
 
 /// AWS EC2 specific details.
@@ -4718,11 +4774,16 @@ class AwsEc2PlatformDetails {
         machineTypeLabel: json_['machineTypeLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-    if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hyperthreading = this.hyperthreading;
+    final location = this.location;
+    final machineTypeLabel = this.machineTypeLabel;
+    return {
+      'hyperthreading': ?hyperthreading,
+      'location': ?location,
+      'machineTypeLabel': ?machineTypeLabel,
+    };
+  }
 }
 
 /// Specific details for an AWS RDS database deployment.
@@ -4764,12 +4825,18 @@ class AzureVmPlatformDetails {
         provisioningState: json_['provisioningState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-    if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
-    if (provisioningState != null) 'provisioningState': provisioningState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hyperthreading = this.hyperthreading;
+    final location = this.location;
+    final machineTypeLabel = this.machineTypeLabel;
+    final provisioningState = this.provisioningState;
+    return {
+      'hyperthreading': ?hyperthreading,
+      'location': ?location,
+      'machineTypeLabel': ?machineTypeLabel,
+      'provisioningState': ?provisioningState,
+    };
+  }
 }
 
 /// A request to delete a list of asset.
@@ -4805,25 +4872,28 @@ class BatchDeleteAssetsRequest {
   BatchDeleteAssetsRequest.fromJson(core.Map json_)
     : this(
         allowMissing: json_['allowMissing'] as core.bool?,
-        cascadingRules:
-            (json_['cascadingRules'] as core.List?)
-                ?.map(
-                  (value) => CascadingRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        names:
-            (json_['names'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        cascadingRules: (json_['cascadingRules'] as core.List?)
+            ?.map(
+              (value) => CascadingRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        names: (json_['names'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (cascadingRules != null) 'cascadingRules': cascadingRules!,
-    if (names != null) 'names': names!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final cascadingRules = this.cascadingRules;
+    final names = this.names;
+    return {
+      'allowMissing': ?allowMissing,
+      'cascadingRules': ?cascadingRules,
+      'names': ?names,
+    };
+  }
 }
 
 /// A request to update a list of assets.
@@ -4839,19 +4909,19 @@ class BatchUpdateAssetsRequest {
 
   BatchUpdateAssetsRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => UpdateAssetRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => UpdateAssetRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 /// Response for updating a list of assets.
@@ -4865,19 +4935,18 @@ class BatchUpdateAssetsResponse {
 
   BatchUpdateAssetsResponse.fromJson(core.Map json_)
     : this(
-        assets:
-            (json_['assets'] as core.List?)
-                ?.map(
-                  (value) => Asset.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        assets: (json_['assets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Asset.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assets != null) 'assets': assets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assets = this.assets;
+    return {'assets': ?assets};
+  }
 }
 
 /// Details about the BIOS.
@@ -4919,24 +4988,31 @@ class BiosDetails {
         biosName: json_['biosName'] as core.String?,
         id: json_['id'] as core.String?,
         manufacturer: json_['manufacturer'] as core.String?,
-        releaseDate:
-            json_.containsKey('releaseDate')
-                ? Date.fromJson(
-                  json_['releaseDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        releaseDate: json_.containsKey('releaseDate')
+            ? Date.fromJson(
+                json_['releaseDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smbiosUuid: json_['smbiosUuid'] as core.String?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (biosName != null) 'biosName': biosName!,
-    if (id != null) 'id': id!,
-    if (manufacturer != null) 'manufacturer': manufacturer!,
-    if (releaseDate != null) 'releaseDate': releaseDate!,
-    if (smbiosUuid != null) 'smbiosUuid': smbiosUuid!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final biosName = this.biosName;
+    final id = this.id;
+    final manufacturer = this.manufacturer;
+    final releaseDate = this.releaseDate;
+    final smbiosUuid = this.smbiosUuid;
+    final version = this.version;
+    return {
+      'biosName': ?biosName,
+      'id': ?id,
+      'manufacturer': ?manufacturer,
+      'releaseDate': ?releaseDate,
+      'smbiosUuid': ?smbiosUuid,
+      'version': ?version,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -4954,18 +5030,18 @@ class CascadingRule {
 
   CascadingRule.fromJson(core.Map json_)
     : this(
-        cascadeLogicalDbs:
-            json_.containsKey('cascadeLogicalDbs')
-                ? CascadeLogicalDBsRule.fromJson(
-                  json_['cascadeLogicalDbs']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cascadeLogicalDbs: json_.containsKey('cascadeLogicalDbs')
+            ? CascadeLogicalDBsRule.fromJson(
+                json_['cascadeLogicalDbs']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cascadeLogicalDbs != null) 'cascadeLogicalDbs': cascadeLogicalDbs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cascadeLogicalDbs = this.cascadeLogicalDbs;
+    return {'cascadeLogicalDbs': ?cascadeLogicalDbs};
+  }
 }
 
 /// Compute engine migration target.
@@ -4977,17 +5053,17 @@ class ComputeEngineMigrationTarget {
 
   ComputeEngineMigrationTarget.fromJson(core.Map json_)
     : this(
-        shape:
-            json_.containsKey('shape')
-                ? ComputeEngineShapeDescriptor.fromJson(
-                  json_['shape'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        shape: json_.containsKey('shape')
+            ? ComputeEngineShapeDescriptor.fromJson(
+                json_['shape'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (shape != null) 'shape': shape!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final shape = this.shape;
+    return {'shape': ?shape};
+  }
 }
 
 /// The user preferences relating to Compute Engine target platform.
@@ -5028,21 +5104,25 @@ class ComputeEnginePreferences {
   ComputeEnginePreferences.fromJson(core.Map json_)
     : this(
         licenseType: json_['licenseType'] as core.String?,
-        machinePreferences:
-            json_.containsKey('machinePreferences')
-                ? MachinePreferences.fromJson(
-                  json_['machinePreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machinePreferences: json_.containsKey('machinePreferences')
+            ? MachinePreferences.fromJson(
+                json_['machinePreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         persistentDiskType: json_['persistentDiskType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (licenseType != null) 'licenseType': licenseType!,
-    if (machinePreferences != null) 'machinePreferences': machinePreferences!,
-    if (persistentDiskType != null) 'persistentDiskType': persistentDiskType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final licenseType = this.licenseType;
+    final machinePreferences = this.machinePreferences;
+    final persistentDiskType = this.persistentDiskType;
+    return {
+      'licenseType': ?licenseType,
+      'machinePreferences': ?machinePreferences,
+      'persistentDiskType': ?persistentDiskType,
+    };
+  }
 }
 
 /// Compute Engine target shape descriptor.
@@ -5091,24 +5171,31 @@ class ComputeEngineShapeDescriptor {
         memoryMb: json_['memoryMb'] as core.int?,
         physicalCoreCount: json_['physicalCoreCount'] as core.int?,
         series: json_['series'] as core.String?,
-        storage:
-            (json_['storage'] as core.List?)
-                ?.map(
-                  (value) => ComputeStorageDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storage: (json_['storage'] as core.List?)
+            ?.map(
+              (value) => ComputeStorageDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logicalCoreCount != null) 'logicalCoreCount': logicalCoreCount!,
-    if (machineType != null) 'machineType': machineType!,
-    if (memoryMb != null) 'memoryMb': memoryMb!,
-    if (physicalCoreCount != null) 'physicalCoreCount': physicalCoreCount!,
-    if (series != null) 'series': series!,
-    if (storage != null) 'storage': storage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final logicalCoreCount = this.logicalCoreCount;
+    final machineType = this.machineType;
+    final memoryMb = this.memoryMb;
+    final physicalCoreCount = this.physicalCoreCount;
+    final series = this.series;
+    final storage = this.storage;
+    return {
+      'logicalCoreCount': ?logicalCoreCount,
+      'machineType': ?machineType,
+      'memoryMb': ?memoryMb,
+      'physicalCoreCount': ?physicalCoreCount,
+      'series': ?series,
+      'storage': ?storage,
+    };
+  }
 }
 
 /// Compute Engine storage option descriptor.
@@ -5137,10 +5224,11 @@ class ComputeStorageDescriptor {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sizeGb = this.sizeGb;
+    final type = this.type;
+    return {'sizeGb': ?sizeGb, 'type': ?type};
+  }
 }
 
 /// CPU usage sample.
@@ -5155,13 +5243,14 @@ class CpuUsageSample {
 
   CpuUsageSample.fromJson(core.Map json_)
     : this(
-        utilizedPercentage:
-            (json_['utilizedPercentage'] as core.num?)?.toDouble(),
+        utilizedPercentage: (json_['utilizedPercentage'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizedPercentage != null) 'utilizedPercentage': utilizedPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final utilizedPercentage = this.utilizedPercentage;
+    return {'utilizedPercentage': ?utilizedPercentage};
+  }
 }
 
 /// Contains a single output file of type CSV.
@@ -5187,19 +5276,23 @@ class CsvOutputFile {
     : this(
         columnsCount: json_['columnsCount'] as core.int?,
         rowCount: json_['rowCount'] as core.int?,
-        signedUri:
-            json_.containsKey('signedUri')
-                ? SignedUri.fromJson(
-                  json_['signedUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signedUri: json_.containsKey('signedUri')
+            ? SignedUri.fromJson(
+                json_['signedUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnsCount != null) 'columnsCount': columnsCount!,
-    if (rowCount != null) 'rowCount': rowCount!,
-    if (signedUri != null) 'signedUri': signedUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnsCount = this.columnsCount;
+    final rowCount = this.rowCount;
+    final signedUri = this.signedUri;
+    return {
+      'columnsCount': ?columnsCount,
+      'rowCount': ?rowCount,
+      'signedUri': ?signedUri,
+    };
+  }
 }
 
 /// Usage data aggregation for a single day.
@@ -5231,45 +5324,47 @@ class DailyResourceUsageAggregation {
 
   DailyResourceUsageAggregation.fromJson(core.Map json_)
     : this(
-        cpu:
-            json_.containsKey('cpu')
-                ? DailyResourceUsageAggregationCPU.fromJson(
-                  json_['cpu'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        disk:
-            json_.containsKey('disk')
-                ? DailyResourceUsageAggregationDisk.fromJson(
-                  json_['disk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        memory:
-            json_.containsKey('memory')
-                ? DailyResourceUsageAggregationMemory.fromJson(
-                  json_['memory'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        network:
-            json_.containsKey('network')
-                ? DailyResourceUsageAggregationNetwork.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cpu: json_.containsKey('cpu')
+            ? DailyResourceUsageAggregationCPU.fromJson(
+                json_['cpu'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        disk: json_.containsKey('disk')
+            ? DailyResourceUsageAggregationDisk.fromJson(
+                json_['disk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        memory: json_.containsKey('memory')
+            ? DailyResourceUsageAggregationMemory.fromJson(
+                json_['memory'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        network: json_.containsKey('network')
+            ? DailyResourceUsageAggregationNetwork.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (date != null) 'date': date!,
-    if (disk != null) 'disk': disk!,
-    if (memory != null) 'memory': memory!,
-    if (network != null) 'network': network!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final date = this.date;
+    final disk = this.disk;
+    final memory = this.memory;
+    final network = this.network;
+    return {
+      'cpu': ?cpu,
+      'date': ?date,
+      'disk': ?disk,
+      'memory': ?memory,
+      'network': ?network,
+    };
+  }
 }
 
 /// Statistical aggregation of CPU usage.
@@ -5281,19 +5376,18 @@ class DailyResourceUsageAggregationCPU {
 
   DailyResourceUsageAggregationCPU.fromJson(core.Map json_)
     : this(
-        utilizationPercentage:
-            json_.containsKey('utilizationPercentage')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['utilizationPercentage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        utilizationPercentage: json_.containsKey('utilizationPercentage')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['utilizationPercentage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizationPercentage != null)
-      'utilizationPercentage': utilizationPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final utilizationPercentage = this.utilizationPercentage;
+    return {'utilizationPercentage': ?utilizationPercentage};
+  }
 }
 
 /// Statistical aggregation of disk usage.
@@ -5317,31 +5411,29 @@ class DailyResourceUsageAggregationDisk {
 
   DailyResourceUsageAggregationDisk.fromJson(core.Map json_)
     : this(
-        iops:
-            json_.containsKey('iops')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['iops'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        readIops:
-            json_.containsKey('readIops')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['readIops'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        writeIops:
-            json_.containsKey('writeIops')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['writeIops'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        iops: json_.containsKey('iops')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['iops'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        readIops: json_.containsKey('readIops')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['readIops'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        writeIops: json_.containsKey('writeIops')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['writeIops'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (iops != null) 'iops': iops!,
-    if (readIops != null) 'readIops': readIops!,
-    if (writeIops != null) 'writeIops': writeIops!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final iops = this.iops;
+    final readIops = this.readIops;
+    final writeIops = this.writeIops;
+    return {'iops': ?iops, 'readIops': ?readIops, 'writeIops': ?writeIops};
+  }
 }
 
 /// Statistical aggregation of memory usage.
@@ -5353,19 +5445,18 @@ class DailyResourceUsageAggregationMemory {
 
   DailyResourceUsageAggregationMemory.fromJson(core.Map json_)
     : this(
-        utilizationPercentage:
-            json_.containsKey('utilizationPercentage')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['utilizationPercentage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        utilizationPercentage: json_.containsKey('utilizationPercentage')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['utilizationPercentage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizationPercentage != null)
-      'utilizationPercentage': utilizationPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final utilizationPercentage = this.utilizationPercentage;
+    return {'utilizationPercentage': ?utilizationPercentage};
+  }
 }
 
 /// Statistical aggregation of network usage.
@@ -5380,24 +5471,23 @@ class DailyResourceUsageAggregationNetwork {
 
   DailyResourceUsageAggregationNetwork.fromJson(core.Map json_)
     : this(
-        egressBps:
-            json_.containsKey('egressBps')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['egressBps'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ingressBps:
-            json_.containsKey('ingressBps')
-                ? DailyResourceUsageAggregationStats.fromJson(
-                  json_['ingressBps'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        egressBps: json_.containsKey('egressBps')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['egressBps'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ingressBps: json_.containsKey('ingressBps')
+            ? DailyResourceUsageAggregationStats.fromJson(
+                json_['ingressBps'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (egressBps != null) 'egressBps': egressBps!,
-    if (ingressBps != null) 'ingressBps': ingressBps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final egressBps = this.egressBps;
+    final ingressBps = this.ingressBps;
+    return {'egressBps': ?egressBps, 'ingressBps': ?ingressBps};
+  }
 }
 
 /// Statistical aggregation of samples for a single resource usage.
@@ -5425,18 +5515,23 @@ class DailyResourceUsageAggregationStats {
     : this(
         average: (json_['average'] as core.num?)?.toDouble(),
         median: (json_['median'] as core.num?)?.toDouble(),
-        ninteyFifthPercentile:
-            (json_['ninteyFifthPercentile'] as core.num?)?.toDouble(),
+        ninteyFifthPercentile: (json_['ninteyFifthPercentile'] as core.num?)
+            ?.toDouble(),
         peak: (json_['peak'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (average != null) 'average': average!,
-    if (median != null) 'median': median!,
-    if (ninteyFifthPercentile != null)
-      'ninteyFifthPercentile': ninteyFifthPercentile!,
-    if (peak != null) 'peak': peak!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final average = this.average;
+    final median = this.median;
+    final ninteyFifthPercentile = this.ninteyFifthPercentile;
+    final peak = this.peak;
+    return {
+      'average': ?average,
+      'median': ?median,
+      'ninteyFifthPercentile': ?ninteyFifthPercentile,
+      'peak': ?peak,
+    };
+  }
 }
 
 /// The details of a database deployment asset.
@@ -5506,61 +5601,66 @@ class DatabaseDeploymentDetails {
 
   DatabaseDeploymentDetails.fromJson(core.Map json_)
     : this(
-        aggregatedStats:
-            json_.containsKey('aggregatedStats')
-                ? DatabaseDeploymentDetailsAggregatedStats.fromJson(
-                  json_['aggregatedStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        awsRds:
-            json_.containsKey('awsRds')
-                ? AwsRds.fromJson(
-                  json_['awsRds'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        aggregatedStats: json_.containsKey('aggregatedStats')
+            ? DatabaseDeploymentDetailsAggregatedStats.fromJson(
+                json_['aggregatedStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        awsRds: json_.containsKey('awsRds')
+            ? AwsRds.fromJson(
+                json_['awsRds'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         edition: json_['edition'] as core.String?,
         generatedId: json_['generatedId'] as core.String?,
         manualUniqueId: json_['manualUniqueId'] as core.String?,
-        mysql:
-            json_.containsKey('mysql')
-                ? MysqlDatabaseDeployment.fromJson(
-                  json_['mysql'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        postgresql:
-            json_.containsKey('postgresql')
-                ? PostgreSqlDatabaseDeployment.fromJson(
-                  json_['postgresql'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sqlServer:
-            json_.containsKey('sqlServer')
-                ? SqlServerDatabaseDeployment.fromJson(
-                  json_['sqlServer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        topology:
-            json_.containsKey('topology')
-                ? DatabaseDeploymentTopology.fromJson(
-                  json_['topology'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mysql: json_.containsKey('mysql')
+            ? MysqlDatabaseDeployment.fromJson(
+                json_['mysql'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        postgresql: json_.containsKey('postgresql')
+            ? PostgreSqlDatabaseDeployment.fromJson(
+                json_['postgresql'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sqlServer: json_.containsKey('sqlServer')
+            ? SqlServerDatabaseDeployment.fromJson(
+                json_['sqlServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        topology: json_.containsKey('topology')
+            ? DatabaseDeploymentTopology.fromJson(
+                json_['topology'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregatedStats != null) 'aggregatedStats': aggregatedStats!,
-    if (awsRds != null) 'awsRds': awsRds!,
-    if (edition != null) 'edition': edition!,
-    if (generatedId != null) 'generatedId': generatedId!,
-    if (manualUniqueId != null) 'manualUniqueId': manualUniqueId!,
-    if (mysql != null) 'mysql': mysql!,
-    if (postgresql != null) 'postgresql': postgresql!,
-    if (sqlServer != null) 'sqlServer': sqlServer!,
-    if (topology != null) 'topology': topology!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregatedStats = this.aggregatedStats;
+    final awsRds = this.awsRds;
+    final edition = this.edition;
+    final generatedId = this.generatedId;
+    final manualUniqueId = this.manualUniqueId;
+    final mysql = this.mysql;
+    final postgresql = this.postgresql;
+    final sqlServer = this.sqlServer;
+    final topology = this.topology;
+    final version = this.version;
+    return {
+      'aggregatedStats': ?aggregatedStats,
+      'awsRds': ?awsRds,
+      'edition': ?edition,
+      'generatedId': ?generatedId,
+      'manualUniqueId': ?manualUniqueId,
+      'mysql': ?mysql,
+      'postgresql': ?postgresql,
+      'sqlServer': ?sqlServer,
+      'topology': ?topology,
+      'version': ?version,
+    };
+  }
 }
 
 /// Aggregated stats for the database deployment.
@@ -5575,9 +5675,10 @@ class DatabaseDeploymentDetailsAggregatedStats {
   DatabaseDeploymentDetailsAggregatedStats.fromJson(core.Map json_)
     : this(databaseCount: json_['databaseCount'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseCount != null) 'databaseCount': databaseCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseCount = this.databaseCount;
+    return {'databaseCount': ?databaseCount};
+  }
 }
 
 /// Details of database deployment's topology.
@@ -5645,31 +5746,41 @@ class DatabaseDeploymentTopology {
         coreLimit: json_['coreLimit'] as core.int?,
         diskAllocatedBytes: json_['diskAllocatedBytes'] as core.String?,
         diskUsedBytes: json_['diskUsedBytes'] as core.String?,
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => DatabaseInstance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => DatabaseInstance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         memoryBytes: json_['memoryBytes'] as core.String?,
         memoryLimitBytes: json_['memoryLimitBytes'] as core.String?,
         physicalCoreCount: json_['physicalCoreCount'] as core.int?,
         physicalCoreLimit: json_['physicalCoreLimit'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coreCount != null) 'coreCount': coreCount!,
-    if (coreLimit != null) 'coreLimit': coreLimit!,
-    if (diskAllocatedBytes != null) 'diskAllocatedBytes': diskAllocatedBytes!,
-    if (diskUsedBytes != null) 'diskUsedBytes': diskUsedBytes!,
-    if (instances != null) 'instances': instances!,
-    if (memoryBytes != null) 'memoryBytes': memoryBytes!,
-    if (memoryLimitBytes != null) 'memoryLimitBytes': memoryLimitBytes!,
-    if (physicalCoreCount != null) 'physicalCoreCount': physicalCoreCount!,
-    if (physicalCoreLimit != null) 'physicalCoreLimit': physicalCoreLimit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coreCount = this.coreCount;
+    final coreLimit = this.coreLimit;
+    final diskAllocatedBytes = this.diskAllocatedBytes;
+    final diskUsedBytes = this.diskUsedBytes;
+    final instances = this.instances;
+    final memoryBytes = this.memoryBytes;
+    final memoryLimitBytes = this.memoryLimitBytes;
+    final physicalCoreCount = this.physicalCoreCount;
+    final physicalCoreLimit = this.physicalCoreLimit;
+    return {
+      'coreCount': ?coreCount,
+      'coreLimit': ?coreLimit,
+      'diskAllocatedBytes': ?diskAllocatedBytes,
+      'diskUsedBytes': ?diskUsedBytes,
+      'instances': ?instances,
+      'memoryBytes': ?memoryBytes,
+      'memoryLimitBytes': ?memoryLimitBytes,
+      'physicalCoreCount': ?physicalCoreCount,
+      'physicalCoreLimit': ?physicalCoreLimit,
+    };
+  }
 }
 
 /// Details of a logical database.
@@ -5705,31 +5816,33 @@ class DatabaseDetails {
     : this(
         allocatedStorageBytes: json_['allocatedStorageBytes'] as core.String?,
         databaseName: json_['databaseName'] as core.String?,
-        parentDatabaseDeployment:
-            json_.containsKey('parentDatabaseDeployment')
-                ? DatabaseDetailsParentDatabaseDeployment.fromJson(
-                  json_['parentDatabaseDeployment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        schemas:
-            (json_['schemas'] as core.List?)
-                ?.map(
-                  (value) => DatabaseSchema.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        parentDatabaseDeployment: json_.containsKey('parentDatabaseDeployment')
+            ? DatabaseDetailsParentDatabaseDeployment.fromJson(
+                json_['parentDatabaseDeployment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        schemas: (json_['schemas'] as core.List?)
+            ?.map(
+              (value) => DatabaseSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedStorageBytes != null)
-      'allocatedStorageBytes': allocatedStorageBytes!,
-    if (databaseName != null) 'databaseName': databaseName!,
-    if (parentDatabaseDeployment != null)
-      'parentDatabaseDeployment': parentDatabaseDeployment!,
-    if (schemas != null) 'schemas': schemas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedStorageBytes = this.allocatedStorageBytes;
+    final databaseName = this.databaseName;
+    final parentDatabaseDeployment = this.parentDatabaseDeployment;
+    final schemas = this.schemas;
+    return {
+      'allocatedStorageBytes': ?allocatedStorageBytes,
+      'databaseName': ?databaseName,
+      'parentDatabaseDeployment': ?parentDatabaseDeployment,
+      'schemas': ?schemas,
+    };
+  }
 }
 
 /// The identifiers of the parent database deployment.
@@ -5755,10 +5868,11 @@ class DatabaseDetailsParentDatabaseDeployment {
         manualUniqueId: json_['manualUniqueId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generatedId != null) 'generatedId': generatedId!,
-    if (manualUniqueId != null) 'manualUniqueId': manualUniqueId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatedId = this.generatedId;
+    final manualUniqueId = this.manualUniqueId;
+    return {'generatedId': ?generatedId, 'manualUniqueId': ?manualUniqueId};
+  }
 }
 
 /// Details of a database instance.
@@ -5788,20 +5902,20 @@ class DatabaseInstance {
   DatabaseInstance.fromJson(core.Map json_)
     : this(
         instanceName: json_['instanceName'] as core.String?,
-        network:
-            json_.containsKey('network')
-                ? DatabaseInstanceNetwork.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        network: json_.containsKey('network')
+            ? DatabaseInstanceNetwork.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instanceName != null) 'instanceName': instanceName!,
-    if (network != null) 'network': network!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceName = this.instanceName;
+    final network = this.network;
+    final role = this.role;
+    return {'instanceName': ?instanceName, 'network': ?network, 'role': ?role};
+  }
 }
 
 /// Network details of a database instance.
@@ -5829,22 +5943,25 @@ class DatabaseInstanceNetwork {
 
   DatabaseInstanceNetwork.fromJson(core.Map json_)
     : this(
-        hostNames:
-            (json_['hostNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ipAddresses:
-            (json_['ipAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        hostNames: (json_['hostNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ipAddresses: (json_['ipAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         primaryMacAddress: json_['primaryMacAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostNames != null) 'hostNames': hostNames!,
-    if (ipAddresses != null) 'ipAddresses': ipAddresses!,
-    if (primaryMacAddress != null) 'primaryMacAddress': primaryMacAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostNames = this.hostNames;
+    final ipAddresses = this.ipAddresses;
+    final primaryMacAddress = this.primaryMacAddress;
+    return {
+      'hostNames': ?hostNames,
+      'ipAddresses': ?ipAddresses,
+      'primaryMacAddress': ?primaryMacAddress,
+    };
+  }
 }
 
 /// Details of a group of database objects.
@@ -5875,10 +5992,11 @@ class DatabaseObjects {
         count: json_['count'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (count != null) 'count': count!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final count = this.count;
+    return {'category': ?category, 'count': ?count};
+  }
 }
 
 /// Details of a database schema.
@@ -5924,44 +6042,48 @@ class DatabaseSchema {
 
   DatabaseSchema.fromJson(core.Map json_)
     : this(
-        mysql:
-            json_.containsKey('mysql')
-                ? MySqlSchemaDetails.fromJson(
-                  json_['mysql'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        objects:
-            (json_['objects'] as core.List?)
-                ?.map(
-                  (value) => DatabaseObjects.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        postgresql:
-            json_.containsKey('postgresql')
-                ? PostgreSqlSchemaDetails.fromJson(
-                  json_['postgresql'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mysql: json_.containsKey('mysql')
+            ? MySqlSchemaDetails.fromJson(
+                json_['mysql'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        objects: (json_['objects'] as core.List?)
+            ?.map(
+              (value) => DatabaseObjects.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        postgresql: json_.containsKey('postgresql')
+            ? PostgreSqlSchemaDetails.fromJson(
+                json_['postgresql'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         schemaName: json_['schemaName'] as core.String?,
-        sqlServer:
-            json_.containsKey('sqlServer')
-                ? SqlServerSchemaDetails.fromJson(
-                  json_['sqlServer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sqlServer: json_.containsKey('sqlServer')
+            ? SqlServerSchemaDetails.fromJson(
+                json_['sqlServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tablesSizeBytes: json_['tablesSizeBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mysql != null) 'mysql': mysql!,
-    if (objects != null) 'objects': objects!,
-    if (postgresql != null) 'postgresql': postgresql!,
-    if (schemaName != null) 'schemaName': schemaName!,
-    if (sqlServer != null) 'sqlServer': sqlServer!,
-    if (tablesSizeBytes != null) 'tablesSizeBytes': tablesSizeBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mysql = this.mysql;
+    final objects = this.objects;
+    final postgresql = this.postgresql;
+    final schemaName = this.schemaName;
+    final sqlServer = this.sqlServer;
+    final tablesSizeBytes = this.tablesSizeBytes;
+    return {
+      'mysql': ?mysql,
+      'objects': ?objects,
+      'postgresql': ?postgresql,
+      'schemaName': ?schemaName,
+      'sqlServer': ?sqlServer,
+      'tablesSizeBytes': ?tablesSizeBytes,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -6102,14 +6224,12 @@ class DiscoveryClient {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) => Status.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         expireTime: json_['expireTime'] as core.String?,
         heartbeatTime: json_['heartbeatTime'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -6125,23 +6245,40 @@ class DiscoveryClient {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (errors != null) 'errors': errors!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (heartbeatTime != null) 'heartbeatTime': heartbeatTime!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (signalsEndpoint != null) 'signalsEndpoint': signalsEndpoint!,
-    if (source != null) 'source': source!,
-    if (state != null) 'state': state!,
-    if (ttl != null) 'ttl': ttl!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final errors = this.errors;
+    final expireTime = this.expireTime;
+    final heartbeatTime = this.heartbeatTime;
+    final labels = this.labels;
+    final name = this.name;
+    final serviceAccount = this.serviceAccount;
+    final signalsEndpoint = this.signalsEndpoint;
+    final source = this.source;
+    final state = this.state;
+    final ttl = this.ttl;
+    final updateTime = this.updateTime;
+    final version = this.version;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'errors': ?errors,
+      'expireTime': ?expireTime,
+      'heartbeatTime': ?heartbeatTime,
+      'labels': ?labels,
+      'name': ?name,
+      'serviceAccount': ?serviceAccount,
+      'signalsEndpoint': ?signalsEndpoint,
+      'source': ?source,
+      'state': ?state,
+      'ttl': ?ttl,
+      'updateTime': ?updateTime,
+      'version': ?version,
+    };
+  }
 }
 
 /// Single disk entry.
@@ -6198,30 +6335,38 @@ class DiskEntry {
         freeBytes: json_['freeBytes'] as core.String?,
         hwAddress: json_['hwAddress'] as core.String?,
         interfaceType: json_['interfaceType'] as core.String?,
-        partitions:
-            json_.containsKey('partitions')
-                ? DiskPartitionList.fromJson(
-                  json_['partitions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vmware:
-            json_.containsKey('vmware')
-                ? VmwareDiskConfig.fromJson(
-                  json_['vmware'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        partitions: json_.containsKey('partitions')
+            ? DiskPartitionList.fromJson(
+                json_['partitions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vmware: json_.containsKey('vmware')
+            ? VmwareDiskConfig.fromJson(
+                json_['vmware'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacityBytes != null) 'capacityBytes': capacityBytes!,
-    if (diskLabel != null) 'diskLabel': diskLabel!,
-    if (diskLabelType != null) 'diskLabelType': diskLabelType!,
-    if (freeBytes != null) 'freeBytes': freeBytes!,
-    if (hwAddress != null) 'hwAddress': hwAddress!,
-    if (interfaceType != null) 'interfaceType': interfaceType!,
-    if (partitions != null) 'partitions': partitions!,
-    if (vmware != null) 'vmware': vmware!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityBytes = this.capacityBytes;
+    final diskLabel = this.diskLabel;
+    final diskLabelType = this.diskLabelType;
+    final freeBytes = this.freeBytes;
+    final hwAddress = this.hwAddress;
+    final interfaceType = this.interfaceType;
+    final partitions = this.partitions;
+    final vmware = this.vmware;
+    return {
+      'capacityBytes': ?capacityBytes,
+      'diskLabel': ?diskLabel,
+      'diskLabelType': ?diskLabelType,
+      'freeBytes': ?freeBytes,
+      'hwAddress': ?hwAddress,
+      'interfaceType': ?interfaceType,
+      'partitions': ?partitions,
+      'vmware': ?vmware,
+    };
+  }
 }
 
 /// VM disks.
@@ -6233,19 +6378,19 @@ class DiskEntryList {
 
   DiskEntryList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => DiskEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => DiskEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Disk Partition details.
@@ -6287,25 +6432,33 @@ class DiskPartition {
         fileSystem: json_['fileSystem'] as core.String?,
         freeBytes: json_['freeBytes'] as core.String?,
         mountPoint: json_['mountPoint'] as core.String?,
-        subPartitions:
-            json_.containsKey('subPartitions')
-                ? DiskPartitionList.fromJson(
-                  json_['subPartitions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        subPartitions: json_.containsKey('subPartitions')
+            ? DiskPartitionList.fromJson(
+                json_['subPartitions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         uuid: json_['uuid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacityBytes != null) 'capacityBytes': capacityBytes!,
-    if (fileSystem != null) 'fileSystem': fileSystem!,
-    if (freeBytes != null) 'freeBytes': freeBytes!,
-    if (mountPoint != null) 'mountPoint': mountPoint!,
-    if (subPartitions != null) 'subPartitions': subPartitions!,
-    if (type != null) 'type': type!,
-    if (uuid != null) 'uuid': uuid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityBytes = this.capacityBytes;
+    final fileSystem = this.fileSystem;
+    final freeBytes = this.freeBytes;
+    final mountPoint = this.mountPoint;
+    final subPartitions = this.subPartitions;
+    final type = this.type;
+    final uuid = this.uuid;
+    return {
+      'capacityBytes': ?capacityBytes,
+      'fileSystem': ?fileSystem,
+      'freeBytes': ?freeBytes,
+      'mountPoint': ?mountPoint,
+      'subPartitions': ?subPartitions,
+      'type': ?type,
+      'uuid': ?uuid,
+    };
+  }
 }
 
 /// Disk partition details.
@@ -6334,20 +6487,24 @@ class DiskPartitionDetails {
   DiskPartitionDetails.fromJson(core.Map json_)
     : this(
         freeSpaceBytes: json_['freeSpaceBytes'] as core.String?,
-        partitions:
-            json_.containsKey('partitions')
-                ? DiskPartitionList.fromJson(
-                  json_['partitions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        partitions: json_.containsKey('partitions')
+            ? DiskPartitionList.fromJson(
+                json_['partitions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalCapacityBytes: json_['totalCapacityBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (freeSpaceBytes != null) 'freeSpaceBytes': freeSpaceBytes!,
-    if (partitions != null) 'partitions': partitions!,
-    if (totalCapacityBytes != null) 'totalCapacityBytes': totalCapacityBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final freeSpaceBytes = this.freeSpaceBytes;
+    final partitions = this.partitions;
+    final totalCapacityBytes = this.totalCapacityBytes;
+    return {
+      'freeSpaceBytes': ?freeSpaceBytes,
+      'partitions': ?partitions,
+      'totalCapacityBytes': ?totalCapacityBytes,
+    };
+  }
 }
 
 /// Disk partition list.
@@ -6359,19 +6516,19 @@ class DiskPartitionList {
 
   DiskPartitionList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => DiskPartition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => DiskPartition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Disk usage sample.
@@ -6413,11 +6570,16 @@ class DiskUsageSample {
         averageWriteIops: (json_['averageWriteIops'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageIops != null) 'averageIops': averageIops!,
-    if (averageReadIops != null) 'averageReadIops': averageReadIops!,
-    if (averageWriteIops != null) 'averageWriteIops': averageWriteIops!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageIops = this.averageIops;
+    final averageReadIops = this.averageReadIops;
+    final averageWriteIops = this.averageWriteIops;
+    return {
+      'averageIops': ?averageIops,
+      'averageReadIops': ?averageReadIops,
+      'averageWriteIops': ?averageWriteIops,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -6461,28 +6623,32 @@ class ErrorFrame {
     : this(
         ingestionTime: json_['ingestionTime'] as core.String?,
         name: json_['name'] as core.String?,
-        originalFrame:
-            json_.containsKey('originalFrame')
-                ? AssetFrame.fromJson(
-                  json_['originalFrame'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        violations:
-            (json_['violations'] as core.List?)
-                ?.map(
-                  (value) => FrameViolationEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        originalFrame: json_.containsKey('originalFrame')
+            ? AssetFrame.fromJson(
+                json_['originalFrame'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        violations: (json_['violations'] as core.List?)
+            ?.map(
+              (value) => FrameViolationEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingestionTime != null) 'ingestionTime': ingestionTime!,
-    if (name != null) 'name': name!,
-    if (originalFrame != null) 'originalFrame': originalFrame!,
-    if (violations != null) 'violations': violations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingestionTime = this.ingestionTime;
+    final name = this.name;
+    final originalFrame = this.originalFrame;
+    final violations = this.violations;
+    return {
+      'ingestionTime': ?ingestionTime,
+      'name': ?name,
+      'originalFrame': ?originalFrame,
+      'violations': ?violations,
+    };
+  }
 }
 
 /// A resource that reports result of the import job execution.
@@ -6506,22 +6672,25 @@ class ExecutionReport {
 
   ExecutionReport.fromJson(core.Map json_)
     : this(
-        executionErrors:
-            json_.containsKey('executionErrors')
-                ? ValidationReport.fromJson(
-                  json_['executionErrors']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionErrors: json_.containsKey('executionErrors')
+            ? ValidationReport.fromJson(
+                json_['executionErrors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         framesReported: json_['framesReported'] as core.int?,
         totalRowsCount: json_['totalRowsCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionErrors != null) 'executionErrors': executionErrors!,
-    if (framesReported != null) 'framesReported': framesReported!,
-    if (totalRowsCount != null) 'totalRowsCount': totalRowsCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionErrors = this.executionErrors;
+    final framesReported = this.framesReported;
+    final totalRowsCount = this.totalRowsCount;
+    return {
+      'executionErrors': ?executionErrors,
+      'framesReported': ?framesReported,
+      'totalRowsCount': ?totalRowsCount,
+    };
+  }
 }
 
 /// A resource that aggregates the validation errors found in an import job
@@ -6549,32 +6718,36 @@ class FileValidationReport {
 
   FileValidationReport.fromJson(core.Map json_)
     : this(
-        fileErrors:
-            (json_['fileErrors'] as core.List?)
-                ?.map(
-                  (value) => ImportError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fileErrors: (json_['fileErrors'] as core.List?)
+            ?.map(
+              (value) => ImportError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         fileName: json_['fileName'] as core.String?,
         partialReport: json_['partialReport'] as core.bool?,
-        rowErrors:
-            (json_['rowErrors'] as core.List?)
-                ?.map(
-                  (value) => ImportRowError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rowErrors: (json_['rowErrors'] as core.List?)
+            ?.map(
+              (value) => ImportRowError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileErrors != null) 'fileErrors': fileErrors!,
-    if (fileName != null) 'fileName': fileName!,
-    if (partialReport != null) 'partialReport': partialReport!,
-    if (rowErrors != null) 'rowErrors': rowErrors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileErrors = this.fileErrors;
+    final fileName = this.fileName;
+    final partialReport = this.partialReport;
+    final rowErrors = this.rowErrors;
+    return {
+      'fileErrors': ?fileErrors,
+      'fileName': ?fileName,
+      'partialReport': ?partialReport,
+      'rowErrors': ?rowErrors,
+    };
+  }
 }
 
 /// Describes the fit level of an asset for migration to a specific target.
@@ -6594,9 +6767,10 @@ class FitDescriptor {
   FitDescriptor.fromJson(core.Map json_)
     : this(fitLevel: json_['fitLevel'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fitLevel != null) 'fitLevel': fitLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fitLevel = this.fitLevel;
+    return {'fitLevel': ?fitLevel};
+  }
 }
 
 /// A resource that contains a single violation of a reported `AssetFrame`
@@ -6616,10 +6790,11 @@ class FrameViolationEntry {
         violation: json_['violation'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (field != null) 'field': field!,
-    if (violation != null) 'violation': violation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final field = this.field;
+    final violation = this.violation;
+    return {'field': ?field, 'violation': ?violation};
+  }
 }
 
 /// Collection of frame data.
@@ -6631,19 +6806,19 @@ class Frames {
 
   Frames.fromJson(core.Map json_)
     : this(
-        framesData:
-            (json_['framesData'] as core.List?)
-                ?.map(
-                  (value) => AssetFrame.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        framesData: (json_['framesData'] as core.List?)
+            ?.map(
+              (value) => AssetFrame.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (framesData != null) 'framesData': framesData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final framesData = this.framesData;
+    return {'framesData': ?framesData};
+  }
 }
 
 /// Single fstab entry.
@@ -6686,14 +6861,22 @@ class FstabEntry {
         vfstype: json_['vfstype'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (file != null) 'file': file!,
-    if (freq != null) 'freq': freq!,
-    if (mntops != null) 'mntops': mntops!,
-    if (passno != null) 'passno': passno!,
-    if (spec != null) 'spec': spec!,
-    if (vfstype != null) 'vfstype': vfstype!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final file = this.file;
+    final freq = this.freq;
+    final mntops = this.mntops;
+    final passno = this.passno;
+    final spec = this.spec;
+    final vfstype = this.vfstype;
+    return {
+      'file': ?file,
+      'freq': ?freq,
+      'mntops': ?mntops,
+      'passno': ?passno,
+      'spec': ?spec,
+      'vfstype': ?vfstype,
+    };
+  }
 }
 
 /// Fstab content.
@@ -6705,19 +6888,19 @@ class FstabEntryList {
 
   FstabEntryList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => FstabEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => FstabEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// A generic insight about an asset.
@@ -6752,20 +6935,23 @@ class GenericInsight {
 
   GenericInsight.fromJson(core.Map json_)
     : this(
-        additionalInformation:
-            (json_['additionalInformation'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalInformation: (json_['additionalInformation'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         defaultMessage: json_['defaultMessage'] as core.String?,
         messageId: json_['messageId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalInformation != null)
-      'additionalInformation': additionalInformation!,
-    if (defaultMessage != null) 'defaultMessage': defaultMessage!,
-    if (messageId != null) 'messageId': messageId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalInformation = this.additionalInformation;
+    final defaultMessage = this.defaultMessage;
+    final messageId = this.messageId;
+    return {
+      'additionalInformation': ?additionalInformation,
+      'defaultMessage': ?defaultMessage,
+      'messageId': ?messageId,
+    };
+  }
 }
 
 /// Generic platform details.
@@ -6794,10 +6980,11 @@ class GenericPlatformDetails {
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hyperthreading = this.hyperthreading;
+    final location = this.location;
+    return {'hyperthreading': ?hyperthreading, 'location': ?location};
+  }
 }
 
 /// A resource that represents an asset group.
@@ -6855,14 +7042,22 @@ class Group {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Guest OS config information.
@@ -6897,35 +7092,39 @@ class GuestConfigDetails {
 
   GuestConfigDetails.fromJson(core.Map json_)
     : this(
-        fstab:
-            json_.containsKey('fstab')
-                ? FstabEntryList.fromJson(
-                  json_['fstab'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        hosts:
-            json_.containsKey('hosts')
-                ? HostsEntryList.fromJson(
-                  json_['hosts'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fstab: json_.containsKey('fstab')
+            ? FstabEntryList.fromJson(
+                json_['fstab'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hosts: json_.containsKey('hosts')
+            ? HostsEntryList.fromJson(
+                json_['hosts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issue: json_['issue'] as core.String?,
-        nfsExports:
-            json_.containsKey('nfsExports')
-                ? NfsExportList.fromJson(
-                  json_['nfsExports'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nfsExports: json_.containsKey('nfsExports')
+            ? NfsExportList.fromJson(
+                json_['nfsExports'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selinuxMode: json_['selinuxMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fstab != null) 'fstab': fstab!,
-    if (hosts != null) 'hosts': hosts!,
-    if (issue != null) 'issue': issue!,
-    if (nfsExports != null) 'nfsExports': nfsExports!,
-    if (selinuxMode != null) 'selinuxMode': selinuxMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fstab = this.fstab;
+    final hosts = this.hosts;
+    final issue = this.issue;
+    final nfsExports = this.nfsExports;
+    final selinuxMode = this.selinuxMode;
+    return {
+      'fstab': ?fstab,
+      'hosts': ?hosts,
+      'issue': ?issue,
+      'nfsExports': ?nfsExports,
+      'selinuxMode': ?selinuxMode,
+    };
+  }
 }
 
 /// Guest installed application information.
@@ -6961,23 +7160,30 @@ class GuestInstalledApplication {
     : this(
         applicationName: json_['applicationName'] as core.String?,
         installTime: json_['installTime'] as core.String?,
-        licenses:
-            (json_['licenses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        licenses: (json_['licenses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         path: json_['path'] as core.String?,
         vendor: json_['vendor'] as core.String?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationName != null) 'applicationName': applicationName!,
-    if (installTime != null) 'installTime': installTime!,
-    if (licenses != null) 'licenses': licenses!,
-    if (path != null) 'path': path!,
-    if (vendor != null) 'vendor': vendor!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationName = this.applicationName;
+    final installTime = this.installTime;
+    final licenses = this.licenses;
+    final path = this.path;
+    final vendor = this.vendor;
+    final version = this.version;
+    return {
+      'applicationName': ?applicationName,
+      'installTime': ?installTime,
+      'licenses': ?licenses,
+      'path': ?path,
+      'vendor': ?vendor,
+      'version': ?version,
+    };
+  }
 }
 
 /// Guest installed application list.
@@ -6989,19 +7195,19 @@ class GuestInstalledApplicationList {
 
   GuestInstalledApplicationList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => GuestInstalledApplication.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => GuestInstalledApplication.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Information from Guest-level collections.
@@ -7036,30 +7242,35 @@ class GuestOsDetails {
 
   GuestOsDetails.fromJson(core.Map json_)
     : this(
-        config:
-            json_.containsKey('config')
-                ? GuestConfigDetails.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? GuestConfigDetails.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         family: json_['family'] as core.String?,
         osName: json_['osName'] as core.String?,
-        runtime:
-            json_.containsKey('runtime')
-                ? GuestRuntimeDetails.fromJson(
-                  json_['runtime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        runtime: json_.containsKey('runtime')
+            ? GuestRuntimeDetails.fromJson(
+                json_['runtime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (config != null) 'config': config!,
-    if (family != null) 'family': family!,
-    if (osName != null) 'osName': osName!,
-    if (runtime != null) 'runtime': runtime!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    final family = this.family;
+    final osName = this.osName;
+    final runtime = this.runtime;
+    final version = this.version;
+    return {
+      'config': ?config,
+      'family': ?family,
+      'osName': ?osName,
+      'runtime': ?runtime,
+      'version': ?version,
+    };
+  }
 }
 
 /// Guest OS runtime information.
@@ -7102,50 +7313,55 @@ class GuestRuntimeDetails {
   GuestRuntimeDetails.fromJson(core.Map json_)
     : this(
         domain: json_['domain'] as core.String?,
-        installedApps:
-            json_.containsKey('installedApps')
-                ? GuestInstalledApplicationList.fromJson(
-                  json_['installedApps'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        installedApps: json_.containsKey('installedApps')
+            ? GuestInstalledApplicationList.fromJson(
+                json_['installedApps'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastBootTime: json_['lastBootTime'] as core.String?,
         machineName: json_['machineName'] as core.String?,
-        network:
-            json_.containsKey('network')
-                ? RuntimeNetworkInfo.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        openFileList:
-            json_.containsKey('openFileList')
-                ? OpenFileList.fromJson(
-                  json_['openFileList'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        processes:
-            json_.containsKey('processes')
-                ? RunningProcessList.fromJson(
-                  json_['processes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        services:
-            json_.containsKey('services')
-                ? RunningServiceList.fromJson(
-                  json_['services'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        network: json_.containsKey('network')
+            ? RuntimeNetworkInfo.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openFileList: json_.containsKey('openFileList')
+            ? OpenFileList.fromJson(
+                json_['openFileList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processes: json_.containsKey('processes')
+            ? RunningProcessList.fromJson(
+                json_['processes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        services: json_.containsKey('services')
+            ? RunningServiceList.fromJson(
+                json_['services'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-    if (installedApps != null) 'installedApps': installedApps!,
-    if (lastBootTime != null) 'lastBootTime': lastBootTime!,
-    if (machineName != null) 'machineName': machineName!,
-    if (network != null) 'network': network!,
-    if (openFileList != null) 'openFileList': openFileList!,
-    if (processes != null) 'processes': processes!,
-    if (services != null) 'services': services!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final installedApps = this.installedApps;
+    final lastBootTime = this.lastBootTime;
+    final machineName = this.machineName;
+    final network = this.network;
+    final openFileList = this.openFileList;
+    final processes = this.processes;
+    final services = this.services;
+    return {
+      'domain': ?domain,
+      'installedApps': ?installedApps,
+      'lastBootTime': ?lastBootTime,
+      'machineName': ?machineName,
+      'network': ?network,
+      'openFileList': ?openFileList,
+      'processes': ?processes,
+      'services': ?services,
+    };
+  }
 }
 
 /// Single /etc/hosts entry.
@@ -7160,17 +7376,17 @@ class HostsEntry {
 
   HostsEntry.fromJson(core.Map json_)
     : this(
-        hostNames:
-            (json_['hostNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        hostNames: (json_['hostNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         ip: json_['ip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostNames != null) 'hostNames': hostNames!,
-    if (ip != null) 'ip': ip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostNames = this.hostNames;
+    final ip = this.ip;
+    return {'hostNames': ?hostNames, 'ip': ?ip};
+  }
 }
 
 /// Hosts content.
@@ -7182,19 +7398,19 @@ class HostsEntryList {
 
   HostsEntryList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => HostsEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => HostsEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// A resource that represents a payload file in an import job.
@@ -7262,23 +7478,29 @@ class ImportDataFile {
         format: json_['format'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
-        uploadFileInfo:
-            json_.containsKey('uploadFileInfo')
-                ? UploadFileInfo.fromJson(
-                  json_['uploadFileInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        uploadFileInfo: json_.containsKey('uploadFileInfo')
+            ? UploadFileInfo.fromJson(
+                json_['uploadFileInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (format != null) 'format': format!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (uploadFileInfo != null) 'uploadFileInfo': uploadFileInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final format = this.format;
+    final name = this.name;
+    final state = this.state;
+    final uploadFileInfo = this.uploadFileInfo;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'format': ?format,
+      'name': ?name,
+      'state': ?state,
+      'uploadFileInfo': ?uploadFileInfo,
+    };
+  }
 }
 
 /// A resource that reports the errors encountered while processing an import
@@ -7303,10 +7525,11 @@ class ImportError {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorDetails != null) 'errorDetails': errorDetails!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorDetails = this.errorDetails;
+    final severity = this.severity;
+    return {'errorDetails': ?errorDetails, 'severity': ?severity};
+  }
 }
 
 /// A resource that represents the background job that imports asset frames.
@@ -7392,40 +7615,49 @@ class ImportJob {
         completeTime: json_['completeTime'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        executionReport:
-            json_.containsKey('executionReport')
-                ? ExecutionReport.fromJson(
-                  json_['executionReport']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionReport: json_.containsKey('executionReport')
+            ? ExecutionReport.fromJson(
+                json_['executionReport'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        validationReport:
-            json_.containsKey('validationReport')
-                ? ValidationReport.fromJson(
-                  json_['validationReport']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        validationReport: json_.containsKey('validationReport')
+            ? ValidationReport.fromJson(
+                json_['validationReport']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assetSource != null) 'assetSource': assetSource!,
-    if (completeTime != null) 'completeTime': completeTime!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (executionReport != null) 'executionReport': executionReport!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (validationReport != null) 'validationReport': validationReport!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assetSource = this.assetSource;
+    final completeTime = this.completeTime;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final executionReport = this.executionReport;
+    final labels = this.labels;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final validationReport = this.validationReport;
+    return {
+      'assetSource': ?assetSource,
+      'completeTime': ?completeTime,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'executionReport': ?executionReport,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'validationReport': ?validationReport,
+    };
+  }
 }
 
 /// A resource that reports the import job errors at row level.
@@ -7472,48 +7704,54 @@ class ImportRowError {
 
   ImportRowError.fromJson(core.Map json_)
     : this(
-        archiveError:
-            json_.containsKey('archiveError')
-                ? ImportRowErrorArchiveErrorDetails.fromJson(
-                  json_['archiveError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        archiveError: json_.containsKey('archiveError')
+            ? ImportRowErrorArchiveErrorDetails.fromJson(
+                json_['archiveError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         assetTitle: json_['assetTitle'] as core.String?,
-        csvError:
-            json_.containsKey('csvError')
-                ? ImportRowErrorCsvErrorDetails.fromJson(
-                  json_['csvError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) => ImportError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        csvError: json_.containsKey('csvError')
+            ? ImportRowErrorCsvErrorDetails.fromJson(
+                json_['csvError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => ImportError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         rowNumber: json_['rowNumber'] as core.int?,
         vmName: json_['vmName'] as core.String?,
         vmUuid: json_['vmUuid'] as core.String?,
-        xlsxError:
-            json_.containsKey('xlsxError')
-                ? ImportRowErrorXlsxErrorDetails.fromJson(
-                  json_['xlsxError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        xlsxError: json_.containsKey('xlsxError')
+            ? ImportRowErrorXlsxErrorDetails.fromJson(
+                json_['xlsxError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (archiveError != null) 'archiveError': archiveError!,
-    if (assetTitle != null) 'assetTitle': assetTitle!,
-    if (csvError != null) 'csvError': csvError!,
-    if (errors != null) 'errors': errors!,
-    if (rowNumber != null) 'rowNumber': rowNumber!,
-    if (vmName != null) 'vmName': vmName!,
-    if (vmUuid != null) 'vmUuid': vmUuid!,
-    if (xlsxError != null) 'xlsxError': xlsxError!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveError = this.archiveError;
+    final assetTitle = this.assetTitle;
+    final csvError = this.csvError;
+    final errors = this.errors;
+    final rowNumber = this.rowNumber;
+    final vmName = this.vmName;
+    final vmUuid = this.vmUuid;
+    final xlsxError = this.xlsxError;
+    return {
+      'archiveError': ?archiveError,
+      'assetTitle': ?assetTitle,
+      'csvError': ?csvError,
+      'errors': ?errors,
+      'rowNumber': ?rowNumber,
+      'vmName': ?vmName,
+      'vmUuid': ?vmUuid,
+      'xlsxError': ?xlsxError,
+    };
+  }
 }
 
 /// Error details for an archive file.
@@ -7530,19 +7768,19 @@ class ImportRowErrorArchiveErrorDetails {
 
   ImportRowErrorArchiveErrorDetails.fromJson(core.Map json_)
     : this(
-        csvError:
-            json_.containsKey('csvError')
-                ? ImportRowErrorCsvErrorDetails.fromJson(
-                  json_['csvError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        csvError: json_.containsKey('csvError')
+            ? ImportRowErrorCsvErrorDetails.fromJson(
+                json_['csvError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         filePath: json_['filePath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (csvError != null) 'csvError': csvError!,
-    if (filePath != null) 'filePath': filePath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final csvError = this.csvError;
+    final filePath = this.filePath;
+    return {'csvError': ?csvError, 'filePath': ?filePath};
+  }
 }
 
 /// Error details for a CSV file.
@@ -7555,9 +7793,10 @@ class ImportRowErrorCsvErrorDetails {
   ImportRowErrorCsvErrorDetails.fromJson(core.Map json_)
     : this(rowNumber: json_['rowNumber'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rowNumber != null) 'rowNumber': rowNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rowNumber = this.rowNumber;
+    return {'rowNumber': ?rowNumber};
+  }
 }
 
 /// Error details for an XLSX file.
@@ -7576,10 +7815,11 @@ class ImportRowErrorXlsxErrorDetails {
         sheet: json_['sheet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rowNumber != null) 'rowNumber': rowNumber!,
-    if (sheet != null) 'sheet': sheet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rowNumber = this.rowNumber;
+    final sheet = this.sheet;
+    return {'rowNumber': ?rowNumber, 'sheet': ?sheet};
+  }
 }
 
 /// An insight about an asset.
@@ -7598,26 +7838,27 @@ class Insight {
 
   Insight.fromJson(core.Map json_)
     : this(
-        genericInsight:
-            json_.containsKey('genericInsight')
-                ? GenericInsight.fromJson(
-                  json_['genericInsight']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        migrationInsight:
-            json_.containsKey('migrationInsight')
-                ? MigrationInsight.fromJson(
-                  json_['migrationInsight']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        genericInsight: json_.containsKey('genericInsight')
+            ? GenericInsight.fromJson(
+                json_['genericInsight'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        migrationInsight: json_.containsKey('migrationInsight')
+            ? MigrationInsight.fromJson(
+                json_['migrationInsight']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (genericInsight != null) 'genericInsight': genericInsight!,
-    if (migrationInsight != null) 'migrationInsight': migrationInsight!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final genericInsight = this.genericInsight;
+    final migrationInsight = this.migrationInsight;
+    return {
+      'genericInsight': ?genericInsight,
+      'migrationInsight': ?migrationInsight,
+    };
+  }
 }
 
 /// Message containing insights list.
@@ -7636,21 +7877,21 @@ class InsightList {
 
   InsightList.fromJson(core.Map json_)
     : this(
-        insights:
-            (json_['insights'] as core.List?)
-                ?.map(
-                  (value) => Insight.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        insights: (json_['insights'] as core.List?)
+            ?.map(
+              (value) => Insight.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (insights != null) 'insights': insights!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final insights = this.insights;
+    final updateTime = this.updateTime;
+    return {'insights': ?insights, 'updateTime': ?updateTime};
+  }
 }
 
 /// Response message for listing assets export jobs.
@@ -7669,21 +7910,24 @@ class ListAssetsExportJobsResponse {
 
   ListAssetsExportJobsResponse.fromJson(core.Map json_)
     : this(
-        assetsExportJobs:
-            (json_['assetsExportJobs'] as core.List?)
-                ?.map(
-                  (value) => AssetsExportJob.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        assetsExportJobs: (json_['assetsExportJobs'] as core.List?)
+            ?.map(
+              (value) => AssetsExportJob.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assetsExportJobs != null) 'assetsExportJobs': assetsExportJobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assetsExportJobs = this.assetsExportJobs;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'assetsExportJobs': ?assetsExportJobs,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for listing assets.
@@ -7701,26 +7945,28 @@ class ListAssetsResponse {
 
   ListAssetsResponse.fromJson(core.Map json_)
     : this(
-        assets:
-            (json_['assets'] as core.List?)
-                ?.map(
-                  (value) => Asset.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        assets: (json_['assets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Asset.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assets != null) 'assets': assets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assets = this.assets;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'assets': ?assets,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing discovery clients.
@@ -7744,26 +7990,29 @@ class ListDiscoveryClientsResponse {
 
   ListDiscoveryClientsResponse.fromJson(core.Map json_)
     : this(
-        discoveryClients:
-            (json_['discoveryClients'] as core.List?)
-                ?.map(
-                  (value) => DiscoveryClient.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        discoveryClients: (json_['discoveryClients'] as core.List?)
+            ?.map(
+              (value) => DiscoveryClient.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (discoveryClients != null) 'discoveryClients': discoveryClients!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final discoveryClients = this.discoveryClients;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'discoveryClients': ?discoveryClients,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A response for listing error frames.
@@ -7785,26 +8034,29 @@ class ListErrorFramesResponse {
 
   ListErrorFramesResponse.fromJson(core.Map json_)
     : this(
-        errorFrames:
-            (json_['errorFrames'] as core.List?)
-                ?.map(
-                  (value) => ErrorFrame.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errorFrames: (json_['errorFrames'] as core.List?)
+            ?.map(
+              (value) => ErrorFrame.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorFrames != null) 'errorFrames': errorFrames!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorFrames = this.errorFrames;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'errorFrames': ?errorFrames,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A response for listing groups.
@@ -7822,26 +8074,28 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map json_)
     : this(
-        groups:
-            (json_['groups'] as core.List?)
-                ?.map(
-                  (value) => Group.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        groups: (json_['groups'] as core.List?)
+            ?.map(
+              (value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groups != null) 'groups': groups!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groups = this.groups;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'groups': ?groups,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for listing payload files of an import job.
@@ -7865,26 +8119,29 @@ class ListImportDataFilesResponse {
 
   ListImportDataFilesResponse.fromJson(core.Map json_)
     : this(
-        importDataFiles:
-            (json_['importDataFiles'] as core.List?)
-                ?.map(
-                  (value) => ImportDataFile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        importDataFiles: (json_['importDataFiles'] as core.List?)
+            ?.map(
+              (value) => ImportDataFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (importDataFiles != null) 'importDataFiles': importDataFiles!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final importDataFiles = this.importDataFiles;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'importDataFiles': ?importDataFiles,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A response for listing import jobs.
@@ -7906,26 +8163,29 @@ class ListImportJobsResponse {
 
   ListImportJobsResponse.fromJson(core.Map json_)
     : this(
-        importJobs:
-            (json_['importJobs'] as core.List?)
-                ?.map(
-                  (value) => ImportJob.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        importJobs: (json_['importJobs'] as core.List?)
+            ?.map(
+              (value) => ImportJob.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (importJobs != null) 'importJobs': importJobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final importJobs = this.importJobs;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'importJobs': ?importJobs,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -7940,21 +8200,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -7982,25 +8242,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing preference sets.
@@ -8023,25 +8286,28 @@ class ListPreferenceSetsResponse {
   ListPreferenceSetsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        preferenceSets:
-            (json_['preferenceSets'] as core.List?)
-                ?.map(
-                  (value) => PreferenceSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        preferenceSets: (json_['preferenceSets'] as core.List?)
+            ?.map(
+              (value) => PreferenceSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (preferenceSets != null) 'preferenceSets': preferenceSets!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final preferenceSets = this.preferenceSets;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'preferenceSets': ?preferenceSets,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing relations.
@@ -8057,20 +8323,20 @@ class ListRelationsResponse {
   ListRelationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        relations:
-            (json_['relations'] as core.List?)
-                ?.map(
-                  (value) => Relation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        relations: (json_['relations'] as core.List?)
+            ?.map(
+              (value) => Relation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (relations != null) 'relations': relations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final relations = this.relations;
+    return {'nextPageToken': ?nextPageToken, 'relations': ?relations};
+  }
 }
 
 /// Response message for listing report configs.
@@ -8093,25 +8359,28 @@ class ListReportConfigsResponse {
   ListReportConfigsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        reportConfigs:
-            (json_['reportConfigs'] as core.List?)
-                ?.map(
-                  (value) => ReportConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        reportConfigs: (json_['reportConfigs'] as core.List?)
+            ?.map(
+              (value) => ReportConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (reportConfigs != null) 'reportConfigs': reportConfigs!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final reportConfigs = this.reportConfigs;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'reportConfigs': ?reportConfigs,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing Reports.
@@ -8130,25 +8399,27 @@ class ListReportsResponse {
   ListReportsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        reports:
-            (json_['reports'] as core.List?)
-                ?.map(
-                  (value) => Report.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        reports: (json_['reports'] as core.List?)
+            ?.map(
+              (value) =>
+                  Report.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (reports != null) 'reports': reports!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final reports = this.reports;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'reports': ?reports,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing sources.
@@ -8167,25 +8438,27 @@ class ListSourcesResponse {
   ListSourcesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sources:
-            (json_['sources'] as core.List?)
-                ?.map(
-                  (value) => Source.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sources: (json_['sources'] as core.List?)
+            ?.map(
+              (value) =>
+                  Source.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sources != null) 'sources': sources!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sources = this.sources;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sources': ?sources,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -8249,12 +8522,11 @@ class MachineArchitectureDetails {
 
   MachineArchitectureDetails.fromJson(core.Map json_)
     : this(
-        bios:
-            json_.containsKey('bios')
-                ? BiosDetails.fromJson(
-                  json_['bios'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bios: json_.containsKey('bios')
+            ? BiosDetails.fromJson(
+                json_['bios'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cpuArchitecture: json_['cpuArchitecture'] as core.String?,
         cpuManufacturer: json_['cpuManufacturer'] as core.String?,
         cpuName: json_['cpuName'] as core.String?,
@@ -8265,17 +8537,28 @@ class MachineArchitectureDetails {
         vendor: json_['vendor'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bios != null) 'bios': bios!,
-    if (cpuArchitecture != null) 'cpuArchitecture': cpuArchitecture!,
-    if (cpuManufacturer != null) 'cpuManufacturer': cpuManufacturer!,
-    if (cpuName != null) 'cpuName': cpuName!,
-    if (cpuSocketCount != null) 'cpuSocketCount': cpuSocketCount!,
-    if (cpuThreadCount != null) 'cpuThreadCount': cpuThreadCount!,
-    if (firmwareType != null) 'firmwareType': firmwareType!,
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (vendor != null) 'vendor': vendor!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bios = this.bios;
+    final cpuArchitecture = this.cpuArchitecture;
+    final cpuManufacturer = this.cpuManufacturer;
+    final cpuName = this.cpuName;
+    final cpuSocketCount = this.cpuSocketCount;
+    final cpuThreadCount = this.cpuThreadCount;
+    final firmwareType = this.firmwareType;
+    final hyperthreading = this.hyperthreading;
+    final vendor = this.vendor;
+    return {
+      'bios': ?bios,
+      'cpuArchitecture': ?cpuArchitecture,
+      'cpuManufacturer': ?cpuManufacturer,
+      'cpuName': ?cpuName,
+      'cpuSocketCount': ?cpuSocketCount,
+      'cpuThreadCount': ?cpuThreadCount,
+      'firmwareType': ?firmwareType,
+      'hyperthreading': ?hyperthreading,
+      'vendor': ?vendor,
+    };
+  }
 }
 
 /// Details of a machine.
@@ -8352,65 +8635,72 @@ class MachineDetails {
 
   MachineDetails.fromJson(core.Map json_)
     : this(
-        architecture:
-            json_.containsKey('architecture')
-                ? MachineArchitectureDetails.fromJson(
-                  json_['architecture'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        architecture: json_.containsKey('architecture')
+            ? MachineArchitectureDetails.fromJson(
+                json_['architecture'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         coreCount: json_['coreCount'] as core.int?,
         createTime: json_['createTime'] as core.String?,
-        diskPartitions:
-            json_.containsKey('diskPartitions')
-                ? DiskPartitionDetails.fromJson(
-                  json_['diskPartitions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        disks:
-            json_.containsKey('disks')
-                ? MachineDiskDetails.fromJson(
-                  json_['disks'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        guestOs:
-            json_.containsKey('guestOs')
-                ? GuestOsDetails.fromJson(
-                  json_['guestOs'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        diskPartitions: json_.containsKey('diskPartitions')
+            ? DiskPartitionDetails.fromJson(
+                json_['diskPartitions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        disks: json_.containsKey('disks')
+            ? MachineDiskDetails.fromJson(
+                json_['disks'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        guestOs: json_.containsKey('guestOs')
+            ? GuestOsDetails.fromJson(
+                json_['guestOs'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         machineName: json_['machineName'] as core.String?,
         memoryMb: json_['memoryMb'] as core.int?,
-        network:
-            json_.containsKey('network')
-                ? MachineNetworkDetails.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        platform:
-            json_.containsKey('platform')
-                ? PlatformDetails.fromJson(
-                  json_['platform'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        network: json_.containsKey('network')
+            ? MachineNetworkDetails.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        platform: json_.containsKey('platform')
+            ? PlatformDetails.fromJson(
+                json_['platform'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         powerState: json_['powerState'] as core.String?,
         uuid: json_['uuid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (architecture != null) 'architecture': architecture!,
-    if (coreCount != null) 'coreCount': coreCount!,
-    if (createTime != null) 'createTime': createTime!,
-    if (diskPartitions != null) 'diskPartitions': diskPartitions!,
-    if (disks != null) 'disks': disks!,
-    if (guestOs != null) 'guestOs': guestOs!,
-    if (machineName != null) 'machineName': machineName!,
-    if (memoryMb != null) 'memoryMb': memoryMb!,
-    if (network != null) 'network': network!,
-    if (platform != null) 'platform': platform!,
-    if (powerState != null) 'powerState': powerState!,
-    if (uuid != null) 'uuid': uuid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final architecture = this.architecture;
+    final coreCount = this.coreCount;
+    final createTime = this.createTime;
+    final diskPartitions = this.diskPartitions;
+    final disks = this.disks;
+    final guestOs = this.guestOs;
+    final machineName = this.machineName;
+    final memoryMb = this.memoryMb;
+    final network = this.network;
+    final platform = this.platform;
+    final powerState = this.powerState;
+    final uuid = this.uuid;
+    return {
+      'architecture': ?architecture,
+      'coreCount': ?coreCount,
+      'createTime': ?createTime,
+      'diskPartitions': ?diskPartitions,
+      'disks': ?disks,
+      'guestOs': ?guestOs,
+      'machineName': ?machineName,
+      'memoryMb': ?memoryMb,
+      'network': ?network,
+      'platform': ?platform,
+      'powerState': ?powerState,
+      'uuid': ?uuid,
+    };
+  }
 }
 
 /// Details of machine disks.
@@ -8432,21 +8722,25 @@ class MachineDiskDetails {
 
   MachineDiskDetails.fromJson(core.Map json_)
     : this(
-        disks:
-            json_.containsKey('disks')
-                ? DiskEntryList.fromJson(
-                  json_['disks'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        disks: json_.containsKey('disks')
+            ? DiskEntryList.fromJson(
+                json_['disks'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalCapacityBytes: json_['totalCapacityBytes'] as core.String?,
         totalFreeBytes: json_['totalFreeBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disks != null) 'disks': disks!,
-    if (totalCapacityBytes != null) 'totalCapacityBytes': totalCapacityBytes!,
-    if (totalFreeBytes != null) 'totalFreeBytes': totalFreeBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disks = this.disks;
+    final totalCapacityBytes = this.totalCapacityBytes;
+    final totalFreeBytes = this.totalFreeBytes;
+    return {
+      'disks': ?disks,
+      'totalCapacityBytes': ?totalCapacityBytes,
+      'totalFreeBytes': ?totalFreeBytes,
+    };
+  }
 }
 
 /// Details of network adapters and settings.
@@ -8480,25 +8774,31 @@ class MachineNetworkDetails {
 
   MachineNetworkDetails.fromJson(core.Map json_)
     : this(
-        adapters:
-            json_.containsKey('adapters')
-                ? NetworkAdapterList.fromJson(
-                  json_['adapters'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        adapters: json_.containsKey('adapters')
+            ? NetworkAdapterList.fromJson(
+                json_['adapters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         defaultGateway: json_['defaultGateway'] as core.String?,
         primaryIpAddress: json_['primaryIpAddress'] as core.String?,
         primaryMacAddress: json_['primaryMacAddress'] as core.String?,
         publicIpAddress: json_['publicIpAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adapters != null) 'adapters': adapters!,
-    if (defaultGateway != null) 'defaultGateway': defaultGateway!,
-    if (primaryIpAddress != null) 'primaryIpAddress': primaryIpAddress!,
-    if (primaryMacAddress != null) 'primaryMacAddress': primaryMacAddress!,
-    if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adapters = this.adapters;
+    final defaultGateway = this.defaultGateway;
+    final primaryIpAddress = this.primaryIpAddress;
+    final primaryMacAddress = this.primaryMacAddress;
+    final publicIpAddress = this.publicIpAddress;
+    return {
+      'adapters': ?adapters,
+      'defaultGateway': ?defaultGateway,
+      'primaryIpAddress': ?primaryIpAddress,
+      'primaryMacAddress': ?primaryMacAddress,
+      'publicIpAddress': ?publicIpAddress,
+    };
+  }
 }
 
 /// The type of machines to consider when calculating virtual machine migration
@@ -8516,20 +8816,19 @@ class MachinePreferences {
 
   MachinePreferences.fromJson(core.Map json_)
     : this(
-        allowedMachineSeries:
-            (json_['allowedMachineSeries'] as core.List?)
-                ?.map(
-                  (value) => MachineSeries.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allowedMachineSeries: (json_['allowedMachineSeries'] as core.List?)
+            ?.map(
+              (value) => MachineSeries.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedMachineSeries != null)
-      'allowedMachineSeries': allowedMachineSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedMachineSeries = this.allowedMachineSeries;
+    return {'allowedMachineSeries': ?allowedMachineSeries};
+  }
 }
 
 /// A machine series, for a target product (e.g. Compute Engine, Google Cloud
@@ -8548,9 +8847,10 @@ class MachineSeries {
   MachineSeries.fromJson(core.Map json_)
     : this(code: json_['code'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    return {'code': ?code};
+  }
 }
 
 /// Memory usage sample.
@@ -8564,13 +8864,14 @@ class MemoryUsageSample {
 
   MemoryUsageSample.fromJson(core.Map json_)
     : this(
-        utilizedPercentage:
-            (json_['utilizedPercentage'] as core.num?)?.toDouble(),
+        utilizedPercentage: (json_['utilizedPercentage'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizedPercentage != null) 'utilizedPercentage': utilizedPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final utilizedPercentage = this.utilizedPercentage;
+    return {'utilizedPercentage': ?utilizedPercentage};
+  }
 }
 
 /// An insight about potential migrations for an asset.
@@ -8590,26 +8891,24 @@ class MigrationInsight {
 
   MigrationInsight.fromJson(core.Map json_)
     : this(
-        computeEngineTarget:
-            json_.containsKey('computeEngineTarget')
-                ? ComputeEngineMigrationTarget.fromJson(
-                  json_['computeEngineTarget']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        fit:
-            json_.containsKey('fit')
-                ? FitDescriptor.fromJson(
-                  json_['fit'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        computeEngineTarget: json_.containsKey('computeEngineTarget')
+            ? ComputeEngineMigrationTarget.fromJson(
+                json_['computeEngineTarget']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fit: json_.containsKey('fit')
+            ? FitDescriptor.fromJson(
+                json_['fit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeEngineTarget != null)
-      'computeEngineTarget': computeEngineTarget!,
-    if (fit != null) 'fit': fit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeEngineTarget = this.computeEngineTarget;
+    final fit = this.fit;
+    return {'computeEngineTarget': ?computeEngineTarget, 'fit': ?fit};
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -8641,11 +8940,12 @@ class MySqlPlugin {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (plugin != null) 'plugin': plugin!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final plugin = this.plugin;
+    final version = this.version;
+    return {'enabled': ?enabled, 'plugin': ?plugin, 'version': ?version};
+  }
 }
 
 /// MySql property.
@@ -8662,19 +8962,19 @@ class MySqlSchemaDetails {
 
   MySqlSchemaDetails.fromJson(core.Map json_)
     : this(
-        storageEngines:
-            (json_['storageEngines'] as core.List?)
-                ?.map(
-                  (value) => MySqlStorageEngineDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storageEngines: (json_['storageEngines'] as core.List?)
+            ?.map(
+              (value) => MySqlStorageEngineDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storageEngines != null) 'storageEngines': storageEngines!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storageEngines = this.storageEngines;
+    return {'storageEngines': ?storageEngines};
+  }
 }
 
 /// Mysql storage engine tables.
@@ -8720,12 +9020,16 @@ class MySqlStorageEngineDetails {
         tableCount: json_['tableCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptedTableCount != null)
-      'encryptedTableCount': encryptedTableCount!,
-    if (engine != null) 'engine': engine!,
-    if (tableCount != null) 'tableCount': tableCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptedTableCount = this.encryptedTableCount;
+    final engine = this.engine;
+    final tableCount = this.tableCount;
+    return {
+      'encryptedTableCount': ?encryptedTableCount,
+      'engine': ?engine,
+      'tableCount': ?tableCount,
+    };
+  }
 }
 
 /// MySql variable.
@@ -8754,11 +9058,12 @@ class MySqlVariable {
         variable: json_['variable'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (value != null) 'value': value!,
-    if (variable != null) 'variable': variable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final value = this.value;
+    final variable = this.variable;
+    return {'category': ?category, 'value': ?value, 'variable': ?variable};
+  }
 }
 
 /// Specific details for a Mysql database deployment.
@@ -8792,40 +9097,42 @@ class MysqlDatabaseDeployment {
 
   MysqlDatabaseDeployment.fromJson(core.Map json_)
     : this(
-        plugins:
-            (json_['plugins'] as core.List?)
-                ?.map(
-                  (value) => MySqlPlugin.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => MySqlProperty.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        plugins: (json_['plugins'] as core.List?)
+            ?.map(
+              (value) => MySqlPlugin.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => MySqlProperty.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         resourceGroupsCount: json_['resourceGroupsCount'] as core.int?,
-        variables:
-            (json_['variables'] as core.List?)
-                ?.map(
-                  (value) => MySqlVariable.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        variables: (json_['variables'] as core.List?)
+            ?.map(
+              (value) => MySqlVariable.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (plugins != null) 'plugins': plugins!,
-    if (properties != null) 'properties': properties!,
-    if (resourceGroupsCount != null)
-      'resourceGroupsCount': resourceGroupsCount!,
-    if (variables != null) 'variables': variables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final plugins = this.plugins;
+    final properties = this.properties;
+    final resourceGroupsCount = this.resourceGroupsCount;
+    final variables = this.variables;
+    return {
+      'plugins': ?plugins,
+      'properties': ?properties,
+      'resourceGroupsCount': ?resourceGroupsCount,
+      'variables': ?variables,
+    };
+  }
 }
 
 /// Details of network adapter.
@@ -8844,20 +9151,24 @@ class NetworkAdapterDetails {
   NetworkAdapterDetails.fromJson(core.Map json_)
     : this(
         adapterType: json_['adapterType'] as core.String?,
-        addresses:
-            json_.containsKey('addresses')
-                ? NetworkAddressList.fromJson(
-                  json_['addresses'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addresses: json_.containsKey('addresses')
+            ? NetworkAddressList.fromJson(
+                json_['addresses'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         macAddress: json_['macAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adapterType != null) 'adapterType': adapterType!,
-    if (addresses != null) 'addresses': addresses!,
-    if (macAddress != null) 'macAddress': macAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adapterType = this.adapterType;
+    final addresses = this.addresses;
+    final macAddress = this.macAddress;
+    return {
+      'adapterType': ?adapterType,
+      'addresses': ?addresses,
+      'macAddress': ?macAddress,
+    };
+  }
 }
 
 /// List of network adapters.
@@ -8869,19 +9180,19 @@ class NetworkAdapterList {
 
   NetworkAdapterList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => NetworkAdapterDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => NetworkAdapterDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Details of network address.
@@ -8922,13 +9233,20 @@ class NetworkAddress {
         subnetMask: json_['subnetMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignment != null) 'assignment': assignment!,
-    if (bcast != null) 'bcast': bcast!,
-    if (fqdn != null) 'fqdn': fqdn!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (subnetMask != null) 'subnetMask': subnetMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignment = this.assignment;
+    final bcast = this.bcast;
+    final fqdn = this.fqdn;
+    final ipAddress = this.ipAddress;
+    final subnetMask = this.subnetMask;
+    return {
+      'assignment': ?assignment,
+      'bcast': ?bcast,
+      'fqdn': ?fqdn,
+      'ipAddress': ?ipAddress,
+      'subnetMask': ?subnetMask,
+    };
+  }
 }
 
 /// List of allocated/assigned network addresses.
@@ -8940,19 +9258,19 @@ class NetworkAddressList {
 
   NetworkAddressList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => NetworkAddress.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => NetworkAddress.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 class NetworkConnection {
@@ -9010,16 +9328,26 @@ class NetworkConnection {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (localIpAddress != null) 'localIpAddress': localIpAddress!,
-    if (localPort != null) 'localPort': localPort!,
-    if (pid != null) 'pid': pid!,
-    if (processName != null) 'processName': processName!,
-    if (protocol != null) 'protocol': protocol!,
-    if (remoteIpAddress != null) 'remoteIpAddress': remoteIpAddress!,
-    if (remotePort != null) 'remotePort': remotePort!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final localIpAddress = this.localIpAddress;
+    final localPort = this.localPort;
+    final pid = this.pid;
+    final processName = this.processName;
+    final protocol = this.protocol;
+    final remoteIpAddress = this.remoteIpAddress;
+    final remotePort = this.remotePort;
+    final state = this.state;
+    return {
+      'localIpAddress': ?localIpAddress,
+      'localPort': ?localPort,
+      'pid': ?pid,
+      'processName': ?processName,
+      'protocol': ?protocol,
+      'remoteIpAddress': ?remoteIpAddress,
+      'remotePort': ?remotePort,
+      'state': ?state,
+    };
+  }
 }
 
 /// Network connection list.
@@ -9031,19 +9359,19 @@ class NetworkConnectionList {
 
   NetworkConnectionList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => NetworkConnection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => NetworkConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Network usage sample.
@@ -9065,14 +9393,18 @@ class NetworkUsageSample {
   NetworkUsageSample.fromJson(core.Map json_)
     : this(
         averageEgressBps: (json_['averageEgressBps'] as core.num?)?.toDouble(),
-        averageIngressBps:
-            (json_['averageIngressBps'] as core.num?)?.toDouble(),
+        averageIngressBps: (json_['averageIngressBps'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageEgressBps != null) 'averageEgressBps': averageEgressBps!,
-    if (averageIngressBps != null) 'averageIngressBps': averageIngressBps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageEgressBps = this.averageEgressBps;
+    final averageIngressBps = this.averageIngressBps;
+    return {
+      'averageEgressBps': ?averageEgressBps,
+      'averageIngressBps': ?averageIngressBps,
+    };
+  }
 }
 
 /// NFS export.
@@ -9088,16 +9420,16 @@ class NfsExport {
   NfsExport.fromJson(core.Map json_)
     : this(
         exportDirectory: json_['exportDirectory'] as core.String?,
-        hosts:
-            (json_['hosts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        hosts: (json_['hosts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportDirectory != null) 'exportDirectory': exportDirectory!,
-    if (hosts != null) 'hosts': hosts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportDirectory = this.exportDirectory;
+    final hosts = this.hosts;
+    return {'exportDirectory': ?exportDirectory, 'hosts': ?hosts};
+  }
 }
 
 /// NFS exports.
@@ -9109,19 +9441,19 @@ class NfsExportList {
 
   NfsExportList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => NfsExport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => NfsExport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Open file Information.
@@ -9148,12 +9480,18 @@ class OpenFileDetails {
         user: json_['user'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (command != null) 'command': command!,
-    if (filePath != null) 'filePath': filePath!,
-    if (fileType != null) 'fileType': fileType!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final command = this.command;
+    final filePath = this.filePath;
+    final fileType = this.fileType;
+    final user = this.user;
+    return {
+      'command': ?command,
+      'filePath': ?filePath,
+      'fileType': ?fileType,
+      'user': ?user,
+    };
+  }
 }
 
 /// Open file list.
@@ -9165,19 +9503,19 @@ class OpenFileList {
 
   OpenFileList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => OpenFileDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => OpenFileDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -9228,30 +9566,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Contains a single output file.
@@ -9275,27 +9617,29 @@ class OutputFile {
 
   OutputFile.fromJson(core.Map json_)
     : this(
-        csvOutputFile:
-            json_.containsKey('csvOutputFile')
-                ? CsvOutputFile.fromJson(
-                  json_['csvOutputFile'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        csvOutputFile: json_.containsKey('csvOutputFile')
+            ? CsvOutputFile.fromJson(
+                json_['csvOutputFile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fileSizeBytes: json_['fileSizeBytes'] as core.String?,
-        xlsxOutputFile:
-            json_.containsKey('xlsxOutputFile')
-                ? XlsxOutputFile.fromJson(
-                  json_['xlsxOutputFile']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        xlsxOutputFile: json_.containsKey('xlsxOutputFile')
+            ? XlsxOutputFile.fromJson(
+                json_['xlsxOutputFile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (csvOutputFile != null) 'csvOutputFile': csvOutputFile!,
-    if (fileSizeBytes != null) 'fileSizeBytes': fileSizeBytes!,
-    if (xlsxOutputFile != null) 'xlsxOutputFile': xlsxOutputFile!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final csvOutputFile = this.csvOutputFile;
+    final fileSizeBytes = this.fileSizeBytes;
+    final xlsxOutputFile = this.xlsxOutputFile;
+    return {
+      'csvOutputFile': ?csvOutputFile,
+      'fileSizeBytes': ?fileSizeBytes,
+      'xlsxOutputFile': ?xlsxOutputFile,
+    };
+  }
 }
 
 /// Contains a list of output files.
@@ -9309,19 +9653,19 @@ class OutputFileList {
 
   OutputFileList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => OutputFile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => OutputFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Performance data sample.
@@ -9353,40 +9697,43 @@ class PerformanceSample {
 
   PerformanceSample.fromJson(core.Map json_)
     : this(
-        cpu:
-            json_.containsKey('cpu')
-                ? CpuUsageSample.fromJson(
-                  json_['cpu'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        disk:
-            json_.containsKey('disk')
-                ? DiskUsageSample.fromJson(
-                  json_['disk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        memory:
-            json_.containsKey('memory')
-                ? MemoryUsageSample.fromJson(
-                  json_['memory'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        network:
-            json_.containsKey('network')
-                ? NetworkUsageSample.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cpu: json_.containsKey('cpu')
+            ? CpuUsageSample.fromJson(
+                json_['cpu'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        disk: json_.containsKey('disk')
+            ? DiskUsageSample.fromJson(
+                json_['disk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        memory: json_.containsKey('memory')
+            ? MemoryUsageSample.fromJson(
+                json_['memory'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        network: json_.containsKey('network')
+            ? NetworkUsageSample.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sampleTime: json_['sampleTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (disk != null) 'disk': disk!,
-    if (memory != null) 'memory': memory!,
-    if (network != null) 'network': network!,
-    if (sampleTime != null) 'sampleTime': sampleTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final disk = this.disk;
+    final memory = this.memory;
+    final network = this.network;
+    final sampleTime = this.sampleTime;
+    return {
+      'cpu': ?cpu,
+      'disk': ?disk,
+      'memory': ?memory,
+      'network': ?network,
+      'sampleTime': ?sampleTime,
+    };
+  }
 }
 
 /// Platform specific details for Physical Machines.
@@ -9415,10 +9762,11 @@ class PhysicalPlatformDetails {
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hyperthreading = this.hyperthreading;
+    final location = this.location;
+    return {'hyperthreading': ?hyperthreading, 'location': ?location};
+  }
 }
 
 /// Information about the platform.
@@ -9448,48 +9796,47 @@ class PlatformDetails {
 
   PlatformDetails.fromJson(core.Map json_)
     : this(
-        awsEc2Details:
-            json_.containsKey('awsEc2Details')
-                ? AwsEc2PlatformDetails.fromJson(
-                  json_['awsEc2Details'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        azureVmDetails:
-            json_.containsKey('azureVmDetails')
-                ? AzureVmPlatformDetails.fromJson(
-                  json_['azureVmDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        genericDetails:
-            json_.containsKey('genericDetails')
-                ? GenericPlatformDetails.fromJson(
-                  json_['genericDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        physicalDetails:
-            json_.containsKey('physicalDetails')
-                ? PhysicalPlatformDetails.fromJson(
-                  json_['physicalDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vmwareDetails:
-            json_.containsKey('vmwareDetails')
-                ? VmwarePlatformDetails.fromJson(
-                  json_['vmwareDetails'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        awsEc2Details: json_.containsKey('awsEc2Details')
+            ? AwsEc2PlatformDetails.fromJson(
+                json_['awsEc2Details'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        azureVmDetails: json_.containsKey('azureVmDetails')
+            ? AzureVmPlatformDetails.fromJson(
+                json_['azureVmDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        genericDetails: json_.containsKey('genericDetails')
+            ? GenericPlatformDetails.fromJson(
+                json_['genericDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        physicalDetails: json_.containsKey('physicalDetails')
+            ? PhysicalPlatformDetails.fromJson(
+                json_['physicalDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vmwareDetails: json_.containsKey('vmwareDetails')
+            ? VmwarePlatformDetails.fromJson(
+                json_['vmwareDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (awsEc2Details != null) 'awsEc2Details': awsEc2Details!,
-    if (azureVmDetails != null) 'azureVmDetails': azureVmDetails!,
-    if (genericDetails != null) 'genericDetails': genericDetails!,
-    if (physicalDetails != null) 'physicalDetails': physicalDetails!,
-    if (vmwareDetails != null) 'vmwareDetails': vmwareDetails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final awsEc2Details = this.awsEc2Details;
+    final azureVmDetails = this.azureVmDetails;
+    final genericDetails = this.genericDetails;
+    final physicalDetails = this.physicalDetails;
+    final vmwareDetails = this.vmwareDetails;
+    return {
+      'awsEc2Details': ?awsEc2Details,
+      'azureVmDetails': ?azureVmDetails,
+      'genericDetails': ?genericDetails,
+      'physicalDetails': ?physicalDetails,
+      'vmwareDetails': ?vmwareDetails,
+    };
+  }
 }
 
 /// Specific details for a PostgreSQL database deployment.
@@ -9508,28 +9855,27 @@ class PostgreSqlDatabaseDeployment {
 
   PostgreSqlDatabaseDeployment.fromJson(core.Map json_)
     : this(
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => PostgreSqlProperty.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        settings:
-            (json_['settings'] as core.List?)
-                ?.map(
-                  (value) => PostgreSqlSetting.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => PostgreSqlProperty.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        settings: (json_['settings'] as core.List?)
+            ?.map(
+              (value) => PostgreSqlSetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (properties != null) 'properties': properties!,
-    if (settings != null) 'settings': settings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final properties = this.properties;
+    final settings = this.settings;
+    return {'properties': ?properties, 'settings': ?settings};
+  }
 }
 
 /// PostgreSql extension.
@@ -9552,10 +9898,11 @@ class PostgreSqlExtension {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extension != null) 'extension': extension!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final extension = this.extension;
+    final version = this.version;
+    return {'extension': ?extension, 'version': ?version};
+  }
 }
 
 /// PostgreSql property.
@@ -9578,21 +9925,23 @@ class PostgreSqlSchemaDetails {
   PostgreSqlSchemaDetails.fromJson(core.Map json_)
     : this(
         foreignTablesCount: json_['foreignTablesCount'] as core.int?,
-        postgresqlExtensions:
-            (json_['postgresqlExtensions'] as core.List?)
-                ?.map(
-                  (value) => PostgreSqlExtension.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        postgresqlExtensions: (json_['postgresqlExtensions'] as core.List?)
+            ?.map(
+              (value) => PostgreSqlExtension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (foreignTablesCount != null) 'foreignTablesCount': foreignTablesCount!,
-    if (postgresqlExtensions != null)
-      'postgresqlExtensions': postgresqlExtensions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final foreignTablesCount = this.foreignTablesCount;
+    final postgresqlExtensions = this.postgresqlExtensions;
+    return {
+      'foreignTablesCount': ?foreignTablesCount,
+      'postgresqlExtensions': ?postgresqlExtensions,
+    };
+  }
 }
 
 /// PostgreSql setting.
@@ -9655,15 +10004,24 @@ class PostgreSqlSetting {
         unit: json_['unit'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boolValue != null) 'boolValue': boolValue!,
-    if (intValue != null) 'intValue': intValue!,
-    if (realValue != null) 'realValue': realValue!,
-    if (setting != null) 'setting': setting!,
-    if (source != null) 'source': source!,
-    if (stringValue != null) 'stringValue': stringValue!,
-    if (unit != null) 'unit': unit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final intValue = this.intValue;
+    final realValue = this.realValue;
+    final setting = this.setting;
+    final source = this.source;
+    final stringValue = this.stringValue;
+    final unit = this.unit;
+    return {
+      'boolValue': ?boolValue,
+      'intValue': ?intValue,
+      'realValue': ?realValue,
+      'setting': ?setting,
+      'source': ?source,
+      'stringValue': ?stringValue,
+      'unit': ?unit,
+    };
+  }
 }
 
 /// The preferences that apply to all assets in a given context.
@@ -9714,22 +10072,29 @@ class PreferenceSet {
         updateTime: json_['updateTime'] as core.String?,
         virtualMachinePreferences:
             json_.containsKey('virtualMachinePreferences')
-                ? VirtualMachinePreferences.fromJson(
-                  json_['virtualMachinePreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? VirtualMachinePreferences.fromJson(
+                json_['virtualMachinePreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (virtualMachinePreferences != null)
-      'virtualMachinePreferences': virtualMachinePreferences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    final virtualMachinePreferences = this.virtualMachinePreferences;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'updateTime': ?updateTime,
+      'virtualMachinePreferences': ?virtualMachinePreferences,
+    };
+  }
 }
 
 /// The user preferences relating to target regions.
@@ -9744,15 +10109,15 @@ class RegionPreferences {
 
   RegionPreferences.fromJson(core.Map json_)
     : this(
-        preferredRegions:
-            (json_['preferredRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        preferredRegions: (json_['preferredRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (preferredRegions != null) 'preferredRegions': preferredRegions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final preferredRegions = this.preferredRegions;
+    return {'preferredRegions': ?preferredRegions};
+  }
 }
 
 /// Message representing a relation between 2 resource.
@@ -9806,13 +10171,20 @@ class Relation {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (dstAsset != null) 'dstAsset': dstAsset!,
-    if (name != null) 'name': name!,
-    if (srcAsset != null) 'srcAsset': srcAsset!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final dstAsset = this.dstAsset;
+    final name = this.name;
+    final srcAsset = this.srcAsset;
+    final type = this.type;
+    return {
+      'createTime': ?createTime,
+      'dstAsset': ?dstAsset,
+      'name': ?name,
+      'srcAsset': ?srcAsset,
+      'type': ?type,
+    };
+  }
 }
 
 /// A request to remove assets from a group.
@@ -9860,20 +10232,24 @@ class RemoveAssetsFromGroupRequest {
   RemoveAssetsFromGroupRequest.fromJson(core.Map json_)
     : this(
         allowMissing: json_['allowMissing'] as core.bool?,
-        assets:
-            json_.containsKey('assets')
-                ? AssetList.fromJson(
-                  json_['assets'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assets: json_.containsKey('assets')
+            ? AssetList.fromJson(
+                json_['assets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (assets != null) 'assets': assets!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final assets = this.assets;
+    final requestId = this.requestId;
+    return {
+      'allowMissing': ?allowMissing,
+      'assets': ?assets,
+      'requestId': ?requestId,
+    };
+  }
 }
 
 /// Report represents a point-in-time rendering of the ReportConfig results.
@@ -9938,26 +10314,35 @@ class Report {
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
-        summary:
-            json_.containsKey('summary')
-                ? ReportSummary.fromJson(
-                  json_['summary'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        summary: json_.containsKey('summary')
+            ? ReportSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (summary != null) 'summary': summary!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final state = this.state;
+    final summary = this.summary;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'state': ?state,
+      'summary': ?summary,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A response to a call to `ReportAssetFrame`.
@@ -10020,15 +10405,22 @@ class ReportConfig {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (groupPreferencesetAssignments != null)
-      'groupPreferencesetAssignments': groupPreferencesetAssignments!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final groupPreferencesetAssignments = this.groupPreferencesetAssignments;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'groupPreferencesetAssignments': ?groupPreferencesetAssignments,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Represents a combination of a group with a preference set.
@@ -10051,10 +10443,11 @@ class ReportConfigGroupPreferenceSetAssignment {
         preferenceSet: json_['preferenceSet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (group != null) 'group': group!,
-    if (preferenceSet != null) 'preferenceSet': preferenceSet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final group = this.group;
+    final preferenceSet = this.preferenceSet;
+    return {'group': ?group, 'preferenceSet': ?preferenceSet};
+  }
 }
 
 /// Describes the Summary view of a Report, which contains aggregated values for
@@ -10070,27 +10463,25 @@ class ReportSummary {
 
   ReportSummary.fromJson(core.Map json_)
     : this(
-        allAssetsStats:
-            json_.containsKey('allAssetsStats')
-                ? ReportSummaryAssetAggregateStats.fromJson(
-                  json_['allAssetsStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        groupFindings:
-            (json_['groupFindings'] as core.List?)
-                ?.map(
-                  (value) => ReportSummaryGroupFinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allAssetsStats: json_.containsKey('allAssetsStats')
+            ? ReportSummaryAssetAggregateStats.fromJson(
+                json_['allAssetsStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        groupFindings: (json_['groupFindings'] as core.List?)
+            ?.map(
+              (value) => ReportSummaryGroupFinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allAssetsStats != null) 'allAssetsStats': allAssetsStats!,
-    if (groupFindings != null) 'groupFindings': groupFindings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allAssetsStats = this.allAssetsStats;
+    final groupFindings = this.groupFindings;
+    return {'allAssetsStats': ?allAssetsStats, 'groupFindings': ?groupFindings};
+  }
 }
 
 /// Aggregate statistics for a collection of assets.
@@ -10148,78 +10539,79 @@ class ReportSummaryAssetAggregateStats {
 
   ReportSummaryAssetAggregateStats.fromJson(core.Map json_)
     : this(
-        coreCountHistogram:
-            json_.containsKey('coreCountHistogram')
-                ? ReportSummaryHistogramChartData.fromJson(
-                  json_['coreCountHistogram']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        memoryBytesHistogram:
-            json_.containsKey('memoryBytesHistogram')
-                ? ReportSummaryHistogramChartData.fromJson(
-                  json_['memoryBytesHistogram']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        memoryUtilizationChart:
-            json_.containsKey('memoryUtilizationChart')
-                ? ReportSummaryUtilizationChartData.fromJson(
-                  json_['memoryUtilizationChart']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        operatingSystem:
-            json_.containsKey('operatingSystem')
-                ? ReportSummaryChartData.fromJson(
-                  json_['operatingSystem']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        softwareInstances:
-            json_.containsKey('softwareInstances')
-                ? ReportSummaryChartData.fromJson(
-                  json_['softwareInstances']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storageBytesHistogram:
-            json_.containsKey('storageBytesHistogram')
-                ? ReportSummaryHistogramChartData.fromJson(
-                  json_['storageBytesHistogram']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storageUtilizationChart:
-            json_.containsKey('storageUtilizationChart')
-                ? ReportSummaryUtilizationChartData.fromJson(
-                  json_['storageUtilizationChart']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        coreCountHistogram: json_.containsKey('coreCountHistogram')
+            ? ReportSummaryHistogramChartData.fromJson(
+                json_['coreCountHistogram']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        memoryBytesHistogram: json_.containsKey('memoryBytesHistogram')
+            ? ReportSummaryHistogramChartData.fromJson(
+                json_['memoryBytesHistogram']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        memoryUtilizationChart: json_.containsKey('memoryUtilizationChart')
+            ? ReportSummaryUtilizationChartData.fromJson(
+                json_['memoryUtilizationChart']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        operatingSystem: json_.containsKey('operatingSystem')
+            ? ReportSummaryChartData.fromJson(
+                json_['operatingSystem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        softwareInstances: json_.containsKey('softwareInstances')
+            ? ReportSummaryChartData.fromJson(
+                json_['softwareInstances']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storageBytesHistogram: json_.containsKey('storageBytesHistogram')
+            ? ReportSummaryHistogramChartData.fromJson(
+                json_['storageBytesHistogram']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storageUtilizationChart: json_.containsKey('storageUtilizationChart')
+            ? ReportSummaryUtilizationChartData.fromJson(
+                json_['storageUtilizationChart']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalAssets: json_['totalAssets'] as core.String?,
         totalCores: json_['totalCores'] as core.String?,
         totalMemoryBytes: json_['totalMemoryBytes'] as core.String?,
         totalStorageBytes: json_['totalStorageBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coreCountHistogram != null) 'coreCountHistogram': coreCountHistogram!,
-    if (memoryBytesHistogram != null)
-      'memoryBytesHistogram': memoryBytesHistogram!,
-    if (memoryUtilizationChart != null)
-      'memoryUtilizationChart': memoryUtilizationChart!,
-    if (operatingSystem != null) 'operatingSystem': operatingSystem!,
-    if (softwareInstances != null) 'softwareInstances': softwareInstances!,
-    if (storageBytesHistogram != null)
-      'storageBytesHistogram': storageBytesHistogram!,
-    if (storageUtilizationChart != null)
-      'storageUtilizationChart': storageUtilizationChart!,
-    if (totalAssets != null) 'totalAssets': totalAssets!,
-    if (totalCores != null) 'totalCores': totalCores!,
-    if (totalMemoryBytes != null) 'totalMemoryBytes': totalMemoryBytes!,
-    if (totalStorageBytes != null) 'totalStorageBytes': totalStorageBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coreCountHistogram = this.coreCountHistogram;
+    final memoryBytesHistogram = this.memoryBytesHistogram;
+    final memoryUtilizationChart = this.memoryUtilizationChart;
+    final operatingSystem = this.operatingSystem;
+    final softwareInstances = this.softwareInstances;
+    final storageBytesHistogram = this.storageBytesHistogram;
+    final storageUtilizationChart = this.storageUtilizationChart;
+    final totalAssets = this.totalAssets;
+    final totalCores = this.totalCores;
+    final totalMemoryBytes = this.totalMemoryBytes;
+    final totalStorageBytes = this.totalStorageBytes;
+    return {
+      'coreCountHistogram': ?coreCountHistogram,
+      'memoryBytesHistogram': ?memoryBytesHistogram,
+      'memoryUtilizationChart': ?memoryUtilizationChart,
+      'operatingSystem': ?operatingSystem,
+      'softwareInstances': ?softwareInstances,
+      'storageBytesHistogram': ?storageBytesHistogram,
+      'storageUtilizationChart': ?storageUtilizationChart,
+      'totalAssets': ?totalAssets,
+      'totalCores': ?totalCores,
+      'totalMemoryBytes': ?totalMemoryBytes,
+      'totalStorageBytes': ?totalStorageBytes,
+    };
+  }
 }
 
 /// Describes a collection of data points rendered as a Chart.
@@ -10232,19 +10624,19 @@ class ReportSummaryChartData {
 
   ReportSummaryChartData.fromJson(core.Map json_)
     : this(
-        dataPoints:
-            (json_['dataPoints'] as core.List?)
-                ?.map(
-                  (value) => ReportSummaryChartDataDataPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dataPoints: (json_['dataPoints'] as core.List?)
+            ?.map(
+              (value) => ReportSummaryChartDataDataPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataPoints != null) 'dataPoints': dataPoints!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataPoints = this.dataPoints;
+    return {'dataPoints': ?dataPoints};
+  }
 }
 
 /// Describes a single data point in the Chart.
@@ -10263,10 +10655,11 @@ class ReportSummaryChartDataDataPoint {
         value: (json_['value'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final label = this.label;
+    final value = this.value;
+    return {'label': ?label, 'value': ?value};
+  }
 }
 
 /// A set of findings that applies to assets destined for Compute Engine.
@@ -10293,14 +10686,12 @@ class ReportSummaryComputeEngineFinding {
   ReportSummaryComputeEngineFinding.fromJson(core.Map json_)
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
-        allocatedDiskTypes:
-            (json_['allocatedDiskTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        allocatedRegions:
-            (json_['allocatedRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allocatedDiskTypes: (json_['allocatedDiskTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        allocatedRegions: (json_['allocatedRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         machineSeriesAllocations:
             (json_['machineSeriesAllocations'] as core.List?)
                 ?.map(
@@ -10311,14 +10702,18 @@ class ReportSummaryComputeEngineFinding {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (allocatedDiskTypes != null) 'allocatedDiskTypes': allocatedDiskTypes!,
-    if (allocatedRegions != null) 'allocatedRegions': allocatedRegions!,
-    if (machineSeriesAllocations != null)
-      'machineSeriesAllocations': machineSeriesAllocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final allocatedDiskTypes = this.allocatedDiskTypes;
+    final allocatedRegions = this.allocatedRegions;
+    final machineSeriesAllocations = this.machineSeriesAllocations;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'allocatedDiskTypes': ?allocatedDiskTypes,
+      'allocatedRegions': ?allocatedRegions,
+      'machineSeriesAllocations': ?machineSeriesAllocations,
+    };
+  }
 }
 
 /// Summary Findings for a specific Group.
@@ -10351,36 +10746,38 @@ class ReportSummaryGroupFinding {
 
   ReportSummaryGroupFinding.fromJson(core.Map json_)
     : this(
-        assetAggregateStats:
-            json_.containsKey('assetAggregateStats')
-                ? ReportSummaryAssetAggregateStats.fromJson(
-                  json_['assetAggregateStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assetAggregateStats: json_.containsKey('assetAggregateStats')
+            ? ReportSummaryAssetAggregateStats.fromJson(
+                json_['assetAggregateStats']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         overlappingAssetCount: json_['overlappingAssetCount'] as core.String?,
-        preferenceSetFindings:
-            (json_['preferenceSetFindings'] as core.List?)
-                ?.map(
-                  (value) => ReportSummaryGroupPreferenceSetFinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        preferenceSetFindings: (json_['preferenceSetFindings'] as core.List?)
+            ?.map(
+              (value) => ReportSummaryGroupPreferenceSetFinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assetAggregateStats != null)
-      'assetAggregateStats': assetAggregateStats!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (overlappingAssetCount != null)
-      'overlappingAssetCount': overlappingAssetCount!,
-    if (preferenceSetFindings != null)
-      'preferenceSetFindings': preferenceSetFindings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assetAggregateStats = this.assetAggregateStats;
+    final description = this.description;
+    final displayName = this.displayName;
+    final overlappingAssetCount = this.overlappingAssetCount;
+    final preferenceSetFindings = this.preferenceSetFindings;
+    return {
+      'assetAggregateStats': ?assetAggregateStats,
+      'description': ?description,
+      'displayName': ?displayName,
+      'overlappingAssetCount': ?overlappingAssetCount,
+      'preferenceSetFindings': ?preferenceSetFindings,
+    };
+  }
 }
 
 /// Summary Findings for a specific Group/PreferenceSet combination.
@@ -10438,98 +10835,98 @@ class ReportSummaryGroupPreferenceSetFinding {
 
   ReportSummaryGroupPreferenceSetFinding.fromJson(core.Map json_)
     : this(
-        computeEngineFinding:
-            json_.containsKey('computeEngineFinding')
-                ? ReportSummaryComputeEngineFinding.fromJson(
-                  json_['computeEngineFinding']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        computeEngineFinding: json_.containsKey('computeEngineFinding')
+            ? ReportSummaryComputeEngineFinding.fromJson(
+                json_['computeEngineFinding']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        machinePreferences:
-            json_.containsKey('machinePreferences')
-                ? VirtualMachinePreferences.fromJson(
-                  json_['machinePreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostCompute:
-            json_.containsKey('monthlyCostCompute')
-                ? Money.fromJson(
-                  json_['monthlyCostCompute']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostNetworkEgress:
-            json_.containsKey('monthlyCostNetworkEgress')
-                ? Money.fromJson(
-                  json_['monthlyCostNetworkEgress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostOsLicense:
-            json_.containsKey('monthlyCostOsLicense')
-                ? Money.fromJson(
-                  json_['monthlyCostOsLicense']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostOther:
-            json_.containsKey('monthlyCostOther')
-                ? Money.fromJson(
-                  json_['monthlyCostOther']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostStorage:
-            json_.containsKey('monthlyCostStorage')
-                ? Money.fromJson(
-                  json_['monthlyCostStorage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyCostTotal:
-            json_.containsKey('monthlyCostTotal')
-                ? Money.fromJson(
-                  json_['monthlyCostTotal']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        soleTenantFinding:
-            json_.containsKey('soleTenantFinding')
-                ? ReportSummarySoleTenantFinding.fromJson(
-                  json_['soleTenantFinding']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vmwareEngineFinding:
-            json_.containsKey('vmwareEngineFinding')
-                ? ReportSummaryVmwareEngineFinding.fromJson(
-                  json_['vmwareEngineFinding']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machinePreferences: json_.containsKey('machinePreferences')
+            ? VirtualMachinePreferences.fromJson(
+                json_['machinePreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostCompute: json_.containsKey('monthlyCostCompute')
+            ? Money.fromJson(
+                json_['monthlyCostCompute']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostNetworkEgress: json_.containsKey('monthlyCostNetworkEgress')
+            ? Money.fromJson(
+                json_['monthlyCostNetworkEgress']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostOsLicense: json_.containsKey('monthlyCostOsLicense')
+            ? Money.fromJson(
+                json_['monthlyCostOsLicense']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostOther: json_.containsKey('monthlyCostOther')
+            ? Money.fromJson(
+                json_['monthlyCostOther']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostStorage: json_.containsKey('monthlyCostStorage')
+            ? Money.fromJson(
+                json_['monthlyCostStorage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyCostTotal: json_.containsKey('monthlyCostTotal')
+            ? Money.fromJson(
+                json_['monthlyCostTotal']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        soleTenantFinding: json_.containsKey('soleTenantFinding')
+            ? ReportSummarySoleTenantFinding.fromJson(
+                json_['soleTenantFinding']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vmwareEngineFinding: json_.containsKey('vmwareEngineFinding')
+            ? ReportSummaryVmwareEngineFinding.fromJson(
+                json_['vmwareEngineFinding']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeEngineFinding != null)
-      'computeEngineFinding': computeEngineFinding!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (machinePreferences != null) 'machinePreferences': machinePreferences!,
-    if (monthlyCostCompute != null) 'monthlyCostCompute': monthlyCostCompute!,
-    if (monthlyCostNetworkEgress != null)
-      'monthlyCostNetworkEgress': monthlyCostNetworkEgress!,
-    if (monthlyCostOsLicense != null)
-      'monthlyCostOsLicense': monthlyCostOsLicense!,
-    if (monthlyCostOther != null) 'monthlyCostOther': monthlyCostOther!,
-    if (monthlyCostStorage != null) 'monthlyCostStorage': monthlyCostStorage!,
-    if (monthlyCostTotal != null) 'monthlyCostTotal': monthlyCostTotal!,
-    if (soleTenantFinding != null) 'soleTenantFinding': soleTenantFinding!,
-    if (vmwareEngineFinding != null)
-      'vmwareEngineFinding': vmwareEngineFinding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeEngineFinding = this.computeEngineFinding;
+    final description = this.description;
+    final displayName = this.displayName;
+    final machinePreferences = this.machinePreferences;
+    final monthlyCostCompute = this.monthlyCostCompute;
+    final monthlyCostNetworkEgress = this.monthlyCostNetworkEgress;
+    final monthlyCostOsLicense = this.monthlyCostOsLicense;
+    final monthlyCostOther = this.monthlyCostOther;
+    final monthlyCostStorage = this.monthlyCostStorage;
+    final monthlyCostTotal = this.monthlyCostTotal;
+    final soleTenantFinding = this.soleTenantFinding;
+    final vmwareEngineFinding = this.vmwareEngineFinding;
+    return {
+      'computeEngineFinding': ?computeEngineFinding,
+      'description': ?description,
+      'displayName': ?displayName,
+      'machinePreferences': ?machinePreferences,
+      'monthlyCostCompute': ?monthlyCostCompute,
+      'monthlyCostNetworkEgress': ?monthlyCostNetworkEgress,
+      'monthlyCostOsLicense': ?monthlyCostOsLicense,
+      'monthlyCostOther': ?monthlyCostOther,
+      'monthlyCostStorage': ?monthlyCostStorage,
+      'monthlyCostTotal': ?monthlyCostTotal,
+      'soleTenantFinding': ?soleTenantFinding,
+      'vmwareEngineFinding': ?vmwareEngineFinding,
+    };
+  }
 }
 
 /// A Histogram Chart shows a distribution of values into buckets, showing a
@@ -10547,19 +10944,19 @@ class ReportSummaryHistogramChartData {
 
   ReportSummaryHistogramChartData.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => ReportSummaryHistogramChartDataBucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) => ReportSummaryHistogramChartDataBucket.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    return {'buckets': ?buckets};
+  }
 }
 
 /// A histogram bucket with a lower and upper bound, and a count of items with a
@@ -10590,11 +10987,16 @@ class ReportSummaryHistogramChartDataBucket {
         upperBound: json_['upperBound'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (lowerBound != null) 'lowerBound': lowerBound!,
-    if (upperBound != null) 'upperBound': upperBound!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final lowerBound = this.lowerBound;
+    final upperBound = this.upperBound;
+    return {
+      'count': ?count,
+      'lowerBound': ?lowerBound,
+      'upperBound': ?upperBound,
+    };
+  }
 }
 
 /// Represents a data point tracking the count of assets allocated for a
@@ -10614,19 +11016,21 @@ class ReportSummaryMachineSeriesAllocation {
   ReportSummaryMachineSeriesAllocation.fromJson(core.Map json_)
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
-        machineSeries:
-            json_.containsKey('machineSeries')
-                ? MachineSeries.fromJson(
-                  json_['machineSeries'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machineSeries: json_.containsKey('machineSeries')
+            ? MachineSeries.fromJson(
+                json_['machineSeries'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (machineSeries != null) 'machineSeries': machineSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final machineSeries = this.machineSeries;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'machineSeries': ?machineSeries,
+    };
+  }
 }
 
 /// A set of findings that applies to assets destined for Sole-Tenant nodes.
@@ -10649,26 +11053,28 @@ class ReportSummarySoleTenantFinding {
   ReportSummarySoleTenantFinding.fromJson(core.Map json_)
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
-        allocatedRegions:
-            (json_['allocatedRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        nodeAllocations:
-            (json_['nodeAllocations'] as core.List?)
-                ?.map(
-                  (value) => ReportSummarySoleTenantNodeAllocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allocatedRegions: (json_['allocatedRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        nodeAllocations: (json_['nodeAllocations'] as core.List?)
+            ?.map(
+              (value) => ReportSummarySoleTenantNodeAllocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (allocatedRegions != null) 'allocatedRegions': allocatedRegions!,
-    if (nodeAllocations != null) 'nodeAllocations': nodeAllocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final allocatedRegions = this.allocatedRegions;
+    final nodeAllocations = this.nodeAllocations;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'allocatedRegions': ?allocatedRegions,
+      'nodeAllocations': ?nodeAllocations,
+    };
+  }
 }
 
 /// Represents the assets allocated to a specific Sole-Tenant node type.
@@ -10691,21 +11097,24 @@ class ReportSummarySoleTenantNodeAllocation {
   ReportSummarySoleTenantNodeAllocation.fromJson(core.Map json_)
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
-        node:
-            json_.containsKey('node')
-                ? SoleTenantNodeType.fromJson(
-                  json_['node'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        node: json_.containsKey('node')
+            ? SoleTenantNodeType.fromJson(
+                json_['node'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nodeCount: json_['nodeCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (node != null) 'node': node!,
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final node = this.node;
+    final nodeCount = this.nodeCount;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'node': ?node,
+      'nodeCount': ?nodeCount,
+    };
+  }
 }
 
 /// Utilization Chart is a specific type of visualization which displays a
@@ -10725,10 +11134,11 @@ class ReportSummaryUtilizationChartData {
         used: json_['used'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (free != null) 'free': free!,
-    if (used != null) 'used': used!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final free = this.free;
+    final used = this.used;
+    return {'free': ?free, 'used': ?used};
+  }
 }
 
 /// A set of findings that applies to assets destined for VMWare Engine.
@@ -10751,26 +11161,28 @@ class ReportSummaryVmwareEngineFinding {
   ReportSummaryVmwareEngineFinding.fromJson(core.Map json_)
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
-        allocatedRegions:
-            (json_['allocatedRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        nodeAllocations:
-            (json_['nodeAllocations'] as core.List?)
-                ?.map(
-                  (value) => ReportSummaryVmwareNodeAllocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allocatedRegions: (json_['allocatedRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        nodeAllocations: (json_['nodeAllocations'] as core.List?)
+            ?.map(
+              (value) => ReportSummaryVmwareNodeAllocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (allocatedRegions != null) 'allocatedRegions': allocatedRegions!,
-    if (nodeAllocations != null) 'nodeAllocations': nodeAllocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final allocatedRegions = this.allocatedRegions;
+    final nodeAllocations = this.nodeAllocations;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'allocatedRegions': ?allocatedRegions,
+      'nodeAllocations': ?nodeAllocations,
+    };
+  }
 }
 
 /// A VMWare Engine Node
@@ -10786,9 +11198,10 @@ class ReportSummaryVmwareNode {
   ReportSummaryVmwareNode.fromJson(core.Map json_)
     : this(code: json_['code'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    return {'code': ?code};
+  }
 }
 
 /// Represents assets allocated to a specific VMWare Node type.
@@ -10812,20 +11225,23 @@ class ReportSummaryVmwareNodeAllocation {
     : this(
         allocatedAssetCount: json_['allocatedAssetCount'] as core.String?,
         nodeCount: json_['nodeCount'] as core.String?,
-        vmwareNode:
-            json_.containsKey('vmwareNode')
-                ? ReportSummaryVmwareNode.fromJson(
-                  json_['vmwareNode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vmwareNode: json_.containsKey('vmwareNode')
+            ? ReportSummaryVmwareNode.fromJson(
+                json_['vmwareNode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedAssetCount != null)
-      'allocatedAssetCount': allocatedAssetCount!,
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-    if (vmwareNode != null) 'vmwareNode': vmwareNode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedAssetCount = this.allocatedAssetCount;
+    final nodeCount = this.nodeCount;
+    final vmwareNode = this.vmwareNode;
+    return {
+      'allocatedAssetCount': ?allocatedAssetCount,
+      'nodeCount': ?nodeCount,
+      'vmwareNode': ?vmwareNode,
+    };
+  }
 }
 
 /// A request to run an assets export job.
@@ -10861,22 +11277,30 @@ class RunningProcess {
 
   RunningProcess.fromJson(core.Map json_)
     : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         cmdline: json_['cmdline'] as core.String?,
         exePath: json_['exePath'] as core.String?,
         pid: json_['pid'] as core.String?,
         user: json_['user'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (cmdline != null) 'cmdline': cmdline!,
-    if (exePath != null) 'exePath': exePath!,
-    if (pid != null) 'pid': pid!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final cmdline = this.cmdline;
+    final exePath = this.exePath;
+    final pid = this.pid;
+    final user = this.user;
+    return {
+      'attributes': ?attributes,
+      'cmdline': ?cmdline,
+      'exePath': ?exePath,
+      'pid': ?pid,
+      'user': ?user,
+    };
+  }
 }
 
 /// List of running guest OS processes.
@@ -10888,19 +11312,19 @@ class RunningProcessList {
 
   RunningProcessList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => RunningProcess.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => RunningProcess.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Guest OS running service details.
@@ -10956,14 +11380,22 @@ class RunningService {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cmdline != null) 'cmdline': cmdline!,
-    if (exePath != null) 'exePath': exePath!,
-    if (pid != null) 'pid': pid!,
-    if (serviceName != null) 'serviceName': serviceName!,
-    if (startMode != null) 'startMode': startMode!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cmdline = this.cmdline;
+    final exePath = this.exePath;
+    final pid = this.pid;
+    final serviceName = this.serviceName;
+    final startMode = this.startMode;
+    final state = this.state;
+    return {
+      'cmdline': ?cmdline,
+      'exePath': ?exePath,
+      'pid': ?pid,
+      'serviceName': ?serviceName,
+      'startMode': ?startMode,
+      'state': ?state,
+    };
+  }
 }
 
 /// List of running guest OS services.
@@ -10975,19 +11407,19 @@ class RunningServiceList {
 
   RunningServiceList.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => RunningService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => RunningService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Runtime networking information.
@@ -11002,19 +11434,19 @@ class RuntimeNetworkInfo {
 
   RuntimeNetworkInfo.fromJson(core.Map json_)
     : this(
-        connections:
-            json_.containsKey('connections')
-                ? NetworkConnectionList.fromJson(
-                  json_['connections'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        connections: json_.containsKey('connections')
+            ? NetworkConnectionList.fromJson(
+                json_['connections'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scanTime: json_['scanTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connections != null) 'connections': connections!,
-    if (scanTime != null) 'scanTime': scanTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connections = this.connections;
+    final scanTime = this.scanTime;
+    return {'connections': ?connections, 'scanTime': ?scanTime};
+  }
 }
 
 /// A request to send a discovery client heartbeat.
@@ -11033,21 +11465,20 @@ class SendDiscoveryClientHeartbeatRequest {
 
   SendDiscoveryClientHeartbeatRequest.fromJson(core.Map json_)
     : this(
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) => Status.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final version = this.version;
+    return {'errors': ?errors, 'version': ?version};
+  }
 }
 
 /// Describes the Migration Center settings related to the project.
@@ -11074,12 +11505,16 @@ class Settings {
         preferenceSet: json_['preferenceSet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableCloudLogging != null)
-      'disableCloudLogging': disableCloudLogging!,
-    if (name != null) 'name': name!,
-    if (preferenceSet != null) 'preferenceSet': preferenceSet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableCloudLogging = this.disableCloudLogging;
+    final name = this.name;
+    final preferenceSet = this.preferenceSet;
+    return {
+      'disableCloudLogging': ?disableCloudLogging,
+      'name': ?name,
+      'preferenceSet': ?preferenceSet,
+    };
+  }
 }
 
 /// Contains a signed URI.
@@ -11102,10 +11537,11 @@ class SignedUri {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (file != null) 'file': file!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final file = this.file;
+    final uri = this.uri;
+    return {'file': ?file, 'uri': ?uri};
+  }
 }
 
 /// Signed URI destination configuration.
@@ -11125,9 +11561,10 @@ class SignedUriDestination {
   SignedUriDestination.fromJson(core.Map json_)
     : this(fileFormat: json_['fileFormat'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileFormat != null) 'fileFormat': fileFormat!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileFormat = this.fileFormat;
+    return {'fileFormat': ?fileFormat};
+  }
 }
 
 /// Contains a list of Signed URIs.
@@ -11141,19 +11578,19 @@ class SignedUris {
 
   SignedUris.fromJson(core.Map json_)
     : this(
-        signedUris:
-            (json_['signedUris'] as core.List?)
-                ?.map(
-                  (value) => SignedUri.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        signedUris: (json_['signedUris'] as core.List?)
+            ?.map(
+              (value) => SignedUri.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (signedUris != null) 'signedUris': signedUris!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final signedUris = this.signedUris;
+    return {'signedUris': ?signedUris};
+  }
 }
 
 /// Preferences concerning Sole Tenancy nodes and VMs.
@@ -11201,26 +11638,30 @@ class SoleTenancyPreferences {
   SoleTenancyPreferences.fromJson(core.Map json_)
     : this(
         commitmentPlan: json_['commitmentPlan'] as core.String?,
-        cpuOvercommitRatio:
-            (json_['cpuOvercommitRatio'] as core.num?)?.toDouble(),
+        cpuOvercommitRatio: (json_['cpuOvercommitRatio'] as core.num?)
+            ?.toDouble(),
         hostMaintenancePolicy: json_['hostMaintenancePolicy'] as core.String?,
-        nodeTypes:
-            (json_['nodeTypes'] as core.List?)
-                ?.map(
-                  (value) => SoleTenantNodeType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        nodeTypes: (json_['nodeTypes'] as core.List?)
+            ?.map(
+              (value) => SoleTenantNodeType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commitmentPlan != null) 'commitmentPlan': commitmentPlan!,
-    if (cpuOvercommitRatio != null) 'cpuOvercommitRatio': cpuOvercommitRatio!,
-    if (hostMaintenancePolicy != null)
-      'hostMaintenancePolicy': hostMaintenancePolicy!,
-    if (nodeTypes != null) 'nodeTypes': nodeTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commitmentPlan = this.commitmentPlan;
+    final cpuOvercommitRatio = this.cpuOvercommitRatio;
+    final hostMaintenancePolicy = this.hostMaintenancePolicy;
+    final nodeTypes = this.nodeTypes;
+    return {
+      'commitmentPlan': ?commitmentPlan,
+      'cpuOvercommitRatio': ?cpuOvercommitRatio,
+      'hostMaintenancePolicy': ?hostMaintenancePolicy,
+      'nodeTypes': ?nodeTypes,
+    };
+  }
 }
 
 /// A Sole Tenant node type.
@@ -11235,9 +11676,10 @@ class SoleTenantNodeType {
   SoleTenantNodeType.fromJson(core.Map json_)
     : this(nodeName: json_['nodeName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodeName != null) 'nodeName': nodeName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodeName = this.nodeName;
+    return {'nodeName': ?nodeName};
+  }
 }
 
 /// Source represents an object from which asset information is streamed to
@@ -11333,19 +11775,32 @@ class Source {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (errorFrameCount != null) 'errorFrameCount': errorFrameCount!,
-    if (managed != null) 'managed': managed!,
-    if (name != null) 'name': name!,
-    if (pendingFrameCount != null) 'pendingFrameCount': pendingFrameCount!,
-    if (priority != null) 'priority': priority!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final errorFrameCount = this.errorFrameCount;
+    final managed = this.managed;
+    final name = this.name;
+    final pendingFrameCount = this.pendingFrameCount;
+    final priority = this.priority;
+    final state = this.state;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'errorFrameCount': ?errorFrameCount,
+      'managed': ?managed,
+      'name': ?name,
+      'pendingFrameCount': ?pendingFrameCount,
+      'priority': ?priority,
+      'state': ?state,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Specific details for a Microsoft SQL Server database deployment.
@@ -11373,37 +11828,39 @@ class SqlServerDatabaseDeployment {
 
   SqlServerDatabaseDeployment.fromJson(core.Map json_)
     : this(
-        features:
-            (json_['features'] as core.List?)
-                ?.map(
-                  (value) => SqlServerFeature.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        serverFlags:
-            (json_['serverFlags'] as core.List?)
-                ?.map(
-                  (value) => SqlServerServerFlag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        traceFlags:
-            (json_['traceFlags'] as core.List?)
-                ?.map(
-                  (value) => SqlServerTraceFlag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        features: (json_['features'] as core.List?)
+            ?.map(
+              (value) => SqlServerFeature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        serverFlags: (json_['serverFlags'] as core.List?)
+            ?.map(
+              (value) => SqlServerServerFlag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        traceFlags: (json_['traceFlags'] as core.List?)
+            ?.map(
+              (value) => SqlServerTraceFlag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (features != null) 'features': features!,
-    if (serverFlags != null) 'serverFlags': serverFlags!,
-    if (traceFlags != null) 'traceFlags': traceFlags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final features = this.features;
+    final serverFlags = this.serverFlags;
+    final traceFlags = this.traceFlags;
+    return {
+      'features': ?features,
+      'serverFlags': ?serverFlags,
+      'traceFlags': ?traceFlags,
+    };
+  }
 }
 
 /// SQL Server feature details.
@@ -11426,10 +11883,11 @@ class SqlServerFeature {
         featureName: json_['featureName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (featureName != null) 'featureName': featureName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final featureName = this.featureName;
+    return {'enabled': ?enabled, 'featureName': ?featureName};
+  }
 }
 
 /// Specific details for a SqlServer database.
@@ -11444,9 +11902,10 @@ class SqlServerSchemaDetails {
   SqlServerSchemaDetails.fromJson(core.Map json_)
     : this(clrObjectCount: json_['clrObjectCount'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clrObjectCount != null) 'clrObjectCount': clrObjectCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clrObjectCount = this.clrObjectCount;
+    return {'clrObjectCount': ?clrObjectCount};
+  }
 }
 
 /// SQL Server server flag details.
@@ -11479,11 +11938,16 @@ class SqlServerServerFlag {
         valueInUse: json_['valueInUse'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serverFlagName != null) 'serverFlagName': serverFlagName!,
-    if (value != null) 'value': value!,
-    if (valueInUse != null) 'valueInUse': valueInUse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final serverFlagName = this.serverFlagName;
+    final value = this.value;
+    final valueInUse = this.valueInUse;
+    return {
+      'serverFlagName': ?serverFlagName,
+      'value': ?value,
+      'valueInUse': ?valueInUse,
+    };
+  }
 }
 
 /// SQL Server trace flag details.
@@ -11511,10 +11975,11 @@ class SqlServerTraceFlag {
         traceFlagName: json_['traceFlagName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (traceFlagName != null) 'traceFlagName': traceFlagName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final scope = this.scope;
+    final traceFlagName = this.traceFlagName;
+    return {'scope': ?scope, 'traceFlagName': ?traceFlagName};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -11563,21 +12028,25 @@ class UpdateAssetRequest {
 
   UpdateAssetRequest.fromJson(core.Map json_)
     : this(
-        asset:
-            json_.containsKey('asset')
-                ? Asset.fromJson(
-                  json_['asset'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        asset: json_.containsKey('asset')
+            ? Asset.fromJson(
+                json_['asset'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (asset != null) 'asset': asset!,
-    if (requestId != null) 'requestId': requestId!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final asset = this.asset;
+    final requestId = this.requestId;
+    final updateMask = this.updateMask;
+    return {
+      'asset': ?asset,
+      'requestId': ?requestId,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 /// A resource that contains a URI to which a data file can be uploaded.
@@ -11607,11 +12076,16 @@ class UploadFileInfo {
         uriExpirationTime: json_['uriExpirationTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headers != null) 'headers': headers!,
-    if (signedUri != null) 'signedUri': signedUri!,
-    if (uriExpirationTime != null) 'uriExpirationTime': uriExpirationTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final headers = this.headers;
+    final signedUri = this.signedUri;
+    final uriExpirationTime = this.uriExpirationTime;
+    return {
+      'headers': ?headers,
+      'signedUri': ?signedUri,
+      'uriExpirationTime': ?uriExpirationTime,
+    };
+  }
 }
 
 /// A request to validate an import job.
@@ -11629,28 +12103,27 @@ class ValidationReport {
 
   ValidationReport.fromJson(core.Map json_)
     : this(
-        fileValidations:
-            (json_['fileValidations'] as core.List?)
-                ?.map(
-                  (value) => FileValidationReport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        jobErrors:
-            (json_['jobErrors'] as core.List?)
-                ?.map(
-                  (value) => ImportError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fileValidations: (json_['fileValidations'] as core.List?)
+            ?.map(
+              (value) => FileValidationReport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        jobErrors: (json_['jobErrors'] as core.List?)
+            ?.map(
+              (value) => ImportError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileValidations != null) 'fileValidations': fileValidations!,
-    if (jobErrors != null) 'jobErrors': jobErrors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileValidations = this.fileValidations;
+    final jobErrors = this.jobErrors;
+    return {'fileValidations': ?fileValidations, 'jobErrors': ?jobErrors};
+  }
 }
 
 /// VirtualMachinePreferences enables you to create sets of assumptions, for
@@ -11736,52 +12209,53 @@ class VirtualMachinePreferences {
   VirtualMachinePreferences.fromJson(core.Map json_)
     : this(
         commitmentPlan: json_['commitmentPlan'] as core.String?,
-        computeEnginePreferences:
-            json_.containsKey('computeEnginePreferences')
-                ? ComputeEnginePreferences.fromJson(
-                  json_['computeEnginePreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        regionPreferences:
-            json_.containsKey('regionPreferences')
-                ? RegionPreferences.fromJson(
-                  json_['regionPreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        computeEnginePreferences: json_.containsKey('computeEnginePreferences')
+            ? ComputeEnginePreferences.fromJson(
+                json_['computeEnginePreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        regionPreferences: json_.containsKey('regionPreferences')
+            ? RegionPreferences.fromJson(
+                json_['regionPreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sizingOptimizationStrategy:
             json_['sizingOptimizationStrategy'] as core.String?,
-        soleTenancyPreferences:
-            json_.containsKey('soleTenancyPreferences')
-                ? SoleTenancyPreferences.fromJson(
-                  json_['soleTenancyPreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        soleTenancyPreferences: json_.containsKey('soleTenancyPreferences')
+            ? SoleTenancyPreferences.fromJson(
+                json_['soleTenancyPreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         targetProduct: json_['targetProduct'] as core.String?,
-        vmwareEnginePreferences:
-            json_.containsKey('vmwareEnginePreferences')
-                ? VmwareEnginePreferences.fromJson(
-                  json_['vmwareEnginePreferences']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vmwareEnginePreferences: json_.containsKey('vmwareEnginePreferences')
+            ? VmwareEnginePreferences.fromJson(
+                json_['vmwareEnginePreferences']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commitmentPlan != null) 'commitmentPlan': commitmentPlan!,
-    if (computeEnginePreferences != null)
-      'computeEnginePreferences': computeEnginePreferences!,
-    if (regionPreferences != null) 'regionPreferences': regionPreferences!,
-    if (sizingOptimizationStrategy != null)
-      'sizingOptimizationStrategy': sizingOptimizationStrategy!,
-    if (soleTenancyPreferences != null)
-      'soleTenancyPreferences': soleTenancyPreferences!,
-    if (targetProduct != null) 'targetProduct': targetProduct!,
-    if (vmwareEnginePreferences != null)
-      'vmwareEnginePreferences': vmwareEnginePreferences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commitmentPlan = this.commitmentPlan;
+    final computeEnginePreferences = this.computeEnginePreferences;
+    final regionPreferences = this.regionPreferences;
+    final sizingOptimizationStrategy = this.sizingOptimizationStrategy;
+    final soleTenancyPreferences = this.soleTenancyPreferences;
+    final targetProduct = this.targetProduct;
+    final vmwareEnginePreferences = this.vmwareEnginePreferences;
+    return {
+      'commitmentPlan': ?commitmentPlan,
+      'computeEnginePreferences': ?computeEnginePreferences,
+      'regionPreferences': ?regionPreferences,
+      'sizingOptimizationStrategy': ?sizingOptimizationStrategy,
+      'soleTenancyPreferences': ?soleTenancyPreferences,
+      'targetProduct': ?targetProduct,
+      'vmwareEnginePreferences': ?vmwareEnginePreferences,
+    };
+  }
 }
 
 /// VMware disk config details.
@@ -11835,12 +12309,18 @@ class VmwareDiskConfig {
         vmdkMode: json_['vmdkMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backingType != null) 'backingType': backingType!,
-    if (rdmCompatibility != null) 'rdmCompatibility': rdmCompatibility!,
-    if (shared != null) 'shared': shared!,
-    if (vmdkMode != null) 'vmdkMode': vmdkMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backingType = this.backingType;
+    final rdmCompatibility = this.rdmCompatibility;
+    final shared = this.shared;
+    final vmdkMode = this.vmdkMode;
+    return {
+      'backingType': ?backingType,
+      'rdmCompatibility': ?rdmCompatibility,
+      'shared': ?shared,
+      'vmdkMode': ?vmdkMode,
+    };
+  }
 }
 
 /// The user preferences relating to Google Cloud VMware Engine target platform.
@@ -11894,24 +12374,29 @@ class VmwareEnginePreferences {
   VmwareEnginePreferences.fromJson(core.Map json_)
     : this(
         commitmentPlan: json_['commitmentPlan'] as core.String?,
-        cpuOvercommitRatio:
-            (json_['cpuOvercommitRatio'] as core.num?)?.toDouble(),
-        memoryOvercommitRatio:
-            (json_['memoryOvercommitRatio'] as core.num?)?.toDouble(),
+        cpuOvercommitRatio: (json_['cpuOvercommitRatio'] as core.num?)
+            ?.toDouble(),
+        memoryOvercommitRatio: (json_['memoryOvercommitRatio'] as core.num?)
+            ?.toDouble(),
         storageDeduplicationCompressionRatio:
             (json_['storageDeduplicationCompressionRatio'] as core.num?)
                 ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commitmentPlan != null) 'commitmentPlan': commitmentPlan!,
-    if (cpuOvercommitRatio != null) 'cpuOvercommitRatio': cpuOvercommitRatio!,
-    if (memoryOvercommitRatio != null)
-      'memoryOvercommitRatio': memoryOvercommitRatio!,
-    if (storageDeduplicationCompressionRatio != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final commitmentPlan = this.commitmentPlan;
+    final cpuOvercommitRatio = this.cpuOvercommitRatio;
+    final memoryOvercommitRatio = this.memoryOvercommitRatio;
+    final storageDeduplicationCompressionRatio =
+        this.storageDeduplicationCompressionRatio;
+    return {
+      'commitmentPlan': ?commitmentPlan,
+      'cpuOvercommitRatio': ?cpuOvercommitRatio,
+      'memoryOvercommitRatio': ?memoryOvercommitRatio,
       'storageDeduplicationCompressionRatio':
-          storageDeduplicationCompressionRatio!,
-  };
+          ?storageDeduplicationCompressionRatio,
+    };
+  }
 }
 
 /// VMware specific details.
@@ -11966,15 +12451,24 @@ class VmwarePlatformDetails {
         vcenterVmId: json_['vcenterVmId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (esxHyperthreading != null) 'esxHyperthreading': esxHyperthreading!,
-    if (esxVersion != null) 'esxVersion': esxVersion!,
-    if (osid != null) 'osid': osid!,
-    if (vcenterFolder != null) 'vcenterFolder': vcenterFolder!,
-    if (vcenterUri != null) 'vcenterUri': vcenterUri!,
-    if (vcenterVersion != null) 'vcenterVersion': vcenterVersion!,
-    if (vcenterVmId != null) 'vcenterVmId': vcenterVmId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final esxHyperthreading = this.esxHyperthreading;
+    final esxVersion = this.esxVersion;
+    final osid = this.osid;
+    final vcenterFolder = this.vcenterFolder;
+    final vcenterUri = this.vcenterUri;
+    final vcenterVersion = this.vcenterVersion;
+    final vcenterVmId = this.vcenterVmId;
+    return {
+      'esxHyperthreading': ?esxHyperthreading,
+      'esxVersion': ?esxVersion,
+      'osid': ?osid,
+      'vcenterFolder': ?vcenterFolder,
+      'vcenterUri': ?vcenterUri,
+      'vcenterVersion': ?vcenterVersion,
+      'vcenterVmId': ?vcenterVmId,
+    };
+  }
 }
 
 /// Contains a single output file of type XLSX.
@@ -11988,15 +12482,15 @@ class XlsxOutputFile {
 
   XlsxOutputFile.fromJson(core.Map json_)
     : this(
-        signedUri:
-            json_.containsKey('signedUri')
-                ? SignedUri.fromJson(
-                  json_['signedUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signedUri: json_.containsKey('signedUri')
+            ? SignedUri.fromJson(
+                json_['signedUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (signedUri != null) 'signedUri': signedUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final signedUri = this.signedUri;
+    return {'signedUri': ?signedUri};
+  }
 }

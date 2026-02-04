@@ -214,10 +214,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEssentialcontactsV1ComputeContactsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(od);
       });
     },
@@ -240,10 +240,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEssentialcontactsV1ListContactsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEssentialcontactsV1ListContactsResponse(od);
       });
     },
@@ -255,10 +255,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(od);
       });
     },
@@ -685,10 +685,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
           final path = req.url.path;
@@ -1152,10 +1152,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
           final path = req.url.path;
@@ -1619,10 +1619,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
           final path = req.url.path;

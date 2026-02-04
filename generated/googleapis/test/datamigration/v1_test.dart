@@ -7009,10 +7009,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionProfilesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_request = buildConnectionProfile();
       final arg_parent = 'foo';
       final arg_connectionProfileId = 'foo';
@@ -7099,10 +7098,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
@@ -7170,10 +7168,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7226,10 +7223,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7291,10 +7287,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7378,10 +7373,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_request = buildConnectionProfile();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -7468,10 +7462,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7534,10 +7527,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.connectionProfiles;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.connectionProfiles;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7604,10 +7596,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversionWorkspacesResource', () {
     unittest.test('method--apply', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildApplyConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7670,10 +7661,9 @@ void main() {
 
     unittest.test('method--commit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildCommitConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7736,10 +7726,9 @@ void main() {
 
     unittest.test('method--convert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildConvertConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7802,10 +7791,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildConversionWorkspace();
       final arg_parent = 'foo';
       final arg_conversionWorkspaceId = 'foo';
@@ -7880,10 +7868,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
@@ -7951,10 +7938,9 @@ void main() {
 
     unittest.test('method--describeConversionWorkspaceRevisions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_commitId = 'foo';
       final arg_$fields = 'foo';
@@ -8020,10 +8006,9 @@ void main() {
 
     unittest.test('method--describeDatabaseEntities', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_commitId = 'foo';
       final arg_filter = 'foo';
@@ -8119,10 +8104,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8175,10 +8159,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -8240,10 +8223,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -8321,10 +8303,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildConversionWorkspace();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8399,10 +8380,9 @@ void main() {
 
     unittest.test('method--rollback', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildRollbackConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8465,10 +8445,9 @@ void main() {
 
     unittest.test('method--searchBackgroundJobs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_conversionWorkspace = 'foo';
       final arg_completedUntilTime = 'foo';
       final arg_maxSize = 42;
@@ -8544,10 +8523,9 @@ void main() {
 
     unittest.test('method--seed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildSeedConversionWorkspaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8610,10 +8588,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8676,10 +8653,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.conversionWorkspaces;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.conversionWorkspaces;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8748,10 +8724,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DatabaseMigrationServiceApi(
-              mock,
-            ).projects.locations.conversionWorkspaces.mappingRules;
+        final res = api.DatabaseMigrationServiceApi(
+          mock,
+        ).projects.locations.conversionWorkspaces.mappingRules;
         final arg_request = buildMappingRule();
         final arg_parent = 'foo';
         final arg_mappingRuleId = 'foo';
@@ -8826,10 +8801,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DatabaseMigrationServiceApi(
-              mock,
-            ).projects.locations.conversionWorkspaces.mappingRules;
+        final res = api.DatabaseMigrationServiceApi(
+          mock,
+        ).projects.locations.conversionWorkspaces.mappingRules;
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_$fields = 'foo';
@@ -8891,10 +8865,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DatabaseMigrationServiceApi(
-              mock,
-            ).projects.locations.conversionWorkspaces.mappingRules;
+        final res = api.DatabaseMigrationServiceApi(
+          mock,
+        ).projects.locations.conversionWorkspaces.mappingRules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8947,10 +8920,9 @@ void main() {
 
       unittest.test('method--import', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DatabaseMigrationServiceApi(
-              mock,
-            ).projects.locations.conversionWorkspaces.mappingRules;
+        final res = api.DatabaseMigrationServiceApi(
+          mock,
+        ).projects.locations.conversionWorkspaces.mappingRules;
         final arg_request = buildImportMappingRulesRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -9013,10 +8985,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DatabaseMigrationServiceApi(
-              mock,
-            ).projects.locations.conversionWorkspaces.mappingRules;
+        final res = api.DatabaseMigrationServiceApi(
+          mock,
+        ).projects.locations.conversionWorkspaces.mappingRules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -9087,10 +9058,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMigrationJobsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildMigrationJob();
       final arg_parent = 'foo';
       final arg_migrationJobId = 'foo';
@@ -9165,10 +9135,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
@@ -9236,10 +9205,9 @@ void main() {
 
     unittest.test('method--demoteDestination', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildDemoteDestinationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9302,10 +9270,9 @@ void main() {
 
     unittest.test('method--fetchSourceObjects', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9361,10 +9328,9 @@ void main() {
 
     unittest.test('method--generateSshScript', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildGenerateSshScriptRequest();
       final arg_migrationJob = 'foo';
       final arg_$fields = 'foo';
@@ -9427,10 +9393,9 @@ void main() {
 
     unittest.test('method--generateTcpProxyScript', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildGenerateTcpProxyScriptRequest();
       final arg_migrationJob = 'foo';
       final arg_$fields = 'foo';
@@ -9493,10 +9458,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9549,10 +9513,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -9614,10 +9577,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9697,10 +9659,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildMigrationJob();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -9775,10 +9736,9 @@ void main() {
 
     unittest.test('method--promote', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildPromoteMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9841,10 +9801,9 @@ void main() {
 
     unittest.test('method--restart', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildRestartMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9907,10 +9866,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildResumeMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9973,10 +9931,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10039,10 +9996,9 @@ void main() {
 
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildStartMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10105,10 +10061,9 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildStopMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10171,10 +10126,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10239,10 +10193,9 @@ void main() {
 
     unittest.test('method--verify', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs;
       final arg_request = buildVerifyMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10307,10 +10260,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMigrationJobsObjectsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10363,10 +10315,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -10428,10 +10379,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10503,10 +10453,9 @@ void main() {
 
     unittest.test('method--lookup', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_request = buildLookupMigrationJobObjectRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -10569,10 +10518,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10635,10 +10583,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.migrationJobs.objects;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.migrationJobs.objects;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10705,8 +10652,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10769,8 +10717,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10823,8 +10772,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10877,8 +10827,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -10960,10 +10911,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateConnectionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_request = buildPrivateConnection();
       final arg_parent = 'foo';
       final arg_privateConnectionId = 'foo';
@@ -11050,10 +11000,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -11115,10 +11064,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11171,10 +11119,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -11236,10 +11183,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11323,10 +11269,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -11389,10 +11334,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatabaseMigrationServiceApi(
-            mock,
-          ).projects.locations.privateConnections;
+      final res = api.DatabaseMigrationServiceApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

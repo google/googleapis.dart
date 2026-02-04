@@ -97,7 +97,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -150,11 +150,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -218,9 +218,9 @@ class ProjectsLocationsBlockchainNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (blockchainNodeId != null) 'blockchainNodeId': [blockchainNodeId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'blockchainNodeId': ?blockchainNodeId == null ? null : [blockchainNodeId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/blockchainNodes';
@@ -272,8 +272,8 @@ class ProjectsLocationsBlockchainNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -311,7 +311,7 @@ class ProjectsLocationsBlockchainNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -362,11 +362,11 @@ class ProjectsLocationsBlockchainNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/blockchainNodes';
@@ -429,9 +429,9 @@ class ProjectsLocationsBlockchainNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -488,7 +488,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -531,7 +531,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -569,7 +569,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -615,10 +615,10 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -718,21 +718,17 @@ class BlockchainNode {
   BlockchainNode.fromJson(core.Map json_)
     : this(
         blockchainType: json_['blockchainType'] as core.String?,
-        connectionInfo:
-            json_.containsKey('connectionInfo')
-                ? ConnectionInfo.fromJson(
-                  json_['connectionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        connectionInfo: json_.containsKey('connectionInfo')
+            ? ConnectionInfo.fromJson(
+                json_['connectionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        ethereumDetails:
-            json_.containsKey('ethereumDetails')
-                ? EthereumDetails.fromJson(
-                  json_['ethereumDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ethereumDetails: json_.containsKey('ethereumDetails')
+            ? EthereumDetails.fromJson(
+                json_['ethereumDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -743,18 +739,28 @@ class BlockchainNode {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blockchainType != null) 'blockchainType': blockchainType!,
-    if (connectionInfo != null) 'connectionInfo': connectionInfo!,
-    if (createTime != null) 'createTime': createTime!,
-    if (ethereumDetails != null) 'ethereumDetails': ethereumDetails!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (privateServiceConnectEnabled != null)
-      'privateServiceConnectEnabled': privateServiceConnectEnabled!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blockchainType = this.blockchainType;
+    final connectionInfo = this.connectionInfo;
+    final createTime = this.createTime;
+    final ethereumDetails = this.ethereumDetails;
+    final labels = this.labels;
+    final name = this.name;
+    final privateServiceConnectEnabled = this.privateServiceConnectEnabled;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'blockchainType': ?blockchainType,
+      'connectionInfo': ?connectionInfo,
+      'createTime': ?createTime,
+      'ethereumDetails': ?ethereumDetails,
+      'labels': ?labels,
+      'name': ?name,
+      'privateServiceConnectEnabled': ?privateServiceConnectEnabled,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -777,19 +783,22 @@ class ConnectionInfo {
 
   ConnectionInfo.fromJson(core.Map json_)
     : this(
-        endpointInfo:
-            json_.containsKey('endpointInfo')
-                ? EndpointInfo.fromJson(
-                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endpointInfo: json_.containsKey('endpointInfo')
+            ? EndpointInfo.fromJson(
+                json_['endpointInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAttachment: json_['serviceAttachment'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpointInfo != null) 'endpointInfo': endpointInfo!,
-    if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpointInfo = this.endpointInfo;
+    final serviceAttachment = this.serviceAttachment;
+    return {
+      'endpointInfo': ?endpointInfo,
+      'serviceAttachment': ?serviceAttachment,
+    };
+  }
 }
 
 /// Contains endpoint information through which to interact with a blockchain
@@ -813,11 +822,14 @@ class EndpointInfo {
         websocketsApiEndpoint: json_['websocketsApiEndpoint'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jsonRpcApiEndpoint != null) 'jsonRpcApiEndpoint': jsonRpcApiEndpoint!,
-    if (websocketsApiEndpoint != null)
-      'websocketsApiEndpoint': websocketsApiEndpoint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jsonRpcApiEndpoint = this.jsonRpcApiEndpoint;
+    final websocketsApiEndpoint = this.websocketsApiEndpoint;
+    return {
+      'jsonRpcApiEndpoint': ?jsonRpcApiEndpoint,
+      'websocketsApiEndpoint': ?websocketsApiEndpoint,
+    };
+  }
 }
 
 /// Ethereum-specific blockchain node details.
@@ -919,46 +931,52 @@ class EthereumDetails {
 
   EthereumDetails.fromJson(core.Map json_)
     : this(
-        additionalEndpoints:
-            json_.containsKey('additionalEndpoints')
-                ? EthereumEndpoints.fromJson(
-                  json_['additionalEndpoints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additionalEndpoints: json_.containsKey('additionalEndpoints')
+            ? EthereumEndpoints.fromJson(
+                json_['additionalEndpoints']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         apiEnableAdmin: json_['apiEnableAdmin'] as core.bool?,
         apiEnableDebug: json_['apiEnableDebug'] as core.bool?,
         consensusClient: json_['consensusClient'] as core.String?,
         executionClient: json_['executionClient'] as core.String?,
-        gethDetails:
-            json_.containsKey('gethDetails')
-                ? GethDetails.fromJson(
-                  json_['gethDetails'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gethDetails: json_.containsKey('gethDetails')
+            ? GethDetails.fromJson(
+                json_['gethDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         network: json_['network'] as core.String?,
         nodeType: json_['nodeType'] as core.String?,
-        validatorConfig:
-            json_.containsKey('validatorConfig')
-                ? ValidatorConfig.fromJson(
-                  json_['validatorConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        validatorConfig: json_.containsKey('validatorConfig')
+            ? ValidatorConfig.fromJson(
+                json_['validatorConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalEndpoints != null)
-      'additionalEndpoints': additionalEndpoints!,
-    if (apiEnableAdmin != null) 'apiEnableAdmin': apiEnableAdmin!,
-    if (apiEnableDebug != null) 'apiEnableDebug': apiEnableDebug!,
-    if (consensusClient != null) 'consensusClient': consensusClient!,
-    if (executionClient != null) 'executionClient': executionClient!,
-    if (gethDetails != null) 'gethDetails': gethDetails!,
-    if (network != null) 'network': network!,
-    if (nodeType != null) 'nodeType': nodeType!,
-    if (validatorConfig != null) 'validatorConfig': validatorConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalEndpoints = this.additionalEndpoints;
+    final apiEnableAdmin = this.apiEnableAdmin;
+    final apiEnableDebug = this.apiEnableDebug;
+    final consensusClient = this.consensusClient;
+    final executionClient = this.executionClient;
+    final gethDetails = this.gethDetails;
+    final network = this.network;
+    final nodeType = this.nodeType;
+    final validatorConfig = this.validatorConfig;
+    return {
+      'additionalEndpoints': ?additionalEndpoints,
+      'apiEnableAdmin': ?apiEnableAdmin,
+      'apiEnableDebug': ?apiEnableDebug,
+      'consensusClient': ?consensusClient,
+      'executionClient': ?executionClient,
+      'gethDetails': ?gethDetails,
+      'network': ?network,
+      'nodeType': ?nodeType,
+      'validatorConfig': ?validatorConfig,
+    };
+  }
 }
 
 /// Contains endpoint information specific to Ethereum nodes.
@@ -999,14 +1017,19 @@ class EthereumEndpoints {
                 as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beaconApiEndpoint != null) 'beaconApiEndpoint': beaconApiEndpoint!,
-    if (beaconPrometheusMetricsApiEndpoint != null)
-      'beaconPrometheusMetricsApiEndpoint': beaconPrometheusMetricsApiEndpoint!,
-    if (executionClientPrometheusMetricsApiEndpoint != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final beaconApiEndpoint = this.beaconApiEndpoint;
+    final beaconPrometheusMetricsApiEndpoint =
+        this.beaconPrometheusMetricsApiEndpoint;
+    final executionClientPrometheusMetricsApiEndpoint =
+        this.executionClientPrometheusMetricsApiEndpoint;
+    return {
+      'beaconApiEndpoint': ?beaconApiEndpoint,
+      'beaconPrometheusMetricsApiEndpoint': ?beaconPrometheusMetricsApiEndpoint,
       'executionClientPrometheusMetricsApiEndpoint':
-          executionClientPrometheusMetricsApiEndpoint!,
-  };
+          ?executionClientPrometheusMetricsApiEndpoint,
+    };
+  }
 }
 
 /// Options for the Geth execution client.
@@ -1039,10 +1062,10 @@ class GethDetails {
         garbageCollectionMode: json_['garbageCollectionMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (garbageCollectionMode != null)
-      'garbageCollectionMode': garbageCollectionMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final garbageCollectionMode = this.garbageCollectionMode;
+    return {'garbageCollectionMode': ?garbageCollectionMode};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1072,26 +1095,29 @@ class ListBlockchainNodesResponse {
 
   ListBlockchainNodesResponse.fromJson(core.Map json_)
     : this(
-        blockchainNodes:
-            (json_['blockchainNodes'] as core.List?)
-                ?.map(
-                  (value) => BlockchainNode.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        blockchainNodes: (json_['blockchainNodes'] as core.List?)
+            ?.map(
+              (value) => BlockchainNode.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blockchainNodes != null) 'blockchainNodes': blockchainNodes!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blockchainNodes = this.blockchainNodes;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'blockchainNodes': ?blockchainNodes,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -1106,21 +1132,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -1136,20 +1162,20 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    return {'nextPageToken': ?nextPageToken, 'operations': ?operations};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1203,30 +1229,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1276,16 +1306,19 @@ class ValidatorConfig {
     : this(
         beaconFeeRecipient: json_['beaconFeeRecipient'] as core.String?,
         managedValidatorClient: json_['managedValidatorClient'] as core.bool?,
-        mevRelayUrls:
-            (json_['mevRelayUrls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        mevRelayUrls: (json_['mevRelayUrls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beaconFeeRecipient != null) 'beaconFeeRecipient': beaconFeeRecipient!,
-    if (managedValidatorClient != null)
-      'managedValidatorClient': managedValidatorClient!,
-    if (mevRelayUrls != null) 'mevRelayUrls': mevRelayUrls!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final beaconFeeRecipient = this.beaconFeeRecipient;
+    final managedValidatorClient = this.managedValidatorClient;
+    final mevRelayUrls = this.mevRelayUrls;
+    return {
+      'beaconFeeRecipient': ?beaconFeeRecipient,
+      'managedValidatorClient': ?managedValidatorClient,
+      'mevRelayUrls': ?mevRelayUrls,
+    };
+  }
 }

@@ -5000,10 +5000,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFetchBackupPlanAssociationsForResourceTypeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FetchBackupPlanAssociationsForResourceTypeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FetchBackupPlanAssociationsForResourceTypeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFetchBackupPlanAssociationsForResourceTypeResponse(od);
       });
     },
@@ -5026,10 +5026,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFetchDataSourceReferencesForResourceTypeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FetchDataSourceReferencesForResourceTypeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FetchDataSourceReferencesForResourceTypeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFetchDataSourceReferencesForResourceTypeResponse(od);
       });
     },
@@ -5074,10 +5074,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFilestoreInstanceBackupPlanAssociationProperties();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FilestoreInstanceBackupPlanAssociationProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FilestoreInstanceBackupPlanAssociationProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFilestoreInstanceBackupPlanAssociationProperties(od);
       });
     },
@@ -5857,8 +5857,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupPlanAssociationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_request = buildBackupPlanAssociation();
       final arg_parent = 'foo';
       final arg_backupPlanAssociationId = 'foo';
@@ -5933,8 +5934,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5996,8 +5998,9 @@ void main() {
 
     unittest.test('method--fetchForResourceType', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6087,8 +6090,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6141,8 +6145,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6220,8 +6225,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_request = buildBackupPlanAssociation();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -6296,8 +6302,9 @@ void main() {
 
     unittest.test('method--triggerBackup', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlanAssociations;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlanAssociations;
       final arg_request = buildTriggerBackupRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6709,8 +6716,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupPlansRevisionsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlans.revisions;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlans.revisions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6763,8 +6771,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupPlans.revisions;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupPlans.revisions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7394,8 +7403,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupVaultsDataSourcesResource', () {
     unittest.test('method--abandonBackup', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildAbandonBackupRequest();
       final arg_dataSource = 'foo';
       final arg_$fields = 'foo';
@@ -7458,8 +7468,9 @@ void main() {
 
     unittest.test('method--fetchAccessToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildFetchAccessTokenRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7522,8 +7533,9 @@ void main() {
 
     unittest.test('method--finalizeBackup', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildFinalizeBackupRequest();
       final arg_dataSource = 'foo';
       final arg_$fields = 'foo';
@@ -7586,8 +7598,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7640,8 +7653,9 @@ void main() {
 
     unittest.test('method--initiateBackup', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildInitiateBackupRequest();
       final arg_dataSource = 'foo';
       final arg_$fields = 'foo';
@@ -7704,8 +7718,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7785,8 +7800,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildDataSource();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -7867,8 +7883,9 @@ void main() {
 
     unittest.test('method--remove', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildRemoveDataSourceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7931,8 +7948,9 @@ void main() {
 
     unittest.test('method--setInternalStatus', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.backupVaults.dataSources;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources;
       final arg_request = buildSetInternalStatusRequest();
       final arg_dataSource = 'foo';
       final arg_$fields = 'foo';
@@ -7997,10 +8015,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupVaultsDataSourcesBackupsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -8062,10 +8079,9 @@ void main() {
 
     unittest.test('method--fetchForResourceType', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8158,10 +8174,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -8220,10 +8235,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8306,10 +8320,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_request = buildBackup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8384,10 +8397,9 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(
-            mock,
-          ).projects.locations.backupVaults.dataSources.backups;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.backupVaults.dataSources.backups;
       final arg_request = buildRestoreBackupRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9465,8 +9477,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceBackupConfigsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupdrApi(mock).projects.locations.resourceBackupConfigs;
+      final res = api.BackupdrApi(
+        mock,
+      ).projects.locations.resourceBackupConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

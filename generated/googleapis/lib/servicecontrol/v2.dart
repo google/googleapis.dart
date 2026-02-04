@@ -113,7 +113,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -170,7 +170,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -226,12 +226,18 @@ class Api {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operation != null) 'operation': operation!,
-    if (protocol != null) 'protocol': protocol!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final operation = this.operation;
+    final protocol = this.protocol;
+    final service = this.service;
+    final version = this.version;
+    return {
+      'operation': ?operation,
+      'protocol': ?protocol,
+      'service': ?service,
+      'version': ?version,
+    };
+  }
 }
 
 /// This message defines the standard attribute vocabulary for Google APIs.
@@ -301,64 +307,64 @@ class AttributeContext {
 
   AttributeContext.fromJson(core.Map json_)
     : this(
-        api:
-            json_.containsKey('api')
-                ? Api.fromJson(
-                  json_['api'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destination:
-            json_.containsKey('destination')
-                ? Peer.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        extensions:
-            (json_['extensions'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
-        origin:
-            json_.containsKey('origin')
-                ? Peer.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        request:
-            json_.containsKey('request')
-                ? Request.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resource:
-            json_.containsKey('resource')
-                ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        response:
-            json_.containsKey('response')
-                ? Response.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        source:
-            json_.containsKey('source')
-                ? Peer.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        api: json_.containsKey('api')
+            ? Api.fromJson(json_['api'] as core.Map<core.String, core.dynamic>)
+            : null,
+        destination: json_.containsKey('destination')
+            ? Peer.fromJson(
+                json_['destination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
+        origin: json_.containsKey('origin')
+            ? Peer.fromJson(
+                json_['origin'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        request: json_.containsKey('request')
+            ? Request.fromJson(
+                json_['request'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_.containsKey('resource')
+            ? Resource.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        response: json_.containsKey('response')
+            ? Response.fromJson(
+                json_['response'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        source: json_.containsKey('source')
+            ? Peer.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (api != null) 'api': api!,
-    if (destination != null) 'destination': destination!,
-    if (extensions != null) 'extensions': extensions!,
-    if (origin != null) 'origin': origin!,
-    if (request != null) 'request': request!,
-    if (resource != null) 'resource': resource!,
-    if (response != null) 'response': response!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final api = this.api;
+    final destination = this.destination;
+    final extensions = this.extensions;
+    final origin = this.origin;
+    final request = this.request;
+    final resource = this.resource;
+    final response = this.response;
+    final source = this.source;
+    return {
+      'api': ?api,
+      'destination': ?destination,
+      'extensions': ?extensions,
+      'origin': ?origin,
+      'request': ?request,
+      'resource': ?resource,
+      'response': ?response,
+      'source': ?source,
+    };
+  }
 }
 
 /// This message defines request authentication attributes.
@@ -433,36 +439,40 @@ class Auth {
 
   Auth.fromJson(core.Map json_)
     : this(
-        accessLevels:
-            (json_['accessLevels'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        audiences:
-            (json_['audiences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        claims:
-            json_.containsKey('claims')
-                ? json_['claims'] as core.Map<core.String, core.dynamic>
-                : null,
-        oauth:
-            json_.containsKey('oauth')
-                ? Oauth.fromJson(
-                  json_['oauth'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessLevels: (json_['accessLevels'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        audiences: (json_['audiences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        claims: json_.containsKey('claims')
+            ? json_['claims'] as core.Map<core.String, core.dynamic>
+            : null,
+        oauth: json_.containsKey('oauth')
+            ? Oauth.fromJson(
+                json_['oauth'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         presenter: json_['presenter'] as core.String?,
         principal: json_['principal'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessLevels != null) 'accessLevels': accessLevels!,
-    if (audiences != null) 'audiences': audiences!,
-    if (claims != null) 'claims': claims!,
-    if (oauth != null) 'oauth': oauth!,
-    if (presenter != null) 'presenter': presenter!,
-    if (principal != null) 'principal': principal!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevels = this.accessLevels;
+    final audiences = this.audiences;
+    final claims = this.claims;
+    final oauth = this.oauth;
+    final presenter = this.presenter;
+    final principal = this.principal;
+    return {
+      'accessLevels': ?accessLevels,
+      'audiences': ?audiences,
+      'claims': ?claims,
+      'oauth': ?oauth,
+      'presenter': ?presenter,
+      'principal': ?principal,
+    };
+  }
 }
 
 /// Request message for the Check method.
@@ -494,30 +504,34 @@ class CheckRequest {
 
   CheckRequest.fromJson(core.Map json_)
     : this(
-        attributes:
-            json_.containsKey('attributes')
-                ? AttributeContext.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes: json_.containsKey('attributes')
+            ? AttributeContext.fromJson(
+                json_['attributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         flags: json_['flags'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => ResourceInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => ResourceInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceConfigId: json_['serviceConfigId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (flags != null) 'flags': flags!,
-    if (resources != null) 'resources': resources!,
-    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final flags = this.flags;
+    final resources = this.resources;
+    final serviceConfigId = this.serviceConfigId;
+    return {
+      'attributes': ?attributes,
+      'flags': ?flags,
+      'resources': ?resources,
+      'serviceConfigId': ?serviceConfigId,
+    };
+  }
 }
 
 /// Response message for the Check method.
@@ -544,26 +558,28 @@ class CheckResponse {
 
   CheckResponse.fromJson(core.Map json_)
     : this(
-        dynamicMetadata:
-            json_.containsKey('dynamicMetadata')
-                ? json_['dynamicMetadata']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        dynamicMetadata: json_.containsKey('dynamicMetadata')
+            ? json_['dynamicMetadata'] as core.Map<core.String, core.dynamic>
+            : null,
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        status:
-            json_.containsKey('status')
-                ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? Status.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dynamicMetadata != null) 'dynamicMetadata': dynamicMetadata!,
-    if (headers != null) 'headers': headers!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dynamicMetadata = this.dynamicMetadata;
+    final headers = this.headers;
+    final status = this.status;
+    return {
+      'dynamicMetadata': ?dynamicMetadata,
+      'headers': ?headers,
+      'status': ?status,
+    };
+  }
 }
 
 /// This message defines attributes associated with OAuth credentials.
@@ -581,9 +597,10 @@ class Oauth {
   Oauth.fromJson(core.Map json_)
     : this(clientId: json_['clientId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    return {'clientId': ?clientId};
+  }
 }
 
 /// This message defines attributes for a node that handles a network request.
@@ -627,13 +644,20 @@ class Peer {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ip != null) 'ip': ip!,
-    if (labels != null) 'labels': labels!,
-    if (port != null) 'port': port!,
-    if (principal != null) 'principal': principal!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ip = this.ip;
+    final labels = this.labels;
+    final port = this.port;
+    final principal = this.principal;
+    final regionCode = this.regionCode;
+    return {
+      'ip': ?ip,
+      'labels': ?labels,
+      'port': ?port,
+      'principal': ?principal,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// Request message for the Report method.
@@ -655,21 +679,21 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map json_)
     : this(
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => AttributeContext.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => AttributeContext.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceConfigId: json_['serviceConfigId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operations != null) 'operations': operations!,
-    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final operations = this.operations;
+    final serviceConfigId = this.serviceConfigId;
+    return {'operations': ?operations, 'serviceConfigId': ?serviceConfigId};
+  }
 }
 
 /// Response message for the Report method.
@@ -686,15 +710,15 @@ class ReportResponse {
 
   ReportResponse.fromJson(core.Map json_)
     : this(
-        extensions:
-            json_.containsKey('extensions')
-                ? json_['extensions'] as core.Map<core.String, core.dynamic>
-                : null,
+        extensions: json_.containsKey('extensions')
+            ? json_['extensions'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extensions != null) 'extensions': extensions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final extensions = this.extensions;
+    return {'extensions': ?extensions};
+  }
 }
 
 /// This message defines attributes for an HTTP request.
@@ -788,12 +812,11 @@ class Request {
 
   Request.fromJson(core.Map json_)
     : this(
-        auth:
-            json_.containsKey('auth')
-                ? Auth.fromJson(
-                  json_['auth'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        auth: json_.containsKey('auth')
+            ? Auth.fromJson(
+                json_['auth'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         host: json_['host'] as core.String?,
@@ -809,21 +832,36 @@ class Request {
         time: json_['time'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auth != null) 'auth': auth!,
-    if (headers != null) 'headers': headers!,
-    if (host != null) 'host': host!,
-    if (id != null) 'id': id!,
-    if (method != null) 'method': method!,
-    if (origin != null) 'origin': origin!,
-    if (path != null) 'path': path!,
-    if (protocol != null) 'protocol': protocol!,
-    if (query != null) 'query': query!,
-    if (reason != null) 'reason': reason!,
-    if (scheme != null) 'scheme': scheme!,
-    if (size != null) 'size': size!,
-    if (time != null) 'time': time!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auth = this.auth;
+    final headers = this.headers;
+    final host = this.host;
+    final id = this.id;
+    final method = this.method;
+    final origin = this.origin;
+    final path = this.path;
+    final protocol = this.protocol;
+    final query = this.query;
+    final reason = this.reason;
+    final scheme = this.scheme;
+    final size = this.size;
+    final time = this.time;
+    return {
+      'auth': ?auth,
+      'headers': ?headers,
+      'host': ?host,
+      'id': ?id,
+      'method': ?method,
+      'origin': ?origin,
+      'path': ?path,
+      'protocol': ?protocol,
+      'query': ?query,
+      'reason': ?reason,
+      'scheme': ?scheme,
+      'size': ?size,
+      'time': ?time,
+    };
+  }
 }
 
 /// This message defines core attributes for a resource.
@@ -944,9 +982,10 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -962,20 +1001,34 @@ class Resource {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (service != null) 'service': service!,
-    if (type != null) 'type': type!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final labels = this.labels;
+    final location = this.location;
+    final name = this.name;
+    final service = this.service;
+    final type = this.type;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'service': ?service,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Describes a resource referenced in the request.
@@ -1026,13 +1079,20 @@ class ResourceInfo {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (container != null) 'container': container!,
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (permission != null) 'permission': permission!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final container = this.container;
+    final location = this.location;
+    final name = this.name;
+    final permission = this.permission;
+    final type = this.type;
+    return {
+      'container': ?container,
+      'location': ?location,
+      'name': ?name,
+      'permission': ?permission,
+      'type': ?type,
+    };
+  }
 }
 
 /// This message defines attributes for a typical network response.
@@ -1084,13 +1144,20 @@ class Response {
         time: json_['time'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backendLatency != null) 'backendLatency': backendLatency!,
-    if (code != null) 'code': code!,
-    if (headers != null) 'headers': headers!,
-    if (size != null) 'size': size!,
-    if (time != null) 'time': time!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backendLatency = this.backendLatency;
+    final code = this.code;
+    final headers = this.headers;
+    final size = this.size;
+    final time = this.time;
+    return {
+      'backendLatency': ?backendLatency,
+      'code': ?code,
+      'headers': ?headers,
+      'size': ?size,
+      'time': ?time,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

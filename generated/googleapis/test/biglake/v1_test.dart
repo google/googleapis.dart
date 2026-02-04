@@ -1199,8 +1199,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsDatabasesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(mock).projects.locations.catalogs.databases;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases;
       final arg_request = buildDatabase();
       final arg_parent = 'foo';
       final arg_databaseId = 'foo';
@@ -1269,8 +1270,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(mock).projects.locations.catalogs.databases;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1323,8 +1325,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(mock).projects.locations.catalogs.databases;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1377,8 +1380,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(mock).projects.locations.catalogs.databases;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1446,8 +1450,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(mock).projects.locations.catalogs.databases;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases;
       final arg_request = buildDatabase();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1518,10 +1523,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsDatabasesTablesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_request = buildTable();
       final arg_parent = 'foo';
       final arg_tableId = 'foo';
@@ -1590,10 +1594,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1646,10 +1649,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1702,10 +1704,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1776,10 +1777,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_request = buildTable();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1848,10 +1848,9 @@ void main() {
 
     unittest.test('method--rename', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigLakeServiceApi(
-            mock,
-          ).projects.locations.catalogs.databases.tables;
+      final res = api.BigLakeServiceApi(
+        mock,
+      ).projects.locations.catalogs.databases.tables;
       final arg_request = buildRenameTableRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

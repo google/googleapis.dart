@@ -1921,8 +1921,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataSourcesResource', () {
     unittest.test('method--checkValidCreds', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.dataSources;
       final arg_request = buildCheckValidCredsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1985,8 +1986,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.dataSources;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2039,8 +2041,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.dataSources;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2110,8 +2113,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTransferConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_request = buildTransferConfig();
       final arg_parent = 'foo';
       final arg_authorizationCode = 'foo';
@@ -2192,8 +2196,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2246,8 +2251,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2300,8 +2306,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_parent = 'foo';
       final arg_dataSourceIds = buildUnnamed20();
       final arg_pageSize = 42;
@@ -2377,8 +2384,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_request = buildTransferConfig();
       final arg_name = 'foo';
       final arg_authorizationCode = 'foo';
@@ -2465,8 +2473,9 @@ void main() {
 
     unittest.test('method--scheduleRuns', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_request = buildScheduleTransferRunsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -2531,8 +2540,9 @@ void main() {
 
     unittest.test('method--startManualRuns', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs;
       final arg_request = buildStartManualTransferRunsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -2601,10 +2611,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTransferConfigsRunsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(
-            mock,
-          ).projects.locations.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs.runs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2657,10 +2666,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(
-            mock,
-          ).projects.locations.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs.runs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2713,10 +2721,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(
-            mock,
-          ).projects.locations.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.locations.transferConfigs.runs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2797,10 +2804,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BigQueryDataTransferApi(
-              mock,
-            ).projects.locations.transferConfigs.runs.transferLogs;
+        final res = api.BigQueryDataTransferApi(
+          mock,
+        ).projects.locations.transferConfigs.runs.transferLogs;
         final arg_parent = 'foo';
         final arg_messageTypes = buildUnnamed22();
         final arg_pageSize = 42;
@@ -3361,8 +3367,9 @@ void main() {
   unittest.group('resource-ProjectsTransferConfigsRunsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.runs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3415,8 +3422,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.runs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3469,8 +3477,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.runs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3549,10 +3558,9 @@ void main() {
   unittest.group('resource-ProjectsTransferConfigsRunsTransferLogsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataTransferApi(
-            mock,
-          ).projects.transferConfigs.runs.transferLogs;
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.runs.transferLogs;
       final arg_parent = 'foo';
       final arg_messageTypes = buildUnnamed25();
       final arg_pageSize = 42;

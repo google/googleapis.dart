@@ -140,7 +140,7 @@ class AccountsProductsLocalInventoriesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'inventories/v1/' + core.Uri.encodeFull('$name');
@@ -209,7 +209,7 @@ class AccountsProductsLocalInventoriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -298,9 +298,9 @@ class AccountsProductsLocalInventoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -380,7 +380,7 @@ class AccountsProductsRegionalInventoriesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'inventories/v1/' + core.Uri.encodeFull('$name');
@@ -449,7 +449,7 @@ class AccountsProductsRegionalInventoriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -539,9 +539,9 @@ class AccountsProductsRegionalInventoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -631,43 +631,48 @@ class InventoryLoyaltyProgram {
 
   InventoryLoyaltyProgram.fromJson(core.Map json_)
     : this(
-        cashbackForFutureUse:
-            json_.containsKey('cashbackForFutureUse')
-                ? Price.fromJson(
-                  json_['cashbackForFutureUse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cashbackForFutureUse: json_.containsKey('cashbackForFutureUse')
+            ? Price.fromJson(
+                json_['cashbackForFutureUse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         loyaltyPoints: json_['loyaltyPoints'] as core.String?,
         memberPriceEffectiveInterval:
             json_.containsKey('memberPriceEffectiveInterval')
-                ? Interval.fromJson(
-                  json_['memberPriceEffectiveInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Interval.fromJson(
+                json_['memberPriceEffectiveInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         programLabel: json_['programLabel'] as core.String?,
         shippingLabel: json_['shippingLabel'] as core.String?,
         tierLabel: json_['tierLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cashbackForFutureUse != null)
-      'cashbackForFutureUse': cashbackForFutureUse!,
-    if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
-    if (memberPriceEffectiveInterval != null)
-      'memberPriceEffectiveInterval': memberPriceEffectiveInterval!,
-    if (price != null) 'price': price!,
-    if (programLabel != null) 'programLabel': programLabel!,
-    if (shippingLabel != null) 'shippingLabel': shippingLabel!,
-    if (tierLabel != null) 'tierLabel': tierLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cashbackForFutureUse = this.cashbackForFutureUse;
+    final loyaltyPoints = this.loyaltyPoints;
+    final memberPriceEffectiveInterval = this.memberPriceEffectiveInterval;
+    final price = this.price;
+    final programLabel = this.programLabel;
+    final shippingLabel = this.shippingLabel;
+    final tierLabel = this.tierLabel;
+    return {
+      'cashbackForFutureUse': ?cashbackForFutureUse,
+      'loyaltyPoints': ?loyaltyPoints,
+      'memberPriceEffectiveInterval': ?memberPriceEffectiveInterval,
+      'price': ?price,
+      'programLabel': ?programLabel,
+      'shippingLabel': ?shippingLabel,
+      'tierLabel': ?tierLabel,
+    };
+  }
 }
 
 /// Response message for the `ListLocalInventories` method.
@@ -685,21 +690,24 @@ class ListLocalInventoriesResponse {
 
   ListLocalInventoriesResponse.fromJson(core.Map json_)
     : this(
-        localInventories:
-            (json_['localInventories'] as core.List?)
-                ?.map(
-                  (value) => LocalInventory.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        localInventories: (json_['localInventories'] as core.List?)
+            ?.map(
+              (value) => LocalInventory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (localInventories != null) 'localInventories': localInventories!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final localInventories = this.localInventories;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'localInventories': ?localInventories,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for the `ListRegionalInventories` method.
@@ -721,21 +729,23 @@ class ListRegionalInventoriesResponse {
   ListRegionalInventoriesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        regionalInventories:
-            (json_['regionalInventories'] as core.List?)
-                ?.map(
-                  (value) => RegionalInventory.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        regionalInventories: (json_['regionalInventories'] as core.List?)
+            ?.map(
+              (value) => RegionalInventory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (regionalInventories != null)
-      'regionalInventories': regionalInventories!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final regionalInventories = this.regionalInventories;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'regionalInventories': ?regionalInventories,
+    };
+  }
 }
 
 /// Local inventory information for the product.
@@ -813,24 +823,28 @@ class LocalInventory {
   LocalInventory.fromJson(core.Map json_)
     : this(
         account: json_['account'] as core.String?,
-        localInventoryAttributes:
-            json_.containsKey('localInventoryAttributes')
-                ? LocalInventoryAttributes.fromJson(
-                  json_['localInventoryAttributes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localInventoryAttributes: json_.containsKey('localInventoryAttributes')
+            ? LocalInventoryAttributes.fromJson(
+                json_['localInventoryAttributes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         storeCode: json_['storeCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (account != null) 'account': account!,
-    if (localInventoryAttributes != null)
-      'localInventoryAttributes': localInventoryAttributes!,
-    if (name != null) 'name': name!,
-    if (storeCode != null) 'storeCode': storeCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final localInventoryAttributes = this.localInventoryAttributes;
+    final name = this.name;
+    final storeCode = this.storeCode;
+    return {
+      'account': ?account,
+      'localInventoryAttributes': ?localInventoryAttributes,
+      'name': ?name,
+      'storeCode': ?storeCode,
+    };
+  }
 }
 
 /// Local inventory attributes.
@@ -947,51 +961,56 @@ class LocalInventoryAttributes {
     : this(
         availability: json_['availability'] as core.String?,
         instoreProductLocation: json_['instoreProductLocation'] as core.String?,
-        loyaltyPrograms:
-            (json_['loyaltyPrograms'] as core.List?)
-                ?.map(
-                  (value) => InventoryLoyaltyProgram.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        loyaltyPrograms: (json_['loyaltyPrograms'] as core.List?)
+            ?.map(
+              (value) => InventoryLoyaltyProgram.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         pickupMethod: json_['pickupMethod'] as core.String?,
         pickupSla: json_['pickupSla'] as core.String?,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         quantity: json_['quantity'] as core.String?,
-        salePrice:
-            json_.containsKey('salePrice')
-                ? Price.fromJson(
-                  json_['salePrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        salePriceEffectiveDate:
-            json_.containsKey('salePriceEffectiveDate')
-                ? Interval.fromJson(
-                  json_['salePriceEffectiveDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        salePrice: json_.containsKey('salePrice')
+            ? Price.fromJson(
+                json_['salePrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        salePriceEffectiveDate: json_.containsKey('salePriceEffectiveDate')
+            ? Interval.fromJson(
+                json_['salePriceEffectiveDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availability != null) 'availability': availability!,
-    if (instoreProductLocation != null)
-      'instoreProductLocation': instoreProductLocation!,
-    if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
-    if (pickupMethod != null) 'pickupMethod': pickupMethod!,
-    if (pickupSla != null) 'pickupSla': pickupSla!,
-    if (price != null) 'price': price!,
-    if (quantity != null) 'quantity': quantity!,
-    if (salePrice != null) 'salePrice': salePrice!,
-    if (salePriceEffectiveDate != null)
-      'salePriceEffectiveDate': salePriceEffectiveDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availability = this.availability;
+    final instoreProductLocation = this.instoreProductLocation;
+    final loyaltyPrograms = this.loyaltyPrograms;
+    final pickupMethod = this.pickupMethod;
+    final pickupSla = this.pickupSla;
+    final price = this.price;
+    final quantity = this.quantity;
+    final salePrice = this.salePrice;
+    final salePriceEffectiveDate = this.salePriceEffectiveDate;
+    return {
+      'availability': ?availability,
+      'instoreProductLocation': ?instoreProductLocation,
+      'loyaltyPrograms': ?loyaltyPrograms,
+      'pickupMethod': ?pickupMethod,
+      'pickupSla': ?pickupSla,
+      'price': ?price,
+      'quantity': ?quantity,
+      'salePrice': ?salePrice,
+      'salePriceEffectiveDate': ?salePriceEffectiveDate,
+    };
+  }
 }
 
 /// The price represented as a number and currency.
@@ -1075,20 +1094,25 @@ class RegionalInventory {
         region: json_['region'] as core.String?,
         regionalInventoryAttributes:
             json_.containsKey('regionalInventoryAttributes')
-                ? RegionalInventoryAttributes.fromJson(
-                  json_['regionalInventoryAttributes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RegionalInventoryAttributes.fromJson(
+                json_['regionalInventoryAttributes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (account != null) 'account': account!,
-    if (name != null) 'name': name!,
-    if (region != null) 'region': region!,
-    if (regionalInventoryAttributes != null)
-      'regionalInventoryAttributes': regionalInventoryAttributes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final name = this.name;
+    final region = this.region;
+    final regionalInventoryAttributes = this.regionalInventoryAttributes;
+    return {
+      'account': ?account,
+      'name': ?name,
+      'region': ?region,
+      'regionalInventoryAttributes': ?regionalInventoryAttributes,
+    };
+  }
 }
 
 /// Regional inventory attributes.
@@ -1152,41 +1176,43 @@ class RegionalInventoryAttributes {
   RegionalInventoryAttributes.fromJson(core.Map json_)
     : this(
         availability: json_['availability'] as core.String?,
-        loyaltyPrograms:
-            (json_['loyaltyPrograms'] as core.List?)
-                ?.map(
-                  (value) => InventoryLoyaltyProgram.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        salePrice:
-            json_.containsKey('salePrice')
-                ? Price.fromJson(
-                  json_['salePrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        salePriceEffectiveDate:
-            json_.containsKey('salePriceEffectiveDate')
-                ? Interval.fromJson(
-                  json_['salePriceEffectiveDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        loyaltyPrograms: (json_['loyaltyPrograms'] as core.List?)
+            ?.map(
+              (value) => InventoryLoyaltyProgram.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        salePrice: json_.containsKey('salePrice')
+            ? Price.fromJson(
+                json_['salePrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        salePriceEffectiveDate: json_.containsKey('salePriceEffectiveDate')
+            ? Interval.fromJson(
+                json_['salePriceEffectiveDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availability != null) 'availability': availability!,
-    if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
-    if (price != null) 'price': price!,
-    if (salePrice != null) 'salePrice': salePrice!,
-    if (salePriceEffectiveDate != null)
-      'salePriceEffectiveDate': salePriceEffectiveDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availability = this.availability;
+    final loyaltyPrograms = this.loyaltyPrograms;
+    final price = this.price;
+    final salePrice = this.salePrice;
+    final salePriceEffectiveDate = this.salePriceEffectiveDate;
+    return {
+      'availability': ?availability,
+      'loyaltyPrograms': ?loyaltyPrograms,
+      'price': ?price,
+      'salePrice': ?salePrice,
+      'salePriceEffectiveDate': ?salePriceEffectiveDate,
+    };
+  }
 }

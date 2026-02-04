@@ -1617,8 +1617,9 @@ void main() {
   unittest.group('resource-ProjectsBrandsIdentityAwareProxyClientsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
+      final res = api.CloudIAPApi(
+        mock,
+      ).projects.brands.identityAwareProxyClients;
       final arg_request = buildIdentityAwareProxyClient();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -1681,8 +1682,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
+      final res = api.CloudIAPApi(
+        mock,
+      ).projects.brands.identityAwareProxyClients;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1735,8 +1737,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
+      final res = api.CloudIAPApi(
+        mock,
+      ).projects.brands.identityAwareProxyClients;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1789,8 +1792,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
+      final res = api.CloudIAPApi(
+        mock,
+      ).projects.brands.identityAwareProxyClients;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1862,8 +1866,9 @@ void main() {
 
     unittest.test('method--resetSecret', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
+      final res = api.CloudIAPApi(
+        mock,
+      ).projects.brands.identityAwareProxyClients;
       final arg_request = buildResetIdentityAwareProxyClientSecretRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

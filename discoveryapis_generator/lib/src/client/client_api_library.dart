@@ -94,7 +94,8 @@ class ClientApiLibrary extends BaseApiLibrary {
       exportedClasses.addAll(exportedMediaClasses);
     }
 
-    var result = '''
+    var result =
+        '''
 // This is a generated file (see the discoveryapis_generator project).
 
 ${ignoreForFileComments({...ignoreForFileSet, 'avoid_classes_with_only_static_members'})}

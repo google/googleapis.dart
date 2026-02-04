@@ -2862,10 +2862,9 @@ void main() {
   unittest.group('resource-LocationsEffectiveTagBindingCollectionsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudResourceManagerApi(
-            mock,
-          ).locations.effectiveTagBindingCollections;
+      final res = api.CloudResourceManagerApi(
+        mock,
+      ).locations.effectiveTagBindingCollections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2924,8 +2923,9 @@ void main() {
   unittest.group('resource-LocationsTagBindingCollectionsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudResourceManagerApi(mock).locations.tagBindingCollections;
+      final res = api.CloudResourceManagerApi(
+        mock,
+      ).locations.tagBindingCollections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2978,8 +2978,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudResourceManagerApi(mock).locations.tagBindingCollections;
+      final res = api.CloudResourceManagerApi(
+        mock,
+      ).locations.tagBindingCollections;
       final arg_request = buildTagBindingCollection();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

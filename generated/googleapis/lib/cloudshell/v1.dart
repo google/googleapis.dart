@@ -104,7 +104,7 @@ class OperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -141,7 +141,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -176,7 +176,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -231,12 +231,13 @@ class OperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -297,7 +298,7 @@ class UsersEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':addPublicKey';
@@ -343,7 +344,7 @@ class UsersEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':authorize';
@@ -391,9 +392,9 @@ class UsersEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (expireTime != null) 'expireTime': [expireTime],
-      if (ttl != null) 'ttl': [ttl],
-      if ($fields != null) 'fields': [$fields],
+      'expireTime': ?expireTime == null ? null : [expireTime],
+      'ttl': ?ttl == null ? null : [ttl],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -435,7 +436,7 @@ class UsersEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -481,7 +482,7 @@ class UsersEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -530,7 +531,7 @@ class UsersEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
@@ -560,9 +561,10 @@ class AddPublicKeyRequest {
   AddPublicKeyRequest.fromJson(core.Map json_)
     : this(key: json_['key'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    return {'key': ?key};
+  }
 }
 
 /// Request message for AuthorizeEnvironment.
@@ -592,11 +594,16 @@ class AuthorizeEnvironmentRequest {
         idToken: json_['idToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (idToken != null) 'idToken': idToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final expireTime = this.expireTime;
+    final idToken = this.idToken;
+    return {
+      'accessToken': ?accessToken,
+      'expireTime': ?expireTime,
+      'idToken': ?idToken,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -703,10 +710,9 @@ class Environment {
         dockerImage: json_['dockerImage'] as core.String?,
         id: json_['id'] as core.String?,
         name: json_['name'] as core.String?,
-        publicKeys:
-            (json_['publicKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        publicKeys: (json_['publicKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         sshHost: json_['sshHost'] as core.String?,
         sshPort: json_['sshPort'] as core.int?,
         sshUsername: json_['sshUsername'] as core.String?,
@@ -714,17 +720,28 @@ class Environment {
         webHost: json_['webHost'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dockerImage != null) 'dockerImage': dockerImage!,
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-    if (publicKeys != null) 'publicKeys': publicKeys!,
-    if (sshHost != null) 'sshHost': sshHost!,
-    if (sshPort != null) 'sshPort': sshPort!,
-    if (sshUsername != null) 'sshUsername': sshUsername!,
-    if (state != null) 'state': state!,
-    if (webHost != null) 'webHost': webHost!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dockerImage = this.dockerImage;
+    final id = this.id;
+    final name = this.name;
+    final publicKeys = this.publicKeys;
+    final sshHost = this.sshHost;
+    final sshPort = this.sshPort;
+    final sshUsername = this.sshUsername;
+    final state = this.state;
+    final webHost = this.webHost;
+    return {
+      'dockerImage': ?dockerImage,
+      'id': ?id,
+      'name': ?name,
+      'publicKeys': ?publicKeys,
+      'sshHost': ?sshHost,
+      'sshPort': ?sshPort,
+      'sshUsername': ?sshUsername,
+      'state': ?state,
+      'webHost': ?webHost,
+    };
+  }
 }
 
 /// Response message for GenerateAccessToken.
@@ -737,9 +754,10 @@ class GenerateAccessTokenResponse {
   GenerateAccessTokenResponse.fromJson(core.Map json_)
     : this(accessToken: json_['accessToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    return {'accessToken': ?accessToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -767,25 +785,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -836,30 +857,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Request message for RemovePublicKey.
@@ -872,9 +897,10 @@ class RemovePublicKeyRequest {
   RemovePublicKeyRequest.fromJson(core.Map json_)
     : this(key: json_['key'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    return {'key': ?key};
+  }
 }
 
 /// Request message for StartEnvironment.
@@ -895,16 +921,16 @@ class StartEnvironmentRequest {
   StartEnvironmentRequest.fromJson(core.Map json_)
     : this(
         accessToken: json_['accessToken'] as core.String?,
-        publicKeys:
-            (json_['publicKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        publicKeys: (json_['publicKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (publicKeys != null) 'publicKeys': publicKeys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final publicKeys = this.publicKeys;
+    return {'accessToken': ?accessToken, 'publicKeys': ?publicKeys};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

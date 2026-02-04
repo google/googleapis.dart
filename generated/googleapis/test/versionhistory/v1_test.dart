@@ -633,8 +633,9 @@ void main() {
   unittest.group('resource-PlatformsChannelsVersionsReleasesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VersionHistoryApi(mock).platforms.channels.versions.releases;
+      final res = api.VersionHistoryApi(
+        mock,
+      ).platforms.channels.versions.releases;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

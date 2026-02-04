@@ -34,8 +34,8 @@ Uri createAuthenticationUri({
     'code_challenge': _codeVerifierShaEncode(codeVerifier),
     'code_challenge_method': 'S256',
     if (offline) 'access_type': 'offline',
-    if (hostedDomain != null) 'hd': hostedDomain,
-    if (state != null) 'state': state,
+    'hd': ?hostedDomain,
+    'state': ?state,
   };
   return authEndpoints.authorizationEndpoint.replace(
     queryParameters: queryValues,
@@ -119,7 +119,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
     'client_id': clientId.identifier,
     'client_secret': clientId.secret ?? '',
     'code': code,
-    if (codeVerifier != null) 'code_verifier': codeVerifier,
+    'code_verifier': ?codeVerifier,
     'grant_type': 'authorization_code',
     'redirect_uri': redirectUrl,
   }, authEndpoints: authEndpoints);

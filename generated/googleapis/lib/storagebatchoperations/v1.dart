@@ -99,7 +99,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -158,11 +158,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -215,7 +215,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -271,9 +271,9 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (jobId != null) 'jobId': [jobId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'jobId': ?jobId == null ? null : [jobId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -325,9 +325,9 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -361,7 +361,7 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -410,11 +410,11 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -460,7 +460,7 @@ class ProjectsLocationsJobsBucketOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -513,11 +513,11 @@ class ProjectsLocationsJobsBucketOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bucketOperations';
@@ -575,7 +575,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -613,7 +613,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -649,7 +649,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -704,12 +704,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -744,25 +745,28 @@ class Bucket {
   Bucket.fromJson(core.Map json_)
     : this(
         bucket: json_['bucket'] as core.String?,
-        manifest:
-            json_.containsKey('manifest')
-                ? Manifest.fromJson(
-                  json_['manifest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        prefixList:
-            json_.containsKey('prefixList')
-                ? PrefixList.fromJson(
-                  json_['prefixList'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        manifest: json_.containsKey('manifest')
+            ? Manifest.fromJson(
+                json_['manifest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        prefixList: json_.containsKey('prefixList')
+            ? PrefixList.fromJson(
+                json_['prefixList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (manifest != null) 'manifest': manifest!,
-    if (prefixList != null) 'prefixList': prefixList!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final manifest = this.manifest;
+    final prefixList = this.prefixList;
+    return {
+      'bucket': ?bucket,
+      'manifest': ?manifest,
+      'prefixList': ?prefixList,
+    };
+  }
 }
 
 /// Describes list of buckets and their objects to be transformed.
@@ -779,19 +783,18 @@ class BucketList {
 
   BucketList.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => Bucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    return {'buckets': ?buckets};
+  }
 }
 
 /// BucketOperation represents a bucket-level breakdown of a Job.
@@ -886,78 +889,86 @@ class BucketOperation {
     : this(
         bucketName: json_['bucketName'] as core.String?,
         completeTime: json_['completeTime'] as core.String?,
-        counters:
-            json_.containsKey('counters')
-                ? Counters.fromJson(
-                  json_['counters'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        counters: json_.containsKey('counters')
+            ? Counters.fromJson(
+                json_['counters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        deleteObject:
-            json_.containsKey('deleteObject')
-                ? DeleteObject.fromJson(
-                  json_['deleteObject'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        errorSummaries:
-            (json_['errorSummaries'] as core.List?)
-                ?.map(
-                  (value) => ErrorSummary.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        manifest:
-            json_.containsKey('manifest')
-                ? Manifest.fromJson(
-                  json_['manifest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deleteObject: json_.containsKey('deleteObject')
+            ? DeleteObject.fromJson(
+                json_['deleteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errorSummaries: (json_['errorSummaries'] as core.List?)
+            ?.map(
+              (value) => ErrorSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        manifest: json_.containsKey('manifest')
+            ? Manifest.fromJson(
+                json_['manifest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        prefixList:
-            json_.containsKey('prefixList')
-                ? PrefixList.fromJson(
-                  json_['prefixList'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        putMetadata:
-            json_.containsKey('putMetadata')
-                ? PutMetadata.fromJson(
-                  json_['putMetadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        putObjectHold:
-            json_.containsKey('putObjectHold')
-                ? PutObjectHold.fromJson(
-                  json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rewriteObject:
-            json_.containsKey('rewriteObject')
-                ? RewriteObject.fromJson(
-                  json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        prefixList: json_.containsKey('prefixList')
+            ? PrefixList.fromJson(
+                json_['prefixList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putMetadata: json_.containsKey('putMetadata')
+            ? PutMetadata.fromJson(
+                json_['putMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putObjectHold: json_.containsKey('putObjectHold')
+            ? PutObjectHold.fromJson(
+                json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rewriteObject: json_.containsKey('rewriteObject')
+            ? RewriteObject.fromJson(
+                json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucketName != null) 'bucketName': bucketName!,
-    if (completeTime != null) 'completeTime': completeTime!,
-    if (counters != null) 'counters': counters!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteObject != null) 'deleteObject': deleteObject!,
-    if (errorSummaries != null) 'errorSummaries': errorSummaries!,
-    if (manifest != null) 'manifest': manifest!,
-    if (name != null) 'name': name!,
-    if (prefixList != null) 'prefixList': prefixList!,
-    if (putMetadata != null) 'putMetadata': putMetadata!,
-    if (putObjectHold != null) 'putObjectHold': putObjectHold!,
-    if (rewriteObject != null) 'rewriteObject': rewriteObject!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketName = this.bucketName;
+    final completeTime = this.completeTime;
+    final counters = this.counters;
+    final createTime = this.createTime;
+    final deleteObject = this.deleteObject;
+    final errorSummaries = this.errorSummaries;
+    final manifest = this.manifest;
+    final name = this.name;
+    final prefixList = this.prefixList;
+    final putMetadata = this.putMetadata;
+    final putObjectHold = this.putObjectHold;
+    final rewriteObject = this.rewriteObject;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'bucketName': ?bucketName,
+      'completeTime': ?completeTime,
+      'counters': ?counters,
+      'createTime': ?createTime,
+      'deleteObject': ?deleteObject,
+      'errorSummaries': ?errorSummaries,
+      'manifest': ?manifest,
+      'name': ?name,
+      'prefixList': ?prefixList,
+      'putMetadata': ?putMetadata,
+      'putObjectHold': ?putObjectHold,
+      'rewriteObject': ?rewriteObject,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Message for Job to Cancel
@@ -978,9 +989,10 @@ class CancelJobRequest {
   CancelJobRequest.fromJson(core.Map json_)
     : this(requestId: json_['requestId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
 }
 
 /// Message for response to cancel Job.
@@ -1029,13 +1041,18 @@ class Counters {
         totalObjectCount: json_['totalObjectCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedObjectCount != null) 'failedObjectCount': failedObjectCount!,
-    if (succeededObjectCount != null)
-      'succeededObjectCount': succeededObjectCount!,
-    if (totalBytesFound != null) 'totalBytesFound': totalBytesFound!,
-    if (totalObjectCount != null) 'totalObjectCount': totalObjectCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedObjectCount = this.failedObjectCount;
+    final succeededObjectCount = this.succeededObjectCount;
+    final totalBytesFound = this.totalBytesFound;
+    final totalObjectCount = this.totalObjectCount;
+    return {
+      'failedObjectCount': ?failedObjectCount,
+      'succeededObjectCount': ?succeededObjectCount,
+      'totalBytesFound': ?totalBytesFound,
+      'totalObjectCount': ?totalObjectCount,
+    };
+  }
 }
 
 /// Describes options to delete an object.
@@ -1063,10 +1080,10 @@ class DeleteObject {
             json_['permanentObjectDeletionEnabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (permanentObjectDeletionEnabled != null)
-      'permanentObjectDeletionEnabled': permanentObjectDeletionEnabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final permanentObjectDeletionEnabled = this.permanentObjectDeletionEnabled;
+    return {'permanentObjectDeletionEnabled': ?permanentObjectDeletionEnabled};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1095,17 +1112,17 @@ class ErrorLogEntry {
 
   ErrorLogEntry.fromJson(core.Map json_)
     : this(
-        errorDetails:
-            (json_['errorDetails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        errorDetails: (json_['errorDetails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         objectUri: json_['objectUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorDetails != null) 'errorDetails': errorDetails!,
-    if (objectUri != null) 'objectUri': objectUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorDetails = this.errorDetails;
+    final objectUri = this.objectUri;
+    return {'errorDetails': ?errorDetails, 'objectUri': ?objectUri};
+  }
 }
 
 /// A summary of errors by error code, plus a count and sample error log
@@ -1212,21 +1229,25 @@ class ErrorSummary {
     : this(
         errorCode: json_['errorCode'] as core.String?,
         errorCount: json_['errorCount'] as core.String?,
-        errorLogEntries:
-            (json_['errorLogEntries'] as core.List?)
-                ?.map(
-                  (value) => ErrorLogEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errorLogEntries: (json_['errorLogEntries'] as core.List?)
+            ?.map(
+              (value) => ErrorLogEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (errorCount != null) 'errorCount': errorCount!,
-    if (errorLogEntries != null) 'errorLogEntries': errorLogEntries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorCount = this.errorCount;
+    final errorLogEntries = this.errorLogEntries;
+    return {
+      'errorCode': ?errorCode,
+      'errorCount': ?errorCount,
+      'errorLogEntries': ?errorLogEntries,
+    };
+  }
 }
 
 /// The Storage Batch Operations Job description.
@@ -1335,82 +1356,91 @@ class Job {
 
   Job.fromJson(core.Map json_)
     : this(
-        bucketList:
-            json_.containsKey('bucketList')
-                ? BucketList.fromJson(
-                  json_['bucketList'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bucketList: json_.containsKey('bucketList')
+            ? BucketList.fromJson(
+                json_['bucketList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         completeTime: json_['completeTime'] as core.String?,
-        counters:
-            json_.containsKey('counters')
-                ? Counters.fromJson(
-                  json_['counters'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        counters: json_.containsKey('counters')
+            ? Counters.fromJson(
+                json_['counters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        deleteObject:
-            json_.containsKey('deleteObject')
-                ? DeleteObject.fromJson(
-                  json_['deleteObject'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deleteObject: json_.containsKey('deleteObject')
+            ? DeleteObject.fromJson(
+                json_['deleteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         dryRun: json_['dryRun'] as core.bool?,
-        errorSummaries:
-            (json_['errorSummaries'] as core.List?)
-                ?.map(
-                  (value) => ErrorSummary.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        loggingConfig:
-            json_.containsKey('loggingConfig')
-                ? LoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errorSummaries: (json_['errorSummaries'] as core.List?)
+            ?.map(
+              (value) => ErrorSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        loggingConfig: json_.containsKey('loggingConfig')
+            ? LoggingConfig.fromJson(
+                json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        putMetadata:
-            json_.containsKey('putMetadata')
-                ? PutMetadata.fromJson(
-                  json_['putMetadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        putObjectHold:
-            json_.containsKey('putObjectHold')
-                ? PutObjectHold.fromJson(
-                  json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rewriteObject:
-            json_.containsKey('rewriteObject')
-                ? RewriteObject.fromJson(
-                  json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        putMetadata: json_.containsKey('putMetadata')
+            ? PutMetadata.fromJson(
+                json_['putMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putObjectHold: json_.containsKey('putObjectHold')
+            ? PutObjectHold.fromJson(
+                json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rewriteObject: json_.containsKey('rewriteObject')
+            ? RewriteObject.fromJson(
+                json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scheduleTime: json_['scheduleTime'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucketList != null) 'bucketList': bucketList!,
-    if (completeTime != null) 'completeTime': completeTime!,
-    if (counters != null) 'counters': counters!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteObject != null) 'deleteObject': deleteObject!,
-    if (description != null) 'description': description!,
-    if (dryRun != null) 'dryRun': dryRun!,
-    if (errorSummaries != null) 'errorSummaries': errorSummaries!,
-    if (loggingConfig != null) 'loggingConfig': loggingConfig!,
-    if (name != null) 'name': name!,
-    if (putMetadata != null) 'putMetadata': putMetadata!,
-    if (putObjectHold != null) 'putObjectHold': putObjectHold!,
-    if (rewriteObject != null) 'rewriteObject': rewriteObject!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketList = this.bucketList;
+    final completeTime = this.completeTime;
+    final counters = this.counters;
+    final createTime = this.createTime;
+    final deleteObject = this.deleteObject;
+    final description = this.description;
+    final dryRun = this.dryRun;
+    final errorSummaries = this.errorSummaries;
+    final loggingConfig = this.loggingConfig;
+    final name = this.name;
+    final putMetadata = this.putMetadata;
+    final putObjectHold = this.putObjectHold;
+    final rewriteObject = this.rewriteObject;
+    final scheduleTime = this.scheduleTime;
+    final state = this.state;
+    return {
+      'bucketList': ?bucketList,
+      'completeTime': ?completeTime,
+      'counters': ?counters,
+      'createTime': ?createTime,
+      'deleteObject': ?deleteObject,
+      'description': ?description,
+      'dryRun': ?dryRun,
+      'errorSummaries': ?errorSummaries,
+      'loggingConfig': ?loggingConfig,
+      'name': ?name,
+      'putMetadata': ?putMetadata,
+      'putObjectHold': ?putObjectHold,
+      'rewriteObject': ?rewriteObject,
+      'scheduleTime': ?scheduleTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Message for response to listing BucketOperations
@@ -1432,26 +1462,29 @@ class ListBucketOperationsResponse {
 
   ListBucketOperationsResponse.fromJson(core.Map json_)
     : this(
-        bucketOperations:
-            (json_['bucketOperations'] as core.List?)
-                ?.map(
-                  (value) => BucketOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bucketOperations: (json_['bucketOperations'] as core.List?)
+            ?.map(
+              (value) => BucketOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucketOperations != null) 'bucketOperations': bucketOperations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketOperations = this.bucketOperations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'bucketOperations': ?bucketOperations,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Message for response to listing Jobs
@@ -1469,26 +1502,28 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'jobs': ?jobs,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -1503,21 +1538,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -1545,25 +1580,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1585,20 +1623,19 @@ class LoggingConfig {
 
   LoggingConfig.fromJson(core.Map json_)
     : this(
-        logActionStates:
-            (json_['logActionStates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        logActions:
-            (json_['logActions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        logActionStates: (json_['logActionStates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        logActions: (json_['logActions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logActionStates != null) 'logActionStates': logActionStates!,
-    if (logActions != null) 'logActions': logActions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final logActionStates = this.logActionStates;
+    final logActions = this.logActions;
+    return {'logActionStates': ?logActionStates, 'logActions': ?logActions};
+  }
 }
 
 /// Describes list of objects to be transformed.
@@ -1624,9 +1661,10 @@ class Manifest {
   Manifest.fromJson(core.Map json_)
     : this(manifestLocation: json_['manifestLocation'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (manifestLocation != null) 'manifestLocation': manifestLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final manifestLocation = this.manifestLocation;
+    return {'manifestLocation': ?manifestLocation};
+  }
 }
 
 /// Describes options for object retention update.
@@ -1657,10 +1695,14 @@ class ObjectRetention {
         retentionMode: json_['retentionMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retainUntilTime != null) 'retainUntilTime': retainUntilTime!,
-    if (retentionMode != null) 'retentionMode': retentionMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final retainUntilTime = this.retainUntilTime;
+    final retentionMode = this.retentionMode;
+    return {
+      'retainUntilTime': ?retainUntilTime,
+      'retentionMode': ?retentionMode,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1711,30 +1753,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Describes prefixes of objects to be transformed.
@@ -1752,16 +1798,15 @@ class PrefixList {
 
   PrefixList.fromJson(core.Map json_)
     : this(
-        includedObjectPrefixes:
-            (json_['includedObjectPrefixes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        includedObjectPrefixes: (json_['includedObjectPrefixes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includedObjectPrefixes != null)
-      'includedObjectPrefixes': includedObjectPrefixes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedObjectPrefixes = this.includedObjectPrefixes;
+    return {'includedObjectPrefixes': ?includedObjectPrefixes};
+  }
 }
 
 /// Describes options for object metadata update.
@@ -1862,29 +1907,37 @@ class PutMetadata {
         contentEncoding: json_['contentEncoding'] as core.String?,
         contentLanguage: json_['contentLanguage'] as core.String?,
         contentType: json_['contentType'] as core.String?,
-        customMetadata: (json_['customMetadata']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        customMetadata:
+            (json_['customMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         customTime: json_['customTime'] as core.String?,
-        objectRetention:
-            json_.containsKey('objectRetention')
-                ? ObjectRetention.fromJson(
-                  json_['objectRetention']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectRetention: json_.containsKey('objectRetention')
+            ? ObjectRetention.fromJson(
+                json_['objectRetention'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cacheControl != null) 'cacheControl': cacheControl!,
-    if (contentDisposition != null) 'contentDisposition': contentDisposition!,
-    if (contentEncoding != null) 'contentEncoding': contentEncoding!,
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (contentType != null) 'contentType': contentType!,
-    if (customMetadata != null) 'customMetadata': customMetadata!,
-    if (customTime != null) 'customTime': customTime!,
-    if (objectRetention != null) 'objectRetention': objectRetention!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cacheControl = this.cacheControl;
+    final contentDisposition = this.contentDisposition;
+    final contentEncoding = this.contentEncoding;
+    final contentLanguage = this.contentLanguage;
+    final contentType = this.contentType;
+    final customMetadata = this.customMetadata;
+    final customTime = this.customTime;
+    final objectRetention = this.objectRetention;
+    return {
+      'cacheControl': ?cacheControl,
+      'contentDisposition': ?contentDisposition,
+      'contentEncoding': ?contentEncoding,
+      'contentLanguage': ?contentLanguage,
+      'contentType': ?contentType,
+      'customMetadata': ?customMetadata,
+      'customTime': ?customTime,
+      'objectRetention': ?objectRetention,
+    };
+  }
 }
 
 /// Describes options to update object hold.
@@ -1923,10 +1976,11 @@ class PutObjectHold {
         temporaryHold: json_['temporaryHold'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eventBasedHold != null) 'eventBasedHold': eventBasedHold!,
-    if (temporaryHold != null) 'temporaryHold': temporaryHold!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventBasedHold = this.eventBasedHold;
+    final temporaryHold = this.temporaryHold;
+    return {'eventBasedHold': ?eventBasedHold, 'temporaryHold': ?temporaryHold};
+  }
 }
 
 /// Describes options for object rewrite.
@@ -1950,9 +2004,10 @@ class RewriteObject {
   RewriteObject.fromJson(core.Map json_)
     : this(kmsKey: json_['kmsKey'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    return {'kmsKey': ?kmsKey};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

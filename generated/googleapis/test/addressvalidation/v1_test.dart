@@ -767,10 +767,10 @@ void main() {
         final o =
             buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(od);
       });
     },
@@ -783,10 +783,10 @@ void main() {
         final o =
             buildGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse(od);
       });
     },
@@ -820,10 +820,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsAddressvalidationV1ValidateAddressRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsAddressvalidationV1ValidateAddressRequest(od);
       });
     },
@@ -835,10 +835,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsAddressvalidationV1ValidateAddressResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsAddressvalidationV1ValidateAddressResponse(od);
       });
     },
@@ -900,10 +900,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest(
             obj,
           );
@@ -969,10 +969,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleMapsAddressvalidationV1ValidateAddressRequest(obj);
 
           final path = req.url.path;

@@ -106,7 +106,7 @@ class AccountsDataSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -143,7 +143,7 @@ class AccountsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'datasources/v1/' + core.Uri.encodeFull('$name');
@@ -188,7 +188,7 @@ class AccountsDataSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'datasources/v1/' + core.Uri.encodeFull('$name') + ':fetch';
@@ -222,7 +222,7 @@ class AccountsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<DataSource> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'datasources/v1/' + core.Uri.encodeFull('$name');
@@ -272,9 +272,9 @@ class AccountsDataSourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -328,8 +328,8 @@ class AccountsDataSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'datasources/v1/' + core.Uri.encodeFull('$name');
@@ -375,7 +375,7 @@ class AccountsDataSourcesFileUploadsResource {
   /// this method will complete with the same error.
   async.Future<FileUpload> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'datasources/v1/' + core.Uri.encodeFull('$name');
@@ -488,86 +488,87 @@ class DataSource {
     : this(
         dataSourceId: json_['dataSourceId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        fileInput:
-            json_.containsKey('fileInput')
-                ? FileInput.fromJson(
-                  json_['fileInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fileInput: json_.containsKey('fileInput')
+            ? FileInput.fromJson(
+                json_['fileInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         input: json_['input'] as core.String?,
-        localInventoryDataSource:
-            json_.containsKey('localInventoryDataSource')
-                ? LocalInventoryDataSource.fromJson(
-                  json_['localInventoryDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantReviewDataSource:
-            json_.containsKey('merchantReviewDataSource')
-                ? MerchantReviewDataSource.fromJson(
-                  json_['merchantReviewDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localInventoryDataSource: json_.containsKey('localInventoryDataSource')
+            ? LocalInventoryDataSource.fromJson(
+                json_['localInventoryDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantReviewDataSource: json_.containsKey('merchantReviewDataSource')
+            ? MerchantReviewDataSource.fromJson(
+                json_['merchantReviewDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        primaryProductDataSource:
-            json_.containsKey('primaryProductDataSource')
-                ? PrimaryProductDataSource.fromJson(
-                  json_['primaryProductDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productReviewDataSource:
-            json_.containsKey('productReviewDataSource')
-                ? ProductReviewDataSource.fromJson(
-                  json_['productReviewDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        promotionDataSource:
-            json_.containsKey('promotionDataSource')
-                ? PromotionDataSource.fromJson(
-                  json_['promotionDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        primaryProductDataSource: json_.containsKey('primaryProductDataSource')
+            ? PrimaryProductDataSource.fromJson(
+                json_['primaryProductDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productReviewDataSource: json_.containsKey('productReviewDataSource')
+            ? ProductReviewDataSource.fromJson(
+                json_['productReviewDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        promotionDataSource: json_.containsKey('promotionDataSource')
+            ? PromotionDataSource.fromJson(
+                json_['promotionDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionalInventoryDataSource:
             json_.containsKey('regionalInventoryDataSource')
-                ? RegionalInventoryDataSource.fromJson(
-                  json_['regionalInventoryDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RegionalInventoryDataSource.fromJson(
+                json_['regionalInventoryDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         supplementalProductDataSource:
             json_.containsKey('supplementalProductDataSource')
-                ? SupplementalProductDataSource.fromJson(
-                  json_['supplementalProductDataSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? SupplementalProductDataSource.fromJson(
+                json_['supplementalProductDataSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (fileInput != null) 'fileInput': fileInput!,
-    if (input != null) 'input': input!,
-    if (localInventoryDataSource != null)
-      'localInventoryDataSource': localInventoryDataSource!,
-    if (merchantReviewDataSource != null)
-      'merchantReviewDataSource': merchantReviewDataSource!,
-    if (name != null) 'name': name!,
-    if (primaryProductDataSource != null)
-      'primaryProductDataSource': primaryProductDataSource!,
-    if (productReviewDataSource != null)
-      'productReviewDataSource': productReviewDataSource!,
-    if (promotionDataSource != null)
-      'promotionDataSource': promotionDataSource!,
-    if (regionalInventoryDataSource != null)
-      'regionalInventoryDataSource': regionalInventoryDataSource!,
-    if (supplementalProductDataSource != null)
-      'supplementalProductDataSource': supplementalProductDataSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSourceId = this.dataSourceId;
+    final displayName = this.displayName;
+    final fileInput = this.fileInput;
+    final input = this.input;
+    final localInventoryDataSource = this.localInventoryDataSource;
+    final merchantReviewDataSource = this.merchantReviewDataSource;
+    final name = this.name;
+    final primaryProductDataSource = this.primaryProductDataSource;
+    final productReviewDataSource = this.productReviewDataSource;
+    final promotionDataSource = this.promotionDataSource;
+    final regionalInventoryDataSource = this.regionalInventoryDataSource;
+    final supplementalProductDataSource = this.supplementalProductDataSource;
+    return {
+      'dataSourceId': ?dataSourceId,
+      'displayName': ?displayName,
+      'fileInput': ?fileInput,
+      'input': ?input,
+      'localInventoryDataSource': ?localInventoryDataSource,
+      'merchantReviewDataSource': ?merchantReviewDataSource,
+      'name': ?name,
+      'primaryProductDataSource': ?primaryProductDataSource,
+      'productReviewDataSource': ?productReviewDataSource,
+      'promotionDataSource': ?promotionDataSource,
+      'regionalInventoryDataSource': ?regionalInventoryDataSource,
+      'supplementalProductDataSource': ?supplementalProductDataSource,
+    };
+  }
 }
 
 /// Data source reference can be used to manage related data sources within the
@@ -604,13 +605,16 @@ class DataSourceReference {
             json_['supplementalDataSourceName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (primaryDataSourceName != null)
-      'primaryDataSourceName': primaryDataSourceName!,
-    if (self != null) 'self': self!,
-    if (supplementalDataSourceName != null)
-      'supplementalDataSourceName': supplementalDataSourceName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final primaryDataSourceName = this.primaryDataSourceName;
+    final self = this.self;
+    final supplementalDataSourceName = this.supplementalDataSourceName;
+    return {
+      'primaryDataSourceName': ?primaryDataSourceName,
+      'self': ?self,
+      'supplementalDataSourceName': ?supplementalDataSourceName,
+    };
+  }
 }
 
 /// Default rule management of the data source.
@@ -636,20 +640,19 @@ class DefaultRule {
 
   DefaultRule.fromJson(core.Map json_)
     : this(
-        takeFromDataSources:
-            (json_['takeFromDataSources'] as core.List?)
-                ?.map(
-                  (value) => DataSourceReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        takeFromDataSources: (json_['takeFromDataSources'] as core.List?)
+            ?.map(
+              (value) => DataSourceReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (takeFromDataSources != null)
-      'takeFromDataSources': takeFromDataSources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final takeFromDataSources = this.takeFromDataSources;
+    return {'takeFromDataSources': ?takeFromDataSources};
+  }
 }
 
 /// Destinations also known as
@@ -700,10 +703,11 @@ class Destination {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destination != null) 'destination': destination!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destination = this.destination;
+    final state = this.state;
+    return {'destination': ?destination, 'state': ?state};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -816,27 +820,37 @@ class FetchSettings {
         fetchUri: json_['fetchUri'] as core.String?,
         frequency: json_['frequency'] as core.String?,
         password: json_['password'] as core.String?,
-        timeOfDay:
-            json_.containsKey('timeOfDay')
-                ? TimeOfDay.fromJson(
-                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeOfDay: json_.containsKey('timeOfDay')
+            ? TimeOfDay.fromJson(
+                json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeZone: json_['timeZone'] as core.String?,
         username: json_['username'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dayOfMonth != null) 'dayOfMonth': dayOfMonth!,
-    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-    if (enabled != null) 'enabled': enabled!,
-    if (fetchUri != null) 'fetchUri': fetchUri!,
-    if (frequency != null) 'frequency': frequency!,
-    if (password != null) 'password': password!,
-    if (timeOfDay != null) 'timeOfDay': timeOfDay!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (username != null) 'username': username!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dayOfMonth = this.dayOfMonth;
+    final dayOfWeek = this.dayOfWeek;
+    final enabled = this.enabled;
+    final fetchUri = this.fetchUri;
+    final frequency = this.frequency;
+    final password = this.password;
+    final timeOfDay = this.timeOfDay;
+    final timeZone = this.timeZone;
+    final username = this.username;
+    return {
+      'dayOfMonth': ?dayOfMonth,
+      'dayOfWeek': ?dayOfWeek,
+      'enabled': ?enabled,
+      'fetchUri': ?fetchUri,
+      'frequency': ?frequency,
+      'password': ?password,
+      'timeOfDay': ?timeOfDay,
+      'timeZone': ?timeZone,
+      'username': ?username,
+    };
+  }
 }
 
 /// The data specific for file data sources.
@@ -877,21 +891,25 @@ class FileInput {
 
   FileInput.fromJson(core.Map json_)
     : this(
-        fetchSettings:
-            json_.containsKey('fetchSettings')
-                ? FetchSettings.fromJson(
-                  json_['fetchSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fetchSettings: json_.containsKey('fetchSettings')
+            ? FetchSettings.fromJson(
+                json_['fetchSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fileInputType: json_['fileInputType'] as core.String?,
         fileName: json_['fileName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fetchSettings != null) 'fetchSettings': fetchSettings!,
-    if (fileInputType != null) 'fileInputType': fileInputType!,
-    if (fileName != null) 'fileName': fileName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fetchSettings = this.fetchSettings;
+    final fileInputType = this.fileInputType;
+    final fileName = this.fileName;
+    return {
+      'fetchSettings': ?fetchSettings,
+      'fileInputType': ?fileInputType,
+      'fileName': ?fileName,
+    };
+  }
 }
 
 /// The file upload of a specific data source, that is, the result of the
@@ -962,14 +980,12 @@ class FileUpload {
   FileUpload.fromJson(core.Map json_)
     : this(
         dataSourceId: json_['dataSourceId'] as core.String?,
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map(
-                  (value) => Issue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        issues: (json_['issues'] as core.List?)
+            ?.map(
+              (value) =>
+                  Issue.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         itemsCreated: json_['itemsCreated'] as core.String?,
         itemsTotal: json_['itemsTotal'] as core.String?,
         itemsUpdated: json_['itemsUpdated'] as core.String?,
@@ -978,16 +994,26 @@ class FileUpload {
         uploadTime: json_['uploadTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-    if (issues != null) 'issues': issues!,
-    if (itemsCreated != null) 'itemsCreated': itemsCreated!,
-    if (itemsTotal != null) 'itemsTotal': itemsTotal!,
-    if (itemsUpdated != null) 'itemsUpdated': itemsUpdated!,
-    if (name != null) 'name': name!,
-    if (processingState != null) 'processingState': processingState!,
-    if (uploadTime != null) 'uploadTime': uploadTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSourceId = this.dataSourceId;
+    final issues = this.issues;
+    final itemsCreated = this.itemsCreated;
+    final itemsTotal = this.itemsTotal;
+    final itemsUpdated = this.itemsUpdated;
+    final name = this.name;
+    final processingState = this.processingState;
+    final uploadTime = this.uploadTime;
+    return {
+      'dataSourceId': ?dataSourceId,
+      'issues': ?issues,
+      'itemsCreated': ?itemsCreated,
+      'itemsTotal': ?itemsTotal,
+      'itemsUpdated': ?itemsUpdated,
+      'name': ?name,
+      'processingState': ?processingState,
+      'uploadTime': ?uploadTime,
+    };
+  }
 }
 
 /// An error occurring in the data source, like "invalid price".
@@ -1051,14 +1077,22 @@ class Issue {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (count != null) 'count': count!,
-    if (description != null) 'description': description!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (severity != null) 'severity': severity!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final count = this.count;
+    final description = this.description;
+    final documentationUri = this.documentationUri;
+    final severity = this.severity;
+    final title = this.title;
+    return {
+      'code': ?code,
+      'count': ?count,
+      'description': ?description,
+      'documentationUri': ?documentationUri,
+      'severity': ?severity,
+      'title': ?title,
+    };
+  }
 }
 
 /// Response message for the ListDataSources method.
@@ -1075,21 +1109,21 @@ class ListDataSourcesResponse {
 
   ListDataSourcesResponse.fromJson(core.Map json_)
     : this(
-        dataSources:
-            (json_['dataSources'] as core.List?)
-                ?.map(
-                  (value) => DataSource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dataSources: (json_['dataSources'] as core.List?)
+            ?.map(
+              (value) => DataSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataSources != null) 'dataSources': dataSources!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSources = this.dataSources;
+    final nextPageToken = this.nextPageToken;
+    return {'dataSources': ?dataSources, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The local inventory data source type is only available for file inputs and
@@ -1118,10 +1152,11 @@ class LocalInventoryDataSource {
         feedLabel: json_['feedLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final feedLabel = this.feedLabel;
+    return {'contentLanguage': ?contentLanguage, 'feedLabel': ?feedLabel};
+  }
 }
 
 /// The merchant review data source.
@@ -1205,36 +1240,41 @@ class PrimaryProductDataSource {
   PrimaryProductDataSource.fromJson(core.Map json_)
     : this(
         contentLanguage: json_['contentLanguage'] as core.String?,
-        countries:
-            (json_['countries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        defaultRule:
-            json_.containsKey('defaultRule')
-                ? DefaultRule.fromJson(
-                  json_['defaultRule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destinations:
-            (json_['destinations'] as core.List?)
-                ?.map(
-                  (value) => Destination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        countries: (json_['countries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultRule: json_.containsKey('defaultRule')
+            ? DefaultRule.fromJson(
+                json_['defaultRule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         feedLabel: json_['feedLabel'] as core.String?,
         legacyLocal: json_['legacyLocal'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (countries != null) 'countries': countries!,
-    if (defaultRule != null) 'defaultRule': defaultRule!,
-    if (destinations != null) 'destinations': destinations!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (legacyLocal != null) 'legacyLocal': legacyLocal!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final countries = this.countries;
+    final defaultRule = this.defaultRule;
+    final destinations = this.destinations;
+    final feedLabel = this.feedLabel;
+    final legacyLocal = this.legacyLocal;
+    return {
+      'contentLanguage': ?contentLanguage,
+      'countries': ?countries,
+      'defaultRule': ?defaultRule,
+      'destinations': ?destinations,
+      'feedLabel': ?feedLabel,
+      'legacyLocal': ?legacyLocal,
+    };
+  }
 }
 
 /// The product review data source.
@@ -1265,10 +1305,14 @@ class PromotionDataSource {
         targetCountry: json_['targetCountry'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (targetCountry != null) 'targetCountry': targetCountry!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final targetCountry = this.targetCountry;
+    return {
+      'contentLanguage': ?contentLanguage,
+      'targetCountry': ?targetCountry,
+    };
+  }
 }
 
 class RegionalInventoryDataSource {
@@ -1295,10 +1339,11 @@ class RegionalInventoryDataSource {
         feedLabel: json_['feedLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final feedLabel = this.feedLabel;
+    return {'contentLanguage': ?contentLanguage, 'feedLabel': ?feedLabel};
+  }
 }
 
 /// The
@@ -1361,12 +1406,16 @@ class SupplementalProductDataSource {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (referencingPrimaryDataSources != null)
-      'referencingPrimaryDataSources': referencingPrimaryDataSources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final feedLabel = this.feedLabel;
+    final referencingPrimaryDataSources = this.referencingPrimaryDataSources;
+    return {
+      'contentLanguage': ?contentLanguage,
+      'feedLabel': ?feedLabel,
+      'referencingPrimaryDataSources': ?referencingPrimaryDataSources,
+    };
+  }
 }
 
 /// Represents a time of day.

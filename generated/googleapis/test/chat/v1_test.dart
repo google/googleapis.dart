@@ -8079,8 +8079,9 @@ void main() {
   unittest.group('resource-UsersSpacesSpaceNotificationSettingResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.HangoutsChatApi(mock).users.spaces.spaceNotificationSetting;
+      final res = api.HangoutsChatApi(
+        mock,
+      ).users.spaces.spaceNotificationSetting;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8133,8 +8134,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.HangoutsChatApi(mock).users.spaces.spaceNotificationSetting;
+      final res = api.HangoutsChatApi(
+        mock,
+      ).users.spaces.spaceNotificationSetting;
       final arg_request = buildSpaceNotificationSetting();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

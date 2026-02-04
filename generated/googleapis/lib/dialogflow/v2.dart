@@ -177,7 +177,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -212,7 +212,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -254,8 +254,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -314,7 +314,7 @@ class ProjectsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:export';
@@ -350,7 +350,7 @@ class ProjectsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -388,8 +388,8 @@ class ProjectsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -429,7 +429,7 @@ class ProjectsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:import';
@@ -469,7 +469,7 @@ class ProjectsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:restore';
@@ -511,9 +511,9 @@ class ProjectsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:search';
@@ -552,7 +552,7 @@ class ProjectsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:train';
@@ -595,8 +595,8 @@ class ProjectsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -646,7 +646,7 @@ class ProjectsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -687,7 +687,7 @@ class ProjectsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -731,8 +731,8 @@ class ProjectsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -768,7 +768,7 @@ class ProjectsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -806,8 +806,8 @@ class ProjectsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -851,10 +851,10 @@ class ProjectsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -899,9 +899,9 @@ class ProjectsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -948,7 +948,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -989,7 +989,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1030,7 +1030,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1086,8 +1086,8 @@ class ProjectsAgentEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (environmentId != null) 'environmentId': [environmentId],
-      if ($fields != null) 'fields': [$fields],
+      'environmentId': ?environmentId == null ? null : [environmentId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -1123,7 +1123,7 @@ class ProjectsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1158,7 +1158,7 @@ class ProjectsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1199,9 +1199,9 @@ class ProjectsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/history';
@@ -1242,9 +1242,9 @@ class ProjectsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -1289,12 +1289,12 @@ class ProjectsAgentEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowLoadToDraftAndDiscardChanges != null)
-        'allowLoadToDraftAndDiscardChanges': [
-          '${allowLoadToDraftAndDiscardChanges}',
-        ],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowLoadToDraftAndDiscardChanges':
+          ?allowLoadToDraftAndDiscardChanges == null
+          ? null
+          : ['${allowLoadToDraftAndDiscardChanges}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1352,11 +1352,11 @@ class ProjectsAgentEnvironmentsIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -1414,7 +1414,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -1454,7 +1454,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
@@ -1503,7 +1503,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -1540,7 +1540,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1576,7 +1576,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1618,9 +1618,9 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -1663,8 +1663,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1713,7 +1713,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -1750,7 +1750,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1786,7 +1786,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1828,9 +1828,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -1873,8 +1873,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1921,7 +1921,7 @@ class ProjectsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1962,7 +1962,7 @@ class ProjectsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2012,9 +2012,9 @@ class ProjectsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -2050,7 +2050,7 @@ class ProjectsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2094,9 +2094,9 @@ class ProjectsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2146,11 +2146,11 @@ class ProjectsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -2201,10 +2201,10 @@ class ProjectsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2254,7 +2254,7 @@ class ProjectsAgentKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -2293,8 +2293,8 @@ class ProjectsAgentKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2329,7 +2329,7 @@ class ProjectsAgentKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2373,10 +2373,10 @@ class ProjectsAgentKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -2418,8 +2418,8 @@ class ProjectsAgentKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2466,7 +2466,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -2503,7 +2503,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2539,7 +2539,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2583,10 +2583,10 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -2629,8 +2629,8 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2671,7 +2671,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
@@ -2719,7 +2719,7 @@ class ProjectsAgentSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -2758,7 +2758,7 @@ class ProjectsAgentSessionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
@@ -2805,7 +2805,7 @@ class ProjectsAgentSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -2842,7 +2842,7 @@ class ProjectsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2878,7 +2878,7 @@ class ProjectsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2919,9 +2919,9 @@ class ProjectsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -2964,8 +2964,8 @@ class ProjectsAgentSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3012,7 +3012,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -3049,7 +3049,7 @@ class ProjectsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3085,7 +3085,7 @@ class ProjectsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3126,9 +3126,9 @@ class ProjectsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -3171,8 +3171,8 @@ class ProjectsAgentSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3219,7 +3219,7 @@ class ProjectsAgentVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -3255,7 +3255,7 @@ class ProjectsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3290,7 +3290,7 @@ class ProjectsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3331,9 +3331,9 @@ class ProjectsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -3375,8 +3375,8 @@ class ProjectsAgentVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3428,10 +3428,10 @@ class ProjectsAnswerRecordsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/answerRecords';
@@ -3473,8 +3473,8 @@ class ProjectsAnswerRecordsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3517,7 +3517,7 @@ class ProjectsConversationDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3556,7 +3556,7 @@ class ProjectsConversationDatasetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3600,9 +3600,9 @@ class ProjectsConversationDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3652,7 +3652,7 @@ class ProjectsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversationModels';
@@ -3688,7 +3688,7 @@ class ProjectsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3727,7 +3727,7 @@ class ProjectsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':deploy';
@@ -3763,7 +3763,7 @@ class ProjectsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3804,9 +3804,9 @@ class ProjectsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversationModels';
@@ -3845,7 +3845,7 @@ class ProjectsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undeploy';
@@ -3889,7 +3889,7 @@ class ProjectsConversationModelsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3932,9 +3932,9 @@ class ProjectsConversationModelsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
@@ -3980,7 +3980,7 @@ class ProjectsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4023,7 +4023,7 @@ class ProjectsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4060,7 +4060,7 @@ class ProjectsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4095,7 +4095,7 @@ class ProjectsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4137,9 +4137,9 @@ class ProjectsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4182,8 +4182,8 @@ class ProjectsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4223,7 +4223,7 @@ class ProjectsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4280,7 +4280,7 @@ class ProjectsConversationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':complete';
@@ -4323,8 +4323,8 @@ class ProjectsConversationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (conversationId != null) 'conversationId': [conversationId],
-      if ($fields != null) 'fields': [$fields],
+      'conversationId': ?conversationId == null ? null : [conversationId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
@@ -4360,7 +4360,7 @@ class ProjectsConversationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4404,10 +4404,10 @@ class ProjectsConversationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
@@ -4458,10 +4458,10 @@ class ProjectsConversationsMessagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/messages';
@@ -4511,7 +4511,7 @@ class ProjectsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4552,7 +4552,7 @@ class ProjectsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
@@ -4589,7 +4589,7 @@ class ProjectsConversationsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4630,9 +4630,9 @@ class ProjectsConversationsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
@@ -4675,8 +4675,8 @@ class ProjectsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -4725,7 +4725,7 @@ class ProjectsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4768,7 +4768,7 @@ class ProjectsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4813,7 +4813,7 @@ class ProjectsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4858,7 +4858,7 @@ class ProjectsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4908,7 +4908,7 @@ class ProjectsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4949,7 +4949,7 @@ class ProjectsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4994,7 +4994,7 @@ class ProjectsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5046,8 +5046,8 @@ class ProjectsGeneratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (generatorId != null) 'generatorId': [generatorId],
-      if ($fields != null) 'fields': [$fields],
+      'generatorId': ?generatorId == null ? null : [generatorId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
@@ -5089,9 +5089,9 @@ class ProjectsGeneratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
@@ -5140,7 +5140,7 @@ class ProjectsKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -5179,8 +5179,8 @@ class ProjectsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5215,7 +5215,7 @@ class ProjectsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5259,10 +5259,10 @@ class ProjectsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -5304,8 +5304,8 @@ class ProjectsKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5352,7 +5352,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -5389,7 +5389,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5429,7 +5429,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':export';
@@ -5466,7 +5466,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5505,7 +5505,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents:import';
@@ -5550,10 +5550,10 @@ class ProjectsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -5596,8 +5596,8 @@ class ProjectsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5638,7 +5638,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
@@ -5709,7 +5709,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -5744,7 +5744,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5779,7 +5779,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -5815,7 +5815,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -5862,11 +5862,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
@@ -5908,8 +5908,8 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
@@ -5967,7 +5967,7 @@ class ProjectsLocationsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:export';
@@ -6004,7 +6004,7 @@ class ProjectsLocationsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6042,8 +6042,8 @@ class ProjectsLocationsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6083,7 +6083,7 @@ class ProjectsLocationsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:import';
@@ -6123,7 +6123,7 @@ class ProjectsLocationsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:restore';
@@ -6165,9 +6165,9 @@ class ProjectsLocationsAgentResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:search';
@@ -6206,7 +6206,7 @@ class ProjectsLocationsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:train';
@@ -6250,8 +6250,8 @@ class ProjectsLocationsAgentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6301,7 +6301,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6342,7 +6342,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6386,8 +6386,8 @@ class ProjectsLocationsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -6424,7 +6424,7 @@ class ProjectsLocationsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6463,8 +6463,8 @@ class ProjectsLocationsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6508,10 +6508,10 @@ class ProjectsLocationsAgentEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -6557,9 +6557,9 @@ class ProjectsLocationsAgentEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6607,7 +6607,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6649,7 +6649,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6691,7 +6691,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -6747,8 +6747,8 @@ class ProjectsLocationsAgentEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (environmentId != null) 'environmentId': [environmentId],
-      if ($fields != null) 'fields': [$fields],
+      'environmentId': ?environmentId == null ? null : [environmentId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -6785,7 +6785,7 @@ class ProjectsLocationsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6821,7 +6821,7 @@ class ProjectsLocationsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -6863,9 +6863,9 @@ class ProjectsLocationsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/history';
@@ -6906,9 +6906,9 @@ class ProjectsLocationsAgentEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -6954,12 +6954,12 @@ class ProjectsLocationsAgentEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowLoadToDraftAndDiscardChanges != null)
-        'allowLoadToDraftAndDiscardChanges': [
-          '${allowLoadToDraftAndDiscardChanges}',
-        ],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowLoadToDraftAndDiscardChanges':
+          ?allowLoadToDraftAndDiscardChanges == null
+          ? null
+          : ['${allowLoadToDraftAndDiscardChanges}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7018,11 +7018,11 @@ class ProjectsLocationsAgentEnvironmentsIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -7087,7 +7087,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -7127,7 +7127,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
@@ -7176,7 +7176,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -7213,7 +7213,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7249,7 +7249,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7291,9 +7291,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -7336,8 +7336,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7386,7 +7386,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -7423,7 +7423,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7459,7 +7459,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7501,9 +7501,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -7546,8 +7546,8 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7594,7 +7594,7 @@ class ProjectsLocationsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -7635,7 +7635,7 @@ class ProjectsLocationsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -7685,9 +7685,9 @@ class ProjectsLocationsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -7724,7 +7724,7 @@ class ProjectsLocationsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7769,9 +7769,9 @@ class ProjectsLocationsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7821,11 +7821,11 @@ class ProjectsLocationsAgentIntentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
@@ -7877,10 +7877,10 @@ class ProjectsLocationsAgentIntentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (intentView != null) 'intentView': [intentView],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'intentView': ?intentView == null ? null : [intentView],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -7929,7 +7929,7 @@ class ProjectsLocationsAgentSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -7969,7 +7969,7 @@ class ProjectsLocationsAgentSessionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
@@ -8017,7 +8017,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -8054,7 +8054,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8090,7 +8090,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8132,9 +8132,9 @@ class ProjectsLocationsAgentSessionsContextsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
@@ -8177,8 +8177,8 @@ class ProjectsLocationsAgentSessionsContextsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8226,7 +8226,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -8263,7 +8263,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8299,7 +8299,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8341,9 +8341,9 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -8386,8 +8386,8 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8434,7 +8434,7 @@ class ProjectsLocationsAgentVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -8471,7 +8471,7 @@ class ProjectsLocationsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8507,7 +8507,7 @@ class ProjectsLocationsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8548,9 +8548,9 @@ class ProjectsLocationsAgentVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -8593,8 +8593,8 @@ class ProjectsLocationsAgentVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8646,10 +8646,10 @@ class ProjectsLocationsAnswerRecordsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/answerRecords';
@@ -8692,8 +8692,8 @@ class ProjectsLocationsAnswerRecordsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8740,7 +8740,7 @@ class ProjectsLocationsConversationDatasetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -8778,7 +8778,7 @@ class ProjectsLocationsConversationDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8814,7 +8814,7 @@ class ProjectsLocationsConversationDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -8854,7 +8854,7 @@ class ProjectsLocationsConversationDatasetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -8898,9 +8898,9 @@ class ProjectsLocationsConversationDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -8950,7 +8950,7 @@ class ProjectsLocationsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversationModels';
@@ -8987,7 +8987,7 @@ class ProjectsLocationsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9027,7 +9027,7 @@ class ProjectsLocationsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':deploy';
@@ -9064,7 +9064,7 @@ class ProjectsLocationsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9105,9 +9105,9 @@ class ProjectsLocationsConversationModelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversationModels';
@@ -9147,7 +9147,7 @@ class ProjectsLocationsConversationModelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undeploy';
@@ -9196,7 +9196,7 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
@@ -9233,7 +9233,7 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9277,9 +9277,9 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
@@ -9326,7 +9326,7 @@ class ProjectsLocationsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9369,7 +9369,7 @@ class ProjectsLocationsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9407,7 +9407,7 @@ class ProjectsLocationsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9443,7 +9443,7 @@ class ProjectsLocationsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9485,9 +9485,9 @@ class ProjectsLocationsConversationProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9531,8 +9531,8 @@ class ProjectsLocationsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9573,7 +9573,7 @@ class ProjectsLocationsConversationProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9631,7 +9631,7 @@ class ProjectsLocationsConversationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':complete';
@@ -9674,8 +9674,8 @@ class ProjectsLocationsConversationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (conversationId != null) 'conversationId': [conversationId],
-      if ($fields != null) 'fields': [$fields],
+      'conversationId': ?conversationId == null ? null : [conversationId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
@@ -9712,7 +9712,7 @@ class ProjectsLocationsConversationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -9753,7 +9753,7 @@ class ProjectsLocationsConversationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9801,10 +9801,10 @@ class ProjectsLocationsConversationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
@@ -9856,10 +9856,10 @@ class ProjectsLocationsConversationsMessagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/messages';
@@ -9911,7 +9911,7 @@ class ProjectsLocationsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -9953,7 +9953,7 @@ class ProjectsLocationsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
@@ -9990,7 +9990,7 @@ class ProjectsLocationsConversationsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10032,9 +10032,9 @@ class ProjectsLocationsConversationsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
@@ -10077,8 +10077,8 @@ class ProjectsLocationsConversationsParticipantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10127,7 +10127,7 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10170,7 +10170,7 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10215,7 +10215,7 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10260,7 +10260,7 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10311,7 +10311,7 @@ class ProjectsLocationsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10353,7 +10353,7 @@ class ProjectsLocationsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10399,7 +10399,7 @@ class ProjectsLocationsConversationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -10450,7 +10450,7 @@ class ProjectsLocationsEncryptionSpecResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':initialize';
@@ -10503,8 +10503,8 @@ class ProjectsLocationsGeneratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (generatorId != null) 'generatorId': [generatorId],
-      if ($fields != null) 'fields': [$fields],
+      'generatorId': ?generatorId == null ? null : [generatorId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
@@ -10541,7 +10541,7 @@ class ProjectsLocationsGeneratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10577,7 +10577,7 @@ class ProjectsLocationsGeneratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10618,9 +10618,9 @@ class ProjectsLocationsGeneratorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
@@ -10663,8 +10663,8 @@ class ProjectsLocationsGeneratorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10712,7 +10712,7 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
@@ -10749,7 +10749,7 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10785,7 +10785,7 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10828,9 +10828,9 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
@@ -10879,7 +10879,7 @@ class ProjectsLocationsKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -10919,8 +10919,8 @@ class ProjectsLocationsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -10956,7 +10956,7 @@ class ProjectsLocationsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11000,10 +11000,10 @@ class ProjectsLocationsKnowledgeBasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
@@ -11046,8 +11046,8 @@ class ProjectsLocationsKnowledgeBasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11095,7 +11095,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -11132,7 +11132,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11172,7 +11172,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':export';
@@ -11209,7 +11209,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11249,7 +11249,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents:import';
@@ -11295,10 +11295,10 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -11341,8 +11341,8 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11383,7 +11383,7 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
@@ -11427,7 +11427,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -11463,7 +11463,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11510,12 +11510,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -11561,7 +11562,7 @@ class ProjectsLocationsSipTrunksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sipTrunks';
@@ -11598,7 +11599,7 @@ class ProjectsLocationsSipTrunksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11634,7 +11635,7 @@ class ProjectsLocationsSipTrunksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11675,9 +11676,9 @@ class ProjectsLocationsSipTrunksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sipTrunks';
@@ -11720,8 +11721,8 @@ class ProjectsLocationsSipTrunksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11770,7 +11771,7 @@ class ProjectsLocationsStatelessSuggestionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -11822,7 +11823,7 @@ class ProjectsLocationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -11865,7 +11866,7 @@ class ProjectsLocationsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -11916,8 +11917,8 @@ class ProjectsLocationsToolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (toolId != null) 'toolId': [toolId],
-      if ($fields != null) 'fields': [$fields],
+      'toolId': ?toolId == null ? null : [toolId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
@@ -11954,7 +11955,7 @@ class ProjectsLocationsToolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -11990,7 +11991,7 @@ class ProjectsLocationsToolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -12031,9 +12032,9 @@ class ProjectsLocationsToolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
@@ -12076,8 +12077,8 @@ class ProjectsLocationsToolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -12119,7 +12120,7 @@ class ProjectsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -12154,7 +12155,7 @@ class ProjectsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -12201,12 +12202,13 @@ class ProjectsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -12254,7 +12256,7 @@ class ProjectsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -12297,7 +12299,7 @@ class ProjectsSuggestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -12370,39 +12372,49 @@ class GoogleCloudDialogflowV2Agent {
     : this(
         apiVersion: json_['apiVersion'] as core.String?,
         avatarUri: json_['avatarUri'] as core.String?,
-        classificationThreshold:
-            (json_['classificationThreshold'] as core.num?)?.toDouble(),
+        classificationThreshold: (json_['classificationThreshold'] as core.num?)
+            ?.toDouble(),
         defaultLanguageCode: json_['defaultLanguageCode'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         enableLogging: json_['enableLogging'] as core.bool?,
         matchMode: json_['matchMode'] as core.String?,
         parent: json_['parent'] as core.String?,
-        supportedLanguageCodes:
-            (json_['supportedLanguageCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        supportedLanguageCodes: (json_['supportedLanguageCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         tier: json_['tier'] as core.String?,
         timeZone: json_['timeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiVersion != null) 'apiVersion': apiVersion!,
-    if (avatarUri != null) 'avatarUri': avatarUri!,
-    if (classificationThreshold != null)
-      'classificationThreshold': classificationThreshold!,
-    if (defaultLanguageCode != null)
-      'defaultLanguageCode': defaultLanguageCode!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (enableLogging != null) 'enableLogging': enableLogging!,
-    if (matchMode != null) 'matchMode': matchMode!,
-    if (parent != null) 'parent': parent!,
-    if (supportedLanguageCodes != null)
-      'supportedLanguageCodes': supportedLanguageCodes!,
-    if (tier != null) 'tier': tier!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiVersion = this.apiVersion;
+    final avatarUri = this.avatarUri;
+    final classificationThreshold = this.classificationThreshold;
+    final defaultLanguageCode = this.defaultLanguageCode;
+    final description = this.description;
+    final displayName = this.displayName;
+    final enableLogging = this.enableLogging;
+    final matchMode = this.matchMode;
+    final parent = this.parent;
+    final supportedLanguageCodes = this.supportedLanguageCodes;
+    final tier = this.tier;
+    final timeZone = this.timeZone;
+    return {
+      'apiVersion': ?apiVersion,
+      'avatarUri': ?avatarUri,
+      'classificationThreshold': ?classificationThreshold,
+      'defaultLanguageCode': ?defaultLanguageCode,
+      'description': ?description,
+      'displayName': ?displayName,
+      'enableLogging': ?enableLogging,
+      'matchMode': ?matchMode,
+      'parent': ?parent,
+      'supportedLanguageCodes': ?supportedLanguageCodes,
+      'tier': ?tier,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentAssistantFeedback {
@@ -12447,41 +12459,42 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
         answerRelevance: json_['answerRelevance'] as core.String?,
         documentCorrectness: json_['documentCorrectness'] as core.String?,
         documentEfficiency: json_['documentEfficiency'] as core.String?,
-        knowledgeAssistFeedback:
-            json_.containsKey('knowledgeAssistFeedback')
-                ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
-                  json_['knowledgeAssistFeedback']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        knowledgeSearchFeedback:
-            json_.containsKey('knowledgeSearchFeedback')
-                ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
-                  json_['knowledgeSearchFeedback']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        summarizationFeedback:
-            json_.containsKey('summarizationFeedback')
-                ? GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
-                  json_['summarizationFeedback']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        knowledgeAssistFeedback: json_.containsKey('knowledgeAssistFeedback')
+            ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
+                json_['knowledgeAssistFeedback']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        knowledgeSearchFeedback: json_.containsKey('knowledgeSearchFeedback')
+            ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
+                json_['knowledgeSearchFeedback']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        summarizationFeedback: json_.containsKey('summarizationFeedback')
+            ? GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
+                json_['summarizationFeedback']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRelevance != null) 'answerRelevance': answerRelevance!,
-    if (documentCorrectness != null)
-      'documentCorrectness': documentCorrectness!,
-    if (documentEfficiency != null) 'documentEfficiency': documentEfficiency!,
-    if (knowledgeAssistFeedback != null)
-      'knowledgeAssistFeedback': knowledgeAssistFeedback!,
-    if (knowledgeSearchFeedback != null)
-      'knowledgeSearchFeedback': knowledgeSearchFeedback!,
-    if (summarizationFeedback != null)
-      'summarizationFeedback': summarizationFeedback!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRelevance = this.answerRelevance;
+    final documentCorrectness = this.documentCorrectness;
+    final documentEfficiency = this.documentEfficiency;
+    final knowledgeAssistFeedback = this.knowledgeAssistFeedback;
+    final knowledgeSearchFeedback = this.knowledgeSearchFeedback;
+    final summarizationFeedback = this.summarizationFeedback;
+    return {
+      'answerRelevance': ?answerRelevance,
+      'documentCorrectness': ?documentCorrectness,
+      'documentEfficiency': ?documentEfficiency,
+      'knowledgeAssistFeedback': ?knowledgeAssistFeedback,
+      'knowledgeSearchFeedback': ?knowledgeSearchFeedback,
+      'summarizationFeedback': ?summarizationFeedback,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback =
@@ -12508,17 +12521,23 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
         startTime: json_['startTime'] as core.String?,
         submitTime: json_['submitTime'] as core.String?,
         summaryText: json_['summaryText'] as core.String?,
-        textSections: (json_['textSections']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        textSections:
+            (json_['textSections'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (startTime != null) 'startTime': startTime!,
-    if (submitTime != null) 'submitTime': submitTime!,
-    if (summaryText != null) 'summaryText': summaryText!,
-    if (textSections != null) 'textSections': textSections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final startTime = this.startTime;
+    final submitTime = this.submitTime;
+    final summaryText = this.summaryText;
+    final textSections = this.textSections;
+    return {
+      'startTime': ?startTime,
+      'submitTime': ?submitTime,
+      'summaryText': ?summaryText,
+      'textSections': ?textSections,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentAssistantRecord {
@@ -12536,44 +12555,43 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
 
   GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(core.Map json_)
     : this(
-        articleSuggestionAnswer:
-            json_.containsKey('articleSuggestionAnswer')
-                ? GoogleCloudDialogflowV2ArticleAnswer.fromJson(
-                  json_['articleSuggestionAnswer']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dialogflowAssistAnswer:
-            json_.containsKey('dialogflowAssistAnswer')
-                ? GoogleCloudDialogflowV2DialogflowAssistAnswer.fromJson(
-                  json_['dialogflowAssistAnswer']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        faqAnswer:
-            json_.containsKey('faqAnswer')
-                ? GoogleCloudDialogflowV2FaqAnswer.fromJson(
-                  json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        generatorSuggestion:
-            json_.containsKey('generatorSuggestion')
-                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
-                  json_['generatorSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        articleSuggestionAnswer: json_.containsKey('articleSuggestionAnswer')
+            ? GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                json_['articleSuggestionAnswer']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dialogflowAssistAnswer: json_.containsKey('dialogflowAssistAnswer')
+            ? GoogleCloudDialogflowV2DialogflowAssistAnswer.fromJson(
+                json_['dialogflowAssistAnswer']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        faqAnswer: json_.containsKey('faqAnswer')
+            ? GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        generatorSuggestion: json_.containsKey('generatorSuggestion')
+            ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                json_['generatorSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (articleSuggestionAnswer != null)
-      'articleSuggestionAnswer': articleSuggestionAnswer!,
-    if (dialogflowAssistAnswer != null)
-      'dialogflowAssistAnswer': dialogflowAssistAnswer!,
-    if (faqAnswer != null) 'faqAnswer': faqAnswer!,
-    if (generatorSuggestion != null)
-      'generatorSuggestion': generatorSuggestion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final articleSuggestionAnswer = this.articleSuggestionAnswer;
+    final dialogflowAssistAnswer = this.dialogflowAssistAnswer;
+    final faqAnswer = this.faqAnswer;
+    final generatorSuggestion = this.generatorSuggestion;
+    return {
+      'articleSuggestionAnswer': ?articleSuggestionAnswer,
+      'dialogflowAssistAnswer': ?dialogflowAssistAnswer,
+      'faqAnswer': ?faqAnswer,
+      'generatorSuggestion': ?generatorSuggestion,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingContext {
@@ -12591,27 +12609,31 @@ class GoogleCloudDialogflowV2AgentCoachingContext {
 
   GoogleCloudDialogflowV2AgentCoachingContext.fromJson(core.Map json_)
     : this(
-        instructions:
-            (json_['instructions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        instructions: (json_['instructions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         outputLanguageCode: json_['outputLanguageCode'] as core.String?,
         overarchingGuidance: json_['overarchingGuidance'] as core.String?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instructions != null) 'instructions': instructions!,
-    if (outputLanguageCode != null) 'outputLanguageCode': outputLanguageCode!,
-    if (overarchingGuidance != null)
-      'overarchingGuidance': overarchingGuidance!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instructions = this.instructions;
+    final outputLanguageCode = this.outputLanguageCode;
+    final overarchingGuidance = this.overarchingGuidance;
+    final version = this.version;
+    return {
+      'instructions': ?instructions,
+      'outputLanguageCode': ?outputLanguageCode,
+      'overarchingGuidance': ?overarchingGuidance,
+      'version': ?version,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingInstruction {
@@ -12649,27 +12671,34 @@ class GoogleCloudDialogflowV2AgentCoachingInstruction {
         condition: json_['condition'] as core.String?,
         displayDetails: json_['displayDetails'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        duplicateCheckResult:
-            json_.containsKey('duplicateCheckResult')
-                ? GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
-                  json_['duplicateCheckResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        duplicateCheckResult: json_.containsKey('duplicateCheckResult')
+            ? GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
+                json_['duplicateCheckResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         systemAction: json_['systemAction'] as core.String?,
         triggeringEvent: json_['triggeringEvent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentAction != null) 'agentAction': agentAction!,
-    if (condition != null) 'condition': condition!,
-    if (displayDetails != null) 'displayDetails': displayDetails!,
-    if (displayName != null) 'displayName': displayName!,
-    if (duplicateCheckResult != null)
-      'duplicateCheckResult': duplicateCheckResult!,
-    if (systemAction != null) 'systemAction': systemAction!,
-    if (triggeringEvent != null) 'triggeringEvent': triggeringEvent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentAction = this.agentAction;
+    final condition = this.condition;
+    final displayDetails = this.displayDetails;
+    final displayName = this.displayName;
+    final duplicateCheckResult = this.duplicateCheckResult;
+    final systemAction = this.systemAction;
+    final triggeringEvent = this.triggeringEvent;
+    return {
+      'agentAction': ?agentAction,
+      'condition': ?condition,
+      'displayDetails': ?displayDetails,
+      'displayName': ?displayName,
+      'duplicateCheckResult': ?duplicateCheckResult,
+      'systemAction': ?systemAction,
+      'triggeringEvent': ?triggeringEvent,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult {
@@ -12685,21 +12714,20 @@ class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult {
   GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
     core.Map json_,
   ) : this(
-        duplicateSuggestions:
-            (json_['duplicateSuggestions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        duplicateSuggestions: (json_['duplicateSuggestions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (duplicateSuggestions != null)
-      'duplicateSuggestions': duplicateSuggestions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final duplicateSuggestions = this.duplicateSuggestions;
+    return {'duplicateSuggestions': ?duplicateSuggestions};
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion {
@@ -12721,11 +12749,16 @@ class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplica
         suggestionIndex: json_['suggestionIndex'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (similarityScore != null) 'similarityScore': similarityScore!,
-    if (suggestionIndex != null) 'suggestionIndex': suggestionIndex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final similarityScore = this.similarityScore;
+    final suggestionIndex = this.suggestionIndex;
+    return {
+      'answerRecord': ?answerRecord,
+      'similarityScore': ?similarityScore,
+      'suggestionIndex': ?suggestionIndex,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestion {
@@ -12746,42 +12779,42 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestion {
 
   GoogleCloudDialogflowV2AgentCoachingSuggestion.fromJson(core.Map json_)
     : this(
-        agentActionSuggestions:
-            (json_['agentActionSuggestions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        applicableInstructions:
-            (json_['applicableInstructions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        sampleResponses:
-            (json_['sampleResponses'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        agentActionSuggestions: (json_['agentActionSuggestions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        applicableInstructions: (json_['applicableInstructions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        sampleResponses: (json_['sampleResponses'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentActionSuggestions != null)
-      'agentActionSuggestions': agentActionSuggestions!,
-    if (applicableInstructions != null)
-      'applicableInstructions': applicableInstructions!,
-    if (sampleResponses != null) 'sampleResponses': sampleResponses!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentActionSuggestions = this.agentActionSuggestions;
+    final applicableInstructions = this.applicableInstructions;
+    final sampleResponses = this.sampleResponses;
+    return {
+      'agentActionSuggestions': ?agentActionSuggestions,
+      'applicableInstructions': ?applicableInstructions,
+      'sampleResponses': ?sampleResponses,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion {
@@ -12800,27 +12833,29 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion {
     core.Map json_,
   ) : this(
         agentAction: json_['agentAction'] as core.String?,
-        duplicateCheckResult:
-            json_.containsKey('duplicateCheckResult')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
-                  json_['duplicateCheckResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sources:
-            json_.containsKey('sources')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
-                  json_['sources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        duplicateCheckResult: json_.containsKey('duplicateCheckResult')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+                json_['duplicateCheckResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sources: json_.containsKey('sources')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                json_['sources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentAction != null) 'agentAction': agentAction!,
-    if (duplicateCheckResult != null)
-      'duplicateCheckResult': duplicateCheckResult!,
-    if (sources != null) 'sources': sources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentAction = this.agentAction;
+    final duplicateCheckResult = this.duplicateCheckResult;
+    final sources = this.sources;
+    return {
+      'agentAction': ?agentAction,
+      'duplicateCheckResult': ?duplicateCheckResult,
+      'sources': ?sources,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult {
@@ -12836,21 +12871,20 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult {
   GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
     core.Map json_,
   ) : this(
-        duplicateSuggestions:
-            (json_['duplicateSuggestions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        duplicateSuggestions: (json_['duplicateSuggestions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (duplicateSuggestions != null)
-      'duplicateSuggestions': duplicateSuggestions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final duplicateSuggestions = this.duplicateSuggestions;
+    return {'duplicateSuggestions': ?duplicateSuggestions};
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion {
@@ -12871,21 +12905,26 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicat
   ) : this(
         answerRecord: json_['answerRecord'] as core.String?,
         similarityScore: (json_['similarityScore'] as core.num?)?.toDouble(),
-        sources:
-            json_.containsKey('sources')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
-                  json_['sources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sources: json_.containsKey('sources')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                json_['sources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suggestionIndex: json_['suggestionIndex'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (similarityScore != null) 'similarityScore': similarityScore!,
-    if (sources != null) 'sources': sources!,
-    if (suggestionIndex != null) 'suggestionIndex': suggestionIndex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final similarityScore = this.similarityScore;
+    final sources = this.sources;
+    final suggestionIndex = this.suggestionIndex;
+    return {
+      'answerRecord': ?answerRecord,
+      'similarityScore': ?similarityScore,
+      'sources': ?sources,
+      'suggestionIndex': ?suggestionIndex,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
@@ -12903,28 +12942,30 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
   GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
     core.Map json_,
   ) : this(
-        duplicateCheckResult:
-            json_.containsKey('duplicateCheckResult')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
-                  json_['duplicateCheckResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        duplicateCheckResult: json_.containsKey('duplicateCheckResult')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+                json_['duplicateCheckResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         responseText: json_['responseText'] as core.String?,
-        sources:
-            json_.containsKey('sources')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
-                  json_['sources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sources: json_.containsKey('sources')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                json_['sources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (duplicateCheckResult != null)
-      'duplicateCheckResult': duplicateCheckResult!,
-    if (responseText != null) 'responseText': responseText!,
-    if (sources != null) 'sources': sources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final duplicateCheckResult = this.duplicateCheckResult;
+    final responseText = this.responseText;
+    final sources = this.sources;
+    return {
+      'duplicateCheckResult': ?duplicateCheckResult,
+      'responseText': ?responseText,
+      'sources': ?sources,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
@@ -12936,15 +12977,15 @@ class GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
 
   GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(core.Map json_)
     : this(
-        instructionIndexes:
-            (json_['instructionIndexes'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
+        instructionIndexes: (json_['instructionIndexes'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instructionIndexes != null) 'instructionIndexes': instructionIndexes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instructionIndexes = this.instructionIndexes;
+    return {'instructionIndexes': ?instructionIndexes};
+  }
 }
 
 class GoogleCloudDialogflowV2AnalyzeContentRequest {
@@ -12977,69 +13018,71 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
 
   GoogleCloudDialogflowV2AnalyzeContentRequest.fromJson(core.Map json_)
     : this(
-        assistQueryParams:
-            json_.containsKey('assistQueryParams')
-                ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
-                  json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        audioInput:
-            json_.containsKey('audioInput')
-                ? GoogleCloudDialogflowV2AudioInput.fromJson(
-                  json_['audioInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cxParameters:
-            json_.containsKey('cxParameters')
-                ? json_['cxParameters'] as core.Map<core.String, core.dynamic>
-                : null,
-        eventInput:
-            json_.containsKey('eventInput')
-                ? GoogleCloudDialogflowV2EventInput.fromJson(
-                  json_['eventInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        queryParams:
-            json_.containsKey('queryParams')
-                ? GoogleCloudDialogflowV2QueryParameters.fromJson(
-                  json_['queryParams'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        replyAudioConfig:
-            json_.containsKey('replyAudioConfig')
-                ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-                  json_['replyAudioConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assistQueryParams: json_.containsKey('assistQueryParams')
+            ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                json_['assistQueryParams']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        audioInput: json_.containsKey('audioInput')
+            ? GoogleCloudDialogflowV2AudioInput.fromJson(
+                json_['audioInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cxParameters: json_.containsKey('cxParameters')
+            ? json_['cxParameters'] as core.Map<core.String, core.dynamic>
+            : null,
+        eventInput: json_.containsKey('eventInput')
+            ? GoogleCloudDialogflowV2EventInput.fromJson(
+                json_['eventInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        queryParams: json_.containsKey('queryParams')
+            ? GoogleCloudDialogflowV2QueryParameters.fromJson(
+                json_['queryParams'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        replyAudioConfig: json_.containsKey('replyAudioConfig')
+            ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+                json_['replyAudioConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
-        suggestionInput:
-            json_.containsKey('suggestionInput')
-                ? GoogleCloudDialogflowV2SuggestionInput.fromJson(
-                  json_['suggestionInput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textInput:
-            json_.containsKey('textInput')
-                ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        suggestionInput: json_.containsKey('suggestionInput')
+            ? GoogleCloudDialogflowV2SuggestionInput.fromJson(
+                json_['suggestionInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textInput: json_.containsKey('textInput')
+            ? GoogleCloudDialogflowV2TextInput.fromJson(
+                json_['textInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
-    if (audioInput != null) 'audioInput': audioInput!,
-    if (cxParameters != null) 'cxParameters': cxParameters!,
-    if (eventInput != null) 'eventInput': eventInput!,
-    if (queryParams != null) 'queryParams': queryParams!,
-    if (replyAudioConfig != null) 'replyAudioConfig': replyAudioConfig!,
-    if (requestId != null) 'requestId': requestId!,
-    if (suggestionInput != null) 'suggestionInput': suggestionInput!,
-    if (textInput != null) 'textInput': textInput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assistQueryParams = this.assistQueryParams;
+    final audioInput = this.audioInput;
+    final cxParameters = this.cxParameters;
+    final eventInput = this.eventInput;
+    final queryParams = this.queryParams;
+    final replyAudioConfig = this.replyAudioConfig;
+    final requestId = this.requestId;
+    final suggestionInput = this.suggestionInput;
+    final textInput = this.textInput;
+    return {
+      'assistQueryParams': ?assistQueryParams,
+      'audioInput': ?audioInput,
+      'cxParameters': ?cxParameters,
+      'eventInput': ?eventInput,
+      'queryParams': ?queryParams,
+      'replyAudioConfig': ?replyAudioConfig,
+      'requestId': ?requestId,
+      'suggestionInput': ?suggestionInput,
+      'textInput': ?textInput,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AnalyzeContentResponse {
@@ -13064,20 +13107,17 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
 
   GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(core.Map json_)
     : this(
-        automatedAgentReply:
-            json_.containsKey('automatedAgentReply')
-                ? GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(
-                  json_['automatedAgentReply']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dtmfParameters:
-            json_.containsKey('dtmfParameters')
-                ? GoogleCloudDialogflowV2DtmfParameters.fromJson(
-                  json_['dtmfParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        automatedAgentReply: json_.containsKey('automatedAgentReply')
+            ? GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(
+                json_['automatedAgentReply']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dtmfParameters: json_.containsKey('dtmfParameters')
+            ? GoogleCloudDialogflowV2DtmfParameters.fromJson(
+                json_['dtmfParameters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endUserSuggestionResults:
             (json_['endUserSuggestionResults'] as core.List?)
                 ?.map(
@@ -13094,33 +13134,37 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
                   ),
                 )
                 .toList(),
-        message:
-            json_.containsKey('message')
-                ? GoogleCloudDialogflowV2Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        replyAudio:
-            json_.containsKey('replyAudio')
-                ? GoogleCloudDialogflowV2OutputAudio.fromJson(
-                  json_['replyAudio'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        message: json_.containsKey('message')
+            ? GoogleCloudDialogflowV2Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        replyAudio: json_.containsKey('replyAudio')
+            ? GoogleCloudDialogflowV2OutputAudio.fromJson(
+                json_['replyAudio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         replyText: json_['replyText'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (automatedAgentReply != null)
-      'automatedAgentReply': automatedAgentReply!,
-    if (dtmfParameters != null) 'dtmfParameters': dtmfParameters!,
-    if (endUserSuggestionResults != null)
-      'endUserSuggestionResults': endUserSuggestionResults!,
-    if (humanAgentSuggestionResults != null)
-      'humanAgentSuggestionResults': humanAgentSuggestionResults!,
-    if (message != null) 'message': message!,
-    if (replyAudio != null) 'replyAudio': replyAudio!,
-    if (replyText != null) 'replyText': replyText!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final automatedAgentReply = this.automatedAgentReply;
+    final dtmfParameters = this.dtmfParameters;
+    final endUserSuggestionResults = this.endUserSuggestionResults;
+    final humanAgentSuggestionResults = this.humanAgentSuggestionResults;
+    final message = this.message;
+    final replyAudio = this.replyAudio;
+    final replyText = this.replyText;
+    return {
+      'automatedAgentReply': ?automatedAgentReply,
+      'dtmfParameters': ?dtmfParameters,
+      'endUserSuggestionResults': ?endUserSuggestionResults,
+      'humanAgentSuggestionResults': ?humanAgentSuggestionResults,
+      'message': ?message,
+      'replyAudio': ?replyAudio,
+      'replyText': ?replyText,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AnnotatedMessagePart {
@@ -13146,11 +13190,16 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityType != null) 'entityType': entityType!,
-    if (formattedValue != null) 'formattedValue': formattedValue!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityType = this.entityType;
+    final formattedValue = this.formattedValue;
+    final text = this.text;
+    return {
+      'entityType': ?entityType,
+      'formattedValue': ?formattedValue,
+      'text': ?text,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AnswerFeedback {
@@ -13181,11 +13230,11 @@ class GoogleCloudDialogflowV2AnswerFeedback {
     : this(
         agentAssistantDetailFeedback:
             json_.containsKey('agentAssistantDetailFeedback')
-                ? GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(
-                  json_['agentAssistantDetailFeedback']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(
+                json_['agentAssistantDetailFeedback']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         clickTime: json_['clickTime'] as core.String?,
         clicked: json_['clicked'] as core.bool?,
         correctnessLevel: json_['correctnessLevel'] as core.String?,
@@ -13193,15 +13242,22 @@ class GoogleCloudDialogflowV2AnswerFeedback {
         displayed: json_['displayed'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentAssistantDetailFeedback != null)
-      'agentAssistantDetailFeedback': agentAssistantDetailFeedback!,
-    if (clickTime != null) 'clickTime': clickTime!,
-    if (clicked != null) 'clicked': clicked!,
-    if (correctnessLevel != null) 'correctnessLevel': correctnessLevel!,
-    if (displayTime != null) 'displayTime': displayTime!,
-    if (displayed != null) 'displayed': displayed!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentAssistantDetailFeedback = this.agentAssistantDetailFeedback;
+    final clickTime = this.clickTime;
+    final clicked = this.clicked;
+    final correctnessLevel = this.correctnessLevel;
+    final displayTime = this.displayTime;
+    final displayed = this.displayed;
+    return {
+      'agentAssistantDetailFeedback': ?agentAssistantDetailFeedback,
+      'clickTime': ?clickTime,
+      'clicked': ?clicked,
+      'correctnessLevel': ?correctnessLevel,
+      'displayTime': ?displayTime,
+      'displayed': ?displayed,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2AnswerRecord {
@@ -13217,29 +13273,30 @@ class GoogleCloudDialogflowV2AnswerRecord {
 
   GoogleCloudDialogflowV2AnswerRecord.fromJson(core.Map json_)
     : this(
-        agentAssistantRecord:
-            json_.containsKey('agentAssistantRecord')
-                ? GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(
-                  json_['agentAssistantRecord']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        answerFeedback:
-            json_.containsKey('answerFeedback')
-                ? GoogleCloudDialogflowV2AnswerFeedback.fromJson(
-                  json_['answerFeedback']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        agentAssistantRecord: json_.containsKey('agentAssistantRecord')
+            ? GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(
+                json_['agentAssistantRecord']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        answerFeedback: json_.containsKey('answerFeedback')
+            ? GoogleCloudDialogflowV2AnswerFeedback.fromJson(
+                json_['answerFeedback'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentAssistantRecord != null)
-      'agentAssistantRecord': agentAssistantRecord!,
-    if (answerFeedback != null) 'answerFeedback': answerFeedback!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentAssistantRecord = this.agentAssistantRecord;
+    final answerFeedback = this.answerFeedback;
+    final name = this.name;
+    return {
+      'agentAssistantRecord': ?agentAssistantRecord,
+      'answerFeedback': ?answerFeedback,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ArticleAnswer {
@@ -13265,22 +13322,29 @@ class GoogleCloudDialogflowV2ArticleAnswer {
         confidence: (json_['confidence'] as core.num?)?.toDouble(),
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        snippets:
-            (json_['snippets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        snippets: (json_['snippets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         title: json_['title'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (confidence != null) 'confidence': confidence!,
-    if (metadata != null) 'metadata': metadata!,
-    if (snippets != null) 'snippets': snippets!,
-    if (title != null) 'title': title!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final confidence = this.confidence;
+    final metadata = this.metadata;
+    final snippets = this.snippets;
+    final title = this.title;
+    final uri = this.uri;
+    return {
+      'answerRecord': ?answerRecord,
+      'confidence': ?confidence,
+      'metadata': ?metadata,
+      'snippets': ?snippets,
+      'title': ?title,
+      'uri': ?uri,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ArticleSuggestionModelMetadata = $ModelMetadata;
@@ -13292,15 +13356,16 @@ class GoogleCloudDialogflowV2AssistQueryParameters {
 
   GoogleCloudDialogflowV2AssistQueryParameters.fromJson(core.Map json_)
     : this(
-        documentsMetadataFilters: (json_['documentsMetadataFilters']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        documentsMetadataFilters:
+            (json_['documentsMetadataFilters']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentsMetadataFilters != null)
-      'documentsMetadataFilters': documentsMetadataFilters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentsMetadataFilters = this.documentsMetadataFilters;
+    return {'documentsMetadataFilters': ?documentsMetadataFilters};
+  }
 }
 
 class GoogleCloudDialogflowV2AudioInput {
@@ -13321,18 +13386,18 @@ class GoogleCloudDialogflowV2AudioInput {
   GoogleCloudDialogflowV2AudioInput.fromJson(core.Map json_)
     : this(
         audio: json_['audio'] as core.String?,
-        config:
-            json_.containsKey('config')
-                ? GoogleCloudDialogflowV2InputAudioConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? GoogleCloudDialogflowV2InputAudioConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audio != null) 'audio': audio!,
-    if (config != null) 'config': config!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audio = this.audio;
+    final config = this.config;
+    return {'audio': ?audio, 'config': ?config};
+  }
 }
 
 class GoogleCloudDialogflowV2AutomatedAgentConfig {
@@ -13347,10 +13412,11 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
         sessionTtl: json_['sessionTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agent != null) 'agent': agent!,
-    if (sessionTtl != null) 'sessionTtl': sessionTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agent = this.agent;
+    final sessionTtl = this.sessionTtl;
+    return {'agent': ?agent, 'sessionTtl': ?sessionTtl};
+  }
 }
 
 class GoogleCloudDialogflowV2AutomatedAgentReply {
@@ -13378,23 +13444,26 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
         automatedAgentReplyType:
             json_['automatedAgentReplyType'] as core.String?,
         cxCurrentPage: json_['cxCurrentPage'] as core.String?,
-        detectIntentResponse:
-            json_.containsKey('detectIntentResponse')
-                ? GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-                  json_['detectIntentResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectIntentResponse: json_.containsKey('detectIntentResponse')
+            ? GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+                json_['detectIntentResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowCancellation != null) 'allowCancellation': allowCancellation!,
-    if (automatedAgentReplyType != null)
-      'automatedAgentReplyType': automatedAgentReplyType!,
-    if (cxCurrentPage != null) 'cxCurrentPage': cxCurrentPage!,
-    if (detectIntentResponse != null)
-      'detectIntentResponse': detectIntentResponse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowCancellation = this.allowCancellation;
+    final automatedAgentReplyType = this.automatedAgentReplyType;
+    final cxCurrentPage = this.cxCurrentPage;
+    final detectIntentResponse = this.detectIntentResponse;
+    return {
+      'allowCancellation': ?allowCancellation,
+      'automatedAgentReplyType': ?automatedAgentReplyType,
+      'cxCurrentPage': ?cxCurrentPage,
+      'detectIntentResponse': ?detectIntentResponse,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
@@ -13408,21 +13477,21 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
 
   GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(core.Map json_)
     : this(
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         languageCode: json_['languageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entities != null) 'entities': entities!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    final languageCode = this.languageCode;
+    return {'entities': ?entities, 'languageCode': ?languageCode};
+  }
 }
 
 class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
@@ -13436,17 +13505,17 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
 
   GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(core.Map json_)
     : this(
-        entityValues:
-            (json_['entityValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        entityValues: (json_['entityValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         languageCode: json_['languageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityValues != null) 'entityValues': entityValues!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityValues = this.entityValues;
+    final languageCode = this.languageCode;
+    return {'entityValues': ?entityValues, 'languageCode': ?languageCode};
+  }
 }
 
 class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
@@ -13456,15 +13525,15 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
 
   GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(core.Map json_)
     : this(
-        entityTypeNames:
-            (json_['entityTypeNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        entityTypeNames: (json_['entityTypeNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityTypeNames != null) 'entityTypeNames': entityTypeNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityTypeNames = this.entityTypeNames;
+    return {'entityTypeNames': ?entityTypeNames};
+  }
 }
 
 class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
@@ -13474,19 +13543,19 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
 
   GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(core.Map json_)
     : this(
-        intents:
-            (json_['intents'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Intent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        intents: (json_['intents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intents != null) 'intents': intents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intents = this.intents;
+    return {'intents': ?intents};
+  }
 }
 
 class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
@@ -13502,23 +13571,27 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
 
   GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(core.Map json_)
     : this(
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         languageCode: json_['languageCode'] as core.String?,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entities != null) 'entities': entities!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    final languageCode = this.languageCode;
+    final updateMask = this.updateMask;
+    return {
+      'entities': ?entities,
+      'languageCode': ?languageCode,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
@@ -13536,25 +13609,29 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
 
   GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(core.Map json_)
     : this(
-        entityTypeBatchInline:
-            json_.containsKey('entityTypeBatchInline')
-                ? GoogleCloudDialogflowV2EntityTypeBatch.fromJson(
-                  json_['entityTypeBatchInline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        entityTypeBatchInline: json_.containsKey('entityTypeBatchInline')
+            ? GoogleCloudDialogflowV2EntityTypeBatch.fromJson(
+                json_['entityTypeBatchInline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         entityTypeBatchUri: json_['entityTypeBatchUri'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityTypeBatchInline != null)
-      'entityTypeBatchInline': entityTypeBatchInline!,
-    if (entityTypeBatchUri != null) 'entityTypeBatchUri': entityTypeBatchUri!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityTypeBatchInline = this.entityTypeBatchInline;
+    final entityTypeBatchUri = this.entityTypeBatchUri;
+    final languageCode = this.languageCode;
+    final updateMask = this.updateMask;
+    return {
+      'entityTypeBatchInline': ?entityTypeBatchInline,
+      'entityTypeBatchUri': ?entityTypeBatchUri,
+      'languageCode': ?languageCode,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
@@ -13579,26 +13656,32 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
 
   GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(core.Map json_)
     : this(
-        intentBatchInline:
-            json_.containsKey('intentBatchInline')
-                ? GoogleCloudDialogflowV2IntentBatch.fromJson(
-                  json_['intentBatchInline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        intentBatchInline: json_.containsKey('intentBatchInline')
+            ? GoogleCloudDialogflowV2IntentBatch.fromJson(
+                json_['intentBatchInline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         intentBatchUri: json_['intentBatchUri'] as core.String?,
         intentView: json_['intentView'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intentBatchInline != null) 'intentBatchInline': intentBatchInline!,
-    if (intentBatchUri != null) 'intentBatchUri': intentBatchUri!,
-    if (intentView != null) 'intentView': intentView!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intentBatchInline = this.intentBatchInline;
+    final intentBatchUri = this.intentBatchUri;
+    final intentView = this.intentView;
+    final languageCode = this.languageCode;
+    final updateMask = this.updateMask;
+    return {
+      'intentBatchInline': ?intentBatchInline,
+      'intentBatchUri': ?intentBatchUri,
+      'intentView': ?intentView,
+      'languageCode': ?languageCode,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
@@ -13633,11 +13716,14 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
         suggestionFeatureType: json_['suggestionFeatureType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (participantRole != null) 'participantRole': participantRole!,
-    if (suggestionFeatureType != null)
-      'suggestionFeatureType': suggestionFeatureType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final participantRole = this.participantRole;
+    final suggestionFeatureType = this.suggestionFeatureType;
+    return {
+      'participantRole': ?participantRole,
+      'suggestionFeatureType': ?suggestionFeatureType,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2CompleteConversationRequest = $Empty;
@@ -13666,22 +13752,27 @@ class GoogleCloudDialogflowV2Connection {
   GoogleCloudDialogflowV2Connection.fromJson(core.Map json_)
     : this(
         connectionId: json_['connectionId'] as core.String?,
-        errorDetails:
-            json_.containsKey('errorDetails')
-                ? GoogleCloudDialogflowV2ConnectionErrorDetails.fromJson(
-                  json_['errorDetails'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errorDetails: json_.containsKey('errorDetails')
+            ? GoogleCloudDialogflowV2ConnectionErrorDetails.fromJson(
+                json_['errorDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionId != null) 'connectionId': connectionId!,
-    if (errorDetails != null) 'errorDetails': errorDetails!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionId = this.connectionId;
+    final errorDetails = this.errorDetails;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'connectionId': ?connectionId,
+      'errorDetails': ?errorDetails,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConnectionErrorDetails {
@@ -13710,10 +13801,14 @@ class GoogleCloudDialogflowV2ConnectionErrorDetails {
         errorMessage: json_['errorMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateState != null) 'certificateState': certificateState!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateState = this.certificateState;
+    final errorMessage = this.errorMessage;
+    return {
+      'certificateState': ?certificateState,
+      'errorMessage': ?errorMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Context {
@@ -13736,17 +13831,21 @@ class GoogleCloudDialogflowV2Context {
     : this(
         lifespanCount: json_['lifespanCount'] as core.int?,
         name: json_['name'] as core.String?,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lifespanCount != null) 'lifespanCount': lifespanCount!,
-    if (name != null) 'name': name!,
-    if (parameters != null) 'parameters': parameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lifespanCount = this.lifespanCount;
+    final name = this.name;
+    final parameters = this.parameters;
+    return {
+      'lifespanCount': ?lifespanCount,
+      'name': ?name,
+      'parameters': ?parameters,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Conversation {
@@ -13791,48 +13890,55 @@ class GoogleCloudDialogflowV2Conversation {
         conversationProfile: json_['conversationProfile'] as core.String?,
         conversationStage: json_['conversationStage'] as core.String?,
         endTime: json_['endTime'] as core.String?,
-        ingestedContextReferences: (json_['ingestedContextReferences']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDialogflowV2ConversationContextReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        ingestedContextReferences:
+            (json_['ingestedContextReferences']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         lifecycleState: json_['lifecycleState'] as core.String?,
         name: json_['name'] as core.String?,
-        phoneNumber:
-            json_.containsKey('phoneNumber')
-                ? GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(
-                  json_['phoneNumber'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        phoneNumber: json_.containsKey('phoneNumber')
+            ? GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(
+                json_['phoneNumber'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         startTime: json_['startTime'] as core.String?,
-        telephonyConnectionInfo:
-            json_.containsKey('telephonyConnectionInfo')
-                ? GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo.fromJson(
-                  json_['telephonyConnectionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        telephonyConnectionInfo: json_.containsKey('telephonyConnectionInfo')
+            ? GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo.fromJson(
+                json_['telephonyConnectionInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationProfile != null)
-      'conversationProfile': conversationProfile!,
-    if (conversationStage != null) 'conversationStage': conversationStage!,
-    if (endTime != null) 'endTime': endTime!,
-    if (ingestedContextReferences != null)
-      'ingestedContextReferences': ingestedContextReferences!,
-    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-    if (name != null) 'name': name!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (startTime != null) 'startTime': startTime!,
-    if (telephonyConnectionInfo != null)
-      'telephonyConnectionInfo': telephonyConnectionInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationProfile = this.conversationProfile;
+    final conversationStage = this.conversationStage;
+    final endTime = this.endTime;
+    final ingestedContextReferences = this.ingestedContextReferences;
+    final lifecycleState = this.lifecycleState;
+    final name = this.name;
+    final phoneNumber = this.phoneNumber;
+    final startTime = this.startTime;
+    final telephonyConnectionInfo = this.telephonyConnectionInfo;
+    return {
+      'conversationProfile': ?conversationProfile,
+      'conversationStage': ?conversationStage,
+      'endTime': ?endTime,
+      'ingestedContextReferences': ?ingestedContextReferences,
+      'lifecycleState': ?lifecycleState,
+      'name': ?name,
+      'phoneNumber': ?phoneNumber,
+      'startTime': ?startTime,
+      'telephonyConnectionInfo': ?telephonyConnectionInfo,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationContext {
@@ -13842,19 +13948,19 @@ class GoogleCloudDialogflowV2ConversationContext {
 
   GoogleCloudDialogflowV2ConversationContext.fromJson(core.Map json_)
     : this(
-        messageEntries:
-            (json_['messageEntries'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messageEntries: (json_['messageEntries'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messageEntries != null) 'messageEntries': messageEntries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messageEntries = this.messageEntries;
+    return {'messageEntries': ?messageEntries};
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationContextReference {
@@ -13879,26 +13985,31 @@ class GoogleCloudDialogflowV2ConversationContextReference {
 
   GoogleCloudDialogflowV2ConversationContextReference.fromJson(core.Map json_)
     : this(
-        contextContents:
-            (json_['contextContents'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ConversationContextReferenceContextContent.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        contextContents: (json_['contextContents'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ConversationContextReferenceContextContent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         updateMode: json_['updateMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextContents != null) 'contextContents': contextContents!,
-    if (createTime != null) 'createTime': createTime!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (updateMode != null) 'updateMode': updateMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextContents = this.contextContents;
+    final createTime = this.createTime;
+    final languageCode = this.languageCode;
+    final updateMode = this.updateMode;
+    return {
+      'contextContents': ?contextContents,
+      'createTime': ?createTime,
+      'languageCode': ?languageCode,
+      'updateMode': ?updateMode,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationContextReferenceContextContent {
@@ -13929,12 +14040,18 @@ class GoogleCloudDialogflowV2ConversationContextReferenceContextContent {
         ingestionTime: json_['ingestionTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (content != null) 'content': content!,
-    if (contentFormat != null) 'contentFormat': contentFormat!,
-    if (ingestionTime != null) 'ingestionTime': ingestionTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final content = this.content;
+    final contentFormat = this.contentFormat;
+    final ingestionTime = this.ingestionTime;
+    return {
+      'answerRecord': ?answerRecord,
+      'content': ?content,
+      'contentFormat': ?contentFormat,
+      'ingestionTime': ?ingestionTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationDataset {
@@ -13963,38 +14080,47 @@ class GoogleCloudDialogflowV2ConversationDataset {
   GoogleCloudDialogflowV2ConversationDataset.fromJson(core.Map json_)
     : this(
         conversationCount: json_['conversationCount'] as core.String?,
-        conversationInfo:
-            json_.containsKey('conversationInfo')
-                ? GoogleCloudDialogflowV2ConversationInfo.fromJson(
-                  json_['conversationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversationInfo: json_.containsKey('conversationInfo')
+            ? GoogleCloudDialogflowV2ConversationInfo.fromJson(
+                json_['conversationInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        inputConfig:
-            json_.containsKey('inputConfig')
-                ? GoogleCloudDialogflowV2InputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inputConfig: json_.containsKey('inputConfig')
+            ? GoogleCloudDialogflowV2InputConfig.fromJson(
+                json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationCount != null) 'conversationCount': conversationCount!,
-    if (conversationInfo != null) 'conversationInfo': conversationInfo!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (inputConfig != null) 'inputConfig': inputConfig!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationCount = this.conversationCount;
+    final conversationInfo = this.conversationInfo;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final inputConfig = this.inputConfig;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    return {
+      'conversationCount': ?conversationCount,
+      'conversationInfo': ?conversationInfo,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'inputConfig': ?inputConfig,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ConversationInfo = $Shared07;
@@ -14041,49 +14167,57 @@ class GoogleCloudDialogflowV2ConversationModel {
     : this(
         articleSuggestionModelMetadata:
             json_.containsKey('articleSuggestionModelMetadata')
-                ? GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(
-                  json_['articleSuggestionModelMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(
+                json_['articleSuggestionModelMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        datasets:
-            (json_['datasets'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        datasets: (json_['datasets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         displayName: json_['displayName'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         name: json_['name'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        smartReplyModelMetadata:
-            json_.containsKey('smartReplyModelMetadata')
-                ? GoogleCloudDialogflowV2SmartReplyModelMetadata.fromJson(
-                  json_['smartReplyModelMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        smartReplyModelMetadata: json_.containsKey('smartReplyModelMetadata')
+            ? GoogleCloudDialogflowV2SmartReplyModelMetadata.fromJson(
+                json_['smartReplyModelMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (articleSuggestionModelMetadata != null)
-      'articleSuggestionModelMetadata': articleSuggestionModelMetadata!,
-    if (createTime != null) 'createTime': createTime!,
-    if (datasets != null) 'datasets': datasets!,
-    if (displayName != null) 'displayName': displayName!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (smartReplyModelMetadata != null)
-      'smartReplyModelMetadata': smartReplyModelMetadata!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final articleSuggestionModelMetadata = this.articleSuggestionModelMetadata;
+    final createTime = this.createTime;
+    final datasets = this.datasets;
+    final displayName = this.displayName;
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final smartReplyModelMetadata = this.smartReplyModelMetadata;
+    final state = this.state;
+    return {
+      'articleSuggestionModelMetadata': ?articleSuggestionModelMetadata,
+      'createTime': ?createTime,
+      'datasets': ?datasets,
+      'displayName': ?displayName,
+      'languageCode': ?languageCode,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'smartReplyModelMetadata': ?smartReplyModelMetadata,
+      'state': ?state,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationModelEvaluation {
@@ -14107,34 +14241,39 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
     : this(
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        evaluationConfig:
-            json_.containsKey('evaluationConfig')
-                ? GoogleCloudDialogflowV2EvaluationConfig.fromJson(
-                  json_['evaluationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        evaluationConfig: json_.containsKey('evaluationConfig')
+            ? GoogleCloudDialogflowV2EvaluationConfig.fromJson(
+                json_['evaluationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         rawHumanEvalTemplateCsv:
             json_['rawHumanEvalTemplateCsv'] as core.String?,
-        smartReplyMetrics:
-            json_.containsKey('smartReplyMetrics')
-                ? GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(
-                  json_['smartReplyMetrics']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        smartReplyMetrics: json_.containsKey('smartReplyMetrics')
+            ? GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(
+                json_['smartReplyMetrics']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (evaluationConfig != null) 'evaluationConfig': evaluationConfig!,
-    if (name != null) 'name': name!,
-    if (rawHumanEvalTemplateCsv != null)
-      'rawHumanEvalTemplateCsv': rawHumanEvalTemplateCsv!,
-    if (smartReplyMetrics != null) 'smartReplyMetrics': smartReplyMetrics!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final evaluationConfig = this.evaluationConfig;
+    final name = this.name;
+    final rawHumanEvalTemplateCsv = this.rawHumanEvalTemplateCsv;
+    final smartReplyMetrics = this.smartReplyMetrics;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'evaluationConfig': ?evaluationConfig,
+      'name': ?name,
+      'rawHumanEvalTemplateCsv': ?rawHumanEvalTemplateCsv,
+      'smartReplyMetrics': ?smartReplyMetrics,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationPhoneNumber {
@@ -14152,10 +14291,11 @@ class GoogleCloudDialogflowV2ConversationPhoneNumber {
         phoneNumber: json_['phoneNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final countryCode = this.countryCode;
+    final phoneNumber = this.phoneNumber;
+    return {'countryCode': ?countryCode, 'phoneNumber': ?phoneNumber};
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationProfile {
@@ -14198,99 +14338,108 @@ class GoogleCloudDialogflowV2ConversationProfile {
 
   GoogleCloudDialogflowV2ConversationProfile.fromJson(core.Map json_)
     : this(
-        automatedAgentConfig:
-            json_.containsKey('automatedAgentConfig')
-                ? GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(
-                  json_['automatedAgentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        automatedAgentConfig: json_.containsKey('automatedAgentConfig')
+            ? GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(
+                json_['automatedAgentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         humanAgentAssistantConfig:
             json_.containsKey('humanAgentAssistantConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
-                  json_['humanAgentAssistantConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        humanAgentHandoffConfig:
-            json_.containsKey('humanAgentHandoffConfig')
-                ? GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(
-                  json_['humanAgentHandoffConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
+                json_['humanAgentAssistantConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        humanAgentHandoffConfig: json_.containsKey('humanAgentHandoffConfig')
+            ? GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(
+                json_['humanAgentHandoffConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         languageCode: json_['languageCode'] as core.String?,
-        loggingConfig:
-            json_.containsKey('loggingConfig')
-                ? GoogleCloudDialogflowV2LoggingConfig.fromJson(
-                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        loggingConfig: json_.containsKey('loggingConfig')
+            ? GoogleCloudDialogflowV2LoggingConfig.fromJson(
+                json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         newMessageEventNotificationConfig:
             json_.containsKey('newMessageEventNotificationConfig')
-                ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
-                  json_['newMessageEventNotificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                json_['newMessageEventNotificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         newRecognitionResultNotificationConfig:
             json_.containsKey('newRecognitionResultNotificationConfig')
-                ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
-                  json_['newRecognitionResultNotificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        notificationConfig:
-            json_.containsKey('notificationConfig')
-                ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
-                  json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                json_['newRecognitionResultNotificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        notificationConfig: json_.containsKey('notificationConfig')
+            ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                json_['notificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         securitySettings: json_['securitySettings'] as core.String?,
-        sttConfig:
-            json_.containsKey('sttConfig')
-                ? GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
-                  json_['sttConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sttConfig: json_.containsKey('sttConfig')
+            ? GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
+                json_['sttConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeZone: json_['timeZone'] as core.String?,
-        ttsConfig:
-            json_.containsKey('ttsConfig')
-                ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                  json_['ttsConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ttsConfig: json_.containsKey('ttsConfig')
+            ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+                json_['ttsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (automatedAgentConfig != null)
-      'automatedAgentConfig': automatedAgentConfig!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (humanAgentAssistantConfig != null)
-      'humanAgentAssistantConfig': humanAgentAssistantConfig!,
-    if (humanAgentHandoffConfig != null)
-      'humanAgentHandoffConfig': humanAgentHandoffConfig!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (loggingConfig != null) 'loggingConfig': loggingConfig!,
-    if (name != null) 'name': name!,
-    if (newMessageEventNotificationConfig != null)
-      'newMessageEventNotificationConfig': newMessageEventNotificationConfig!,
-    if (newRecognitionResultNotificationConfig != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final automatedAgentConfig = this.automatedAgentConfig;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final humanAgentAssistantConfig = this.humanAgentAssistantConfig;
+    final humanAgentHandoffConfig = this.humanAgentHandoffConfig;
+    final languageCode = this.languageCode;
+    final loggingConfig = this.loggingConfig;
+    final name = this.name;
+    final newMessageEventNotificationConfig =
+        this.newMessageEventNotificationConfig;
+    final newRecognitionResultNotificationConfig =
+        this.newRecognitionResultNotificationConfig;
+    final notificationConfig = this.notificationConfig;
+    final securitySettings = this.securitySettings;
+    final sttConfig = this.sttConfig;
+    final timeZone = this.timeZone;
+    final ttsConfig = this.ttsConfig;
+    final updateTime = this.updateTime;
+    return {
+      'automatedAgentConfig': ?automatedAgentConfig,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'humanAgentAssistantConfig': ?humanAgentAssistantConfig,
+      'humanAgentHandoffConfig': ?humanAgentHandoffConfig,
+      'languageCode': ?languageCode,
+      'loggingConfig': ?loggingConfig,
+      'name': ?name,
+      'newMessageEventNotificationConfig': ?newMessageEventNotificationConfig,
       'newRecognitionResultNotificationConfig':
-          newRecognitionResultNotificationConfig!,
-    if (notificationConfig != null) 'notificationConfig': notificationConfig!,
-    if (securitySettings != null) 'securitySettings': securitySettings!,
-    if (sttConfig != null) 'sttConfig': sttConfig!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (ttsConfig != null) 'ttsConfig': ttsConfig!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+          ?newRecognitionResultNotificationConfig,
+      'notificationConfig': ?notificationConfig,
+      'securitySettings': ?securitySettings,
+      'sttConfig': ?sttConfig,
+      'timeZone': ?timeZone,
+      'ttsConfig': ?ttsConfig,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo {
@@ -14316,33 +14465,37 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo {
     core.Map json_,
   ) : this(
         dialedNumber: json_['dialedNumber'] as core.String?,
-        extraMimeContents:
-            (json_['extraMimeContents'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        extraMimeContents: (json_['extraMimeContents'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         sdp: json_['sdp'] as core.String?,
-        sipHeaders:
-            (json_['sipHeaders'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        sipHeaders: (json_['sipHeaders'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dialedNumber != null) 'dialedNumber': dialedNumber!,
-    if (extraMimeContents != null) 'extraMimeContents': extraMimeContents!,
-    if (sdp != null) 'sdp': sdp!,
-    if (sipHeaders != null) 'sipHeaders': sipHeaders!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dialedNumber = this.dialedNumber;
+    final extraMimeContents = this.extraMimeContents;
+    final sdp = this.sdp;
+    final sipHeaders = this.sipHeaders;
+    return {
+      'dialedNumber': ?dialedNumber,
+      'extraMimeContents': ?extraMimeContents,
+      'sdp': ?sdp,
+      'sipHeaders': ?sipHeaders,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
@@ -14370,10 +14523,11 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
         mimeType: json_['mimeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final mimeType = this.mimeType;
+    return {'content': ?content, 'mimeType': ?mimeType};
+  }
 }
 
 typedef GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader =
@@ -14392,17 +14546,17 @@ class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   ) : this(
         conversationModelEvaluation:
             json_.containsKey('conversationModelEvaluation')
-                ? GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
-                  json_['conversationModelEvaluation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
+                json_['conversationModelEvaluation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationModelEvaluation != null)
-      'conversationModelEvaluation': conversationModelEvaluation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationModelEvaluation = this.conversationModelEvaluation;
+    return {'conversationModelEvaluation': ?conversationModelEvaluation};
+  }
 }
 
 class GoogleCloudDialogflowV2CustomPronunciationParams {
@@ -14428,11 +14582,16 @@ class GoogleCloudDialogflowV2CustomPronunciationParams {
         pronunciation: json_['pronunciation'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (phoneticEncoding != null) 'phoneticEncoding': phoneticEncoding!,
-    if (phrase != null) 'phrase': phrase!,
-    if (pronunciation != null) 'pronunciation': pronunciation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final phoneticEncoding = this.phoneticEncoding;
+    final phrase = this.phrase;
+    final pronunciation = this.pronunciation;
+    return {
+      'phoneticEncoding': ?phoneticEncoding,
+      'phrase': ?phrase,
+      'pronunciation': ?pronunciation,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2DeployConversationModelRequest = $Empty;
@@ -14465,36 +14624,39 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
   GoogleCloudDialogflowV2DetectIntentRequest.fromJson(core.Map json_)
     : this(
         inputAudio: json_['inputAudio'] as core.String?,
-        outputAudioConfig:
-            json_.containsKey('outputAudioConfig')
-                ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-                  json_['outputAudioConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outputAudioConfig: json_.containsKey('outputAudioConfig')
+            ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+                json_['outputAudioConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outputAudioConfigMask: json_['outputAudioConfigMask'] as core.String?,
-        queryInput:
-            json_.containsKey('queryInput')
-                ? GoogleCloudDialogflowV2QueryInput.fromJson(
-                  json_['queryInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        queryParams:
-            json_.containsKey('queryParams')
-                ? GoogleCloudDialogflowV2QueryParameters.fromJson(
-                  json_['queryParams'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        queryInput: json_.containsKey('queryInput')
+            ? GoogleCloudDialogflowV2QueryInput.fromJson(
+                json_['queryInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        queryParams: json_.containsKey('queryParams')
+            ? GoogleCloudDialogflowV2QueryParameters.fromJson(
+                json_['queryParams'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputAudio != null) 'inputAudio': inputAudio!,
-    if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
-    if (outputAudioConfigMask != null)
-      'outputAudioConfigMask': outputAudioConfigMask!,
-    if (queryInput != null) 'queryInput': queryInput!,
-    if (queryParams != null) 'queryParams': queryParams!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputAudio = this.inputAudio;
+    final outputAudioConfig = this.outputAudioConfig;
+    final outputAudioConfigMask = this.outputAudioConfigMask;
+    final queryInput = this.queryInput;
+    final queryParams = this.queryParams;
+    return {
+      'inputAudio': ?inputAudio,
+      'outputAudioConfig': ?outputAudioConfig,
+      'outputAudioConfigMask': ?outputAudioConfigMask,
+      'queryInput': ?queryInput,
+      'queryParams': ?queryParams,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2DetectIntentResponse {
@@ -14525,35 +14687,39 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
   GoogleCloudDialogflowV2DetectIntentResponse.fromJson(core.Map json_)
     : this(
         outputAudio: json_['outputAudio'] as core.String?,
-        outputAudioConfig:
-            json_.containsKey('outputAudioConfig')
-                ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-                  json_['outputAudioConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        queryResult:
-            json_.containsKey('queryResult')
-                ? GoogleCloudDialogflowV2QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outputAudioConfig: json_.containsKey('outputAudioConfig')
+            ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+                json_['outputAudioConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        queryResult: json_.containsKey('queryResult')
+            ? GoogleCloudDialogflowV2QueryResult.fromJson(
+                json_['queryResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         responseId: json_['responseId'] as core.String?,
-        webhookStatus:
-            json_.containsKey('webhookStatus')
-                ? GoogleRpcStatus.fromJson(
-                  json_['webhookStatus'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        webhookStatus: json_.containsKey('webhookStatus')
+            ? GoogleRpcStatus.fromJson(
+                json_['webhookStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outputAudio != null) 'outputAudio': outputAudio!,
-    if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
-    if (queryResult != null) 'queryResult': queryResult!,
-    if (responseId != null) 'responseId': responseId!,
-    if (webhookStatus != null) 'webhookStatus': webhookStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputAudio = this.outputAudio;
+    final outputAudioConfig = this.outputAudioConfig;
+    final queryResult = this.queryResult;
+    final responseId = this.responseId;
+    final webhookStatus = this.webhookStatus;
+    return {
+      'outputAudio': ?outputAudio,
+      'outputAudioConfig': ?outputAudioConfig,
+      'queryResult': ?queryResult,
+      'responseId': ?responseId,
+      'webhookStatus': ?webhookStatus,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2DialogflowAssistAnswer {
@@ -14570,26 +14736,29 @@ class GoogleCloudDialogflowV2DialogflowAssistAnswer {
   GoogleCloudDialogflowV2DialogflowAssistAnswer.fromJson(core.Map json_)
     : this(
         answerRecord: json_['answerRecord'] as core.String?,
-        intentSuggestion:
-            json_.containsKey('intentSuggestion')
-                ? GoogleCloudDialogflowV2IntentSuggestion.fromJson(
-                  json_['intentSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        queryResult:
-            json_.containsKey('queryResult')
-                ? GoogleCloudDialogflowV2QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        intentSuggestion: json_.containsKey('intentSuggestion')
+            ? GoogleCloudDialogflowV2IntentSuggestion.fromJson(
+                json_['intentSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        queryResult: json_.containsKey('queryResult')
+            ? GoogleCloudDialogflowV2QueryResult.fromJson(
+                json_['queryResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (intentSuggestion != null) 'intentSuggestion': intentSuggestion!,
-    if (queryResult != null) 'queryResult': queryResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final intentSuggestion = this.intentSuggestion;
+    final queryResult = this.queryResult;
+    return {
+      'answerRecord': ?answerRecord,
+      'intentSuggestion': ?intentSuggestion,
+      'queryResult': ?queryResult,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Document {
@@ -14640,17 +14809,15 @@ class GoogleCloudDialogflowV2Document {
         contentUri: json_['contentUri'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         enableAutoReload: json_['enableAutoReload'] as core.bool?,
-        knowledgeTypes:
-            (json_['knowledgeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        latestReloadStatus:
-            json_.containsKey('latestReloadStatus')
-                ? GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(
-                  json_['latestReloadStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        knowledgeTypes: (json_['knowledgeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        latestReloadStatus: json_.containsKey('latestReloadStatus')
+            ? GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(
+                json_['latestReloadStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         mimeType: json_['mimeType'] as core.String?,
@@ -14659,18 +14826,30 @@ class GoogleCloudDialogflowV2Document {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentUri != null) 'contentUri': contentUri!,
-    if (displayName != null) 'displayName': displayName!,
-    if (enableAutoReload != null) 'enableAutoReload': enableAutoReload!,
-    if (knowledgeTypes != null) 'knowledgeTypes': knowledgeTypes!,
-    if (latestReloadStatus != null) 'latestReloadStatus': latestReloadStatus!,
-    if (metadata != null) 'metadata': metadata!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (name != null) 'name': name!,
-    if (rawContent != null) 'rawContent': rawContent!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentUri = this.contentUri;
+    final displayName = this.displayName;
+    final enableAutoReload = this.enableAutoReload;
+    final knowledgeTypes = this.knowledgeTypes;
+    final latestReloadStatus = this.latestReloadStatus;
+    final metadata = this.metadata;
+    final mimeType = this.mimeType;
+    final name = this.name;
+    final rawContent = this.rawContent;
+    final state = this.state;
+    return {
+      'contentUri': ?contentUri,
+      'displayName': ?displayName,
+      'enableAutoReload': ?enableAutoReload,
+      'knowledgeTypes': ?knowledgeTypes,
+      'latestReloadStatus': ?latestReloadStatus,
+      'metadata': ?metadata,
+      'mimeType': ?mimeType,
+      'name': ?name,
+      'rawContent': ?rawContent,
+      'state': ?state,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2DocumentReloadStatus {
@@ -14681,19 +14860,19 @@ class GoogleCloudDialogflowV2DocumentReloadStatus {
 
   GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(core.Map json_)
     : this(
-        status:
-            json_.containsKey('status')
-                ? GoogleRpcStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? GoogleRpcStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         time: json_['time'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-    if (time != null) 'time': time!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    final time = this.time;
+    return {'status': ?status, 'time': ?time};
+  }
 }
 
 class GoogleCloudDialogflowV2DtmfParameters {
@@ -14704,9 +14883,10 @@ class GoogleCloudDialogflowV2DtmfParameters {
   GoogleCloudDialogflowV2DtmfParameters.fromJson(core.Map json_)
     : this(acceptsDtmfInput: json_['acceptsDtmfInput'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceptsDtmfInput != null) 'acceptsDtmfInput': acceptsDtmfInput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptsDtmfInput = this.acceptsDtmfInput;
+    return {'acceptsDtmfInput': ?acceptsDtmfInput};
+  }
 }
 
 class GoogleCloudDialogflowV2EncryptionSpec {
@@ -14721,10 +14901,11 @@ class GoogleCloudDialogflowV2EncryptionSpec {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final name = this.name;
+    return {'kmsKey': ?kmsKey, 'name': ?name};
+  }
 }
 
 class GoogleCloudDialogflowV2EntityType {
@@ -14760,27 +14941,33 @@ class GoogleCloudDialogflowV2EntityType {
         autoExpansionMode: json_['autoExpansionMode'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         enableFuzzyExtraction: json_['enableFuzzyExtraction'] as core.bool?,
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode!,
-    if (displayName != null) 'displayName': displayName!,
-    if (enableFuzzyExtraction != null)
-      'enableFuzzyExtraction': enableFuzzyExtraction!,
-    if (entities != null) 'entities': entities!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoExpansionMode = this.autoExpansionMode;
+    final displayName = this.displayName;
+    final enableFuzzyExtraction = this.enableFuzzyExtraction;
+    final entities = this.entities;
+    final kind = this.kind;
+    final name = this.name;
+    return {
+      'autoExpansionMode': ?autoExpansionMode,
+      'displayName': ?displayName,
+      'enableFuzzyExtraction': ?enableFuzzyExtraction,
+      'entities': ?entities,
+      'kind': ?kind,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2EntityTypeBatch {
@@ -14790,19 +14977,19 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
 
   GoogleCloudDialogflowV2EntityTypeBatch.fromJson(core.Map json_)
     : this(
-        entityTypes:
-            (json_['entityTypes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entityTypes: (json_['entityTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityTypes != null) 'entityTypes': entityTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityTypes = this.entityTypes;
+    return {'entityTypes': ?entityTypes};
+  }
 }
 
 typedef GoogleCloudDialogflowV2EntityTypeEntity = $EntityTypeEntity;
@@ -14837,34 +15024,40 @@ class GoogleCloudDialogflowV2Environment {
     : this(
         agentVersion: json_['agentVersion'] as core.String?,
         description: json_['description'] as core.String?,
-        fulfillment:
-            json_.containsKey('fulfillment')
-                ? GoogleCloudDialogflowV2Fulfillment.fromJson(
-                  json_['fulfillment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fulfillment: json_.containsKey('fulfillment')
+            ? GoogleCloudDialogflowV2Fulfillment.fromJson(
+                json_['fulfillment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
-        textToSpeechSettings:
-            json_.containsKey('textToSpeechSettings')
-                ? GoogleCloudDialogflowV2TextToSpeechSettings.fromJson(
-                  json_['textToSpeechSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textToSpeechSettings: json_.containsKey('textToSpeechSettings')
+            ? GoogleCloudDialogflowV2TextToSpeechSettings.fromJson(
+                json_['textToSpeechSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentVersion != null) 'agentVersion': agentVersion!,
-    if (description != null) 'description': description!,
-    if (fulfillment != null) 'fulfillment': fulfillment!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (textToSpeechSettings != null)
-      'textToSpeechSettings': textToSpeechSettings!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentVersion = this.agentVersion;
+    final description = this.description;
+    final fulfillment = this.fulfillment;
+    final name = this.name;
+    final state = this.state;
+    final textToSpeechSettings = this.textToSpeechSettings;
+    final updateTime = this.updateTime;
+    return {
+      'agentVersion': ?agentVersion,
+      'description': ?description,
+      'fulfillment': ?fulfillment,
+      'name': ?name,
+      'state': ?state,
+      'textToSpeechSettings': ?textToSpeechSettings,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2EnvironmentHistory {
@@ -14880,24 +15073,28 @@ class GoogleCloudDialogflowV2EnvironmentHistory {
 
   GoogleCloudDialogflowV2EnvironmentHistory.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         parent: json_['parent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (parent != null) 'parent': parent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final nextPageToken = this.nextPageToken;
+    final parent = this.parent;
+    return {
+      'entries': ?entries,
+      'nextPageToken': ?nextPageToken,
+      'parent': ?parent,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2EnvironmentHistoryEntry {
@@ -14918,11 +15115,16 @@ class GoogleCloudDialogflowV2EnvironmentHistoryEntry {
         description: json_['description'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentVersion != null) 'agentVersion': agentVersion!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentVersion = this.agentVersion;
+    final createTime = this.createTime;
+    final description = this.description;
+    return {
+      'agentVersion': ?agentVersion,
+      'createTime': ?createTime,
+      'description': ?description,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2EvaluationConfig {
@@ -14938,35 +15140,37 @@ class GoogleCloudDialogflowV2EvaluationConfig {
 
   GoogleCloudDialogflowV2EvaluationConfig.fromJson(core.Map json_)
     : this(
-        datasets:
-            (json_['datasets'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        smartComposeConfig:
-            json_.containsKey('smartComposeConfig')
-                ? GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
-                  json_['smartComposeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        smartReplyConfig:
-            json_.containsKey('smartReplyConfig')
-                ? GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
-                  json_['smartReplyConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        datasets: (json_['datasets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2InputDataset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        smartComposeConfig: json_.containsKey('smartComposeConfig')
+            ? GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
+                json_['smartComposeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        smartReplyConfig: json_.containsKey('smartReplyConfig')
+            ? GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
+                json_['smartReplyConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasets != null) 'datasets': datasets!,
-    if (smartComposeConfig != null) 'smartComposeConfig': smartComposeConfig!,
-    if (smartReplyConfig != null) 'smartReplyConfig': smartReplyConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasets = this.datasets;
+    final smartComposeConfig = this.smartComposeConfig;
+    final smartReplyConfig = this.smartReplyConfig;
+    return {
+      'datasets': ?datasets,
+      'smartComposeConfig': ?smartComposeConfig,
+      'smartReplyConfig': ?smartReplyConfig,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig = $Config;
@@ -14981,19 +15185,18 @@ class GoogleCloudDialogflowV2EvaluationStatus {
   GoogleCloudDialogflowV2EvaluationStatus.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        pipelineStatus:
-            json_.containsKey('pipelineStatus')
-                ? GoogleRpcStatus.fromJson(
-                  json_['pipelineStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pipelineStatus: json_.containsKey('pipelineStatus')
+            ? GoogleRpcStatus.fromJson(
+                json_['pipelineStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (pipelineStatus != null) 'pipelineStatus': pipelineStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final pipelineStatus = this.pipelineStatus;
+    return {'done': ?done, 'pipelineStatus': ?pipelineStatus};
+  }
 }
 
 class GoogleCloudDialogflowV2EventInput {
@@ -15016,17 +15219,21 @@ class GoogleCloudDialogflowV2EventInput {
     : this(
         languageCode: json_['languageCode'] as core.String?,
         name: json_['name'] as core.String?,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (parameters != null) 'parameters': parameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final parameters = this.parameters;
+    return {
+      'languageCode': ?languageCode,
+      'name': ?name,
+      'parameters': ?parameters,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ExportAgentRequest {
@@ -15037,9 +15244,10 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
   GoogleCloudDialogflowV2ExportAgentRequest.fromJson(core.Map json_)
     : this(agentUri: json_['agentUri'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUri != null) 'agentUri': agentUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUri = this.agentUri;
+    return {'agentUri': ?agentUri};
+  }
 }
 
 class GoogleCloudDialogflowV2ExportDocumentRequest {
@@ -15056,23 +15264,25 @@ class GoogleCloudDialogflowV2ExportDocumentRequest {
   GoogleCloudDialogflowV2ExportDocumentRequest.fromJson(core.Map json_)
     : this(
         exportFullContent: json_['exportFullContent'] as core.bool?,
-        gcsDestination:
-            json_.containsKey('gcsDestination')
-                ? GoogleCloudDialogflowV2GcsDestination.fromJson(
-                  json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcsDestination: json_.containsKey('gcsDestination')
+            ? GoogleCloudDialogflowV2GcsDestination.fromJson(
+                json_['gcsDestination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartMessagingPartialUpdate:
             json_['smartMessagingPartialUpdate'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportFullContent != null) 'exportFullContent': exportFullContent!,
-    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-    if (smartMessagingPartialUpdate != null)
-      'smartMessagingPartialUpdate': smartMessagingPartialUpdate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportFullContent = this.exportFullContent;
+    final gcsDestination = this.gcsDestination;
+    final smartMessagingPartialUpdate = this.smartMessagingPartialUpdate;
+    return {
+      'exportFullContent': ?exportFullContent,
+      'gcsDestination': ?gcsDestination,
+      'smartMessagingPartialUpdate': ?smartMessagingPartialUpdate,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2FaqAnswer {
@@ -15103,14 +15313,22 @@ class GoogleCloudDialogflowV2FaqAnswer {
         source: json_['source'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answer != null) 'answer': answer!,
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (confidence != null) 'confidence': confidence!,
-    if (metadata != null) 'metadata': metadata!,
-    if (question != null) 'question': question!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answer = this.answer;
+    final answerRecord = this.answerRecord;
+    final confidence = this.confidence;
+    final metadata = this.metadata;
+    final question = this.question;
+    final source = this.source;
+    return {
+      'answer': ?answer,
+      'answerRecord': ?answerRecord,
+      'confidence': ?confidence,
+      'metadata': ?metadata,
+      'question': ?question,
+      'source': ?source,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2FewShotExample {
@@ -15128,38 +15346,39 @@ class GoogleCloudDialogflowV2FewShotExample {
 
   GoogleCloudDialogflowV2FewShotExample.fromJson(core.Map json_)
     : this(
-        conversationContext:
-            json_.containsKey('conversationContext')
-                ? GoogleCloudDialogflowV2ConversationContext.fromJson(
-                  json_['conversationContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversationContext: json_.containsKey('conversationContext')
+            ? GoogleCloudDialogflowV2ConversationContext.fromJson(
+                json_['conversationContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         extraInfo: (json_['extraInfo'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        output:
-            json_.containsKey('output')
-                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
-                  json_['output'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        summarizationSectionList:
-            json_.containsKey('summarizationSectionList')
-                ? GoogleCloudDialogflowV2SummarizationSectionList.fromJson(
-                  json_['summarizationSectionList']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        output: json_.containsKey('output')
+            ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                json_['output'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        summarizationSectionList: json_.containsKey('summarizationSectionList')
+            ? GoogleCloudDialogflowV2SummarizationSectionList.fromJson(
+                json_['summarizationSectionList']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationContext != null)
-      'conversationContext': conversationContext!,
-    if (extraInfo != null) 'extraInfo': extraInfo!,
-    if (output != null) 'output': output!,
-    if (summarizationSectionList != null)
-      'summarizationSectionList': summarizationSectionList!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationContext = this.conversationContext;
+    final extraInfo = this.extraInfo;
+    final output = this.output;
+    final summarizationSectionList = this.summarizationSectionList;
+    return {
+      'conversationContext': ?conversationContext,
+      'extraInfo': ?extraInfo,
+      'output': ?output,
+      'summarizationSectionList': ?summarizationSectionList,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2FreeFormContext = $Shared02;
@@ -15172,9 +15391,10 @@ class GoogleCloudDialogflowV2FreeFormSuggestion {
   GoogleCloudDialogflowV2FreeFormSuggestion.fromJson(core.Map json_)
     : this(response: json_['response'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final response = this.response;
+    return {'response': ?response};
+  }
 }
 
 class GoogleCloudDialogflowV2Fulfillment {
@@ -15196,31 +15416,36 @@ class GoogleCloudDialogflowV2Fulfillment {
     : this(
         displayName: json_['displayName'] as core.String?,
         enabled: json_['enabled'] as core.bool?,
-        features:
-            (json_['features'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        genericWebService:
-            json_.containsKey('genericWebService')
-                ? GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
-                  json_['genericWebService']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        features: (json_['features'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        genericWebService: json_.containsKey('genericWebService')
+            ? GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
+                json_['genericWebService']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (enabled != null) 'enabled': enabled!,
-    if (features != null) 'features': features!,
-    if (genericWebService != null) 'genericWebService': genericWebService!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final enabled = this.enabled;
+    final features = this.features;
+    final genericWebService = this.genericWebService;
+    final name = this.name;
+    return {
+      'displayName': ?displayName,
+      'enabled': ?enabled,
+      'features': ?features,
+      'genericWebService': ?genericWebService,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2FulfillmentFeature {
@@ -15235,9 +15460,10 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
   GoogleCloudDialogflowV2FulfillmentFeature.fromJson(core.Map json_)
     : this(type: json_['type'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
 }
 
 class GoogleCloudDialogflowV2FulfillmentGenericWebService {
@@ -15262,20 +15488,27 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
     : this(
         isCloudFunction: json_['isCloudFunction'] as core.bool?,
         password: json_['password'] as core.String?,
-        requestHeaders: (json_['requestHeaders']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        requestHeaders:
+            (json_['requestHeaders'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         uri: json_['uri'] as core.String?,
         username: json_['username'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isCloudFunction != null) 'isCloudFunction': isCloudFunction!,
-    if (password != null) 'password': password!,
-    if (requestHeaders != null) 'requestHeaders': requestHeaders!,
-    if (uri != null) 'uri': uri!,
-    if (username != null) 'username': username!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isCloudFunction = this.isCloudFunction;
+    final password = this.password;
+    final requestHeaders = this.requestHeaders;
+    final uri = this.uri;
+    final username = this.username;
+    return {
+      'isCloudFunction': ?isCloudFunction,
+      'password': ?password,
+      'requestHeaders': ?requestHeaders,
+      'uri': ?uri,
+      'username': ?username,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2GcsDestination = $Shared08;
@@ -15287,15 +15520,15 @@ class GoogleCloudDialogflowV2GcsSources {
 
   GoogleCloudDialogflowV2GcsSources.fromJson(core.Map json_)
     : this(
-        uris:
-            (json_['uris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        uris: (json_['uris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uris != null) 'uris': uris!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final uris = this.uris;
+    return {'uris': ?uris};
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
@@ -15319,46 +15552,50 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
   GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
     core.Map json_,
   ) : this(
-        contextReferences: (json_['contextReferences']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDialogflowV2ConversationContextReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        contextReferences:
+            (json_['contextReferences'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        conversationContext:
-            json_.containsKey('conversationContext')
-                ? GoogleCloudDialogflowV2ConversationContext.fromJson(
-                  json_['conversationContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        generator:
-            json_.containsKey('generator')
-                ? GoogleCloudDialogflowV2Generator.fromJson(
-                  json_['generator'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversationContext: json_.containsKey('conversationContext')
+            ? GoogleCloudDialogflowV2ConversationContext.fromJson(
+                json_['conversationContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        generator: json_.containsKey('generator')
+            ? GoogleCloudDialogflowV2Generator.fromJson(
+                json_['generator'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         generatorName: json_['generatorName'] as core.String?,
         securitySettings: json_['securitySettings'] as core.String?,
-        triggerEvents:
-            (json_['triggerEvents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        triggerEvents: (json_['triggerEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextReferences != null) 'contextReferences': contextReferences!,
-    if (conversationContext != null)
-      'conversationContext': conversationContext!,
-    if (generator != null) 'generator': generator!,
-    if (generatorName != null) 'generatorName': generatorName!,
-    if (securitySettings != null) 'securitySettings': securitySettings!,
-    if (triggerEvents != null) 'triggerEvents': triggerEvents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextReferences = this.contextReferences;
+    final conversationContext = this.conversationContext;
+    final generator = this.generator;
+    final generatorName = this.generatorName;
+    final securitySettings = this.securitySettings;
+    final triggerEvents = this.triggerEvents;
+    return {
+      'contextReferences': ?contextReferences,
+      'conversationContext': ?conversationContext,
+      'generator': ?generator,
+      'generatorName': ?generatorName,
+      'securitySettings': ?securitySettings,
+      'triggerEvents': ?triggerEvents,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
@@ -15371,19 +15608,18 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
   GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
     core.Map json_,
   ) : this(
-        generatorSuggestion:
-            json_.containsKey('generatorSuggestion')
-                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
-                  json_['generatorSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        generatorSuggestion: json_.containsKey('generatorSuggestion')
+            ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                json_['generatorSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generatorSuggestion != null)
-      'generatorSuggestion': generatorSuggestion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatorSuggestion = this.generatorSuggestion;
+    return {'generatorSuggestion': ?generatorSuggestion};
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
@@ -15403,32 +15639,34 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
     core.Map json_,
   ) : this(
-        conversationProfile:
-            json_.containsKey('conversationProfile')
-                ? GoogleCloudDialogflowV2ConversationProfile.fromJson(
-                  json_['conversationProfile']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversationProfile: json_.containsKey('conversationProfile')
+            ? GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                json_['conversationProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         latestMessage: json_['latestMessage'] as core.String?,
         maxContextSize: json_['maxContextSize'] as core.int?,
-        statelessConversation:
-            json_.containsKey('statelessConversation')
-                ? GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
-                  json_['statelessConversation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        statelessConversation: json_.containsKey('statelessConversation')
+            ? GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
+                json_['statelessConversation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationProfile != null)
-      'conversationProfile': conversationProfile!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (maxContextSize != null) 'maxContextSize': maxContextSize!,
-    if (statelessConversation != null)
-      'statelessConversation': statelessConversation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationProfile = this.conversationProfile;
+    final latestMessage = this.latestMessage;
+    final maxContextSize = this.maxContextSize;
+    final statelessConversation = this.statelessConversation;
+    return {
+      'conversationProfile': ?conversationProfile,
+      'latestMessage': ?latestMessage,
+      'maxContextSize': ?maxContextSize,
+      'statelessConversation': ?statelessConversation,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation {
@@ -15441,19 +15679,19 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation 
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
     core.Map json_,
   ) : this(
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messages != null) 'messages': messages!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messages = this.messages;
+    return {'messages': ?messages};
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
@@ -15472,19 +15710,23 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
   ) : this(
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
-        summary:
-            json_.containsKey('summary')
-                ? GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
-                  json_['summary'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        summary: json_.containsKey('summary')
+            ? GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    final summary = this.summary;
+    return {
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+      'summary': ?summary,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
@@ -15503,17 +15745,21 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
   ) : this(
         baselineModelVersion: json_['baselineModelVersion'] as core.String?,
         text: json_['text'] as core.String?,
-        textSections: (json_['textSections']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        textSections:
+            (json_['textSections'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baselineModelVersion != null)
-      'baselineModelVersion': baselineModelVersion!,
-    if (text != null) 'text': text!,
-    if (textSections != null) 'textSections': textSections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baselineModelVersion = this.baselineModelVersion;
+    final text = this.text;
+    final textSections = this.textSections;
+    return {
+      'baselineModelVersion': ?baselineModelVersion,
+      'text': ?text,
+      'textSections': ?textSections,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateSuggestionsRequest {
@@ -15528,16 +15774,16 @@ class GoogleCloudDialogflowV2GenerateSuggestionsRequest {
   GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(core.Map json_)
     : this(
         latestMessage: json_['latestMessage'] as core.String?,
-        triggerEvents:
-            (json_['triggerEvents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        triggerEvents: (json_['triggerEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (triggerEvents != null) 'triggerEvents': triggerEvents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latestMessage = this.latestMessage;
+    final triggerEvents = this.triggerEvents;
+    return {'latestMessage': ?latestMessage, 'triggerEvents': ?triggerEvents};
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateSuggestionsResponse {
@@ -15566,11 +15812,14 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponse {
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generatorSuggestionAnswers != null)
-      'generatorSuggestionAnswers': generatorSuggestionAnswers!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatorSuggestionAnswers = this.generatorSuggestionAnswers;
+    final latestMessage = this.latestMessage;
+    return {
+      'generatorSuggestionAnswers': ?generatorSuggestionAnswers,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer {
@@ -15588,22 +15837,25 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswe
     core.Map json_,
   ) : this(
         answerRecord: json_['answerRecord'] as core.String?,
-        generatorSuggestion:
-            json_.containsKey('generatorSuggestion')
-                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
-                  json_['generatorSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        generatorSuggestion: json_.containsKey('generatorSuggestion')
+            ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                json_['generatorSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceGenerator: json_['sourceGenerator'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (generatorSuggestion != null)
-      'generatorSuggestion': generatorSuggestion!,
-    if (sourceGenerator != null) 'sourceGenerator': sourceGenerator!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final generatorSuggestion = this.generatorSuggestion;
+    final sourceGenerator = this.sourceGenerator;
+    return {
+      'answerRecord': ?answerRecord,
+      'generatorSuggestion': ?generatorSuggestion,
+      'sourceGenerator': ?sourceGenerator,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Generator {
@@ -15645,70 +15897,74 @@ class GoogleCloudDialogflowV2Generator {
 
   GoogleCloudDialogflowV2Generator.fromJson(core.Map json_)
     : this(
-        agentCoachingContext:
-            json_.containsKey('agentCoachingContext')
-                ? GoogleCloudDialogflowV2AgentCoachingContext.fromJson(
-                  json_['agentCoachingContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        agentCoachingContext: json_.containsKey('agentCoachingContext')
+            ? GoogleCloudDialogflowV2AgentCoachingContext.fromJson(
+                json_['agentCoachingContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
-        freeFormContext:
-            json_.containsKey('freeFormContext')
-                ? GoogleCloudDialogflowV2FreeFormContext.fromJson(
-                  json_['freeFormContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inferenceParameter:
-            json_.containsKey('inferenceParameter')
-                ? GoogleCloudDialogflowV2InferenceParameter.fromJson(
-                  json_['inferenceParameter']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        freeFormContext: json_.containsKey('freeFormContext')
+            ? GoogleCloudDialogflowV2FreeFormContext.fromJson(
+                json_['freeFormContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inferenceParameter: json_.containsKey('inferenceParameter')
+            ? GoogleCloudDialogflowV2InferenceParameter.fromJson(
+                json_['inferenceParameter']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         publishedModel: json_['publishedModel'] as core.String?,
-        suggestionDedupingConfig:
-            json_.containsKey('suggestionDedupingConfig')
-                ? GoogleCloudDialogflowV2SuggestionDedupingConfig.fromJson(
-                  json_['suggestionDedupingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        summarizationContext:
-            json_.containsKey('summarizationContext')
-                ? GoogleCloudDialogflowV2SummarizationContext.fromJson(
-                  json_['summarizationContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tools:
-            (json_['tools'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        suggestionDedupingConfig: json_.containsKey('suggestionDedupingConfig')
+            ? GoogleCloudDialogflowV2SuggestionDedupingConfig.fromJson(
+                json_['suggestionDedupingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        summarizationContext: json_.containsKey('summarizationContext')
+            ? GoogleCloudDialogflowV2SummarizationContext.fromJson(
+                json_['summarizationContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tools: (json_['tools'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         triggerEvent: json_['triggerEvent'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentCoachingContext != null)
-      'agentCoachingContext': agentCoachingContext!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (freeFormContext != null) 'freeFormContext': freeFormContext!,
-    if (inferenceParameter != null) 'inferenceParameter': inferenceParameter!,
-    if (name != null) 'name': name!,
-    if (publishedModel != null) 'publishedModel': publishedModel!,
-    if (suggestionDedupingConfig != null)
-      'suggestionDedupingConfig': suggestionDedupingConfig!,
-    if (summarizationContext != null)
-      'summarizationContext': summarizationContext!,
-    if (tools != null) 'tools': tools!,
-    if (triggerEvent != null) 'triggerEvent': triggerEvent!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentCoachingContext = this.agentCoachingContext;
+    final createTime = this.createTime;
+    final description = this.description;
+    final freeFormContext = this.freeFormContext;
+    final inferenceParameter = this.inferenceParameter;
+    final name = this.name;
+    final publishedModel = this.publishedModel;
+    final suggestionDedupingConfig = this.suggestionDedupingConfig;
+    final summarizationContext = this.summarizationContext;
+    final tools = this.tools;
+    final triggerEvent = this.triggerEvent;
+    final updateTime = this.updateTime;
+    return {
+      'agentCoachingContext': ?agentCoachingContext,
+      'createTime': ?createTime,
+      'description': ?description,
+      'freeFormContext': ?freeFormContext,
+      'inferenceParameter': ?inferenceParameter,
+      'name': ?name,
+      'publishedModel': ?publishedModel,
+      'suggestionDedupingConfig': ?suggestionDedupingConfig,
+      'summarizationContext': ?summarizationContext,
+      'tools': ?tools,
+      'triggerEvent': ?triggerEvent,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorEvaluation {
@@ -15741,53 +15997,60 @@ class GoogleCloudDialogflowV2GeneratorEvaluation {
         completeTime: json_['completeTime'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        evaluationStatus:
-            json_.containsKey('evaluationStatus')
-                ? GoogleCloudDialogflowV2EvaluationStatus.fromJson(
-                  json_['evaluationStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        evaluationStatus: json_.containsKey('evaluationStatus')
+            ? GoogleCloudDialogflowV2EvaluationStatus.fromJson(
+                json_['evaluationStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         generatorEvaluationConfig:
             json_.containsKey('generatorEvaluationConfig')
-                ? GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(
-                  json_['generatorEvaluationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        initialGenerator:
-            json_.containsKey('initialGenerator')
-                ? GoogleCloudDialogflowV2Generator.fromJson(
-                  json_['initialGenerator']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(
+                json_['generatorEvaluationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        initialGenerator: json_.containsKey('initialGenerator')
+            ? GoogleCloudDialogflowV2Generator.fromJson(
+                json_['initialGenerator']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        summarizationMetrics:
-            json_.containsKey('summarizationMetrics')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
-                  json_['summarizationMetrics']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        summarizationMetrics: json_.containsKey('summarizationMetrics')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
+                json_['summarizationMetrics']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completeTime != null) 'completeTime': completeTime!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (evaluationStatus != null) 'evaluationStatus': evaluationStatus!,
-    if (generatorEvaluationConfig != null)
-      'generatorEvaluationConfig': generatorEvaluationConfig!,
-    if (initialGenerator != null) 'initialGenerator': initialGenerator!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (summarizationMetrics != null)
-      'summarizationMetrics': summarizationMetrics!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completeTime = this.completeTime;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final evaluationStatus = this.evaluationStatus;
+    final generatorEvaluationConfig = this.generatorEvaluationConfig;
+    final initialGenerator = this.initialGenerator;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final summarizationMetrics = this.summarizationMetrics;
+    return {
+      'completeTime': ?completeTime,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'evaluationStatus': ?evaluationStatus,
+      'generatorEvaluationConfig': ?generatorEvaluationConfig,
+      'initialGenerator': ?initialGenerator,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'summarizationMetrics': ?summarizationMetrics,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfig {
@@ -15805,30 +16068,30 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfig {
 
   GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(core.Map json_)
     : this(
-        inputDataConfig:
-            json_.containsKey('inputDataConfig')
-                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
-                  json_['inputDataConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inputDataConfig: json_.containsKey('inputDataConfig')
+            ? GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
+                json_['inputDataConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outputGcsBucketPath: json_['outputGcsBucketPath'] as core.String?,
-        summarizationConfig:
-            json_.containsKey('summarizationConfig')
-                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
-                  json_['summarizationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        summarizationConfig: json_.containsKey('summarizationConfig')
+            ? GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
+                json_['summarizationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
-    if (outputGcsBucketPath != null)
-      'outputGcsBucketPath': outputGcsBucketPath!,
-    if (summarizationConfig != null)
-      'summarizationConfig': summarizationConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputDataConfig = this.inputDataConfig;
+    final outputGcsBucketPath = this.outputGcsBucketPath;
+    final summarizationConfig = this.summarizationConfig;
+    return {
+      'inputDataConfig': ?inputDataConfig,
+      'outputGcsBucketPath': ?outputGcsBucketPath,
+      'summarizationConfig': ?summarizationConfig,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig {
@@ -15847,10 +16110,11 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'endTime': ?endTime, 'startTime': ?startTime};
+  }
 }
 
 typedef GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig =
@@ -15909,18 +16173,17 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
   ) : this(
         agentAssistInputDataConfig:
             json_.containsKey('agentAssistInputDataConfig')
-                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
-                  json_['agentAssistInputDataConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        datasetInputDataConfig:
-            json_.containsKey('datasetInputDataConfig')
-                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
-                  json_['datasetInputDataConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
+                json_['agentAssistInputDataConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        datasetInputDataConfig: json_.containsKey('datasetInputDataConfig')
+            ? GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
+                json_['datasetInputDataConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endTime: json_['endTime'] as core.String?,
         inputDataSourceType: json_['inputDataSourceType'] as core.String?,
         isSummaryGenerationAllowed:
@@ -15931,21 +16194,26 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
             json_['summaryGenerationOption'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentAssistInputDataConfig != null)
-      'agentAssistInputDataConfig': agentAssistInputDataConfig!,
-    if (datasetInputDataConfig != null)
-      'datasetInputDataConfig': datasetInputDataConfig!,
-    if (endTime != null) 'endTime': endTime!,
-    if (inputDataSourceType != null)
-      'inputDataSourceType': inputDataSourceType!,
-    if (isSummaryGenerationAllowed != null)
-      'isSummaryGenerationAllowed': isSummaryGenerationAllowed!,
-    if (sampleSize != null) 'sampleSize': sampleSize!,
-    if (startTime != null) 'startTime': startTime!,
-    if (summaryGenerationOption != null)
-      'summaryGenerationOption': summaryGenerationOption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentAssistInputDataConfig = this.agentAssistInputDataConfig;
+    final datasetInputDataConfig = this.datasetInputDataConfig;
+    final endTime = this.endTime;
+    final inputDataSourceType = this.inputDataSourceType;
+    final isSummaryGenerationAllowed = this.isSummaryGenerationAllowed;
+    final sampleSize = this.sampleSize;
+    final startTime = this.startTime;
+    final summaryGenerationOption = this.summaryGenerationOption;
+    return {
+      'agentAssistInputDataConfig': ?agentAssistInputDataConfig,
+      'datasetInputDataConfig': ?datasetInputDataConfig,
+      'endTime': ?endTime,
+      'inputDataSourceType': ?inputDataSourceType,
+      'isSummaryGenerationAllowed': ?isSummaryGenerationAllowed,
+      'sampleSize': ?sampleSize,
+      'startTime': ?startTime,
+      'summaryGenerationOption': ?summaryGenerationOption,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig {
@@ -15989,17 +16257,20 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig {
         evaluatorVersion: json_['evaluatorVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accuracyEvaluationVersion != null)
-      'accuracyEvaluationVersion': accuracyEvaluationVersion!,
-    if (completenessEvaluationVersion != null)
-      'completenessEvaluationVersion': completenessEvaluationVersion!,
-    if (enableAccuracyEvaluation != null)
-      'enableAccuracyEvaluation': enableAccuracyEvaluation!,
-    if (enableCompletenessEvaluation != null)
-      'enableCompletenessEvaluation': enableCompletenessEvaluation!,
-    if (evaluatorVersion != null) 'evaluatorVersion': evaluatorVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accuracyEvaluationVersion = this.accuracyEvaluationVersion;
+    final completenessEvaluationVersion = this.completenessEvaluationVersion;
+    final enableAccuracyEvaluation = this.enableAccuracyEvaluation;
+    final enableCompletenessEvaluation = this.enableCompletenessEvaluation;
+    final evaluatorVersion = this.evaluatorVersion;
+    return {
+      'accuracyEvaluationVersion': ?accuracyEvaluationVersion,
+      'completenessEvaluationVersion': ?completenessEvaluationVersion,
+      'enableAccuracyEvaluation': ?enableAccuracyEvaluation,
+      'enableCompletenessEvaluation': ?enableCompletenessEvaluation,
+      'evaluatorVersion': ?evaluatorVersion,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorSuggestion {
@@ -16018,45 +16289,46 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
 
   GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(core.Map json_)
     : this(
-        agentCoachingSuggestion:
-            json_.containsKey('agentCoachingSuggestion')
-                ? GoogleCloudDialogflowV2AgentCoachingSuggestion.fromJson(
-                  json_['agentCoachingSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        freeFormSuggestion:
-            json_.containsKey('freeFormSuggestion')
-                ? GoogleCloudDialogflowV2FreeFormSuggestion.fromJson(
-                  json_['freeFormSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        summarySuggestion:
-            json_.containsKey('summarySuggestion')
-                ? GoogleCloudDialogflowV2SummarySuggestion.fromJson(
-                  json_['summarySuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolCallInfo:
-            (json_['toolCallInfo'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        agentCoachingSuggestion: json_.containsKey('agentCoachingSuggestion')
+            ? GoogleCloudDialogflowV2AgentCoachingSuggestion.fromJson(
+                json_['agentCoachingSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        freeFormSuggestion: json_.containsKey('freeFormSuggestion')
+            ? GoogleCloudDialogflowV2FreeFormSuggestion.fromJson(
+                json_['freeFormSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        summarySuggestion: json_.containsKey('summarySuggestion')
+            ? GoogleCloudDialogflowV2SummarySuggestion.fromJson(
+                json_['summarySuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolCallInfo: (json_['toolCallInfo'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentCoachingSuggestion != null)
-      'agentCoachingSuggestion': agentCoachingSuggestion!,
-    if (freeFormSuggestion != null) 'freeFormSuggestion': freeFormSuggestion!,
-    if (summarySuggestion != null) 'summarySuggestion': summarySuggestion!,
-    if (toolCallInfo != null) 'toolCallInfo': toolCallInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentCoachingSuggestion = this.agentCoachingSuggestion;
+    final freeFormSuggestion = this.freeFormSuggestion;
+    final summarySuggestion = this.summarySuggestion;
+    final toolCallInfo = this.toolCallInfo;
+    return {
+      'agentCoachingSuggestion': ?agentCoachingSuggestion,
+      'freeFormSuggestion': ?freeFormSuggestion,
+      'summarySuggestion': ?summarySuggestion,
+      'toolCallInfo': ?toolCallInfo,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
@@ -16071,25 +16343,23 @@ class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
   GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
     core.Map json_,
   ) : this(
-        toolCall:
-            json_.containsKey('toolCall')
-                ? GoogleCloudDialogflowV2ToolCall.fromJson(
-                  json_['toolCall'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolCallResult:
-            json_.containsKey('toolCallResult')
-                ? GoogleCloudDialogflowV2ToolCallResult.fromJson(
-                  json_['toolCallResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        toolCall: json_.containsKey('toolCall')
+            ? GoogleCloudDialogflowV2ToolCall.fromJson(
+                json_['toolCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolCallResult: json_.containsKey('toolCallResult')
+            ? GoogleCloudDialogflowV2ToolCallResult.fromJson(
+                json_['toolCallResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (toolCall != null) 'toolCall': toolCall!,
-    if (toolCallResult != null) 'toolCallResult': toolCallResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolCall = this.toolCall;
+    final toolCallResult = this.toolCallResult;
+    return {'toolCall': ?toolCall, 'toolCallResult': ?toolCallResult};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
@@ -16110,45 +16380,45 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(core.Map json_)
     : this(
-        endUserSuggestionConfig:
-            json_.containsKey('endUserSuggestionConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
-                  json_['endUserSuggestionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endUserSuggestionConfig: json_.containsKey('endUserSuggestionConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
+                json_['endUserSuggestionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         humanAgentSuggestionConfig:
             json_.containsKey('humanAgentSuggestionConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
-                  json_['humanAgentSuggestionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        messageAnalysisConfig:
-            json_.containsKey('messageAnalysisConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
-                  json_['messageAnalysisConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        notificationConfig:
-            json_.containsKey('notificationConfig')
-                ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
-                  json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
+                json_['humanAgentSuggestionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        messageAnalysisConfig: json_.containsKey('messageAnalysisConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
+                json_['messageAnalysisConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        notificationConfig: json_.containsKey('notificationConfig')
+            ? GoogleCloudDialogflowV2NotificationConfig.fromJson(
+                json_['notificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endUserSuggestionConfig != null)
-      'endUserSuggestionConfig': endUserSuggestionConfig!,
-    if (humanAgentSuggestionConfig != null)
-      'humanAgentSuggestionConfig': humanAgentSuggestionConfig!,
-    if (messageAnalysisConfig != null)
-      'messageAnalysisConfig': messageAnalysisConfig!,
-    if (notificationConfig != null) 'notificationConfig': notificationConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endUserSuggestionConfig = this.endUserSuggestionConfig;
+    final humanAgentSuggestionConfig = this.humanAgentSuggestionConfig;
+    final messageAnalysisConfig = this.messageAnalysisConfig;
+    final notificationConfig = this.notificationConfig;
+    return {
+      'endUserSuggestionConfig': ?endUserSuggestionConfig,
+      'humanAgentSuggestionConfig': ?humanAgentSuggestionConfig,
+      'messageAnalysisConfig': ?messageAnalysisConfig,
+      'notificationConfig': ?notificationConfig,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
@@ -16167,11 +16437,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
         model: json_['model'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baselineModelVersion != null)
-      'baselineModelVersion': baselineModelVersion!,
-    if (model != null) 'model': model!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baselineModelVersion = this.baselineModelVersion;
+    final model = this.model;
+    return {'baselineModelVersion': ?baselineModelVersion, 'model': ?model};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig {
@@ -16185,10 +16455,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig 
     core.Map json_,
   ) : this(recentSentencesCount: json_['recentSentencesCount'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recentSentencesCount != null)
-      'recentSentencesCount': recentSentencesCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recentSentencesCount = this.recentSentencesCount;
+    return {'recentSentencesCount': ?recentSentencesCount};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
@@ -16211,14 +16481,16 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
             json_['enableSentimentAnalysisV3'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableEntityExtraction != null)
-      'enableEntityExtraction': enableEntityExtraction!,
-    if (enableSentimentAnalysis != null)
-      'enableSentimentAnalysis': enableSentimentAnalysis!,
-    if (enableSentimentAnalysisV3 != null)
-      'enableSentimentAnalysisV3': enableSentimentAnalysisV3!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableEntityExtraction = this.enableEntityExtraction;
+    final enableSentimentAnalysis = this.enableSentimentAnalysis;
+    final enableSentimentAnalysisV3 = this.enableSentimentAnalysisV3;
+    return {
+      'enableEntityExtraction': ?enableEntityExtraction,
+      'enableSentimentAnalysis': ?enableSentimentAnalysis,
+      'enableSentimentAnalysisV3': ?enableSentimentAnalysisV3,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
@@ -16249,19 +16521,17 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
         disableHighLatencyFeaturesSyncDelivery:
             json_['disableHighLatencyFeaturesSyncDelivery'] as core.bool?,
         enableAsyncToolCall: json_['enableAsyncToolCall'] as core.bool?,
-        featureConfigs:
-            (json_['featureConfigs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        generators:
-            (json_['generators'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        featureConfigs: (json_['featureConfigs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        generators: (json_['generators'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         groupSuggestionResponses:
             json_['groupSuggestionResponses'] as core.bool?,
         skipEmptyEventBasedSuggestion:
@@ -16270,21 +16540,26 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
             json_['useUnredactedConversationData'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableHighLatencyFeaturesSyncDelivery != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableHighLatencyFeaturesSyncDelivery =
+        this.disableHighLatencyFeaturesSyncDelivery;
+    final enableAsyncToolCall = this.enableAsyncToolCall;
+    final featureConfigs = this.featureConfigs;
+    final generators = this.generators;
+    final groupSuggestionResponses = this.groupSuggestionResponses;
+    final skipEmptyEventBasedSuggestion = this.skipEmptyEventBasedSuggestion;
+    final useUnredactedConversationData = this.useUnredactedConversationData;
+    return {
       'disableHighLatencyFeaturesSyncDelivery':
-          disableHighLatencyFeaturesSyncDelivery!,
-    if (enableAsyncToolCall != null)
-      'enableAsyncToolCall': enableAsyncToolCall!,
-    if (featureConfigs != null) 'featureConfigs': featureConfigs!,
-    if (generators != null) 'generators': generators!,
-    if (groupSuggestionResponses != null)
-      'groupSuggestionResponses': groupSuggestionResponses!,
-    if (skipEmptyEventBasedSuggestion != null)
-      'skipEmptyEventBasedSuggestion': skipEmptyEventBasedSuggestion!,
-    if (useUnredactedConversationData != null)
-      'useUnredactedConversationData': useUnredactedConversationData!,
-  };
+          ?disableHighLatencyFeaturesSyncDelivery,
+      'enableAsyncToolCall': ?enableAsyncToolCall,
+      'featureConfigs': ?featureConfigs,
+      'generators': ?generators,
+      'groupSuggestionResponses': ?groupSuggestionResponses,
+      'skipEmptyEventBasedSuggestion': ?skipEmptyEventBasedSuggestion,
+      'useUnredactedConversationData': ?useUnredactedConversationData,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
@@ -16323,20 +16598,19 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
     core.Map json_,
   ) : this(
-        conversationModelConfig:
-            json_.containsKey('conversationModelConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
-                  json_['conversationModelConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversationModelConfig: json_.containsKey('conversationModelConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
+                json_['conversationModelConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         conversationProcessConfig:
             json_.containsKey('conversationProcessConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
-                  json_['conversationProcessConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
+                json_['conversationProcessConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableAgentQueryLogging:
             json_['disableAgentQueryLogging'] as core.bool?,
         enableConversationAugmentedQuery:
@@ -16348,57 +16622,61 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
         enableQuerySuggestionWhenNoAnswer:
             json_['enableQuerySuggestionWhenNoAnswer'] as core.bool?,
         enableResponseDebugInfo: json_['enableResponseDebugInfo'] as core.bool?,
-        queryConfig:
-            json_.containsKey('queryConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
-                  json_['queryConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        raiSettings:
-            json_.containsKey('raiSettings')
-                ? GoogleCloudDialogflowV2RaiSettings.fromJson(
-                  json_['raiSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        suggestionFeature:
-            json_.containsKey('suggestionFeature')
-                ? GoogleCloudDialogflowV2SuggestionFeature.fromJson(
-                  json_['suggestionFeature']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        queryConfig: json_.containsKey('queryConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
+                json_['queryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        raiSettings: json_.containsKey('raiSettings')
+            ? GoogleCloudDialogflowV2RaiSettings.fromJson(
+                json_['raiSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestionFeature: json_.containsKey('suggestionFeature')
+            ? GoogleCloudDialogflowV2SuggestionFeature.fromJson(
+                json_['suggestionFeature']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suggestionTriggerSettings:
             json_.containsKey('suggestionTriggerSettings')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
-                  json_['suggestionTriggerSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
+                json_['suggestionTriggerSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationModelConfig != null)
-      'conversationModelConfig': conversationModelConfig!,
-    if (conversationProcessConfig != null)
-      'conversationProcessConfig': conversationProcessConfig!,
-    if (disableAgentQueryLogging != null)
-      'disableAgentQueryLogging': disableAgentQueryLogging!,
-    if (enableConversationAugmentedQuery != null)
-      'enableConversationAugmentedQuery': enableConversationAugmentedQuery!,
-    if (enableEventBasedSuggestion != null)
-      'enableEventBasedSuggestion': enableEventBasedSuggestion!,
-    if (enableQuerySuggestionOnly != null)
-      'enableQuerySuggestionOnly': enableQuerySuggestionOnly!,
-    if (enableQuerySuggestionWhenNoAnswer != null)
-      'enableQuerySuggestionWhenNoAnswer': enableQuerySuggestionWhenNoAnswer!,
-    if (enableResponseDebugInfo != null)
-      'enableResponseDebugInfo': enableResponseDebugInfo!,
-    if (queryConfig != null) 'queryConfig': queryConfig!,
-    if (raiSettings != null) 'raiSettings': raiSettings!,
-    if (suggestionFeature != null) 'suggestionFeature': suggestionFeature!,
-    if (suggestionTriggerSettings != null)
-      'suggestionTriggerSettings': suggestionTriggerSettings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationModelConfig = this.conversationModelConfig;
+    final conversationProcessConfig = this.conversationProcessConfig;
+    final disableAgentQueryLogging = this.disableAgentQueryLogging;
+    final enableConversationAugmentedQuery =
+        this.enableConversationAugmentedQuery;
+    final enableEventBasedSuggestion = this.enableEventBasedSuggestion;
+    final enableQuerySuggestionOnly = this.enableQuerySuggestionOnly;
+    final enableQuerySuggestionWhenNoAnswer =
+        this.enableQuerySuggestionWhenNoAnswer;
+    final enableResponseDebugInfo = this.enableResponseDebugInfo;
+    final queryConfig = this.queryConfig;
+    final raiSettings = this.raiSettings;
+    final suggestionFeature = this.suggestionFeature;
+    final suggestionTriggerSettings = this.suggestionTriggerSettings;
+    return {
+      'conversationModelConfig': ?conversationModelConfig,
+      'conversationProcessConfig': ?conversationProcessConfig,
+      'disableAgentQueryLogging': ?disableAgentQueryLogging,
+      'enableConversationAugmentedQuery': ?enableConversationAugmentedQuery,
+      'enableEventBasedSuggestion': ?enableEventBasedSuggestion,
+      'enableQuerySuggestionOnly': ?enableQuerySuggestionOnly,
+      'enableQuerySuggestionWhenNoAnswer': ?enableQuerySuggestionWhenNoAnswer,
+      'enableResponseDebugInfo': ?enableResponseDebugInfo,
+      'queryConfig': ?queryConfig,
+      'raiSettings': ?raiSettings,
+      'suggestionFeature': ?suggestionFeature,
+      'suggestionTriggerSettings': ?suggestionTriggerSettings,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
@@ -16430,61 +16708,61 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
     core.Map json_,
   ) : this(
-        confidenceThreshold:
-            (json_['confidenceThreshold'] as core.num?)?.toDouble(),
-        contextFilterSettings:
-            json_.containsKey('contextFilterSettings')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
-                  json_['contextFilterSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        confidenceThreshold: (json_['confidenceThreshold'] as core.num?)
+            ?.toDouble(),
+        contextFilterSettings: json_.containsKey('contextFilterSettings')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
+                json_['contextFilterSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contextSize: json_['contextSize'] as core.int?,
-        dialogflowQuerySource:
-            json_.containsKey('dialogflowQuerySource')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
-                  json_['dialogflowQuerySource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        documentQuerySource:
-            json_.containsKey('documentQuerySource')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
-                  json_['documentQuerySource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        knowledgeBaseQuerySource:
-            json_.containsKey('knowledgeBaseQuerySource')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
-                  json_['knowledgeBaseQuerySource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dialogflowQuerySource: json_.containsKey('dialogflowQuerySource')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
+                json_['dialogflowQuerySource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentQuerySource: json_.containsKey('documentQuerySource')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
+                json_['documentQuerySource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        knowledgeBaseQuerySource: json_.containsKey('knowledgeBaseQuerySource')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
+                json_['knowledgeBaseQuerySource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxResults: json_['maxResults'] as core.int?,
-        sections:
-            json_.containsKey('sections')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
-                  json_['sections'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sections: json_.containsKey('sections')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
+                json_['sections'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidenceThreshold != null)
-      'confidenceThreshold': confidenceThreshold!,
-    if (contextFilterSettings != null)
-      'contextFilterSettings': contextFilterSettings!,
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (dialogflowQuerySource != null)
-      'dialogflowQuerySource': dialogflowQuerySource!,
-    if (documentQuerySource != null)
-      'documentQuerySource': documentQuerySource!,
-    if (knowledgeBaseQuerySource != null)
-      'knowledgeBaseQuerySource': knowledgeBaseQuerySource!,
-    if (maxResults != null) 'maxResults': maxResults!,
-    if (sections != null) 'sections': sections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidenceThreshold = this.confidenceThreshold;
+    final contextFilterSettings = this.contextFilterSettings;
+    final contextSize = this.contextSize;
+    final dialogflowQuerySource = this.dialogflowQuerySource;
+    final documentQuerySource = this.documentQuerySource;
+    final knowledgeBaseQuerySource = this.knowledgeBaseQuerySource;
+    final maxResults = this.maxResults;
+    final sections = this.sections;
+    return {
+      'confidenceThreshold': ?confidenceThreshold,
+      'contextFilterSettings': ?contextFilterSettings,
+      'contextSize': ?contextSize,
+      'dialogflowQuerySource': ?dialogflowQuerySource,
+      'documentQuerySource': ?documentQuerySource,
+      'knowledgeBaseQuerySource': ?knowledgeBaseQuerySource,
+      'maxResults': ?maxResults,
+      'sections': ?sections,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
@@ -16507,13 +16785,16 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigConte
             json_['dropVirtualAgentMessages'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dropHandoffMessages != null)
-      'dropHandoffMessages': dropHandoffMessages!,
-    if (dropIvrMessages != null) 'dropIvrMessages': dropIvrMessages!,
-    if (dropVirtualAgentMessages != null)
-      'dropVirtualAgentMessages': dropVirtualAgentMessages!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropHandoffMessages = this.dropHandoffMessages;
+    final dropIvrMessages = this.dropIvrMessages;
+    final dropVirtualAgentMessages = this.dropVirtualAgentMessages;
+    return {
+      'dropHandoffMessages': ?dropHandoffMessages,
+      'dropIvrMessages': ?dropIvrMessages,
+      'dropVirtualAgentMessages': ?dropVirtualAgentMessages,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
@@ -16530,20 +16811,19 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
     core.Map json_,
   ) : this(
         agent: json_['agent'] as core.String?,
-        humanAgentSideConfig:
-            json_.containsKey('humanAgentSideConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromJson(
-                  json_['humanAgentSideConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        humanAgentSideConfig: json_.containsKey('humanAgentSideConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromJson(
+                json_['humanAgentSideConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agent != null) 'agent': agent!,
-    if (humanAgentSideConfig != null)
-      'humanAgentSideConfig': humanAgentSideConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agent = this.agent;
+    final humanAgentSideConfig = this.humanAgentSideConfig;
+    return {'agent': ?agent, 'humanAgentSideConfig': ?humanAgentSideConfig};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
@@ -16557,9 +16837,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
     core.Map json_,
   ) : this(agent: json_['agent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agent != null) 'agent': agent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agent = this.agent;
+    return {'agent': ?agent};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
@@ -16572,15 +16853,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
     core.Map json_,
   ) : this(
-        documents:
-            (json_['documents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        documents: (json_['documents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documents != null) 'documents': documents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documents = this.documents;
+    return {'documents': ?documents};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
@@ -16593,15 +16874,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
     core.Map json_,
   ) : this(
-        knowledgeBases:
-            (json_['knowledgeBases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        knowledgeBases: (json_['knowledgeBases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (knowledgeBases != null) 'knowledgeBases': knowledgeBases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final knowledgeBases = this.knowledgeBases;
+    return {'knowledgeBases': ?knowledgeBases};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections {
@@ -16614,15 +16895,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSecti
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
     core.Map json_,
   ) : this(
-        sectionTypes:
-            (json_['sectionTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sectionTypes: (json_['sectionTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sectionTypes != null) 'sectionTypes': sectionTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sectionTypes = this.sectionTypes;
+    return {'sectionTypes': ?sectionTypes};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
@@ -16641,10 +16922,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings 
         onlyEndUser: json_['onlyEndUser'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (noSmalltalk != null) 'noSmalltalk': noSmalltalk!,
-    if (onlyEndUser != null) 'onlyEndUser': onlyEndUser!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final noSmalltalk = this.noSmalltalk;
+    final onlyEndUser = this.onlyEndUser;
+    return {'noSmalltalk': ?noSmalltalk, 'onlyEndUser': ?onlyEndUser};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
@@ -16660,27 +16942,29 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
 
   GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(core.Map json_)
     : this(
-        livePersonConfig:
-            json_.containsKey('livePersonConfig')
-                ? GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
-                  json_['livePersonConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        livePersonConfig: json_.containsKey('livePersonConfig')
+            ? GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
+                json_['livePersonConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         salesforceLiveAgentConfig:
             json_.containsKey('salesforceLiveAgentConfig')
-                ? GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
-                  json_['salesforceLiveAgentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
+                json_['salesforceLiveAgentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (livePersonConfig != null) 'livePersonConfig': livePersonConfig!,
-    if (salesforceLiveAgentConfig != null)
-      'salesforceLiveAgentConfig': salesforceLiveAgentConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final livePersonConfig = this.livePersonConfig;
+    final salesforceLiveAgentConfig = this.salesforceLiveAgentConfig;
+    return {
+      'livePersonConfig': ?livePersonConfig,
+      'salesforceLiveAgentConfig': ?salesforceLiveAgentConfig,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
@@ -16694,9 +16978,10 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
     core.Map json_,
   ) : this(accountNumber: json_['accountNumber'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountNumber != null) 'accountNumber': accountNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountNumber = this.accountNumber;
+    return {'accountNumber': ?accountNumber};
+  }
 }
 
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
@@ -16721,12 +17006,18 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
         organizationId: json_['organizationId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buttonId != null) 'buttonId': buttonId!,
-    if (deploymentId != null) 'deploymentId': deploymentId!,
-    if (endpointDomain != null) 'endpointDomain': endpointDomain!,
-    if (organizationId != null) 'organizationId': organizationId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buttonId = this.buttonId;
+    final deploymentId = this.deploymentId;
+    final endpointDomain = this.endpointDomain;
+    final organizationId = this.organizationId;
+    return {
+      'buttonId': ?buttonId,
+      'deploymentId': ?deploymentId,
+      'endpointDomain': ?endpointDomain,
+      'organizationId': ?organizationId,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ImportAgentRequest = $AgentRequest;
@@ -16738,17 +17029,17 @@ class GoogleCloudDialogflowV2ImportConversationDataRequest {
 
   GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(core.Map json_)
     : this(
-        inputConfig:
-            json_.containsKey('inputConfig')
-                ? GoogleCloudDialogflowV2InputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inputConfig: json_.containsKey('inputConfig')
+            ? GoogleCloudDialogflowV2InputConfig.fromJson(
+                json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputConfig != null) 'inputConfig': inputConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputConfig = this.inputConfig;
+    return {'inputConfig': ?inputConfig};
+  }
 }
 
 class GoogleCloudDialogflowV2ImportDocumentTemplate {
@@ -16764,20 +17055,24 @@ class GoogleCloudDialogflowV2ImportDocumentTemplate {
 
   GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(core.Map json_)
     : this(
-        knowledgeTypes:
-            (json_['knowledgeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        knowledgeTypes: (json_['knowledgeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         mimeType: json_['mimeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (knowledgeTypes != null) 'knowledgeTypes': knowledgeTypes!,
-    if (metadata != null) 'metadata': metadata!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final knowledgeTypes = this.knowledgeTypes;
+    final metadata = this.metadata;
+    final mimeType = this.mimeType;
+    return {
+      'knowledgeTypes': ?knowledgeTypes,
+      'metadata': ?metadata,
+      'mimeType': ?mimeType,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ImportDocumentsRequest {
@@ -16793,28 +17088,30 @@ class GoogleCloudDialogflowV2ImportDocumentsRequest {
 
   GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(core.Map json_)
     : this(
-        documentTemplate:
-            json_.containsKey('documentTemplate')
-                ? GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(
-                  json_['documentTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcsSource:
-            json_.containsKey('gcsSource')
-                ? GoogleCloudDialogflowV2GcsSources.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        documentTemplate: json_.containsKey('documentTemplate')
+            ? GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(
+                json_['documentTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcsSource: json_.containsKey('gcsSource')
+            ? GoogleCloudDialogflowV2GcsSources.fromJson(
+                json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         importGcsCustomMetadata: json_['importGcsCustomMetadata'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentTemplate != null) 'documentTemplate': documentTemplate!,
-    if (gcsSource != null) 'gcsSource': gcsSource!,
-    if (importGcsCustomMetadata != null)
-      'importGcsCustomMetadata': importGcsCustomMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentTemplate = this.documentTemplate;
+    final gcsSource = this.gcsSource;
+    final importGcsCustomMetadata = this.importGcsCustomMetadata;
+    return {
+      'documentTemplate': ?documentTemplate,
+      'gcsSource': ?gcsSource,
+      'importGcsCustomMetadata': ?importGcsCustomMetadata,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2InferenceParameter {
@@ -16838,12 +17135,18 @@ class GoogleCloudDialogflowV2InferenceParameter {
         topP: (json_['topP'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
-    if (temperature != null) 'temperature': temperature!,
-    if (topK != null) 'topK': topK!,
-    if (topP != null) 'topP': topP!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxOutputTokens = this.maxOutputTokens;
+    final temperature = this.temperature;
+    final topK = this.topK;
+    final topP = this.topP;
+    return {
+      'maxOutputTokens': ?maxOutputTokens,
+      'temperature': ?temperature,
+      'topK': ?topK,
+      'topP': ?topP,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IngestContextReferencesRequest {
@@ -16856,21 +17159,22 @@ class GoogleCloudDialogflowV2IngestContextReferencesRequest {
 
   GoogleCloudDialogflowV2IngestContextReferencesRequest.fromJson(core.Map json_)
     : this(
-        contextReferences: (json_['contextReferences']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDialogflowV2ConversationContextReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        contextReferences:
+            (json_['contextReferences'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextReferences != null) 'contextReferences': contextReferences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextReferences = this.contextReferences;
+    return {'contextReferences': ?contextReferences};
+  }
 }
 
 class GoogleCloudDialogflowV2IngestContextReferencesResponse {
@@ -16884,22 +17188,23 @@ class GoogleCloudDialogflowV2IngestContextReferencesResponse {
   GoogleCloudDialogflowV2IngestContextReferencesResponse.fromJson(
     core.Map json_,
   ) : this(
-        ingestedContextReferences: (json_['ingestedContextReferences']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDialogflowV2ConversationContextReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        ingestedContextReferences:
+            (json_['ingestedContextReferences']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingestedContextReferences != null)
-      'ingestedContextReferences': ingestedContextReferences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingestedContextReferences = this.ingestedContextReferences;
+    return {'ingestedContextReferences': ?ingestedContextReferences};
+  }
 }
 
 class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
@@ -16933,14 +17238,16 @@ class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
         projectNotAllowlisted: json_['projectNotAllowlisted'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextReferenceRetrieved != null)
-      'contextReferenceRetrieved': contextReferenceRetrieved!,
-    if (ingestedParametersDebugInfo != null)
-      'ingestedParametersDebugInfo': ingestedParametersDebugInfo!,
-    if (projectNotAllowlisted != null)
-      'projectNotAllowlisted': projectNotAllowlisted!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextReferenceRetrieved = this.contextReferenceRetrieved;
+    final ingestedParametersDebugInfo = this.ingestedParametersDebugInfo;
+    final projectNotAllowlisted = this.projectNotAllowlisted;
+    return {
+      'contextReferenceRetrieved': ?contextReferenceRetrieved,
+      'ingestedParametersDebugInfo': ?ingestedParametersDebugInfo,
+      'projectNotAllowlisted': ?projectNotAllowlisted,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo {
@@ -16968,10 +17275,11 @@ class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterD
         parameter: json_['parameter'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingestionStatus != null) 'ingestionStatus': ingestionStatus!,
-    if (parameter != null) 'parameter': parameter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingestionStatus = this.ingestionStatus;
+    final parameter = this.parameter;
+    return {'ingestionStatus': ?ingestionStatus, 'parameter': ?parameter};
+  }
 }
 
 class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
@@ -16982,18 +17290,17 @@ class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
   GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
     core.Map json_,
   ) : this(
-        encryptionSpec:
-            json_.containsKey('encryptionSpec')
-                ? GoogleCloudDialogflowV2EncryptionSpec.fromJson(
-                  json_['encryptionSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionSpec: json_.containsKey('encryptionSpec')
+            ? GoogleCloudDialogflowV2EncryptionSpec.fromJson(
+                json_['encryptionSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptionSpec = this.encryptionSpec;
+    return {'encryptionSpec': ?encryptionSpec};
+  }
 }
 
 class GoogleCloudDialogflowV2InputAudioConfig {
@@ -17061,44 +17368,53 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         modelVariant: json_['modelVariant'] as core.String?,
         optOutConformerModelMigration:
             json_['optOutConformerModelMigration'] as core.bool?,
-        phraseHints:
-            (json_['phraseHints'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        phraseSets:
-            (json_['phraseSets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        phraseHints: (json_['phraseHints'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        phraseSets: (json_['phraseSets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         singleUtterance: json_['singleUtterance'] as core.bool?,
-        speechContexts:
-            (json_['speechContexts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2SpeechContext.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        speechContexts: (json_['speechContexts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SpeechContext.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioEncoding != null) 'audioEncoding': audioEncoding!,
-    if (disableNoSpeechRecognizedEvent != null)
-      'disableNoSpeechRecognizedEvent': disableNoSpeechRecognizedEvent!,
-    if (enableAutomaticPunctuation != null)
-      'enableAutomaticPunctuation': enableAutomaticPunctuation!,
-    if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (model != null) 'model': model!,
-    if (modelVariant != null) 'modelVariant': modelVariant!,
-    if (optOutConformerModelMigration != null)
-      'optOutConformerModelMigration': optOutConformerModelMigration!,
-    if (phraseHints != null) 'phraseHints': phraseHints!,
-    if (phraseSets != null) 'phraseSets': phraseSets!,
-    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-    if (singleUtterance != null) 'singleUtterance': singleUtterance!,
-    if (speechContexts != null) 'speechContexts': speechContexts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioEncoding = this.audioEncoding;
+    final disableNoSpeechRecognizedEvent = this.disableNoSpeechRecognizedEvent;
+    final enableAutomaticPunctuation = this.enableAutomaticPunctuation;
+    final enableWordInfo = this.enableWordInfo;
+    final languageCode = this.languageCode;
+    final model = this.model;
+    final modelVariant = this.modelVariant;
+    final optOutConformerModelMigration = this.optOutConformerModelMigration;
+    final phraseHints = this.phraseHints;
+    final phraseSets = this.phraseSets;
+    final sampleRateHertz = this.sampleRateHertz;
+    final singleUtterance = this.singleUtterance;
+    final speechContexts = this.speechContexts;
+    return {
+      'audioEncoding': ?audioEncoding,
+      'disableNoSpeechRecognizedEvent': ?disableNoSpeechRecognizedEvent,
+      'enableAutomaticPunctuation': ?enableAutomaticPunctuation,
+      'enableWordInfo': ?enableWordInfo,
+      'languageCode': ?languageCode,
+      'model': ?model,
+      'modelVariant': ?modelVariant,
+      'optOutConformerModelMigration': ?optOutConformerModelMigration,
+      'phraseHints': ?phraseHints,
+      'phraseSets': ?phraseSets,
+      'sampleRateHertz': ?sampleRateHertz,
+      'singleUtterance': ?singleUtterance,
+      'speechContexts': ?speechContexts,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2InputConfig {
@@ -17108,17 +17424,17 @@ class GoogleCloudDialogflowV2InputConfig {
 
   GoogleCloudDialogflowV2InputConfig.fromJson(core.Map json_)
     : this(
-        gcsSource:
-            json_.containsKey('gcsSource')
-                ? GoogleCloudDialogflowV2GcsSources.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcsSource: json_.containsKey('gcsSource')
+            ? GoogleCloudDialogflowV2GcsSources.fromJson(
+                json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsSource != null) 'gcsSource': gcsSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcsSource = this.gcsSource;
+    return {'gcsSource': ?gcsSource};
+  }
 }
 
 typedef GoogleCloudDialogflowV2InputDataset = $Shared17;
@@ -17184,93 +17500,104 @@ class GoogleCloudDialogflowV2Intent {
                 .toList(),
         displayName: json_['displayName'] as core.String?,
         endInteraction: json_['endInteraction'] as core.bool?,
-        events:
-            (json_['events'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        followupIntentInfo:
-            (json_['followupIntentInfo'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        inputContextNames:
-            (json_['inputContextNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        events: (json_['events'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        followupIntentInfo: (json_['followupIntentInfo'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        inputContextNames: (json_['inputContextNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         isFallback: json_['isFallback'] as core.bool?,
         liveAgentHandoff: json_['liveAgentHandoff'] as core.bool?,
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         mlDisabled: json_['mlDisabled'] as core.bool?,
         name: json_['name'] as core.String?,
-        outputContexts:
-            (json_['outputContexts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Context.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2IntentParameter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        outputContexts: (json_['outputContexts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Context.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        parameters: (json_['parameters'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2IntentParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         parentFollowupIntentName:
             json_['parentFollowupIntentName'] as core.String?,
         priority: json_['priority'] as core.int?,
         resetContexts: json_['resetContexts'] as core.bool?,
         rootFollowupIntentName: json_['rootFollowupIntentName'] as core.String?,
-        trainingPhrases:
-            (json_['trainingPhrases'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        trainingPhrases: (json_['trainingPhrases'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         webhookState: json_['webhookState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (defaultResponsePlatforms != null)
-      'defaultResponsePlatforms': defaultResponsePlatforms!,
-    if (displayName != null) 'displayName': displayName!,
-    if (endInteraction != null) 'endInteraction': endInteraction!,
-    if (events != null) 'events': events!,
-    if (followupIntentInfo != null) 'followupIntentInfo': followupIntentInfo!,
-    if (inputContextNames != null) 'inputContextNames': inputContextNames!,
-    if (isFallback != null) 'isFallback': isFallback!,
-    if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
-    if (messages != null) 'messages': messages!,
-    if (mlDisabled != null) 'mlDisabled': mlDisabled!,
-    if (name != null) 'name': name!,
-    if (outputContexts != null) 'outputContexts': outputContexts!,
-    if (parameters != null) 'parameters': parameters!,
-    if (parentFollowupIntentName != null)
-      'parentFollowupIntentName': parentFollowupIntentName!,
-    if (priority != null) 'priority': priority!,
-    if (resetContexts != null) 'resetContexts': resetContexts!,
-    if (rootFollowupIntentName != null)
-      'rootFollowupIntentName': rootFollowupIntentName!,
-    if (trainingPhrases != null) 'trainingPhrases': trainingPhrases!,
-    if (webhookState != null) 'webhookState': webhookState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final defaultResponsePlatforms = this.defaultResponsePlatforms;
+    final displayName = this.displayName;
+    final endInteraction = this.endInteraction;
+    final events = this.events;
+    final followupIntentInfo = this.followupIntentInfo;
+    final inputContextNames = this.inputContextNames;
+    final isFallback = this.isFallback;
+    final liveAgentHandoff = this.liveAgentHandoff;
+    final messages = this.messages;
+    final mlDisabled = this.mlDisabled;
+    final name = this.name;
+    final outputContexts = this.outputContexts;
+    final parameters = this.parameters;
+    final parentFollowupIntentName = this.parentFollowupIntentName;
+    final priority = this.priority;
+    final resetContexts = this.resetContexts;
+    final rootFollowupIntentName = this.rootFollowupIntentName;
+    final trainingPhrases = this.trainingPhrases;
+    final webhookState = this.webhookState;
+    return {
+      'action': ?action,
+      'defaultResponsePlatforms': ?defaultResponsePlatforms,
+      'displayName': ?displayName,
+      'endInteraction': ?endInteraction,
+      'events': ?events,
+      'followupIntentInfo': ?followupIntentInfo,
+      'inputContextNames': ?inputContextNames,
+      'isFallback': ?isFallback,
+      'liveAgentHandoff': ?liveAgentHandoff,
+      'messages': ?messages,
+      'mlDisabled': ?mlDisabled,
+      'name': ?name,
+      'outputContexts': ?outputContexts,
+      'parameters': ?parameters,
+      'parentFollowupIntentName': ?parentFollowupIntentName,
+      'priority': ?priority,
+      'resetContexts': ?resetContexts,
+      'rootFollowupIntentName': ?rootFollowupIntentName,
+      'trainingPhrases': ?trainingPhrases,
+      'webhookState': ?webhookState,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentBatch {
@@ -17280,19 +17607,19 @@ class GoogleCloudDialogflowV2IntentBatch {
 
   GoogleCloudDialogflowV2IntentBatch.fromJson(core.Map json_)
     : this(
-        intents:
-            (json_['intents'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Intent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        intents: (json_['intents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intents != null) 'intents': intents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intents = this.intents;
+    return {'intents': ?intents};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
@@ -17311,11 +17638,14 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
             json_['parentFollowupIntentName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (followupIntentName != null) 'followupIntentName': followupIntentName!,
-    if (parentFollowupIntentName != null)
-      'parentFollowupIntentName': parentFollowupIntentName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final followupIntentName = this.followupIntentName;
+    final parentFollowupIntentName = this.parentFollowupIntentName;
+    return {
+      'followupIntentName': ?followupIntentName,
+      'parentFollowupIntentName': ?parentFollowupIntentName,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessage {
@@ -17373,112 +17703,113 @@ class GoogleCloudDialogflowV2IntentMessage {
 
   GoogleCloudDialogflowV2IntentMessage.fromJson(core.Map json_)
     : this(
-        basicCard:
-            json_.containsKey('basicCard')
-                ? GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(
-                  json_['basicCard'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        browseCarouselCard:
-            json_.containsKey('browseCarouselCard')
-                ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
-                  json_['browseCarouselCard']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        card:
-            json_.containsKey('card')
-                ? GoogleCloudDialogflowV2IntentMessageCard.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        carouselSelect:
-            json_.containsKey('carouselSelect')
-                ? GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
-                  json_['carouselSelect']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        linkOutSuggestion:
-            json_.containsKey('linkOutSuggestion')
-                ? GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
-                  json_['linkOutSuggestion']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        listSelect:
-            json_.containsKey('listSelect')
-                ? GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(
-                  json_['listSelect'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        mediaContent:
-            json_.containsKey('mediaContent')
-                ? GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
-                  json_['mediaContent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        payload:
-            json_.containsKey('payload')
-                ? json_['payload'] as core.Map<core.String, core.dynamic>
-                : null,
+        basicCard: json_.containsKey('basicCard')
+            ? GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(
+                json_['basicCard'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        browseCarouselCard: json_.containsKey('browseCarouselCard')
+            ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
+                json_['browseCarouselCard']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        card: json_.containsKey('card')
+            ? GoogleCloudDialogflowV2IntentMessageCard.fromJson(
+                json_['card'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        carouselSelect: json_.containsKey('carouselSelect')
+            ? GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
+                json_['carouselSelect'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        linkOutSuggestion: json_.containsKey('linkOutSuggestion')
+            ? GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
+                json_['linkOutSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        listSelect: json_.containsKey('listSelect')
+            ? GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(
+                json_['listSelect'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mediaContent: json_.containsKey('mediaContent')
+            ? GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
+                json_['mediaContent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        payload: json_.containsKey('payload')
+            ? json_['payload'] as core.Map<core.String, core.dynamic>
+            : null,
         platform: json_['platform'] as core.String?,
-        quickReplies:
-            json_.containsKey('quickReplies')
-                ? GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
-                  json_['quickReplies'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        simpleResponses:
-            json_.containsKey('simpleResponses')
-                ? GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
-                  json_['simpleResponses']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        suggestions:
-            json_.containsKey('suggestions')
-                ? GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(
-                  json_['suggestions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tableCard:
-            json_.containsKey('tableCard')
-                ? GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(
-                  json_['tableCard'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        text:
-            json_.containsKey('text')
-                ? GoogleCloudDialogflowV2IntentMessageText.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        quickReplies: json_.containsKey('quickReplies')
+            ? GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
+                json_['quickReplies'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        simpleResponses: json_.containsKey('simpleResponses')
+            ? GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
+                json_['simpleResponses'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestions: json_.containsKey('suggestions')
+            ? GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(
+                json_['suggestions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableCard: json_.containsKey('tableCard')
+            ? GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(
+                json_['tableCard'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudDialogflowV2IntentMessageText.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (basicCard != null) 'basicCard': basicCard!,
-    if (browseCarouselCard != null) 'browseCarouselCard': browseCarouselCard!,
-    if (card != null) 'card': card!,
-    if (carouselSelect != null) 'carouselSelect': carouselSelect!,
-    if (image != null) 'image': image!,
-    if (linkOutSuggestion != null) 'linkOutSuggestion': linkOutSuggestion!,
-    if (listSelect != null) 'listSelect': listSelect!,
-    if (mediaContent != null) 'mediaContent': mediaContent!,
-    if (payload != null) 'payload': payload!,
-    if (platform != null) 'platform': platform!,
-    if (quickReplies != null) 'quickReplies': quickReplies!,
-    if (simpleResponses != null) 'simpleResponses': simpleResponses!,
-    if (suggestions != null) 'suggestions': suggestions!,
-    if (tableCard != null) 'tableCard': tableCard!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final basicCard = this.basicCard;
+    final browseCarouselCard = this.browseCarouselCard;
+    final card = this.card;
+    final carouselSelect = this.carouselSelect;
+    final image = this.image;
+    final linkOutSuggestion = this.linkOutSuggestion;
+    final listSelect = this.listSelect;
+    final mediaContent = this.mediaContent;
+    final payload = this.payload;
+    final platform = this.platform;
+    final quickReplies = this.quickReplies;
+    final simpleResponses = this.simpleResponses;
+    final suggestions = this.suggestions;
+    final tableCard = this.tableCard;
+    final text = this.text;
+    return {
+      'basicCard': ?basicCard,
+      'browseCarouselCard': ?browseCarouselCard,
+      'card': ?card,
+      'carouselSelect': ?carouselSelect,
+      'image': ?image,
+      'linkOutSuggestion': ?linkOutSuggestion,
+      'listSelect': ?listSelect,
+      'mediaContent': ?mediaContent,
+      'payload': ?payload,
+      'platform': ?platform,
+      'quickReplies': ?quickReplies,
+      'simpleResponses': ?simpleResponses,
+      'suggestions': ?suggestions,
+      'tableCard': ?tableCard,
+      'text': ?text,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageBasicCard {
@@ -17498,33 +17829,38 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
 
   GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(core.Map json_)
     : this(
-        buttons:
-            (json_['buttons'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        buttons: (json_['buttons'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         formattedText: json_['formattedText'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         subtitle: json_['subtitle'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buttons != null) 'buttons': buttons!,
-    if (formattedText != null) 'formattedText': formattedText!,
-    if (image != null) 'image': image!,
-    if (subtitle != null) 'subtitle': subtitle!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buttons = this.buttons;
+    final formattedText = this.formattedText;
+    final image = this.image;
+    final subtitle = this.subtitle;
+    final title = this.title;
+    return {
+      'buttons': ?buttons,
+      'formattedText': ?formattedText,
+      'image': ?image,
+      'subtitle': ?subtitle,
+      'title': ?title,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
@@ -17539,19 +17875,19 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 
   GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(core.Map json_)
     : this(
-        openUriAction:
-            json_.containsKey('openUriAction')
-                ? GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
-                  json_['openUriAction'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        openUriAction: json_.containsKey('openUriAction')
+            ? GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
+                json_['openUriAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (openUriAction != null) 'openUriAction': openUriAction!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final openUriAction = this.openUriAction;
+    final title = this.title;
+    return {'openUriAction': ?openUriAction, 'title': ?title};
+  }
 }
 
 typedef GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction =
@@ -17580,22 +17916,21 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
     core.Map json_,
   ) : this(
         imageDisplayOptions: json_['imageDisplayOptions'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageDisplayOptions != null)
-      'imageDisplayOptions': imageDisplayOptions!,
-    if (items != null) 'items': items!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageDisplayOptions = this.imageDisplayOptions;
+    final items = this.items;
+    return {'imageDisplayOptions': ?imageDisplayOptions, 'items': ?items};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
@@ -17619,28 +17954,33 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   ) : this(
         description: json_['description'] as core.String?,
         footer: json_['footer'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        openUriAction:
-            json_.containsKey('openUriAction')
-                ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
-                  json_['openUriAction'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openUriAction: json_.containsKey('openUriAction')
+            ? GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
+                json_['openUriAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (footer != null) 'footer': footer!,
-    if (image != null) 'image': image!,
-    if (openUriAction != null) 'openUriAction': openUriAction!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final footer = this.footer;
+    final image = this.image;
+    final openUriAction = this.openUriAction;
+    final title = this.title;
+    return {
+      'description': ?description,
+      'footer': ?footer,
+      'image': ?image,
+      'openUriAction': ?openUriAction,
+      'title': ?title,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
@@ -17665,10 +18005,11 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
         urlTypeHint: json_['urlTypeHint'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-    if (urlTypeHint != null) 'urlTypeHint': urlTypeHint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    final urlTypeHint = this.urlTypeHint;
+    return {'url': ?url, 'urlTypeHint': ?urlTypeHint};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageCard {
@@ -17686,26 +18027,31 @@ class GoogleCloudDialogflowV2IntentMessageCard {
 
   GoogleCloudDialogflowV2IntentMessageCard.fromJson(core.Map json_)
     : this(
-        buttons:
-            (json_['buttons'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        buttons: (json_['buttons'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         imageUri: json_['imageUri'] as core.String?,
         subtitle: json_['subtitle'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buttons != null) 'buttons': buttons!,
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (subtitle != null) 'subtitle': subtitle!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buttons = this.buttons;
+    final imageUri = this.imageUri;
+    final subtitle = this.subtitle;
+    final title = this.title;
+    return {
+      'buttons': ?buttons,
+      'imageUri': ?imageUri,
+      'subtitle': ?subtitle,
+      'title': ?title,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageCardButton {
@@ -17720,10 +18066,11 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (postback != null) 'postback': postback!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final postback = this.postback;
+    final text = this.text;
+    return {'postback': ?postback, 'text': ?text};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
@@ -17733,20 +18080,20 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    return {'items': ?items};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
@@ -17766,27 +18113,31 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
     core.Map json_,
   ) : this(
         description: json_['description'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        info:
-            json_.containsKey('info')
-                ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        info: json_.containsKey('info')
+            ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
+                json_['info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (image != null) 'image': image!,
-    if (info != null) 'info': info!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final image = this.image;
+    final info = this.info;
+    final title = this.title;
+    return {
+      'description': ?description,
+      'image': ?image,
+      'info': ?info,
+      'title': ?title,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageColumnProperties {
@@ -17811,11 +18162,11 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
         horizontalAlignment: json_['horizontalAlignment'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (header != null) 'header': header!,
-    if (horizontalAlignment != null)
-      'horizontalAlignment': horizontalAlignment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final header = this.header;
+    final horizontalAlignment = this.horizontalAlignment;
+    return {'header': ?header, 'horizontalAlignment': ?horizontalAlignment};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageImage {
@@ -17833,10 +18184,11 @@ class GoogleCloudDialogflowV2IntentMessageImage {
         imageUri: json_['imageUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessibilityText != null) 'accessibilityText': accessibilityText!,
-    if (imageUri != null) 'imageUri': imageUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessibilityText = this.accessibilityText;
+    final imageUri = this.imageUri;
+    return {'accessibilityText': ?accessibilityText, 'imageUri': ?imageUri};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
@@ -17854,10 +18206,11 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationName != null) 'destinationName': destinationName!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationName = this.destinationName;
+    final uri = this.uri;
+    return {'destinationName': ?destinationName, 'uri': ?uri};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageListSelect {
@@ -17873,24 +18226,24 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
 
   GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         subtitle: json_['subtitle'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (subtitle != null) 'subtitle': subtitle!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final subtitle = this.subtitle;
+    final title = this.title;
+    return {'items': ?items, 'subtitle': ?subtitle, 'title': ?title};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageListSelectItem {
@@ -17909,27 +18262,31 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
   GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        info:
-            json_.containsKey('info')
-                ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        info: json_.containsKey('info')
+            ? GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
+                json_['info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (image != null) 'image': image!,
-    if (info != null) 'info': info!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final image = this.image;
+    final info = this.info;
+    final title = this.title;
+    return {
+      'description': ?description,
+      'image': ?image,
+      'info': ?info,
+      'title': ?title,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageMediaContent {
@@ -17951,22 +18308,22 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
 
   GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(core.Map json_)
     : this(
-        mediaObjects:
-            (json_['mediaObjects'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        mediaObjects: (json_['mediaObjects'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         mediaType: json_['mediaType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mediaObjects != null) 'mediaObjects': mediaObjects!,
-    if (mediaType != null) 'mediaType': mediaType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mediaObjects = this.mediaObjects;
+    final mediaType = this.mediaType;
+    return {'mediaObjects': ?mediaObjects, 'mediaType': ?mediaType};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
@@ -17989,28 +18346,33 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   ) : this(
         contentUrl: json_['contentUrl'] as core.String?,
         description: json_['description'] as core.String?,
-        icon:
-            json_.containsKey('icon')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        largeImage:
-            json_.containsKey('largeImage')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['largeImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        icon: json_.containsKey('icon')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['icon'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        largeImage: json_.containsKey('largeImage')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['largeImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentUrl != null) 'contentUrl': contentUrl!,
-    if (description != null) 'description': description!,
-    if (icon != null) 'icon': icon!,
-    if (largeImage != null) 'largeImage': largeImage!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentUrl = this.contentUrl;
+    final description = this.description;
+    final icon = this.icon;
+    final largeImage = this.largeImage;
+    final name = this.name;
+    return {
+      'contentUrl': ?contentUrl,
+      'description': ?description,
+      'icon': ?icon,
+      'largeImage': ?largeImage,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
@@ -18024,17 +18386,17 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
 
   GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(core.Map json_)
     : this(
-        quickReplies:
-            (json_['quickReplies'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        quickReplies: (json_['quickReplies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (quickReplies != null) 'quickReplies': quickReplies!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final quickReplies = this.quickReplies;
+    final title = this.title;
+    return {'quickReplies': ?quickReplies, 'title': ?title};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
@@ -18046,16 +18408,16 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(core.Map json_)
     : this(
         key: json_['key'] as core.String?,
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        synonyms: (json_['synonyms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (synonyms != null) 'synonyms': synonyms!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final synonyms = this.synonyms;
+    return {'key': ?key, 'synonyms': ?synonyms};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
@@ -18076,11 +18438,16 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
         textToSpeech: json_['textToSpeech'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayText != null) 'displayText': displayText!,
-    if (ssml != null) 'ssml': ssml!,
-    if (textToSpeech != null) 'textToSpeech': textToSpeech!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayText = this.displayText;
+    final ssml = this.ssml;
+    final textToSpeech = this.textToSpeech;
+    return {
+      'displayText': ?displayText,
+      'ssml': ?ssml,
+      'textToSpeech': ?textToSpeech,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
@@ -18091,20 +18458,20 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(core.Map json_)
     : this(
-        simpleResponses:
-            (json_['simpleResponses'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        simpleResponses: (json_['simpleResponses'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (simpleResponses != null) 'simpleResponses': simpleResponses!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final simpleResponses = this.simpleResponses;
+    return {'simpleResponses': ?simpleResponses};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageSuggestion {
@@ -18115,9 +18482,10 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
   GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(core.Map json_)
     : this(title: json_['title'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final title = this.title;
+    return {'title': ?title};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageSuggestions {
@@ -18127,20 +18495,20 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
 
   GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(core.Map json_)
     : this(
-        suggestions:
-            (json_['suggestions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        suggestions: (json_['suggestions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (suggestions != null) 'suggestions': suggestions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final suggestions = this.suggestions;
+    return {'suggestions': ?suggestions};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageTableCard {
@@ -18163,51 +18531,55 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
 
   GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(core.Map json_)
     : this(
-        buttons:
-            (json_['buttons'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        columnProperties:
-            (json_['columnProperties'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        buttons: (json_['buttons'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        columnProperties: (json_['columnProperties'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        image: json_.containsKey('image')
+            ? GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         subtitle: json_['subtitle'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buttons != null) 'buttons': buttons!,
-    if (columnProperties != null) 'columnProperties': columnProperties!,
-    if (image != null) 'image': image!,
-    if (rows != null) 'rows': rows!,
-    if (subtitle != null) 'subtitle': subtitle!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buttons = this.buttons;
+    final columnProperties = this.columnProperties;
+    final image = this.image;
+    final rows = this.rows;
+    final subtitle = this.subtitle;
+    final title = this.title;
+    return {
+      'buttons': ?buttons,
+      'columnProperties': ?columnProperties,
+      'image': ?image,
+      'rows': ?rows,
+      'subtitle': ?subtitle,
+      'title': ?title,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared02;
@@ -18223,22 +18595,22 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
 
   GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(core.Map json_)
     : this(
-        cells:
-            (json_['cells'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        cells: (json_['cells'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         dividerAfter: json_['dividerAfter'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cells != null) 'cells': cells!,
-    if (dividerAfter != null) 'dividerAfter': dividerAfter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    final dividerAfter = this.dividerAfter;
+    return {'cells': ?cells, 'dividerAfter': ?dividerAfter};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentMessageText {
@@ -18248,15 +18620,15 @@ class GoogleCloudDialogflowV2IntentMessageText {
 
   GoogleCloudDialogflowV2IntentMessageText.fromJson(core.Map json_)
     : this(
-        text:
-            (json_['text'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        text: (json_['text'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 class GoogleCloudDialogflowV2IntentParameter {
@@ -18288,24 +18660,32 @@ class GoogleCloudDialogflowV2IntentParameter {
         isList: json_['isList'] as core.bool?,
         mandatory: json_['mandatory'] as core.bool?,
         name: json_['name'] as core.String?,
-        prompts:
-            (json_['prompts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        prompts: (json_['prompts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (displayName != null) 'displayName': displayName!,
-    if (entityTypeDisplayName != null)
-      'entityTypeDisplayName': entityTypeDisplayName!,
-    if (isList != null) 'isList': isList!,
-    if (mandatory != null) 'mandatory': mandatory!,
-    if (name != null) 'name': name!,
-    if (prompts != null) 'prompts': prompts!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultValue = this.defaultValue;
+    final displayName = this.displayName;
+    final entityTypeDisplayName = this.entityTypeDisplayName;
+    final isList = this.isList;
+    final mandatory = this.mandatory;
+    final name = this.name;
+    final prompts = this.prompts;
+    final value = this.value;
+    return {
+      'defaultValue': ?defaultValue,
+      'displayName': ?displayName,
+      'entityTypeDisplayName': ?entityTypeDisplayName,
+      'isList': ?isList,
+      'mandatory': ?mandatory,
+      'name': ?name,
+      'prompts': ?prompts,
+      'value': ?value,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentSuggestion {
@@ -18326,11 +18706,16 @@ class GoogleCloudDialogflowV2IntentSuggestion {
         intentV2: json_['intentV2'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (intentV2 != null) 'intentV2': intentV2!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final intentV2 = this.intentV2;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'intentV2': ?intentV2,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentTrainingPhrase {
@@ -18355,25 +18740,30 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
   GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        parts:
-            (json_['parts'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         timesAddedCount: json_['timesAddedCount'] as core.int?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (parts != null) 'parts': parts!,
-    if (timesAddedCount != null) 'timesAddedCount': timesAddedCount!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final parts = this.parts;
+    final timesAddedCount = this.timesAddedCount;
+    final type = this.type;
+    return {
+      'name': ?name,
+      'parts': ?parts,
+      'timesAddedCount': ?timesAddedCount,
+      'type': ?type,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
@@ -18397,12 +18787,18 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
         userDefined: json_['userDefined'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (entityType != null) 'entityType': entityType!,
-    if (text != null) 'text': text!,
-    if (userDefined != null) 'userDefined': userDefined!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final entityType = this.entityType;
+    final text = this.text;
+    final userDefined = this.userDefined;
+    return {
+      'alias': ?alias,
+      'entityType': ?entityType,
+      'text': ?text,
+      'userDefined': ?userDefined,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
@@ -18422,37 +18818,37 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
   GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(core.Map json_)
     : this(
         answerRecord: json_['answerRecord'] as core.String?,
-        knowledgeAssistDebugInfo:
-            json_.containsKey('knowledgeAssistDebugInfo')
-                ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfo.fromJson(
-                  json_['knowledgeAssistDebugInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        suggestedQuery:
-            json_.containsKey('suggestedQuery')
-                ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
-                  json_['suggestedQuery']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        suggestedQueryAnswer:
-            json_.containsKey('suggestedQueryAnswer')
-                ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
-                  json_['suggestedQueryAnswer']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        knowledgeAssistDebugInfo: json_.containsKey('knowledgeAssistDebugInfo')
+            ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfo.fromJson(
+                json_['knowledgeAssistDebugInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestedQuery: json_.containsKey('suggestedQuery')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
+                json_['suggestedQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestedQueryAnswer: json_.containsKey('suggestedQueryAnswer')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
+                json_['suggestedQueryAnswer']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (knowledgeAssistDebugInfo != null)
-      'knowledgeAssistDebugInfo': knowledgeAssistDebugInfo!,
-    if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
-    if (suggestedQueryAnswer != null)
-      'suggestedQueryAnswer': suggestedQueryAnswer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final knowledgeAssistDebugInfo = this.knowledgeAssistDebugInfo;
+    final suggestedQuery = this.suggestedQuery;
+    final suggestedQueryAnswer = this.suggestedQueryAnswer;
+    return {
+      'answerRecord': ?answerRecord,
+      'knowledgeAssistDebugInfo': ?knowledgeAssistDebugInfo,
+      'suggestedQuery': ?suggestedQuery,
+      'suggestedQueryAnswer': ?suggestedQueryAnswer,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
@@ -18472,26 +18868,29 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
     core.Map json_,
   ) : this(
         answerText: json_['answerText'] as core.String?,
-        faqSource:
-            json_.containsKey('faqSource')
-                ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
-                  json_['faqSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        generativeSource:
-            json_.containsKey('generativeSource')
-                ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
-                  json_['generativeSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        faqSource: json_.containsKey('faqSource')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
+                json_['faqSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        generativeSource: json_.containsKey('generativeSource')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
+                json_['generativeSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerText != null) 'answerText': answerText!,
-    if (faqSource != null) 'faqSource': faqSource!,
-    if (generativeSource != null) 'generativeSource': generativeSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerText = this.answerText;
+    final faqSource = this.faqSource;
+    final generativeSource = this.generativeSource;
+    return {
+      'answerText': ?answerText,
+      'faqSource': ?faqSource,
+      'generativeSource': ?generativeSource,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
@@ -18505,9 +18904,10 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
     core.Map json_,
   ) : this(question: json_['question'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (question != null) 'question': question!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final question = this.question;
+    return {'question': ?question};
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
@@ -18523,20 +18923,20 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
     core.Map json_,
   ) : this(
-        snippets:
-            (json_['snippets'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        snippets: (json_['snippets'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (snippets != null) 'snippets': snippets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final snippets = this.snippets;
+    return {'snippets': ?snippets};
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
@@ -18559,21 +18959,21 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
     core.Map json_,
   ) : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         text: json_['text'] as core.String?,
         title: json_['title'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (text != null) 'text': text!,
-    if (title != null) 'title': title!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final text = this.text;
+    final title = this.title;
+    final uri = this.uri;
+    return {'metadata': ?metadata, 'text': ?text, 'title': ?title, 'uri': ?uri};
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
@@ -18585,9 +18985,10 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
     core.Map json_,
   ) : this(queryText: json_['queryText'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryText != null) 'queryText': queryText!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final queryText = this.queryText;
+    return {'queryText': ?queryText};
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
@@ -18648,44 +19049,46 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
             json_['datastoreResponseReason'] as core.String?,
         ingestedContextReferenceDebugInfo:
             json_.containsKey('ingestedContextReferenceDebugInfo')
-                ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
-                  json_['ingestedContextReferenceDebugInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        knowledgeAssistBehavior:
-            json_.containsKey('knowledgeAssistBehavior')
-                ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
-                  json_['knowledgeAssistBehavior']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+                json_['ingestedContextReferenceDebugInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        knowledgeAssistBehavior: json_.containsKey('knowledgeAssistBehavior')
+            ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
+                json_['knowledgeAssistBehavior']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         queryCategorizationFailureReason:
             json_['queryCategorizationFailureReason'] as core.String?,
         queryGenerationFailureReason:
             json_['queryGenerationFailureReason'] as core.String?,
-        serviceLatency:
-            json_.containsKey('serviceLatency')
-                ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
-                  json_['serviceLatency']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceLatency: json_.containsKey('serviceLatency')
+            ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
+                json_['serviceLatency'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datastoreResponseReason != null)
-      'datastoreResponseReason': datastoreResponseReason!,
-    if (ingestedContextReferenceDebugInfo != null)
-      'ingestedContextReferenceDebugInfo': ingestedContextReferenceDebugInfo!,
-    if (knowledgeAssistBehavior != null)
-      'knowledgeAssistBehavior': knowledgeAssistBehavior!,
-    if (queryCategorizationFailureReason != null)
-      'queryCategorizationFailureReason': queryCategorizationFailureReason!,
-    if (queryGenerationFailureReason != null)
-      'queryGenerationFailureReason': queryGenerationFailureReason!,
-    if (serviceLatency != null) 'serviceLatency': serviceLatency!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datastoreResponseReason = this.datastoreResponseReason;
+    final ingestedContextReferenceDebugInfo =
+        this.ingestedContextReferenceDebugInfo;
+    final knowledgeAssistBehavior = this.knowledgeAssistBehavior;
+    final queryCategorizationFailureReason =
+        this.queryCategorizationFailureReason;
+    final queryGenerationFailureReason = this.queryGenerationFailureReason;
+    final serviceLatency = this.serviceLatency;
+    return {
+      'datastoreResponseReason': ?datastoreResponseReason,
+      'ingestedContextReferenceDebugInfo': ?ingestedContextReferenceDebugInfo,
+      'knowledgeAssistBehavior': ?knowledgeAssistBehavior,
+      'queryCategorizationFailureReason': ?queryCategorizationFailureReason,
+      'queryGenerationFailureReason': ?queryGenerationFailureReason,
+      'serviceLatency': ?serviceLatency,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
@@ -18760,43 +19163,52 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
         useTranslatedMessage: json_['useTranslatedMessage'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerGenerationRewriterOn != null)
-      'answerGenerationRewriterOn': answerGenerationRewriterOn!,
-    if (appendedSearchContextCount != null)
-      'appendedSearchContextCount': appendedSearchContextCount!,
-    if (conversationTranscriptHasMixedLanguages != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerGenerationRewriterOn = this.answerGenerationRewriterOn;
+    final appendedSearchContextCount = this.appendedSearchContextCount;
+    final conversationTranscriptHasMixedLanguages =
+        this.conversationTranscriptHasMixedLanguages;
+    final disableSyncDelivery = this.disableSyncDelivery;
+    final endUserMetadataIncluded = this.endUserMetadataIncluded;
+    final invalidItemsQuerySuggestionSkipped =
+        this.invalidItemsQuerySuggestionSkipped;
+    final multipleQueriesGenerated = this.multipleQueriesGenerated;
+    final previousQueriesIncluded = this.previousQueriesIncluded;
+    final primaryQueryRedactedAndReplaced =
+        this.primaryQueryRedactedAndReplaced;
+    final queryContainedSearchContext = this.queryContainedSearchContext;
+    final queryGenerationAgentLanguageMismatch =
+        this.queryGenerationAgentLanguageMismatch;
+    final queryGenerationEndUserLanguageMismatch =
+        this.queryGenerationEndUserLanguageMismatch;
+    final returnQueryOnly = this.returnQueryOnly;
+    final thirdPartyConnectorAllowed = this.thirdPartyConnectorAllowed;
+    final useCustomSafetyFilterLevel = this.useCustomSafetyFilterLevel;
+    final usePubsubDelivery = this.usePubsubDelivery;
+    final useTranslatedMessage = this.useTranslatedMessage;
+    return {
+      'answerGenerationRewriterOn': ?answerGenerationRewriterOn,
+      'appendedSearchContextCount': ?appendedSearchContextCount,
       'conversationTranscriptHasMixedLanguages':
-          conversationTranscriptHasMixedLanguages!,
-    if (disableSyncDelivery != null)
-      'disableSyncDelivery': disableSyncDelivery!,
-    if (endUserMetadataIncluded != null)
-      'endUserMetadataIncluded': endUserMetadataIncluded!,
-    if (invalidItemsQuerySuggestionSkipped != null)
-      'invalidItemsQuerySuggestionSkipped': invalidItemsQuerySuggestionSkipped!,
-    if (multipleQueriesGenerated != null)
-      'multipleQueriesGenerated': multipleQueriesGenerated!,
-    if (previousQueriesIncluded != null)
-      'previousQueriesIncluded': previousQueriesIncluded!,
-    if (primaryQueryRedactedAndReplaced != null)
-      'primaryQueryRedactedAndReplaced': primaryQueryRedactedAndReplaced!,
-    if (queryContainedSearchContext != null)
-      'queryContainedSearchContext': queryContainedSearchContext!,
-    if (queryGenerationAgentLanguageMismatch != null)
+          ?conversationTranscriptHasMixedLanguages,
+      'disableSyncDelivery': ?disableSyncDelivery,
+      'endUserMetadataIncluded': ?endUserMetadataIncluded,
+      'invalidItemsQuerySuggestionSkipped': ?invalidItemsQuerySuggestionSkipped,
+      'multipleQueriesGenerated': ?multipleQueriesGenerated,
+      'previousQueriesIncluded': ?previousQueriesIncluded,
+      'primaryQueryRedactedAndReplaced': ?primaryQueryRedactedAndReplaced,
+      'queryContainedSearchContext': ?queryContainedSearchContext,
       'queryGenerationAgentLanguageMismatch':
-          queryGenerationAgentLanguageMismatch!,
-    if (queryGenerationEndUserLanguageMismatch != null)
+          ?queryGenerationAgentLanguageMismatch,
       'queryGenerationEndUserLanguageMismatch':
-          queryGenerationEndUserLanguageMismatch!,
-    if (returnQueryOnly != null) 'returnQueryOnly': returnQueryOnly!,
-    if (thirdPartyConnectorAllowed != null)
-      'thirdPartyConnectorAllowed': thirdPartyConnectorAllowed!,
-    if (useCustomSafetyFilterLevel != null)
-      'useCustomSafetyFilterLevel': useCustomSafetyFilterLevel!,
-    if (usePubsubDelivery != null) 'usePubsubDelivery': usePubsubDelivery!,
-    if (useTranslatedMessage != null)
-      'useTranslatedMessage': useTranslatedMessage!,
-  };
+          ?queryGenerationEndUserLanguageMismatch,
+      'returnQueryOnly': ?returnQueryOnly,
+      'thirdPartyConnectorAllowed': ?thirdPartyConnectorAllowed,
+      'useCustomSafetyFilterLevel': ?useCustomSafetyFilterLevel,
+      'usePubsubDelivery': ?usePubsubDelivery,
+      'useTranslatedMessage': ?useTranslatedMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2KnowledgeBase {
@@ -18817,11 +19229,16 @@ class GoogleCloudDialogflowV2KnowledgeBase {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final languageCode = this.languageCode;
+    final name = this.name;
+    return {
+      'displayName': ?displayName,
+      'languageCode': ?languageCode,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
@@ -18835,21 +19252,21 @@ class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
 
   GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(core.Map json_)
     : this(
-        answerRecords:
-            (json_['answerRecords'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2AnswerRecord.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        answerRecords: (json_['answerRecords'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2AnswerRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecords != null) 'answerRecords': answerRecords!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecords = this.answerRecords;
+    final nextPageToken = this.nextPageToken;
+    return {'answerRecords': ?answerRecords, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListContextsResponse {
@@ -18863,21 +19280,21 @@ class GoogleCloudDialogflowV2ListContextsResponse {
 
   GoogleCloudDialogflowV2ListContextsResponse.fromJson(core.Map json_)
     : this(
-        contexts:
-            (json_['contexts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Context.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        contexts: (json_['contexts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Context.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contexts != null) 'contexts': contexts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contexts = this.contexts;
+    final nextPageToken = this.nextPageToken;
+    return {'contexts': ?contexts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListConversationDatasetsResponse {
@@ -18892,23 +19309,24 @@ class GoogleCloudDialogflowV2ListConversationDatasetsResponse {
   GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
     core.Map json_,
   ) : this(
-        conversationDatasets:
-            (json_['conversationDatasets'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ConversationDataset.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        conversationDatasets: (json_['conversationDatasets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ConversationDataset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationDatasets != null)
-      'conversationDatasets': conversationDatasets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationDatasets = this.conversationDatasets;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conversationDatasets': ?conversationDatasets,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse {
@@ -18936,11 +19354,14 @@ class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse {
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationModelEvaluations != null)
-      'conversationModelEvaluations': conversationModelEvaluations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationModelEvaluations = this.conversationModelEvaluations;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conversationModelEvaluations': ?conversationModelEvaluations,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListConversationModelsResponse {
@@ -18954,21 +19375,24 @@ class GoogleCloudDialogflowV2ListConversationModelsResponse {
 
   GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(core.Map json_)
     : this(
-        conversationModels:
-            (json_['conversationModels'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2ConversationModel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conversationModels: (json_['conversationModels'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ConversationModel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationModels != null) 'conversationModels': conversationModels!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationModels = this.conversationModels;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conversationModels': ?conversationModels,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListConversationProfilesResponse {
@@ -18983,23 +19407,24 @@ class GoogleCloudDialogflowV2ListConversationProfilesResponse {
   GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
     core.Map json_,
   ) : this(
-        conversationProfiles:
-            (json_['conversationProfiles'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ConversationProfile.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        conversationProfiles: (json_['conversationProfiles'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationProfiles != null)
-      'conversationProfiles': conversationProfiles!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationProfiles = this.conversationProfiles;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conversationProfiles': ?conversationProfiles,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListConversationsResponse {
@@ -19013,21 +19438,21 @@ class GoogleCloudDialogflowV2ListConversationsResponse {
 
   GoogleCloudDialogflowV2ListConversationsResponse.fromJson(core.Map json_)
     : this(
-        conversations:
-            (json_['conversations'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Conversation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conversations: (json_['conversations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Conversation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversations != null) 'conversations': conversations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversations = this.conversations;
+    final nextPageToken = this.nextPageToken;
+    return {'conversations': ?conversations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListDocumentsResponse {
@@ -19041,21 +19466,21 @@ class GoogleCloudDialogflowV2ListDocumentsResponse {
 
   GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(core.Map json_)
     : this(
-        documents:
-            (json_['documents'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Document.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        documents: (json_['documents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Document.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documents != null) 'documents': documents!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documents = this.documents;
+    final nextPageToken = this.nextPageToken;
+    return {'documents': ?documents, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListEntityTypesResponse {
@@ -19069,21 +19494,21 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
 
   GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(core.Map json_)
     : this(
-        entityTypes:
-            (json_['entityTypes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entityTypes: (json_['entityTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityTypes != null) 'entityTypes': entityTypes!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityTypes = this.entityTypes;
+    final nextPageToken = this.nextPageToken;
+    return {'entityTypes': ?entityTypes, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListEnvironmentsResponse {
@@ -19097,21 +19522,21 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
 
   GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(core.Map json_)
     : this(
-        environments:
-            (json_['environments'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Environment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        environments: (json_['environments'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Environment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environments != null) 'environments': environments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final environments = this.environments;
+    final nextPageToken = this.nextPageToken;
+    return {'environments': ?environments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse {
@@ -19126,23 +19551,24 @@ class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse {
   GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse.fromJson(
     core.Map json_,
   ) : this(
-        generatorEvaluations:
-            (json_['generatorEvaluations'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2GeneratorEvaluation.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        generatorEvaluations: (json_['generatorEvaluations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2GeneratorEvaluation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generatorEvaluations != null)
-      'generatorEvaluations': generatorEvaluations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatorEvaluations = this.generatorEvaluations;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'generatorEvaluations': ?generatorEvaluations,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListGeneratorsResponse {
@@ -19156,21 +19582,21 @@ class GoogleCloudDialogflowV2ListGeneratorsResponse {
 
   GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(core.Map json_)
     : this(
-        generators:
-            (json_['generators'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Generator.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        generators: (json_['generators'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Generator.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generators != null) 'generators': generators!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generators = this.generators;
+    final nextPageToken = this.nextPageToken;
+    return {'generators': ?generators, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListIntentsResponse {
@@ -19184,21 +19610,21 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
 
   GoogleCloudDialogflowV2ListIntentsResponse.fromJson(core.Map json_)
     : this(
-        intents:
-            (json_['intents'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Intent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        intents: (json_['intents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Intent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intents != null) 'intents': intents!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intents = this.intents;
+    final nextPageToken = this.nextPageToken;
+    return {'intents': ?intents, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
@@ -19212,21 +19638,21 @@ class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
 
   GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(core.Map json_)
     : this(
-        knowledgeBases:
-            (json_['knowledgeBases'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        knowledgeBases: (json_['knowledgeBases'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (knowledgeBases != null) 'knowledgeBases': knowledgeBases!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final knowledgeBases = this.knowledgeBases;
+    final nextPageToken = this.nextPageToken;
+    return {'knowledgeBases': ?knowledgeBases, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListMessagesResponse {
@@ -19240,21 +19666,21 @@ class GoogleCloudDialogflowV2ListMessagesResponse {
 
   GoogleCloudDialogflowV2ListMessagesResponse.fromJson(core.Map json_)
     : this(
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messages != null) 'messages': messages!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messages = this.messages;
+    final nextPageToken = this.nextPageToken;
+    return {'messages': ?messages, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2ListParticipantsResponse {
@@ -19269,20 +19695,20 @@ class GoogleCloudDialogflowV2ListParticipantsResponse {
   GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        participants:
-            (json_['participants'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Participant.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        participants: (json_['participants'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Participant.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (participants != null) 'participants': participants!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final participants = this.participants;
+    return {'nextPageToken': ?nextPageToken, 'participants': ?participants};
+  }
 }
 
 class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
@@ -19297,20 +19723,23 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
   GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sessionEntityTypes:
-            (json_['sessionEntityTypes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sessionEntityTypes: (json_['sessionEntityTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sessionEntityTypes != null) 'sessionEntityTypes': sessionEntityTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sessionEntityTypes = this.sessionEntityTypes;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sessionEntityTypes': ?sessionEntityTypes,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ListSipTrunksResponse {
@@ -19325,20 +19754,20 @@ class GoogleCloudDialogflowV2ListSipTrunksResponse {
   GoogleCloudDialogflowV2ListSipTrunksResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sipTrunks:
-            (json_['sipTrunks'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2SipTrunk.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sipTrunks: (json_['sipTrunks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SipTrunk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sipTrunks != null) 'sipTrunks': sipTrunks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sipTrunks = this.sipTrunks;
+    return {'nextPageToken': ?nextPageToken, 'sipTrunks': ?sipTrunks};
+  }
 }
 
 class GoogleCloudDialogflowV2ListToolsResponse {
@@ -19350,20 +19779,20 @@ class GoogleCloudDialogflowV2ListToolsResponse {
   GoogleCloudDialogflowV2ListToolsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tools:
-            (json_['tools'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Tool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Tool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tools != null) 'tools': tools!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tools = this.tools;
+    return {'nextPageToken': ?nextPageToken, 'tools': ?tools};
+  }
 }
 
 class GoogleCloudDialogflowV2ListVersionsResponse {
@@ -19378,20 +19807,20 @@ class GoogleCloudDialogflowV2ListVersionsResponse {
   GoogleCloudDialogflowV2ListVersionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Version.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Version.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final versions = this.versions;
+    return {'nextPageToken': ?nextPageToken, 'versions': ?versions};
+  }
 }
 
 class GoogleCloudDialogflowV2LoggingConfig {
@@ -19405,10 +19834,10 @@ class GoogleCloudDialogflowV2LoggingConfig {
             json_['enableStackdriverLogging'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableStackdriverLogging != null)
-      'enableStackdriverLogging': enableStackdriverLogging!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableStackdriverLogging = this.enableStackdriverLogging;
+    return {'enableStackdriverLogging': ?enableStackdriverLogging};
+  }
 }
 
 class GoogleCloudDialogflowV2Message {
@@ -19446,37 +19875,46 @@ class GoogleCloudDialogflowV2Message {
         content: json_['content'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
-        messageAnnotation:
-            json_.containsKey('messageAnnotation')
-                ? GoogleCloudDialogflowV2MessageAnnotation.fromJson(
-                  json_['messageAnnotation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        messageAnnotation: json_.containsKey('messageAnnotation')
+            ? GoogleCloudDialogflowV2MessageAnnotation.fromJson(
+                json_['messageAnnotation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         participant: json_['participant'] as core.String?,
         participantRole: json_['participantRole'] as core.String?,
         sendTime: json_['sendTime'] as core.String?,
-        sentimentAnalysis:
-            json_.containsKey('sentimentAnalysis')
-                ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
-                  json_['sentimentAnalysis']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sentimentAnalysis: json_.containsKey('sentimentAnalysis')
+            ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
+                json_['sentimentAnalysis']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (createTime != null) 'createTime': createTime!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (messageAnnotation != null) 'messageAnnotation': messageAnnotation!,
-    if (name != null) 'name': name!,
-    if (participant != null) 'participant': participant!,
-    if (participantRole != null) 'participantRole': participantRole!,
-    if (sendTime != null) 'sendTime': sendTime!,
-    if (sentimentAnalysis != null) 'sentimentAnalysis': sentimentAnalysis!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final createTime = this.createTime;
+    final languageCode = this.languageCode;
+    final messageAnnotation = this.messageAnnotation;
+    final name = this.name;
+    final participant = this.participant;
+    final participantRole = this.participantRole;
+    final sendTime = this.sendTime;
+    final sentimentAnalysis = this.sentimentAnalysis;
+    return {
+      'content': ?content,
+      'createTime': ?createTime,
+      'languageCode': ?languageCode,
+      'messageAnnotation': ?messageAnnotation,
+      'name': ?name,
+      'participant': ?participant,
+      'participantRole': ?participantRole,
+      'sendTime': ?sendTime,
+      'sentimentAnalysis': ?sentimentAnalysis,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2MessageAnnotation {
@@ -19488,21 +19926,20 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   GoogleCloudDialogflowV2MessageAnnotation.fromJson(core.Map json_)
     : this(
         containEntities: json_['containEntities'] as core.bool?,
-        parts:
-            (json_['parts'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containEntities != null) 'containEntities': containEntities!,
-    if (parts != null) 'parts': parts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containEntities = this.containEntities;
+    final parts = this.parts;
+    return {'containEntities': ?containEntities, 'parts': ?parts};
+  }
 }
 
 class GoogleCloudDialogflowV2MessageEntry {
@@ -19533,12 +19970,18 @@ class GoogleCloudDialogflowV2MessageEntry {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (role != null) 'role': role!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final languageCode = this.languageCode;
+    final role = this.role;
+    final text = this.text;
+    return {
+      'createTime': ?createTime,
+      'languageCode': ?languageCode,
+      'role': ?role,
+      'text': ?text,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2NotificationConfig {
@@ -19558,10 +20001,11 @@ class GoogleCloudDialogflowV2NotificationConfig {
         topic: json_['topic'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messageFormat != null) 'messageFormat': messageFormat!,
-    if (topic != null) 'topic': topic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messageFormat = this.messageFormat;
+    final topic = this.topic;
+    return {'messageFormat': ?messageFormat, 'topic': ?topic};
+  }
 }
 
 class GoogleCloudDialogflowV2OutputAudio {
@@ -19582,18 +20026,18 @@ class GoogleCloudDialogflowV2OutputAudio {
   GoogleCloudDialogflowV2OutputAudio.fromJson(core.Map json_)
     : this(
         audio: json_['audio'] as core.String?,
-        config:
-            json_.containsKey('config')
-                ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audio != null) 'audio': audio!,
-    if (config != null) 'config': config!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audio = this.audio;
+    final config = this.config;
+    return {'audio': ?audio, 'config': ?config};
+  }
 }
 
 class GoogleCloudDialogflowV2OutputAudioConfig {
@@ -19620,21 +20064,24 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
     : this(
         audioEncoding: json_['audioEncoding'] as core.String?,
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
-        synthesizeSpeechConfig:
-            json_.containsKey('synthesizeSpeechConfig')
-                ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                  json_['synthesizeSpeechConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        synthesizeSpeechConfig: json_.containsKey('synthesizeSpeechConfig')
+            ? GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+                json_['synthesizeSpeechConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioEncoding != null) 'audioEncoding': audioEncoding!,
-    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-    if (synthesizeSpeechConfig != null)
-      'synthesizeSpeechConfig': synthesizeSpeechConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioEncoding = this.audioEncoding;
+    final sampleRateHertz = this.sampleRateHertz;
+    final synthesizeSpeechConfig = this.synthesizeSpeechConfig;
+    return {
+      'audioEncoding': ?audioEncoding,
+      'sampleRateHertz': ?sampleRateHertz,
+      'synthesizeSpeechConfig': ?synthesizeSpeechConfig,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Participant {
@@ -19672,9 +20119,10 @@ class GoogleCloudDialogflowV2Participant {
   GoogleCloudDialogflowV2Participant.fromJson(core.Map json_)
     : this(
         agentDesktopSource: json_['agentDesktopSource'] as core.String?,
-        documentsMetadataFilters: (json_['documentsMetadataFilters']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        documentsMetadataFilters:
+            (json_['documentsMetadataFilters']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         name: json_['name'] as core.String?,
         obfuscatedExternalUserId:
             json_['obfuscatedExternalUserId'] as core.String?,
@@ -19682,17 +20130,22 @@ class GoogleCloudDialogflowV2Participant {
         sipRecordingMediaLabel: json_['sipRecordingMediaLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentDesktopSource != null) 'agentDesktopSource': agentDesktopSource!,
-    if (documentsMetadataFilters != null)
-      'documentsMetadataFilters': documentsMetadataFilters!,
-    if (name != null) 'name': name!,
-    if (obfuscatedExternalUserId != null)
-      'obfuscatedExternalUserId': obfuscatedExternalUserId!,
-    if (role != null) 'role': role!,
-    if (sipRecordingMediaLabel != null)
-      'sipRecordingMediaLabel': sipRecordingMediaLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentDesktopSource = this.agentDesktopSource;
+    final documentsMetadataFilters = this.documentsMetadataFilters;
+    final name = this.name;
+    final obfuscatedExternalUserId = this.obfuscatedExternalUserId;
+    final role = this.role;
+    final sipRecordingMediaLabel = this.sipRecordingMediaLabel;
+    return {
+      'agentDesktopSource': ?agentDesktopSource,
+      'documentsMetadataFilters': ?documentsMetadataFilters,
+      'name': ?name,
+      'obfuscatedExternalUserId': ?obfuscatedExternalUserId,
+      'role': ?role,
+      'sipRecordingMediaLabel': ?sipRecordingMediaLabel,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2QueryInput {
@@ -19704,31 +20157,29 @@ class GoogleCloudDialogflowV2QueryInput {
 
   GoogleCloudDialogflowV2QueryInput.fromJson(core.Map json_)
     : this(
-        audioConfig:
-            json_.containsKey('audioConfig')
-                ? GoogleCloudDialogflowV2InputAudioConfig.fromJson(
-                  json_['audioConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        event:
-            json_.containsKey('event')
-                ? GoogleCloudDialogflowV2EventInput.fromJson(
-                  json_['event'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        text:
-            json_.containsKey('text')
-                ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        audioConfig: json_.containsKey('audioConfig')
+            ? GoogleCloudDialogflowV2InputAudioConfig.fromJson(
+                json_['audioConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        event: json_.containsKey('event')
+            ? GoogleCloudDialogflowV2EventInput.fromJson(
+                json_['event'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudDialogflowV2TextInput.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioConfig != null) 'audioConfig': audioConfig!,
-    if (event != null) 'event': event!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioConfig = this.audioConfig;
+    final event = this.event;
+    final text = this.text;
+    return {'audioConfig': ?audioConfig, 'event': ?event, 'text': ?text};
+  }
 }
 
 class GoogleCloudDialogflowV2QueryParameters {
@@ -19762,59 +20213,65 @@ class GoogleCloudDialogflowV2QueryParameters {
 
   GoogleCloudDialogflowV2QueryParameters.fromJson(core.Map json_)
     : this(
-        contexts:
-            (json_['contexts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Context.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        geoLocation:
-            json_.containsKey('geoLocation')
-                ? GoogleTypeLatLng.fromJson(
-                  json_['geoLocation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        payload:
-            json_.containsKey('payload')
-                ? json_['payload'] as core.Map<core.String, core.dynamic>
-                : null,
+        contexts: (json_['contexts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Context.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        geoLocation: json_.containsKey('geoLocation')
+            ? GoogleTypeLatLng.fromJson(
+                json_['geoLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        payload: json_.containsKey('payload')
+            ? json_['payload'] as core.Map<core.String, core.dynamic>
+            : null,
         platform: json_['platform'] as core.String?,
         resetContexts: json_['resetContexts'] as core.bool?,
         sentimentAnalysisRequestConfig:
             json_.containsKey('sentimentAnalysisRequestConfig')
-                ? GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
-                  json_['sentimentAnalysisRequestConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sessionEntityTypes:
-            (json_['sessionEntityTypes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+            ? GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
+                json_['sentimentAnalysisRequestConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sessionEntityTypes: (json_['sessionEntityTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         timeZone: json_['timeZone'] as core.String?,
-        webhookHeaders: (json_['webhookHeaders']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        webhookHeaders:
+            (json_['webhookHeaders'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contexts != null) 'contexts': contexts!,
-    if (geoLocation != null) 'geoLocation': geoLocation!,
-    if (payload != null) 'payload': payload!,
-    if (platform != null) 'platform': platform!,
-    if (resetContexts != null) 'resetContexts': resetContexts!,
-    if (sentimentAnalysisRequestConfig != null)
-      'sentimentAnalysisRequestConfig': sentimentAnalysisRequestConfig!,
-    if (sessionEntityTypes != null) 'sessionEntityTypes': sessionEntityTypes!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (webhookHeaders != null) 'webhookHeaders': webhookHeaders!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contexts = this.contexts;
+    final geoLocation = this.geoLocation;
+    final payload = this.payload;
+    final platform = this.platform;
+    final resetContexts = this.resetContexts;
+    final sentimentAnalysisRequestConfig = this.sentimentAnalysisRequestConfig;
+    final sessionEntityTypes = this.sessionEntityTypes;
+    final timeZone = this.timeZone;
+    final webhookHeaders = this.webhookHeaders;
+    return {
+      'contexts': ?contexts,
+      'geoLocation': ?geoLocation,
+      'payload': ?payload,
+      'platform': ?platform,
+      'resetContexts': ?resetContexts,
+      'sentimentAnalysisRequestConfig': ?sentimentAnalysisRequestConfig,
+      'sessionEntityTypes': ?sessionEntityTypes,
+      'timeZone': ?timeZone,
+      'webhookHeaders': ?webhookHeaders,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2QueryResult {
@@ -19875,80 +20332,86 @@ class GoogleCloudDialogflowV2QueryResult {
         allRequiredParamsPresent:
             json_['allRequiredParamsPresent'] as core.bool?,
         cancelsSlotFilling: json_['cancelsSlotFilling'] as core.bool?,
-        diagnosticInfo:
-            json_.containsKey('diagnosticInfo')
-                ? json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>
-                : null,
-        fulfillmentMessages:
-            (json_['fulfillmentMessages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        diagnosticInfo: json_.containsKey('diagnosticInfo')
+            ? json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>
+            : null,
+        fulfillmentMessages: (json_['fulfillmentMessages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         fulfillmentText: json_['fulfillmentText'] as core.String?,
-        intent:
-            json_.containsKey('intent')
-                ? GoogleCloudDialogflowV2Intent.fromJson(
-                  json_['intent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        intent: json_.containsKey('intent')
+            ? GoogleCloudDialogflowV2Intent.fromJson(
+                json_['intent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         intentDetectionConfidence:
             (json_['intentDetectionConfidence'] as core.num?)?.toDouble(),
         languageCode: json_['languageCode'] as core.String?,
-        outputContexts:
-            (json_['outputContexts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Context.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
+        outputContexts: (json_['outputContexts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Context.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
         queryText: json_['queryText'] as core.String?,
-        sentimentAnalysisResult:
-            json_.containsKey('sentimentAnalysisResult')
-                ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
-                  json_['sentimentAnalysisResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sentimentAnalysisResult: json_.containsKey('sentimentAnalysisResult')
+            ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
+                json_['sentimentAnalysisResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         speechRecognitionConfidence:
             (json_['speechRecognitionConfidence'] as core.num?)?.toDouble(),
-        webhookPayload:
-            json_.containsKey('webhookPayload')
-                ? json_['webhookPayload'] as core.Map<core.String, core.dynamic>
-                : null,
+        webhookPayload: json_.containsKey('webhookPayload')
+            ? json_['webhookPayload'] as core.Map<core.String, core.dynamic>
+            : null,
         webhookSource: json_['webhookSource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (allRequiredParamsPresent != null)
-      'allRequiredParamsPresent': allRequiredParamsPresent!,
-    if (cancelsSlotFilling != null) 'cancelsSlotFilling': cancelsSlotFilling!,
-    if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
-    if (fulfillmentMessages != null)
-      'fulfillmentMessages': fulfillmentMessages!,
-    if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
-    if (intent != null) 'intent': intent!,
-    if (intentDetectionConfidence != null)
-      'intentDetectionConfidence': intentDetectionConfidence!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (outputContexts != null) 'outputContexts': outputContexts!,
-    if (parameters != null) 'parameters': parameters!,
-    if (queryText != null) 'queryText': queryText!,
-    if (sentimentAnalysisResult != null)
-      'sentimentAnalysisResult': sentimentAnalysisResult!,
-    if (speechRecognitionConfidence != null)
-      'speechRecognitionConfidence': speechRecognitionConfidence!,
-    if (webhookPayload != null) 'webhookPayload': webhookPayload!,
-    if (webhookSource != null) 'webhookSource': webhookSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final allRequiredParamsPresent = this.allRequiredParamsPresent;
+    final cancelsSlotFilling = this.cancelsSlotFilling;
+    final diagnosticInfo = this.diagnosticInfo;
+    final fulfillmentMessages = this.fulfillmentMessages;
+    final fulfillmentText = this.fulfillmentText;
+    final intent = this.intent;
+    final intentDetectionConfidence = this.intentDetectionConfidence;
+    final languageCode = this.languageCode;
+    final outputContexts = this.outputContexts;
+    final parameters = this.parameters;
+    final queryText = this.queryText;
+    final sentimentAnalysisResult = this.sentimentAnalysisResult;
+    final speechRecognitionConfidence = this.speechRecognitionConfidence;
+    final webhookPayload = this.webhookPayload;
+    final webhookSource = this.webhookSource;
+    return {
+      'action': ?action,
+      'allRequiredParamsPresent': ?allRequiredParamsPresent,
+      'cancelsSlotFilling': ?cancelsSlotFilling,
+      'diagnosticInfo': ?diagnosticInfo,
+      'fulfillmentMessages': ?fulfillmentMessages,
+      'fulfillmentText': ?fulfillmentText,
+      'intent': ?intent,
+      'intentDetectionConfidence': ?intentDetectionConfidence,
+      'languageCode': ?languageCode,
+      'outputContexts': ?outputContexts,
+      'parameters': ?parameters,
+      'queryText': ?queryText,
+      'sentimentAnalysisResult': ?sentimentAnalysisResult,
+      'speechRecognitionConfidence': ?speechRecognitionConfidence,
+      'webhookPayload': ?webhookPayload,
+      'webhookSource': ?webhookSource,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2RaiSettings {
@@ -19959,20 +20422,20 @@ class GoogleCloudDialogflowV2RaiSettings {
 
   GoogleCloudDialogflowV2RaiSettings.fromJson(core.Map json_)
     : this(
-        raiCategoryConfigs:
-            (json_['raiCategoryConfigs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        raiCategoryConfigs: (json_['raiCategoryConfigs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (raiCategoryConfigs != null) 'raiCategoryConfigs': raiCategoryConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final raiCategoryConfigs = this.raiCategoryConfigs;
+    return {'raiCategoryConfigs': ?raiCategoryConfigs};
+  }
 }
 
 class GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig {
@@ -20005,10 +20468,11 @@ class GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig {
         sensitivityLevel: json_['sensitivityLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (sensitivityLevel != null) 'sensitivityLevel': sensitivityLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final sensitivityLevel = this.sensitivityLevel;
+    return {'category': ?category, 'sensitivityLevel': ?sensitivityLevel};
+  }
 }
 
 class GoogleCloudDialogflowV2ReloadDocumentRequest {
@@ -20030,13 +20494,16 @@ class GoogleCloudDialogflowV2ReloadDocumentRequest {
             json_['smartMessagingPartialUpdate'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentUri != null) 'contentUri': contentUri!,
-    if (importGcsCustomMetadata != null)
-      'importGcsCustomMetadata': importGcsCustomMetadata!,
-    if (smartMessagingPartialUpdate != null)
-      'smartMessagingPartialUpdate': smartMessagingPartialUpdate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentUri = this.contentUri;
+    final importGcsCustomMetadata = this.importGcsCustomMetadata;
+    final smartMessagingPartialUpdate = this.smartMessagingPartialUpdate;
+    return {
+      'contentUri': ?contentUri,
+      'importGcsCustomMetadata': ?importGcsCustomMetadata,
+      'smartMessagingPartialUpdate': ?smartMessagingPartialUpdate,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2RestoreAgentRequest = $AgentRequest;
@@ -20052,21 +20519,21 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
 
   GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(core.Map json_)
     : this(
-        agents:
-            (json_['agents'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Agent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        agents: (json_['agents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Agent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agents != null) 'agents': agents!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agents = this.agents;
+    final nextPageToken = this.nextPageToken;
+    return {'agents': ?agents, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
@@ -20094,24 +20561,29 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
     : this(
         answer: json_['answer'] as core.String?,
         answerRecord: json_['answerRecord'] as core.String?,
-        answerSources:
-            (json_['answerSources'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        answerSources: (json_['answerSources'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         answerType: json_['answerType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answer != null) 'answer': answer!,
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (answerSources != null) 'answerSources': answerSources!,
-    if (answerType != null) 'answerType': answerType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answer = this.answer;
+    final answerRecord = this.answerRecord;
+    final answerSources = this.answerSources;
+    final answerType = this.answerType;
+    return {
+      'answer': ?answer,
+      'answerRecord': ?answerRecord,
+      'answerSources': ?answerSources,
+      'answerType': ?answerType,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
@@ -20134,21 +20606,26 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
   GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
     core.Map json_,
   ) : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         snippet: json_['snippet'] as core.String?,
         title: json_['title'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (snippet != null) 'snippet': snippet!,
-    if (title != null) 'title': title!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final snippet = this.snippet;
+    final title = this.title;
+    final uri = this.uri;
+    return {
+      'metadata': ?metadata,
+      'snippet': ?snippet,
+      'title': ?title,
+      'uri': ?uri,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
@@ -20184,36 +20661,37 @@ class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
             json_['datastoreResponseReason'] as core.String?,
         ingestedContextReferenceDebugInfo:
             json_.containsKey('ingestedContextReferenceDebugInfo')
-                ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
-                  json_['ingestedContextReferenceDebugInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        searchKnowledgeBehavior:
-            json_.containsKey('searchKnowledgeBehavior')
-                ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
-                  json_['searchKnowledgeBehavior']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceLatency:
-            json_.containsKey('serviceLatency')
-                ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
-                  json_['serviceLatency']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+                json_['ingestedContextReferenceDebugInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        searchKnowledgeBehavior: json_.containsKey('searchKnowledgeBehavior')
+            ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
+                json_['searchKnowledgeBehavior']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceLatency: json_.containsKey('serviceLatency')
+            ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
+                json_['serviceLatency'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datastoreResponseReason != null)
-      'datastoreResponseReason': datastoreResponseReason!,
-    if (ingestedContextReferenceDebugInfo != null)
-      'ingestedContextReferenceDebugInfo': ingestedContextReferenceDebugInfo!,
-    if (searchKnowledgeBehavior != null)
-      'searchKnowledgeBehavior': searchKnowledgeBehavior!,
-    if (serviceLatency != null) 'serviceLatency': serviceLatency!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datastoreResponseReason = this.datastoreResponseReason;
+    final ingestedContextReferenceDebugInfo =
+        this.ingestedContextReferenceDebugInfo;
+    final searchKnowledgeBehavior = this.searchKnowledgeBehavior;
+    final serviceLatency = this.serviceLatency;
+    return {
+      'datastoreResponseReason': ?datastoreResponseReason,
+      'ingestedContextReferenceDebugInfo': ?ingestedContextReferenceDebugInfo,
+      'searchKnowledgeBehavior': ?searchKnowledgeBehavior,
+      'serviceLatency': ?serviceLatency,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior {
@@ -20237,14 +20715,16 @@ class GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior {
             json_['thirdPartyConnectorAllowed'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerGenerationRewriterOn != null)
-      'answerGenerationRewriterOn': answerGenerationRewriterOn!,
-    if (endUserMetadataIncluded != null)
-      'endUserMetadataIncluded': endUserMetadataIncluded!,
-    if (thirdPartyConnectorAllowed != null)
-      'thirdPartyConnectorAllowed': thirdPartyConnectorAllowed!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerGenerationRewriterOn = this.answerGenerationRewriterOn;
+    final endUserMetadataIncluded = this.endUserMetadataIncluded;
+    final thirdPartyConnectorAllowed = this.thirdPartyConnectorAllowed;
+    return {
+      'answerGenerationRewriterOn': ?answerGenerationRewriterOn,
+      'endUserMetadataIncluded': ?endUserMetadataIncluded,
+      'thirdPartyConnectorAllowed': ?thirdPartyConnectorAllowed,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequest {
@@ -20287,43 +20767,50 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
     : this(
         conversation: json_['conversation'] as core.String?,
         conversationProfile: json_['conversationProfile'] as core.String?,
-        endUserMetadata:
-            json_.containsKey('endUserMetadata')
-                ? json_['endUserMetadata']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        endUserMetadata: json_.containsKey('endUserMetadata')
+            ? json_['endUserMetadata'] as core.Map<core.String, core.dynamic>
+            : null,
         exactSearch: json_['exactSearch'] as core.bool?,
         latestMessage: json_['latestMessage'] as core.String?,
         parent: json_['parent'] as core.String?,
-        query:
-            json_.containsKey('query')
-                ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['query'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        query: json_.containsKey('query')
+            ? GoogleCloudDialogflowV2TextInput.fromJson(
+                json_['query'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         querySource: json_['querySource'] as core.String?,
-        searchConfig:
-            json_.containsKey('searchConfig')
-                ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
-                  json_['searchConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        searchConfig: json_.containsKey('searchConfig')
+            ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
+                json_['searchConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sessionId: json_['sessionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversation != null) 'conversation': conversation!,
-    if (conversationProfile != null)
-      'conversationProfile': conversationProfile!,
-    if (endUserMetadata != null) 'endUserMetadata': endUserMetadata!,
-    if (exactSearch != null) 'exactSearch': exactSearch!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (parent != null) 'parent': parent!,
-    if (query != null) 'query': query!,
-    if (querySource != null) 'querySource': querySource!,
-    if (searchConfig != null) 'searchConfig': searchConfig!,
-    if (sessionId != null) 'sessionId': sessionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversation = this.conversation;
+    final conversationProfile = this.conversationProfile;
+    final endUserMetadata = this.endUserMetadata;
+    final exactSearch = this.exactSearch;
+    final latestMessage = this.latestMessage;
+    final parent = this.parent;
+    final query = this.query;
+    final querySource = this.querySource;
+    final searchConfig = this.searchConfig;
+    final sessionId = this.sessionId;
+    return {
+      'conversation': ?conversation,
+      'conversationProfile': ?conversationProfile,
+      'endUserMetadata': ?endUserMetadata,
+      'exactSearch': ?exactSearch,
+      'latestMessage': ?latestMessage,
+      'parent': ?parent,
+      'query': ?query,
+      'querySource': ?querySource,
+      'searchConfig': ?searchConfig,
+      'sessionId': ?sessionId,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
@@ -20344,30 +20831,29 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
     core.Map json_,
   ) : this(
-        boostSpecs:
-            (json_['boostSpecs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        filterSpecs:
-            (json_['filterSpecs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        boostSpecs: (json_['boostSpecs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        filterSpecs: (json_['filterSpecs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boostSpecs != null) 'boostSpecs': boostSpecs!,
-    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boostSpecs = this.boostSpecs;
+    final filterSpecs = this.filterSpecs;
+    return {'boostSpecs': ?boostSpecs, 'filterSpecs': ?filterSpecs};
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
@@ -20385,25 +20871,24 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
     core.Map json_,
   ) : this(
-        dataStores:
-            (json_['dataStores'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        spec:
-            (json_['spec'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        dataStores: (json_['dataStores'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        spec: (json_['spec'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataStores != null) 'dataStores': dataStores!,
-    if (spec != null) 'spec': spec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataStores = this.dataStores;
+    final spec = this.spec;
+    return {'dataStores': ?dataStores, 'spec': ?spec};
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec {
@@ -20419,21 +20904,20 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
     core.Map json_,
   ) : this(
-        conditionBoostSpecs:
-            (json_['conditionBoostSpecs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        conditionBoostSpecs: (json_['conditionBoostSpecs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conditionBoostSpecs != null)
-      'conditionBoostSpecs': conditionBoostSpecs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conditionBoostSpecs = this.conditionBoostSpecs;
+    return {'conditionBoostSpecs': ?conditionBoostSpecs};
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec {
@@ -20452,21 +20936,25 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
     core.Map json_,
   ) : this(
         boost: (json_['boost'] as core.num?)?.toDouble(),
-        boostControlSpec:
-            json_.containsKey('boostControlSpec')
-                ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
-                  json_['boostControlSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boostControlSpec: json_.containsKey('boostControlSpec')
+            ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
+                json_['boostControlSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         condition: json_['condition'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (boostControlSpec != null) 'boostControlSpec': boostControlSpec!,
-    if (condition != null) 'condition': condition!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boost = this.boost;
+    final boostControlSpec = this.boostControlSpec;
+    final condition = this.condition;
+    return {
+      'boost': ?boost,
+      'boostControlSpec': ?boostControlSpec,
+      'condition': ?condition,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec {
@@ -20499,25 +20987,30 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
     core.Map json_,
   ) : this(
         attributeType: json_['attributeType'] as core.String?,
-        controlPoints:
-            (json_['controlPoints'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        controlPoints: (json_['controlPoints'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         fieldName: json_['fieldName'] as core.String?,
         interpolationType: json_['interpolationType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributeType != null) 'attributeType': attributeType!,
-    if (controlPoints != null) 'controlPoints': controlPoints!,
-    if (fieldName != null) 'fieldName': fieldName!,
-    if (interpolationType != null) 'interpolationType': interpolationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributeType = this.attributeType;
+    final controlPoints = this.controlPoints;
+    final fieldName = this.fieldName;
+    final interpolationType = this.interpolationType;
+    return {
+      'attributeType': ?attributeType,
+      'controlPoints': ?controlPoints,
+      'fieldName': ?fieldName,
+      'interpolationType': ?interpolationType,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
@@ -20538,31 +21031,32 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 
   GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(core.Map json_)
     : this(
-        answers:
-            (json_['answers'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SearchKnowledgeAnswer.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        answers: (json_['answers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SearchKnowledgeAnswer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         rewrittenQuery: json_['rewrittenQuery'] as core.String?,
-        searchKnowledgeDebugInfo:
-            json_.containsKey('searchKnowledgeDebugInfo')
-                ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfo.fromJson(
-                  json_['searchKnowledgeDebugInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        searchKnowledgeDebugInfo: json_.containsKey('searchKnowledgeDebugInfo')
+            ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfo.fromJson(
+                json_['searchKnowledgeDebugInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answers != null) 'answers': answers!,
-    if (rewrittenQuery != null) 'rewrittenQuery': rewrittenQuery!,
-    if (searchKnowledgeDebugInfo != null)
-      'searchKnowledgeDebugInfo': searchKnowledgeDebugInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answers = this.answers;
+    final rewrittenQuery = this.rewrittenQuery;
+    final searchKnowledgeDebugInfo = this.searchKnowledgeDebugInfo;
+    return {
+      'answers': ?answers,
+      'rewrittenQuery': ?rewrittenQuery,
+      'searchKnowledgeDebugInfo': ?searchKnowledgeDebugInfo,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2Sentiment = $Shared18;
@@ -20580,10 +21074,10 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
             json_['analyzeQueryTextSentiment'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyzeQueryTextSentiment != null)
-      'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyzeQueryTextSentiment = this.analyzeQueryTextSentiment;
+    return {'analyzeQueryTextSentiment': ?analyzeQueryTextSentiment};
+  }
 }
 
 class GoogleCloudDialogflowV2SentimentAnalysisResult {
@@ -20593,18 +21087,18 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
 
   GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(core.Map json_)
     : this(
-        queryTextSentiment:
-            json_.containsKey('queryTextSentiment')
-                ? GoogleCloudDialogflowV2Sentiment.fromJson(
-                  json_['queryTextSentiment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        queryTextSentiment: json_.containsKey('queryTextSentiment')
+            ? GoogleCloudDialogflowV2Sentiment.fromJson(
+                json_['queryTextSentiment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryTextSentiment != null) 'queryTextSentiment': queryTextSentiment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final queryTextSentiment = this.queryTextSentiment;
+    return {'queryTextSentiment': ?queryTextSentiment};
+  }
 }
 
 class GoogleCloudDialogflowV2ServiceLatency {
@@ -20615,21 +21109,20 @@ class GoogleCloudDialogflowV2ServiceLatency {
 
   GoogleCloudDialogflowV2ServiceLatency.fromJson(core.Map json_)
     : this(
-        internalServiceLatencies:
-            (json_['internalServiceLatencies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        internalServiceLatencies: (json_['internalServiceLatencies'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (internalServiceLatencies != null)
-      'internalServiceLatencies': internalServiceLatencies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final internalServiceLatencies = this.internalServiceLatencies;
+    return {'internalServiceLatencies': ?internalServiceLatencies};
+  }
 }
 
 class GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
@@ -20654,12 +21147,18 @@ class GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
         step: json_['step'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completeTime != null) 'completeTime': completeTime!,
-    if (latencyMs != null) 'latencyMs': latencyMs!,
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completeTime = this.completeTime;
+    final latencyMs = this.latencyMs;
+    final startTime = this.startTime;
+    final step = this.step;
+    return {
+      'completeTime': ?completeTime,
+      'latencyMs': ?latencyMs,
+      'startTime': ?startTime,
+      'step': ?step,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SessionEntityType {
@@ -20681,23 +21180,27 @@ class GoogleCloudDialogflowV2SessionEntityType {
 
   GoogleCloudDialogflowV2SessionEntityType.fromJson(core.Map json_)
     : this(
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         entityOverrideMode: json_['entityOverrideMode'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entities != null) 'entities': entities!,
-    if (entityOverrideMode != null) 'entityOverrideMode': entityOverrideMode!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    final entityOverrideMode = this.entityOverrideMode;
+    final name = this.name;
+    return {
+      'entities': ?entities,
+      'entityOverrideMode': ?entityOverrideMode,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
@@ -20720,20 +21223,22 @@ class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
     core.Map json_,
   ) : this(
         participantRole: json_['participantRole'] as core.String?,
-        suggestionFeatureConfig:
-            json_.containsKey('suggestionFeatureConfig')
-                ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
-                  json_['suggestionFeatureConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        suggestionFeatureConfig: json_.containsKey('suggestionFeatureConfig')
+            ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
+                json_['suggestionFeatureConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (participantRole != null) 'participantRole': participantRole!,
-    if (suggestionFeatureConfig != null)
-      'suggestionFeatureConfig': suggestionFeatureConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final participantRole = this.participantRole;
+    final suggestionFeatureConfig = this.suggestionFeatureConfig;
+    return {
+      'participantRole': ?participantRole,
+      'suggestionFeatureConfig': ?suggestionFeatureConfig,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SipTrunk {
@@ -20751,28 +21256,32 @@ class GoogleCloudDialogflowV2SipTrunk {
 
   GoogleCloudDialogflowV2SipTrunk.fromJson(core.Map json_)
     : this(
-        connections:
-            (json_['connections'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2Connection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        connections: (json_['connections'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2Connection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         displayName: json_['displayName'] as core.String?,
-        expectedHostname:
-            (json_['expectedHostname'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        expectedHostname: (json_['expectedHostname'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connections != null) 'connections': connections!,
-    if (displayName != null) 'displayName': displayName!,
-    if (expectedHostname != null) 'expectedHostname': expectedHostname!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connections = this.connections;
+    final displayName = this.displayName;
+    final expectedHostname = this.expectedHostname;
+    final name = this.name;
+    return {
+      'connections': ?connections,
+      'displayName': ?displayName,
+      'expectedHostname': ?expectedHostname,
+      'name': ?name,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SmartReplyAnswer {
@@ -20793,11 +21302,16 @@ class GoogleCloudDialogflowV2SmartReplyAnswer {
         reply: json_['reply'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (confidence != null) 'confidence': confidence!,
-    if (reply != null) 'reply': reply!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final confidence = this.confidence;
+    final reply = this.reply;
+    return {
+      'answerRecord': ?answerRecord,
+      'confidence': ?confidence,
+      'reply': ?reply,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SmartReplyMetrics {
@@ -20813,25 +21327,29 @@ class GoogleCloudDialogflowV2SmartReplyMetrics {
 
   GoogleCloudDialogflowV2SmartReplyMetrics.fromJson(core.Map json_)
     : this(
-        allowlistCoverage:
-            (json_['allowlistCoverage'] as core.num?)?.toDouble(),
+        allowlistCoverage: (json_['allowlistCoverage'] as core.num?)
+            ?.toDouble(),
         conversationCount: json_['conversationCount'] as core.String?,
-        topNMetrics:
-            (json_['topNMetrics'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        topNMetrics: (json_['topNMetrics'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistCoverage != null) 'allowlistCoverage': allowlistCoverage!,
-    if (conversationCount != null) 'conversationCount': conversationCount!,
-    if (topNMetrics != null) 'topNMetrics': topNMetrics!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistCoverage = this.allowlistCoverage;
+    final conversationCount = this.conversationCount;
+    final topNMetrics = this.topNMetrics;
+    return {
+      'allowlistCoverage': ?allowlistCoverage,
+      'conversationCount': ?conversationCount,
+      'topNMetrics': ?topNMetrics,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
@@ -20846,10 +21364,11 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
         recall: (json_['recall'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (n != null) 'n': n!,
-    if (recall != null) 'recall': recall!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final n = this.n;
+    final recall = this.recall;
+    return {'n': ?n, 'recall': ?recall};
+  }
 }
 
 typedef GoogleCloudDialogflowV2SmartReplyModelMetadata = $ModelMetadata;
@@ -20863,16 +21382,16 @@ class GoogleCloudDialogflowV2SpeechContext {
   GoogleCloudDialogflowV2SpeechContext.fromJson(core.Map json_)
     : this(
         boost: (json_['boost'] as core.num?)?.toDouble(),
-        phrases:
-            (json_['phrases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        phrases: (json_['phrases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (phrases != null) 'phrases': phrases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boost = this.boost;
+    final phrases = this.phrases;
+    return {'boost': ?boost, 'phrases': ?phrases};
+  }
 }
 
 class GoogleCloudDialogflowV2SpeechToTextConfig {
@@ -20920,27 +21439,35 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
         enableWordInfo: json_['enableWordInfo'] as core.bool?,
         languageCode: json_['languageCode'] as core.String?,
         model: json_['model'] as core.String?,
-        phraseSets:
-            (json_['phraseSets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        phraseSets: (json_['phraseSets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         speechModelVariant: json_['speechModelVariant'] as core.String?,
         useTimeoutBasedEndpointing:
             json_['useTimeoutBasedEndpointing'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioEncoding != null) 'audioEncoding': audioEncoding!,
-    if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (model != null) 'model': model!,
-    if (phraseSets != null) 'phraseSets': phraseSets!,
-    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-    if (speechModelVariant != null) 'speechModelVariant': speechModelVariant!,
-    if (useTimeoutBasedEndpointing != null)
-      'useTimeoutBasedEndpointing': useTimeoutBasedEndpointing!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioEncoding = this.audioEncoding;
+    final enableWordInfo = this.enableWordInfo;
+    final languageCode = this.languageCode;
+    final model = this.model;
+    final phraseSets = this.phraseSets;
+    final sampleRateHertz = this.sampleRateHertz;
+    final speechModelVariant = this.speechModelVariant;
+    final useTimeoutBasedEndpointing = this.useTimeoutBasedEndpointing;
+    return {
+      'audioEncoding': ?audioEncoding,
+      'enableWordInfo': ?enableWordInfo,
+      'languageCode': ?languageCode,
+      'model': ?model,
+      'phraseSets': ?phraseSets,
+      'sampleRateHertz': ?sampleRateHertz,
+      'speechModelVariant': ?speechModelVariant,
+      'useTimeoutBasedEndpointing': ?useTimeoutBasedEndpointing,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestArticlesRequest {
@@ -20956,22 +21483,26 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
 
   GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(core.Map json_)
     : this(
-        assistQueryParams:
-            json_.containsKey('assistQueryParams')
-                ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
-                  json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assistQueryParams: json_.containsKey('assistQueryParams')
+            ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                json_['assistQueryParams']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assistQueryParams = this.assistQueryParams;
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    return {
+      'assistQueryParams': ?assistQueryParams,
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestArticlesResponse {
@@ -20987,23 +21518,27 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
 
   GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(core.Map json_)
     : this(
-        articleAnswers:
-            (json_['articleAnswers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2ArticleAnswer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        articleAnswers: (json_['articleAnswers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (articleAnswers != null) 'articleAnswers': articleAnswers!,
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final articleAnswers = this.articleAnswers;
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    return {
+      'articleAnswers': ?articleAnswers,
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
@@ -21020,22 +21555,26 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
     core.Map json_,
   ) : this(
-        assistQueryParams:
-            json_.containsKey('assistQueryParams')
-                ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
-                  json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assistQueryParams: json_.containsKey('assistQueryParams')
+            ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                json_['assistQueryParams']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assistQueryParams = this.assistQueryParams;
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    return {
+      'assistQueryParams': ?assistQueryParams,
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
@@ -21054,19 +21593,23 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
   ) : this(
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
-        summary:
-            json_.containsKey('summary')
-                ? GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
-                  json_['summary'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        summary: json_.containsKey('summary')
+            ? GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    final summary = this.summary;
+    return {
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+      'summary': ?summary,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
@@ -21092,29 +21635,34 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
   ) : this(
         answerRecord: json_['answerRecord'] as core.String?,
         baselineModelVersion: json_['baselineModelVersion'] as core.String?,
-        sortedTextSections:
-            (json_['sortedTextSections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        sortedTextSections: (json_['sortedTextSections'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         text: json_['text'] as core.String?,
-        textSections: (json_['textSections']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        textSections:
+            (json_['textSections'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (baselineModelVersion != null)
-      'baselineModelVersion': baselineModelVersion!,
-    if (sortedTextSections != null) 'sortedTextSections': sortedTextSections!,
-    if (text != null) 'text': text!,
-    if (textSections != null) 'textSections': textSections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final baselineModelVersion = this.baselineModelVersion;
+    final sortedTextSections = this.sortedTextSections;
+    final text = this.text;
+    final textSections = this.textSections;
+    return {
+      'answerRecord': ?answerRecord,
+      'baselineModelVersion': ?baselineModelVersion,
+      'sortedTextSections': ?sortedTextSections,
+      'text': ?text,
+      'textSections': ?textSections,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection {
@@ -21133,10 +21681,11 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySec
         summary: json_['summary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (section != null) 'section': section!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final section = this.section;
+    final summary = this.summary;
+    return {'section': ?section, 'summary': ?summary};
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
@@ -21152,22 +21701,26 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
 
   GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(core.Map json_)
     : this(
-        assistQueryParams:
-            json_.containsKey('assistQueryParams')
-                ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
-                  json_['assistQueryParams']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assistQueryParams: json_.containsKey('assistQueryParams')
+            ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                json_['assistQueryParams']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assistQueryParams = this.assistQueryParams;
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    return {
+      'assistQueryParams': ?assistQueryParams,
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
@@ -21184,22 +21737,26 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
   GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(core.Map json_)
     : this(
         contextSize: json_['contextSize'] as core.int?,
-        faqAnswers:
-            (json_['faqAnswers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2FaqAnswer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        faqAnswers: (json_['faqAnswers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (faqAnswers != null) 'faqAnswers': faqAnswers!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final faqAnswers = this.faqAnswers;
+    final latestMessage = this.latestMessage;
+    return {
+      'contextSize': ?contextSize,
+      'faqAnswers': ?faqAnswers,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
@@ -21220,12 +21777,16 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
         previousSuggestedQuery: json_['previousSuggestedQuery'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (previousSuggestedQuery != null)
-      'previousSuggestedQuery': previousSuggestedQuery!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    final previousSuggestedQuery = this.previousSuggestedQuery;
+    return {
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+      'previousSuggestedQuery': ?previousSuggestedQuery,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
@@ -21242,22 +21803,25 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
   GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(core.Map json_)
     : this(
         contextSize: json_['contextSize'] as core.int?,
-        knowledgeAssistAnswer:
-            json_.containsKey('knowledgeAssistAnswer')
-                ? GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(
-                  json_['knowledgeAssistAnswer']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        knowledgeAssistAnswer: json_.containsKey('knowledgeAssistAnswer')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(
+                json_['knowledgeAssistAnswer']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (knowledgeAssistAnswer != null)
-      'knowledgeAssistAnswer': knowledgeAssistAnswer!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final knowledgeAssistAnswer = this.knowledgeAssistAnswer;
+    final latestMessage = this.latestMessage;
+    return {
+      'contextSize': ?contextSize,
+      'knowledgeAssistAnswer': ?knowledgeAssistAnswer,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
@@ -21274,21 +21838,25 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
   GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(core.Map json_)
     : this(
         contextSize: json_['contextSize'] as core.int?,
-        currentTextInput:
-            json_.containsKey('currentTextInput')
-                ? GoogleCloudDialogflowV2TextInput.fromJson(
-                  json_['currentTextInput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        currentTextInput: json_.containsKey('currentTextInput')
+            ? GoogleCloudDialogflowV2TextInput.fromJson(
+                json_['currentTextInput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         latestMessage: json_['latestMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (currentTextInput != null) 'currentTextInput': currentTextInput!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final currentTextInput = this.currentTextInput;
+    final latestMessage = this.latestMessage;
+    return {
+      'contextSize': ?contextSize,
+      'currentTextInput': ?currentTextInput,
+      'latestMessage': ?latestMessage,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
@@ -21306,21 +21874,25 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
     : this(
         contextSize: json_['contextSize'] as core.int?,
         latestMessage: json_['latestMessage'] as core.String?,
-        smartReplyAnswers:
-            (json_['smartReplyAnswers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        smartReplyAnswers: (json_['smartReplyAnswers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextSize != null) 'contextSize': contextSize!,
-    if (latestMessage != null) 'latestMessage': latestMessage!,
-    if (smartReplyAnswers != null) 'smartReplyAnswers': smartReplyAnswers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextSize = this.contextSize;
+    final latestMessage = this.latestMessage;
+    final smartReplyAnswers = this.smartReplyAnswers;
+    return {
+      'contextSize': ?contextSize,
+      'latestMessage': ?latestMessage,
+      'smartReplyAnswers': ?smartReplyAnswers,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestionDedupingConfig {
@@ -21335,15 +21907,18 @@ class GoogleCloudDialogflowV2SuggestionDedupingConfig {
   GoogleCloudDialogflowV2SuggestionDedupingConfig.fromJson(core.Map json_)
     : this(
         enableDeduping: json_['enableDeduping'] as core.bool?,
-        similarityThreshold:
-            (json_['similarityThreshold'] as core.num?)?.toDouble(),
+        similarityThreshold: (json_['similarityThreshold'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableDeduping != null) 'enableDeduping': enableDeduping!,
-    if (similarityThreshold != null)
-      'similarityThreshold': similarityThreshold!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableDeduping = this.enableDeduping;
+    final similarityThreshold = this.similarityThreshold;
+    return {
+      'enableDeduping': ?enableDeduping,
+      'similarityThreshold': ?similarityThreshold,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestionFeature {
@@ -21363,9 +21938,10 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   GoogleCloudDialogflowV2SuggestionFeature.fromJson(core.Map json_)
     : this(type: json_['type'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestionInput {
@@ -21396,19 +21972,24 @@ class GoogleCloudDialogflowV2SuggestionInput {
     : this(
         action: json_['action'] as core.String?,
         answerRecord: json_['answerRecord'] as core.String?,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
         sendTime: json_['sendTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (parameters != null) 'parameters': parameters!,
-    if (sendTime != null) 'sendTime': sendTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final answerRecord = this.answerRecord;
+    final parameters = this.parameters;
+    final sendTime = this.sendTime;
+    return {
+      'action': ?action,
+      'answerRecord': ?answerRecord,
+      'parameters': ?parameters,
+      'sendTime': ?sendTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SuggestionResult {
@@ -21433,62 +22014,63 @@ class GoogleCloudDialogflowV2SuggestionResult {
 
   GoogleCloudDialogflowV2SuggestionResult.fromJson(core.Map json_)
     : this(
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         generateSuggestionsResponse:
             json_.containsKey('generateSuggestionsResponse')
-                ? GoogleCloudDialogflowV2GenerateSuggestionsResponse.fromJson(
-                  json_['generateSuggestionsResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        suggestArticlesResponse:
-            json_.containsKey('suggestArticlesResponse')
-                ? GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
-                  json_['suggestArticlesResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2GenerateSuggestionsResponse.fromJson(
+                json_['generateSuggestionsResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestArticlesResponse: json_.containsKey('suggestArticlesResponse')
+            ? GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
+                json_['suggestArticlesResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suggestFaqAnswersResponse:
             json_.containsKey('suggestFaqAnswersResponse')
-                ? GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
-                  json_['suggestFaqAnswersResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+                json_['suggestFaqAnswersResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suggestKnowledgeAssistResponse:
             json_.containsKey('suggestKnowledgeAssistResponse')
-                ? GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
-                  json_['suggestKnowledgeAssistResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
+                json_['suggestKnowledgeAssistResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suggestSmartRepliesResponse:
             json_.containsKey('suggestSmartRepliesResponse')
-                ? GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
-                  json_['suggestSmartRepliesResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+                json_['suggestSmartRepliesResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (generateSuggestionsResponse != null)
-      'generateSuggestionsResponse': generateSuggestionsResponse!,
-    if (suggestArticlesResponse != null)
-      'suggestArticlesResponse': suggestArticlesResponse!,
-    if (suggestFaqAnswersResponse != null)
-      'suggestFaqAnswersResponse': suggestFaqAnswersResponse!,
-    if (suggestKnowledgeAssistResponse != null)
-      'suggestKnowledgeAssistResponse': suggestKnowledgeAssistResponse!,
-    if (suggestSmartRepliesResponse != null)
-      'suggestSmartRepliesResponse': suggestSmartRepliesResponse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final generateSuggestionsResponse = this.generateSuggestionsResponse;
+    final suggestArticlesResponse = this.suggestArticlesResponse;
+    final suggestFaqAnswersResponse = this.suggestFaqAnswersResponse;
+    final suggestKnowledgeAssistResponse = this.suggestKnowledgeAssistResponse;
+    final suggestSmartRepliesResponse = this.suggestSmartRepliesResponse;
+    return {
+      'error': ?error,
+      'generateSuggestionsResponse': ?generateSuggestionsResponse,
+      'suggestArticlesResponse': ?suggestArticlesResponse,
+      'suggestFaqAnswersResponse': ?suggestFaqAnswersResponse,
+      'suggestKnowledgeAssistResponse': ?suggestKnowledgeAssistResponse,
+      'suggestSmartRepliesResponse': ?suggestSmartRepliesResponse,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationContext {
@@ -21506,34 +22088,36 @@ class GoogleCloudDialogflowV2SummarizationContext {
 
   GoogleCloudDialogflowV2SummarizationContext.fromJson(core.Map json_)
     : this(
-        fewShotExamples:
-            (json_['fewShotExamples'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2FewShotExample.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fewShotExamples: (json_['fewShotExamples'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2FewShotExample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         outputLanguageCode: json_['outputLanguageCode'] as core.String?,
-        summarizationSections:
-            (json_['summarizationSections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationSection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        summarizationSections: (json_['summarizationSections'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fewShotExamples != null) 'fewShotExamples': fewShotExamples!,
-    if (outputLanguageCode != null) 'outputLanguageCode': outputLanguageCode!,
-    if (summarizationSections != null)
-      'summarizationSections': summarizationSections!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fewShotExamples = this.fewShotExamples;
+    final outputLanguageCode = this.outputLanguageCode;
+    final summarizationSections = this.summarizationSections;
+    final version = this.version;
+    return {
+      'fewShotExamples': ?fewShotExamples,
+      'outputLanguageCode': ?outputLanguageCode,
+      'summarizationSections': ?summarizationSections,
+      'version': ?version,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
@@ -21563,33 +22147,30 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(core.Map json_)
     : this(
-        conversationDetails:
-            (json_['conversationDetails'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        overallMetrics:
-            (json_['overallMetrics'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        overallSectionTokens:
-            (json_['overallSectionTokens'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        conversationDetails: (json_['conversationDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        overallMetrics: (json_['overallMetrics'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        overallSectionTokens: (json_['overallSectionTokens'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         summarizationEvaluationMergedResultsUri:
             json_['summarizationEvaluationMergedResultsUri'] as core.String?,
         summarizationEvaluationResults:
@@ -21603,18 +22184,22 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversationDetails != null)
-      'conversationDetails': conversationDetails!,
-    if (overallMetrics != null) 'overallMetrics': overallMetrics!,
-    if (overallSectionTokens != null)
-      'overallSectionTokens': overallSectionTokens!,
-    if (summarizationEvaluationMergedResultsUri != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationDetails = this.conversationDetails;
+    final overallMetrics = this.overallMetrics;
+    final overallSectionTokens = this.overallSectionTokens;
+    final summarizationEvaluationMergedResultsUri =
+        this.summarizationEvaluationMergedResultsUri;
+    final summarizationEvaluationResults = this.summarizationEvaluationResults;
+    return {
+      'conversationDetails': ?conversationDetails,
+      'overallMetrics': ?overallMetrics,
+      'overallSectionTokens': ?overallSectionTokens,
       'summarizationEvaluationMergedResultsUri':
-          summarizationEvaluationMergedResultsUri!,
-    if (summarizationEvaluationResults != null)
-      'summarizationEvaluationResults': summarizationEvaluationResults!,
-  };
+          ?summarizationEvaluationMergedResultsUri,
+      'summarizationEvaluationResults': ?summarizationEvaluationResults,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition {
@@ -21636,11 +22221,16 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition
         point: json_['point'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accuracyReasoning != null) 'accuracyReasoning': accuracyReasoning!,
-    if (isAccurate != null) 'isAccurate': isAccurate!,
-    if (point != null) 'point': point!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accuracyReasoning = this.accuracyReasoning;
+    final isAccurate = this.isAccurate;
+    final point = this.point;
+    return {
+      'accuracyReasoning': ?accuracyReasoning,
+      'isAccurate': ?isAccurate,
+      'point': ?point,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition {
@@ -21662,11 +22252,16 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecompositio
         point: json_['point'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adherenceReasoning != null) 'adherenceReasoning': adherenceReasoning!,
-    if (isAdherent != null) 'isAdherent': isAdherent!,
-    if (point != null) 'point': point!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adherenceReasoning = this.adherenceReasoning;
+    final isAdherent = this.isAdherent;
+    final point = this.point;
+    return {
+      'adherenceReasoning': ?adherenceReasoning,
+      'isAdherent': ?isAdherent,
+      'point': ?point,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric {
@@ -21688,11 +22283,16 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric {
         reasoning: json_['reasoning'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isAddressed != null) 'isAddressed': isAddressed!,
-    if (question != null) 'question': question!,
-    if (reasoning != null) 'reasoning': reasoning!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isAddressed = this.isAddressed;
+    final question = this.question;
+    final reasoning = this.reasoning;
+    return {
+      'isAddressed': ?isAddressed,
+      'question': ?question,
+      'reasoning': ?reasoning,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric {
@@ -21711,10 +22311,11 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric {
         question: json_['question'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isAddressed != null) 'isAddressed': isAddressed!,
-    if (question != null) 'question': question!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isAddressed = this.isAddressed;
+    final question = this.question;
+    return {'isAddressed': ?isAddressed, 'question': ?question};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail {
@@ -21738,49 +22339,51 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail {
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
     core.Map json_,
   ) : this(
-        messageEntries:
-            (json_['messageEntries'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+        messageEntries: (json_['messageEntries'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metricDetails: (json_['metricDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
-                )
-                .toList(),
-        metricDetails:
-            (json_['metricDetails'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        sectionTokens:
-            (json_['sectionTokens'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        summarySections:
-            (json_['summarySections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+            )
+            .toList(),
+        sectionTokens: (json_['sectionTokens'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        summarySections: (json_['summarySections'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messageEntries != null) 'messageEntries': messageEntries!,
-    if (metricDetails != null) 'metricDetails': metricDetails!,
-    if (sectionTokens != null) 'sectionTokens': sectionTokens!,
-    if (summarySections != null) 'summarySections': summarySections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messageEntries = this.messageEntries;
+    final metricDetails = this.metricDetails;
+    final sectionTokens = this.sectionTokens;
+    final summarySections = this.summarySections;
+    return {
+      'messageEntries': ?messageEntries,
+      'metricDetails': ?metricDetails,
+      'sectionTokens': ?sectionTokens,
+      'summarySections': ?summarySections,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail {
@@ -21802,22 +22405,26 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMet
   ) : this(
         metric: json_['metric'] as core.String?,
         score: (json_['score'] as core.num?)?.toDouble(),
-        sectionDetails:
-            (json_['sectionDetails'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        sectionDetails: (json_['sectionDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metric != null) 'metric': metric!,
-    if (score != null) 'score': score!,
-    if (sectionDetails != null) 'sectionDetails': sectionDetails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metric = this.metric;
+    final score = this.score;
+    final sectionDetails = this.sectionDetails;
+    return {
+      'metric': ?metric,
+      'score': ?score,
+      'sectionDetails': ?sectionDetails,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail {
@@ -21839,26 +22446,31 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMet
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
     core.Map json_,
   ) : this(
-        evaluationResults:
-            (json_['evaluationResults'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        evaluationResults: (json_['evaluationResults'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         score: (json_['score'] as core.num?)?.toDouble(),
         section: json_['section'] as core.String?,
         sectionSummary: json_['sectionSummary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (evaluationResults != null) 'evaluationResults': evaluationResults!,
-    if (score != null) 'score': score!,
-    if (section != null) 'section': section!,
-    if (sectionSummary != null) 'sectionSummary': sectionSummary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final evaluationResults = this.evaluationResults;
+    final score = this.score;
+    final section = this.section;
+    final sectionSummary = this.sectionSummary;
+    return {
+      'evaluationResults': ?evaluationResults,
+      'score': ?score,
+      'section': ?section,
+      'sectionSummary': ?sectionSummary,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition {
@@ -21875,28 +22487,28 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition {
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
     core.Map json_,
   ) : this(
-        accuracyDecomposition:
-            json_.containsKey('accuracyDecomposition')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
-                  json_['accuracyDecomposition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        adherenceDecomposition:
-            json_.containsKey('adherenceDecomposition')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
-                  json_['adherenceDecomposition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accuracyDecomposition: json_.containsKey('accuracyDecomposition')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+                json_['accuracyDecomposition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        adherenceDecomposition: json_.containsKey('adherenceDecomposition')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
+                json_['adherenceDecomposition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accuracyDecomposition != null)
-      'accuracyDecomposition': accuracyDecomposition!,
-    if (adherenceDecomposition != null)
-      'adherenceDecomposition': adherenceDecomposition!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accuracyDecomposition = this.accuracyDecomposition;
+    final adherenceDecomposition = this.adherenceDecomposition;
+    return {
+      'accuracyDecomposition': ?accuracyDecomposition,
+      'adherenceDecomposition': ?adherenceDecomposition,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult {
@@ -21916,35 +22528,35 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult {
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
     core.Map json_,
   ) : this(
-        accuracyDecomposition:
-            json_.containsKey('accuracyDecomposition')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
-                  json_['accuracyDecomposition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        adherenceRubric:
-            json_.containsKey('adherenceRubric')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
-                  json_['adherenceRubric']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        completenessRubric:
-            json_.containsKey('completenessRubric')
-                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
-                  json_['completenessRubric']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accuracyDecomposition: json_.containsKey('accuracyDecomposition')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+                json_['accuracyDecomposition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        adherenceRubric: json_.containsKey('adherenceRubric')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
+                json_['adherenceRubric'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        completenessRubric: json_.containsKey('completenessRubric')
+            ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
+                json_['completenessRubric']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accuracyDecomposition != null)
-      'accuracyDecomposition': accuracyDecomposition!,
-    if (adherenceRubric != null) 'adherenceRubric': adherenceRubric!,
-    if (completenessRubric != null) 'completenessRubric': completenessRubric!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accuracyDecomposition = this.accuracyDecomposition;
+    final adherenceRubric = this.adherenceRubric;
+    final completenessRubric = this.completenessRubric;
+    return {
+      'accuracyDecomposition': ?accuracyDecomposition,
+      'adherenceRubric': ?adherenceRubric,
+      'completenessRubric': ?completenessRubric,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric {
@@ -21958,9 +22570,10 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric
     core.Map json_,
   ) : this(metric: json_['metric'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metric != null) 'metric': metric!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metric = this.metric;
+    return {'metric': ?metric};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken {
@@ -21979,10 +22592,11 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken {
         tokenCount: json_['tokenCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (section != null) 'section': section!,
-    if (tokenCount != null) 'tokenCount': tokenCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final section = this.section;
+    final tokenCount = this.tokenCount;
+    return {'section': ?section, 'tokenCount': ?tokenCount};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult {
@@ -22017,24 +22631,22 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluati
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult.fromJson(
     core.Map json_,
   ) : this(
-        decompositions:
-            (json_['decompositions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        evaluationResults:
-            (json_['evaluationResults'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        decompositions: (json_['decompositions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        evaluationResults: (json_['evaluationResults'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         metric: json_['metric'] as core.String?,
         score: (json_['score'] as core.num?)?.toDouble(),
         section: json_['section'] as core.String?,
@@ -22042,15 +22654,24 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluati
         sessionId: json_['sessionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (decompositions != null) 'decompositions': decompositions!,
-    if (evaluationResults != null) 'evaluationResults': evaluationResults!,
-    if (metric != null) 'metric': metric!,
-    if (score != null) 'score': score!,
-    if (section != null) 'section': section!,
-    if (sectionSummary != null) 'sectionSummary': sectionSummary!,
-    if (sessionId != null) 'sessionId': sessionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final decompositions = this.decompositions;
+    final evaluationResults = this.evaluationResults;
+    final metric = this.metric;
+    final score = this.score;
+    final section = this.section;
+    final sectionSummary = this.sectionSummary;
+    final sessionId = this.sessionId;
+    return {
+      'decompositions': ?decompositions,
+      'evaluationResults': ?evaluationResults,
+      'metric': ?metric,
+      'score': ?score,
+      'section': ?section,
+      'sectionSummary': ?sectionSummary,
+      'sessionId': ?sessionId,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationSection {
@@ -22084,11 +22705,12 @@ class GoogleCloudDialogflowV2SummarizationSection {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (definition != null) 'definition': definition!,
-    if (key != null) 'key': key!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final definition = this.definition;
+    final key = this.key;
+    final type = this.type;
+    return {'definition': ?definition, 'key': ?key, 'type': ?type};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarizationSectionList {
@@ -22098,21 +22720,19 @@ class GoogleCloudDialogflowV2SummarizationSectionList {
 
   GoogleCloudDialogflowV2SummarizationSectionList.fromJson(core.Map json_)
     : this(
-        summarizationSections:
-            (json_['summarizationSections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarizationSection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        summarizationSections: (json_['summarizationSections'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (summarizationSections != null)
-      'summarizationSections': summarizationSections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final summarizationSections = this.summarizationSections;
+    return {'summarizationSections': ?summarizationSections};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarySuggestion {
@@ -22123,20 +22743,20 @@ class GoogleCloudDialogflowV2SummarySuggestion {
 
   GoogleCloudDialogflowV2SummarySuggestion.fromJson(core.Map json_)
     : this(
-        summarySections:
-            (json_['summarySections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        summarySections: (json_['summarySections'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (summarySections != null) 'summarySections': summarySections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final summarySections = this.summarySections;
+    return {'summarySections': ?summarySections};
+  }
 }
 
 class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
@@ -22155,10 +22775,11 @@ class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
         summary: json_['summary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (section != null) 'section': section!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final section = this.section;
+    final summary = this.summary;
+    return {'section': ?section, 'summary': ?summary};
+  }
 }
 
 class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
@@ -22180,38 +22801,43 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
 
   GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(core.Map json_)
     : this(
-        effectsProfileId:
-            (json_['effectsProfileId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        effectsProfileId: (json_['effectsProfileId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         pitch: (json_['pitch'] as core.num?)?.toDouble(),
-        pronunciations:
-            (json_['pronunciations'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        pronunciations: (json_['pronunciations'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
-        voice:
-            json_.containsKey('voice')
-                ? GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
-                  json_['voice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        voice: json_.containsKey('voice')
+            ? GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
+                json_['voice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
-    if (pitch != null) 'pitch': pitch!,
-    if (pronunciations != null) 'pronunciations': pronunciations!,
-    if (speakingRate != null) 'speakingRate': speakingRate!,
-    if (voice != null) 'voice': voice!,
-    if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectsProfileId = this.effectsProfileId;
+    final pitch = this.pitch;
+    final pronunciations = this.pronunciations;
+    final speakingRate = this.speakingRate;
+    final voice = this.voice;
+    final volumeGainDb = this.volumeGainDb;
+    return {
+      'effectsProfileId': ?effectsProfileId,
+      'pitch': ?pitch,
+      'pronunciations': ?pronunciations,
+      'speakingRate': ?speakingRate,
+      'voice': ?voice,
+      'volumeGainDb': ?volumeGainDb,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2TextInput = $Shared19;
@@ -22245,26 +22871,31 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
         enableTextToSpeech: json_['enableTextToSpeech'] as core.bool?,
         outputAudioEncoding: json_['outputAudioEncoding'] as core.String?,
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
-        synthesizeSpeechConfigs: (json_['synthesizeSpeechConfigs']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        synthesizeSpeechConfigs:
+            (json_['synthesizeSpeechConfigs']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableTextToSpeech != null) 'enableTextToSpeech': enableTextToSpeech!,
-    if (outputAudioEncoding != null)
-      'outputAudioEncoding': outputAudioEncoding!,
-    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-    if (synthesizeSpeechConfigs != null)
-      'synthesizeSpeechConfigs': synthesizeSpeechConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableTextToSpeech = this.enableTextToSpeech;
+    final outputAudioEncoding = this.outputAudioEncoding;
+    final sampleRateHertz = this.sampleRateHertz;
+    final synthesizeSpeechConfigs = this.synthesizeSpeechConfigs;
+    return {
+      'enableTextToSpeech': ?enableTextToSpeech,
+      'outputAudioEncoding': ?outputAudioEncoding,
+      'sampleRateHertz': ?sampleRateHertz,
+      'synthesizeSpeechConfigs': ?synthesizeSpeechConfigs,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2Tool {
@@ -22303,59 +22934,70 @@ class GoogleCloudDialogflowV2Tool {
 
   GoogleCloudDialogflowV2Tool.fromJson(core.Map json_)
     : this(
-        actionConfirmationRequirement: (json_['actionConfirmationRequirement']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        connectorSpec:
-            json_.containsKey('connectorSpec')
-                ? GoogleCloudDialogflowV2ToolConnectorTool.fromJson(
-                  json_['connectorSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actionConfirmationRequirement:
+            (json_['actionConfirmationRequirement']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        connectorSpec: json_.containsKey('connectorSpec')
+            ? GoogleCloudDialogflowV2ToolConnectorTool.fromJson(
+                json_['connectorSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        extensionSpec:
-            json_.containsKey('extensionSpec')
-                ? GoogleCloudDialogflowV2ToolExtensionTool.fromJson(
-                  json_['extensionSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        functionSpec:
-            json_.containsKey('functionSpec')
-                ? GoogleCloudDialogflowV2ToolFunctionTool.fromJson(
-                  json_['functionSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        extensionSpec: json_.containsKey('extensionSpec')
+            ? GoogleCloudDialogflowV2ToolExtensionTool.fromJson(
+                json_['extensionSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionSpec: json_.containsKey('functionSpec')
+            ? GoogleCloudDialogflowV2ToolFunctionTool.fromJson(
+                json_['functionSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        openApiSpec:
-            json_.containsKey('openApiSpec')
-                ? GoogleCloudDialogflowV2ToolOpenApiTool.fromJson(
-                  json_['openApiSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        openApiSpec: json_.containsKey('openApiSpec')
+            ? GoogleCloudDialogflowV2ToolOpenApiTool.fromJson(
+                json_['openApiSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         toolKey: json_['toolKey'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionConfirmationRequirement != null)
-      'actionConfirmationRequirement': actionConfirmationRequirement!,
-    if (connectorSpec != null) 'connectorSpec': connectorSpec!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (extensionSpec != null) 'extensionSpec': extensionSpec!,
-    if (functionSpec != null) 'functionSpec': functionSpec!,
-    if (name != null) 'name': name!,
-    if (openApiSpec != null) 'openApiSpec': openApiSpec!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (toolKey != null) 'toolKey': toolKey!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionConfirmationRequirement = this.actionConfirmationRequirement;
+    final connectorSpec = this.connectorSpec;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final extensionSpec = this.extensionSpec;
+    final functionSpec = this.functionSpec;
+    final name = this.name;
+    final openApiSpec = this.openApiSpec;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final toolKey = this.toolKey;
+    final updateTime = this.updateTime;
+    return {
+      'actionConfirmationRequirement': ?actionConfirmationRequirement,
+      'connectorSpec': ?connectorSpec,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'extensionSpec': ?extensionSpec,
+      'functionSpec': ?functionSpec,
+      'name': ?name,
+      'openApiSpec': ?openApiSpec,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'toolKey': ?toolKey,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ToolAuthentication {
@@ -22374,41 +23016,42 @@ class GoogleCloudDialogflowV2ToolAuthentication {
 
   GoogleCloudDialogflowV2ToolAuthentication.fromJson(core.Map json_)
     : this(
-        apiKeyConfig:
-            json_.containsKey('apiKeyConfig')
-                ? GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig.fromJson(
-                  json_['apiKeyConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        bearerTokenConfig:
-            json_.containsKey('bearerTokenConfig')
-                ? GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig.fromJson(
-                  json_['bearerTokenConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oauthConfig:
-            json_.containsKey('oauthConfig')
-                ? GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig.fromJson(
-                  json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceAgentAuthConfig:
-            json_.containsKey('serviceAgentAuthConfig')
-                ? GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig.fromJson(
-                  json_['serviceAgentAuthConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apiKeyConfig: json_.containsKey('apiKeyConfig')
+            ? GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig.fromJson(
+                json_['apiKeyConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bearerTokenConfig: json_.containsKey('bearerTokenConfig')
+            ? GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig.fromJson(
+                json_['bearerTokenConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauthConfig: json_.containsKey('oauthConfig')
+            ? GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig.fromJson(
+                json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceAgentAuthConfig: json_.containsKey('serviceAgentAuthConfig')
+            ? GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig.fromJson(
+                json_['serviceAgentAuthConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKeyConfig != null) 'apiKeyConfig': apiKeyConfig!,
-    if (bearerTokenConfig != null) 'bearerTokenConfig': bearerTokenConfig!,
-    if (oauthConfig != null) 'oauthConfig': oauthConfig!,
-    if (serviceAgentAuthConfig != null)
-      'serviceAgentAuthConfig': serviceAgentAuthConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeyConfig = this.apiKeyConfig;
+    final bearerTokenConfig = this.bearerTokenConfig;
+    final oauthConfig = this.oauthConfig;
+    final serviceAgentAuthConfig = this.serviceAgentAuthConfig;
+    return {
+      'apiKeyConfig': ?apiKeyConfig,
+      'bearerTokenConfig': ?bearerTokenConfig,
+      'oauthConfig': ?oauthConfig,
+      'serviceAgentAuthConfig': ?serviceAgentAuthConfig,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig =
@@ -22457,27 +23100,35 @@ class GoogleCloudDialogflowV2ToolCall {
         action: json_['action'] as core.String?,
         answerRecord: json_['answerRecord'] as core.String?,
         createTime: json_['createTime'] as core.String?,
-        inputParameters:
-            json_.containsKey('inputParameters')
-                ? json_['inputParameters']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        inputParameters: json_.containsKey('inputParameters')
+            ? json_['inputParameters'] as core.Map<core.String, core.dynamic>
+            : null,
         state: json_['state'] as core.String?,
         tool: json_['tool'] as core.String?,
         toolDisplayDetails: json_['toolDisplayDetails'] as core.String?,
         toolDisplayName: json_['toolDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (createTime != null) 'createTime': createTime!,
-    if (inputParameters != null) 'inputParameters': inputParameters!,
-    if (state != null) 'state': state!,
-    if (tool != null) 'tool': tool!,
-    if (toolDisplayDetails != null) 'toolDisplayDetails': toolDisplayDetails!,
-    if (toolDisplayName != null) 'toolDisplayName': toolDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final answerRecord = this.answerRecord;
+    final createTime = this.createTime;
+    final inputParameters = this.inputParameters;
+    final state = this.state;
+    final tool = this.tool;
+    final toolDisplayDetails = this.toolDisplayDetails;
+    final toolDisplayName = this.toolDisplayName;
+    return {
+      'action': ?action,
+      'answerRecord': ?answerRecord,
+      'createTime': ?createTime,
+      'inputParameters': ?inputParameters,
+      'state': ?state,
+      'tool': ?tool,
+      'toolDisplayDetails': ?toolDisplayDetails,
+      'toolDisplayName': ?toolDisplayName,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ToolCallResult {
@@ -22515,25 +23166,33 @@ class GoogleCloudDialogflowV2ToolCallResult {
         answerRecord: json_['answerRecord'] as core.String?,
         content: json_['content'] as core.String?,
         createTime: json_['createTime'] as core.String?,
-        error:
-            json_.containsKey('error')
-                ? GoogleCloudDialogflowV2ToolCallResultError.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleCloudDialogflowV2ToolCallResultError.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rawContent: json_['rawContent'] as core.String?,
         tool: json_['tool'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (answerRecord != null) 'answerRecord': answerRecord!,
-    if (content != null) 'content': content!,
-    if (createTime != null) 'createTime': createTime!,
-    if (error != null) 'error': error!,
-    if (rawContent != null) 'rawContent': rawContent!,
-    if (tool != null) 'tool': tool!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final answerRecord = this.answerRecord;
+    final content = this.content;
+    final createTime = this.createTime;
+    final error = this.error;
+    final rawContent = this.rawContent;
+    final tool = this.tool;
+    return {
+      'action': ?action,
+      'answerRecord': ?answerRecord,
+      'content': ?content,
+      'createTime': ?createTime,
+      'error': ?error,
+      'rawContent': ?rawContent,
+      'tool': ?tool,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ToolCallResultError = $ToolCallResultError;
@@ -22546,22 +23205,22 @@ class GoogleCloudDialogflowV2ToolConnectorTool {
 
   GoogleCloudDialogflowV2ToolConnectorTool.fromJson(core.Map json_)
     : this(
-        actions:
-            (json_['actions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ToolConnectorToolAction.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ToolConnectorToolAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actions != null) 'actions': actions!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final name = this.name;
+    return {'actions': ?actions, 'name': ?name};
+  }
 }
 
 class GoogleCloudDialogflowV2ToolConnectorToolAction {
@@ -22581,29 +23240,31 @@ class GoogleCloudDialogflowV2ToolConnectorToolAction {
   GoogleCloudDialogflowV2ToolConnectorToolAction.fromJson(core.Map json_)
     : this(
         connectionActionId: json_['connectionActionId'] as core.String?,
-        entityOperation:
-            json_.containsKey('entityOperation')
-                ? GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
-                  json_['entityOperation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inputFields:
-            (json_['inputFields'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        outputFields:
-            (json_['outputFields'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        entityOperation: json_.containsKey('entityOperation')
+            ? GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
+                json_['entityOperation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inputFields: (json_['inputFields'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        outputFields: (json_['outputFields'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionActionId != null) 'connectionActionId': connectionActionId!,
-    if (entityOperation != null) 'entityOperation': entityOperation!,
-    if (inputFields != null) 'inputFields': inputFields!,
-    if (outputFields != null) 'outputFields': outputFields!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionActionId = this.connectionActionId;
+    final entityOperation = this.entityOperation;
+    final inputFields = this.inputFields;
+    final outputFields = this.outputFields;
+    return {
+      'connectionActionId': ?connectionActionId,
+      'entityOperation': ?entityOperation,
+      'inputFields': ?inputFields,
+      'outputFields': ?outputFields,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation {
@@ -22631,10 +23292,11 @@ class GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation {
         operation: json_['operation'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityId != null) 'entityId': entityId!,
-    if (operation != null) 'operation': operation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityId = this.entityId;
+    final operation = this.operation;
+    return {'entityId': ?entityId, 'operation': ?operation};
+  }
 }
 
 typedef GoogleCloudDialogflowV2ToolExtensionTool = $Shared10;
@@ -22670,22 +23332,25 @@ class GoogleCloudDialogflowV2ToolFunctionTool {
 
   GoogleCloudDialogflowV2ToolFunctionTool.fromJson(core.Map json_)
     : this(
-        inputSchema:
-            json_.containsKey('inputSchema')
-                ? json_['inputSchema'] as core.Map<core.String, core.dynamic>
-                : null,
+        inputSchema: json_.containsKey('inputSchema')
+            ? json_['inputSchema'] as core.Map<core.String, core.dynamic>
+            : null,
         methodType: json_['methodType'] as core.String?,
-        outputSchema:
-            json_.containsKey('outputSchema')
-                ? json_['outputSchema'] as core.Map<core.String, core.dynamic>
-                : null,
+        outputSchema: json_.containsKey('outputSchema')
+            ? json_['outputSchema'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputSchema != null) 'inputSchema': inputSchema!,
-    if (methodType != null) 'methodType': methodType!,
-    if (outputSchema != null) 'outputSchema': outputSchema!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputSchema = this.inputSchema;
+    final methodType = this.methodType;
+    final outputSchema = this.outputSchema;
+    return {
+      'inputSchema': ?inputSchema,
+      'methodType': ?methodType,
+      'outputSchema': ?outputSchema,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ToolOpenApiTool {
@@ -22703,36 +23368,37 @@ class GoogleCloudDialogflowV2ToolOpenApiTool {
 
   GoogleCloudDialogflowV2ToolOpenApiTool.fromJson(core.Map json_)
     : this(
-        authentication:
-            json_.containsKey('authentication')
-                ? GoogleCloudDialogflowV2ToolAuthentication.fromJson(
-                  json_['authentication']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceDirectoryConfig:
-            json_.containsKey('serviceDirectoryConfig')
-                ? GoogleCloudDialogflowV2ToolServiceDirectoryConfig.fromJson(
-                  json_['serviceDirectoryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authentication: json_.containsKey('authentication')
+            ? GoogleCloudDialogflowV2ToolAuthentication.fromJson(
+                json_['authentication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+            ? GoogleCloudDialogflowV2ToolServiceDirectoryConfig.fromJson(
+                json_['serviceDirectoryConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         textSchema: json_['textSchema'] as core.String?,
-        tlsConfig:
-            json_.containsKey('tlsConfig')
-                ? GoogleCloudDialogflowV2ToolTLSConfig.fromJson(
-                  json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        tlsConfig: json_.containsKey('tlsConfig')
+            ? GoogleCloudDialogflowV2ToolTLSConfig.fromJson(
+                json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authentication != null) 'authentication': authentication!,
-    if (serviceDirectoryConfig != null)
-      'serviceDirectoryConfig': serviceDirectoryConfig!,
-    if (textSchema != null) 'textSchema': textSchema!,
-    if (tlsConfig != null) 'tlsConfig': tlsConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authentication = this.authentication;
+    final serviceDirectoryConfig = this.serviceDirectoryConfig;
+    final textSchema = this.textSchema;
+    final tlsConfig = this.tlsConfig;
+    return {
+      'authentication': ?authentication,
+      'serviceDirectoryConfig': ?serviceDirectoryConfig,
+      'textSchema': ?textSchema,
+      'tlsConfig': ?tlsConfig,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2ToolServiceDirectoryConfig =
@@ -22745,20 +23411,19 @@ class GoogleCloudDialogflowV2ToolTLSConfig {
 
   GoogleCloudDialogflowV2ToolTLSConfig.fromJson(core.Map json_)
     : this(
-        caCerts:
-            (json_['caCerts'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDialogflowV2ToolTLSConfigCACert.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        caCerts: (json_['caCerts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ToolTLSConfigCACert.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (caCerts != null) 'caCerts': caCerts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final caCerts = this.caCerts;
+    return {'caCerts': ?caCerts};
+  }
 }
 
 typedef GoogleCloudDialogflowV2ToolTLSConfigCACert = $ToolTLSConfigCACert;
@@ -22786,19 +23451,23 @@ class GoogleCloudDialogflowV2ValidationError {
 
   GoogleCloudDialogflowV2ValidationError.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         errorMessage: json_['errorMessage'] as core.String?,
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final errorMessage = this.errorMessage;
+    final severity = this.severity;
+    return {
+      'entries': ?entries,
+      'errorMessage': ?errorMessage,
+      'severity': ?severity,
+    };
+  }
 }
 
 class GoogleCloudDialogflowV2ValidationResult {
@@ -22808,19 +23477,19 @@ class GoogleCloudDialogflowV2ValidationResult {
 
   GoogleCloudDialogflowV2ValidationResult.fromJson(core.Map json_)
     : this(
-        validationErrors:
-            (json_['validationErrors'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDialogflowV2ValidationError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        validationErrors: (json_['validationErrors'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ValidationError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (validationErrors != null) 'validationErrors': validationErrors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final validationErrors = this.validationErrors;
+    return {'validationErrors': ?validationErrors};
+  }
 }
 
 class GoogleCloudDialogflowV2Version {
@@ -22854,13 +23523,20 @@ class GoogleCloudDialogflowV2Version {
         versionNumber: json_['versionNumber'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (status != null) 'status': status!,
-    if (versionNumber != null) 'versionNumber': versionNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final name = this.name;
+    final status = this.status;
+    final versionNumber = this.versionNumber;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'status': ?status,
+      'versionNumber': ?versionNumber,
+    };
+  }
 }
 
 typedef GoogleCloudDialogflowV2VoiceSelectionParams = $VoiceSelectionParams;
@@ -22876,21 +23552,21 @@ class GoogleCloudLocationListLocationsResponse {
 
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudLocationLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudLocationLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 typedef GoogleCloudLocationLocation = $GoogleCloudLocationLocation;
@@ -22909,25 +23585,28 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLongrunningOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 class GoogleLongrunningOperation {
@@ -22958,30 +23637,34 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 typedef GoogleProtobufEmpty = $Empty;

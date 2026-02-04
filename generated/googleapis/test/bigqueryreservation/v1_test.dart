@@ -1524,10 +1524,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCapacityCommitmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_request = buildCapacityCommitment();
       final arg_parent = 'foo';
       final arg_capacityCommitmentId = 'foo';
@@ -1602,10 +1601,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -1667,10 +1665,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1723,10 +1720,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1798,10 +1794,9 @@ void main() {
 
     unittest.test('method--merge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_request = buildMergeCapacityCommitmentsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -1864,10 +1859,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_request = buildCapacityCommitment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1936,10 +1930,9 @@ void main() {
 
     unittest.test('method--split', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.capacityCommitments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.capacityCommitments;
       final arg_request = buildSplitCapacityCommitmentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2008,8 +2001,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReservationGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservationGroups;
       final arg_request = buildReservationGroup();
       final arg_parent = 'foo';
       final arg_reservationGroupId = 'foo';
@@ -2078,8 +2072,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservationGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2132,8 +2127,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservationGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2186,8 +2182,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservationGroups;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2261,8 +2258,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReservationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_request = buildReservation();
       final arg_parent = 'foo';
       final arg_reservationId = 'foo';
@@ -2331,8 +2329,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2385,8 +2384,9 @@ void main() {
 
     unittest.test('method--failoverReservation', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_request = buildFailoverReservationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2449,8 +2449,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2503,8 +2504,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -2566,8 +2568,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2635,8 +2638,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_request = buildReservation();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2705,8 +2709,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -2769,8 +2774,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -2837,10 +2843,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReservationsAssignmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_request = buildAssignment();
       final arg_parent = 'foo';
       final arg_assignmentId = 'foo';
@@ -2909,10 +2914,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2965,10 +2969,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3030,10 +3033,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3101,10 +3103,9 @@ void main() {
 
     unittest.test('method--move', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_request = buildMoveAssignmentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3167,10 +3168,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_request = buildAssignment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3239,10 +3239,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3305,10 +3304,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryReservationApi(
-            mock,
-          ).projects.locations.reservations.assignments;
+      final res = api.BigQueryReservationApi(
+        mock,
+      ).projects.locations.reservations.assignments;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

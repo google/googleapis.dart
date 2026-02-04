@@ -88,7 +88,7 @@ class AchievementConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -124,7 +124,7 @@ class AchievementConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -167,7 +167,7 @@ class AchievementConfigurationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -216,9 +216,9 @@ class AchievementConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -261,7 +261,7 @@ class AchievementConfigurationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -305,7 +305,7 @@ class LeaderboardConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -341,7 +341,7 @@ class LeaderboardConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -384,7 +384,7 @@ class LeaderboardConfigurationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -433,9 +433,9 @@ class LeaderboardConfigurationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -478,7 +478,7 @@ class LeaderboardConfigurationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -550,35 +550,43 @@ class AchievementConfiguration {
   AchievementConfiguration.fromJson(core.Map json_)
     : this(
         achievementType: json_['achievementType'] as core.String?,
-        draft:
-            json_.containsKey('draft')
-                ? AchievementConfigurationDetail.fromJson(
-                  json_['draft'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        draft: json_.containsKey('draft')
+            ? AchievementConfigurationDetail.fromJson(
+                json_['draft'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
         initialState: json_['initialState'] as core.String?,
         kind: json_['kind'] as core.String?,
-        published:
-            json_.containsKey('published')
-                ? AchievementConfigurationDetail.fromJson(
-                  json_['published'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        published: json_.containsKey('published')
+            ? AchievementConfigurationDetail.fromJson(
+                json_['published'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         stepsToUnlock: json_['stepsToUnlock'] as core.int?,
         token: json_['token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (achievementType != null) 'achievementType': achievementType!,
-    if (draft != null) 'draft': draft!,
-    if (id != null) 'id': id!,
-    if (initialState != null) 'initialState': initialState!,
-    if (kind != null) 'kind': kind!,
-    if (published != null) 'published': published!,
-    if (stepsToUnlock != null) 'stepsToUnlock': stepsToUnlock!,
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final achievementType = this.achievementType;
+    final draft = this.draft;
+    final id = this.id;
+    final initialState = this.initialState;
+    final kind = this.kind;
+    final published = this.published;
+    final stepsToUnlock = this.stepsToUnlock;
+    final token = this.token;
+    return {
+      'achievementType': ?achievementType,
+      'draft': ?draft,
+      'id': ?id,
+      'initialState': ?initialState,
+      'kind': ?kind,
+      'published': ?published,
+      'stepsToUnlock': ?stepsToUnlock,
+      'token': ?token,
+    };
+  }
 }
 
 /// An achievement configuration detail.
@@ -619,32 +627,38 @@ class AchievementConfigurationDetail {
 
   AchievementConfigurationDetail.fromJson(core.Map json_)
     : this(
-        description:
-            json_.containsKey('description')
-                ? LocalizedStringBundle.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        description: json_.containsKey('description')
+            ? LocalizedStringBundle.fromJson(
+                json_['description'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         iconUrl: json_['iconUrl'] as core.String?,
         kind: json_['kind'] as core.String?,
-        name:
-            json_.containsKey('name')
-                ? LocalizedStringBundle.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        name: json_.containsKey('name')
+            ? LocalizedStringBundle.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pointValue: json_['pointValue'] as core.int?,
         sortRank: json_['sortRank'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (iconUrl != null) 'iconUrl': iconUrl!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (pointValue != null) 'pointValue': pointValue!,
-    if (sortRank != null) 'sortRank': sortRank!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final iconUrl = this.iconUrl;
+    final kind = this.kind;
+    final name = this.name;
+    final pointValue = this.pointValue;
+    final sortRank = this.sortRank;
+    return {
+      'description': ?description,
+      'iconUrl': ?iconUrl,
+      'kind': ?kind,
+      'name': ?name,
+      'pointValue': ?pointValue,
+      'sortRank': ?sortRank,
+    };
+  }
 }
 
 /// A ListConfigurations response.
@@ -669,23 +683,23 @@ class AchievementConfigurationListResponse {
 
   AchievementConfigurationListResponse.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => AchievementConfiguration.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => AchievementConfiguration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A number affix resource.
@@ -727,52 +741,54 @@ class GamesNumberAffixConfiguration {
 
   GamesNumberAffixConfiguration.fromJson(core.Map json_)
     : this(
-        few:
-            json_.containsKey('few')
-                ? LocalizedStringBundle.fromJson(
-                  json_['few'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        many:
-            json_.containsKey('many')
-                ? LocalizedStringBundle.fromJson(
-                  json_['many'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        one:
-            json_.containsKey('one')
-                ? LocalizedStringBundle.fromJson(
-                  json_['one'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        other:
-            json_.containsKey('other')
-                ? LocalizedStringBundle.fromJson(
-                  json_['other'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        two:
-            json_.containsKey('two')
-                ? LocalizedStringBundle.fromJson(
-                  json_['two'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        zero:
-            json_.containsKey('zero')
-                ? LocalizedStringBundle.fromJson(
-                  json_['zero'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        few: json_.containsKey('few')
+            ? LocalizedStringBundle.fromJson(
+                json_['few'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        many: json_.containsKey('many')
+            ? LocalizedStringBundle.fromJson(
+                json_['many'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        one: json_.containsKey('one')
+            ? LocalizedStringBundle.fromJson(
+                json_['one'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        other: json_.containsKey('other')
+            ? LocalizedStringBundle.fromJson(
+                json_['other'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        two: json_.containsKey('two')
+            ? LocalizedStringBundle.fromJson(
+                json_['two'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        zero: json_.containsKey('zero')
+            ? LocalizedStringBundle.fromJson(
+                json_['zero'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (few != null) 'few': few!,
-    if (many != null) 'many': many!,
-    if (one != null) 'one': one!,
-    if (other != null) 'other': other!,
-    if (two != null) 'two': two!,
-    if (zero != null) 'zero': zero!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final few = this.few;
+    final many = this.many;
+    final one = this.one;
+    final other = this.other;
+    final two = this.two;
+    final zero = this.zero;
+    return {
+      'few': ?few,
+      'many': ?many,
+      'one': ?one,
+      'other': ?other,
+      'two': ?two,
+      'zero': ?zero,
+    };
+  }
 }
 
 /// A number format resource.
@@ -815,20 +831,25 @@ class GamesNumberFormatConfiguration {
         currencyCode: json_['currencyCode'] as core.String?,
         numDecimalPlaces: json_['numDecimalPlaces'] as core.int?,
         numberFormatType: json_['numberFormatType'] as core.String?,
-        suffix:
-            json_.containsKey('suffix')
-                ? GamesNumberAffixConfiguration.fromJson(
-                  json_['suffix'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        suffix: json_.containsKey('suffix')
+            ? GamesNumberAffixConfiguration.fromJson(
+                json_['suffix'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces!,
-    if (numberFormatType != null) 'numberFormatType': numberFormatType!,
-    if (suffix != null) 'suffix': suffix!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final numDecimalPlaces = this.numDecimalPlaces;
+    final numberFormatType = this.numberFormatType;
+    final suffix = this.suffix;
+    return {
+      'currencyCode': ?currencyCode,
+      'numDecimalPlaces': ?numDecimalPlaces,
+      'numberFormatType': ?numberFormatType,
+      'suffix': ?suffix,
+    };
+  }
 }
 
 /// An leaderboard configuration resource.
@@ -877,36 +898,44 @@ class LeaderboardConfiguration {
 
   LeaderboardConfiguration.fromJson(core.Map json_)
     : this(
-        draft:
-            json_.containsKey('draft')
-                ? LeaderboardConfigurationDetail.fromJson(
-                  json_['draft'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        draft: json_.containsKey('draft')
+            ? LeaderboardConfigurationDetail.fromJson(
+                json_['draft'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        published:
-            json_.containsKey('published')
-                ? LeaderboardConfigurationDetail.fromJson(
-                  json_['published'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        published: json_.containsKey('published')
+            ? LeaderboardConfigurationDetail.fromJson(
+                json_['published'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scoreMax: json_['scoreMax'] as core.String?,
         scoreMin: json_['scoreMin'] as core.String?,
         scoreOrder: json_['scoreOrder'] as core.String?,
         token: json_['token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (draft != null) 'draft': draft!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (published != null) 'published': published!,
-    if (scoreMax != null) 'scoreMax': scoreMax!,
-    if (scoreMin != null) 'scoreMin': scoreMin!,
-    if (scoreOrder != null) 'scoreOrder': scoreOrder!,
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final draft = this.draft;
+    final id = this.id;
+    final kind = this.kind;
+    final published = this.published;
+    final scoreMax = this.scoreMax;
+    final scoreMin = this.scoreMin;
+    final scoreOrder = this.scoreOrder;
+    final token = this.token;
+    return {
+      'draft': ?draft,
+      'id': ?id,
+      'kind': ?kind,
+      'published': ?published,
+      'scoreMax': ?scoreMax,
+      'scoreMin': ?scoreMin,
+      'scoreOrder': ?scoreOrder,
+      'token': ?token,
+    };
+  }
 }
 
 /// A leaderboard configuration detail.
@@ -945,28 +974,33 @@ class LeaderboardConfigurationDetail {
     : this(
         iconUrl: json_['iconUrl'] as core.String?,
         kind: json_['kind'] as core.String?,
-        name:
-            json_.containsKey('name')
-                ? LocalizedStringBundle.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        scoreFormat:
-            json_.containsKey('scoreFormat')
-                ? GamesNumberFormatConfiguration.fromJson(
-                  json_['scoreFormat'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        name: json_.containsKey('name')
+            ? LocalizedStringBundle.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scoreFormat: json_.containsKey('scoreFormat')
+            ? GamesNumberFormatConfiguration.fromJson(
+                json_['scoreFormat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sortRank: json_['sortRank'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (iconUrl != null) 'iconUrl': iconUrl!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (scoreFormat != null) 'scoreFormat': scoreFormat!,
-    if (sortRank != null) 'sortRank': sortRank!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final iconUrl = this.iconUrl;
+    final kind = this.kind;
+    final name = this.name;
+    final scoreFormat = this.scoreFormat;
+    final sortRank = this.sortRank;
+    return {
+      'iconUrl': ?iconUrl,
+      'kind': ?kind,
+      'name': ?name,
+      'scoreFormat': ?scoreFormat,
+      'sortRank': ?sortRank,
+    };
+  }
 }
 
 /// A ListConfigurations response.
@@ -991,23 +1025,23 @@ class LeaderboardConfigurationListResponse {
 
   LeaderboardConfigurationListResponse.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => LeaderboardConfiguration.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => LeaderboardConfiguration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A localized string resource.
@@ -1032,11 +1066,12 @@ class LocalizedString {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (locale != null) 'locale': locale!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final locale = this.locale;
+    final value = this.value;
+    return {'kind': ?kind, 'locale': ?locale, 'value': ?value};
+  }
 }
 
 /// A localized string bundle resource.
@@ -1055,18 +1090,18 @@ class LocalizedStringBundle {
   LocalizedStringBundle.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        translations:
-            (json_['translations'] as core.List?)
-                ?.map(
-                  (value) => LocalizedString.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        translations: (json_['translations'] as core.List?)
+            ?.map(
+              (value) => LocalizedString.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (translations != null) 'translations': translations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final translations = this.translations;
+    return {'kind': ?kind, 'translations': ?translations};
+  }
 }

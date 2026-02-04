@@ -87,7 +87,7 @@ class QueriesResource {
   async.Future<Query> create(Query request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'queries';
@@ -117,7 +117,7 @@ class QueriesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(core.String queryId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'queries/' + commons.escapeVariable('$queryId');
@@ -148,7 +148,7 @@ class QueriesResource {
   /// this method will complete with the same error.
   async.Future<Query> get(core.String queryId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'queries/' + commons.escapeVariable('$queryId');
@@ -195,10 +195,10 @@ class QueriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'queries';
@@ -244,8 +244,8 @@ class QueriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (synchronous != null) 'synchronous': ['${synchronous}'],
-      if ($fields != null) 'fields': [$fields],
+      'synchronous': ?synchronous == null ? null : ['${synchronous}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'queries/' + commons.escapeVariable('$queryId') + ':run';
@@ -289,7 +289,7 @@ class QueriesReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -343,10 +343,10 @@ class QueriesReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'queries/' + commons.escapeVariable('$queryId') + '/reports';
@@ -414,27 +414,29 @@ class DataRange {
 
   DataRange.fromJson(core.Map json_)
     : this(
-        customEndDate:
-            json_.containsKey('customEndDate')
-                ? Date.fromJson(
-                  json_['customEndDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customStartDate:
-            json_.containsKey('customStartDate')
-                ? Date.fromJson(
-                  json_['customStartDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customEndDate: json_.containsKey('customEndDate')
+            ? Date.fromJson(
+                json_['customEndDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customStartDate: json_.containsKey('customStartDate')
+            ? Date.fromJson(
+                json_['customStartDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         range: json_['range'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customEndDate != null) 'customEndDate': customEndDate!,
-    if (customStartDate != null) 'customStartDate': customStartDate!,
-    if (range != null) 'range': range!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customEndDate = this.customEndDate;
+    final customStartDate = this.customStartDate;
+    final range = this.range;
+    return {
+      'customEndDate': ?customEndDate,
+      'customStartDate': ?customStartDate,
+      'range': ?range,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -468,10 +470,11 @@ class FilterPair {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    final value = this.value;
+    return {'type': ?type, 'value': ?value};
+  }
 }
 
 class ListQueriesResponse {
@@ -491,20 +494,19 @@ class ListQueriesResponse {
   ListQueriesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        queries:
-            (json_['queries'] as core.List?)
-                ?.map(
-                  (value) => Query.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        queries: (json_['queries'] as core.List?)
+            ?.map(
+              (value) =>
+                  Query.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (queries != null) 'queries': queries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final queries = this.queries;
+    return {'nextPageToken': ?nextPageToken, 'queries': ?queries};
+  }
 }
 
 class ListReportsResponse {
@@ -524,20 +526,19 @@ class ListReportsResponse {
   ListReportsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        reports:
-            (json_['reports'] as core.List?)
-                ?.map(
-                  (value) => Report.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        reports: (json_['reports'] as core.List?)
+            ?.map(
+              (value) =>
+                  Report.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (reports != null) 'reports': reports!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final reports = this.reports;
+    return {'nextPageToken': ?nextPageToken, 'reports': ?reports};
+  }
 }
 
 /// Report parameter options.
@@ -557,10 +558,10 @@ class Options {
             json_['includeOnlyTargetedUserLists'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeOnlyTargetedUserLists != null)
-      'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includeOnlyTargetedUserLists = this.includeOnlyTargetedUserLists;
+    return {'includeOnlyTargetedUserLists': ?includeOnlyTargetedUserLists};
+  }
 }
 
 /// Parameters of a generated report.
@@ -614,38 +615,41 @@ class Parameters {
 
   Parameters.fromJson(core.Map json_)
     : this(
-        filters:
-            (json_['filters'] as core.List?)
-                ?.map(
-                  (value) => FilterPair.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        groupBys:
-            (json_['groupBys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        metrics:
-            (json_['metrics'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        options:
-            json_.containsKey('options')
-                ? Options.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        filters: (json_['filters'] as core.List?)
+            ?.map(
+              (value) => FilterPair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        groupBys: (json_['groupBys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metrics: (json_['metrics'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        options: json_.containsKey('options')
+            ? Options.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filters != null) 'filters': filters!,
-    if (groupBys != null) 'groupBys': groupBys!,
-    if (metrics != null) 'metrics': metrics!,
-    if (options != null) 'options': options!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filters = this.filters;
+    final groupBys = this.groupBys;
+    final metrics = this.metrics;
+    final options = this.options;
+    final type = this.type;
+    return {
+      'filters': ?filters,
+      'groupBys': ?groupBys,
+      'metrics': ?metrics,
+      'options': ?options,
+      'type': ?type,
+    };
+  }
 }
 
 /// A single query used to generate a report.
@@ -671,33 +675,36 @@ class Query {
 
   Query.fromJson(core.Map json_)
     : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? QueryMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        params:
-            json_.containsKey('params')
-                ? Parameters.fromJson(
-                  json_['params'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? QueryMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        params: json_.containsKey('params')
+            ? Parameters.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         queryId: json_['queryId'] as core.String?,
-        schedule:
-            json_.containsKey('schedule')
-                ? QuerySchedule.fromJson(
-                  json_['schedule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        schedule: json_.containsKey('schedule')
+            ? QuerySchedule.fromJson(
+                json_['schedule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (params != null) 'params': params!,
-    if (queryId != null) 'queryId': queryId!,
-    if (schedule != null) 'schedule': schedule!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final params = this.params;
+    final queryId = this.queryId;
+    final schedule = this.schedule;
+    return {
+      'metadata': ?metadata,
+      'params': ?params,
+      'queryId': ?queryId,
+      'schedule': ?schedule,
+    };
+  }
 }
 
 /// The metadata of the query.
@@ -746,28 +753,33 @@ class QueryMetadata {
 
   QueryMetadata.fromJson(core.Map json_)
     : this(
-        dataRange:
-            json_.containsKey('dataRange')
-                ? DataRange.fromJson(
-                  json_['dataRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataRange: json_.containsKey('dataRange')
+            ? DataRange.fromJson(
+                json_['dataRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         format: json_['format'] as core.String?,
         sendNotification: json_['sendNotification'] as core.bool?,
-        shareEmailAddress:
-            (json_['shareEmailAddress'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        shareEmailAddress: (json_['shareEmailAddress'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataRange != null) 'dataRange': dataRange!,
-    if (format != null) 'format': format!,
-    if (sendNotification != null) 'sendNotification': sendNotification!,
-    if (shareEmailAddress != null) 'shareEmailAddress': shareEmailAddress!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataRange = this.dataRange;
+    final format = this.format;
+    final sendNotification = this.sendNotification;
+    final shareEmailAddress = this.shareEmailAddress;
+    final title = this.title;
+    return {
+      'dataRange': ?dataRange,
+      'format': ?format,
+      'sendNotification': ?sendNotification,
+      'shareEmailAddress': ?shareEmailAddress,
+      'title': ?title,
+    };
+  }
 }
 
 /// Settings on when and how frequently to run a query.
@@ -815,29 +827,32 @@ class QuerySchedule {
 
   QuerySchedule.fromJson(core.Map json_)
     : this(
-        endDate:
-            json_.containsKey('endDate')
-                ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endDate: json_.containsKey('endDate')
+            ? Date.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         frequency: json_['frequency'] as core.String?,
         nextRunTimezoneCode: json_['nextRunTimezoneCode'] as core.String?,
-        startDate:
-            json_.containsKey('startDate')
-                ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        startDate: json_.containsKey('startDate')
+            ? Date.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endDate != null) 'endDate': endDate!,
-    if (frequency != null) 'frequency': frequency!,
-    if (nextRunTimezoneCode != null)
-      'nextRunTimezoneCode': nextRunTimezoneCode!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endDate = this.endDate;
+    final frequency = this.frequency;
+    final nextRunTimezoneCode = this.nextRunTimezoneCode;
+    final startDate = this.startDate;
+    return {
+      'endDate': ?endDate,
+      'frequency': ?frequency,
+      'nextRunTimezoneCode': ?nextRunTimezoneCode,
+      'startDate': ?startDate,
+    };
+  }
 }
 
 /// A single report generated by its parent report.
@@ -855,31 +870,29 @@ class Report {
 
   Report.fromJson(core.Map json_)
     : this(
-        key:
-            json_.containsKey('key')
-                ? ReportKey.fromJson(
-                  json_['key'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? ReportMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        params:
-            json_.containsKey('params')
-                ? Parameters.fromJson(
-                  json_['params'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        key: json_.containsKey('key')
+            ? ReportKey.fromJson(
+                json_['key'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? ReportMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        params: json_.containsKey('params')
+            ? Parameters.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (metadata != null) 'metadata': metadata!,
-    if (params != null) 'params': params!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final metadata = this.metadata;
+    final params = this.params;
+    return {'key': ?key, 'metadata': ?metadata, 'params': ?params};
+  }
 }
 
 /// Identifying information of a report.
@@ -902,10 +915,11 @@ class ReportKey {
         reportId: json_['reportId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryId != null) 'queryId': queryId!,
-    if (reportId != null) 'reportId': reportId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final queryId = this.queryId;
+    final reportId = this.reportId;
+    return {'queryId': ?queryId, 'reportId': ?reportId};
+  }
 }
 
 /// The metadata of a report.
@@ -936,36 +950,37 @@ class ReportMetadata {
   ReportMetadata.fromJson(core.Map json_)
     : this(
         googleCloudStoragePath: json_['googleCloudStoragePath'] as core.String?,
-        reportDataEndDate:
-            json_.containsKey('reportDataEndDate')
-                ? Date.fromJson(
-                  json_['reportDataEndDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        reportDataStartDate:
-            json_.containsKey('reportDataStartDate')
-                ? Date.fromJson(
-                  json_['reportDataStartDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        status:
-            json_.containsKey('status')
-                ? ReportStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reportDataEndDate: json_.containsKey('reportDataEndDate')
+            ? Date.fromJson(
+                json_['reportDataEndDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reportDataStartDate: json_.containsKey('reportDataStartDate')
+            ? Date.fromJson(
+                json_['reportDataStartDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? ReportStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (googleCloudStoragePath != null)
-      'googleCloudStoragePath': googleCloudStoragePath!,
-    if (reportDataEndDate != null) 'reportDataEndDate': reportDataEndDate!,
-    if (reportDataStartDate != null)
-      'reportDataStartDate': reportDataStartDate!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleCloudStoragePath = this.googleCloudStoragePath;
+    final reportDataEndDate = this.reportDataEndDate;
+    final reportDataStartDate = this.reportDataStartDate;
+    final status = this.status;
+    return {
+      'googleCloudStoragePath': ?googleCloudStoragePath,
+      'reportDataEndDate': ?reportDataEndDate,
+      'reportDataStartDate': ?reportDataStartDate,
+      'status': ?status,
+    };
+  }
 }
 
 /// The status of a report.
@@ -1007,11 +1022,12 @@ class ReportStatus {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (finishTime != null) 'finishTime': finishTime!,
-    if (format != null) 'format': format!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final finishTime = this.finishTime;
+    final format = this.format;
+    final state = this.state;
+    return {'finishTime': ?finishTime, 'format': ?format, 'state': ?state};
+  }
 }
 
 /// Details specifying how to run a query.
@@ -1025,15 +1041,15 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map json_)
     : this(
-        dataRange:
-            json_.containsKey('dataRange')
-                ? DataRange.fromJson(
-                  json_['dataRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataRange: json_.containsKey('dataRange')
+            ? DataRange.fromJson(
+                json_['dataRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataRange != null) 'dataRange': dataRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataRange = this.dataRange;
+    return {'dataRange': ?dataRange};
+  }
 }

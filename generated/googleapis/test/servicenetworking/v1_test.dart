@@ -1423,10 +1423,10 @@ void main() {
         final o =
             buildGoogleCloudServicenetworkingV1ConsumerConfigReservedRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudServicenetworkingV1ConsumerConfigReservedRange(od);
       });
     },
@@ -2961,8 +2961,9 @@ void main() {
   unittest.group('resource-ServicesProjectsGlobalNetworksResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ServiceNetworkingApi(mock).services.projects.global.networks;
+      final res = api.ServiceNetworkingApi(
+        mock,
+      ).services.projects.global.networks;
       final arg_name = 'foo';
       final arg_includeUsedIpRanges = true;
       final arg_$fields = 'foo';
@@ -3024,8 +3025,9 @@ void main() {
 
     unittest.test('method--getVpcServiceControls', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ServiceNetworkingApi(mock).services.projects.global.networks;
+      final res = api.ServiceNetworkingApi(
+        mock,
+      ).services.projects.global.networks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3081,8 +3083,9 @@ void main() {
 
     unittest.test('method--updateConsumerConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ServiceNetworkingApi(mock).services.projects.global.networks;
+      final res = api.ServiceNetworkingApi(
+        mock,
+      ).services.projects.global.networks;
       final arg_request = buildUpdateConsumerConfigRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -3147,10 +3150,9 @@ void main() {
   unittest.group('resource-ServicesProjectsGlobalNetworksDnsZonesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ServiceNetworkingApi(
-            mock,
-          ).services.projects.global.networks.dnsZones;
+      final res = api.ServiceNetworkingApi(
+        mock,
+      ).services.projects.global.networks.dnsZones;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3203,10 +3205,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ServiceNetworkingApi(
-            mock,
-          ).services.projects.global.networks.dnsZones;
+      final res = api.ServiceNetworkingApi(
+        mock,
+      ).services.projects.global.networks.dnsZones;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3263,10 +3264,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ServiceNetworkingApi(
-              mock,
-            ).services.projects.global.networks.peeredDnsDomains;
+        final res = api.ServiceNetworkingApi(
+          mock,
+        ).services.projects.global.networks.peeredDnsDomains;
         final arg_request = buildPeeredDnsDomain();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -3329,10 +3329,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ServiceNetworkingApi(
-              mock,
-            ).services.projects.global.networks.peeredDnsDomains;
+        final res = api.ServiceNetworkingApi(
+          mock,
+        ).services.projects.global.networks.peeredDnsDomains;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3385,10 +3384,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ServiceNetworkingApi(
-              mock,
-            ).services.projects.global.networks.peeredDnsDomains;
+        final res = api.ServiceNetworkingApi(
+          mock,
+        ).services.projects.global.networks.peeredDnsDomains;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(

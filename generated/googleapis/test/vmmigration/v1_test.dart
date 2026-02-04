@@ -6318,8 +6318,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsImageImportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.imageImports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports;
       final arg_request = buildImageImport();
       final arg_parent = 'foo';
       final arg_imageImportId = 'foo';
@@ -6394,8 +6395,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.imageImports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -6457,8 +6459,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.imageImports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6511,8 +6514,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.imageImports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6594,10 +6598,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsImageImportsImageImportJobsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.imageImports.imageImportJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports.imageImportJobs;
       final arg_request = buildCancelImageImportJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6660,10 +6663,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.imageImports.imageImportJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports.imageImportJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6716,10 +6718,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.imageImports.imageImportJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.imageImports.imageImportJobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7556,10 +7557,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesDatacenterConnectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.datacenterConnectors;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.datacenterConnectors;
       final arg_request = buildDatacenterConnector();
       final arg_parent = 'foo';
       final arg_datacenterConnectorId = 'foo';
@@ -7634,10 +7634,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.datacenterConnectors;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.datacenterConnectors;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -7699,10 +7698,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.datacenterConnectors;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.datacenterConnectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7755,10 +7753,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.datacenterConnectors;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.datacenterConnectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7842,10 +7839,9 @@ void main() {
 
     unittest.test('method--upgradeAppliance', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.datacenterConnectors;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.datacenterConnectors;
       final arg_request = buildUpgradeApplianceRequest();
       final arg_datacenterConnector = 'foo';
       final arg_$fields = 'foo';
@@ -7910,10 +7906,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesDiskMigrationJobsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_request = buildCancelDiskMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7976,10 +7971,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_request = buildDiskMigrationJob();
       final arg_parent = 'foo';
       final arg_diskMigrationJobId = 'foo';
@@ -8054,10 +8048,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8110,10 +8103,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8166,10 +8158,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8253,10 +8244,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_request = buildDiskMigrationJob();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8331,10 +8321,9 @@ void main() {
 
     unittest.test('method--run', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.diskMigrationJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.diskMigrationJobs;
       final arg_request = buildRunDiskMigrationJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8399,10 +8388,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesMigratingVmsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildMigratingVm();
       final arg_parent = 'foo';
       final arg_migratingVmId = 'foo';
@@ -8477,10 +8465,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8533,10 +8520,9 @@ void main() {
 
     unittest.test('method--extendMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildExtendMigrationRequest();
       final arg_migratingVm = 'foo';
       final arg_$fields = 'foo';
@@ -8599,10 +8585,9 @@ void main() {
 
     unittest.test('method--finalizeMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildFinalizeMigrationRequest();
       final arg_migratingVm = 'foo';
       final arg_$fields = 'foo';
@@ -8665,10 +8650,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -8727,10 +8711,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8813,10 +8796,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildMigratingVm();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8891,10 +8873,9 @@ void main() {
 
     unittest.test('method--pauseMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildPauseMigrationRequest();
       final arg_migratingVm = 'foo';
       final arg_$fields = 'foo';
@@ -8957,10 +8938,9 @@ void main() {
 
     unittest.test('method--resumeMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildResumeMigrationRequest();
       final arg_migratingVm = 'foo';
       final arg_$fields = 'foo';
@@ -9023,10 +9003,9 @@ void main() {
 
     unittest.test('method--startMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms;
       final arg_request = buildStartMigrationRequest();
       final arg_migratingVm = 'foo';
       final arg_$fields = 'foo';
@@ -9091,10 +9070,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesMigratingVmsCloneJobsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms.cloneJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms.cloneJobs;
       final arg_request = buildCancelCloneJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9157,10 +9135,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms.cloneJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms.cloneJobs;
       final arg_request = buildCloneJob();
       final arg_parent = 'foo';
       final arg_cloneJobId = 'foo';
@@ -9235,10 +9212,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms.cloneJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms.cloneJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9291,10 +9267,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.migratingVms.cloneJobs;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.migratingVms.cloneJobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9378,10 +9353,9 @@ void main() {
     () {
       unittest.test('method--cancel', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.cutoverJobs;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.cutoverJobs;
         final arg_request = buildCancelCutoverJobRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -9444,10 +9418,9 @@ void main() {
 
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.cutoverJobs;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.cutoverJobs;
         final arg_request = buildCutoverJob();
         final arg_parent = 'foo';
         final arg_cutoverJobId = 'foo';
@@ -9522,10 +9495,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.cutoverJobs;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.cutoverJobs;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9578,10 +9550,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.cutoverJobs;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.cutoverJobs;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -9666,10 +9637,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.replicationCycles;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.replicationCycles;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9722,10 +9692,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMMigrationServiceApi(
-              mock,
-            ).projects.locations.sources.migratingVms.replicationCycles;
+        final res = api.VMMigrationServiceApi(
+          mock,
+        ).projects.locations.sources.migratingVms.replicationCycles;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -9812,10 +9781,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesUtilizationReportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.utilizationReports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.utilizationReports;
       final arg_request = buildUtilizationReport();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -9890,10 +9858,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.utilizationReports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.utilizationReports;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -9955,10 +9922,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.utilizationReports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.utilizationReports;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -10017,10 +9983,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(
-            mock,
-          ).projects.locations.sources.utilizationReports;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.sources.utilizationReports;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10109,8 +10074,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTargetProjectsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.targetProjects;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.targetProjects;
       final arg_request = buildTargetProject();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -10185,8 +10151,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.targetProjects;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.targetProjects;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -10248,8 +10215,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.targetProjects;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.targetProjects;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10302,8 +10270,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.targetProjects;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.targetProjects;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10385,8 +10354,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMMigrationServiceApi(mock).projects.locations.targetProjects;
+      final res = api.VMMigrationServiceApi(
+        mock,
+      ).projects.locations.targetProjects;
       final arg_request = buildTargetProject();
       final arg_name = 'foo';
       final arg_requestId = 'foo';

@@ -112,7 +112,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -158,7 +158,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -210,8 +210,8 @@ class ProjectsAttestorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (attestorId != null) 'attestorId': [attestorId],
-      if ($fields != null) 'fields': [$fields],
+      'attestorId': ?attestorId == null ? null : [attestorId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
@@ -247,7 +247,7 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -282,7 +282,7 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<Attestor> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -336,9 +336,10 @@ class ProjectsAttestorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -386,9 +387,9 @@ class ProjectsAttestorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
@@ -435,7 +436,7 @@ class ProjectsAttestorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -483,7 +484,7 @@ class ProjectsAttestorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -529,7 +530,7 @@ class ProjectsAttestorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -572,7 +573,7 @@ class ProjectsAttestorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -651,7 +652,7 @@ class ProjectsPlatformsGkePoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':evaluate';
@@ -709,8 +710,8 @@ class ProjectsPlatformsPoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (policyId != null) 'policyId': [policyId],
-      if ($fields != null) 'fields': [$fields],
+      'policyId': ?policyId == null ? null : [policyId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policies';
@@ -756,8 +757,8 @@ class ProjectsPlatformsPoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -796,7 +797,7 @@ class ProjectsPlatformsPoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -846,9 +847,9 @@ class ProjectsPlatformsPoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policies';
@@ -894,7 +895,7 @@ class ProjectsPlatformsPoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -957,9 +958,10 @@ class ProjectsPolicyResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1004,7 +1006,7 @@ class ProjectsPolicyResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1052,7 +1054,7 @@ class ProjectsPolicyResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1098,7 +1100,7 @@ class SystempolicyResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1165,18 +1167,21 @@ class AdmissionRule {
     : this(
         enforcementMode: json_['enforcementMode'] as core.String?,
         evaluationMode: json_['evaluationMode'] as core.String?,
-        requireAttestationsBy:
-            (json_['requireAttestationsBy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        requireAttestationsBy: (json_['requireAttestationsBy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enforcementMode != null) 'enforcementMode': enforcementMode!,
-    if (evaluationMode != null) 'evaluationMode': evaluationMode!,
-    if (requireAttestationsBy != null)
-      'requireAttestationsBy': requireAttestationsBy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enforcementMode = this.enforcementMode;
+    final evaluationMode = this.evaluationMode;
+    final requireAttestationsBy = this.requireAttestationsBy;
+    return {
+      'enforcementMode': ?enforcementMode,
+      'evaluationMode': ?evaluationMode,
+      'requireAttestationsBy': ?requireAttestationsBy,
+    };
+  }
 }
 
 /// An admission allowlist pattern exempts images from checks by admission
@@ -1194,9 +1199,10 @@ class AdmissionWhitelistPattern {
   AdmissionWhitelistPattern.fromJson(core.Map json_)
     : this(namePattern: json_['namePattern'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (namePattern != null) 'namePattern': namePattern!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final namePattern = this.namePattern;
+    return {'namePattern': ?namePattern};
+  }
 }
 
 /// Result of evaluating an image name allowlist.
@@ -1209,9 +1215,10 @@ class AllowlistResult {
   AllowlistResult.fromJson(core.Map json_)
     : this(matchedPattern: json_['matchedPattern'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matchedPattern != null) 'matchedPattern': matchedPattern!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final matchedPattern = this.matchedPattern;
+    return {'matchedPattern': ?matchedPattern};
+  }
 }
 
 /// An attestation authenticator that will be used to verify attestations.
@@ -1245,19 +1252,19 @@ class AttestationAuthenticator {
   AttestationAuthenticator.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        pkixPublicKeySet:
-            json_.containsKey('pkixPublicKeySet')
-                ? PkixPublicKeySet.fromJson(
-                  json_['pkixPublicKeySet']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pkixPublicKeySet: json_.containsKey('pkixPublicKeySet')
+            ? PkixPublicKeySet.fromJson(
+                json_['pkixPublicKeySet']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (pkixPublicKeySet != null) 'pkixPublicKeySet': pkixPublicKeySet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final pkixPublicKeySet = this.pkixPublicKeySet;
+    return {'displayName': ?displayName, 'pkixPublicKeySet': ?pkixPublicKeySet};
+  }
 }
 
 /// Occurrence that represents a single "attestation".
@@ -1306,30 +1313,32 @@ class AttestationOccurrence {
 
   AttestationOccurrence.fromJson(core.Map json_)
     : this(
-        jwts:
-            (json_['jwts'] as core.List?)
-                ?.map(
-                  (value) => Jwt.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jwts: (json_['jwts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Jwt.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         serializedPayload: json_['serializedPayload'] as core.String?,
-        signatures:
-            (json_['signatures'] as core.List?)
-                ?.map(
-                  (value) => Signature.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        signatures: (json_['signatures'] as core.List?)
+            ?.map(
+              (value) => Signature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jwts != null) 'jwts': jwts!,
-    if (serializedPayload != null) 'serializedPayload': serializedPayload!,
-    if (signatures != null) 'signatures': signatures!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jwts = this.jwts;
+    final serializedPayload = this.serializedPayload;
+    final signatures = this.signatures;
+    return {
+      'jwts': ?jwts,
+      'serializedPayload': ?serializedPayload,
+      'signatures': ?signatures,
+    };
+  }
 }
 
 /// Specifies the locations for fetching the provenance attestations.
@@ -1351,11 +1360,14 @@ class AttestationSource {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containerAnalysisAttestationProjects != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final containerAnalysisAttestationProjects =
+        this.containerAnalysisAttestationProjects;
+    return {
       'containerAnalysisAttestationProjects':
-          containerAnalysisAttestationProjects!,
-  };
+          ?containerAnalysisAttestationProjects,
+    };
+  }
 }
 
 /// An attestor that attests to container image artifacts.
@@ -1408,23 +1420,28 @@ class Attestor {
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        userOwnedGrafeasNote:
-            json_.containsKey('userOwnedGrafeasNote')
-                ? UserOwnedGrafeasNote.fromJson(
-                  json_['userOwnedGrafeasNote']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userOwnedGrafeasNote: json_.containsKey('userOwnedGrafeasNote')
+            ? UserOwnedGrafeasNote.fromJson(
+                json_['userOwnedGrafeasNote']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (userOwnedGrafeasNote != null)
-      'userOwnedGrafeasNote': userOwnedGrafeasNote!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final etag = this.etag;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    final userOwnedGrafeasNote = this.userOwnedGrafeasNote;
+    return {
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'updateTime': ?updateTime,
+      'userOwnedGrafeasNote': ?userOwnedGrafeasNote,
+    };
+  }
 }
 
 /// An attestor public key that will be used to verify attestations signed by
@@ -1478,21 +1495,25 @@ class AttestorPublicKey {
             json_['asciiArmoredPgpPublicKey'] as core.String?,
         comment: json_['comment'] as core.String?,
         id: json_['id'] as core.String?,
-        pkixPublicKey:
-            json_.containsKey('pkixPublicKey')
-                ? PkixPublicKey.fromJson(
-                  json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pkixPublicKey: json_.containsKey('pkixPublicKey')
+            ? PkixPublicKey.fromJson(
+                json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (asciiArmoredPgpPublicKey != null)
-      'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey!,
-    if (comment != null) 'comment': comment!,
-    if (id != null) 'id': id!,
-    if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final asciiArmoredPgpPublicKey = this.asciiArmoredPgpPublicKey;
+    final comment = this.comment;
+    final id = this.id;
+    final pkixPublicKey = this.pkixPublicKey;
+    return {
+      'asciiArmoredPgpPublicKey': ?asciiArmoredPgpPublicKey,
+      'comment': ?comment,
+      'id': ?id,
+      'pkixPublicKey': ?pkixPublicKey,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1579,24 +1600,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// A single check to perform against a Pod.
@@ -1685,71 +1705,71 @@ class Check {
     : this(
         alwaysDeny: json_['alwaysDeny'] as core.bool?,
         displayName: json_['displayName'] as core.String?,
-        imageAllowlist:
-            json_.containsKey('imageAllowlist')
-                ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imageFreshnessCheck:
-            json_.containsKey('imageFreshnessCheck')
-                ? ImageFreshnessCheck.fromJson(
-                  json_['imageFreshnessCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sigstoreSignatureCheck:
-            json_.containsKey('sigstoreSignatureCheck')
-                ? SigstoreSignatureCheck.fromJson(
-                  json_['sigstoreSignatureCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageAllowlist: json_.containsKey('imageAllowlist')
+            ? ImageAllowlist.fromJson(
+                json_['imageAllowlist'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageFreshnessCheck: json_.containsKey('imageFreshnessCheck')
+            ? ImageFreshnessCheck.fromJson(
+                json_['imageFreshnessCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sigstoreSignatureCheck: json_.containsKey('sigstoreSignatureCheck')
+            ? SigstoreSignatureCheck.fromJson(
+                json_['sigstoreSignatureCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         simpleSigningAttestationCheck:
             json_.containsKey('simpleSigningAttestationCheck')
-                ? SimpleSigningAttestationCheck.fromJson(
-                  json_['simpleSigningAttestationCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        slsaCheck:
-            json_.containsKey('slsaCheck')
-                ? SlsaCheck.fromJson(
-                  json_['slsaCheck'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        trustedDirectoryCheck:
-            json_.containsKey('trustedDirectoryCheck')
-                ? TrustedDirectoryCheck.fromJson(
-                  json_['trustedDirectoryCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vulnerabilityCheck:
-            json_.containsKey('vulnerabilityCheck')
-                ? VulnerabilityCheck.fromJson(
-                  json_['vulnerabilityCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? SimpleSigningAttestationCheck.fromJson(
+                json_['simpleSigningAttestationCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        slsaCheck: json_.containsKey('slsaCheck')
+            ? SlsaCheck.fromJson(
+                json_['slsaCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        trustedDirectoryCheck: json_.containsKey('trustedDirectoryCheck')
+            ? TrustedDirectoryCheck.fromJson(
+                json_['trustedDirectoryCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vulnerabilityCheck: json_.containsKey('vulnerabilityCheck')
+            ? VulnerabilityCheck.fromJson(
+                json_['vulnerabilityCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alwaysDeny != null) 'alwaysDeny': alwaysDeny!,
-    if (displayName != null) 'displayName': displayName!,
-    if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
-    if (imageFreshnessCheck != null)
-      'imageFreshnessCheck': imageFreshnessCheck!,
-    if (sigstoreSignatureCheck != null)
-      'sigstoreSignatureCheck': sigstoreSignatureCheck!,
-    if (simpleSigningAttestationCheck != null)
-      'simpleSigningAttestationCheck': simpleSigningAttestationCheck!,
-    if (slsaCheck != null) 'slsaCheck': slsaCheck!,
-    if (trustedDirectoryCheck != null)
-      'trustedDirectoryCheck': trustedDirectoryCheck!,
-    if (vulnerabilityCheck != null) 'vulnerabilityCheck': vulnerabilityCheck!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alwaysDeny = this.alwaysDeny;
+    final displayName = this.displayName;
+    final imageAllowlist = this.imageAllowlist;
+    final imageFreshnessCheck = this.imageFreshnessCheck;
+    final sigstoreSignatureCheck = this.sigstoreSignatureCheck;
+    final simpleSigningAttestationCheck = this.simpleSigningAttestationCheck;
+    final slsaCheck = this.slsaCheck;
+    final trustedDirectoryCheck = this.trustedDirectoryCheck;
+    final vulnerabilityCheck = this.vulnerabilityCheck;
+    return {
+      'alwaysDeny': ?alwaysDeny,
+      'displayName': ?displayName,
+      'imageAllowlist': ?imageAllowlist,
+      'imageFreshnessCheck': ?imageFreshnessCheck,
+      'sigstoreSignatureCheck': ?sigstoreSignatureCheck,
+      'simpleSigningAttestationCheck': ?simpleSigningAttestationCheck,
+      'slsaCheck': ?slsaCheck,
+      'trustedDirectoryCheck': ?trustedDirectoryCheck,
+      'vulnerabilityCheck': ?vulnerabilityCheck,
+    };
+  }
 }
 
 /// Result of evaluating one check.
@@ -1784,34 +1804,39 @@ class CheckResult {
 
   CheckResult.fromJson(core.Map json_)
     : this(
-        allowlistResult:
-            json_.containsKey('allowlistResult')
-                ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        allowlistResult: json_.containsKey('allowlistResult')
+            ? AllowlistResult.fromJson(
+                json_['allowlistResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
-        evaluationResult:
-            json_.containsKey('evaluationResult')
-                ? EvaluationResult.fromJson(
-                  json_['evaluationResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        evaluationResult: json_.containsKey('evaluationResult')
+            ? EvaluationResult.fromJson(
+                json_['evaluationResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         explanation: json_['explanation'] as core.String?,
         index: json_['index'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistResult != null) 'allowlistResult': allowlistResult!,
-    if (displayName != null) 'displayName': displayName!,
-    if (evaluationResult != null) 'evaluationResult': evaluationResult!,
-    if (explanation != null) 'explanation': explanation!,
-    if (index != null) 'index': index!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistResult = this.allowlistResult;
+    final displayName = this.displayName;
+    final evaluationResult = this.evaluationResult;
+    final explanation = this.explanation;
+    final index = this.index;
+    final type = this.type;
+    return {
+      'allowlistResult': ?allowlistResult,
+      'displayName': ?displayName,
+      'evaluationResult': ?evaluationResult,
+      'explanation': ?explanation,
+      'index': ?index,
+      'type': ?type,
+    };
+  }
 }
 
 /// Result of evaluating one or more checks.
@@ -1823,19 +1848,19 @@ class CheckResults {
 
   CheckResults.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => CheckResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => CheckResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
 }
 
 /// A conjunction of policy checks, scoped to a particular namespace or
@@ -1884,36 +1909,37 @@ class CheckSet {
 
   CheckSet.fromJson(core.Map json_)
     : this(
-        checks:
-            (json_['checks'] as core.List?)
-                ?.map(
-                  (value) => Check.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        checks: (json_['checks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Check.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         displayName: json_['displayName'] as core.String?,
-        imageAllowlist:
-            json_.containsKey('imageAllowlist')
-                ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        scope:
-            json_.containsKey('scope')
-                ? Scope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageAllowlist: json_.containsKey('imageAllowlist')
+            ? ImageAllowlist.fromJson(
+                json_['imageAllowlist'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scope: json_.containsKey('scope')
+            ? Scope.fromJson(
+                json_['scope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checks != null) 'checks': checks!,
-    if (displayName != null) 'displayName': displayName!,
-    if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
-    if (scope != null) 'scope': scope!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checks = this.checks;
+    final displayName = this.displayName;
+    final imageAllowlist = this.imageAllowlist;
+    final scope = this.scope;
+    return {
+      'checks': ?checks,
+      'displayName': ?displayName,
+      'imageAllowlist': ?imageAllowlist,
+      'scope': ?scope,
+    };
+  }
 }
 
 /// Result of evaluating one check set.
@@ -1950,38 +1976,42 @@ class CheckSetResult {
 
   CheckSetResult.fromJson(core.Map json_)
     : this(
-        allowlistResult:
-            json_.containsKey('allowlistResult')
-                ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        checkResults:
-            json_.containsKey('checkResults')
-                ? CheckResults.fromJson(
-                  json_['checkResults'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        allowlistResult: json_.containsKey('allowlistResult')
+            ? AllowlistResult.fromJson(
+                json_['allowlistResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        checkResults: json_.containsKey('checkResults')
+            ? CheckResults.fromJson(
+                json_['checkResults'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         explanation: json_['explanation'] as core.String?,
         index: json_['index'] as core.String?,
-        scope:
-            json_.containsKey('scope')
-                ? Scope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scope: json_.containsKey('scope')
+            ? Scope.fromJson(
+                json_['scope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistResult != null) 'allowlistResult': allowlistResult!,
-    if (checkResults != null) 'checkResults': checkResults!,
-    if (displayName != null) 'displayName': displayName!,
-    if (explanation != null) 'explanation': explanation!,
-    if (index != null) 'index': index!,
-    if (scope != null) 'scope': scope!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistResult = this.allowlistResult;
+    final checkResults = this.checkResults;
+    final displayName = this.displayName;
+    final explanation = this.explanation;
+    final index = this.index;
+    final scope = this.scope;
+    return {
+      'allowlistResult': ?allowlistResult,
+      'checkResults': ?checkResults,
+      'displayName': ?displayName,
+      'explanation': ?explanation,
+      'index': ?index,
+      'scope': ?scope,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2006,15 +2036,15 @@ class EvaluateGkePolicyRequest {
 
   EvaluateGkePolicyRequest.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? json_['resource'] as core.Map<core.String, core.dynamic>
-                : null,
+        resource: json_.containsKey('resource')
+            ? json_['resource'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 /// Response message for PlatformPolicyEvaluationService.EvaluateGkePolicy.
@@ -2035,21 +2065,21 @@ class EvaluateGkePolicyResponse {
 
   EvaluateGkePolicyResponse.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => PodResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => PodResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    final verdict = this.verdict;
+    return {'results': ?results, 'verdict': ?verdict};
+  }
 }
 
 /// Result of evaluating one check.
@@ -2069,9 +2099,10 @@ class EvaluationResult {
   EvaluationResult.fromJson(core.Map json_)
     : this(verdict: json_['verdict'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final verdict = this.verdict;
+    return {'verdict': ?verdict};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2133,27 +2164,25 @@ class GkePolicy {
 
   GkePolicy.fromJson(core.Map json_)
     : this(
-        checkSets:
-            (json_['checkSets'] as core.List?)
-                ?.map(
-                  (value) => CheckSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        imageAllowlist:
-            json_.containsKey('imageAllowlist')
-                ? ImageAllowlist.fromJson(
-                  json_['imageAllowlist']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checkSets: (json_['checkSets'] as core.List?)
+            ?.map(
+              (value) => CheckSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        imageAllowlist: json_.containsKey('imageAllowlist')
+            ? ImageAllowlist.fromJson(
+                json_['imageAllowlist'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkSets != null) 'checkSets': checkSets!,
-    if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checkSets = this.checkSets;
+    final imageAllowlist = this.imageAllowlist;
+    return {'checkSets': ?checkSets, 'imageAllowlist': ?imageAllowlist};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2245,23 +2274,23 @@ class IamPolicy {
 
   IamPolicy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Images that are exempted from normal checks based on name pattern only.
@@ -2278,15 +2307,15 @@ class ImageAllowlist {
 
   ImageAllowlist.fromJson(core.Map json_)
     : this(
-        allowPattern:
-            (json_['allowPattern'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allowPattern: (json_['allowPattern'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPattern != null) 'allowPattern': allowPattern!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowPattern = this.allowPattern;
+    return {'allowPattern': ?allowPattern};
+  }
 }
 
 /// An image freshness check, which rejects images that were uploaded before the
@@ -2304,9 +2333,10 @@ class ImageFreshnessCheck {
   ImageFreshnessCheck.fromJson(core.Map json_)
     : this(maxUploadAgeDays: json_['maxUploadAgeDays'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxUploadAgeDays != null) 'maxUploadAgeDays': maxUploadAgeDays!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxUploadAgeDays = this.maxUploadAgeDays;
+    return {'maxUploadAgeDays': ?maxUploadAgeDays};
+  }
 }
 
 /// Result of evaluating one image.
@@ -2347,32 +2377,35 @@ class ImageResult {
 
   ImageResult.fromJson(core.Map json_)
     : this(
-        allowlistResult:
-            json_.containsKey('allowlistResult')
-                ? AllowlistResult.fromJson(
-                  json_['allowlistResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        checkSetResult:
-            json_.containsKey('checkSetResult')
-                ? CheckSetResult.fromJson(
-                  json_['checkSetResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        allowlistResult: json_.containsKey('allowlistResult')
+            ? AllowlistResult.fromJson(
+                json_['allowlistResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        checkSetResult: json_.containsKey('checkSetResult')
+            ? CheckSetResult.fromJson(
+                json_['checkSetResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         explanation: json_['explanation'] as core.String?,
         imageUri: json_['imageUri'] as core.String?,
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistResult != null) 'allowlistResult': allowlistResult!,
-    if (checkSetResult != null) 'checkSetResult': checkSetResult!,
-    if (explanation != null) 'explanation': explanation!,
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistResult = this.allowlistResult;
+    final checkSetResult = this.checkSetResult;
+    final explanation = this.explanation;
+    final imageUri = this.imageUri;
+    final verdict = this.verdict;
+    return {
+      'allowlistResult': ?allowlistResult,
+      'checkSetResult': ?checkSetResult,
+      'explanation': ?explanation,
+      'imageUri': ?imageUri,
+      'verdict': ?verdict,
+    };
+  }
 }
 
 typedef Jwt = $Jwt;
@@ -2393,21 +2426,21 @@ class ListAttestorsResponse {
 
   ListAttestorsResponse.fromJson(core.Map json_)
     : this(
-        attestors:
-            (json_['attestors'] as core.List?)
-                ?.map(
-                  (value) => Attestor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        attestors: (json_['attestors'] as core.List?)
+            ?.map(
+              (value) => Attestor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestors != null) 'attestors': attestors!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestors = this.attestors;
+    final nextPageToken = this.nextPageToken;
+    return {'attestors': ?attestors, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for PlatformPolicyManagementService.ListPlatformPolicies.
@@ -2427,20 +2460,23 @@ class ListPlatformPoliciesResponse {
   ListPlatformPoliciesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        platformPolicies:
-            (json_['platformPolicies'] as core.List?)
-                ?.map(
-                  (value) => PlatformPolicy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        platformPolicies: (json_['platformPolicies'] as core.List?)
+            ?.map(
+              (value) => PlatformPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (platformPolicies != null) 'platformPolicies': platformPolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final platformPolicies = this.platformPolicies;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'platformPolicies': ?platformPolicies,
+    };
+  }
 }
 
 /// A public key in the PkixPublicKey
@@ -2521,11 +2557,16 @@ class PkixPublicKey {
         signatureAlgorithm: json_['signatureAlgorithm'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyId != null) 'keyId': keyId!,
-    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
-    if (signatureAlgorithm != null) 'signatureAlgorithm': signatureAlgorithm!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyId = this.keyId;
+    final publicKeyPem = this.publicKeyPem;
+    final signatureAlgorithm = this.signatureAlgorithm;
+    return {
+      'keyId': ?keyId,
+      'publicKeyPem': ?publicKeyPem,
+      'signatureAlgorithm': ?signatureAlgorithm,
+    };
+  }
 }
 
 /// A bundle of PKIX public keys, used to authenticate attestation signatures.
@@ -2543,19 +2584,19 @@ class PkixPublicKeySet {
 
   PkixPublicKeySet.fromJson(core.Map json_)
     : this(
-        pkixPublicKeys:
-            (json_['pkixPublicKeys'] as core.List?)
-                ?.map(
-                  (value) => PkixPublicKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pkixPublicKeys: (json_['pkixPublicKeys'] as core.List?)
+            ?.map(
+              (value) => PkixPublicKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pkixPublicKeys != null) 'pkixPublicKeys': pkixPublicKeys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pkixPublicKeys = this.pkixPublicKeys;
+    return {'pkixPublicKeys': ?pkixPublicKeys};
+  }
 }
 
 /// A Binary Authorization platform policy for deployments on various platforms.
@@ -2599,23 +2640,29 @@ class PlatformPolicy {
     : this(
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
-        gkePolicy:
-            json_.containsKey('gkePolicy')
-                ? GkePolicy.fromJson(
-                  json_['gkePolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gkePolicy: json_.containsKey('gkePolicy')
+            ? GkePolicy.fromJson(
+                json_['gkePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (gkePolicy != null) 'gkePolicy': gkePolicy!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final etag = this.etag;
+    final gkePolicy = this.gkePolicy;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'description': ?description,
+      'etag': ?etag,
+      'gkePolicy': ?gkePolicy,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Result of evaluating the whole GKE policy for one Pod.
@@ -2652,14 +2699,13 @@ class PodResult {
 
   PodResult.fromJson(core.Map json_)
     : this(
-        imageResults:
-            (json_['imageResults'] as core.List?)
-                ?.map(
-                  (value) => ImageResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imageResults: (json_['imageResults'] as core.List?)
+            ?.map(
+              (value) => ImageResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kubernetesNamespace: json_['kubernetesNamespace'] as core.String?,
         kubernetesServiceAccount:
             json_['kubernetesServiceAccount'] as core.String?,
@@ -2667,15 +2713,20 @@ class PodResult {
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageResults != null) 'imageResults': imageResults!,
-    if (kubernetesNamespace != null)
-      'kubernetesNamespace': kubernetesNamespace!,
-    if (kubernetesServiceAccount != null)
-      'kubernetesServiceAccount': kubernetesServiceAccount!,
-    if (podName != null) 'podName': podName!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageResults = this.imageResults;
+    final kubernetesNamespace = this.kubernetesNamespace;
+    final kubernetesServiceAccount = this.kubernetesServiceAccount;
+    final podName = this.podName;
+    final verdict = this.verdict;
+    return {
+      'imageResults': ?imageResults,
+      'kubernetesNamespace': ?kubernetesNamespace,
+      'kubernetesServiceAccount': ?kubernetesServiceAccount,
+      'podName': ?podName,
+      'verdict': ?verdict,
+    };
+  }
 }
 
 /// A policy for container image binary authorization.
@@ -2797,23 +2848,23 @@ class Policy {
                   ),
                 )
                 .toList(),
-        clusterAdmissionRules: (json_['clusterAdmissionRules']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                AdmissionRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        clusterAdmissionRules:
+            (json_['clusterAdmissionRules']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    AdmissionRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        defaultAdmissionRule:
-            json_.containsKey('defaultAdmissionRule')
-                ? AdmissionRule.fromJson(
-                  json_['defaultAdmissionRule']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        defaultAdmissionRule: json_.containsKey('defaultAdmissionRule')
+            ? AdmissionRule.fromJson(
+                json_['defaultAdmissionRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
         globalPolicyEvaluationMode:
@@ -2855,27 +2906,36 @@ class Policy {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (admissionWhitelistPatterns != null)
-      'admissionWhitelistPatterns': admissionWhitelistPatterns!,
-    if (clusterAdmissionRules != null)
-      'clusterAdmissionRules': clusterAdmissionRules!,
-    if (defaultAdmissionRule != null)
-      'defaultAdmissionRule': defaultAdmissionRule!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (globalPolicyEvaluationMode != null)
-      'globalPolicyEvaluationMode': globalPolicyEvaluationMode!,
-    if (istioServiceIdentityAdmissionRules != null)
-      'istioServiceIdentityAdmissionRules': istioServiceIdentityAdmissionRules!,
-    if (kubernetesNamespaceAdmissionRules != null)
-      'kubernetesNamespaceAdmissionRules': kubernetesNamespaceAdmissionRules!,
-    if (kubernetesServiceAccountAdmissionRules != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final admissionWhitelistPatterns = this.admissionWhitelistPatterns;
+    final clusterAdmissionRules = this.clusterAdmissionRules;
+    final defaultAdmissionRule = this.defaultAdmissionRule;
+    final description = this.description;
+    final etag = this.etag;
+    final globalPolicyEvaluationMode = this.globalPolicyEvaluationMode;
+    final istioServiceIdentityAdmissionRules =
+        this.istioServiceIdentityAdmissionRules;
+    final kubernetesNamespaceAdmissionRules =
+        this.kubernetesNamespaceAdmissionRules;
+    final kubernetesServiceAccountAdmissionRules =
+        this.kubernetesServiceAccountAdmissionRules;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'admissionWhitelistPatterns': ?admissionWhitelistPatterns,
+      'clusterAdmissionRules': ?clusterAdmissionRules,
+      'defaultAdmissionRule': ?defaultAdmissionRule,
+      'description': ?description,
+      'etag': ?etag,
+      'globalPolicyEvaluationMode': ?globalPolicyEvaluationMode,
+      'istioServiceIdentityAdmissionRules': ?istioServiceIdentityAdmissionRules,
+      'kubernetesNamespaceAdmissionRules': ?kubernetesNamespaceAdmissionRules,
       'kubernetesServiceAccountAdmissionRules':
-          kubernetesServiceAccountAdmissionRules!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+          ?kubernetesServiceAccountAdmissionRules,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A scope specifier for `CheckSet` objects.
@@ -2904,12 +2964,14 @@ class Scope {
             json_['kubernetesServiceAccount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kubernetesNamespace != null)
-      'kubernetesNamespace': kubernetesNamespace!,
-    if (kubernetesServiceAccount != null)
-      'kubernetesServiceAccount': kubernetesServiceAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kubernetesNamespace = this.kubernetesNamespace;
+    final kubernetesServiceAccount = this.kubernetesServiceAccount;
+    return {
+      'kubernetesNamespace': ?kubernetesNamespace,
+      'kubernetesServiceAccount': ?kubernetesServiceAccount,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2925,17 +2987,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? IamPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? IamPolicy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
@@ -2986,18 +3048,18 @@ class SigstoreAuthority {
   SigstoreAuthority.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        publicKeySet:
-            json_.containsKey('publicKeySet')
-                ? SigstorePublicKeySet.fromJson(
-                  json_['publicKeySet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        publicKeySet: json_.containsKey('publicKeySet')
+            ? SigstorePublicKeySet.fromJson(
+                json_['publicKeySet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (publicKeySet != null) 'publicKeySet': publicKeySet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final publicKeySet = this.publicKeySet;
+    return {'displayName': ?displayName, 'publicKeySet': ?publicKeySet};
+  }
 }
 
 /// A Sigstore public key.
@@ -3013,9 +3075,10 @@ class SigstorePublicKey {
   SigstorePublicKey.fromJson(core.Map json_)
     : this(publicKeyPem: json_['publicKeyPem'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final publicKeyPem = this.publicKeyPem;
+    return {'publicKeyPem': ?publicKeyPem};
+  }
 }
 
 /// A bundle of Sigstore public keys, used to verify Sigstore signatures.
@@ -3032,19 +3095,19 @@ class SigstorePublicKeySet {
 
   SigstorePublicKeySet.fromJson(core.Map json_)
     : this(
-        publicKeys:
-            (json_['publicKeys'] as core.List?)
-                ?.map(
-                  (value) => SigstorePublicKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        publicKeys: (json_['publicKeys'] as core.List?)
+            ?.map(
+              (value) => SigstorePublicKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (publicKeys != null) 'publicKeys': publicKeys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final publicKeys = this.publicKeys;
+    return {'publicKeys': ?publicKeys};
+  }
 }
 
 /// A Sigstore signature check, which verifies the Sigstore signature associated
@@ -3061,20 +3124,19 @@ class SigstoreSignatureCheck {
 
   SigstoreSignatureCheck.fromJson(core.Map json_)
     : this(
-        sigstoreAuthorities:
-            (json_['sigstoreAuthorities'] as core.List?)
-                ?.map(
-                  (value) => SigstoreAuthority.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sigstoreAuthorities: (json_['sigstoreAuthorities'] as core.List?)
+            ?.map(
+              (value) => SigstoreAuthority.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sigstoreAuthorities != null)
-      'sigstoreAuthorities': sigstoreAuthorities!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sigstoreAuthorities = this.sigstoreAuthorities;
+    return {'sigstoreAuthorities': ?sigstoreAuthorities};
+  }
 }
 
 /// Require a signed [DSSE](https://github.com/secure-systems-lab/dsse)
@@ -3127,13 +3189,16 @@ class SimpleSigningAttestationCheck {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationAuthenticators != null)
-      'attestationAuthenticators': attestationAuthenticators!,
-    if (containerAnalysisAttestationProjects != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestationAuthenticators = this.attestationAuthenticators;
+    final containerAnalysisAttestationProjects =
+        this.containerAnalysisAttestationProjects;
+    return {
+      'attestationAuthenticators': ?attestationAuthenticators,
       'containerAnalysisAttestationProjects':
-          containerAnalysisAttestationProjects!,
-  };
+          ?containerAnalysisAttestationProjects,
+    };
+  }
 }
 
 /// A SLSA provenance attestation check, which ensures that images are built by
@@ -3149,19 +3214,19 @@ class SlsaCheck {
 
   SlsaCheck.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => VerificationRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => VerificationRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3199,15 +3264,15 @@ class TrustedDirectoryCheck {
 
   TrustedDirectoryCheck.fromJson(core.Map json_)
     : this(
-        trustedDirPatterns:
-            (json_['trustedDirPatterns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        trustedDirPatterns: (json_['trustedDirPatterns'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trustedDirPatterns != null) 'trustedDirPatterns': trustedDirPatterns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final trustedDirPatterns = this.trustedDirPatterns;
+    return {'trustedDirPatterns': ?trustedDirPatterns};
+  }
 }
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note
@@ -3258,22 +3323,25 @@ class UserOwnedGrafeasNote {
         delegationServiceAccountEmail:
             json_['delegationServiceAccountEmail'] as core.String?,
         noteReference: json_['noteReference'] as core.String?,
-        publicKeys:
-            (json_['publicKeys'] as core.List?)
-                ?.map(
-                  (value) => AttestorPublicKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        publicKeys: (json_['publicKeys'] as core.List?)
+            ?.map(
+              (value) => AttestorPublicKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegationServiceAccountEmail != null)
-      'delegationServiceAccountEmail': delegationServiceAccountEmail!,
-    if (noteReference != null) 'noteReference': noteReference!,
-    if (publicKeys != null) 'publicKeys': publicKeys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegationServiceAccountEmail = this.delegationServiceAccountEmail;
+    final noteReference = this.noteReference;
+    final publicKeys = this.publicKeys;
+    return {
+      'delegationServiceAccountEmail': ?delegationServiceAccountEmail,
+      'noteReference': ?noteReference,
+      'publicKeys': ?publicKeys,
+    };
+  }
 }
 
 /// Request message for ValidationHelperV1.ValidateAttestationOccurrence.
@@ -3307,22 +3375,25 @@ class ValidateAttestationOccurrenceRequest {
 
   ValidateAttestationOccurrenceRequest.fromJson(core.Map json_)
     : this(
-        attestation:
-            json_.containsKey('attestation')
-                ? AttestationOccurrence.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attestation: json_.containsKey('attestation')
+            ? AttestationOccurrence.fromJson(
+                json_['attestation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         occurrenceNote: json_['occurrenceNote'] as core.String?,
         occurrenceResourceUri: json_['occurrenceResourceUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestation != null) 'attestation': attestation!,
-    if (occurrenceNote != null) 'occurrenceNote': occurrenceNote!,
-    if (occurrenceResourceUri != null)
-      'occurrenceResourceUri': occurrenceResourceUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestation = this.attestation;
+    final occurrenceNote = this.occurrenceNote;
+    final occurrenceResourceUri = this.occurrenceResourceUri;
+    return {
+      'attestation': ?attestation,
+      'occurrenceNote': ?occurrenceNote,
+      'occurrenceResourceUri': ?occurrenceResourceUri,
+    };
+  }
 }
 
 /// Response message for ValidationHelperV1.ValidateAttestationOccurrence.
@@ -3346,10 +3417,11 @@ class ValidateAttestationOccurrenceResponse {
         result: json_['result'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denialReason != null) 'denialReason': denialReason!,
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denialReason = this.denialReason;
+    final result = this.result;
+    return {'denialReason': ?denialReason, 'result': ?result};
+  }
 }
 
 /// Specifies verification rules for evaluating the SLSA attestations including:
@@ -3422,13 +3494,12 @@ class VerificationRule {
 
   VerificationRule.fromJson(core.Map json_)
     : this(
-        attestationSource:
-            json_.containsKey('attestationSource')
-                ? AttestationSource.fromJson(
-                  json_['attestationSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attestationSource: json_.containsKey('attestationSource')
+            ? AttestationSource.fromJson(
+                json_['attestationSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         configBasedBuildRequired:
             json_['configBasedBuildRequired'] as core.bool?,
         customConstraints: json_['customConstraints'] as core.String?,
@@ -3439,15 +3510,20 @@ class VerificationRule {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationSource != null) 'attestationSource': attestationSource!,
-    if (configBasedBuildRequired != null)
-      'configBasedBuildRequired': configBasedBuildRequired!,
-    if (customConstraints != null) 'customConstraints': customConstraints!,
-    if (trustedBuilder != null) 'trustedBuilder': trustedBuilder!,
-    if (trustedSourceRepoPatterns != null)
-      'trustedSourceRepoPatterns': trustedSourceRepoPatterns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestationSource = this.attestationSource;
+    final configBasedBuildRequired = this.configBasedBuildRequired;
+    final customConstraints = this.customConstraints;
+    final trustedBuilder = this.trustedBuilder;
+    final trustedSourceRepoPatterns = this.trustedSourceRepoPatterns;
+    return {
+      'attestationSource': ?attestationSource,
+      'configBasedBuildRequired': ?configBasedBuildRequired,
+      'customConstraints': ?customConstraints,
+      'trustedBuilder': ?trustedBuilder,
+      'trustedSourceRepoPatterns': ?trustedSourceRepoPatterns,
+    };
+  }
 }
 
 /// An image vulnerability check, which rejects images that violate the
@@ -3539,14 +3615,12 @@ class VulnerabilityCheck {
 
   VulnerabilityCheck.fromJson(core.Map json_)
     : this(
-        allowedCves:
-            (json_['allowedCves'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        blockedCves:
-            (json_['blockedCves'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allowedCves: (json_['allowedCves'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        blockedCves: (json_['blockedCves'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         containerAnalysisVulnerabilityProjects:
             (json_['containerAnalysisVulnerabilityProjects'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -3556,15 +3630,20 @@ class VulnerabilityCheck {
             json_['maximumUnfixableSeverity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedCves != null) 'allowedCves': allowedCves!,
-    if (blockedCves != null) 'blockedCves': blockedCves!,
-    if (containerAnalysisVulnerabilityProjects != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedCves = this.allowedCves;
+    final blockedCves = this.blockedCves;
+    final containerAnalysisVulnerabilityProjects =
+        this.containerAnalysisVulnerabilityProjects;
+    final maximumFixableSeverity = this.maximumFixableSeverity;
+    final maximumUnfixableSeverity = this.maximumUnfixableSeverity;
+    return {
+      'allowedCves': ?allowedCves,
+      'blockedCves': ?blockedCves,
       'containerAnalysisVulnerabilityProjects':
-          containerAnalysisVulnerabilityProjects!,
-    if (maximumFixableSeverity != null)
-      'maximumFixableSeverity': maximumFixableSeverity!,
-    if (maximumUnfixableSeverity != null)
-      'maximumUnfixableSeverity': maximumUnfixableSeverity!,
-  };
+          ?containerAnalysisVulnerabilityProjects,
+      'maximumFixableSeverity': ?maximumFixableSeverity,
+      'maximumUnfixableSeverity': ?maximumUnfixableSeverity,
+    };
+  }
 }

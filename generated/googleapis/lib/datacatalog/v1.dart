@@ -123,7 +123,7 @@ class CatalogResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/catalog:search';
@@ -211,13 +211,14 @@ class EntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fullyQualifiedName != null)
-        'fullyQualifiedName': [fullyQualifiedName],
-      if (linkedResource != null) 'linkedResource': [linkedResource],
-      if (location != null) 'location': [location],
-      if (project != null) 'project': [project],
-      if (sqlResource != null) 'sqlResource': [sqlResource],
-      if ($fields != null) 'fields': [$fields],
+      'fullyQualifiedName': ?fullyQualifiedName == null
+          ? null
+          : [fullyQualifiedName],
+      'linkedResource': ?linkedResource == null ? null : [linkedResource],
+      'location': ?location == null ? null : [location],
+      'project': ?project == null ? null : [project],
+      'sqlResource': ?sqlResource == null ? null : [sqlResource],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/entries:lookup';
@@ -278,7 +279,7 @@ class OrganizationsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':retrieveConfig';
@@ -324,7 +325,7 @@ class OrganizationsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -371,7 +372,7 @@ class OrganizationsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setConfig';
@@ -442,7 +443,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -489,7 +490,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setConfig';
@@ -570,8 +571,8 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (entryGroupId != null) 'entryGroupId': [entryGroupId],
-      if ($fields != null) 'fields': [$fields],
+      'entryGroupId': ?entryGroupId == null ? null : [entryGroupId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
@@ -620,8 +621,8 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -664,8 +665,8 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -722,7 +723,7 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -771,9 +772,9 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
@@ -830,8 +831,8 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -889,7 +890,7 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -943,7 +944,7 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1015,8 +1016,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (entryId != null) 'entryId': [entryId],
-      if ($fields != null) 'fields': [$fields],
+      'entryId': ?entryId == null ? null : [entryId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
@@ -1060,7 +1061,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   )
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1099,7 +1100,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1156,7 +1157,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1209,7 +1210,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entries:import';
@@ -1267,10 +1268,10 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
@@ -1319,7 +1320,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':modifyEntryContacts';
@@ -1369,7 +1370,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':modifyEntryOverview';
@@ -1433,8 +1434,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1482,7 +1483,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':star';
@@ -1538,7 +1539,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1587,7 +1588,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unstar';
@@ -1655,7 +1656,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags';
@@ -1694,7 +1695,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   )
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1745,9 +1746,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags';
@@ -1801,8 +1802,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1856,7 +1857,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags:reconcile';
@@ -1922,7 +1923,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags';
@@ -1961,7 +1962,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   )
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2012,9 +2013,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tags';
@@ -2068,8 +2069,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2121,7 +2122,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -2158,7 +2159,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2194,7 +2195,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2249,12 +2250,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2319,8 +2321,8 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tagTemplateId != null) 'tagTemplateId': [tagTemplateId],
-      if ($fields != null) 'fields': [$fields],
+      'tagTemplateId': ?tagTemplateId == null ? null : [tagTemplateId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tagTemplates';
@@ -2370,8 +2372,8 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2410,7 +2412,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2467,7 +2469,7 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2528,8 +2530,8 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2587,7 +2589,7 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2641,7 +2643,7 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2711,9 +2713,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tagTemplateFieldId != null)
-        'tagTemplateFieldId': [tagTemplateFieldId],
-      if ($fields != null) 'fields': [$fields],
+      'tagTemplateFieldId': ?tagTemplateFieldId == null
+          ? null
+          : [tagTemplateFieldId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fields';
@@ -2764,8 +2767,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2824,8 +2827,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2875,7 +2878,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rename';
@@ -2934,7 +2937,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rename';
@@ -2989,7 +2992,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
@@ -3027,7 +3030,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3075,10 +3078,11 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (serializedTaxonomies != null)
-        'serializedTaxonomies': ['${serializedTaxonomies}'],
-      if (taxonomies != null) 'taxonomies': taxonomies,
-      if ($fields != null) 'fields': [$fields],
+      'serializedTaxonomies': ?serializedTaxonomies == null
+          ? null
+          : ['${serializedTaxonomies}'],
+      'taxonomies': ?taxonomies,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/taxonomies:export';
@@ -3116,7 +3120,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3161,7 +3165,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3207,7 +3211,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/taxonomies:import';
@@ -3260,10 +3264,10 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
@@ -3312,8 +3316,8 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3363,7 +3367,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':replace';
@@ -3409,7 +3413,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3453,7 +3457,7 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3505,7 +3509,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policyTags';
@@ -3545,7 +3549,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3581,7 +3585,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3626,7 +3630,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3673,9 +3677,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policyTags';
@@ -3725,8 +3729,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3772,7 +3776,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3816,7 +3820,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3918,24 +3922,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3976,17 +3979,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -4015,21 +4018,25 @@ class GoogleCloudDatacatalogV1BigQueryConnectionSpec {
 
   GoogleCloudDatacatalogV1BigQueryConnectionSpec.fromJson(core.Map json_)
     : this(
-        cloudSql:
-            json_.containsKey('cloudSql')
-                ? GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
-                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudSql: json_.containsKey('cloudSql')
+            ? GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
+                json_['cloudSql'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         connectionType: json_['connectionType'] as core.String?,
         hasCredential: json_['hasCredential'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudSql != null) 'cloudSql': cloudSql!,
-    if (connectionType != null) 'connectionType': connectionType!,
-    if (hasCredential != null) 'hasCredential': hasCredential!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudSql = this.cloudSql;
+    final connectionType = this.connectionType;
+    final hasCredential = this.hasCredential;
+    return {
+      'cloudSql': ?cloudSql,
+      'connectionType': ?connectionType,
+      'hasCredential': ?hasCredential,
+    };
+  }
 }
 
 /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD`
@@ -4080,13 +4087,18 @@ class GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
         tablePrefix: json_['tablePrefix'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataset != null) 'dataset': dataset!,
-    if (latestShardResource != null)
-      'latestShardResource': latestShardResource!,
-    if (shardCount != null) 'shardCount': shardCount!,
-    if (tablePrefix != null) 'tablePrefix': tablePrefix!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataset = this.dataset;
+    final latestShardResource = this.latestShardResource;
+    final shardCount = this.shardCount;
+    final tablePrefix = this.tablePrefix;
+    return {
+      'dataset': ?dataset,
+      'latestShardResource': ?latestShardResource,
+      'shardCount': ?shardCount,
+      'tablePrefix': ?tablePrefix,
+    };
+  }
 }
 
 /// Fields specific for BigQuery routines.
@@ -4098,15 +4110,15 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
 
   GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromJson(core.Map json_)
     : this(
-        importedLibraries:
-            (json_['importedLibraries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        importedLibraries: (json_['importedLibraries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (importedLibraries != null) 'importedLibraries': importedLibraries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final importedLibraries = this.importedLibraries;
+    return {'importedLibraries': ?importedLibraries};
+  }
 }
 
 /// Describes a BigQuery table.
@@ -4140,25 +4152,28 @@ class GoogleCloudDatacatalogV1BigQueryTableSpec {
   GoogleCloudDatacatalogV1BigQueryTableSpec.fromJson(core.Map json_)
     : this(
         tableSourceType: json_['tableSourceType'] as core.String?,
-        tableSpec:
-            json_.containsKey('tableSpec')
-                ? GoogleCloudDatacatalogV1TableSpec.fromJson(
-                  json_['tableSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        viewSpec:
-            json_.containsKey('viewSpec')
-                ? GoogleCloudDatacatalogV1ViewSpec.fromJson(
-                  json_['viewSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        tableSpec: json_.containsKey('tableSpec')
+            ? GoogleCloudDatacatalogV1TableSpec.fromJson(
+                json_['tableSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        viewSpec: json_.containsKey('viewSpec')
+            ? GoogleCloudDatacatalogV1ViewSpec.fromJson(
+                json_['viewSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tableSourceType != null) 'tableSourceType': tableSourceType!,
-    if (tableSpec != null) 'tableSpec': tableSpec!,
-    if (viewSpec != null) 'viewSpec': viewSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tableSourceType = this.tableSourceType;
+    final tableSpec = this.tableSpec;
+    final viewSpec = this.viewSpec;
+    return {
+      'tableSourceType': ?tableSourceType,
+      'tableSpec': ?tableSpec,
+      'viewSpec': ?viewSpec,
+    };
+  }
 }
 
 /// Business Context of the entry.
@@ -4173,24 +4188,23 @@ class GoogleCloudDatacatalogV1BusinessContext {
 
   GoogleCloudDatacatalogV1BusinessContext.fromJson(core.Map json_)
     : this(
-        contacts:
-            json_.containsKey('contacts')
-                ? GoogleCloudDatacatalogV1Contacts.fromJson(
-                  json_['contacts'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        entryOverview:
-            json_.containsKey('entryOverview')
-                ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
-                  json_['entryOverview'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contacts: json_.containsKey('contacts')
+            ? GoogleCloudDatacatalogV1Contacts.fromJson(
+                json_['contacts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entryOverview: json_.containsKey('entryOverview')
+            ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
+                json_['entryOverview'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contacts != null) 'contacts': contacts!,
-    if (entryOverview != null) 'entryOverview': entryOverview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    final entryOverview = this.entryOverview;
+    return {'contacts': ?contacts, 'entryOverview': ?entryOverview};
+  }
 }
 
 /// Specification that applies to Instance entries that are part of
@@ -4221,10 +4235,10 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudBigtableClusterSpecs != null)
-      'cloudBigtableClusterSpecs': cloudBigtableClusterSpecs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudBigtableClusterSpecs = this.cloudBigtableClusterSpecs;
+    return {'cloudBigtableClusterSpecs': ?cloudBigtableClusterSpecs};
+  }
 }
 
 /// Spec that applies to clusters of an Instance of Cloud Bigtable.
@@ -4259,12 +4273,18 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec 
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (linkedResource != null) 'linkedResource': linkedResource!,
-    if (location != null) 'location': location!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final linkedResource = this.linkedResource;
+    final location = this.location;
+    final type = this.type;
+    return {
+      'displayName': ?displayName,
+      'linkedResource': ?linkedResource,
+      'location': ?location,
+      'type': ?type,
+    };
+  }
 }
 
 /// Specification that applies to all entries that are part of `CLOUD_BIGTABLE`
@@ -4280,10 +4300,10 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromJson(core.Map json_)
     : this(instanceDisplayName: json_['instanceDisplayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instanceDisplayName != null)
-      'instanceDisplayName': instanceDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceDisplayName = this.instanceDisplayName;
+    return {'instanceDisplayName': ?instanceDisplayName};
+  }
 }
 
 /// Specification for the BigQuery connection to a Cloud SQL instance.
@@ -4315,11 +4335,12 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (database != null) 'database': database!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final database = this.database;
+    final instanceId = this.instanceId;
+    final type = this.type;
+    return {'database': ?database, 'instanceId': ?instanceId, 'type': ?type};
+  }
 }
 
 /// A column within a schema.
@@ -4424,47 +4445,56 @@ class GoogleCloudDatacatalogV1ColumnSchema {
         description: json_['description'] as core.String?,
         gcRule: json_['gcRule'] as core.String?,
         highestIndexingType: json_['highestIndexingType'] as core.String?,
-        lookerColumnSpec:
-            json_.containsKey('lookerColumnSpec')
-                ? GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
-                  json_['lookerColumnSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lookerColumnSpec: json_.containsKey('lookerColumnSpec')
+            ? GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
+                json_['lookerColumnSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mode: json_['mode'] as core.String?,
         ordinalPosition: json_['ordinalPosition'] as core.int?,
-        rangeElementType:
-            json_.containsKey('rangeElementType')
-                ? GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(
-                  json_['rangeElementType']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        subcolumns:
-            (json_['subcolumns'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rangeElementType: json_.containsKey('rangeElementType')
+            ? GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(
+                json_['rangeElementType']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        subcolumns: (json_['subcolumns'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (description != null) 'description': description!,
-    if (gcRule != null) 'gcRule': gcRule!,
-    if (highestIndexingType != null)
-      'highestIndexingType': highestIndexingType!,
-    if (lookerColumnSpec != null) 'lookerColumnSpec': lookerColumnSpec!,
-    if (mode != null) 'mode': mode!,
-    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
-    if (rangeElementType != null) 'rangeElementType': rangeElementType!,
-    if (subcolumns != null) 'subcolumns': subcolumns!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final defaultValue = this.defaultValue;
+    final description = this.description;
+    final gcRule = this.gcRule;
+    final highestIndexingType = this.highestIndexingType;
+    final lookerColumnSpec = this.lookerColumnSpec;
+    final mode = this.mode;
+    final ordinalPosition = this.ordinalPosition;
+    final rangeElementType = this.rangeElementType;
+    final subcolumns = this.subcolumns;
+    final type = this.type;
+    return {
+      'column': ?column,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'gcRule': ?gcRule,
+      'highestIndexingType': ?highestIndexingType,
+      'lookerColumnSpec': ?lookerColumnSpec,
+      'mode': ?mode,
+      'ordinalPosition': ?ordinalPosition,
+      'rangeElementType': ?rangeElementType,
+      'subcolumns': ?subcolumns,
+      'type': ?type,
+    };
+  }
 }
 
 /// Represents the type of a field element.
@@ -4481,9 +4511,10 @@ class GoogleCloudDatacatalogV1ColumnSchemaFieldElementType {
   GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(core.Map json_)
     : this(type: json_['type'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
 }
 
 /// Column info specific to Looker System.
@@ -4503,9 +4534,10 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
   GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(core.Map json_)
     : this(type: json_['type'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
 }
 
 /// Common statistics on the entry's usage.
@@ -4520,9 +4552,10 @@ class GoogleCloudDatacatalogV1CommonUsageStats {
   GoogleCloudDatacatalogV1CommonUsageStats.fromJson(core.Map json_)
     : this(viewCount: json_['viewCount'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (viewCount != null) 'viewCount': viewCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final viewCount = this.viewCount;
+    return {'viewCount': ?viewCount};
+  }
 }
 
 /// Contact people for the entry.
@@ -4534,19 +4567,19 @@ class GoogleCloudDatacatalogV1Contacts {
 
   GoogleCloudDatacatalogV1Contacts.fromJson(core.Map json_)
     : this(
-        people:
-            (json_['people'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1ContactsPerson.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        people: (json_['people'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1ContactsPerson.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (people != null) 'people': people!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final people = this.people;
+    return {'people': ?people};
+  }
 }
 
 /// A contact person for the entry.
@@ -4565,10 +4598,11 @@ class GoogleCloudDatacatalogV1ContactsPerson {
         email: json_['email'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (designation != null) 'designation': designation!,
-    if (email != null) 'email': email!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final designation = this.designation;
+    final email = this.email;
+    return {'designation': ?designation, 'email': ?email};
+  }
 }
 
 /// Cross-regional source used to import an existing taxonomy into a different
@@ -4584,9 +4618,10 @@ class GoogleCloudDatacatalogV1CrossRegionalSource {
   GoogleCloudDatacatalogV1CrossRegionalSource.fromJson(core.Map json_)
     : this(taxonomy: json_['taxonomy'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (taxonomy != null) 'taxonomy': taxonomy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final taxonomy = this.taxonomy;
+    return {'taxonomy': ?taxonomy};
+  }
 }
 
 /// Physical location of an entry.
@@ -4624,21 +4659,26 @@ class GoogleCloudDatacatalogV1DataSource {
         resource: json_['resource'] as core.String?,
         service: json_['service'] as core.String?,
         sourceEntry: json_['sourceEntry'] as core.String?,
-        storageProperties:
-            json_.containsKey('storageProperties')
-                ? GoogleCloudDatacatalogV1StorageProperties.fromJson(
-                  json_['storageProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storageProperties: json_.containsKey('storageProperties')
+            ? GoogleCloudDatacatalogV1StorageProperties.fromJson(
+                json_['storageProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-    if (service != null) 'service': service!,
-    if (sourceEntry != null) 'sourceEntry': sourceEntry!,
-    if (storageProperties != null) 'storageProperties': storageProperties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    final service = this.service;
+    final sourceEntry = this.sourceEntry;
+    final storageProperties = this.storageProperties;
+    return {
+      'resource': ?resource,
+      'service': ?service,
+      'sourceEntry': ?sourceEntry,
+      'storageProperties': ?storageProperties,
+    };
+  }
 }
 
 /// Specification that applies to a data source connection.
@@ -4657,19 +4697,18 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 
   GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(core.Map json_)
     : this(
-        bigqueryConnectionSpec:
-            json_.containsKey('bigqueryConnectionSpec')
-                ? GoogleCloudDatacatalogV1BigQueryConnectionSpec.fromJson(
-                  json_['bigqueryConnectionSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigqueryConnectionSpec: json_.containsKey('bigqueryConnectionSpec')
+            ? GoogleCloudDatacatalogV1BigQueryConnectionSpec.fromJson(
+                json_['bigqueryConnectionSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bigqueryConnectionSpec != null)
-      'bigqueryConnectionSpec': bigqueryConnectionSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigqueryConnectionSpec = this.bigqueryConnectionSpec;
+    return {'bigqueryConnectionSpec': ?bigqueryConnectionSpec};
+  }
 }
 
 /// Specification that applies to a table resource.
@@ -4702,27 +4741,30 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
 
   GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(core.Map json_)
     : this(
-        databaseViewSpec:
-            json_.containsKey('databaseViewSpec')
-                ? GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromJson(
-                  json_['databaseViewSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataplexTable:
-            json_.containsKey('dataplexTable')
-                ? GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(
-                  json_['dataplexTable'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        databaseViewSpec: json_.containsKey('databaseViewSpec')
+            ? GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromJson(
+                json_['databaseViewSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataplexTable: json_.containsKey('dataplexTable')
+            ? GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(
+                json_['dataplexTable'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseViewSpec != null) 'databaseViewSpec': databaseViewSpec!,
-    if (dataplexTable != null) 'dataplexTable': dataplexTable!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseViewSpec = this.databaseViewSpec;
+    final dataplexTable = this.dataplexTable;
+    final type = this.type;
+    return {
+      'databaseViewSpec': ?databaseViewSpec,
+      'dataplexTable': ?dataplexTable,
+      'type': ?type,
+    };
+  }
 }
 
 /// Specification that applies to database view.
@@ -4754,11 +4796,16 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
         viewType: json_['viewType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseTable != null) 'baseTable': baseTable!,
-    if (sqlQuery != null) 'sqlQuery': sqlQuery!,
-    if (viewType != null) 'viewType': viewType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseTable = this.baseTable;
+    final sqlQuery = this.sqlQuery;
+    final viewType = this.viewType;
+    return {
+      'baseTable': ?baseTable,
+      'sqlQuery': ?sqlQuery,
+      'viewType': ?viewType,
+    };
+  }
 }
 
 /// External table registered by Dataplex Universal Catalog.
@@ -4807,13 +4854,18 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
         system: json_['system'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataCatalogEntry != null) 'dataCatalogEntry': dataCatalogEntry!,
-    if (fullyQualifiedName != null) 'fullyQualifiedName': fullyQualifiedName!,
-    if (googleCloudResource != null)
-      'googleCloudResource': googleCloudResource!,
-    if (system != null) 'system': system!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataCatalogEntry = this.dataCatalogEntry;
+    final fullyQualifiedName = this.fullyQualifiedName;
+    final googleCloudResource = this.googleCloudResource;
+    final system = this.system;
+    return {
+      'dataCatalogEntry': ?dataCatalogEntry,
+      'fullyQualifiedName': ?fullyQualifiedName,
+      'googleCloudResource': ?googleCloudResource,
+      'system': ?system,
+    };
+  }
 }
 
 /// Entry specification for a Dataplex Universal Catalog fileset.
@@ -4825,17 +4877,17 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
 
   GoogleCloudDatacatalogV1DataplexFilesetSpec.fromJson(core.Map json_)
     : this(
-        dataplexSpec:
-            json_.containsKey('dataplexSpec')
-                ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
-                  json_['dataplexSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataplexSpec: json_.containsKey('dataplexSpec')
+            ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
+                json_['dataplexSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataplexSpec != null) 'dataplexSpec': dataplexSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataplexSpec = this.dataplexSpec;
+    return {'dataplexSpec': ?dataplexSpec};
+  }
 }
 
 /// Common Dataplex Universal Catalog fields.
@@ -4868,21 +4920,26 @@ class GoogleCloudDatacatalogV1DataplexSpec {
     : this(
         asset: json_['asset'] as core.String?,
         compressionFormat: json_['compressionFormat'] as core.String?,
-        dataFormat:
-            json_.containsKey('dataFormat')
-                ? GoogleCloudDatacatalogV1PhysicalSchema.fromJson(
-                  json_['dataFormat'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataFormat: json_.containsKey('dataFormat')
+            ? GoogleCloudDatacatalogV1PhysicalSchema.fromJson(
+                json_['dataFormat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         projectId: json_['projectId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (asset != null) 'asset': asset!,
-    if (compressionFormat != null) 'compressionFormat': compressionFormat!,
-    if (dataFormat != null) 'dataFormat': dataFormat!,
-    if (projectId != null) 'projectId': projectId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final asset = this.asset;
+    final compressionFormat = this.compressionFormat;
+    final dataFormat = this.dataFormat;
+    final projectId = this.projectId;
+    return {
+      'asset': ?asset,
+      'compressionFormat': ?compressionFormat,
+      'dataFormat': ?dataFormat,
+      'projectId': ?projectId,
+    };
+  }
 }
 
 /// Entry specification for a Dataplex Universal Catalog table.
@@ -4907,29 +4964,31 @@ class GoogleCloudDatacatalogV1DataplexTableSpec {
 
   GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(core.Map json_)
     : this(
-        dataplexSpec:
-            json_.containsKey('dataplexSpec')
-                ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
-                  json_['dataplexSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        externalTables:
-            (json_['externalTables'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        dataplexSpec: json_.containsKey('dataplexSpec')
+            ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
+                json_['dataplexSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        externalTables: (json_['externalTables'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         userManaged: json_['userManaged'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataplexSpec != null) 'dataplexSpec': dataplexSpec!,
-    if (externalTables != null) 'externalTables': externalTables!,
-    if (userManaged != null) 'userManaged': userManaged!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataplexSpec = this.dataplexSpec;
+    final externalTables = this.externalTables;
+    final userManaged = this.userManaged;
+    return {
+      'dataplexSpec': ?dataplexSpec,
+      'externalTables': ?externalTables,
+      'userManaged': ?userManaged,
+    };
+  }
 }
 
 /// Specification that applies to a dataset.
@@ -4943,18 +5002,18 @@ class GoogleCloudDatacatalogV1DatasetSpec {
 
   GoogleCloudDatacatalogV1DatasetSpec.fromJson(core.Map json_)
     : this(
-        vertexDatasetSpec:
-            json_.containsKey('vertexDatasetSpec')
-                ? GoogleCloudDatacatalogV1VertexDatasetSpec.fromJson(
-                  json_['vertexDatasetSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vertexDatasetSpec: json_.containsKey('vertexDatasetSpec')
+            ? GoogleCloudDatacatalogV1VertexDatasetSpec.fromJson(
+                json_['vertexDatasetSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vertexDatasetSpec != null) 'vertexDatasetSpec': vertexDatasetSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final vertexDatasetSpec = this.vertexDatasetSpec;
+    return {'vertexDatasetSpec': ?vertexDatasetSpec};
+  }
 }
 
 /// Entry metadata.
@@ -5236,206 +5295,208 @@ class GoogleCloudDatacatalogV1Entry {
 
   GoogleCloudDatacatalogV1Entry.fromJson(core.Map json_)
     : this(
-        bigqueryDateShardedSpec:
-            json_.containsKey('bigqueryDateShardedSpec')
-                ? GoogleCloudDatacatalogV1BigQueryDateShardedSpec.fromJson(
-                  json_['bigqueryDateShardedSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        bigqueryTableSpec:
-            json_.containsKey('bigqueryTableSpec')
-                ? GoogleCloudDatacatalogV1BigQueryTableSpec.fromJson(
-                  json_['bigqueryTableSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        businessContext:
-            json_.containsKey('businessContext')
-                ? GoogleCloudDatacatalogV1BusinessContext.fromJson(
-                  json_['businessContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cloudBigtableSystemSpec:
-            json_.containsKey('cloudBigtableSystemSpec')
-                ? GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromJson(
-                  json_['cloudBigtableSystemSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataSource:
-            json_.containsKey('dataSource')
-                ? GoogleCloudDatacatalogV1DataSource.fromJson(
-                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataSourceConnectionSpec:
-            json_.containsKey('dataSourceConnectionSpec')
-                ? GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(
-                  json_['dataSourceConnectionSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        databaseTableSpec:
-            json_.containsKey('databaseTableSpec')
-                ? GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(
-                  json_['databaseTableSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        datasetSpec:
-            json_.containsKey('datasetSpec')
-                ? GoogleCloudDatacatalogV1DatasetSpec.fromJson(
-                  json_['datasetSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigqueryDateShardedSpec: json_.containsKey('bigqueryDateShardedSpec')
+            ? GoogleCloudDatacatalogV1BigQueryDateShardedSpec.fromJson(
+                json_['bigqueryDateShardedSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bigqueryTableSpec: json_.containsKey('bigqueryTableSpec')
+            ? GoogleCloudDatacatalogV1BigQueryTableSpec.fromJson(
+                json_['bigqueryTableSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        businessContext: json_.containsKey('businessContext')
+            ? GoogleCloudDatacatalogV1BusinessContext.fromJson(
+                json_['businessContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cloudBigtableSystemSpec: json_.containsKey('cloudBigtableSystemSpec')
+            ? GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromJson(
+                json_['cloudBigtableSystemSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataSource: json_.containsKey('dataSource')
+            ? GoogleCloudDatacatalogV1DataSource.fromJson(
+                json_['dataSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataSourceConnectionSpec: json_.containsKey('dataSourceConnectionSpec')
+            ? GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(
+                json_['dataSourceConnectionSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        databaseTableSpec: json_.containsKey('databaseTableSpec')
+            ? GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(
+                json_['databaseTableSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        datasetSpec: json_.containsKey('datasetSpec')
+            ? GoogleCloudDatacatalogV1DatasetSpec.fromJson(
+                json_['datasetSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        featureOnlineStoreSpec:
-            json_.containsKey('featureOnlineStoreSpec')
-                ? GoogleCloudDatacatalogV1FeatureOnlineStoreSpec.fromJson(
-                  json_['featureOnlineStoreSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        filesetSpec:
-            json_.containsKey('filesetSpec')
-                ? GoogleCloudDatacatalogV1FilesetSpec.fromJson(
-                  json_['filesetSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        featureOnlineStoreSpec: json_.containsKey('featureOnlineStoreSpec')
+            ? GoogleCloudDatacatalogV1FeatureOnlineStoreSpec.fromJson(
+                json_['featureOnlineStoreSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        filesetSpec: json_.containsKey('filesetSpec')
+            ? GoogleCloudDatacatalogV1FilesetSpec.fromJson(
+                json_['filesetSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fullyQualifiedName: json_['fullyQualifiedName'] as core.String?,
-        gcsFilesetSpec:
-            json_.containsKey('gcsFilesetSpec')
-                ? GoogleCloudDatacatalogV1GcsFilesetSpec.fromJson(
-                  json_['gcsFilesetSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        graphSpec:
-            json_.containsKey('graphSpec')
-                ? GoogleCloudDatacatalogV1GraphSpec.fromJson(
-                  json_['graphSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcsFilesetSpec: json_.containsKey('gcsFilesetSpec')
+            ? GoogleCloudDatacatalogV1GcsFilesetSpec.fromJson(
+                json_['gcsFilesetSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        graphSpec: json_.containsKey('graphSpec')
+            ? GoogleCloudDatacatalogV1GraphSpec.fromJson(
+                json_['graphSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         integratedSystem: json_['integratedSystem'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         linkedResource: json_['linkedResource'] as core.String?,
-        lookerSystemSpec:
-            json_.containsKey('lookerSystemSpec')
-                ? GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(
-                  json_['lookerSystemSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        modelSpec:
-            json_.containsKey('modelSpec')
-                ? GoogleCloudDatacatalogV1ModelSpec.fromJson(
-                  json_['modelSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lookerSystemSpec: json_.containsKey('lookerSystemSpec')
+            ? GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(
+                json_['lookerSystemSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        modelSpec: json_.containsKey('modelSpec')
+            ? GoogleCloudDatacatalogV1ModelSpec.fromJson(
+                json_['modelSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        personalDetails:
-            json_.containsKey('personalDetails')
-                ? GoogleCloudDatacatalogV1PersonalDetails.fromJson(
-                  json_['personalDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        routineSpec:
-            json_.containsKey('routineSpec')
-                ? GoogleCloudDatacatalogV1RoutineSpec.fromJson(
-                  json_['routineSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        schema:
-            json_.containsKey('schema')
-                ? GoogleCloudDatacatalogV1Schema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceSpec:
-            json_.containsKey('serviceSpec')
-                ? GoogleCloudDatacatalogV1ServiceSpec.fromJson(
-                  json_['serviceSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceSystemTimestamps:
-            json_.containsKey('sourceSystemTimestamps')
-                ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
-                  json_['sourceSystemTimestamps']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        spannerTableSpec:
-            json_.containsKey('spannerTableSpec')
-                ? GoogleCloudDatacatalogV1SpannerTableSpec.fromJson(
-                  json_['spannerTableSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sqlDatabaseSystemSpec:
-            json_.containsKey('sqlDatabaseSystemSpec')
-                ? GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromJson(
-                  json_['sqlDatabaseSystemSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        personalDetails: json_.containsKey('personalDetails')
+            ? GoogleCloudDatacatalogV1PersonalDetails.fromJson(
+                json_['personalDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        routineSpec: json_.containsKey('routineSpec')
+            ? GoogleCloudDatacatalogV1RoutineSpec.fromJson(
+                json_['routineSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        schema: json_.containsKey('schema')
+            ? GoogleCloudDatacatalogV1Schema.fromJson(
+                json_['schema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceSpec: json_.containsKey('serviceSpec')
+            ? GoogleCloudDatacatalogV1ServiceSpec.fromJson(
+                json_['serviceSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceSystemTimestamps: json_.containsKey('sourceSystemTimestamps')
+            ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
+                json_['sourceSystemTimestamps']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        spannerTableSpec: json_.containsKey('spannerTableSpec')
+            ? GoogleCloudDatacatalogV1SpannerTableSpec.fromJson(
+                json_['spannerTableSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sqlDatabaseSystemSpec: json_.containsKey('sqlDatabaseSystemSpec')
+            ? GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromJson(
+                json_['sqlDatabaseSystemSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
-        usageSignal:
-            json_.containsKey('usageSignal')
-                ? GoogleCloudDatacatalogV1UsageSignal.fromJson(
-                  json_['usageSignal'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        usageSignal: json_.containsKey('usageSignal')
+            ? GoogleCloudDatacatalogV1UsageSignal.fromJson(
+                json_['usageSignal'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userSpecifiedSystem: json_['userSpecifiedSystem'] as core.String?,
         userSpecifiedType: json_['userSpecifiedType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bigqueryDateShardedSpec != null)
-      'bigqueryDateShardedSpec': bigqueryDateShardedSpec!,
-    if (bigqueryTableSpec != null) 'bigqueryTableSpec': bigqueryTableSpec!,
-    if (businessContext != null) 'businessContext': businessContext!,
-    if (cloudBigtableSystemSpec != null)
-      'cloudBigtableSystemSpec': cloudBigtableSystemSpec!,
-    if (dataSource != null) 'dataSource': dataSource!,
-    if (dataSourceConnectionSpec != null)
-      'dataSourceConnectionSpec': dataSourceConnectionSpec!,
-    if (databaseTableSpec != null) 'databaseTableSpec': databaseTableSpec!,
-    if (datasetSpec != null) 'datasetSpec': datasetSpec!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (featureOnlineStoreSpec != null)
-      'featureOnlineStoreSpec': featureOnlineStoreSpec!,
-    if (filesetSpec != null) 'filesetSpec': filesetSpec!,
-    if (fullyQualifiedName != null) 'fullyQualifiedName': fullyQualifiedName!,
-    if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!,
-    if (graphSpec != null) 'graphSpec': graphSpec!,
-    if (integratedSystem != null) 'integratedSystem': integratedSystem!,
-    if (labels != null) 'labels': labels!,
-    if (linkedResource != null) 'linkedResource': linkedResource!,
-    if (lookerSystemSpec != null) 'lookerSystemSpec': lookerSystemSpec!,
-    if (modelSpec != null) 'modelSpec': modelSpec!,
-    if (name != null) 'name': name!,
-    if (personalDetails != null) 'personalDetails': personalDetails!,
-    if (routineSpec != null) 'routineSpec': routineSpec!,
-    if (schema != null) 'schema': schema!,
-    if (serviceSpec != null) 'serviceSpec': serviceSpec!,
-    if (sourceSystemTimestamps != null)
-      'sourceSystemTimestamps': sourceSystemTimestamps!,
-    if (spannerTableSpec != null) 'spannerTableSpec': spannerTableSpec!,
-    if (sqlDatabaseSystemSpec != null)
-      'sqlDatabaseSystemSpec': sqlDatabaseSystemSpec!,
-    if (type != null) 'type': type!,
-    if (usageSignal != null) 'usageSignal': usageSignal!,
-    if (userSpecifiedSystem != null)
-      'userSpecifiedSystem': userSpecifiedSystem!,
-    if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigqueryDateShardedSpec = this.bigqueryDateShardedSpec;
+    final bigqueryTableSpec = this.bigqueryTableSpec;
+    final businessContext = this.businessContext;
+    final cloudBigtableSystemSpec = this.cloudBigtableSystemSpec;
+    final dataSource = this.dataSource;
+    final dataSourceConnectionSpec = this.dataSourceConnectionSpec;
+    final databaseTableSpec = this.databaseTableSpec;
+    final datasetSpec = this.datasetSpec;
+    final description = this.description;
+    final displayName = this.displayName;
+    final featureOnlineStoreSpec = this.featureOnlineStoreSpec;
+    final filesetSpec = this.filesetSpec;
+    final fullyQualifiedName = this.fullyQualifiedName;
+    final gcsFilesetSpec = this.gcsFilesetSpec;
+    final graphSpec = this.graphSpec;
+    final integratedSystem = this.integratedSystem;
+    final labels = this.labels;
+    final linkedResource = this.linkedResource;
+    final lookerSystemSpec = this.lookerSystemSpec;
+    final modelSpec = this.modelSpec;
+    final name = this.name;
+    final personalDetails = this.personalDetails;
+    final routineSpec = this.routineSpec;
+    final schema = this.schema;
+    final serviceSpec = this.serviceSpec;
+    final sourceSystemTimestamps = this.sourceSystemTimestamps;
+    final spannerTableSpec = this.spannerTableSpec;
+    final sqlDatabaseSystemSpec = this.sqlDatabaseSystemSpec;
+    final type = this.type;
+    final usageSignal = this.usageSignal;
+    final userSpecifiedSystem = this.userSpecifiedSystem;
+    final userSpecifiedType = this.userSpecifiedType;
+    return {
+      'bigqueryDateShardedSpec': ?bigqueryDateShardedSpec,
+      'bigqueryTableSpec': ?bigqueryTableSpec,
+      'businessContext': ?businessContext,
+      'cloudBigtableSystemSpec': ?cloudBigtableSystemSpec,
+      'dataSource': ?dataSource,
+      'dataSourceConnectionSpec': ?dataSourceConnectionSpec,
+      'databaseTableSpec': ?databaseTableSpec,
+      'datasetSpec': ?datasetSpec,
+      'description': ?description,
+      'displayName': ?displayName,
+      'featureOnlineStoreSpec': ?featureOnlineStoreSpec,
+      'filesetSpec': ?filesetSpec,
+      'fullyQualifiedName': ?fullyQualifiedName,
+      'gcsFilesetSpec': ?gcsFilesetSpec,
+      'graphSpec': ?graphSpec,
+      'integratedSystem': ?integratedSystem,
+      'labels': ?labels,
+      'linkedResource': ?linkedResource,
+      'lookerSystemSpec': ?lookerSystemSpec,
+      'modelSpec': ?modelSpec,
+      'name': ?name,
+      'personalDetails': ?personalDetails,
+      'routineSpec': ?routineSpec,
+      'schema': ?schema,
+      'serviceSpec': ?serviceSpec,
+      'sourceSystemTimestamps': ?sourceSystemTimestamps,
+      'spannerTableSpec': ?spannerTableSpec,
+      'sqlDatabaseSystemSpec': ?sqlDatabaseSystemSpec,
+      'type': ?type,
+      'usageSignal': ?usageSignal,
+      'userSpecifiedSystem': ?userSpecifiedSystem,
+      'userSpecifiedType': ?userSpecifiedType,
+    };
+  }
 }
 
 /// Entry group metadata.
@@ -5489,28 +5550,32 @@ class GoogleCloudDatacatalogV1EntryGroup {
 
   GoogleCloudDatacatalogV1EntryGroup.fromJson(core.Map json_)
     : this(
-        dataCatalogTimestamps:
-            json_.containsKey('dataCatalogTimestamps')
-                ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
-                  json_['dataCatalogTimestamps']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataCatalogTimestamps: json_.containsKey('dataCatalogTimestamps')
+            ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
+                json_['dataCatalogTimestamps']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
         transferredToDataplex: json_['transferredToDataplex'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataCatalogTimestamps != null)
-      'dataCatalogTimestamps': dataCatalogTimestamps!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (transferredToDataplex != null)
-      'transferredToDataplex': transferredToDataplex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataCatalogTimestamps = this.dataCatalogTimestamps;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final transferredToDataplex = this.transferredToDataplex;
+    return {
+      'dataCatalogTimestamps': ?dataCatalogTimestamps,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'transferredToDataplex': ?transferredToDataplex,
+    };
+  }
 }
 
 /// Entry overview fields for rich text descriptions of entries.
@@ -5528,9 +5593,10 @@ class GoogleCloudDatacatalogV1EntryOverview {
   GoogleCloudDatacatalogV1EntryOverview.fromJson(core.Map json_)
     : this(overview: json_['overview'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (overview != null) 'overview': overview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final overview = this.overview;
+    return {'overview': ?overview};
+  }
 }
 
 /// Response message for ExportTaxonomies.
@@ -5542,20 +5608,19 @@ class GoogleCloudDatacatalogV1ExportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1ExportTaxonomiesResponse.fromJson(core.Map json_)
     : this(
-        taxonomies:
-            (json_['taxonomies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        taxonomies: (json_['taxonomies'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (taxonomies != null) 'taxonomies': taxonomies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final taxonomies = this.taxonomies;
+    return {'taxonomies': ?taxonomies};
+  }
 }
 
 /// Detail description of the source information of a Vertex Feature Online
@@ -5575,9 +5640,10 @@ class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
   GoogleCloudDatacatalogV1FeatureOnlineStoreSpec.fromJson(core.Map json_)
     : this(storageType: json_['storageType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storageType != null) 'storageType': storageType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storageType = this.storageType;
+    return {'storageType': ?storageType};
+  }
 }
 
 class GoogleCloudDatacatalogV1FieldType {
@@ -5598,19 +5664,19 @@ class GoogleCloudDatacatalogV1FieldType {
 
   GoogleCloudDatacatalogV1FieldType.fromJson(core.Map json_)
     : this(
-        enumType:
-            json_.containsKey('enumType')
-                ? GoogleCloudDatacatalogV1FieldTypeEnumType.fromJson(
-                  json_['enumType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        enumType: json_.containsKey('enumType')
+            ? GoogleCloudDatacatalogV1FieldTypeEnumType.fromJson(
+                json_['enumType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         primitiveType: json_['primitiveType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enumType != null) 'enumType': enumType!,
-    if (primitiveType != null) 'primitiveType': primitiveType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enumType = this.enumType;
+    final primitiveType = this.primitiveType;
+    return {'enumType': ?enumType, 'primitiveType': ?primitiveType};
+  }
 }
 
 class GoogleCloudDatacatalogV1FieldTypeEnumType {
@@ -5628,20 +5694,20 @@ class GoogleCloudDatacatalogV1FieldTypeEnumType {
 
   GoogleCloudDatacatalogV1FieldTypeEnumType.fromJson(core.Map json_)
     : this(
-        allowedValues:
-            (json_['allowedValues'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        allowedValues: (json_['allowedValues'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedValues != null) 'allowedValues': allowedValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedValues = this.allowedValues;
+    return {'allowedValues': ?allowedValues};
+  }
 }
 
 class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue {
@@ -5659,9 +5725,10 @@ class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue {
   GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(core.Map json_)
     : this(displayName: json_['displayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
 }
 
 /// Specification that applies to a fileset.
@@ -5676,18 +5743,17 @@ class GoogleCloudDatacatalogV1FilesetSpec {
 
   GoogleCloudDatacatalogV1FilesetSpec.fromJson(core.Map json_)
     : this(
-        dataplexFileset:
-            json_.containsKey('dataplexFileset')
-                ? GoogleCloudDatacatalogV1DataplexFilesetSpec.fromJson(
-                  json_['dataplexFileset']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataplexFileset: json_.containsKey('dataplexFileset')
+            ? GoogleCloudDatacatalogV1DataplexFilesetSpec.fromJson(
+                json_['dataplexFileset'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataplexFileset != null) 'dataplexFileset': dataplexFileset!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataplexFileset = this.dataplexFileset;
+    return {'dataplexFileset': ?dataplexFileset};
+  }
 }
 
 /// Specification of a single file in Cloud Storage.
@@ -5718,20 +5784,24 @@ class GoogleCloudDatacatalogV1GcsFileSpec {
   GoogleCloudDatacatalogV1GcsFileSpec.fromJson(core.Map json_)
     : this(
         filePath: json_['filePath'] as core.String?,
-        gcsTimestamps:
-            json_.containsKey('gcsTimestamps')
-                ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
-                  json_['gcsTimestamps'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcsTimestamps: json_.containsKey('gcsTimestamps')
+            ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
+                json_['gcsTimestamps'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sizeBytes: json_['sizeBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filePath != null) 'filePath': filePath!,
-    if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps!,
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filePath = this.filePath;
+    final gcsTimestamps = this.gcsTimestamps;
+    final sizeBytes = this.sizeBytes;
+    return {
+      'filePath': ?filePath,
+      'gcsTimestamps': ?gcsTimestamps,
+      'sizeBytes': ?sizeBytes,
+    };
+  }
 }
 
 /// Describes a Cloud Storage fileset entry.
@@ -5772,24 +5842,26 @@ class GoogleCloudDatacatalogV1GcsFilesetSpec {
 
   GoogleCloudDatacatalogV1GcsFilesetSpec.fromJson(core.Map json_)
     : this(
-        filePatterns:
-            (json_['filePatterns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        sampleGcsFileSpecs:
-            (json_['sampleGcsFileSpecs'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1GcsFileSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        filePatterns: (json_['filePatterns'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sampleGcsFileSpecs: (json_['sampleGcsFileSpecs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1GcsFileSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filePatterns != null) 'filePatterns': filePatterns!,
-    if (sampleGcsFileSpecs != null) 'sampleGcsFileSpecs': sampleGcsFileSpecs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filePatterns = this.filePatterns;
+    final sampleGcsFileSpecs = this.sampleGcsFileSpecs;
+    return {
+      'filePatterns': ?filePatterns,
+      'sampleGcsFileSpecs': ?sampleGcsFileSpecs,
+    };
+  }
 }
 
 /// Specification that applies to a graph.
@@ -5819,32 +5891,35 @@ class GoogleCloudDatacatalogV1GraphSpec {
 
   GoogleCloudDatacatalogV1GraphSpec.fromJson(core.Map json_)
     : this(
-        edgeTables:
-            (json_['edgeTables'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        edgeTables: (json_['edgeTables'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        nodeTables:
-            (json_['nodeTables'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        nodeTables: (json_['nodeTables'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edgeTables != null) 'edgeTables': edgeTables!,
-    if (name != null) 'name': name!,
-    if (nodeTables != null) 'nodeTables': nodeTables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edgeTables = this.edgeTables;
+    final name = this.name;
+    final nodeTables = this.nodeTables;
+    return {
+      'edgeTables': ?edgeTables,
+      'name': ?name,
+      'nodeTables': ?nodeTables,
+    };
+  }
 }
 
 /// Element table definition.
@@ -5934,55 +6009,60 @@ class GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
     : this(
         alias: json_['alias'] as core.String?,
         dataSource: json_['dataSource'] as core.String?,
-        destinationNodeReference:
-            json_.containsKey('destinationNodeReference')
-                ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
-                  json_['destinationNodeReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destinationNodeReference: json_.containsKey('destinationNodeReference')
+            ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+                json_['destinationNodeReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dynamicLabelColumn: json_['dynamicLabelColumn'] as core.String?,
         dynamicPropertiesColumn:
             json_['dynamicPropertiesColumn'] as core.String?,
-        elementKeys:
-            (json_['elementKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        elementKeys: (json_['elementKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         inputSource: json_['inputSource'] as core.String?,
         kind: json_['kind'] as core.String?,
-        labelAndProperties:
-            (json_['labelAndProperties'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        sourceNodeReference:
-            json_.containsKey('sourceNodeReference')
-                ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
-                  json_['sourceNodeReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        labelAndProperties: (json_['labelAndProperties'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        sourceNodeReference: json_.containsKey('sourceNodeReference')
+            ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+                json_['sourceNodeReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (dataSource != null) 'dataSource': dataSource!,
-    if (destinationNodeReference != null)
-      'destinationNodeReference': destinationNodeReference!,
-    if (dynamicLabelColumn != null) 'dynamicLabelColumn': dynamicLabelColumn!,
-    if (dynamicPropertiesColumn != null)
-      'dynamicPropertiesColumn': dynamicPropertiesColumn!,
-    if (elementKeys != null) 'elementKeys': elementKeys!,
-    if (inputSource != null) 'inputSource': inputSource!,
-    if (kind != null) 'kind': kind!,
-    if (labelAndProperties != null) 'labelAndProperties': labelAndProperties!,
-    if (sourceNodeReference != null)
-      'sourceNodeReference': sourceNodeReference!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final dataSource = this.dataSource;
+    final destinationNodeReference = this.destinationNodeReference;
+    final dynamicLabelColumn = this.dynamicLabelColumn;
+    final dynamicPropertiesColumn = this.dynamicPropertiesColumn;
+    final elementKeys = this.elementKeys;
+    final inputSource = this.inputSource;
+    final kind = this.kind;
+    final labelAndProperties = this.labelAndProperties;
+    final sourceNodeReference = this.sourceNodeReference;
+    return {
+      'alias': ?alias,
+      'dataSource': ?dataSource,
+      'destinationNodeReference': ?destinationNodeReference,
+      'dynamicLabelColumn': ?dynamicLabelColumn,
+      'dynamicPropertiesColumn': ?dynamicPropertiesColumn,
+      'elementKeys': ?elementKeys,
+      'inputSource': ?inputSource,
+      'kind': ?kind,
+      'labelAndProperties': ?labelAndProperties,
+      'sourceNodeReference': ?sourceNodeReference,
+    };
+  }
 }
 
 /// A reference to a source or destination node in a graph edge.
@@ -6018,22 +6098,25 @@ class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference {
   GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
     core.Map json_,
   ) : this(
-        edgeTableColumns:
-            (json_['edgeTableColumns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        edgeTableColumns: (json_['edgeTableColumns'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         nodeAlias: json_['nodeAlias'] as core.String?,
-        nodeTableColumns:
-            (json_['nodeTableColumns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nodeTableColumns: (json_['nodeTableColumns'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edgeTableColumns != null) 'edgeTableColumns': edgeTableColumns!,
-    if (nodeAlias != null) 'nodeAlias': nodeAlias!,
-    if (nodeTableColumns != null) 'nodeTableColumns': nodeTableColumns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edgeTableColumns = this.edgeTableColumns;
+    final nodeAlias = this.nodeAlias;
+    final nodeTableColumns = this.nodeTableColumns;
+    return {
+      'edgeTableColumns': ?edgeTableColumns,
+      'nodeAlias': ?nodeAlias,
+      'nodeTableColumns': ?nodeTableColumns,
+    };
+  }
 }
 
 /// The label and its properties.
@@ -6060,21 +6143,21 @@ class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties {
     core.Map json_,
   ) : this(
         label: json_['label'] as core.String?,
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (properties != null) 'properties': properties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final label = this.label;
+    final properties = this.properties;
+    return {'label': ?label, 'properties': ?properties};
+  }
 }
 
 /// A property declaration.
@@ -6101,10 +6184,11 @@ class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    return {'name': ?name, 'type': ?type};
+  }
 }
 
 /// Request message for ImportEntries method.
@@ -6129,10 +6213,11 @@ class GoogleCloudDatacatalogV1ImportEntriesRequest {
         jobId: json_['jobId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsBucketPath != null) 'gcsBucketPath': gcsBucketPath!,
-    if (jobId != null) 'jobId': jobId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcsBucketPath = this.gcsBucketPath;
+    final jobId = this.jobId;
+    return {'gcsBucketPath': ?gcsBucketPath, 'jobId': ?jobId};
+  }
 }
 
 /// Request message for ImportTaxonomies.
@@ -6150,26 +6235,27 @@ class GoogleCloudDatacatalogV1ImportTaxonomiesRequest {
 
   GoogleCloudDatacatalogV1ImportTaxonomiesRequest.fromJson(core.Map json_)
     : this(
-        crossRegionalSource:
-            json_.containsKey('crossRegionalSource')
-                ? GoogleCloudDatacatalogV1CrossRegionalSource.fromJson(
-                  json_['crossRegionalSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inlineSource:
-            json_.containsKey('inlineSource')
-                ? GoogleCloudDatacatalogV1InlineSource.fromJson(
-                  json_['inlineSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        crossRegionalSource: json_.containsKey('crossRegionalSource')
+            ? GoogleCloudDatacatalogV1CrossRegionalSource.fromJson(
+                json_['crossRegionalSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inlineSource: json_.containsKey('inlineSource')
+            ? GoogleCloudDatacatalogV1InlineSource.fromJson(
+                json_['inlineSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crossRegionalSource != null)
-      'crossRegionalSource': crossRegionalSource!,
-    if (inlineSource != null) 'inlineSource': inlineSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crossRegionalSource = this.crossRegionalSource;
+    final inlineSource = this.inlineSource;
+    return {
+      'crossRegionalSource': ?crossRegionalSource,
+      'inlineSource': ?inlineSource,
+    };
+  }
 }
 
 /// Response message for ImportTaxonomies.
@@ -6181,19 +6267,19 @@ class GoogleCloudDatacatalogV1ImportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1ImportTaxonomiesResponse.fromJson(core.Map json_)
     : this(
-        taxonomies:
-            (json_['taxonomies'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        taxonomies: (json_['taxonomies'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (taxonomies != null) 'taxonomies': taxonomies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final taxonomies = this.taxonomies;
+    return {'taxonomies': ?taxonomies};
+  }
 }
 
 /// Inline source containing taxonomies to import.
@@ -6207,20 +6293,19 @@ class GoogleCloudDatacatalogV1InlineSource {
 
   GoogleCloudDatacatalogV1InlineSource.fromJson(core.Map json_)
     : this(
-        taxonomies:
-            (json_['taxonomies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        taxonomies: (json_['taxonomies'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (taxonomies != null) 'taxonomies': taxonomies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final taxonomies = this.taxonomies;
+    return {'taxonomies': ?taxonomies};
+  }
 }
 
 /// Response message for ListEntries.
@@ -6240,21 +6325,21 @@ class GoogleCloudDatacatalogV1ListEntriesResponse {
 
   GoogleCloudDatacatalogV1ListEntriesResponse.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1Entry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1Entry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final nextPageToken = this.nextPageToken;
+    return {'entries': ?entries, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListEntryGroups.
@@ -6275,21 +6360,21 @@ class GoogleCloudDatacatalogV1ListEntryGroupsResponse {
 
   GoogleCloudDatacatalogV1ListEntryGroupsResponse.fromJson(core.Map json_)
     : this(
-        entryGroups:
-            (json_['entryGroups'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1EntryGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entryGroups: (json_['entryGroups'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1EntryGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entryGroups != null) 'entryGroups': entryGroups!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryGroups = this.entryGroups;
+    final nextPageToken = this.nextPageToken;
+    return {'entryGroups': ?entryGroups, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListPolicyTags.
@@ -6310,20 +6395,20 @@ class GoogleCloudDatacatalogV1ListPolicyTagsResponse {
   GoogleCloudDatacatalogV1ListPolicyTagsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        policyTags:
-            (json_['policyTags'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1PolicyTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        policyTags: (json_['policyTags'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1PolicyTag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (policyTags != null) 'policyTags': policyTags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final policyTags = this.policyTags;
+    return {'nextPageToken': ?nextPageToken, 'policyTags': ?policyTags};
+  }
 }
 
 /// Response message for ListTags.
@@ -6341,20 +6426,20 @@ class GoogleCloudDatacatalogV1ListTagsResponse {
   GoogleCloudDatacatalogV1ListTagsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1Tag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1Tag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tags = this.tags;
+    return {'nextPageToken': ?nextPageToken, 'tags': ?tags};
+  }
 }
 
 /// Response message for ListTaxonomies.
@@ -6375,20 +6460,20 @@ class GoogleCloudDatacatalogV1ListTaxonomiesResponse {
   GoogleCloudDatacatalogV1ListTaxonomiesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        taxonomies:
-            (json_['taxonomies'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        taxonomies: (json_['taxonomies'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (taxonomies != null) 'taxonomies': taxonomies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final taxonomies = this.taxonomies;
+    return {'nextPageToken': ?nextPageToken, 'taxonomies': ?taxonomies};
+  }
 }
 
 /// Specification that applies to entries that are part `LOOKER` system
@@ -6444,17 +6529,22 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
         parentViewId: json_['parentViewId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parentInstanceDisplayName != null)
-      'parentInstanceDisplayName': parentInstanceDisplayName!,
-    if (parentInstanceId != null) 'parentInstanceId': parentInstanceId!,
-    if (parentModelDisplayName != null)
-      'parentModelDisplayName': parentModelDisplayName!,
-    if (parentModelId != null) 'parentModelId': parentModelId!,
-    if (parentViewDisplayName != null)
-      'parentViewDisplayName': parentViewDisplayName!,
-    if (parentViewId != null) 'parentViewId': parentViewId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parentInstanceDisplayName = this.parentInstanceDisplayName;
+    final parentInstanceId = this.parentInstanceId;
+    final parentModelDisplayName = this.parentModelDisplayName;
+    final parentModelId = this.parentModelId;
+    final parentViewDisplayName = this.parentViewDisplayName;
+    final parentViewId = this.parentViewId;
+    return {
+      'parentInstanceDisplayName': ?parentInstanceDisplayName,
+      'parentInstanceId': ?parentInstanceId,
+      'parentModelDisplayName': ?parentModelDisplayName,
+      'parentModelId': ?parentModelId,
+      'parentViewDisplayName': ?parentViewDisplayName,
+      'parentViewId': ?parentViewId,
+    };
+  }
 }
 
 /// The configuration related to the migration to Dataplex Universal Catalog
@@ -6508,14 +6598,16 @@ class GoogleCloudDatacatalogV1MigrationConfig {
             json_['templateMigrationEnabledTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (catalogUiExperience != null)
-      'catalogUiExperience': catalogUiExperience!,
-    if (tagTemplateMigration != null)
-      'tagTemplateMigration': tagTemplateMigration!,
-    if (templateMigrationEnabledTime != null)
-      'templateMigrationEnabledTime': templateMigrationEnabledTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalogUiExperience = this.catalogUiExperience;
+    final tagTemplateMigration = this.tagTemplateMigration;
+    final templateMigrationEnabledTime = this.templateMigrationEnabledTime;
+    return {
+      'catalogUiExperience': ?catalogUiExperience,
+      'tagTemplateMigration': ?tagTemplateMigration,
+      'templateMigrationEnabledTime': ?templateMigrationEnabledTime,
+    };
+  }
 }
 
 /// Specification that applies to a model.
@@ -6529,18 +6621,17 @@ class GoogleCloudDatacatalogV1ModelSpec {
 
   GoogleCloudDatacatalogV1ModelSpec.fromJson(core.Map json_)
     : this(
-        vertexModelSpec:
-            json_.containsKey('vertexModelSpec')
-                ? GoogleCloudDatacatalogV1VertexModelSpec.fromJson(
-                  json_['vertexModelSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vertexModelSpec: json_.containsKey('vertexModelSpec')
+            ? GoogleCloudDatacatalogV1VertexModelSpec.fromJson(
+                json_['vertexModelSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vertexModelSpec != null) 'vertexModelSpec': vertexModelSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final vertexModelSpec = this.vertexModelSpec;
+    return {'vertexModelSpec': ?vertexModelSpec};
+  }
 }
 
 /// Request message for ModifyEntryContacts.
@@ -6554,17 +6645,17 @@ class GoogleCloudDatacatalogV1ModifyEntryContactsRequest {
 
   GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(core.Map json_)
     : this(
-        contacts:
-            json_.containsKey('contacts')
-                ? GoogleCloudDatacatalogV1Contacts.fromJson(
-                  json_['contacts'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contacts: json_.containsKey('contacts')
+            ? GoogleCloudDatacatalogV1Contacts.fromJson(
+                json_['contacts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contacts != null) 'contacts': contacts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    return {'contacts': ?contacts};
+  }
 }
 
 /// Request message for ModifyEntryOverview.
@@ -6578,17 +6669,17 @@ class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest {
 
   GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(core.Map json_)
     : this(
-        entryOverview:
-            json_.containsKey('entryOverview')
-                ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
-                  json_['entryOverview'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        entryOverview: json_.containsKey('entryOverview')
+            ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
+                json_['entryOverview'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entryOverview != null) 'entryOverview': entryOverview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryOverview = this.entryOverview;
+    return {'entryOverview': ?entryOverview};
+  }
 }
 
 /// The configuration related to the migration from Data Catalog to Dataplex
@@ -6617,9 +6708,10 @@ class GoogleCloudDatacatalogV1OrganizationConfig {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (config != null) 'config': config!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    return {'config': ?config};
+  }
 }
 
 /// Entry metadata relevant only to the user and private to them.
@@ -6638,10 +6730,11 @@ class GoogleCloudDatacatalogV1PersonalDetails {
         starred: json_['starred'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (starTime != null) 'starTime': starTime!,
-    if (starred != null) 'starred': starred!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final starTime = this.starTime;
+    final starred = this.starred;
+    return {'starTime': ?starTime, 'starred': ?starred};
+  }
 }
 
 /// Native schema used by a resource represented as an entry.
@@ -6677,52 +6770,54 @@ class GoogleCloudDatacatalogV1PhysicalSchema {
 
   GoogleCloudDatacatalogV1PhysicalSchema.fromJson(core.Map json_)
     : this(
-        avro:
-            json_.containsKey('avro')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(
-                  json_['avro'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        csv:
-            json_.containsKey('csv')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema.fromJson(
-                  json_['csv'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        orc:
-            json_.containsKey('orc')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema.fromJson(
-                  json_['orc'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        parquet:
-            json_.containsKey('parquet')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.fromJson(
-                  json_['parquet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        protobuf:
-            json_.containsKey('protobuf')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(
-                  json_['protobuf'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        thrift:
-            json_.containsKey('thrift')
-                ? GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(
-                  json_['thrift'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        avro: json_.containsKey('avro')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(
+                json_['avro'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        csv: json_.containsKey('csv')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema.fromJson(
+                json_['csv'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orc: json_.containsKey('orc')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema.fromJson(
+                json_['orc'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        parquet: json_.containsKey('parquet')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.fromJson(
+                json_['parquet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        protobuf: json_.containsKey('protobuf')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(
+                json_['protobuf'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thrift: json_.containsKey('thrift')
+            ? GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(
+                json_['thrift'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (avro != null) 'avro': avro!,
-    if (csv != null) 'csv': csv!,
-    if (orc != null) 'orc': orc!,
-    if (parquet != null) 'parquet': parquet!,
-    if (protobuf != null) 'protobuf': protobuf!,
-    if (thrift != null) 'thrift': thrift!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final avro = this.avro;
+    final csv = this.csv;
+    final orc = this.orc;
+    final parquet = this.parquet;
+    final protobuf = this.protobuf;
+    final thrift = this.thrift;
+    return {
+      'avro': ?avro,
+      'csv': ?csv,
+      'orc': ?orc,
+      'parquet': ?parquet,
+      'protobuf': ?protobuf,
+      'thrift': ?thrift,
+    };
+  }
 }
 
 /// Schema in Avro JSON format.
@@ -6735,9 +6830,10 @@ class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// Marks a CSV-encoded data source.
@@ -6759,9 +6855,10 @@ class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// Schema in Thrift format.
@@ -6774,9 +6871,10 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
   GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// Denotes one policy tag in a taxonomy, for example, SSN.
@@ -6830,23 +6928,29 @@ class GoogleCloudDatacatalogV1PolicyTag {
 
   GoogleCloudDatacatalogV1PolicyTag.fromJson(core.Map json_)
     : this(
-        childPolicyTags:
-            (json_['childPolicyTags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        childPolicyTags: (json_['childPolicyTags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
         parentPolicyTag: json_['parentPolicyTag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (childPolicyTags != null) 'childPolicyTags': childPolicyTags!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (parentPolicyTag != null) 'parentPolicyTag': parentPolicyTag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final childPolicyTags = this.childPolicyTags;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final parentPolicyTag = this.parentPolicyTag;
+    return {
+      'childPolicyTags': ?childPolicyTags,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'parentPolicyTag': ?parentPolicyTag,
+    };
+  }
 }
 
 /// Request message for ReconcileTags.
@@ -6875,21 +6979,25 @@ class GoogleCloudDatacatalogV1ReconcileTagsRequest {
     : this(
         forceDeleteMissing: json_['forceDeleteMissing'] as core.bool?,
         tagTemplate: json_['tagTemplate'] as core.String?,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1Tag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1Tag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (forceDeleteMissing != null) 'forceDeleteMissing': forceDeleteMissing!,
-    if (tagTemplate != null) 'tagTemplate': tagTemplate!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final forceDeleteMissing = this.forceDeleteMissing;
+    final tagTemplate = this.tagTemplate;
+    final tags = this.tags;
+    return {
+      'forceDeleteMissing': ?forceDeleteMissing,
+      'tagTemplate': ?tagTemplate,
+      'tags': ?tags,
+    };
+  }
 }
 
 /// Request message for RenameTagTemplateFieldEnumValue.
@@ -6912,10 +7020,10 @@ class GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest {
             json_['newEnumValueDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newEnumValueDisplayName != null)
-      'newEnumValueDisplayName': newEnumValueDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newEnumValueDisplayName = this.newEnumValueDisplayName;
+    return {'newEnumValueDisplayName': ?newEnumValueDisplayName};
+  }
 }
 
 /// Request message for RenameTagTemplateField.
@@ -6936,10 +7044,10 @@ class GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest {
         newTagTemplateFieldId: json_['newTagTemplateFieldId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newTagTemplateFieldId != null)
-      'newTagTemplateFieldId': newTagTemplateFieldId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newTagTemplateFieldId = this.newTagTemplateFieldId;
+    return {'newTagTemplateFieldId': ?newTagTemplateFieldId};
+  }
 }
 
 /// Request message for ReplaceTaxonomy.
@@ -6953,18 +7061,18 @@ class GoogleCloudDatacatalogV1ReplaceTaxonomyRequest {
 
   GoogleCloudDatacatalogV1ReplaceTaxonomyRequest.fromJson(core.Map json_)
     : this(
-        serializedTaxonomy:
-            json_.containsKey('serializedTaxonomy')
-                ? GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
-                  json_['serializedTaxonomy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serializedTaxonomy: json_.containsKey('serializedTaxonomy')
+            ? GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
+                json_['serializedTaxonomy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serializedTaxonomy != null) 'serializedTaxonomy': serializedTaxonomy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final serializedTaxonomy = this.serializedTaxonomy;
+    return {'serializedTaxonomy': ?serializedTaxonomy};
+  }
 }
 
 /// Specification that applies to a routine.
@@ -7009,37 +7117,41 @@ class GoogleCloudDatacatalogV1RoutineSpec {
 
   GoogleCloudDatacatalogV1RoutineSpec.fromJson(core.Map json_)
     : this(
-        bigqueryRoutineSpec:
-            json_.containsKey('bigqueryRoutineSpec')
-                ? GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromJson(
-                  json_['bigqueryRoutineSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigqueryRoutineSpec: json_.containsKey('bigqueryRoutineSpec')
+            ? GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromJson(
+                json_['bigqueryRoutineSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         definitionBody: json_['definitionBody'] as core.String?,
         language: json_['language'] as core.String?,
         returnType: json_['returnType'] as core.String?,
-        routineArguments:
-            (json_['routineArguments'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1RoutineSpecArgument.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        routineArguments: (json_['routineArguments'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         routineType: json_['routineType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bigqueryRoutineSpec != null)
-      'bigqueryRoutineSpec': bigqueryRoutineSpec!,
-    if (definitionBody != null) 'definitionBody': definitionBody!,
-    if (language != null) 'language': language!,
-    if (returnType != null) 'returnType': returnType!,
-    if (routineArguments != null) 'routineArguments': routineArguments!,
-    if (routineType != null) 'routineType': routineType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigqueryRoutineSpec = this.bigqueryRoutineSpec;
+    final definitionBody = this.definitionBody;
+    final language = this.language;
+    final returnType = this.returnType;
+    final routineArguments = this.routineArguments;
+    final routineType = this.routineType;
+    return {
+      'bigqueryRoutineSpec': ?bigqueryRoutineSpec,
+      'definitionBody': ?definitionBody,
+      'language': ?language,
+      'returnType': ?returnType,
+      'routineArguments': ?routineArguments,
+      'routineType': ?routineType,
+    };
+  }
 }
 
 /// Input or output argument of a function or stored procedure.
@@ -7075,11 +7187,12 @@ class GoogleCloudDatacatalogV1RoutineSpecArgument {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    final name = this.name;
+    final type = this.type;
+    return {'mode': ?mode, 'name': ?name, 'type': ?type};
+  }
 }
 
 /// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
@@ -7094,19 +7207,19 @@ class GoogleCloudDatacatalogV1Schema {
 
   GoogleCloudDatacatalogV1Schema.fromJson(core.Map json_)
     : this(
-        columns:
-            (json_['columns'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        columns: (json_['columns'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columns != null) 'columns': columns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columns = this.columns;
+    return {'columns': ?columns};
+  }
 }
 
 /// Request message for SearchCatalog.
@@ -7186,22 +7299,29 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
         query: json_['query'] as core.String?,
-        scope:
-            json_.containsKey('scope')
-                ? GoogleCloudDatacatalogV1SearchCatalogRequestScope.fromJson(
-                  json_['scope'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scope: json_.containsKey('scope')
+            ? GoogleCloudDatacatalogV1SearchCatalogRequestScope.fromJson(
+                json_['scope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminSearch != null) 'adminSearch': adminSearch!,
-    if (orderBy != null) 'orderBy': orderBy!,
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (query != null) 'query': query!,
-    if (scope != null) 'scope': scope!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminSearch = this.adminSearch;
+    final orderBy = this.orderBy;
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final query = this.query;
+    final scope = this.scope;
+    return {
+      'adminSearch': ?adminSearch,
+      'orderBy': ?orderBy,
+      'pageSize': ?pageSize,
+      'pageToken': ?pageToken,
+      'query': ?query,
+      'scope': ?scope,
+    };
+  }
 }
 
 /// The criteria that select the subspace used for query matching.
@@ -7268,34 +7388,36 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
     : this(
         includeGcpPublicDatasets:
             json_['includeGcpPublicDatasets'] as core.bool?,
-        includeOrgIds:
-            (json_['includeOrgIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        includeProjectIds:
-            (json_['includeProjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        includeOrgIds: (json_['includeOrgIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includeProjectIds: (json_['includeProjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         includePublicTagTemplates:
             json_['includePublicTagTemplates'] as core.bool?,
-        restrictedLocations:
-            (json_['restrictedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        restrictedLocations: (json_['restrictedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         starredOnly: json_['starredOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeGcpPublicDatasets != null)
-      'includeGcpPublicDatasets': includeGcpPublicDatasets!,
-    if (includeOrgIds != null) 'includeOrgIds': includeOrgIds!,
-    if (includeProjectIds != null) 'includeProjectIds': includeProjectIds!,
-    if (includePublicTagTemplates != null)
-      'includePublicTagTemplates': includePublicTagTemplates!,
-    if (restrictedLocations != null)
-      'restrictedLocations': restrictedLocations!,
-    if (starredOnly != null) 'starredOnly': starredOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includeGcpPublicDatasets = this.includeGcpPublicDatasets;
+    final includeOrgIds = this.includeOrgIds;
+    final includeProjectIds = this.includeProjectIds;
+    final includePublicTagTemplates = this.includePublicTagTemplates;
+    final restrictedLocations = this.restrictedLocations;
+    final starredOnly = this.starredOnly;
+    return {
+      'includeGcpPublicDatasets': ?includeGcpPublicDatasets,
+      'includeOrgIds': ?includeOrgIds,
+      'includeProjectIds': ?includeProjectIds,
+      'includePublicTagTemplates': ?includePublicTagTemplates,
+      'restrictedLocations': ?restrictedLocations,
+      'starredOnly': ?starredOnly,
+    };
+  }
 }
 
 /// Response message for SearchCatalog.
@@ -7328,28 +7450,31 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
   GoogleCloudDatacatalogV1SearchCatalogResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SearchCatalogResult.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1SearchCatalogResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (results != null) 'results': results!,
-    if (totalSize != null) 'totalSize': totalSize!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final results = this.results;
+    final totalSize = this.totalSize;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'results': ?results,
+      'totalSize': ?totalSize,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Result in the response to a search request.
@@ -7455,21 +7580,30 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
         userSpecifiedSystem: json_['userSpecifiedSystem'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (fullyQualifiedName != null) 'fullyQualifiedName': fullyQualifiedName!,
-    if (integratedSystem != null) 'integratedSystem': integratedSystem!,
-    if (linkedResource != null) 'linkedResource': linkedResource!,
-    if (modifyTime != null) 'modifyTime': modifyTime!,
-    if (relativeResourceName != null)
-      'relativeResourceName': relativeResourceName!,
-    if (searchResultSubtype != null)
-      'searchResultSubtype': searchResultSubtype!,
-    if (searchResultType != null) 'searchResultType': searchResultType!,
-    if (userSpecifiedSystem != null)
-      'userSpecifiedSystem': userSpecifiedSystem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final fullyQualifiedName = this.fullyQualifiedName;
+    final integratedSystem = this.integratedSystem;
+    final linkedResource = this.linkedResource;
+    final modifyTime = this.modifyTime;
+    final relativeResourceName = this.relativeResourceName;
+    final searchResultSubtype = this.searchResultSubtype;
+    final searchResultType = this.searchResultType;
+    final userSpecifiedSystem = this.userSpecifiedSystem;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'fullyQualifiedName': ?fullyQualifiedName,
+      'integratedSystem': ?integratedSystem,
+      'linkedResource': ?linkedResource,
+      'modifyTime': ?modifyTime,
+      'relativeResourceName': ?relativeResourceName,
+      'searchResultSubtype': ?searchResultSubtype,
+      'searchResultType': ?searchResultType,
+      'userSpecifiedSystem': ?userSpecifiedSystem,
+    };
+  }
 }
 
 /// A nested protocol buffer that represents a policy tag and all its
@@ -7505,26 +7639,30 @@ class GoogleCloudDatacatalogV1SerializedPolicyTag {
 
   GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(core.Map json_)
     : this(
-        childPolicyTags:
-            (json_['childPolicyTags'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        childPolicyTags: (json_['childPolicyTags'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         policyTag: json_['policyTag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (childPolicyTags != null) 'childPolicyTags': childPolicyTags!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (policyTag != null) 'policyTag': policyTag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final childPolicyTags = this.childPolicyTags;
+    final description = this.description;
+    final displayName = this.displayName;
+    final policyTag = this.policyTag;
+    return {
+      'childPolicyTags': ?childPolicyTags,
+      'description': ?description,
+      'displayName': ?displayName,
+      'policyTag': ?policyTag,
+    };
+  }
 }
 
 /// A nested protocol buffer that represents a taxonomy and the hierarchy of its
@@ -7560,30 +7698,32 @@ class GoogleCloudDatacatalogV1SerializedTaxonomy {
 
   GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(core.Map json_)
     : this(
-        activatedPolicyTypes:
-            (json_['activatedPolicyTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        activatedPolicyTypes: (json_['activatedPolicyTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        policyTags:
-            (json_['policyTags'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        policyTags: (json_['policyTags'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activatedPolicyTypes != null)
-      'activatedPolicyTypes': activatedPolicyTypes!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (policyTags != null) 'policyTags': policyTags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activatedPolicyTypes = this.activatedPolicyTypes;
+    final description = this.description;
+    final displayName = this.displayName;
+    final policyTags = this.policyTags;
+    return {
+      'activatedPolicyTypes': ?activatedPolicyTypes,
+      'description': ?description,
+      'displayName': ?displayName,
+      'policyTags': ?policyTags,
+    };
+  }
 }
 
 /// Specification that applies to a Service resource.
@@ -7599,17 +7739,17 @@ class GoogleCloudDatacatalogV1ServiceSpec {
     : this(
         cloudBigtableInstanceSpec:
             json_.containsKey('cloudBigtableInstanceSpec')
-                ? GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(
-                  json_['cloudBigtableInstanceSpec']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(
+                json_['cloudBigtableInstanceSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudBigtableInstanceSpec != null)
-      'cloudBigtableInstanceSpec': cloudBigtableInstanceSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudBigtableInstanceSpec = this.cloudBigtableInstanceSpec;
+    return {'cloudBigtableInstanceSpec': ?cloudBigtableInstanceSpec};
+  }
 }
 
 /// Request message for SetConfig.
@@ -7652,12 +7792,14 @@ class GoogleCloudDatacatalogV1SetConfigRequest {
         tagTemplateMigration: json_['tagTemplateMigration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (catalogUiExperience != null)
-      'catalogUiExperience': catalogUiExperience!,
-    if (tagTemplateMigration != null)
-      'tagTemplateMigration': tagTemplateMigration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalogUiExperience = this.catalogUiExperience;
+    final tagTemplateMigration = this.tagTemplateMigration;
+    return {
+      'catalogUiExperience': ?catalogUiExperience,
+      'tagTemplateMigration': ?tagTemplateMigration,
+    };
+  }
 }
 
 /// Specification of a Spanner table.
@@ -7677,27 +7819,26 @@ class GoogleCloudDatacatalogV1SpannerTableSpec {
 
   GoogleCloudDatacatalogV1SpannerTableSpec.fromJson(core.Map json_)
     : this(
-        foreignKeys:
-            (json_['foreignKeys'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        primaryKey:
-            json_.containsKey('primaryKey')
-                ? GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
-                  json_['primaryKey'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        foreignKeys: (json_['foreignKeys'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        primaryKey: json_.containsKey('primaryKey')
+            ? GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
+                json_['primaryKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (foreignKeys != null) 'foreignKeys': foreignKeys!,
-    if (primaryKey != null) 'primaryKey': primaryKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final foreignKeys = this.foreignKeys;
+    final primaryKey = this.primaryKey;
+    return {'foreignKeys': ?foreignKeys, 'primaryKey': ?primaryKey};
+  }
 }
 
 /// Specification of a Spanner foreign key.
@@ -7732,24 +7873,24 @@ class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
   GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
     core.Map json_,
   ) : this(
-        columnMappings:
-            (json_['columnMappings'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        columnMappings: (json_['columnMappings'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         entry: json_['entry'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnMappings != null) 'columnMappings': columnMappings!,
-    if (entry != null) 'entry': entry!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnMappings = this.columnMappings;
+    final entry = this.entry;
+    final name = this.name;
+    return {'columnMappings': ?columnMappings, 'entry': ?entry, 'name': ?name};
+  }
 }
 
 /// Column mapping for a Spanner foreign key.
@@ -7776,10 +7917,11 @@ class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnM
         referenceColumn: json_['referenceColumn'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (referenceColumn != null) 'referenceColumn': referenceColumn!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final referenceColumn = this.referenceColumn;
+    return {'column': ?column, 'referenceColumn': ?referenceColumn};
+  }
 }
 
 /// Specification of a Spanner primary key.
@@ -7794,15 +7936,15 @@ class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
   GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
     core.Map json_,
   ) : this(
-        columns:
-            (json_['columns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        columns: (json_['columns'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columns != null) 'columns': columns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columns = this.columns;
+    return {'columns': ?columns};
+  }
 }
 
 /// Specification that applies to entries that are part `SQL_DATABASE` system
@@ -7835,11 +7977,16 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
         sqlEngine: json_['sqlEngine'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseVersion != null) 'databaseVersion': databaseVersion!,
-    if (instanceHost != null) 'instanceHost': instanceHost!,
-    if (sqlEngine != null) 'sqlEngine': sqlEngine!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseVersion = this.databaseVersion;
+    final instanceHost = this.instanceHost;
+    final sqlEngine = this.sqlEngine;
+    return {
+      'databaseVersion': ?databaseVersion,
+      'instanceHost': ?instanceHost,
+      'sqlEngine': ?sqlEngine,
+    };
+  }
 }
 
 /// Request message for StarEntry.
@@ -7876,17 +8023,17 @@ class GoogleCloudDatacatalogV1StorageProperties {
 
   GoogleCloudDatacatalogV1StorageProperties.fromJson(core.Map json_)
     : this(
-        filePattern:
-            (json_['filePattern'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        filePattern: (json_['filePattern'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         fileType: json_['fileType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filePattern != null) 'filePattern': filePattern!,
-    if (fileType != null) 'fileType': fileType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filePattern = this.filePattern;
+    final fileType = this.fileType;
+    return {'filePattern': ?filePattern, 'fileType': ?fileType};
+  }
 }
 
 /// Timestamps associated with this resource in a particular system.
@@ -7922,11 +8069,16 @@ class GoogleCloudDatacatalogV1SystemTimestamps {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final expireTime = this.expireTime;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'expireTime': ?expireTime,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Normal BigQuery table specification.
@@ -7947,9 +8099,10 @@ class GoogleCloudDatacatalogV1TableSpec {
   GoogleCloudDatacatalogV1TableSpec.fromJson(core.Map json_)
     : this(groupedEntry: json_['groupedEntry'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupedEntry != null) 'groupedEntry': groupedEntry!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupedEntry = this.groupedEntry;
+    return {'groupedEntry': ?groupedEntry};
+  }
 }
 
 /// Tags contain custom metadata and are attached to Data Catalog resources.
@@ -8037,16 +8190,22 @@ class GoogleCloudDatacatalogV1Tag {
         templateDisplayName: json_['templateDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (dataplexTransferStatus != null)
-      'dataplexTransferStatus': dataplexTransferStatus!,
-    if (fields != null) 'fields': fields!,
-    if (name != null) 'name': name!,
-    if (template != null) 'template': template!,
-    if (templateDisplayName != null)
-      'templateDisplayName': templateDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final dataplexTransferStatus = this.dataplexTransferStatus;
+    final fields = this.fields;
+    final name = this.name;
+    final template = this.template;
+    final templateDisplayName = this.templateDisplayName;
+    return {
+      'column': ?column,
+      'dataplexTransferStatus': ?dataplexTransferStatus,
+      'fields': ?fields,
+      'name': ?name,
+      'template': ?template,
+      'templateDisplayName': ?templateDisplayName,
+    };
+  }
 }
 
 /// Contains the value and additional information on a field within a Tag.
@@ -8107,28 +8266,37 @@ class GoogleCloudDatacatalogV1TagField {
         boolValue: json_['boolValue'] as core.bool?,
         displayName: json_['displayName'] as core.String?,
         doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-        enumValue:
-            json_.containsKey('enumValue')
-                ? GoogleCloudDatacatalogV1TagFieldEnumValue.fromJson(
-                  json_['enumValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        enumValue: json_.containsKey('enumValue')
+            ? GoogleCloudDatacatalogV1TagFieldEnumValue.fromJson(
+                json_['enumValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         order: json_['order'] as core.int?,
         richtextValue: json_['richtextValue'] as core.String?,
         stringValue: json_['stringValue'] as core.String?,
         timestampValue: json_['timestampValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boolValue != null) 'boolValue': boolValue!,
-    if (displayName != null) 'displayName': displayName!,
-    if (doubleValue != null) 'doubleValue': doubleValue!,
-    if (enumValue != null) 'enumValue': enumValue!,
-    if (order != null) 'order': order!,
-    if (richtextValue != null) 'richtextValue': richtextValue!,
-    if (stringValue != null) 'stringValue': stringValue!,
-    if (timestampValue != null) 'timestampValue': timestampValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final displayName = this.displayName;
+    final doubleValue = this.doubleValue;
+    final enumValue = this.enumValue;
+    final order = this.order;
+    final richtextValue = this.richtextValue;
+    final stringValue = this.stringValue;
+    final timestampValue = this.timestampValue;
+    return {
+      'boolValue': ?boolValue,
+      'displayName': ?displayName,
+      'doubleValue': ?doubleValue,
+      'enumValue': ?enumValue,
+      'order': ?order,
+      'richtextValue': ?richtextValue,
+      'stringValue': ?stringValue,
+      'timestampValue': ?timestampValue,
+    };
+  }
 }
 
 /// An enum value.
@@ -8141,9 +8309,10 @@ class GoogleCloudDatacatalogV1TagFieldEnumValue {
   GoogleCloudDatacatalogV1TagFieldEnumValue.fromJson(core.Map json_)
     : this(displayName: json_['displayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
 }
 
 /// A tag template defines a tag that can have one or more typed fields.
@@ -8229,14 +8398,20 @@ class GoogleCloudDatacatalogV1TagTemplate {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataplexTransferStatus != null)
-      'dataplexTransferStatus': dataplexTransferStatus!,
-    if (displayName != null) 'displayName': displayName!,
-    if (fields != null) 'fields': fields!,
-    if (isPubliclyReadable != null) 'isPubliclyReadable': isPubliclyReadable!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataplexTransferStatus = this.dataplexTransferStatus;
+    final displayName = this.displayName;
+    final fields = this.fields;
+    final isPubliclyReadable = this.isPubliclyReadable;
+    final name = this.name;
+    return {
+      'dataplexTransferStatus': ?dataplexTransferStatus,
+      'displayName': ?displayName,
+      'fields': ?fields,
+      'isPubliclyReadable': ?isPubliclyReadable,
+      'name': ?name,
+    };
+  }
 }
 
 /// The template for an individual field within a tag template.
@@ -8296,22 +8471,29 @@ class GoogleCloudDatacatalogV1TagTemplateField {
         isRequired: json_['isRequired'] as core.bool?,
         name: json_['name'] as core.String?,
         order: json_['order'] as core.int?,
-        type:
-            json_.containsKey('type')
-                ? GoogleCloudDatacatalogV1FieldType.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        type: json_.containsKey('type')
+            ? GoogleCloudDatacatalogV1FieldType.fromJson(
+                json_['type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (isRequired != null) 'isRequired': isRequired!,
-    if (name != null) 'name': name!,
-    if (order != null) 'order': order!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final isRequired = this.isRequired;
+    final name = this.name;
+    final order = this.order;
+    final type = this.type;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'isRequired': ?isRequired,
+      'name': ?name,
+      'order': ?order,
+      'type': ?type,
+    };
+  }
 }
 
 /// A taxonomy is a collection of hierarchical policy tags that classify data
@@ -8384,39 +8566,44 @@ class GoogleCloudDatacatalogV1Taxonomy {
 
   GoogleCloudDatacatalogV1Taxonomy.fromJson(core.Map json_)
     : this(
-        activatedPolicyTypes:
-            (json_['activatedPolicyTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        activatedPolicyTypes: (json_['activatedPolicyTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
         policyTagCount: json_['policyTagCount'] as core.int?,
-        service:
-            json_.containsKey('service')
-                ? GoogleCloudDatacatalogV1TaxonomyService.fromJson(
-                  json_['service'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        taxonomyTimestamps:
-            json_.containsKey('taxonomyTimestamps')
-                ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
-                  json_['taxonomyTimestamps']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        service: json_.containsKey('service')
+            ? GoogleCloudDatacatalogV1TaxonomyService.fromJson(
+                json_['service'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        taxonomyTimestamps: json_.containsKey('taxonomyTimestamps')
+            ? GoogleCloudDatacatalogV1SystemTimestamps.fromJson(
+                json_['taxonomyTimestamps']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activatedPolicyTypes != null)
-      'activatedPolicyTypes': activatedPolicyTypes!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (policyTagCount != null) 'policyTagCount': policyTagCount!,
-    if (service != null) 'service': service!,
-    if (taxonomyTimestamps != null) 'taxonomyTimestamps': taxonomyTimestamps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activatedPolicyTypes = this.activatedPolicyTypes;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final policyTagCount = this.policyTagCount;
+    final service = this.service;
+    final taxonomyTimestamps = this.taxonomyTimestamps;
+    return {
+      'activatedPolicyTypes': ?activatedPolicyTypes,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'policyTagCount': ?policyTagCount,
+      'service': ?service,
+      'taxonomyTimestamps': ?taxonomyTimestamps,
+    };
+  }
 }
 
 /// The source system of the Taxonomy.
@@ -8439,10 +8626,11 @@ class GoogleCloudDatacatalogV1TaxonomyService {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (identity != null) 'identity': identity!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final identity = this.identity;
+    final name = this.name;
+    return {'identity': ?identity, 'name': ?name};
+  }
 }
 
 /// Request message for UnstarEntry.
@@ -8487,38 +8675,44 @@ class GoogleCloudDatacatalogV1UsageSignal {
 
   GoogleCloudDatacatalogV1UsageSignal.fromJson(core.Map json_)
     : this(
-        commonUsageWithinTimeRange: (json_['commonUsageWithinTimeRange']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDatacatalogV1CommonUsageStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        commonUsageWithinTimeRange:
+            (json_['commonUsageWithinTimeRange']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDatacatalogV1CommonUsageStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         favoriteCount: json_['favoriteCount'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        usageWithinTimeRange: (json_['usageWithinTimeRange']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudDatacatalogV1UsageStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        usageWithinTimeRange:
+            (json_['usageWithinTimeRange']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDatacatalogV1UsageStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commonUsageWithinTimeRange != null)
-      'commonUsageWithinTimeRange': commonUsageWithinTimeRange!,
-    if (favoriteCount != null) 'favoriteCount': favoriteCount!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (usageWithinTimeRange != null)
-      'usageWithinTimeRange': usageWithinTimeRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commonUsageWithinTimeRange = this.commonUsageWithinTimeRange;
+    final favoriteCount = this.favoriteCount;
+    final updateTime = this.updateTime;
+    final usageWithinTimeRange = this.usageWithinTimeRange;
+    return {
+      'commonUsageWithinTimeRange': ?commonUsageWithinTimeRange,
+      'favoriteCount': ?favoriteCount,
+      'updateTime': ?updateTime,
+      'usageWithinTimeRange': ?usageWithinTimeRange,
+    };
+  }
 }
 
 /// Detailed statistics on the entry's usage.
@@ -8550,8 +8744,8 @@ class GoogleCloudDatacatalogV1UsageStats {
 
   GoogleCloudDatacatalogV1UsageStats.fromJson(core.Map json_)
     : this(
-        totalCancellations:
-            (json_['totalCancellations'] as core.num?)?.toDouble(),
+        totalCancellations: (json_['totalCancellations'] as core.num?)
+            ?.toDouble(),
         totalCompletions: (json_['totalCompletions'] as core.num?)?.toDouble(),
         totalExecutionTimeForCompletionsMillis:
             (json_['totalExecutionTimeForCompletionsMillis'] as core.num?)
@@ -8559,14 +8753,20 @@ class GoogleCloudDatacatalogV1UsageStats {
         totalFailures: (json_['totalFailures'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (totalCancellations != null) 'totalCancellations': totalCancellations!,
-    if (totalCompletions != null) 'totalCompletions': totalCompletions!,
-    if (totalExecutionTimeForCompletionsMillis != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final totalCancellations = this.totalCancellations;
+    final totalCompletions = this.totalCompletions;
+    final totalExecutionTimeForCompletionsMillis =
+        this.totalExecutionTimeForCompletionsMillis;
+    final totalFailures = this.totalFailures;
+    return {
+      'totalCancellations': ?totalCancellations,
+      'totalCompletions': ?totalCompletions,
       'totalExecutionTimeForCompletionsMillis':
-          totalExecutionTimeForCompletionsMillis!,
-    if (totalFailures != null) 'totalFailures': totalFailures!,
-  };
+          ?totalExecutionTimeForCompletionsMillis,
+      'totalFailures': ?totalFailures,
+    };
+  }
 }
 
 /// Specification for vertex dataset resources.
@@ -8613,10 +8813,11 @@ class GoogleCloudDatacatalogV1VertexDatasetSpec {
         dataType: json_['dataType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataItemCount != null) 'dataItemCount': dataItemCount!,
-    if (dataType != null) 'dataType': dataType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataItemCount = this.dataItemCount;
+    final dataType = this.dataType;
+    return {'dataItemCount': ?dataItemCount, 'dataType': ?dataType};
+  }
 }
 
 /// Detail description of the source information of a Vertex model.
@@ -8652,29 +8853,33 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
   GoogleCloudDatacatalogV1VertexModelSpec.fromJson(core.Map json_)
     : this(
         containerImageUri: json_['containerImageUri'] as core.String?,
-        versionAliases:
-            (json_['versionAliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        versionAliases: (json_['versionAliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         versionDescription: json_['versionDescription'] as core.String?,
         versionId: json_['versionId'] as core.String?,
-        vertexModelSourceInfo:
-            json_.containsKey('vertexModelSourceInfo')
-                ? GoogleCloudDatacatalogV1VertexModelSourceInfo.fromJson(
-                  json_['vertexModelSourceInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vertexModelSourceInfo: json_.containsKey('vertexModelSourceInfo')
+            ? GoogleCloudDatacatalogV1VertexModelSourceInfo.fromJson(
+                json_['vertexModelSourceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containerImageUri != null) 'containerImageUri': containerImageUri!,
-    if (versionAliases != null) 'versionAliases': versionAliases!,
-    if (versionDescription != null) 'versionDescription': versionDescription!,
-    if (versionId != null) 'versionId': versionId!,
-    if (vertexModelSourceInfo != null)
-      'vertexModelSourceInfo': vertexModelSourceInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containerImageUri = this.containerImageUri;
+    final versionAliases = this.versionAliases;
+    final versionDescription = this.versionDescription;
+    final versionId = this.versionId;
+    final vertexModelSourceInfo = this.vertexModelSourceInfo;
+    return {
+      'containerImageUri': ?containerImageUri,
+      'versionAliases': ?versionAliases,
+      'versionDescription': ?versionDescription,
+      'versionId': ?versionId,
+      'vertexModelSourceInfo': ?vertexModelSourceInfo,
+    };
+  }
 }
 
 /// Table view specification.
@@ -8689,9 +8894,10 @@ class GoogleCloudDatacatalogV1ViewSpec {
   GoogleCloudDatacatalogV1ViewSpec.fromJson(core.Map json_)
     : this(viewQuery: json_['viewQuery'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (viewQuery != null) 'viewQuery': viewQuery!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final viewQuery = this.viewQuery;
+    return {'viewQuery': ?viewQuery};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -8719,25 +8925,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -8788,30 +8997,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -8903,23 +9116,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -8935,17 +9148,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

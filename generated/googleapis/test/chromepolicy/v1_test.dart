@@ -1754,10 +1754,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1AdditionalTargetKeyName();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1AdditionalTargetKeyName.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1AdditionalTargetKeyName.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1AdditionalTargetKeyName(od);
       });
     },
@@ -1770,10 +1770,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest(od);
       });
     },
@@ -1786,10 +1786,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest(od);
       });
     },
@@ -1802,10 +1802,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest(od);
       });
     },
@@ -1818,10 +1818,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest(od);
       });
     },
@@ -1833,10 +1833,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1DefineCertificateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1DefineCertificateRequest(od);
       });
     },
@@ -1848,10 +1848,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1DefineCertificateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1DefineCertificateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1DefineCertificateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1DefineCertificateResponse(od);
       });
     },
@@ -1863,10 +1863,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1DefineNetworkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1DefineNetworkRequest(od);
       });
     },
@@ -1878,10 +1878,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1DefineNetworkResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1DefineNetworkResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1DefineNetworkResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1DefineNetworkResponse(od);
       });
     },
@@ -1893,10 +1893,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest(od);
       });
     },
@@ -1920,10 +1920,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest(od);
       });
     },
@@ -1936,10 +1936,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest(od);
       });
     },
@@ -1952,10 +1952,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse(od);
       });
     },
@@ -1967,10 +1967,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1ListPolicySchemasResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1ListPolicySchemasResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1ListPolicySchemasResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1ListPolicySchemasResponse(od);
       });
     },
@@ -1982,10 +1982,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1ModifyGroupPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1ModifyGroupPolicyRequest(od);
       });
     },
@@ -1997,10 +1997,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest(od);
       });
     },
@@ -2023,10 +2023,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1NumericRangeConstraint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1NumericRangeConstraint(od);
       });
     },
@@ -2064,10 +2064,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(od);
       });
     },
@@ -2080,10 +2080,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1PolicySchemaFieldDescription();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1PolicySchemaFieldDescription.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(od);
       });
     },
@@ -2096,10 +2096,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription(
           od,
         );
@@ -2114,10 +2114,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription(od);
       });
     },
@@ -2129,10 +2129,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1PolicySchemaRequiredItems();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1PolicySchemaRequiredItems.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1PolicySchemaRequiredItems(od);
       });
     },
@@ -2166,10 +2166,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1RemoveCertificateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1RemoveCertificateRequest(od);
       });
     },
@@ -2181,10 +2181,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1RemoveCertificateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1RemoveCertificateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1RemoveCertificateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1RemoveCertificateResponse(od);
       });
     },
@@ -2196,10 +2196,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1RemoveNetworkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1RemoveNetworkRequest(od);
       });
     },
@@ -2211,10 +2211,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1RemoveNetworkResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1RemoveNetworkResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1RemoveNetworkResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1RemoveNetworkResponse(od);
       });
     },
@@ -2260,10 +2260,10 @@ void main() {
         final o =
             buildGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest(od);
       });
     },
@@ -2275,10 +2275,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1UploadPolicyFileRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1UploadPolicyFileRequest(od);
       });
     },
@@ -2290,10 +2290,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1UploadPolicyFileResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1UploadPolicyFileResponse(od);
       });
     },
@@ -2305,10 +2305,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromePolicyVersionsV1UploadedFileConstraints();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromePolicyVersionsV1UploadedFileConstraints(od);
       });
     },
@@ -2481,10 +2481,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest(obj);
 
           final path = req.url.path;
@@ -2546,10 +2546,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest(obj);
 
           final path = req.url.path;
@@ -2611,10 +2611,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest(
             obj,
           );
@@ -2683,10 +2683,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest(
             obj,
           );
@@ -2752,10 +2752,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1DefineCertificateRequest(obj);
 
           final path = req.url.path;
@@ -2821,10 +2821,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1DefineNetworkRequest(obj);
 
           final path = req.url.path;
@@ -2890,10 +2890,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1RemoveCertificateRequest(obj);
 
           final path = req.url.path;
@@ -2959,10 +2959,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1RemoveNetworkRequest(obj);
 
           final path = req.url.path;
@@ -3030,10 +3030,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest(
             obj,
           );
@@ -3097,10 +3097,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest(
             obj,
           );
@@ -3306,10 +3306,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromePolicyVersionsV1UploadPolicyFileRequest(obj);
 
           final path = req.url.path;

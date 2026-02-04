@@ -142,12 +142,12 @@ class ConversionResource {
       'rowCount': ['${rowCount}'],
       'startDate': ['${startDate}'],
       'startRow': ['${startRow}'],
-      if (adGroupId != null) 'adGroupId': [adGroupId],
-      if (adId != null) 'adId': [adId],
-      if (campaignId != null) 'campaignId': [campaignId],
-      if (criterionId != null) 'criterionId': [criterionId],
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'adGroupId': ?adGroupId == null ? null : [adGroupId],
+      'adId': ?adId == null ? null : [adId],
+      'campaignId': ?campaignId == null ? null : [campaignId],
+      'criterionId': ?criterionId == null ? null : [criterionId],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -234,14 +234,14 @@ class ConversionResource {
       'rowCount': ['${rowCount}'],
       'startDate': ['${startDate}'],
       'startRow': ['${startRow}'],
-      if (adGroupId != null) 'adGroupId': [adGroupId],
-      if (adId != null) 'adId': [adId],
-      if (advertiserId != null) 'advertiserId': [advertiserId],
-      if (agencyId != null) 'agencyId': [agencyId],
-      if (campaignId != null) 'campaignId': [campaignId],
-      if (criterionId != null) 'criterionId': [criterionId],
-      if (engineAccountId != null) 'engineAccountId': [engineAccountId],
-      if ($fields != null) 'fields': [$fields],
+      'adGroupId': ?adGroupId == null ? null : [adGroupId],
+      'adId': ?adId == null ? null : [adId],
+      'advertiserId': ?advertiserId == null ? null : [advertiserId],
+      'agencyId': ?agencyId == null ? null : [agencyId],
+      'campaignId': ?campaignId == null ? null : [campaignId],
+      'criterionId': ?criterionId == null ? null : [criterionId],
+      'engineAccountId': ?engineAccountId == null ? null : [engineAccountId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -281,7 +281,7 @@ class ConversionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'doubleclicksearch/v2/conversion';
@@ -319,7 +319,7 @@ class ConversionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'doubleclicksearch/v2/conversion';
@@ -358,7 +358,7 @@ class ConversionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'doubleclicksearch/v2/conversion/updateAvailability';
@@ -402,7 +402,7 @@ class ReportsResource {
   }) async {
     final body_ = convert.json.encode(request_1);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'doubleclicksearch/v2/reports/generate';
@@ -434,7 +434,7 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<Report> get(core.String reportId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -475,7 +475,7 @@ class ReportsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -535,7 +535,7 @@ class ReportsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -582,7 +582,7 @@ class ReportsResource {
   }) async {
     final body_ = convert.json.encode(request_1);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'doubleclicksearch/v2/reports';
@@ -626,7 +626,7 @@ class SavedColumnsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -694,16 +694,24 @@ class Availability {
         segmentationType: json_['segmentationType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advertiserId != null) 'advertiserId': advertiserId!,
-    if (agencyId != null) 'agencyId': agencyId!,
-    if (availabilityTimestamp != null)
-      'availabilityTimestamp': availabilityTimestamp!,
-    if (customerId != null) 'customerId': customerId!,
-    if (segmentationId != null) 'segmentationId': segmentationId!,
-    if (segmentationName != null) 'segmentationName': segmentationName!,
-    if (segmentationType != null) 'segmentationType': segmentationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advertiserId = this.advertiserId;
+    final agencyId = this.agencyId;
+    final availabilityTimestamp = this.availabilityTimestamp;
+    final customerId = this.customerId;
+    final segmentationId = this.segmentationId;
+    final segmentationName = this.segmentationName;
+    final segmentationType = this.segmentationType;
+    return {
+      'advertiserId': ?advertiserId,
+      'agencyId': ?agencyId,
+      'availabilityTimestamp': ?availabilityTimestamp,
+      'customerId': ?customerId,
+      'segmentationId': ?segmentationId,
+      'segmentationName': ?segmentationName,
+      'segmentationType': ?segmentationType,
+    };
+  }
 }
 
 /// A conversion containing data relevant to DoubleClick Search.
@@ -917,22 +925,20 @@ class Conversion {
         countMillis: json_['countMillis'] as core.String?,
         criterionId: json_['criterionId'] as core.String?,
         currencyCode: json_['currencyCode'] as core.String?,
-        customDimension:
-            (json_['customDimension'] as core.List?)
-                ?.map(
-                  (value) => CustomDimension.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        customMetric:
-            (json_['customMetric'] as core.List?)
-                ?.map(
-                  (value) => CustomMetric.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customDimension: (json_['customDimension'] as core.List?)
+            ?.map(
+              (value) => CustomDimension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        customMetric: (json_['customMetric'] as core.List?)
+            ?.map(
+              (value) => CustomMetric.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         customerId: json_['customerId'] as core.String?,
         deviceType: json_['deviceType'] as core.String?,
         dsConversionId: json_['dsConversionId'] as core.String?,
@@ -953,45 +959,80 @@ class Conversion {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adGroupId != null) 'adGroupId': adGroupId!,
-    if (adId != null) 'adId': adId!,
-    if (adUserDataConsent != null) 'adUserDataConsent': adUserDataConsent!,
-    if (advertiserId != null) 'advertiserId': advertiserId!,
-    if (agencyId != null) 'agencyId': agencyId!,
-    if (attributionModel != null) 'attributionModel': attributionModel!,
-    if (campaignId != null) 'campaignId': campaignId!,
-    if (channel != null) 'channel': channel!,
-    if (clickId != null) 'clickId': clickId!,
-    if (conversionId != null) 'conversionId': conversionId!,
-    if (conversionModifiedTimestamp != null)
-      'conversionModifiedTimestamp': conversionModifiedTimestamp!,
-    if (conversionTimestamp != null)
-      'conversionTimestamp': conversionTimestamp!,
-    if (countMillis != null) 'countMillis': countMillis!,
-    if (criterionId != null) 'criterionId': criterionId!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (customDimension != null) 'customDimension': customDimension!,
-    if (customMetric != null) 'customMetric': customMetric!,
-    if (customerId != null) 'customerId': customerId!,
-    if (deviceType != null) 'deviceType': deviceType!,
-    if (dsConversionId != null) 'dsConversionId': dsConversionId!,
-    if (engineAccountId != null) 'engineAccountId': engineAccountId!,
-    if (floodlightOrderId != null) 'floodlightOrderId': floodlightOrderId!,
-    if (inventoryAccountId != null) 'inventoryAccountId': inventoryAccountId!,
-    if (productCountry != null) 'productCountry': productCountry!,
-    if (productGroupId != null) 'productGroupId': productGroupId!,
-    if (productId != null) 'productId': productId!,
-    if (productLanguage != null) 'productLanguage': productLanguage!,
-    if (quantityMillis != null) 'quantityMillis': quantityMillis!,
-    if (revenueMicros != null) 'revenueMicros': revenueMicros!,
-    if (segmentationId != null) 'segmentationId': segmentationId!,
-    if (segmentationName != null) 'segmentationName': segmentationName!,
-    if (segmentationType != null) 'segmentationType': segmentationType!,
-    if (state != null) 'state': state!,
-    if (storeId != null) 'storeId': storeId!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroupId = this.adGroupId;
+    final adId = this.adId;
+    final adUserDataConsent = this.adUserDataConsent;
+    final advertiserId = this.advertiserId;
+    final agencyId = this.agencyId;
+    final attributionModel = this.attributionModel;
+    final campaignId = this.campaignId;
+    final channel = this.channel;
+    final clickId = this.clickId;
+    final conversionId = this.conversionId;
+    final conversionModifiedTimestamp = this.conversionModifiedTimestamp;
+    final conversionTimestamp = this.conversionTimestamp;
+    final countMillis = this.countMillis;
+    final criterionId = this.criterionId;
+    final currencyCode = this.currencyCode;
+    final customDimension = this.customDimension;
+    final customMetric = this.customMetric;
+    final customerId = this.customerId;
+    final deviceType = this.deviceType;
+    final dsConversionId = this.dsConversionId;
+    final engineAccountId = this.engineAccountId;
+    final floodlightOrderId = this.floodlightOrderId;
+    final inventoryAccountId = this.inventoryAccountId;
+    final productCountry = this.productCountry;
+    final productGroupId = this.productGroupId;
+    final productId = this.productId;
+    final productLanguage = this.productLanguage;
+    final quantityMillis = this.quantityMillis;
+    final revenueMicros = this.revenueMicros;
+    final segmentationId = this.segmentationId;
+    final segmentationName = this.segmentationName;
+    final segmentationType = this.segmentationType;
+    final state = this.state;
+    final storeId = this.storeId;
+    final type = this.type;
+    return {
+      'adGroupId': ?adGroupId,
+      'adId': ?adId,
+      'adUserDataConsent': ?adUserDataConsent,
+      'advertiserId': ?advertiserId,
+      'agencyId': ?agencyId,
+      'attributionModel': ?attributionModel,
+      'campaignId': ?campaignId,
+      'channel': ?channel,
+      'clickId': ?clickId,
+      'conversionId': ?conversionId,
+      'conversionModifiedTimestamp': ?conversionModifiedTimestamp,
+      'conversionTimestamp': ?conversionTimestamp,
+      'countMillis': ?countMillis,
+      'criterionId': ?criterionId,
+      'currencyCode': ?currencyCode,
+      'customDimension': ?customDimension,
+      'customMetric': ?customMetric,
+      'customerId': ?customerId,
+      'deviceType': ?deviceType,
+      'dsConversionId': ?dsConversionId,
+      'engineAccountId': ?engineAccountId,
+      'floodlightOrderId': ?floodlightOrderId,
+      'inventoryAccountId': ?inventoryAccountId,
+      'productCountry': ?productCountry,
+      'productGroupId': ?productGroupId,
+      'productId': ?productId,
+      'productLanguage': ?productLanguage,
+      'quantityMillis': ?quantityMillis,
+      'revenueMicros': ?revenueMicros,
+      'segmentationId': ?segmentationId,
+      'segmentationName': ?segmentationName,
+      'segmentationType': ?segmentationType,
+      'state': ?state,
+      'storeId': ?storeId,
+      'type': ?type,
+    };
+  }
 }
 
 /// A list of conversions.
@@ -1008,21 +1049,21 @@ class ConversionList {
 
   ConversionList.fromJson(core.Map json_)
     : this(
-        conversion:
-            (json_['conversion'] as core.List?)
-                ?.map(
-                  (value) => Conversion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conversion: (json_['conversion'] as core.List?)
+            ?.map(
+              (value) => Conversion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversion != null) 'conversion': conversion!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversion = this.conversion;
+    final kind = this.kind;
+    return {'conversion': ?conversion, 'kind': ?kind};
+  }
 }
 
 /// A message containing the custom dimension.
@@ -1041,10 +1082,11 @@ class CustomDimension {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
 }
 
 /// A message containing the custom metric.
@@ -1063,10 +1105,11 @@ class CustomMetric {
         value: (json_['value'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
 }
 
 /// File returned to
@@ -1088,10 +1131,11 @@ class ReportFiles {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (byteCount != null) 'byteCount': byteCount!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final byteCount = this.byteCount;
+    final url = this.url;
+    return {'byteCount': ?byteCount, 'url': ?url};
+  }
 }
 
 /// A DoubleClick Search report.
@@ -1163,44 +1207,51 @@ class Report {
 
   Report.fromJson(core.Map json_)
     : this(
-        files:
-            (json_['files'] as core.List?)
-                ?.map(
-                  (value) => ReportFiles.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) => ReportFiles.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
         isReportReady: json_['isReportReady'] as core.bool?,
         kind: json_['kind'] as core.String?,
-        request:
-            json_.containsKey('request')
-                ? ReportRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        request: json_.containsKey('request')
+            ? ReportRequest.fromJson(
+                json_['request'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rowCount: json_['rowCount'] as core.int?,
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
         statisticsCurrencyCode: json_['statisticsCurrencyCode'] as core.String?,
         statisticsTimeZone: json_['statisticsTimeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (files != null) 'files': files!,
-    if (id != null) 'id': id!,
-    if (isReportReady != null) 'isReportReady': isReportReady!,
-    if (kind != null) 'kind': kind!,
-    if (request != null) 'request': request!,
-    if (rowCount != null) 'rowCount': rowCount!,
-    if (rows != null) 'rows': rows!,
-    if (statisticsCurrencyCode != null)
-      'statisticsCurrencyCode': statisticsCurrencyCode!,
-    if (statisticsTimeZone != null) 'statisticsTimeZone': statisticsTimeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final files = this.files;
+    final id = this.id;
+    final isReportReady = this.isReportReady;
+    final kind = this.kind;
+    final request = this.request;
+    final rowCount = this.rowCount;
+    final rows = this.rows;
+    final statisticsCurrencyCode = this.statisticsCurrencyCode;
+    final statisticsTimeZone = this.statisticsTimeZone;
+    return {
+      'files': ?files,
+      'id': ?id,
+      'isReportReady': ?isReportReady,
+      'kind': ?kind,
+      'request': ?request,
+      'rowCount': ?rowCount,
+      'rows': ?rows,
+      'statisticsCurrencyCode': ?statisticsCurrencyCode,
+      'statisticsTimeZone': ?statisticsTimeZone,
+    };
+  }
 }
 
 /// A request object used to create a DoubleClick Search report.
@@ -1296,20 +1347,30 @@ class ReportApiColumnSpec {
         startDate: json_['startDate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnName != null) 'columnName': columnName!,
-    if (customDimensionName != null)
-      'customDimensionName': customDimensionName!,
-    if (customMetricName != null) 'customMetricName': customMetricName!,
-    if (endDate != null) 'endDate': endDate!,
-    if (groupByColumn != null) 'groupByColumn': groupByColumn!,
-    if (headerText != null) 'headerText': headerText!,
-    if (platformSource != null) 'platformSource': platformSource!,
-    if (productReportPerspective != null)
-      'productReportPerspective': productReportPerspective!,
-    if (savedColumnName != null) 'savedColumnName': savedColumnName!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnName = this.columnName;
+    final customDimensionName = this.customDimensionName;
+    final customMetricName = this.customMetricName;
+    final endDate = this.endDate;
+    final groupByColumn = this.groupByColumn;
+    final headerText = this.headerText;
+    final platformSource = this.platformSource;
+    final productReportPerspective = this.productReportPerspective;
+    final savedColumnName = this.savedColumnName;
+    final startDate = this.startDate;
+    return {
+      'columnName': ?columnName,
+      'customDimensionName': ?customDimensionName,
+      'customMetricName': ?customMetricName,
+      'endDate': ?endDate,
+      'groupByColumn': ?groupByColumn,
+      'headerText': ?headerText,
+      'platformSource': ?platformSource,
+      'productReportPerspective': ?productReportPerspective,
+      'savedColumnName': ?savedColumnName,
+      'startDate': ?startDate,
+    };
+  }
 }
 
 class ReportRequestFilters {
@@ -1334,22 +1395,23 @@ class ReportRequestFilters {
 
   ReportRequestFilters.fromJson(core.Map json_)
     : this(
-        column:
-            json_.containsKey('column')
-                ? ReportApiColumnSpec.fromJson(
-                  json_['column'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        column: json_.containsKey('column')
+            ? ReportApiColumnSpec.fromJson(
+                json_['column'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         operator: json_['operator'] as core.String?,
-        values:
-            json_.containsKey('values') ? json_['values'] as core.List : null,
+        values: json_.containsKey('values')
+            ? json_['values'] as core.List
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (operator != null) 'operator': operator!,
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final operator = this.operator;
+    final values = this.values;
+    return {'column': ?column, 'operator': ?operator, 'values': ?values};
+  }
 }
 
 class ReportRequestOrderBy {
@@ -1365,19 +1427,19 @@ class ReportRequestOrderBy {
 
   ReportRequestOrderBy.fromJson(core.Map json_)
     : this(
-        column:
-            json_.containsKey('column')
-                ? ReportApiColumnSpec.fromJson(
-                  json_['column'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        column: json_.containsKey('column')
+            ? ReportApiColumnSpec.fromJson(
+                json_['column'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sortOrder: json_['sortOrder'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (sortOrder != null) 'sortOrder': sortOrder!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final sortOrder = this.sortOrder;
+    return {'column': ?column, 'sortOrder': ?sortOrder};
+  }
 }
 
 /// The reportScope is a set of IDs that are used to determine which subset of
@@ -1428,15 +1490,24 @@ class ReportRequestReportScope {
         keywordId: json_['keywordId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adGroupId != null) 'adGroupId': adGroupId!,
-    if (adId != null) 'adId': adId!,
-    if (advertiserId != null) 'advertiserId': advertiserId!,
-    if (agencyId != null) 'agencyId': agencyId!,
-    if (campaignId != null) 'campaignId': campaignId!,
-    if (engineAccountId != null) 'engineAccountId': engineAccountId!,
-    if (keywordId != null) 'keywordId': keywordId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroupId = this.adGroupId;
+    final adId = this.adId;
+    final advertiserId = this.advertiserId;
+    final agencyId = this.agencyId;
+    final campaignId = this.campaignId;
+    final engineAccountId = this.engineAccountId;
+    final keywordId = this.keywordId;
+    return {
+      'adGroupId': ?adGroupId,
+      'adId': ?adId,
+      'advertiserId': ?advertiserId,
+      'agencyId': ?agencyId,
+      'campaignId': ?campaignId,
+      'engineAccountId': ?engineAccountId,
+      'keywordId': ?keywordId,
+    };
+  }
 }
 
 /// If metrics are requested in a report, this argument will be used to restrict
@@ -1475,14 +1546,19 @@ class ReportRequestTimeRange {
         startDate: json_['startDate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changedAttributesSinceTimestamp != null)
-      'changedAttributesSinceTimestamp': changedAttributesSinceTimestamp!,
-    if (changedMetricsSinceTimestamp != null)
-      'changedMetricsSinceTimestamp': changedMetricsSinceTimestamp!,
-    if (endDate != null) 'endDate': endDate!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changedAttributesSinceTimestamp =
+        this.changedAttributesSinceTimestamp;
+    final changedMetricsSinceTimestamp = this.changedMetricsSinceTimestamp;
+    final endDate = this.endDate;
+    final startDate = this.startDate;
+    return {
+      'changedAttributesSinceTimestamp': ?changedAttributesSinceTimestamp,
+      'changedMetricsSinceTimestamp': ?changedMetricsSinceTimestamp,
+      'endDate': ?endDate,
+      'startDate': ?startDate,
+    };
+  }
 }
 
 /// A request object used to create a DoubleClick Search report.
@@ -1593,72 +1669,80 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map json_)
     : this(
-        columns:
-            (json_['columns'] as core.List?)
-                ?.map(
-                  (value) => ReportApiColumnSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        columns: (json_['columns'] as core.List?)
+            ?.map(
+              (value) => ReportApiColumnSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         downloadFormat: json_['downloadFormat'] as core.String?,
-        filters:
-            (json_['filters'] as core.List?)
-                ?.map(
-                  (value) => ReportRequestFilters.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        filters: (json_['filters'] as core.List?)
+            ?.map(
+              (value) => ReportRequestFilters.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         includeDeletedEntities: json_['includeDeletedEntities'] as core.bool?,
         includeRemovedEntities: json_['includeRemovedEntities'] as core.bool?,
         maxRowsPerFile: json_['maxRowsPerFile'] as core.int?,
-        orderBy:
-            (json_['orderBy'] as core.List?)
-                ?.map(
-                  (value) => ReportRequestOrderBy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        reportScope:
-            json_.containsKey('reportScope')
-                ? ReportRequestReportScope.fromJson(
-                  json_['reportScope'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        orderBy: (json_['orderBy'] as core.List?)
+            ?.map(
+              (value) => ReportRequestOrderBy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        reportScope: json_.containsKey('reportScope')
+            ? ReportRequestReportScope.fromJson(
+                json_['reportScope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reportType: json_['reportType'] as core.String?,
         rowCount: json_['rowCount'] as core.int?,
         startRow: json_['startRow'] as core.int?,
         statisticsCurrency: json_['statisticsCurrency'] as core.String?,
-        timeRange:
-            json_.containsKey('timeRange')
-                ? ReportRequestTimeRange.fromJson(
-                  json_['timeRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeRange: json_.containsKey('timeRange')
+            ? ReportRequestTimeRange.fromJson(
+                json_['timeRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         verifySingleTimeZone: json_['verifySingleTimeZone'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columns != null) 'columns': columns!,
-    if (downloadFormat != null) 'downloadFormat': downloadFormat!,
-    if (filters != null) 'filters': filters!,
-    if (includeDeletedEntities != null)
-      'includeDeletedEntities': includeDeletedEntities!,
-    if (includeRemovedEntities != null)
-      'includeRemovedEntities': includeRemovedEntities!,
-    if (maxRowsPerFile != null) 'maxRowsPerFile': maxRowsPerFile!,
-    if (orderBy != null) 'orderBy': orderBy!,
-    if (reportScope != null) 'reportScope': reportScope!,
-    if (reportType != null) 'reportType': reportType!,
-    if (rowCount != null) 'rowCount': rowCount!,
-    if (startRow != null) 'startRow': startRow!,
-    if (statisticsCurrency != null) 'statisticsCurrency': statisticsCurrency!,
-    if (timeRange != null) 'timeRange': timeRange!,
-    if (verifySingleTimeZone != null)
-      'verifySingleTimeZone': verifySingleTimeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columns = this.columns;
+    final downloadFormat = this.downloadFormat;
+    final filters = this.filters;
+    final includeDeletedEntities = this.includeDeletedEntities;
+    final includeRemovedEntities = this.includeRemovedEntities;
+    final maxRowsPerFile = this.maxRowsPerFile;
+    final orderBy = this.orderBy;
+    final reportScope = this.reportScope;
+    final reportType = this.reportType;
+    final rowCount = this.rowCount;
+    final startRow = this.startRow;
+    final statisticsCurrency = this.statisticsCurrency;
+    final timeRange = this.timeRange;
+    final verifySingleTimeZone = this.verifySingleTimeZone;
+    return {
+      'columns': ?columns,
+      'downloadFormat': ?downloadFormat,
+      'filters': ?filters,
+      'includeDeletedEntities': ?includeDeletedEntities,
+      'includeRemovedEntities': ?includeRemovedEntities,
+      'maxRowsPerFile': ?maxRowsPerFile,
+      'orderBy': ?orderBy,
+      'reportScope': ?reportScope,
+      'reportType': ?reportType,
+      'rowCount': ?rowCount,
+      'startRow': ?startRow,
+      'statisticsCurrency': ?statisticsCurrency,
+      'timeRange': ?timeRange,
+      'verifySingleTimeZone': ?verifySingleTimeZone,
+    };
+  }
 }
 
 /// A row in a DoubleClick Search report.
@@ -1689,11 +1773,12 @@ class SavedColumn {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (savedColumnName != null) 'savedColumnName': savedColumnName!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final savedColumnName = this.savedColumnName;
+    final type = this.type;
+    return {'kind': ?kind, 'savedColumnName': ?savedColumnName, 'type': ?type};
+  }
 }
 
 /// A list of saved columns.
@@ -1714,21 +1799,21 @@ class SavedColumnList {
 
   SavedColumnList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => SavedColumn.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => SavedColumn.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    return {'items': ?items, 'kind': ?kind};
+  }
 }
 
 /// The request to update availability.
@@ -1740,19 +1825,19 @@ class UpdateAvailabilityRequest {
 
   UpdateAvailabilityRequest.fromJson(core.Map json_)
     : this(
-        availabilities:
-            (json_['availabilities'] as core.List?)
-                ?.map(
-                  (value) => Availability.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        availabilities: (json_['availabilities'] as core.List?)
+            ?.map(
+              (value) => Availability.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availabilities != null) 'availabilities': availabilities!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availabilities = this.availabilities;
+    return {'availabilities': ?availabilities};
+  }
 }
 
 /// The response to a update availability request.
@@ -1764,17 +1849,17 @@ class UpdateAvailabilityResponse {
 
   UpdateAvailabilityResponse.fromJson(core.Map json_)
     : this(
-        availabilities:
-            (json_['availabilities'] as core.List?)
-                ?.map(
-                  (value) => Availability.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        availabilities: (json_['availabilities'] as core.List?)
+            ?.map(
+              (value) => Availability.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availabilities != null) 'availabilities': availabilities!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availabilities = this.availabilities;
+    return {'availabilities': ?availabilities};
+  }
 }

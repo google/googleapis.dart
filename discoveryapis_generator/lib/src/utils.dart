@@ -12,7 +12,7 @@ final _cleanRegEx = RegExp(r'[^\w$]');
 String _cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 
 final _formatter = DartFormatter(languageVersion: targetDartVersion);
-final targetDartVersion = Version(3, 7, 0);
+final targetDartVersion = Version(3, 9, 0);
 
 final targetDartVersionConstraint = '^$targetDartVersion';
 

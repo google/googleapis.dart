@@ -104,9 +104,10 @@ class AccountsOrderTrackingSignalsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orderTrackingSignalId != null)
-        'orderTrackingSignalId': [orderTrackingSignalId],
-      if ($fields != null) 'fields': [$fields],
+      'orderTrackingSignalId': ?orderTrackingSignalId == null
+          ? null
+          : [orderTrackingSignalId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -224,27 +225,37 @@ class DateTime {
         month: json_['month'] as core.int?,
         nanos: json_['nanos'] as core.int?,
         seconds: json_['seconds'] as core.int?,
-        timeZone:
-            json_.containsKey('timeZone')
-                ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeZone: json_.containsKey('timeZone')
+            ? TimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         utcOffset: json_['utcOffset'] as core.String?,
         year: json_['year'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (day != null) 'day': day!,
-    if (hours != null) 'hours': hours!,
-    if (minutes != null) 'minutes': minutes!,
-    if (month != null) 'month': month!,
-    if (nanos != null) 'nanos': nanos!,
-    if (seconds != null) 'seconds': seconds!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (utcOffset != null) 'utcOffset': utcOffset!,
-    if (year != null) 'year': year!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final day = this.day;
+    final hours = this.hours;
+    final minutes = this.minutes;
+    final month = this.month;
+    final nanos = this.nanos;
+    final seconds = this.seconds;
+    final timeZone = this.timeZone;
+    final utcOffset = this.utcOffset;
+    final year = this.year;
+    return {
+      'day': ?day,
+      'hours': ?hours,
+      'minutes': ?minutes,
+      'month': ?month,
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+      'timeZone': ?timeZone,
+      'utcOffset': ?utcOffset,
+      'year': ?year,
+    };
+  }
 }
 
 /// The line items of the order.
@@ -298,10 +309,9 @@ class LineItemDetails {
   LineItemDetails.fromJson(core.Map json_)
     : this(
         brand: json_['brand'] as core.String?,
-        gtins:
-            (json_['gtins'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        gtins: (json_['gtins'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         lineItemId: json_['lineItemId'] as core.String?,
         mpn: json_['mpn'] as core.String?,
         productId: json_['productId'] as core.String?,
@@ -309,15 +319,24 @@ class LineItemDetails {
         quantity: json_['quantity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brand != null) 'brand': brand!,
-    if (gtins != null) 'gtins': gtins!,
-    if (lineItemId != null) 'lineItemId': lineItemId!,
-    if (mpn != null) 'mpn': mpn!,
-    if (productId != null) 'productId': productId!,
-    if (productTitle != null) 'productTitle': productTitle!,
-    if (quantity != null) 'quantity': quantity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final gtins = this.gtins;
+    final lineItemId = this.lineItemId;
+    final mpn = this.mpn;
+    final productId = this.productId;
+    final productTitle = this.productTitle;
+    final quantity = this.quantity;
+    return {
+      'brand': ?brand,
+      'gtins': ?gtins,
+      'lineItemId': ?lineItemId,
+      'mpn': ?mpn,
+      'productId': ?productId,
+      'productTitle': ?productTitle,
+      'quantity': ?quantity,
+    };
+  }
 }
 
 /// Represents a business trade from which signals are extracted, such as
@@ -405,31 +424,28 @@ class OrderTrackingSignal {
 
   OrderTrackingSignal.fromJson(core.Map json_)
     : this(
-        customerShippingFee:
-            json_.containsKey('customerShippingFee')
-                ? Price.fromJson(
-                  json_['customerShippingFee']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customerShippingFee: json_.containsKey('customerShippingFee')
+            ? Price.fromJson(
+                json_['customerShippingFee']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deliveryPostalCode: json_['deliveryPostalCode'] as core.String?,
         deliveryRegionCode: json_['deliveryRegionCode'] as core.String?,
-        lineItems:
-            (json_['lineItems'] as core.List?)
-                ?.map(
-                  (value) => LineItemDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        lineItems: (json_['lineItems'] as core.List?)
+            ?.map(
+              (value) => LineItemDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         merchantId: json_['merchantId'] as core.String?,
-        orderCreatedTime:
-            json_.containsKey('orderCreatedTime')
-                ? DateTime.fromJson(
-                  json_['orderCreatedTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        orderCreatedTime: json_.containsKey('orderCreatedTime')
+            ? DateTime.fromJson(
+                json_['orderCreatedTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         orderId: json_['orderId'] as core.String?,
         orderTrackingSignalId: json_['orderTrackingSignalId'] as core.String?,
         shipmentLineItemMapping:
@@ -440,31 +456,39 @@ class OrderTrackingSignal {
                   ),
                 )
                 .toList(),
-        shippingInfo:
-            (json_['shippingInfo'] as core.List?)
-                ?.map(
-                  (value) => ShippingInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        shippingInfo: (json_['shippingInfo'] as core.List?)
+            ?.map(
+              (value) => ShippingInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerShippingFee != null)
-      'customerShippingFee': customerShippingFee!,
-    if (deliveryPostalCode != null) 'deliveryPostalCode': deliveryPostalCode!,
-    if (deliveryRegionCode != null) 'deliveryRegionCode': deliveryRegionCode!,
-    if (lineItems != null) 'lineItems': lineItems!,
-    if (merchantId != null) 'merchantId': merchantId!,
-    if (orderCreatedTime != null) 'orderCreatedTime': orderCreatedTime!,
-    if (orderId != null) 'orderId': orderId!,
-    if (orderTrackingSignalId != null)
-      'orderTrackingSignalId': orderTrackingSignalId!,
-    if (shipmentLineItemMapping != null)
-      'shipmentLineItemMapping': shipmentLineItemMapping!,
-    if (shippingInfo != null) 'shippingInfo': shippingInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerShippingFee = this.customerShippingFee;
+    final deliveryPostalCode = this.deliveryPostalCode;
+    final deliveryRegionCode = this.deliveryRegionCode;
+    final lineItems = this.lineItems;
+    final merchantId = this.merchantId;
+    final orderCreatedTime = this.orderCreatedTime;
+    final orderId = this.orderId;
+    final orderTrackingSignalId = this.orderTrackingSignalId;
+    final shipmentLineItemMapping = this.shipmentLineItemMapping;
+    final shippingInfo = this.shippingInfo;
+    return {
+      'customerShippingFee': ?customerShippingFee,
+      'deliveryPostalCode': ?deliveryPostalCode,
+      'deliveryRegionCode': ?deliveryRegionCode,
+      'lineItems': ?lineItems,
+      'merchantId': ?merchantId,
+      'orderCreatedTime': ?orderCreatedTime,
+      'orderId': ?orderId,
+      'orderTrackingSignalId': ?orderTrackingSignalId,
+      'shipmentLineItemMapping': ?shipmentLineItemMapping,
+      'shippingInfo': ?shippingInfo,
+    };
+  }
 }
 
 /// The price represented as a number and currency.
@@ -500,11 +524,16 @@ class ShipmentLineItemMapping {
         shipmentId: json_['shipmentId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lineItemId != null) 'lineItemId': lineItemId!,
-    if (quantity != null) 'quantity': quantity!,
-    if (shipmentId != null) 'shipmentId': shipmentId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lineItemId = this.lineItemId;
+    final quantity = this.quantity;
+    final shipmentId = this.shipmentId;
+    return {
+      'lineItemId': ?lineItemId,
+      'quantity': ?quantity,
+      'shipmentId': ?shipmentId,
+    };
+  }
 }
 
 /// The shipping information for the order.
@@ -616,57 +645,66 @@ class ShippingInfo {
 
   ShippingInfo.fromJson(core.Map json_)
     : this(
-        actualDeliveryTime:
-            json_.containsKey('actualDeliveryTime')
-                ? DateTime.fromJson(
-                  json_['actualDeliveryTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actualDeliveryTime: json_.containsKey('actualDeliveryTime')
+            ? DateTime.fromJson(
+                json_['actualDeliveryTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         carrier: json_['carrier'] as core.String?,
         carrierService: json_['carrierService'] as core.String?,
         earliestDeliveryPromiseTime:
             json_.containsKey('earliestDeliveryPromiseTime')
-                ? DateTime.fromJson(
-                  json_['earliestDeliveryPromiseTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DateTime.fromJson(
+                json_['earliestDeliveryPromiseTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         latestDeliveryPromiseTime:
             json_.containsKey('latestDeliveryPromiseTime')
-                ? DateTime.fromJson(
-                  json_['latestDeliveryPromiseTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DateTime.fromJson(
+                json_['latestDeliveryPromiseTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         originPostalCode: json_['originPostalCode'] as core.String?,
         originRegionCode: json_['originRegionCode'] as core.String?,
         shipmentId: json_['shipmentId'] as core.String?,
-        shippedTime:
-            json_.containsKey('shippedTime')
-                ? DateTime.fromJson(
-                  json_['shippedTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        shippedTime: json_.containsKey('shippedTime')
+            ? DateTime.fromJson(
+                json_['shippedTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         shippingStatus: json_['shippingStatus'] as core.String?,
         trackingId: json_['trackingId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actualDeliveryTime != null) 'actualDeliveryTime': actualDeliveryTime!,
-    if (carrier != null) 'carrier': carrier!,
-    if (carrierService != null) 'carrierService': carrierService!,
-    if (earliestDeliveryPromiseTime != null)
-      'earliestDeliveryPromiseTime': earliestDeliveryPromiseTime!,
-    if (latestDeliveryPromiseTime != null)
-      'latestDeliveryPromiseTime': latestDeliveryPromiseTime!,
-    if (originPostalCode != null) 'originPostalCode': originPostalCode!,
-    if (originRegionCode != null) 'originRegionCode': originRegionCode!,
-    if (shipmentId != null) 'shipmentId': shipmentId!,
-    if (shippedTime != null) 'shippedTime': shippedTime!,
-    if (shippingStatus != null) 'shippingStatus': shippingStatus!,
-    if (trackingId != null) 'trackingId': trackingId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actualDeliveryTime = this.actualDeliveryTime;
+    final carrier = this.carrier;
+    final carrierService = this.carrierService;
+    final earliestDeliveryPromiseTime = this.earliestDeliveryPromiseTime;
+    final latestDeliveryPromiseTime = this.latestDeliveryPromiseTime;
+    final originPostalCode = this.originPostalCode;
+    final originRegionCode = this.originRegionCode;
+    final shipmentId = this.shipmentId;
+    final shippedTime = this.shippedTime;
+    final shippingStatus = this.shippingStatus;
+    final trackingId = this.trackingId;
+    return {
+      'actualDeliveryTime': ?actualDeliveryTime,
+      'carrier': ?carrier,
+      'carrierService': ?carrierService,
+      'earliestDeliveryPromiseTime': ?earliestDeliveryPromiseTime,
+      'latestDeliveryPromiseTime': ?latestDeliveryPromiseTime,
+      'originPostalCode': ?originPostalCode,
+      'originRegionCode': ?originRegionCode,
+      'shipmentId': ?shipmentId,
+      'shippedTime': ?shippedTime,
+      'shippingStatus': ?shippingStatus,
+      'trackingId': ?trackingId,
+    };
+  }
 }
 
 /// Represents a time zone from the

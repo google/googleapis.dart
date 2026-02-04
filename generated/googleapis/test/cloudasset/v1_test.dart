@@ -5204,10 +5204,10 @@ void main() {
         final o =
             buildGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset(
           od,
         );
@@ -5222,10 +5222,10 @@ void main() {
         final o =
             buildGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy(
           od,
         );
@@ -5240,10 +5240,10 @@ void main() {
         final o =
             buildGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource(
           od,
         );
@@ -5368,10 +5368,10 @@ void main() {
         final o =
             buildGoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination(od);
       });
     },
@@ -5474,10 +5474,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1AccessPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1AccessPolicy(od);
       });
     },
@@ -5489,10 +5489,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1ApiOperation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1ApiOperation(od);
       });
     },
@@ -5546,10 +5546,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1DevicePolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1DevicePolicy(od);
       });
     },
@@ -5575,10 +5575,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1EgressPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1EgressPolicy(od);
       });
     },
@@ -5590,10 +5590,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1EgressSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1EgressSource(od);
       });
     },
@@ -5630,10 +5630,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1IngressPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1IngressPolicy(od);
       });
     },
@@ -5645,10 +5645,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1IngressSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1IngressSource(od);
       });
     },
@@ -5674,10 +5674,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1MethodSelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1MethodSelector(od);
       });
     },
@@ -5689,10 +5689,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1OsConstraint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1OsConstraint(od);
       });
     },
@@ -5704,10 +5704,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1ServicePerimeter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(od);
       });
     },
@@ -5720,10 +5720,10 @@ void main() {
         final o =
             buildGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(od);
       });
     },
@@ -5736,10 +5736,10 @@ void main() {
         final o =
             buildGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices(od);
       });
     },
@@ -5751,10 +5751,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1VpcNetworkSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1VpcNetworkSource(od);
       });
     },
@@ -5766,10 +5766,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIdentityAccesscontextmanagerV1VpcSubNetwork();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIdentityAccesscontextmanagerV1VpcSubNetwork(od);
       });
     },

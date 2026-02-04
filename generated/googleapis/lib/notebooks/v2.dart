@@ -100,7 +100,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -153,11 +153,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
@@ -209,7 +209,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkAuthorization';
@@ -249,7 +249,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -300,9 +300,9 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (instanceId != null) 'instanceId': [instanceId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'instanceId': ?instanceId == null ? null : [instanceId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -343,8 +343,8 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -385,7 +385,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':diagnose';
@@ -429,7 +429,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
@@ -466,7 +466,7 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -501,7 +501,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/instances:getConfig';
@@ -556,9 +556,10 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -608,11 +609,11 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -679,9 +680,9 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -727,7 +728,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reportInfoSystem';
@@ -769,7 +770,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reset';
@@ -811,7 +812,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -854,7 +855,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':restore';
@@ -896,7 +897,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rollback';
@@ -943,7 +944,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -985,7 +986,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':start';
@@ -1027,7 +1028,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':stop';
@@ -1076,7 +1077,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1121,7 +1122,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':upgrade';
@@ -1165,7 +1166,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':upgradeSystem';
@@ -1222,7 +1223,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1260,7 +1261,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1296,7 +1297,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1351,12 +1352,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1418,10 +1420,11 @@ class AcceleratorConfig {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coreCount != null) 'coreCount': coreCount!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coreCount = this.coreCount;
+    final type = this.type;
+    return {'coreCount': ?coreCount, 'type': ?type};
+  }
 }
 
 /// An access configuration attached to an instance's network interface.
@@ -1439,9 +1442,10 @@ class AccessConfig {
   AccessConfig.fromJson(core.Map json_)
     : this(externalIp: json_['externalIp'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalIp != null) 'externalIp': externalIp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalIp = this.externalIp;
+    return {'externalIp': ?externalIp};
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1528,24 +1532,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// The definition of a boot disk.
@@ -1601,12 +1604,18 @@ class BootDisk {
         kmsKey: json_['kmsKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskEncryption != null) 'diskEncryption': diskEncryption!,
-    if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-    if (diskType != null) 'diskType': diskType!,
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskEncryption = this.diskEncryption;
+    final diskSizeGb = this.diskSizeGb;
+    final diskType = this.diskType;
+    final kmsKey = this.kmsKey;
+    return {
+      'diskEncryption': ?diskEncryption,
+      'diskSizeGb': ?diskSizeGb,
+      'diskType': ?diskType,
+      'kmsKey': ?kmsKey,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1626,15 +1635,16 @@ class CheckAuthorizationRequest {
 
   CheckAuthorizationRequest.fromJson(core.Map json_)
     : this(
-        authorizationDetails: (json_['authorizationDetails']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        authorizationDetails:
+            (json_['authorizationDetails']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorizationDetails != null)
-      'authorizationDetails': authorizationDetails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationDetails = this.authorizationDetails;
+    return {'authorizationDetails': ?authorizationDetails};
+  }
 }
 
 /// Response message for checking authorization for the instance owner.
@@ -1663,11 +1673,16 @@ class CheckAuthorizationResponse {
         success: json_['success'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (oauthUri != null) 'oauth_uri': oauthUri!,
-    if (success != null) 'success': success!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final oauthUri = this.oauthUri;
+    final success = this.success;
+    return {
+      'createTime': ?createTime,
+      'oauth_uri': ?oauthUri,
+      'success': ?success,
+    };
+  }
 }
 
 /// Response for checking if a notebook instance is upgradeable.
@@ -1692,10 +1707,10 @@ class ConfidentialInstanceConfig {
             json_['confidentialInstanceType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidentialInstanceType != null)
-      'confidentialInstanceType': confidentialInstanceType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidentialInstanceType = this.confidentialInstanceType;
+    return {'confidentialInstanceType': ?confidentialInstanceType};
+  }
 }
 
 /// Response for getting WbI configurations in a location
@@ -1730,38 +1745,39 @@ class Config {
 
   Config.fromJson(core.Map json_)
     : this(
-        availableImages:
-            (json_['availableImages'] as core.List?)
-                ?.map(
-                  (value) => ImageRelease.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        defaultValues:
-            json_.containsKey('defaultValues')
-                ? DefaultValues.fromJson(
-                  json_['defaultValues'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        availableImages: (json_['availableImages'] as core.List?)
+            ?.map(
+              (value) => ImageRelease.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        defaultValues: json_.containsKey('defaultValues')
+            ? DefaultValues.fromJson(
+                json_['defaultValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableWorkbenchLegacyCreation:
             json_['disableWorkbenchLegacyCreation'] as core.bool?,
-        supportedValues:
-            json_.containsKey('supportedValues')
-                ? SupportedValues.fromJson(
-                  json_['supportedValues']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        supportedValues: json_.containsKey('supportedValues')
+            ? SupportedValues.fromJson(
+                json_['supportedValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availableImages != null) 'availableImages': availableImages!,
-    if (defaultValues != null) 'defaultValues': defaultValues!,
-    if (disableWorkbenchLegacyCreation != null)
-      'disableWorkbenchLegacyCreation': disableWorkbenchLegacyCreation!,
-    if (supportedValues != null) 'supportedValues': supportedValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availableImages = this.availableImages;
+    final defaultValues = this.defaultValues;
+    final disableWorkbenchLegacyCreation = this.disableWorkbenchLegacyCreation;
+    final supportedValues = this.supportedValues;
+    return {
+      'availableImages': ?availableImages,
+      'defaultValues': ?defaultValues,
+      'disableWorkbenchLegacyCreation': ?disableWorkbenchLegacyCreation,
+      'supportedValues': ?supportedValues,
+    };
+  }
 }
 
 /// Definition of a container image for starting a notebook instance with the
@@ -1789,10 +1805,11 @@ class ContainerImage {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (repository != null) 'repository': repository!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final repository = this.repository;
+    final tag = this.tag;
+    return {'repository': ?repository, 'tag': ?tag};
+  }
 }
 
 /// An instance-attached disk resource.
@@ -1859,19 +1876,25 @@ class DataDisk {
         diskSizeGb: json_['diskSizeGb'] as core.String?,
         diskType: json_['diskType'] as core.String?,
         kmsKey: json_['kmsKey'] as core.String?,
-        resourcePolicies:
-            (json_['resourcePolicies'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resourcePolicies: (json_['resourcePolicies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskEncryption != null) 'diskEncryption': diskEncryption!,
-    if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-    if (diskType != null) 'diskType': diskType!,
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskEncryption = this.diskEncryption;
+    final diskSizeGb = this.diskSizeGb;
+    final diskType = this.diskType;
+    final kmsKey = this.kmsKey;
+    final resourcePolicies = this.resourcePolicies;
+    return {
+      'diskEncryption': ?diskEncryption,
+      'diskSizeGb': ?diskSizeGb,
+      'diskType': ?diskType,
+      'kmsKey': ?kmsKey,
+      'resourcePolicies': ?resourcePolicies,
+    };
+  }
 }
 
 /// DefaultValues represents the default configuration values.
@@ -1886,9 +1909,10 @@ class DefaultValues {
   DefaultValues.fromJson(core.Map json_)
     : this(machineType: json_['machineType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    return {'machineType': ?machineType};
+  }
 }
 
 /// Request for creating a notebook instance diagnostic file.
@@ -1907,20 +1931,23 @@ class DiagnoseInstanceRequest {
 
   DiagnoseInstanceRequest.fromJson(core.Map json_)
     : this(
-        diagnosticConfig:
-            json_.containsKey('diagnosticConfig')
-                ? DiagnosticConfig.fromJson(
-                  json_['diagnosticConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        diagnosticConfig: json_.containsKey('diagnosticConfig')
+            ? DiagnosticConfig.fromJson(
+                json_['diagnosticConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeoutMinutes: json_['timeoutMinutes'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
-    if (timeoutMinutes != null) 'timeoutMinutes': timeoutMinutes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diagnosticConfig = this.diagnosticConfig;
+    final timeoutMinutes = this.timeoutMinutes;
+    return {
+      'diagnosticConfig': ?diagnosticConfig,
+      'timeoutMinutes': ?timeoutMinutes,
+    };
+  }
 }
 
 /// Defines flags that are used to run the diagnostic tool
@@ -1979,15 +2006,20 @@ class DiagnosticConfig {
         relativePath: json_['relativePath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableCopyHomeFilesFlag != null)
-      'enableCopyHomeFilesFlag': enableCopyHomeFilesFlag!,
-    if (enablePacketCaptureFlag != null)
-      'enablePacketCaptureFlag': enablePacketCaptureFlag!,
-    if (enableRepairFlag != null) 'enableRepairFlag': enableRepairFlag!,
-    if (gcsBucket != null) 'gcsBucket': gcsBucket!,
-    if (relativePath != null) 'relativePath': relativePath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableCopyHomeFilesFlag = this.enableCopyHomeFilesFlag;
+    final enablePacketCaptureFlag = this.enablePacketCaptureFlag;
+    final enableRepairFlag = this.enableRepairFlag;
+    final gcsBucket = this.gcsBucket;
+    final relativePath = this.relativePath;
+    return {
+      'enableCopyHomeFilesFlag': ?enableCopyHomeFilesFlag,
+      'enablePacketCaptureFlag': ?enablePacketCaptureFlag,
+      'enableRepairFlag': ?enableRepairFlag,
+      'gcsBucket': ?gcsBucket,
+      'relativePath': ?relativePath,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2039,11 +2071,12 @@ class Event {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (reportTime != null) 'reportTime': reportTime!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final reportTime = this.reportTime;
+    final type = this.type;
+    return {'details': ?details, 'reportTime': ?reportTime, 'type': ?type};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2092,11 +2125,14 @@ class GPUDriverConfig {
         enableGpuDriver: json_['enableGpuDriver'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customGpuDriverPath != null)
-      'customGpuDriverPath': customGpuDriverPath!,
-    if (enableGpuDriver != null) 'enableGpuDriver': enableGpuDriver!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customGpuDriverPath = this.customGpuDriverPath;
+    final enableGpuDriver = this.enableGpuDriver;
+    return {
+      'customGpuDriverPath': ?customGpuDriverPath,
+      'enableGpuDriver': ?enableGpuDriver,
+    };
+  }
 }
 
 /// The definition of how to configure a VM instance outside of Resources and
@@ -2236,121 +2272,125 @@ class GceSetup {
 
   GceSetup.fromJson(core.Map json_)
     : this(
-        acceleratorConfigs:
-            (json_['acceleratorConfigs'] as core.List?)
-                ?.map(
-                  (value) => AcceleratorConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bootDisk:
-            json_.containsKey('bootDisk')
-                ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        acceleratorConfigs: (json_['acceleratorConfigs'] as core.List?)
+            ?.map(
+              (value) => AcceleratorConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bootDisk: json_.containsKey('bootDisk')
+            ? BootDisk.fromJson(
+                json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         confidentialInstanceConfig:
             json_.containsKey('confidentialInstanceConfig')
-                ? ConfidentialInstanceConfig.fromJson(
-                  json_['confidentialInstanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        containerImage:
-            json_.containsKey('containerImage')
-                ? ContainerImage.fromJson(
-                  json_['containerImage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataDisks:
-            (json_['dataDisks'] as core.List?)
-                ?.map(
-                  (value) => DataDisk.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+            ? ConfidentialInstanceConfig.fromJson(
+                json_['confidentialInstanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        containerImage: json_.containsKey('containerImage')
+            ? ContainerImage.fromJson(
+                json_['containerImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataDisks: (json_['dataDisks'] as core.List?)
+            ?.map(
+              (value) => DataDisk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         disablePublicIp: json_['disablePublicIp'] as core.bool?,
         enableIpForwarding: json_['enableIpForwarding'] as core.bool?,
-        gpuDriverConfig:
-            json_.containsKey('gpuDriverConfig')
-                ? GPUDriverConfig.fromJson(
-                  json_['gpuDriverConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gpuDriverConfig: json_.containsKey('gpuDriverConfig')
+            ? GPUDriverConfig.fromJson(
+                json_['gpuDriverConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         instanceId: json_['instanceId'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         minCpuPlatform: json_['minCpuPlatform'] as core.String?,
-        networkInterfaces:
-            (json_['networkInterfaces'] as core.List?)
-                ?.map(
-                  (value) => NetworkInterface.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        reservationAffinity:
-            json_.containsKey('reservationAffinity')
-                ? ReservationAffinity.fromJson(
-                  json_['reservationAffinity']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceAccounts:
-            (json_['serviceAccounts'] as core.List?)
-                ?.map(
-                  (value) => ServiceAccount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        shieldedInstanceConfig:
-            json_.containsKey('shieldedInstanceConfig')
-                ? ShieldedInstanceConfig.fromJson(
-                  json_['shieldedInstanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        vmImage:
-            json_.containsKey('vmImage')
-                ? VmImage.fromJson(
-                  json_['vmImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkInterfaces: (json_['networkInterfaces'] as core.List?)
+            ?.map(
+              (value) => NetworkInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        reservationAffinity: json_.containsKey('reservationAffinity')
+            ? ReservationAffinity.fromJson(
+                json_['reservationAffinity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceAccounts: (json_['serviceAccounts'] as core.List?)
+            ?.map(
+              (value) => ServiceAccount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
+            ? ShieldedInstanceConfig.fromJson(
+                json_['shieldedInstanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        vmImage: json_.containsKey('vmImage')
+            ? VmImage.fromJson(
+                json_['vmImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceleratorConfigs != null) 'acceleratorConfigs': acceleratorConfigs!,
-    if (bootDisk != null) 'bootDisk': bootDisk!,
-    if (confidentialInstanceConfig != null)
-      'confidentialInstanceConfig': confidentialInstanceConfig!,
-    if (containerImage != null) 'containerImage': containerImage!,
-    if (dataDisks != null) 'dataDisks': dataDisks!,
-    if (disablePublicIp != null) 'disablePublicIp': disablePublicIp!,
-    if (enableIpForwarding != null) 'enableIpForwarding': enableIpForwarding!,
-    if (gpuDriverConfig != null) 'gpuDriverConfig': gpuDriverConfig!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (machineType != null) 'machineType': machineType!,
-    if (metadata != null) 'metadata': metadata!,
-    if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
-    if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
-    if (reservationAffinity != null)
-      'reservationAffinity': reservationAffinity!,
-    if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
-    if (shieldedInstanceConfig != null)
-      'shieldedInstanceConfig': shieldedInstanceConfig!,
-    if (tags != null) 'tags': tags!,
-    if (vmImage != null) 'vmImage': vmImage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorConfigs = this.acceleratorConfigs;
+    final bootDisk = this.bootDisk;
+    final confidentialInstanceConfig = this.confidentialInstanceConfig;
+    final containerImage = this.containerImage;
+    final dataDisks = this.dataDisks;
+    final disablePublicIp = this.disablePublicIp;
+    final enableIpForwarding = this.enableIpForwarding;
+    final gpuDriverConfig = this.gpuDriverConfig;
+    final instanceId = this.instanceId;
+    final machineType = this.machineType;
+    final metadata = this.metadata;
+    final minCpuPlatform = this.minCpuPlatform;
+    final networkInterfaces = this.networkInterfaces;
+    final reservationAffinity = this.reservationAffinity;
+    final serviceAccounts = this.serviceAccounts;
+    final shieldedInstanceConfig = this.shieldedInstanceConfig;
+    final tags = this.tags;
+    final vmImage = this.vmImage;
+    return {
+      'acceleratorConfigs': ?acceleratorConfigs,
+      'bootDisk': ?bootDisk,
+      'confidentialInstanceConfig': ?confidentialInstanceConfig,
+      'containerImage': ?containerImage,
+      'dataDisks': ?dataDisks,
+      'disablePublicIp': ?disablePublicIp,
+      'enableIpForwarding': ?enableIpForwarding,
+      'gpuDriverConfig': ?gpuDriverConfig,
+      'instanceId': ?instanceId,
+      'machineType': ?machineType,
+      'metadata': ?metadata,
+      'minCpuPlatform': ?minCpuPlatform,
+      'networkInterfaces': ?networkInterfaces,
+      'reservationAffinity': ?reservationAffinity,
+      'serviceAccounts': ?serviceAccounts,
+      'shieldedInstanceConfig': ?shieldedInstanceConfig,
+      'tags': ?tags,
+      'vmImage': ?vmImage,
+    };
+  }
 }
 
 /// Request message for generating an EUC for the instance owner.
@@ -2367,9 +2407,10 @@ class GenerateAccessTokenRequest {
   GenerateAccessTokenRequest.fromJson(core.Map json_)
     : this(vmToken: json_['vmToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vmToken != null) 'vmToken': vmToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final vmToken = this.vmToken;
+    return {'vmToken': ?vmToken};
+  }
 }
 
 /// Response message for generating an EUC for the instance owner.
@@ -2408,12 +2449,18 @@ class GenerateAccessTokenResponse {
         tokenType: json_['token_type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'access_token': accessToken!,
-    if (expiresIn != null) 'expires_in': expiresIn!,
-    if (scope != null) 'scope': scope!,
-    if (tokenType != null) 'token_type': tokenType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final expiresIn = this.expiresIn;
+    final scope = this.scope;
+    final tokenType = this.tokenType;
+    return {
+      'access_token': ?accessToken,
+      'expires_in': ?expiresIn,
+      'scope': ?scope,
+      'token_type': ?tokenType,
+    };
+  }
 }
 
 /// ConfigImage represents an image release available to create a WbI
@@ -2436,10 +2483,11 @@ class ImageRelease {
         releaseName: json_['releaseName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageName != null) 'imageName': imageName!,
-    if (releaseName != null) 'releaseName': releaseName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageName = this.imageName;
+    final releaseName = this.releaseName;
+    return {'imageName': ?imageName, 'releaseName': ?releaseName};
+  }
 }
 
 /// The definition of a notebook instance.
@@ -2620,21 +2668,20 @@ class Instance {
         enableManagedEuc: json_['enableManagedEuc'] as core.bool?,
         enableThirdPartyIdentity:
             json_['enableThirdPartyIdentity'] as core.bool?,
-        gceSetup:
-            json_.containsKey('gceSetup')
-                ? GceSetup.fromJson(
-                  json_['gceSetup'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        healthInfo: (json_['healthInfo']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        gceSetup: json_.containsKey('gceSetup')
+            ? GceSetup.fromJson(
+                json_['gceSetup'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        healthInfo:
+            (json_['healthInfo'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         healthState: json_['healthState'] as core.String?,
         id: json_['id'] as core.String?,
-        instanceOwners:
-            (json_['instanceOwners'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        instanceOwners: (json_['instanceOwners'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -2645,40 +2692,59 @@ class Instance {
         state: json_['state'] as core.String?,
         thirdPartyProxyUrl: json_['thirdPartyProxyUrl'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        upgradeHistory:
-            (json_['upgradeHistory'] as core.List?)
-                ?.map(
-                  (value) => UpgradeHistoryEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        upgradeHistory: (json_['upgradeHistory'] as core.List?)
+            ?.map(
+              (value) => UpgradeHistoryEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (disableProxyAccess != null) 'disableProxyAccess': disableProxyAccess!,
-    if (enableDeletionProtection != null)
-      'enableDeletionProtection': enableDeletionProtection!,
-    if (enableManagedEuc != null) 'enableManagedEuc': enableManagedEuc!,
-    if (enableThirdPartyIdentity != null)
-      'enableThirdPartyIdentity': enableThirdPartyIdentity!,
-    if (gceSetup != null) 'gceSetup': gceSetup!,
-    if (healthInfo != null) 'healthInfo': healthInfo!,
-    if (healthState != null) 'healthState': healthState!,
-    if (id != null) 'id': id!,
-    if (instanceOwners != null) 'instanceOwners': instanceOwners!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (proxyUri != null) 'proxyUri': proxyUri!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (state != null) 'state': state!,
-    if (thirdPartyProxyUrl != null) 'thirdPartyProxyUrl': thirdPartyProxyUrl!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upgradeHistory != null) 'upgradeHistory': upgradeHistory!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final disableProxyAccess = this.disableProxyAccess;
+    final enableDeletionProtection = this.enableDeletionProtection;
+    final enableManagedEuc = this.enableManagedEuc;
+    final enableThirdPartyIdentity = this.enableThirdPartyIdentity;
+    final gceSetup = this.gceSetup;
+    final healthInfo = this.healthInfo;
+    final healthState = this.healthState;
+    final id = this.id;
+    final instanceOwners = this.instanceOwners;
+    final labels = this.labels;
+    final name = this.name;
+    final proxyUri = this.proxyUri;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final state = this.state;
+    final thirdPartyProxyUrl = this.thirdPartyProxyUrl;
+    final updateTime = this.updateTime;
+    final upgradeHistory = this.upgradeHistory;
+    return {
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'disableProxyAccess': ?disableProxyAccess,
+      'enableDeletionProtection': ?enableDeletionProtection,
+      'enableManagedEuc': ?enableManagedEuc,
+      'enableThirdPartyIdentity': ?enableThirdPartyIdentity,
+      'gceSetup': ?gceSetup,
+      'healthInfo': ?healthInfo,
+      'healthState': ?healthState,
+      'id': ?id,
+      'instanceOwners': ?instanceOwners,
+      'labels': ?labels,
+      'name': ?name,
+      'proxyUri': ?proxyUri,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'thirdPartyProxyUrl': ?thirdPartyProxyUrl,
+      'updateTime': ?updateTime,
+      'upgradeHistory': ?upgradeHistory,
+    };
+  }
 }
 
 /// Response for listing notebook instances.
@@ -2700,26 +2766,29 @@ class ListInstancesResponse {
 
   ListInstancesResponse.fromJson(core.Map json_)
     : this(
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => Instance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => Instance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instances != null) 'instances': instances!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instances = this.instances;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'instances': ?instances,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2734,21 +2803,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2776,25 +2845,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2846,25 +2918,30 @@ class NetworkInterface {
 
   NetworkInterface.fromJson(core.Map json_)
     : this(
-        accessConfigs:
-            (json_['accessConfigs'] as core.List?)
-                ?.map(
-                  (value) => AccessConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accessConfigs: (json_['accessConfigs'] as core.List?)
+            ?.map(
+              (value) => AccessConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         network: json_['network'] as core.String?,
         nicType: json_['nicType'] as core.String?,
         subnet: json_['subnet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessConfigs != null) 'accessConfigs': accessConfigs!,
-    if (network != null) 'network': network!,
-    if (nicType != null) 'nicType': nicType!,
-    if (subnet != null) 'subnet': subnet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessConfigs = this.accessConfigs;
+    final network = this.network;
+    final nicType = this.nicType;
+    final subnet = this.subnet;
+    return {
+      'accessConfigs': ?accessConfigs,
+      'network': ?network,
+      'nicType': ?nicType,
+      'subnet': ?subnet,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2915,30 +2992,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3030,23 +3111,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Request for notebook instances to report information to Notebooks API.
@@ -3067,19 +3148,19 @@ class ReportInstanceInfoSystemRequest {
 
   ReportInstanceInfoSystemRequest.fromJson(core.Map json_)
     : this(
-        event:
-            json_.containsKey('event')
-                ? Event.fromJson(
-                  json_['event'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        event: json_.containsKey('event')
+            ? Event.fromJson(
+                json_['event'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vmId: json_['vmId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (event != null) 'event': event!,
-    if (vmId != null) 'vmId': vmId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final event = this.event;
+    final vmId = this.vmId;
+    return {'event': ?event, 'vmId': ?vmId};
+  }
 }
 
 /// A reservation that an instance can consume from.
@@ -3123,18 +3204,21 @@ class ReservationAffinity {
     : this(
         consumeReservationType: json_['consumeReservationType'] as core.String?,
         key: json_['key'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumeReservationType != null)
-      'consumeReservationType': consumeReservationType!,
-    if (key != null) 'key': key!,
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumeReservationType = this.consumeReservationType;
+    final key = this.key;
+    final values = this.values;
+    return {
+      'consumeReservationType': ?consumeReservationType,
+      'key': ?key,
+      'values': ?values,
+    };
+  }
 }
 
 /// Request for resetting a notebook instance
@@ -3160,24 +3244,23 @@ class ResizeDiskRequest {
 
   ResizeDiskRequest.fromJson(core.Map json_)
     : this(
-        bootDisk:
-            json_.containsKey('bootDisk')
-                ? BootDisk.fromJson(
-                  json_['bootDisk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataDisk:
-            json_.containsKey('dataDisk')
-                ? DataDisk.fromJson(
-                  json_['dataDisk'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bootDisk: json_.containsKey('bootDisk')
+            ? BootDisk.fromJson(
+                json_['bootDisk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataDisk: json_.containsKey('dataDisk')
+            ? DataDisk.fromJson(
+                json_['dataDisk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bootDisk != null) 'bootDisk': bootDisk!,
-    if (dataDisk != null) 'dataDisk': dataDisk!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDisk = this.bootDisk;
+    final dataDisk = this.dataDisk;
+    return {'bootDisk': ?bootDisk, 'dataDisk': ?dataDisk};
+  }
 }
 
 /// Request for restoring the notebook instance from a BackupSource.
@@ -3189,17 +3272,17 @@ class RestoreInstanceRequest {
 
   RestoreInstanceRequest.fromJson(core.Map json_)
     : this(
-        snapshot:
-            json_.containsKey('snapshot')
-                ? Snapshot.fromJson(
-                  json_['snapshot'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        snapshot: json_.containsKey('snapshot')
+            ? Snapshot.fromJson(
+                json_['snapshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (snapshot != null) 'snapshot': snapshot!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final snapshot = this.snapshot;
+    return {'snapshot': ?snapshot};
+  }
 }
 
 /// Request for rollbacking a notebook instance
@@ -3224,10 +3307,11 @@ class RollbackInstanceRequest {
         targetSnapshot: json_['targetSnapshot'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (revisionId != null) 'revisionId': revisionId!,
-    if (targetSnapshot != null) 'targetSnapshot': targetSnapshot!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final revisionId = this.revisionId;
+    final targetSnapshot = this.targetSnapshot;
+    return {'revisionId': ?revisionId, 'targetSnapshot': ?targetSnapshot};
+  }
 }
 
 /// A service account that acts as an identity.
@@ -3249,16 +3333,16 @@ class ServiceAccount {
   ServiceAccount.fromJson(core.Map json_)
     : this(
         email: json_['email'] as core.String?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        scopes: (json_['scopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (scopes != null) 'scopes': scopes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final scopes = this.scopes;
+    return {'email': ?email, 'scopes': ?scopes};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3274,17 +3358,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// A set of Shielded Instance options.
@@ -3331,12 +3415,16 @@ class ShieldedInstanceConfig {
         enableVtpm: json_['enableVtpm'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableIntegrityMonitoring != null)
-      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-    if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableIntegrityMonitoring = this.enableIntegrityMonitoring;
+    final enableSecureBoot = this.enableSecureBoot;
+    final enableVtpm = this.enableVtpm;
+    return {
+      'enableIntegrityMonitoring': ?enableIntegrityMonitoring,
+      'enableSecureBoot': ?enableSecureBoot,
+      'enableVtpm': ?enableVtpm,
+    };
+  }
 }
 
 /// Snapshot represents the snapshot of the data disk used to restore the
@@ -3362,10 +3450,11 @@ class Snapshot {
         snapshotId: json_['snapshotId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (projectId != null) 'projectId': projectId!,
-    if (snapshotId != null) 'snapshotId': snapshotId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectId = this.projectId;
+    final snapshotId = this.snapshotId;
+    return {'projectId': ?projectId, 'snapshotId': ?snapshotId};
+  }
 }
 
 /// Request for starting a notebook instance
@@ -3399,20 +3488,22 @@ class SupportedValues {
 
   SupportedValues.fromJson(core.Map json_)
     : this(
-        acceleratorTypes:
-            (json_['acceleratorTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        machineTypes:
-            (json_['machineTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        acceleratorTypes: (json_['acceleratorTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        machineTypes: (json_['machineTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceleratorTypes != null) 'acceleratorTypes': acceleratorTypes!,
-    if (machineTypes != null) 'machineTypes': machineTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorTypes = this.acceleratorTypes;
+    final machineTypes = this.machineTypes;
+    return {
+      'acceleratorTypes': ?acceleratorTypes,
+      'machineTypes': ?machineTypes,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3504,17 +3595,28 @@ class UpgradeHistoryEntry {
         vmImage: json_['vmImage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (containerImage != null) 'containerImage': containerImage!,
-    if (createTime != null) 'createTime': createTime!,
-    if (framework != null) 'framework': framework!,
-    if (snapshot != null) 'snapshot': snapshot!,
-    if (state != null) 'state': state!,
-    if (targetVersion != null) 'targetVersion': targetVersion!,
-    if (version != null) 'version': version!,
-    if (vmImage != null) 'vmImage': vmImage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final containerImage = this.containerImage;
+    final createTime = this.createTime;
+    final framework = this.framework;
+    final snapshot = this.snapshot;
+    final state = this.state;
+    final targetVersion = this.targetVersion;
+    final version = this.version;
+    final vmImage = this.vmImage;
+    return {
+      'action': ?action,
+      'containerImage': ?containerImage,
+      'createTime': ?createTime,
+      'framework': ?framework,
+      'snapshot': ?snapshot,
+      'state': ?state,
+      'targetVersion': ?targetVersion,
+      'version': ?version,
+      'vmImage': ?vmImage,
+    };
+  }
 }
 
 /// Request for upgrading a notebook instance
@@ -3553,9 +3655,10 @@ class VmImage {
         project: json_['project'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (family != null) 'family': family!,
-    if (name != null) 'name': name!,
-    if (project != null) 'project': project!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final family = this.family;
+    final name = this.name;
+    final project = this.project;
+    return {'family': ?family, 'name': ?name, 'project': ?project};
+  }
 }

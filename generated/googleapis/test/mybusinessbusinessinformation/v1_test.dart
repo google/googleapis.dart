@@ -2970,8 +2970,9 @@ void main() {
   unittest.group('resource-LocationsAttributesResource', () {
     unittest.test('method--getGoogleUpdated', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MyBusinessBusinessInformationApi(mock).locations.attributes;
+      final res = api.MyBusinessBusinessInformationApi(
+        mock,
+      ).locations.attributes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(

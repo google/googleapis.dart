@@ -95,7 +95,7 @@ class AccountsLimitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'quota/v1/' + core.Uri.encodeFull('$name');
@@ -148,10 +148,10 @@ class AccountsLimitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'quota/v1/' + core.Uri.encodeFull('$parent') + '/limits';
@@ -206,9 +206,9 @@ class AccountsQuotasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'quota/v1/' + core.Uri.encodeFull('$parent') + '/quotas';
@@ -241,18 +241,18 @@ class AccountLimit {
   AccountLimit.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        products:
-            json_.containsKey('products')
-                ? ProductLimit.fromJson(
-                  json_['products'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        products: json_.containsKey('products')
+            ? ProductLimit.fromJson(
+                json_['products'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (products != null) 'products': products!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final products = this.products;
+    return {'name': ?name, 'products': ?products};
+  }
 }
 
 /// Response message for the `ListAccountLimits` method.
@@ -269,21 +269,21 @@ class ListAccountLimitsResponse {
 
   ListAccountLimitsResponse.fromJson(core.Map json_)
     : this(
-        accountLimits:
-            (json_['accountLimits'] as core.List?)
-                ?.map(
-                  (value) => AccountLimit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accountLimits: (json_['accountLimits'] as core.List?)
+            ?.map(
+              (value) => AccountLimit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountLimits != null) 'accountLimits': accountLimits!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountLimits = this.accountLimits;
+    final nextPageToken = this.nextPageToken;
+    return {'accountLimits': ?accountLimits, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListMethodGroups method.
@@ -304,20 +304,20 @@ class ListQuotaGroupsResponse {
   ListQuotaGroupsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        quotaGroups:
-            (json_['quotaGroups'] as core.List?)
-                ?.map(
-                  (value) => QuotaGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        quotaGroups: (json_['quotaGroups'] as core.List?)
+            ?.map(
+              (value) => QuotaGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (quotaGroups != null) 'quotaGroups': quotaGroups!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final quotaGroups = this.quotaGroups;
+    return {'nextPageToken': ?nextPageToken, 'quotaGroups': ?quotaGroups};
+  }
 }
 
 /// The method details per method in the Merchant API.
@@ -352,12 +352,18 @@ class MethodDetails {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (method != null) 'method': method!,
-    if (path != null) 'path': path!,
-    if (subapi != null) 'subapi': subapi!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final method = this.method;
+    final path = this.path;
+    final subapi = this.subapi;
+    final version = this.version;
+    return {
+      'method': ?method,
+      'path': ?path,
+      'subapi': ?subapi,
+      'version': ?version,
+    };
+  }
 }
 
 /// The limit for products.
@@ -385,10 +391,11 @@ class ProductLimit {
         scope: json_['scope'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limit != null) 'limit': limit!,
-    if (scope != null) 'scope': scope!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final limit = this.limit;
+    final scope = this.scope;
+    return {'limit': ?limit, 'scope': ?scope};
+  }
 }
 
 /// The group information for methods in the Merchant API.
@@ -437,25 +444,31 @@ class QuotaGroup {
 
   QuotaGroup.fromJson(core.Map json_)
     : this(
-        methodDetails:
-            (json_['methodDetails'] as core.List?)
-                ?.map(
-                  (value) => MethodDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        methodDetails: (json_['methodDetails'] as core.List?)
+            ?.map(
+              (value) => MethodDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         quotaLimit: json_['quotaLimit'] as core.String?,
         quotaMinuteLimit: json_['quotaMinuteLimit'] as core.String?,
         quotaUsage: json_['quotaUsage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (methodDetails != null) 'methodDetails': methodDetails!,
-    if (name != null) 'name': name!,
-    if (quotaLimit != null) 'quotaLimit': quotaLimit!,
-    if (quotaMinuteLimit != null) 'quotaMinuteLimit': quotaMinuteLimit!,
-    if (quotaUsage != null) 'quotaUsage': quotaUsage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final methodDetails = this.methodDetails;
+    final name = this.name;
+    final quotaLimit = this.quotaLimit;
+    final quotaMinuteLimit = this.quotaMinuteLimit;
+    final quotaUsage = this.quotaUsage;
+    return {
+      'methodDetails': ?methodDetails,
+      'name': ?name,
+      'quotaLimit': ?quotaLimit,
+      'quotaMinuteLimit': ?quotaMinuteLimit,
+      'quotaUsage': ?quotaUsage,
+    };
+  }
 }

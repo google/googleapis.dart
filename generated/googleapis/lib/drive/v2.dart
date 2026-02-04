@@ -164,11 +164,12 @@ class AboutResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeSubscribed != null)
-        'includeSubscribed': ['${includeSubscribed}'],
-      if (maxChangeIdCount != null) 'maxChangeIdCount': [maxChangeIdCount],
-      if (startChangeId != null) 'startChangeId': [startChangeId],
-      if ($fields != null) 'fields': [$fields],
+      'includeSubscribed': ?includeSubscribed == null
+          ? null
+          : ['${includeSubscribed}'],
+      'maxChangeIdCount': ?maxChangeIdCount == null ? null : [maxChangeIdCount],
+      'startChangeId': ?startChangeId == null ? null : [startChangeId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'about';
@@ -205,7 +206,7 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<App> get(core.String appId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'apps/' + commons.escapeVariable('$appId');
@@ -255,12 +256,14 @@ class AppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appFilterExtensions != null)
-        'appFilterExtensions': [appFilterExtensions],
-      if (appFilterMimeTypes != null)
-        'appFilterMimeTypes': [appFilterMimeTypes],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'appFilterExtensions': ?appFilterExtensions == null
+          ? null
+          : [appFilterExtensions],
+      'appFilterMimeTypes': ?appFilterMimeTypes == null
+          ? null
+          : [appFilterMimeTypes],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'apps';
@@ -314,13 +317,15 @@ class ChangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (driveId != null) 'driveId': [driveId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
-      if ($fields != null) 'fields': [$fields],
+      'driveId': ?driveId == null ? null : [driveId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'teamDriveId': ?teamDriveId == null ? null : [teamDriveId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'changes/' + commons.escapeVariable('$changeId');
@@ -365,13 +370,15 @@ class ChangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (driveId != null) 'driveId': [driveId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
-      if ($fields != null) 'fields': [$fields],
+      'driveId': ?driveId == null ? null : [driveId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'teamDriveId': ?teamDriveId == null ? null : [teamDriveId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'changes/startPageToken';
@@ -467,29 +474,36 @@ class ChangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (driveId != null) 'driveId': [driveId],
-      if (includeCorpusRemovals != null)
-        'includeCorpusRemovals': ['${includeCorpusRemovals}'],
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if (includeItemsFromAllDrives != null)
-        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (includeSubscribed != null)
-        'includeSubscribed': ['${includeSubscribed}'],
-      if (includeTeamDriveItems != null)
-        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (spaces != null) 'spaces': [spaces],
-      if (startChangeId != null) 'startChangeId': [startChangeId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
-      if ($fields != null) 'fields': [$fields],
+      'driveId': ?driveId == null ? null : [driveId],
+      'includeCorpusRemovals': ?includeCorpusRemovals == null
+          ? null
+          : ['${includeCorpusRemovals}'],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'includeItemsFromAllDrives': ?includeItemsFromAllDrives == null
+          ? null
+          : ['${includeItemsFromAllDrives}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'includeSubscribed': ?includeSubscribed == null
+          ? null
+          : ['${includeSubscribed}'],
+      'includeTeamDriveItems': ?includeTeamDriveItems == null
+          ? null
+          : ['${includeTeamDriveItems}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'spaces': ?spaces == null ? null : [spaces],
+      'startChangeId': ?startChangeId == null ? null : [startChangeId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'teamDriveId': ?teamDriveId == null ? null : [teamDriveId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'changes';
@@ -589,29 +603,36 @@ class ChangesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (driveId != null) 'driveId': [driveId],
-      if (includeCorpusRemovals != null)
-        'includeCorpusRemovals': ['${includeCorpusRemovals}'],
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if (includeItemsFromAllDrives != null)
-        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (includeSubscribed != null)
-        'includeSubscribed': ['${includeSubscribed}'],
-      if (includeTeamDriveItems != null)
-        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (spaces != null) 'spaces': [spaces],
-      if (startChangeId != null) 'startChangeId': [startChangeId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
-      if ($fields != null) 'fields': [$fields],
+      'driveId': ?driveId == null ? null : [driveId],
+      'includeCorpusRemovals': ?includeCorpusRemovals == null
+          ? null
+          : ['${includeCorpusRemovals}'],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'includeItemsFromAllDrives': ?includeItemsFromAllDrives == null
+          ? null
+          : ['${includeItemsFromAllDrives}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'includeSubscribed': ?includeSubscribed == null
+          ? null
+          : ['${includeSubscribed}'],
+      'includeTeamDriveItems': ?includeTeamDriveItems == null
+          ? null
+          : ['${includeTeamDriveItems}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'spaces': ?spaces == null ? null : [spaces],
+      'startChangeId': ?startChangeId == null ? null : [startChangeId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'teamDriveId': ?teamDriveId == null ? null : [teamDriveId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'changes/watch';
@@ -648,7 +669,7 @@ class ChannelsResource {
   async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'channels/stop';
@@ -694,9 +715,10 @@ class ChildrenResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -737,7 +759,7 @@ class ChildrenResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -792,13 +814,16 @@ class ChildrenResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$folderId') + '/children';
@@ -854,11 +879,11 @@ class ChildrenResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (q != null) 'q': [q],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'q': ?q == null ? null : [q],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$folderId') + '/children';
@@ -899,7 +924,7 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -944,8 +969,8 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -987,7 +1012,7 @@ class CommentsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/comments';
@@ -1040,11 +1065,11 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (updatedMin != null) 'updatedMin': [updatedMin],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'updatedMin': ?updatedMin == null ? null : [updatedMin],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/comments';
@@ -1087,7 +1112,7 @@ class CommentsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1133,7 +1158,7 @@ class CommentsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1188,11 +1213,13 @@ class DrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowItemDeletion != null)
-        'allowItemDeletion': ['${allowItemDeletion}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowItemDeletion': ?allowItemDeletion == null
+          ? null
+          : ['${allowItemDeletion}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'drives/' + commons.escapeVariable('$driveId');
@@ -1231,9 +1258,10 @@ class DrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'drives/' + commons.escapeVariable('$driveId');
@@ -1264,7 +1292,7 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<Drive> hide(core.String driveId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'drives/' + commons.escapeVariable('$driveId') + '/hide';
@@ -1307,7 +1335,7 @@ class DrivesResource {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'drives';
@@ -1358,12 +1386,13 @@ class DrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (q != null) 'q': [q],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'q': ?q == null ? null : [q],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'drives';
@@ -1397,7 +1426,7 @@ class DrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'drives/' + commons.escapeVariable('$driveId') + '/unhide';
@@ -1440,9 +1469,10 @@ class DrivesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'drives/' + commons.escapeVariable('$driveId');
@@ -1538,24 +1568,31 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (convert != null) 'convert': ['${convert}'],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (ocr != null) 'ocr': ['${ocr}'],
-      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
-      if (pinned != null) 'pinned': ['${pinned}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (timedTextLanguage != null) 'timedTextLanguage': [timedTextLanguage],
-      if (timedTextTrackName != null)
-        'timedTextTrackName': [timedTextTrackName],
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'convert': ?convert == null ? null : ['${convert}'],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'ocr': ?ocr == null ? null : ['${ocr}'],
+      'ocrLanguage': ?ocrLanguage == null ? null : [ocrLanguage],
+      'pinned': ?pinned == null ? null : ['${pinned}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'timedTextLanguage': ?timedTextLanguage == null
+          ? null
+          : [timedTextLanguage],
+      'timedTextTrackName': ?timedTextTrackName == null
+          ? null
+          : [timedTextTrackName],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/copy';
@@ -1605,13 +1642,16 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId');
@@ -1648,10 +1688,11 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (driveId != null) 'driveId': [driveId],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if ($fields != null) 'fields': [$fields],
+      'driveId': ?driveId == null ? null : [driveId],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'files/trash';
@@ -1696,7 +1737,7 @@ class FilesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/export';
@@ -1746,10 +1787,10 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (space != null) 'space': [space],
-      if (type != null) 'type': [type],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'space': ?space == null ? null : [space],
+      'type': ?type == null ? null : [type],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'files/generateIds';
@@ -1838,18 +1879,25 @@ class FilesResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (projection != null) 'projection': [projection],
-      if (revisionId != null) 'revisionId': [revisionId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (updateViewedDate != null) 'updateViewedDate': ['${updateViewedDate}'],
-      if ($fields != null) 'fields': [$fields],
+      'acknowledgeAbuse': ?acknowledgeAbuse == null
+          ? null
+          : ['${acknowledgeAbuse}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'projection': ?projection == null ? null : [projection],
+      'revisionId': ?revisionId == null ? null : [revisionId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'updateViewedDate': ?updateViewedDate == null
+          ? null
+          : ['${updateViewedDate}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId');
@@ -1971,26 +2019,34 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (convert != null) 'convert': ['${convert}'],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (ocr != null) 'ocr': ['${ocr}'],
-      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
-      if (pinned != null) 'pinned': ['${pinned}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (timedTextLanguage != null) 'timedTextLanguage': [timedTextLanguage],
-      if (timedTextTrackName != null)
-        'timedTextTrackName': [timedTextTrackName],
-      if (useContentAsIndexableText != null)
-        'useContentAsIndexableText': ['${useContentAsIndexableText}'],
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'convert': ?convert == null ? null : ['${convert}'],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'ocr': ?ocr == null ? null : ['${ocr}'],
+      'ocrLanguage': ?ocrLanguage == null ? null : [ocrLanguage],
+      'pinned': ?pinned == null ? null : ['${pinned}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'timedTextLanguage': ?timedTextLanguage == null
+          ? null
+          : [timedTextLanguage],
+      'timedTextTrackName': ?timedTextTrackName == null
+          ? null
+          : [timedTextTrackName],
+      'useContentAsIndexableText': ?useContentAsIndexableText == null
+          ? null
+          : ['${useContentAsIndexableText}'],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -2118,28 +2174,33 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (corpora != null) 'corpora': [corpora],
-      if (corpus != null) 'corpus': [corpus],
-      if (driveId != null) 'driveId': [driveId],
-      if (includeItemsFromAllDrives != null)
-        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (includeTeamDriveItems != null)
-        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (projection != null) 'projection': [projection],
-      if (q != null) 'q': [q],
-      if (spaces != null) 'spaces': [spaces],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
-      if ($fields != null) 'fields': [$fields],
+      'corpora': ?corpora == null ? null : [corpora],
+      'corpus': ?corpus == null ? null : [corpus],
+      'driveId': ?driveId == null ? null : [driveId],
+      'includeItemsFromAllDrives': ?includeItemsFromAllDrives == null
+          ? null
+          : ['${includeItemsFromAllDrives}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'includeTeamDriveItems': ?includeTeamDriveItems == null
+          ? null
+          : ['${includeTeamDriveItems}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'projection': ?projection == null ? null : [projection],
+      'q': ?q == null ? null : [q],
+      'spaces': ?spaces == null ? null : [spaces],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'teamDriveId': ?teamDriveId == null ? null : [teamDriveId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'files';
@@ -2183,9 +2244,9 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/listLabels';
@@ -2225,7 +2286,7 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/modifyLabels';
@@ -2356,32 +2417,45 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (addParents != null) 'addParents': [addParents],
-      if (convert != null) 'convert': ['${convert}'],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (modifiedDateBehavior != null)
-        'modifiedDateBehavior': [modifiedDateBehavior],
-      if (newRevision != null) 'newRevision': ['${newRevision}'],
-      if (ocr != null) 'ocr': ['${ocr}'],
-      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
-      if (pinned != null) 'pinned': ['${pinned}'],
-      if (removeParents != null) 'removeParents': [removeParents],
-      if (setModifiedDate != null) 'setModifiedDate': ['${setModifiedDate}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (timedTextLanguage != null) 'timedTextLanguage': [timedTextLanguage],
-      if (timedTextTrackName != null)
-        'timedTextTrackName': [timedTextTrackName],
-      if (updateViewedDate != null) 'updateViewedDate': ['${updateViewedDate}'],
-      if (useContentAsIndexableText != null)
-        'useContentAsIndexableText': ['${useContentAsIndexableText}'],
-      if ($fields != null) 'fields': [$fields],
+      'addParents': ?addParents == null ? null : [addParents],
+      'convert': ?convert == null ? null : ['${convert}'],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'modifiedDateBehavior': ?modifiedDateBehavior == null
+          ? null
+          : [modifiedDateBehavior],
+      'newRevision': ?newRevision == null ? null : ['${newRevision}'],
+      'ocr': ?ocr == null ? null : ['${ocr}'],
+      'ocrLanguage': ?ocrLanguage == null ? null : [ocrLanguage],
+      'pinned': ?pinned == null ? null : ['${pinned}'],
+      'removeParents': ?removeParents == null ? null : [removeParents],
+      'setModifiedDate': ?setModifiedDate == null
+          ? null
+          : ['${setModifiedDate}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'timedTextLanguage': ?timedTextLanguage == null
+          ? null
+          : [timedTextLanguage],
+      'timedTextTrackName': ?timedTextTrackName == null
+          ? null
+          : [timedTextTrackName],
+      'updateViewedDate': ?updateViewedDate == null
+          ? null
+          : ['${updateViewedDate}'],
+      'useContentAsIndexableText': ?useContentAsIndexableText == null
+          ? null
+          : ['${useContentAsIndexableText}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId');
@@ -2431,14 +2505,17 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/touch';
@@ -2490,14 +2567,17 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/trash';
@@ -2549,14 +2629,17 @@ class FilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/untrash';
@@ -2699,32 +2782,45 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (addParents != null) 'addParents': [addParents],
-      if (convert != null) 'convert': ['${convert}'],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (modifiedDateBehavior != null)
-        'modifiedDateBehavior': [modifiedDateBehavior],
-      if (newRevision != null) 'newRevision': ['${newRevision}'],
-      if (ocr != null) 'ocr': ['${ocr}'],
-      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
-      if (pinned != null) 'pinned': ['${pinned}'],
-      if (removeParents != null) 'removeParents': [removeParents],
-      if (setModifiedDate != null) 'setModifiedDate': ['${setModifiedDate}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (timedTextLanguage != null) 'timedTextLanguage': [timedTextLanguage],
-      if (timedTextTrackName != null)
-        'timedTextTrackName': [timedTextTrackName],
-      if (updateViewedDate != null) 'updateViewedDate': ['${updateViewedDate}'],
-      if (useContentAsIndexableText != null)
-        'useContentAsIndexableText': ['${useContentAsIndexableText}'],
-      if ($fields != null) 'fields': [$fields],
+      'addParents': ?addParents == null ? null : [addParents],
+      'convert': ?convert == null ? null : ['${convert}'],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'modifiedDateBehavior': ?modifiedDateBehavior == null
+          ? null
+          : [modifiedDateBehavior],
+      'newRevision': ?newRevision == null ? null : ['${newRevision}'],
+      'ocr': ?ocr == null ? null : ['${ocr}'],
+      'ocrLanguage': ?ocrLanguage == null ? null : [ocrLanguage],
+      'pinned': ?pinned == null ? null : ['${pinned}'],
+      'removeParents': ?removeParents == null ? null : [removeParents],
+      'setModifiedDate': ?setModifiedDate == null
+          ? null
+          : ['${setModifiedDate}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'timedTextLanguage': ?timedTextLanguage == null
+          ? null
+          : [timedTextLanguage],
+      'timedTextTrackName': ?timedTextTrackName == null
+          ? null
+          : [timedTextTrackName],
+      'updateViewedDate': ?updateViewedDate == null
+          ? null
+          : ['${updateViewedDate}'],
+      'useContentAsIndexableText': ?useContentAsIndexableText == null
+          ? null
+          : ['${useContentAsIndexableText}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -2810,18 +2906,25 @@ class FilesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
-      if (includeLabels != null) 'includeLabels': [includeLabels],
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (projection != null) 'projection': [projection],
-      if (revisionId != null) 'revisionId': [revisionId],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (updateViewedDate != null) 'updateViewedDate': ['${updateViewedDate}'],
-      if ($fields != null) 'fields': [$fields],
+      'acknowledgeAbuse': ?acknowledgeAbuse == null
+          ? null
+          : ['${acknowledgeAbuse}'],
+      'includeLabels': ?includeLabels == null ? null : [includeLabels],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'projection': ?projection == null ? null : [projection],
+      'revisionId': ?revisionId == null ? null : [revisionId],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'updateViewedDate': ?updateViewedDate == null
+          ? null
+          : ['${updateViewedDate}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/watch';
@@ -2867,9 +2970,10 @@ class ParentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2910,7 +3014,7 @@ class ParentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2965,13 +3069,16 @@ class ParentsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/parents';
@@ -3008,7 +3115,7 @@ class ParentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/parents';
@@ -3071,15 +3178,19 @@ class PermissionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceExpansiveAccess != null)
-        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceExpansiveAccess': ?enforceExpansiveAccess == null
+          ? null
+          : ['${enforceExpansiveAccess}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3133,13 +3244,16 @@ class PermissionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3179,7 +3293,7 @@ class PermissionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'permissionIds/' + commons.escapeVariable('$email');
@@ -3258,22 +3372,29 @@ class PermissionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (emailMessage != null) 'emailMessage': [emailMessage],
-      if (enforceExpansiveAccess != null)
-        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
-      if (enforceSingleParent != null)
-        'enforceSingleParent': ['${enforceSingleParent}'],
-      if (moveToNewOwnersRoot != null)
-        'moveToNewOwnersRoot': ['${moveToNewOwnersRoot}'],
-      if (sendNotificationEmails != null)
-        'sendNotificationEmails': ['${sendNotificationEmails}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'emailMessage': ?emailMessage == null ? null : [emailMessage],
+      'enforceExpansiveAccess': ?enforceExpansiveAccess == null
+          ? null
+          : ['${enforceExpansiveAccess}'],
+      'enforceSingleParent': ?enforceSingleParent == null
+          ? null
+          : ['${enforceSingleParent}'],
+      'moveToNewOwnersRoot': ?moveToNewOwnersRoot == null
+          ? null
+          : ['${moveToNewOwnersRoot}'],
+      'sendNotificationEmails': ?sendNotificationEmails == null
+          ? null
+          : ['${sendNotificationEmails}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/permissions';
@@ -3339,17 +3460,21 @@ class PermissionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includePermissionsForView != null)
-        'includePermissionsForView': [includePermissionsForView],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'includePermissionsForView': ?includePermissionsForView == null
+          ? null
+          : [includePermissionsForView],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/permissions';
@@ -3420,18 +3545,25 @@ class PermissionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceExpansiveAccess != null)
-        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
-      if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (transferOwnership != null)
-        'transferOwnership': ['${transferOwnership}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceExpansiveAccess': ?enforceExpansiveAccess == null
+          ? null
+          : ['${enforceExpansiveAccess}'],
+      'removeExpiration': ?removeExpiration == null
+          ? null
+          : ['${removeExpiration}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'transferOwnership': ?transferOwnership == null
+          ? null
+          : ['${transferOwnership}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3507,18 +3639,25 @@ class PermissionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (enforceExpansiveAccess != null)
-        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
-      if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
-      if (supportsAllDrives != null)
-        'supportsAllDrives': ['${supportsAllDrives}'],
-      if (supportsTeamDrives != null)
-        'supportsTeamDrives': ['${supportsTeamDrives}'],
-      if (transferOwnership != null)
-        'transferOwnership': ['${transferOwnership}'],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'enforceExpansiveAccess': ?enforceExpansiveAccess == null
+          ? null
+          : ['${enforceExpansiveAccess}'],
+      'removeExpiration': ?removeExpiration == null
+          ? null
+          : ['${removeExpiration}'],
+      'supportsAllDrives': ?supportsAllDrives == null
+          ? null
+          : ['${supportsAllDrives}'],
+      'supportsTeamDrives': ?supportsTeamDrives == null
+          ? null
+          : ['${supportsTeamDrives}'],
+      'transferOwnership': ?transferOwnership == null
+          ? null
+          : ['${transferOwnership}'],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3569,8 +3708,8 @@ class PropertiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3614,8 +3753,8 @@ class PropertiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3657,7 +3796,7 @@ class PropertiesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/properties';
@@ -3692,7 +3831,7 @@ class PropertiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/properties';
@@ -3739,8 +3878,8 @@ class PropertiesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3790,8 +3929,8 @@ class PropertiesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (visibility != null) 'visibility': [visibility],
-      if ($fields != null) 'fields': [$fields],
+      'visibility': ?visibility == null ? null : [visibility],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3840,7 +3979,7 @@ class RepliesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3890,8 +4029,8 @@ class RepliesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3940,7 +4079,7 @@ class RepliesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3999,10 +4138,10 @@ class RepliesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeleted': ?includeDeleted == null ? null : ['${includeDeleted}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4053,7 +4192,7 @@ class RepliesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4106,7 +4245,7 @@ class RepliesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4160,7 +4299,7 @@ class RevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4201,7 +4340,7 @@ class RevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4256,9 +4395,9 @@ class RevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/revisions';
@@ -4301,7 +4440,7 @@ class RevisionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4347,7 +4486,7 @@ class RevisionsResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4390,7 +4529,7 @@ class TeamdrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
@@ -4429,9 +4568,10 @@ class TeamdrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
@@ -4474,7 +4614,7 @@ class TeamdrivesResource {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'teamdrives';
@@ -4521,12 +4661,13 @@ class TeamdrivesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (q != null) 'q': [q],
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'q': ?q == null ? null : [q],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'teamdrives';
@@ -4571,9 +4712,10 @@ class TeamdrivesResource {
   }) async {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useDomainAdminAccess != null)
-        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'useDomainAdminAccess': ?useDomainAdminAccess == null
+          ? null
+          : ['${useDomainAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
@@ -4599,17 +4741,17 @@ class AboutAdditionalRoleInfoRoleSets {
 
   AboutAdditionalRoleInfoRoleSets.fromJson(core.Map json_)
     : this(
-        additionalRoles:
-            (json_['additionalRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalRoles: (json_['additionalRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         primaryRole: json_['primaryRole'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalRoles != null) 'additionalRoles': additionalRoles!,
-    if (primaryRole != null) 'primaryRole': primaryRole!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoles = this.additionalRoles;
+    final primaryRole = this.primaryRole;
+    return {'additionalRoles': ?additionalRoles, 'primaryRole': ?primaryRole};
+  }
 }
 
 class AboutAdditionalRoleInfo {
@@ -4623,21 +4765,21 @@ class AboutAdditionalRoleInfo {
 
   AboutAdditionalRoleInfo.fromJson(core.Map json_)
     : this(
-        roleSets:
-            (json_['roleSets'] as core.List?)
-                ?.map(
-                  (value) => AboutAdditionalRoleInfoRoleSets.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        roleSets: (json_['roleSets'] as core.List?)
+            ?.map(
+              (value) => AboutAdditionalRoleInfoRoleSets.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (roleSets != null) 'roleSets': roleSets!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final roleSets = this.roleSets;
+    final type = this.type;
+    return {'roleSets': ?roleSets, 'type': ?type};
+  }
 }
 
 class AboutDriveThemes {
@@ -4659,12 +4801,16 @@ class AboutDriveThemes {
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundImageLink != null)
-      'backgroundImageLink': backgroundImageLink!,
-    if (colorRgb != null) 'colorRgb': colorRgb!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundImageLink = this.backgroundImageLink;
+    final colorRgb = this.colorRgb;
+    final id = this.id;
+    return {
+      'backgroundImageLink': ?backgroundImageLink,
+      'colorRgb': ?colorRgb,
+      'id': ?id,
+    };
+  }
 }
 
 class AboutExportFormats {
@@ -4679,16 +4825,16 @@ class AboutExportFormats {
   AboutExportFormats.fromJson(core.Map json_)
     : this(
         source: json_['source'] as core.String?,
-        targets:
-            (json_['targets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        targets: (json_['targets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (source != null) 'source': source!,
-    if (targets != null) 'targets': targets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final source = this.source;
+    final targets = this.targets;
+    return {'source': ?source, 'targets': ?targets};
+  }
 }
 
 class AboutFeatures {
@@ -4706,10 +4852,11 @@ class AboutFeatures {
         featureRate: (json_['featureRate'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (featureName != null) 'featureName': featureName!,
-    if (featureRate != null) 'featureRate': featureRate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final featureName = this.featureName;
+    final featureRate = this.featureRate;
+    return {'featureName': ?featureName, 'featureRate': ?featureRate};
+  }
 }
 
 class AboutImportFormats {
@@ -4724,16 +4871,16 @@ class AboutImportFormats {
   AboutImportFormats.fromJson(core.Map json_)
     : this(
         source: json_['source'] as core.String?,
-        targets:
-            (json_['targets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        targets: (json_['targets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (source != null) 'source': source!,
-    if (targets != null) 'targets': targets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final source = this.source;
+    final targets = this.targets;
+    return {'source': ?source, 'targets': ?targets};
+  }
 }
 
 class AboutMaxUploadSizes {
@@ -4751,10 +4898,11 @@ class AboutMaxUploadSizes {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (size != null) 'size': size!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final size = this.size;
+    final type = this.type;
+    return {'size': ?size, 'type': ?type};
+  }
 }
 
 class AboutQuotaBytesByService {
@@ -4772,10 +4920,11 @@ class AboutQuotaBytesByService {
         serviceName: json_['serviceName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bytesUsed != null) 'bytesUsed': bytesUsed!,
-    if (serviceName != null) 'serviceName': serviceName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bytesUsed = this.bytesUsed;
+    final serviceName = this.serviceName;
+    return {'bytesUsed': ?bytesUsed, 'serviceName': ?serviceName};
+  }
 }
 
 class AboutTeamDriveThemes {
@@ -4806,12 +4955,16 @@ class AboutTeamDriveThemes {
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundImageLink != null)
-      'backgroundImageLink': backgroundImageLink!,
-    if (colorRgb != null) 'colorRgb': colorRgb!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundImageLink = this.backgroundImageLink;
+    final colorRgb = this.colorRgb;
+    final id = this.id;
+    return {
+      'backgroundImageLink': ?backgroundImageLink,
+      'colorRgb': ?colorRgb,
+      'id': ?id,
+    };
+  }
 }
 
 /// An item with user information and settings.
@@ -4953,76 +5106,68 @@ class About {
 
   About.fromJson(core.Map json_)
     : this(
-        additionalRoleInfo:
-            (json_['additionalRoleInfo'] as core.List?)
-                ?.map(
-                  (value) => AboutAdditionalRoleInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        additionalRoleInfo: (json_['additionalRoleInfo'] as core.List?)
+            ?.map(
+              (value) => AboutAdditionalRoleInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         canCreateDrives: json_['canCreateDrives'] as core.bool?,
         canCreateTeamDrives: json_['canCreateTeamDrives'] as core.bool?,
         domainSharingPolicy: json_['domainSharingPolicy'] as core.String?,
-        driveThemes:
-            (json_['driveThemes'] as core.List?)
-                ?.map(
-                  (value) => AboutDriveThemes.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        driveThemes: (json_['driveThemes'] as core.List?)
+            ?.map(
+              (value) => AboutDriveThemes.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
-        exportFormats:
-            (json_['exportFormats'] as core.List?)
-                ?.map(
-                  (value) => AboutExportFormats.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        features:
-            (json_['features'] as core.List?)
-                ?.map(
-                  (value) => AboutFeatures.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        folderColorPalette:
-            (json_['folderColorPalette'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        importFormats:
-            (json_['importFormats'] as core.List?)
-                ?.map(
-                  (value) => AboutImportFormats.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        exportFormats: (json_['exportFormats'] as core.List?)
+            ?.map(
+              (value) => AboutExportFormats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        features: (json_['features'] as core.List?)
+            ?.map(
+              (value) => AboutFeatures.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        folderColorPalette: (json_['folderColorPalette'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        importFormats: (json_['importFormats'] as core.List?)
+            ?.map(
+              (value) => AboutImportFormats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         isCurrentAppInstalled: json_['isCurrentAppInstalled'] as core.bool?,
         kind: json_['kind'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         largestChangeId: json_['largestChangeId'] as core.String?,
-        maxUploadSizes:
-            (json_['maxUploadSizes'] as core.List?)
-                ?.map(
-                  (value) => AboutMaxUploadSizes.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        maxUploadSizes: (json_['maxUploadSizes'] as core.List?)
+            ?.map(
+              (value) => AboutMaxUploadSizes.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         permissionId: json_['permissionId'] as core.String?,
-        quotaBytesByService:
-            (json_['quotaBytesByService'] as core.List?)
-                ?.map(
-                  (value) => AboutQuotaBytesByService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        quotaBytesByService: (json_['quotaBytesByService'] as core.List?)
+            ?.map(
+              (value) => AboutQuotaBytesByService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         quotaBytesTotal: json_['quotaBytesTotal'] as core.String?,
         quotaBytesUsed: json_['quotaBytesUsed'] as core.String?,
         quotaBytesUsedAggregate:
@@ -5032,58 +5177,80 @@ class About {
         remainingChangeIds: json_['remainingChangeIds'] as core.String?,
         rootFolderId: json_['rootFolderId'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
-        teamDriveThemes:
-            (json_['teamDriveThemes'] as core.List?)
-                ?.map(
-                  (value) => AboutTeamDriveThemes.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        user:
-            json_.containsKey('user')
-                ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        teamDriveThemes: (json_['teamDriveThemes'] as core.List?)
+            ?.map(
+              (value) => AboutTeamDriveThemes.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        user: json_.containsKey('user')
+            ? User.fromJson(
+                json_['user'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalRoleInfo != null) 'additionalRoleInfo': additionalRoleInfo!,
-    if (canCreateDrives != null) 'canCreateDrives': canCreateDrives!,
-    if (canCreateTeamDrives != null)
-      'canCreateTeamDrives': canCreateTeamDrives!,
-    if (domainSharingPolicy != null)
-      'domainSharingPolicy': domainSharingPolicy!,
-    if (driveThemes != null) 'driveThemes': driveThemes!,
-    if (etag != null) 'etag': etag!,
-    if (exportFormats != null) 'exportFormats': exportFormats!,
-    if (features != null) 'features': features!,
-    if (folderColorPalette != null) 'folderColorPalette': folderColorPalette!,
-    if (importFormats != null) 'importFormats': importFormats!,
-    if (isCurrentAppInstalled != null)
-      'isCurrentAppInstalled': isCurrentAppInstalled!,
-    if (kind != null) 'kind': kind!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (largestChangeId != null) 'largestChangeId': largestChangeId!,
-    if (maxUploadSizes != null) 'maxUploadSizes': maxUploadSizes!,
-    if (name != null) 'name': name!,
-    if (permissionId != null) 'permissionId': permissionId!,
-    if (quotaBytesByService != null)
-      'quotaBytesByService': quotaBytesByService!,
-    if (quotaBytesTotal != null) 'quotaBytesTotal': quotaBytesTotal!,
-    if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
-    if (quotaBytesUsedAggregate != null)
-      'quotaBytesUsedAggregate': quotaBytesUsedAggregate!,
-    if (quotaBytesUsedInTrash != null)
-      'quotaBytesUsedInTrash': quotaBytesUsedInTrash!,
-    if (quotaType != null) 'quotaType': quotaType!,
-    if (remainingChangeIds != null) 'remainingChangeIds': remainingChangeIds!,
-    if (rootFolderId != null) 'rootFolderId': rootFolderId!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (teamDriveThemes != null) 'teamDriveThemes': teamDriveThemes!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoleInfo = this.additionalRoleInfo;
+    final canCreateDrives = this.canCreateDrives;
+    final canCreateTeamDrives = this.canCreateTeamDrives;
+    final domainSharingPolicy = this.domainSharingPolicy;
+    final driveThemes = this.driveThemes;
+    final etag = this.etag;
+    final exportFormats = this.exportFormats;
+    final features = this.features;
+    final folderColorPalette = this.folderColorPalette;
+    final importFormats = this.importFormats;
+    final isCurrentAppInstalled = this.isCurrentAppInstalled;
+    final kind = this.kind;
+    final languageCode = this.languageCode;
+    final largestChangeId = this.largestChangeId;
+    final maxUploadSizes = this.maxUploadSizes;
+    final name = this.name;
+    final permissionId = this.permissionId;
+    final quotaBytesByService = this.quotaBytesByService;
+    final quotaBytesTotal = this.quotaBytesTotal;
+    final quotaBytesUsed = this.quotaBytesUsed;
+    final quotaBytesUsedAggregate = this.quotaBytesUsedAggregate;
+    final quotaBytesUsedInTrash = this.quotaBytesUsedInTrash;
+    final quotaType = this.quotaType;
+    final remainingChangeIds = this.remainingChangeIds;
+    final rootFolderId = this.rootFolderId;
+    final selfLink = this.selfLink;
+    final teamDriveThemes = this.teamDriveThemes;
+    final user = this.user;
+    return {
+      'additionalRoleInfo': ?additionalRoleInfo,
+      'canCreateDrives': ?canCreateDrives,
+      'canCreateTeamDrives': ?canCreateTeamDrives,
+      'domainSharingPolicy': ?domainSharingPolicy,
+      'driveThemes': ?driveThemes,
+      'etag': ?etag,
+      'exportFormats': ?exportFormats,
+      'features': ?features,
+      'folderColorPalette': ?folderColorPalette,
+      'importFormats': ?importFormats,
+      'isCurrentAppInstalled': ?isCurrentAppInstalled,
+      'kind': ?kind,
+      'languageCode': ?languageCode,
+      'largestChangeId': ?largestChangeId,
+      'maxUploadSizes': ?maxUploadSizes,
+      'name': ?name,
+      'permissionId': ?permissionId,
+      'quotaBytesByService': ?quotaBytesByService,
+      'quotaBytesTotal': ?quotaBytesTotal,
+      'quotaBytesUsed': ?quotaBytesUsed,
+      'quotaBytesUsedAggregate': ?quotaBytesUsedAggregate,
+      'quotaBytesUsedInTrash': ?quotaBytesUsedInTrash,
+      'quotaType': ?quotaType,
+      'remainingChangeIds': ?remainingChangeIds,
+      'rootFolderId': ?rootFolderId,
+      'selfLink': ?selfLink,
+      'teamDriveThemes': ?teamDriveThemes,
+      'user': ?user,
+    };
+  }
 }
 
 class AppIcons {
@@ -5111,11 +5278,12 @@ class AppIcons {
         size: json_['size'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (iconUrl != null) 'iconUrl': iconUrl!,
-    if (size != null) 'size': size!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final iconUrl = this.iconUrl;
+    final size = this.size;
+    return {'category': ?category, 'iconUrl': ?iconUrl, 'size': ?size};
+  }
 }
 
 /// The apps resource provides a list of the apps that a user has installed,
@@ -5241,14 +5409,13 @@ class App {
         createInFolderTemplate: json_['createInFolderTemplate'] as core.String?,
         createUrl: json_['createUrl'] as core.String?,
         hasDriveWideScope: json_['hasDriveWideScope'] as core.bool?,
-        icons:
-            (json_['icons'] as core.List?)
-                ?.map(
-                  (value) => AppIcons.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        icons: (json_['icons'] as core.List?)
+            ?.map(
+              (value) => AppIcons.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
         installed: json_['installed'] as core.bool?,
         kind: json_['kind'] as core.String?,
@@ -5256,24 +5423,21 @@ class App {
         name: json_['name'] as core.String?,
         objectType: json_['objectType'] as core.String?,
         openUrlTemplate: json_['openUrlTemplate'] as core.String?,
-        primaryFileExtensions:
-            (json_['primaryFileExtensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        primaryMimeTypes:
-            (json_['primaryMimeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        primaryFileExtensions: (json_['primaryFileExtensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        primaryMimeTypes: (json_['primaryMimeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         productId: json_['productId'] as core.String?,
         productUrl: json_['productUrl'] as core.String?,
         secondaryFileExtensions:
             (json_['secondaryFileExtensions'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        secondaryMimeTypes:
-            (json_['secondaryMimeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        secondaryMimeTypes: (json_['secondaryMimeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         shortDescription: json_['shortDescription'] as core.String?,
         supportsCreate: json_['supportsCreate'] as core.bool?,
         supportsImport: json_['supportsImport'] as core.bool?,
@@ -5282,36 +5446,58 @@ class App {
         useByDefault: json_['useByDefault'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorized != null) 'authorized': authorized!,
-    if (createInFolderTemplate != null)
-      'createInFolderTemplate': createInFolderTemplate!,
-    if (createUrl != null) 'createUrl': createUrl!,
-    if (hasDriveWideScope != null) 'hasDriveWideScope': hasDriveWideScope!,
-    if (icons != null) 'icons': icons!,
-    if (id != null) 'id': id!,
-    if (installed != null) 'installed': installed!,
-    if (kind != null) 'kind': kind!,
-    if (longDescription != null) 'longDescription': longDescription!,
-    if (name != null) 'name': name!,
-    if (objectType != null) 'objectType': objectType!,
-    if (openUrlTemplate != null) 'openUrlTemplate': openUrlTemplate!,
-    if (primaryFileExtensions != null)
-      'primaryFileExtensions': primaryFileExtensions!,
-    if (primaryMimeTypes != null) 'primaryMimeTypes': primaryMimeTypes!,
-    if (productId != null) 'productId': productId!,
-    if (productUrl != null) 'productUrl': productUrl!,
-    if (secondaryFileExtensions != null)
-      'secondaryFileExtensions': secondaryFileExtensions!,
-    if (secondaryMimeTypes != null) 'secondaryMimeTypes': secondaryMimeTypes!,
-    if (shortDescription != null) 'shortDescription': shortDescription!,
-    if (supportsCreate != null) 'supportsCreate': supportsCreate!,
-    if (supportsImport != null) 'supportsImport': supportsImport!,
-    if (supportsMultiOpen != null) 'supportsMultiOpen': supportsMultiOpen!,
-    if (supportsOfflineCreate != null)
-      'supportsOfflineCreate': supportsOfflineCreate!,
-    if (useByDefault != null) 'useByDefault': useByDefault!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorized = this.authorized;
+    final createInFolderTemplate = this.createInFolderTemplate;
+    final createUrl = this.createUrl;
+    final hasDriveWideScope = this.hasDriveWideScope;
+    final icons = this.icons;
+    final id = this.id;
+    final installed = this.installed;
+    final kind = this.kind;
+    final longDescription = this.longDescription;
+    final name = this.name;
+    final objectType = this.objectType;
+    final openUrlTemplate = this.openUrlTemplate;
+    final primaryFileExtensions = this.primaryFileExtensions;
+    final primaryMimeTypes = this.primaryMimeTypes;
+    final productId = this.productId;
+    final productUrl = this.productUrl;
+    final secondaryFileExtensions = this.secondaryFileExtensions;
+    final secondaryMimeTypes = this.secondaryMimeTypes;
+    final shortDescription = this.shortDescription;
+    final supportsCreate = this.supportsCreate;
+    final supportsImport = this.supportsImport;
+    final supportsMultiOpen = this.supportsMultiOpen;
+    final supportsOfflineCreate = this.supportsOfflineCreate;
+    final useByDefault = this.useByDefault;
+    return {
+      'authorized': ?authorized,
+      'createInFolderTemplate': ?createInFolderTemplate,
+      'createUrl': ?createUrl,
+      'hasDriveWideScope': ?hasDriveWideScope,
+      'icons': ?icons,
+      'id': ?id,
+      'installed': ?installed,
+      'kind': ?kind,
+      'longDescription': ?longDescription,
+      'name': ?name,
+      'objectType': ?objectType,
+      'openUrlTemplate': ?openUrlTemplate,
+      'primaryFileExtensions': ?primaryFileExtensions,
+      'primaryMimeTypes': ?primaryMimeTypes,
+      'productId': ?productId,
+      'productUrl': ?productUrl,
+      'secondaryFileExtensions': ?secondaryFileExtensions,
+      'secondaryMimeTypes': ?secondaryMimeTypes,
+      'shortDescription': ?shortDescription,
+      'supportsCreate': ?supportsCreate,
+      'supportsImport': ?supportsImport,
+      'supportsMultiOpen': ?supportsMultiOpen,
+      'supportsOfflineCreate': ?supportsOfflineCreate,
+      'useByDefault': ?useByDefault,
+    };
+  }
 }
 
 /// A list of third-party applications which the user has installed or given
@@ -5344,30 +5530,34 @@ class AppList {
 
   AppList.fromJson(core.Map json_)
     : this(
-        defaultAppIds:
-            (json_['defaultAppIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        defaultAppIds: (json_['defaultAppIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => App.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  App.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultAppIds != null) 'defaultAppIds': defaultAppIds!,
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultAppIds = this.defaultAppIds;
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    return {
+      'defaultAppIds': ?defaultAppIds,
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// Representation of a change to a file or shared drive.
@@ -5449,53 +5639,63 @@ class Change {
     : this(
         changeType: json_['changeType'] as core.String?,
         deleted: json_['deleted'] as core.bool?,
-        drive:
-            json_.containsKey('drive')
-                ? Drive.fromJson(
-                  json_['drive'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        drive: json_.containsKey('drive')
+            ? Drive.fromJson(
+                json_['drive'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         driveId: json_['driveId'] as core.String?,
-        file:
-            json_.containsKey('file')
-                ? File.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        file: json_.containsKey('file')
+            ? File.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fileId: json_['fileId'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        modificationDate:
-            json_.containsKey('modificationDate')
-                ? core.DateTime.parse(json_['modificationDate'] as core.String)
-                : null,
+        modificationDate: json_.containsKey('modificationDate')
+            ? core.DateTime.parse(json_['modificationDate'] as core.String)
+            : null,
         selfLink: json_['selfLink'] as core.String?,
-        teamDrive:
-            json_.containsKey('teamDrive')
-                ? TeamDrive.fromJson(
-                  json_['teamDrive'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        teamDrive: json_.containsKey('teamDrive')
+            ? TeamDrive.fromJson(
+                json_['teamDrive'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         teamDriveId: json_['teamDriveId'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changeType != null) 'changeType': changeType!,
-    if (deleted != null) 'deleted': deleted!,
-    if (drive != null) 'drive': drive!,
-    if (driveId != null) 'driveId': driveId!,
-    if (file != null) 'file': file!,
-    if (fileId != null) 'fileId': fileId!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (modificationDate != null)
-      'modificationDate': modificationDate!.toUtc().toIso8601String(),
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (teamDrive != null) 'teamDrive': teamDrive!,
-    if (teamDriveId != null) 'teamDriveId': teamDriveId!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeType = this.changeType;
+    final deleted = this.deleted;
+    final drive = this.drive;
+    final driveId = this.driveId;
+    final file = this.file;
+    final fileId = this.fileId;
+    final id = this.id;
+    final kind = this.kind;
+    final modificationDate = this.modificationDate;
+    final selfLink = this.selfLink;
+    final teamDrive = this.teamDrive;
+    final teamDriveId = this.teamDriveId;
+    final type = this.type;
+    return {
+      'changeType': ?changeType,
+      'deleted': ?deleted,
+      'drive': ?drive,
+      'driveId': ?driveId,
+      'file': ?file,
+      'fileId': ?fileId,
+      'id': ?id,
+      'kind': ?kind,
+      'modificationDate': ?modificationDate?.toUtc().toIso8601String(),
+      'selfLink': ?selfLink,
+      'teamDrive': ?teamDrive,
+      'teamDriveId': ?teamDriveId,
+      'type': ?type,
+    };
+  }
 }
 
 /// A list of changes for a user.
@@ -5548,14 +5748,12 @@ class ChangeList {
   ChangeList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Change.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Change.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         largestChangeId: json_['largestChangeId'] as core.String?,
         newStartPageToken: json_['newStartPageToken'] as core.String?,
@@ -5564,16 +5762,26 @@ class ChangeList {
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (largestChangeId != null) 'largestChangeId': largestChangeId!,
-    if (newStartPageToken != null) 'newStartPageToken': newStartPageToken!,
-    if (nextLink != null) 'nextLink': nextLink!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final largestChangeId = this.largestChangeId;
+    final newStartPageToken = this.newStartPageToken;
+    final nextLink = this.nextLink;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'largestChangeId': ?largestChangeId,
+      'newStartPageToken': ?newStartPageToken,
+      'nextLink': ?nextLink,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A notification channel used to watch for resource changes.
@@ -5618,28 +5826,35 @@ class ChildList {
   ChildList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => ChildReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => ChildReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextLink: json_['nextLink'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextLink != null) 'nextLink': nextLink!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextLink = this.nextLink;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextLink': ?nextLink,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A reference to a folder's child.
@@ -5675,12 +5890,18 @@ class ChildReference {
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (childLink != null) 'childLink': childLink!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final childLink = this.childLink;
+    final id = this.id;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    return {
+      'childLink': ?childLink,
+      'id': ?id,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// Context of a file which is being commented on.
@@ -5702,10 +5923,11 @@ class CommentContext {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    final value = this.value;
+    return {'type': ?type, 'value': ?value};
+  }
 }
 
 /// A comment on a file in Google Drive.
@@ -5789,64 +6011,74 @@ class Comment {
   Comment.fromJson(core.Map json_)
     : this(
         anchor: json_['anchor'] as core.String?,
-        author:
-            json_.containsKey('author')
-                ? User.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? User.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         commentId: json_['commentId'] as core.String?,
         content: json_['content'] as core.String?,
-        context:
-            json_.containsKey('context')
-                ? CommentContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        createdDate:
-            json_.containsKey('createdDate')
-                ? core.DateTime.parse(json_['createdDate'] as core.String)
-                : null,
+        context: json_.containsKey('context')
+            ? CommentContext.fromJson(
+                json_['context'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createdDate: json_.containsKey('createdDate')
+            ? core.DateTime.parse(json_['createdDate'] as core.String)
+            : null,
         deleted: json_['deleted'] as core.bool?,
         fileId: json_['fileId'] as core.String?,
         fileTitle: json_['fileTitle'] as core.String?,
         htmlContent: json_['htmlContent'] as core.String?,
         kind: json_['kind'] as core.String?,
-        modifiedDate:
-            json_.containsKey('modifiedDate')
-                ? core.DateTime.parse(json_['modifiedDate'] as core.String)
-                : null,
-        replies:
-            (json_['replies'] as core.List?)
-                ?.map(
-                  (value) => CommentReply.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        modifiedDate: json_.containsKey('modifiedDate')
+            ? core.DateTime.parse(json_['modifiedDate'] as core.String)
+            : null,
+        replies: (json_['replies'] as core.List?)
+            ?.map(
+              (value) => CommentReply.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (anchor != null) 'anchor': anchor!,
-    if (author != null) 'author': author!,
-    if (commentId != null) 'commentId': commentId!,
-    if (content != null) 'content': content!,
-    if (context != null) 'context': context!,
-    if (createdDate != null)
-      'createdDate': createdDate!.toUtc().toIso8601String(),
-    if (deleted != null) 'deleted': deleted!,
-    if (fileId != null) 'fileId': fileId!,
-    if (fileTitle != null) 'fileTitle': fileTitle!,
-    if (htmlContent != null) 'htmlContent': htmlContent!,
-    if (kind != null) 'kind': kind!,
-    if (modifiedDate != null)
-      'modifiedDate': modifiedDate!.toUtc().toIso8601String(),
-    if (replies != null) 'replies': replies!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchor = this.anchor;
+    final author = this.author;
+    final commentId = this.commentId;
+    final content = this.content;
+    final context = this.context;
+    final createdDate = this.createdDate;
+    final deleted = this.deleted;
+    final fileId = this.fileId;
+    final fileTitle = this.fileTitle;
+    final htmlContent = this.htmlContent;
+    final kind = this.kind;
+    final modifiedDate = this.modifiedDate;
+    final replies = this.replies;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    return {
+      'anchor': ?anchor,
+      'author': ?author,
+      'commentId': ?commentId,
+      'content': ?content,
+      'context': ?context,
+      'createdDate': ?createdDate?.toUtc().toIso8601String(),
+      'deleted': ?deleted,
+      'fileId': ?fileId,
+      'fileTitle': ?fileTitle,
+      'htmlContent': ?htmlContent,
+      'kind': ?kind,
+      'modifiedDate': ?modifiedDate?.toUtc().toIso8601String(),
+      'replies': ?replies,
+      'selfLink': ?selfLink,
+      'status': ?status,
+    };
+  }
 }
 
 /// A list of comments on a file in Google Drive.
@@ -5883,27 +6115,33 @@ class CommentList {
 
   CommentList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Comment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Comment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextLink: json_['nextLink'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextLink != null) 'nextLink': nextLink!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextLink = this.nextLink;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'items': ?items,
+      'kind': ?kind,
+      'nextLink': ?nextLink,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A reply to a comment on a file in Google Drive.
@@ -5960,41 +6198,47 @@ class CommentReply {
 
   CommentReply.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? User.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? User.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
-        createdDate:
-            json_.containsKey('createdDate')
-                ? core.DateTime.parse(json_['createdDate'] as core.String)
-                : null,
+        createdDate: json_.containsKey('createdDate')
+            ? core.DateTime.parse(json_['createdDate'] as core.String)
+            : null,
         deleted: json_['deleted'] as core.bool?,
         htmlContent: json_['htmlContent'] as core.String?,
         kind: json_['kind'] as core.String?,
-        modifiedDate:
-            json_.containsKey('modifiedDate')
-                ? core.DateTime.parse(json_['modifiedDate'] as core.String)
-                : null,
+        modifiedDate: json_.containsKey('modifiedDate')
+            ? core.DateTime.parse(json_['modifiedDate'] as core.String)
+            : null,
         replyId: json_['replyId'] as core.String?,
         verb: json_['verb'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (content != null) 'content': content!,
-    if (createdDate != null)
-      'createdDate': createdDate!.toUtc().toIso8601String(),
-    if (deleted != null) 'deleted': deleted!,
-    if (htmlContent != null) 'htmlContent': htmlContent!,
-    if (kind != null) 'kind': kind!,
-    if (modifiedDate != null)
-      'modifiedDate': modifiedDate!.toUtc().toIso8601String(),
-    if (replyId != null) 'replyId': replyId!,
-    if (verb != null) 'verb': verb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final content = this.content;
+    final createdDate = this.createdDate;
+    final deleted = this.deleted;
+    final htmlContent = this.htmlContent;
+    final kind = this.kind;
+    final modifiedDate = this.modifiedDate;
+    final replyId = this.replyId;
+    final verb = this.verb;
+    return {
+      'author': ?author,
+      'content': ?content,
+      'createdDate': ?createdDate?.toUtc().toIso8601String(),
+      'deleted': ?deleted,
+      'htmlContent': ?htmlContent,
+      'kind': ?kind,
+      'modifiedDate': ?modifiedDate?.toUtc().toIso8601String(),
+      'replyId': ?replyId,
+      'verb': ?verb,
+    };
+  }
 }
 
 /// A list of replies to a comment on a file in Google Drive.
@@ -6031,27 +6275,33 @@ class CommentReplyList {
 
   CommentReplyList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => CommentReply.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => CommentReply.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextLink: json_['nextLink'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextLink != null) 'nextLink': nextLink!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextLink = this.nextLink;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'items': ?items,
+      'kind': ?kind,
+      'nextLink': ?nextLink,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A restriction for accessing the content of the file.
@@ -6118,31 +6368,36 @@ class ContentRestriction {
         ownerRestricted: json_['ownerRestricted'] as core.bool?,
         readOnly: json_['readOnly'] as core.bool?,
         reason: json_['reason'] as core.String?,
-        restrictingUser:
-            json_.containsKey('restrictingUser')
-                ? User.fromJson(
-                  json_['restrictingUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        restrictionDate:
-            json_.containsKey('restrictionDate')
-                ? core.DateTime.parse(json_['restrictionDate'] as core.String)
-                : null,
+        restrictingUser: json_.containsKey('restrictingUser')
+            ? User.fromJson(
+                json_['restrictingUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        restrictionDate: json_.containsKey('restrictionDate')
+            ? core.DateTime.parse(json_['restrictionDate'] as core.String)
+            : null,
         systemRestricted: json_['systemRestricted'] as core.bool?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ownerRestricted != null) 'ownerRestricted': ownerRestricted!,
-    if (readOnly != null) 'readOnly': readOnly!,
-    if (reason != null) 'reason': reason!,
-    if (restrictingUser != null) 'restrictingUser': restrictingUser!,
-    if (restrictionDate != null)
-      'restrictionDate': restrictionDate!.toUtc().toIso8601String(),
-    if (systemRestricted != null) 'systemRestricted': systemRestricted!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ownerRestricted = this.ownerRestricted;
+    final readOnly = this.readOnly;
+    final reason = this.reason;
+    final restrictingUser = this.restrictingUser;
+    final restrictionDate = this.restrictionDate;
+    final systemRestricted = this.systemRestricted;
+    final type = this.type;
+    return {
+      'ownerRestricted': ?ownerRestricted,
+      'readOnly': ?readOnly,
+      'reason': ?reason,
+      'restrictingUser': ?restrictingUser,
+      'restrictionDate': ?restrictionDate?.toUtc().toIso8601String(),
+      'systemRestricted': ?systemRestricted,
+      'type': ?type,
+    };
+  }
 }
 
 /// An image file and cropping parameters from which a background image for this
@@ -6194,12 +6449,18 @@ class DriveBackgroundImageFile {
         yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (width != null) 'width': width!,
-    if (xCoordinate != null) 'xCoordinate': xCoordinate!,
-    if (yCoordinate != null) 'yCoordinate': yCoordinate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final width = this.width;
+    final xCoordinate = this.xCoordinate;
+    final yCoordinate = this.yCoordinate;
+    return {
+      'id': ?id,
+      'width': ?width,
+      'xCoordinate': ?xCoordinate,
+      'yCoordinate': ?yCoordinate,
+    };
+  }
 }
 
 /// Capabilities the current user has on this shared drive.
@@ -6375,38 +6636,58 @@ class DriveCapabilities {
         canTrashChildren: json_['canTrashChildren'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canAddChildren != null) 'canAddChildren': canAddChildren!,
-    if (canChangeCopyRequiresWriterPermissionRestriction != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final canAddChildren = this.canAddChildren;
+    final canChangeCopyRequiresWriterPermissionRestriction =
+        this.canChangeCopyRequiresWriterPermissionRestriction;
+    final canChangeDomainUsersOnlyRestriction =
+        this.canChangeDomainUsersOnlyRestriction;
+    final canChangeDriveBackground = this.canChangeDriveBackground;
+    final canChangeDriveMembersOnlyRestriction =
+        this.canChangeDriveMembersOnlyRestriction;
+    final canChangeSharingFoldersRequiresOrganizerPermissionRestriction =
+        this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+    final canComment = this.canComment;
+    final canCopy = this.canCopy;
+    final canDeleteChildren = this.canDeleteChildren;
+    final canDeleteDrive = this.canDeleteDrive;
+    final canDownload = this.canDownload;
+    final canEdit = this.canEdit;
+    final canListChildren = this.canListChildren;
+    final canManageMembers = this.canManageMembers;
+    final canReadRevisions = this.canReadRevisions;
+    final canRename = this.canRename;
+    final canRenameDrive = this.canRenameDrive;
+    final canResetDriveRestrictions = this.canResetDriveRestrictions;
+    final canShare = this.canShare;
+    final canTrashChildren = this.canTrashChildren;
+    return {
+      'canAddChildren': ?canAddChildren,
       'canChangeCopyRequiresWriterPermissionRestriction':
-          canChangeCopyRequiresWriterPermissionRestriction!,
-    if (canChangeDomainUsersOnlyRestriction != null)
+          ?canChangeCopyRequiresWriterPermissionRestriction,
       'canChangeDomainUsersOnlyRestriction':
-          canChangeDomainUsersOnlyRestriction!,
-    if (canChangeDriveBackground != null)
-      'canChangeDriveBackground': canChangeDriveBackground!,
-    if (canChangeDriveMembersOnlyRestriction != null)
+          ?canChangeDomainUsersOnlyRestriction,
+      'canChangeDriveBackground': ?canChangeDriveBackground,
       'canChangeDriveMembersOnlyRestriction':
-          canChangeDriveMembersOnlyRestriction!,
-    if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction != null)
+          ?canChangeDriveMembersOnlyRestriction,
       'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
-    if (canComment != null) 'canComment': canComment!,
-    if (canCopy != null) 'canCopy': canCopy!,
-    if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
-    if (canDeleteDrive != null) 'canDeleteDrive': canDeleteDrive!,
-    if (canDownload != null) 'canDownload': canDownload!,
-    if (canEdit != null) 'canEdit': canEdit!,
-    if (canListChildren != null) 'canListChildren': canListChildren!,
-    if (canManageMembers != null) 'canManageMembers': canManageMembers!,
-    if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
-    if (canRename != null) 'canRename': canRename!,
-    if (canRenameDrive != null) 'canRenameDrive': canRenameDrive!,
-    if (canResetDriveRestrictions != null)
-      'canResetDriveRestrictions': canResetDriveRestrictions!,
-    if (canShare != null) 'canShare': canShare!,
-    if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
-  };
+          ?canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
+      'canComment': ?canComment,
+      'canCopy': ?canCopy,
+      'canDeleteChildren': ?canDeleteChildren,
+      'canDeleteDrive': ?canDeleteDrive,
+      'canDownload': ?canDownload,
+      'canEdit': ?canEdit,
+      'canListChildren': ?canListChildren,
+      'canManageMembers': ?canManageMembers,
+      'canReadRevisions': ?canReadRevisions,
+      'canRename': ?canRename,
+      'canRenameDrive': ?canRenameDrive,
+      'canResetDriveRestrictions': ?canResetDriveRestrictions,
+      'canShare': ?canShare,
+      'canTrashChildren': ?canTrashChildren,
+    };
+  }
 }
 
 /// A set of restrictions that apply to this shared drive or items inside this
@@ -6460,17 +6741,22 @@ class DriveRestrictions {
             json_['sharingFoldersRequiresOrganizerPermission'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminManagedRestrictions != null)
-      'adminManagedRestrictions': adminManagedRestrictions!,
-    if (copyRequiresWriterPermission != null)
-      'copyRequiresWriterPermission': copyRequiresWriterPermission!,
-    if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
-    if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly!,
-    if (sharingFoldersRequiresOrganizerPermission != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminManagedRestrictions = this.adminManagedRestrictions;
+    final copyRequiresWriterPermission = this.copyRequiresWriterPermission;
+    final domainUsersOnly = this.domainUsersOnly;
+    final driveMembersOnly = this.driveMembersOnly;
+    final sharingFoldersRequiresOrganizerPermission =
+        this.sharingFoldersRequiresOrganizerPermission;
+    return {
+      'adminManagedRestrictions': ?adminManagedRestrictions,
+      'copyRequiresWriterPermission': ?copyRequiresWriterPermission,
+      'domainUsersOnly': ?domainUsersOnly,
+      'driveMembersOnly': ?driveMembersOnly,
       'sharingFoldersRequiresOrganizerPermission':
-          sharingFoldersRequiresOrganizerPermission!,
-  };
+          ?sharingFoldersRequiresOrganizerPermission,
+    };
+  }
 }
 
 /// Representation of a shared drive.
@@ -6560,56 +6846,63 @@ class Drive {
 
   Drive.fromJson(core.Map json_)
     : this(
-        backgroundImageFile:
-            json_.containsKey('backgroundImageFile')
-                ? DriveBackgroundImageFile.fromJson(
-                  json_['backgroundImageFile']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backgroundImageFile: json_.containsKey('backgroundImageFile')
+            ? DriveBackgroundImageFile.fromJson(
+                json_['backgroundImageFile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         backgroundImageLink: json_['backgroundImageLink'] as core.String?,
-        capabilities:
-            json_.containsKey('capabilities')
-                ? DriveCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        capabilities: json_.containsKey('capabilities')
+            ? DriveCapabilities.fromJson(
+                json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         colorRgb: json_['colorRgb'] as core.String?,
-        createdDate:
-            json_.containsKey('createdDate')
-                ? core.DateTime.parse(json_['createdDate'] as core.String)
-                : null,
+        createdDate: json_.containsKey('createdDate')
+            ? core.DateTime.parse(json_['createdDate'] as core.String)
+            : null,
         hidden: json_['hidden'] as core.bool?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         orgUnitId: json_['orgUnitId'] as core.String?,
-        restrictions:
-            json_.containsKey('restrictions')
-                ? DriveRestrictions.fromJson(
-                  json_['restrictions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        restrictions: json_.containsKey('restrictions')
+            ? DriveRestrictions.fromJson(
+                json_['restrictions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         themeId: json_['themeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundImageFile != null)
-      'backgroundImageFile': backgroundImageFile!,
-    if (backgroundImageLink != null)
-      'backgroundImageLink': backgroundImageLink!,
-    if (capabilities != null) 'capabilities': capabilities!,
-    if (colorRgb != null) 'colorRgb': colorRgb!,
-    if (createdDate != null)
-      'createdDate': createdDate!.toUtc().toIso8601String(),
-    if (hidden != null) 'hidden': hidden!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (restrictions != null) 'restrictions': restrictions!,
-    if (themeId != null) 'themeId': themeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundImageFile = this.backgroundImageFile;
+    final backgroundImageLink = this.backgroundImageLink;
+    final capabilities = this.capabilities;
+    final colorRgb = this.colorRgb;
+    final createdDate = this.createdDate;
+    final hidden = this.hidden;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final restrictions = this.restrictions;
+    final themeId = this.themeId;
+    return {
+      'backgroundImageFile': ?backgroundImageFile,
+      'backgroundImageLink': ?backgroundImageLink,
+      'capabilities': ?capabilities,
+      'colorRgb': ?colorRgb,
+      'createdDate': ?createdDate?.toUtc().toIso8601String(),
+      'hidden': ?hidden,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'restrictions': ?restrictions,
+      'themeId': ?themeId,
+    };
+  }
 }
 
 /// A list of shared drives.
@@ -6634,23 +6927,22 @@ class DriveList {
 
   DriveList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Drive.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Drive.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Capabilities the current user has on this file.
@@ -7074,74 +7366,100 @@ class FileCapabilities {
         canUntrash: json_['canUntrash'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canAcceptOwnership != null) 'canAcceptOwnership': canAcceptOwnership!,
-    if (canAddChildren != null) 'canAddChildren': canAddChildren!,
-    if (canAddFolderFromAnotherDrive != null)
-      'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive!,
-    if (canAddMyDriveParent != null)
-      'canAddMyDriveParent': canAddMyDriveParent!,
-    if (canChangeCopyRequiresWriterPermission != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final canAcceptOwnership = this.canAcceptOwnership;
+    final canAddChildren = this.canAddChildren;
+    final canAddFolderFromAnotherDrive = this.canAddFolderFromAnotherDrive;
+    final canAddMyDriveParent = this.canAddMyDriveParent;
+    final canChangeCopyRequiresWriterPermission =
+        this.canChangeCopyRequiresWriterPermission;
+    final canChangeRestrictedDownload = this.canChangeRestrictedDownload;
+    final canChangeSecurityUpdateEnabled = this.canChangeSecurityUpdateEnabled;
+    final canComment = this.canComment;
+    final canCopy = this.canCopy;
+    final canDelete = this.canDelete;
+    final canDeleteChildren = this.canDeleteChildren;
+    final canDisableInheritedPermissions = this.canDisableInheritedPermissions;
+    final canDownload = this.canDownload;
+    final canEdit = this.canEdit;
+    final canEnableInheritedPermissions = this.canEnableInheritedPermissions;
+    final canListChildren = this.canListChildren;
+    final canModifyContent = this.canModifyContent;
+    final canModifyContentRestriction = this.canModifyContentRestriction;
+    final canModifyEditorContentRestriction =
+        this.canModifyEditorContentRestriction;
+    final canModifyLabels = this.canModifyLabels;
+    final canModifyOwnerContentRestriction =
+        this.canModifyOwnerContentRestriction;
+    final canMoveChildrenOutOfDrive = this.canMoveChildrenOutOfDrive;
+    final canMoveChildrenOutOfTeamDrive = this.canMoveChildrenOutOfTeamDrive;
+    final canMoveChildrenWithinDrive = this.canMoveChildrenWithinDrive;
+    final canMoveChildrenWithinTeamDrive = this.canMoveChildrenWithinTeamDrive;
+    final canMoveItemIntoTeamDrive = this.canMoveItemIntoTeamDrive;
+    final canMoveItemOutOfDrive = this.canMoveItemOutOfDrive;
+    final canMoveItemOutOfTeamDrive = this.canMoveItemOutOfTeamDrive;
+    final canMoveItemWithinDrive = this.canMoveItemWithinDrive;
+    final canMoveItemWithinTeamDrive = this.canMoveItemWithinTeamDrive;
+    final canMoveTeamDriveItem = this.canMoveTeamDriveItem;
+    final canReadDrive = this.canReadDrive;
+    final canReadLabels = this.canReadLabels;
+    final canReadRevisions = this.canReadRevisions;
+    final canReadTeamDrive = this.canReadTeamDrive;
+    final canRemoveChildren = this.canRemoveChildren;
+    final canRemoveContentRestriction = this.canRemoveContentRestriction;
+    final canRemoveMyDriveParent = this.canRemoveMyDriveParent;
+    final canRename = this.canRename;
+    final canShare = this.canShare;
+    final canTrash = this.canTrash;
+    final canTrashChildren = this.canTrashChildren;
+    final canUntrash = this.canUntrash;
+    return {
+      'canAcceptOwnership': ?canAcceptOwnership,
+      'canAddChildren': ?canAddChildren,
+      'canAddFolderFromAnotherDrive': ?canAddFolderFromAnotherDrive,
+      'canAddMyDriveParent': ?canAddMyDriveParent,
       'canChangeCopyRequiresWriterPermission':
-          canChangeCopyRequiresWriterPermission!,
-    if (canChangeRestrictedDownload != null)
-      'canChangeRestrictedDownload': canChangeRestrictedDownload!,
-    if (canChangeSecurityUpdateEnabled != null)
-      'canChangeSecurityUpdateEnabled': canChangeSecurityUpdateEnabled!,
-    if (canComment != null) 'canComment': canComment!,
-    if (canCopy != null) 'canCopy': canCopy!,
-    if (canDelete != null) 'canDelete': canDelete!,
-    if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
-    if (canDisableInheritedPermissions != null)
-      'canDisableInheritedPermissions': canDisableInheritedPermissions!,
-    if (canDownload != null) 'canDownload': canDownload!,
-    if (canEdit != null) 'canEdit': canEdit!,
-    if (canEnableInheritedPermissions != null)
-      'canEnableInheritedPermissions': canEnableInheritedPermissions!,
-    if (canListChildren != null) 'canListChildren': canListChildren!,
-    if (canModifyContent != null) 'canModifyContent': canModifyContent!,
-    if (canModifyContentRestriction != null)
-      'canModifyContentRestriction': canModifyContentRestriction!,
-    if (canModifyEditorContentRestriction != null)
-      'canModifyEditorContentRestriction': canModifyEditorContentRestriction!,
-    if (canModifyLabels != null) 'canModifyLabels': canModifyLabels!,
-    if (canModifyOwnerContentRestriction != null)
-      'canModifyOwnerContentRestriction': canModifyOwnerContentRestriction!,
-    if (canMoveChildrenOutOfDrive != null)
-      'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive!,
-    if (canMoveChildrenOutOfTeamDrive != null)
-      'canMoveChildrenOutOfTeamDrive': canMoveChildrenOutOfTeamDrive!,
-    if (canMoveChildrenWithinDrive != null)
-      'canMoveChildrenWithinDrive': canMoveChildrenWithinDrive!,
-    if (canMoveChildrenWithinTeamDrive != null)
-      'canMoveChildrenWithinTeamDrive': canMoveChildrenWithinTeamDrive!,
-    if (canMoveItemIntoTeamDrive != null)
-      'canMoveItemIntoTeamDrive': canMoveItemIntoTeamDrive!,
-    if (canMoveItemOutOfDrive != null)
-      'canMoveItemOutOfDrive': canMoveItemOutOfDrive!,
-    if (canMoveItemOutOfTeamDrive != null)
-      'canMoveItemOutOfTeamDrive': canMoveItemOutOfTeamDrive!,
-    if (canMoveItemWithinDrive != null)
-      'canMoveItemWithinDrive': canMoveItemWithinDrive!,
-    if (canMoveItemWithinTeamDrive != null)
-      'canMoveItemWithinTeamDrive': canMoveItemWithinTeamDrive!,
-    if (canMoveTeamDriveItem != null)
-      'canMoveTeamDriveItem': canMoveTeamDriveItem!,
-    if (canReadDrive != null) 'canReadDrive': canReadDrive!,
-    if (canReadLabels != null) 'canReadLabels': canReadLabels!,
-    if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
-    if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive!,
-    if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
-    if (canRemoveContentRestriction != null)
-      'canRemoveContentRestriction': canRemoveContentRestriction!,
-    if (canRemoveMyDriveParent != null)
-      'canRemoveMyDriveParent': canRemoveMyDriveParent!,
-    if (canRename != null) 'canRename': canRename!,
-    if (canShare != null) 'canShare': canShare!,
-    if (canTrash != null) 'canTrash': canTrash!,
-    if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
-    if (canUntrash != null) 'canUntrash': canUntrash!,
-  };
+          ?canChangeCopyRequiresWriterPermission,
+      'canChangeRestrictedDownload': ?canChangeRestrictedDownload,
+      'canChangeSecurityUpdateEnabled': ?canChangeSecurityUpdateEnabled,
+      'canComment': ?canComment,
+      'canCopy': ?canCopy,
+      'canDelete': ?canDelete,
+      'canDeleteChildren': ?canDeleteChildren,
+      'canDisableInheritedPermissions': ?canDisableInheritedPermissions,
+      'canDownload': ?canDownload,
+      'canEdit': ?canEdit,
+      'canEnableInheritedPermissions': ?canEnableInheritedPermissions,
+      'canListChildren': ?canListChildren,
+      'canModifyContent': ?canModifyContent,
+      'canModifyContentRestriction': ?canModifyContentRestriction,
+      'canModifyEditorContentRestriction': ?canModifyEditorContentRestriction,
+      'canModifyLabels': ?canModifyLabels,
+      'canModifyOwnerContentRestriction': ?canModifyOwnerContentRestriction,
+      'canMoveChildrenOutOfDrive': ?canMoveChildrenOutOfDrive,
+      'canMoveChildrenOutOfTeamDrive': ?canMoveChildrenOutOfTeamDrive,
+      'canMoveChildrenWithinDrive': ?canMoveChildrenWithinDrive,
+      'canMoveChildrenWithinTeamDrive': ?canMoveChildrenWithinTeamDrive,
+      'canMoveItemIntoTeamDrive': ?canMoveItemIntoTeamDrive,
+      'canMoveItemOutOfDrive': ?canMoveItemOutOfDrive,
+      'canMoveItemOutOfTeamDrive': ?canMoveItemOutOfTeamDrive,
+      'canMoveItemWithinDrive': ?canMoveItemWithinDrive,
+      'canMoveItemWithinTeamDrive': ?canMoveItemWithinTeamDrive,
+      'canMoveTeamDriveItem': ?canMoveTeamDriveItem,
+      'canReadDrive': ?canReadDrive,
+      'canReadLabels': ?canReadLabels,
+      'canReadRevisions': ?canReadRevisions,
+      'canReadTeamDrive': ?canReadTeamDrive,
+      'canRemoveChildren': ?canRemoveChildren,
+      'canRemoveContentRestriction': ?canRemoveContentRestriction,
+      'canRemoveMyDriveParent': ?canRemoveMyDriveParent,
+      'canRename': ?canRename,
+      'canShare': ?canShare,
+      'canTrash': ?canTrash,
+      'canTrashChildren': ?canTrashChildren,
+      'canUntrash': ?canUntrash,
+    };
+  }
 }
 
 /// Geographic location information stored in the image.
@@ -7176,11 +7494,16 @@ class FileImageMediaMetadataLocation {
         longitude: (json_['longitude'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (altitude != null) 'altitude': altitude!,
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final altitude = this.altitude;
+    final latitude = this.latitude;
+    final longitude = this.longitude;
+    return {
+      'altitude': ?altitude,
+      'latitude': ?latitude,
+      'longitude': ?longitude,
+    };
+  }
 }
 
 /// Metadata about image media.
@@ -7336,12 +7659,11 @@ class FileImageMediaMetadata {
         height: json_['height'] as core.int?,
         isoSpeed: json_['isoSpeed'] as core.int?,
         lens: json_['lens'] as core.String?,
-        location:
-            json_.containsKey('location')
-                ? FileImageMediaMetadataLocation.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        location: json_.containsKey('location')
+            ? FileImageMediaMetadataLocation.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxApertureValue: (json_['maxApertureValue'] as core.num?)?.toDouble(),
         meteringMode: json_['meteringMode'] as core.String?,
         rotation: json_['rotation'] as core.int?,
@@ -7351,29 +7673,52 @@ class FileImageMediaMetadata {
         width: json_['width'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aperture != null) 'aperture': aperture!,
-    if (cameraMake != null) 'cameraMake': cameraMake!,
-    if (cameraModel != null) 'cameraModel': cameraModel!,
-    if (colorSpace != null) 'colorSpace': colorSpace!,
-    if (date != null) 'date': date!,
-    if (exposureBias != null) 'exposureBias': exposureBias!,
-    if (exposureMode != null) 'exposureMode': exposureMode!,
-    if (exposureTime != null) 'exposureTime': exposureTime!,
-    if (flashUsed != null) 'flashUsed': flashUsed!,
-    if (focalLength != null) 'focalLength': focalLength!,
-    if (height != null) 'height': height!,
-    if (isoSpeed != null) 'isoSpeed': isoSpeed!,
-    if (lens != null) 'lens': lens!,
-    if (location != null) 'location': location!,
-    if (maxApertureValue != null) 'maxApertureValue': maxApertureValue!,
-    if (meteringMode != null) 'meteringMode': meteringMode!,
-    if (rotation != null) 'rotation': rotation!,
-    if (sensor != null) 'sensor': sensor!,
-    if (subjectDistance != null) 'subjectDistance': subjectDistance!,
-    if (whiteBalance != null) 'whiteBalance': whiteBalance!,
-    if (width != null) 'width': width!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aperture = this.aperture;
+    final cameraMake = this.cameraMake;
+    final cameraModel = this.cameraModel;
+    final colorSpace = this.colorSpace;
+    final date = this.date;
+    final exposureBias = this.exposureBias;
+    final exposureMode = this.exposureMode;
+    final exposureTime = this.exposureTime;
+    final flashUsed = this.flashUsed;
+    final focalLength = this.focalLength;
+    final height = this.height;
+    final isoSpeed = this.isoSpeed;
+    final lens = this.lens;
+    final location = this.location;
+    final maxApertureValue = this.maxApertureValue;
+    final meteringMode = this.meteringMode;
+    final rotation = this.rotation;
+    final sensor = this.sensor;
+    final subjectDistance = this.subjectDistance;
+    final whiteBalance = this.whiteBalance;
+    final width = this.width;
+    return {
+      'aperture': ?aperture,
+      'cameraMake': ?cameraMake,
+      'cameraModel': ?cameraModel,
+      'colorSpace': ?colorSpace,
+      'date': ?date,
+      'exposureBias': ?exposureBias,
+      'exposureMode': ?exposureMode,
+      'exposureTime': ?exposureTime,
+      'flashUsed': ?flashUsed,
+      'focalLength': ?focalLength,
+      'height': ?height,
+      'isoSpeed': ?isoSpeed,
+      'lens': ?lens,
+      'location': ?location,
+      'maxApertureValue': ?maxApertureValue,
+      'meteringMode': ?meteringMode,
+      'rotation': ?rotation,
+      'sensor': ?sensor,
+      'subjectDistance': ?subjectDistance,
+      'whiteBalance': ?whiteBalance,
+      'width': ?width,
+    };
+  }
 }
 
 /// Indexable text attributes for the file (can only be written)
@@ -7386,9 +7731,10 @@ class FileIndexableText {
   FileIndexableText.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// An overview of the labels on the file.
@@ -7407,19 +7753,18 @@ class FileLabelInfo {
 
   FileLabelInfo.fromJson(core.Map json_)
     : this(
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map(
-                  (value) => Label.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final labels = this.labels;
+    return {'labels': ?labels};
+  }
 }
 
 /// A group of labels for the file.
@@ -7476,14 +7821,22 @@ class FileLabels {
         viewed: json_['viewed'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hidden != null) 'hidden': hidden!,
-    if (modified != null) 'modified': modified!,
-    if (restricted != null) 'restricted': restricted!,
-    if (starred != null) 'starred': starred!,
-    if (trashed != null) 'trashed': trashed!,
-    if (viewed != null) 'viewed': viewed!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hidden = this.hidden;
+    final modified = this.modified;
+    final restricted = this.restricted;
+    final starred = this.starred;
+    final trashed = this.trashed;
+    final viewed = this.viewed;
+    return {
+      'hidden': ?hidden,
+      'modified': ?modified,
+      'restricted': ?restricted,
+      'starred': ?starred,
+      'trashed': ?trashed,
+      'viewed': ?viewed,
+    };
+  }
 }
 
 /// Contains details about the link URLs that clients are using to refer to this
@@ -7510,12 +7863,14 @@ class FileLinkShareMetadata {
         securityUpdateEnabled: json_['securityUpdateEnabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (securityUpdateEligible != null)
-      'securityUpdateEligible': securityUpdateEligible!,
-    if (securityUpdateEnabled != null)
-      'securityUpdateEnabled': securityUpdateEnabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final securityUpdateEligible = this.securityUpdateEligible;
+    final securityUpdateEnabled = this.securityUpdateEnabled;
+    return {
+      'securityUpdateEligible': ?securityUpdateEligible,
+      'securityUpdateEnabled': ?securityUpdateEnabled,
+    };
+  }
 }
 
 /// Shortcut file details.
@@ -7555,11 +7910,16 @@ class FileShortcutDetails {
         targetResourceKey: json_['targetResourceKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetId != null) 'targetId': targetId!,
-    if (targetMimeType != null) 'targetMimeType': targetMimeType!,
-    if (targetResourceKey != null) 'targetResourceKey': targetResourceKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetId = this.targetId;
+    final targetMimeType = this.targetMimeType;
+    final targetResourceKey = this.targetResourceKey;
+    return {
+      'targetId': ?targetId,
+      'targetMimeType': ?targetMimeType,
+      'targetResourceKey': ?targetResourceKey,
+    };
+  }
 }
 
 /// A thumbnail for the file.
@@ -7590,10 +7950,11 @@ class FileThumbnail {
         mimeType: json_['mimeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (image != null) 'image': image!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final image = this.image;
+    final mimeType = this.mimeType;
+    return {'image': ?image, 'mimeType': ?mimeType};
+  }
 }
 
 /// Metadata about video media.
@@ -7626,11 +7987,16 @@ class FileVideoMediaMetadata {
         width: json_['width'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (durationMillis != null) 'durationMillis': durationMillis!,
-    if (height != null) 'height': height!,
-    if (width != null) 'width': width!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final durationMillis = this.durationMillis;
+    final height = this.height;
+    final width = this.width;
+    return {
+      'durationMillis': ?durationMillis,
+      'height': ?height,
+      'width': ?width,
+    };
+  }
 }
 
 /// The metadata for a file.
@@ -8203,27 +8569,24 @@ class File {
         appDataContents: json_['appDataContents'] as core.bool?,
         canComment: json_['canComment'] as core.bool?,
         canReadRevisions: json_['canReadRevisions'] as core.bool?,
-        capabilities:
-            json_.containsKey('capabilities')
-                ? FileCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        contentRestrictions:
-            (json_['contentRestrictions'] as core.List?)
-                ?.map(
-                  (value) => ContentRestriction.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        capabilities: json_.containsKey('capabilities')
+            ? FileCapabilities.fromJson(
+                json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentRestrictions: (json_['contentRestrictions'] as core.List?)
+            ?.map(
+              (value) => ContentRestriction.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         copyRequiresWriterPermission:
             json_['copyRequiresWriterPermission'] as core.bool?,
         copyable: json_['copyable'] as core.bool?,
-        createdDate:
-            json_.containsKey('createdDate')
-                ? core.DateTime.parse(json_['createdDate'] as core.String)
-                : null,
+        createdDate: json_.containsKey('createdDate')
+            ? core.DateTime.parse(json_['createdDate'] as core.String)
+            : null,
         defaultOpenWithLink: json_['defaultOpenWithLink'] as core.String?,
         description: json_['description'] as core.String?,
         downloadUrl: json_['downloadUrl'] as core.String?,
@@ -8232,9 +8595,10 @@ class File {
         embedLink: json_['embedLink'] as core.String?,
         etag: json_['etag'] as core.String?,
         explicitlyTrashed: json_['explicitlyTrashed'] as core.bool?,
-        exportLinks: (json_['exportLinks']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        exportLinks:
+            (json_['exportLinks'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         fileExtension: json_['fileExtension'] as core.String?,
         fileSize: json_['fileSize'] as core.String?,
         folderColorRgb: json_['folderColorRgb'] as core.String?,
@@ -8244,117 +8608,96 @@ class File {
         headRevisionId: json_['headRevisionId'] as core.String?,
         iconLink: json_['iconLink'] as core.String?,
         id: json_['id'] as core.String?,
-        imageMediaMetadata:
-            json_.containsKey('imageMediaMetadata')
-                ? FileImageMediaMetadata.fromJson(
-                  json_['imageMediaMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        indexableText:
-            json_.containsKey('indexableText')
-                ? FileIndexableText.fromJson(
-                  json_['indexableText'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageMediaMetadata: json_.containsKey('imageMediaMetadata')
+            ? FileImageMediaMetadata.fromJson(
+                json_['imageMediaMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        indexableText: json_.containsKey('indexableText')
+            ? FileIndexableText.fromJson(
+                json_['indexableText'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         inheritedPermissionsDisabled:
             json_['inheritedPermissionsDisabled'] as core.bool?,
         isAppAuthorized: json_['isAppAuthorized'] as core.bool?,
         kind: json_['kind'] as core.String?,
-        labelInfo:
-            json_.containsKey('labelInfo')
-                ? FileLabelInfo.fromJson(
-                  json_['labelInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        labels:
-            json_.containsKey('labels')
-                ? FileLabels.fromJson(
-                  json_['labels'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lastModifyingUser:
-            json_.containsKey('lastModifyingUser')
-                ? User.fromJson(
-                  json_['lastModifyingUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        labelInfo: json_.containsKey('labelInfo')
+            ? FileLabelInfo.fromJson(
+                json_['labelInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: json_.containsKey('labels')
+            ? FileLabels.fromJson(
+                json_['labels'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastModifyingUser: json_.containsKey('lastModifyingUser')
+            ? User.fromJson(
+                json_['lastModifyingUser']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastModifyingUserName: json_['lastModifyingUserName'] as core.String?,
-        lastViewedByMeDate:
-            json_.containsKey('lastViewedByMeDate')
-                ? core.DateTime.parse(
-                  json_['lastViewedByMeDate'] as core.String,
-                )
-                : null,
-        linkShareMetadata:
-            json_.containsKey('linkShareMetadata')
-                ? FileLinkShareMetadata.fromJson(
-                  json_['linkShareMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        markedViewedByMeDate:
-            json_.containsKey('markedViewedByMeDate')
-                ? core.DateTime.parse(
-                  json_['markedViewedByMeDate'] as core.String,
-                )
-                : null,
+        lastViewedByMeDate: json_.containsKey('lastViewedByMeDate')
+            ? core.DateTime.parse(json_['lastViewedByMeDate'] as core.String)
+            : null,
+        linkShareMetadata: json_.containsKey('linkShareMetadata')
+            ? FileLinkShareMetadata.fromJson(
+                json_['linkShareMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        markedViewedByMeDate: json_.containsKey('markedViewedByMeDate')
+            ? core.DateTime.parse(json_['markedViewedByMeDate'] as core.String)
+            : null,
         md5Checksum: json_['md5Checksum'] as core.String?,
         mimeType: json_['mimeType'] as core.String?,
-        modifiedByMeDate:
-            json_.containsKey('modifiedByMeDate')
-                ? core.DateTime.parse(json_['modifiedByMeDate'] as core.String)
-                : null,
-        modifiedDate:
-            json_.containsKey('modifiedDate')
-                ? core.DateTime.parse(json_['modifiedDate'] as core.String)
-                : null,
-        openWithLinks: (json_['openWithLinks']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        modifiedByMeDate: json_.containsKey('modifiedByMeDate')
+            ? core.DateTime.parse(json_['modifiedByMeDate'] as core.String)
+            : null,
+        modifiedDate: json_.containsKey('modifiedDate')
+            ? core.DateTime.parse(json_['modifiedDate'] as core.String)
+            : null,
+        openWithLinks:
+            (json_['openWithLinks'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         originalFilename: json_['originalFilename'] as core.String?,
         ownedByMe: json_['ownedByMe'] as core.bool?,
-        ownerNames:
-            (json_['ownerNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        owners:
-            (json_['owners'] as core.List?)
-                ?.map(
-                  (value) => User.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        parents:
-            (json_['parents'] as core.List?)
-                ?.map(
-                  (value) => ParentReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        permissionIds:
-            (json_['permissionIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        permissions:
-            (json_['permissions'] as core.List?)
-                ?.map(
-                  (value) => Permission.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => Property.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ownerNames: (json_['ownerNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        owners: (json_['owners'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        parents: (json_['parents'] as core.List?)
+            ?.map(
+              (value) => ParentReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        permissionIds: (json_['permissionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        permissions: (json_['permissions'] as core.List?)
+            ?.map(
+              (value) => Permission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => Property.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         quotaBytesUsed: json_['quotaBytesUsed'] as core.String?,
         resourceKey: json_['resourceKey'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
@@ -8362,158 +8705,212 @@ class File {
         sha256Checksum: json_['sha256Checksum'] as core.String?,
         shareable: json_['shareable'] as core.bool?,
         shared: json_['shared'] as core.bool?,
-        sharedWithMeDate:
-            json_.containsKey('sharedWithMeDate')
-                ? core.DateTime.parse(json_['sharedWithMeDate'] as core.String)
-                : null,
-        sharingUser:
-            json_.containsKey('sharingUser')
-                ? User.fromJson(
-                  json_['sharingUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        shortcutDetails:
-            json_.containsKey('shortcutDetails')
-                ? FileShortcutDetails.fromJson(
-                  json_['shortcutDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        spaces:
-            (json_['spaces'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sharedWithMeDate: json_.containsKey('sharedWithMeDate')
+            ? core.DateTime.parse(json_['sharedWithMeDate'] as core.String)
+            : null,
+        sharingUser: json_.containsKey('sharingUser')
+            ? User.fromJson(
+                json_['sharingUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shortcutDetails: json_.containsKey('shortcutDetails')
+            ? FileShortcutDetails.fromJson(
+                json_['shortcutDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        spaces: (json_['spaces'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         teamDriveId: json_['teamDriveId'] as core.String?,
-        thumbnail:
-            json_.containsKey('thumbnail')
-                ? FileThumbnail.fromJson(
-                  json_['thumbnail'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        thumbnail: json_.containsKey('thumbnail')
+            ? FileThumbnail.fromJson(
+                json_['thumbnail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         thumbnailLink: json_['thumbnailLink'] as core.String?,
         thumbnailVersion: json_['thumbnailVersion'] as core.String?,
         title: json_['title'] as core.String?,
-        trashedDate:
-            json_.containsKey('trashedDate')
-                ? core.DateTime.parse(json_['trashedDate'] as core.String)
-                : null,
-        trashingUser:
-            json_.containsKey('trashingUser')
-                ? User.fromJson(
-                  json_['trashingUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userPermission:
-            json_.containsKey('userPermission')
-                ? Permission.fromJson(
-                  json_['userPermission']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        trashedDate: json_.containsKey('trashedDate')
+            ? core.DateTime.parse(json_['trashedDate'] as core.String)
+            : null,
+        trashingUser: json_.containsKey('trashingUser')
+            ? User.fromJson(
+                json_['trashingUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userPermission: json_.containsKey('userPermission')
+            ? Permission.fromJson(
+                json_['userPermission'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
-        videoMediaMetadata:
-            json_.containsKey('videoMediaMetadata')
-                ? FileVideoMediaMetadata.fromJson(
-                  json_['videoMediaMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        videoMediaMetadata: json_.containsKey('videoMediaMetadata')
+            ? FileVideoMediaMetadata.fromJson(
+                json_['videoMediaMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         webContentLink: json_['webContentLink'] as core.String?,
         webViewLink: json_['webViewLink'] as core.String?,
         writersCanShare: json_['writersCanShare'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternateLink != null) 'alternateLink': alternateLink!,
-    if (appDataContents != null) 'appDataContents': appDataContents!,
-    if (canComment != null) 'canComment': canComment!,
-    if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
-    if (capabilities != null) 'capabilities': capabilities!,
-    if (contentRestrictions != null)
-      'contentRestrictions': contentRestrictions!,
-    if (copyRequiresWriterPermission != null)
-      'copyRequiresWriterPermission': copyRequiresWriterPermission!,
-    if (copyable != null) 'copyable': copyable!,
-    if (createdDate != null)
-      'createdDate': createdDate!.toUtc().toIso8601String(),
-    if (defaultOpenWithLink != null)
-      'defaultOpenWithLink': defaultOpenWithLink!,
-    if (description != null) 'description': description!,
-    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-    if (driveId != null) 'driveId': driveId!,
-    if (editable != null) 'editable': editable!,
-    if (embedLink != null) 'embedLink': embedLink!,
-    if (etag != null) 'etag': etag!,
-    if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed!,
-    if (exportLinks != null) 'exportLinks': exportLinks!,
-    if (fileExtension != null) 'fileExtension': fileExtension!,
-    if (fileSize != null) 'fileSize': fileSize!,
-    if (folderColorRgb != null) 'folderColorRgb': folderColorRgb!,
-    if (fullFileExtension != null) 'fullFileExtension': fullFileExtension!,
-    if (hasAugmentedPermissions != null)
-      'hasAugmentedPermissions': hasAugmentedPermissions!,
-    if (hasThumbnail != null) 'hasThumbnail': hasThumbnail!,
-    if (headRevisionId != null) 'headRevisionId': headRevisionId!,
-    if (iconLink != null) 'iconLink': iconLink!,
-    if (id != null) 'id': id!,
-    if (imageMediaMetadata != null) 'imageMediaMetadata': imageMediaMetadata!,
-    if (indexableText != null) 'indexableText': indexableText!,
-    if (inheritedPermissionsDisabled != null)
-      'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
-    if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
-    if (kind != null) 'kind': kind!,
-    if (labelInfo != null) 'labelInfo': labelInfo!,
-    if (labels != null) 'labels': labels!,
-    if (lastModifyingUser != null) 'lastModifyingUser': lastModifyingUser!,
-    if (lastModifyingUserName != null)
-      'lastModifyingUserName': lastModifyingUserName!,
-    if (lastViewedByMeDate != null)
-      'lastViewedByMeDate': lastViewedByMeDate!.toUtc().toIso8601String(),
-    if (linkShareMetadata != null) 'linkShareMetadata': linkShareMetadata!,
-    if (markedViewedByMeDate != null)
-      'markedViewedByMeDate': markedViewedByMeDate!.toUtc().toIso8601String(),
-    if (md5Checksum != null) 'md5Checksum': md5Checksum!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (modifiedByMeDate != null)
-      'modifiedByMeDate': modifiedByMeDate!.toUtc().toIso8601String(),
-    if (modifiedDate != null)
-      'modifiedDate': modifiedDate!.toUtc().toIso8601String(),
-    if (openWithLinks != null) 'openWithLinks': openWithLinks!,
-    if (originalFilename != null) 'originalFilename': originalFilename!,
-    if (ownedByMe != null) 'ownedByMe': ownedByMe!,
-    if (ownerNames != null) 'ownerNames': ownerNames!,
-    if (owners != null) 'owners': owners!,
-    if (parents != null) 'parents': parents!,
-    if (permissionIds != null) 'permissionIds': permissionIds!,
-    if (permissions != null) 'permissions': permissions!,
-    if (properties != null) 'properties': properties!,
-    if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
-    if (resourceKey != null) 'resourceKey': resourceKey!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (sha1Checksum != null) 'sha1Checksum': sha1Checksum!,
-    if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
-    if (shareable != null) 'shareable': shareable!,
-    if (shared != null) 'shared': shared!,
-    if (sharedWithMeDate != null)
-      'sharedWithMeDate': sharedWithMeDate!.toUtc().toIso8601String(),
-    if (sharingUser != null) 'sharingUser': sharingUser!,
-    if (shortcutDetails != null) 'shortcutDetails': shortcutDetails!,
-    if (spaces != null) 'spaces': spaces!,
-    if (teamDriveId != null) 'teamDriveId': teamDriveId!,
-    if (thumbnail != null) 'thumbnail': thumbnail!,
-    if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
-    if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion!,
-    if (title != null) 'title': title!,
-    if (trashedDate != null)
-      'trashedDate': trashedDate!.toUtc().toIso8601String(),
-    if (trashingUser != null) 'trashingUser': trashingUser!,
-    if (userPermission != null) 'userPermission': userPermission!,
-    if (version != null) 'version': version!,
-    if (videoMediaMetadata != null) 'videoMediaMetadata': videoMediaMetadata!,
-    if (webContentLink != null) 'webContentLink': webContentLink!,
-    if (webViewLink != null) 'webViewLink': webViewLink!,
-    if (writersCanShare != null) 'writersCanShare': writersCanShare!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternateLink = this.alternateLink;
+    final appDataContents = this.appDataContents;
+    final canComment = this.canComment;
+    final canReadRevisions = this.canReadRevisions;
+    final capabilities = this.capabilities;
+    final contentRestrictions = this.contentRestrictions;
+    final copyRequiresWriterPermission = this.copyRequiresWriterPermission;
+    final copyable = this.copyable;
+    final createdDate = this.createdDate;
+    final defaultOpenWithLink = this.defaultOpenWithLink;
+    final description = this.description;
+    final downloadUrl = this.downloadUrl;
+    final driveId = this.driveId;
+    final editable = this.editable;
+    final embedLink = this.embedLink;
+    final etag = this.etag;
+    final explicitlyTrashed = this.explicitlyTrashed;
+    final exportLinks = this.exportLinks;
+    final fileExtension = this.fileExtension;
+    final fileSize = this.fileSize;
+    final folderColorRgb = this.folderColorRgb;
+    final fullFileExtension = this.fullFileExtension;
+    final hasAugmentedPermissions = this.hasAugmentedPermissions;
+    final hasThumbnail = this.hasThumbnail;
+    final headRevisionId = this.headRevisionId;
+    final iconLink = this.iconLink;
+    final id = this.id;
+    final imageMediaMetadata = this.imageMediaMetadata;
+    final indexableText = this.indexableText;
+    final inheritedPermissionsDisabled = this.inheritedPermissionsDisabled;
+    final isAppAuthorized = this.isAppAuthorized;
+    final kind = this.kind;
+    final labelInfo = this.labelInfo;
+    final labels = this.labels;
+    final lastModifyingUser = this.lastModifyingUser;
+    final lastModifyingUserName = this.lastModifyingUserName;
+    final lastViewedByMeDate = this.lastViewedByMeDate;
+    final linkShareMetadata = this.linkShareMetadata;
+    final markedViewedByMeDate = this.markedViewedByMeDate;
+    final md5Checksum = this.md5Checksum;
+    final mimeType = this.mimeType;
+    final modifiedByMeDate = this.modifiedByMeDate;
+    final modifiedDate = this.modifiedDate;
+    final openWithLinks = this.openWithLinks;
+    final originalFilename = this.originalFilename;
+    final ownedByMe = this.ownedByMe;
+    final ownerNames = this.ownerNames;
+    final owners = this.owners;
+    final parents = this.parents;
+    final permissionIds = this.permissionIds;
+    final permissions = this.permissions;
+    final properties = this.properties;
+    final quotaBytesUsed = this.quotaBytesUsed;
+    final resourceKey = this.resourceKey;
+    final selfLink = this.selfLink;
+    final sha1Checksum = this.sha1Checksum;
+    final sha256Checksum = this.sha256Checksum;
+    final shareable = this.shareable;
+    final shared = this.shared;
+    final sharedWithMeDate = this.sharedWithMeDate;
+    final sharingUser = this.sharingUser;
+    final shortcutDetails = this.shortcutDetails;
+    final spaces = this.spaces;
+    final teamDriveId = this.teamDriveId;
+    final thumbnail = this.thumbnail;
+    final thumbnailLink = this.thumbnailLink;
+    final thumbnailVersion = this.thumbnailVersion;
+    final title = this.title;
+    final trashedDate = this.trashedDate;
+    final trashingUser = this.trashingUser;
+    final userPermission = this.userPermission;
+    final version = this.version;
+    final videoMediaMetadata = this.videoMediaMetadata;
+    final webContentLink = this.webContentLink;
+    final webViewLink = this.webViewLink;
+    final writersCanShare = this.writersCanShare;
+    return {
+      'alternateLink': ?alternateLink,
+      'appDataContents': ?appDataContents,
+      'canComment': ?canComment,
+      'canReadRevisions': ?canReadRevisions,
+      'capabilities': ?capabilities,
+      'contentRestrictions': ?contentRestrictions,
+      'copyRequiresWriterPermission': ?copyRequiresWriterPermission,
+      'copyable': ?copyable,
+      'createdDate': ?createdDate?.toUtc().toIso8601String(),
+      'defaultOpenWithLink': ?defaultOpenWithLink,
+      'description': ?description,
+      'downloadUrl': ?downloadUrl,
+      'driveId': ?driveId,
+      'editable': ?editable,
+      'embedLink': ?embedLink,
+      'etag': ?etag,
+      'explicitlyTrashed': ?explicitlyTrashed,
+      'exportLinks': ?exportLinks,
+      'fileExtension': ?fileExtension,
+      'fileSize': ?fileSize,
+      'folderColorRgb': ?folderColorRgb,
+      'fullFileExtension': ?fullFileExtension,
+      'hasAugmentedPermissions': ?hasAugmentedPermissions,
+      'hasThumbnail': ?hasThumbnail,
+      'headRevisionId': ?headRevisionId,
+      'iconLink': ?iconLink,
+      'id': ?id,
+      'imageMediaMetadata': ?imageMediaMetadata,
+      'indexableText': ?indexableText,
+      'inheritedPermissionsDisabled': ?inheritedPermissionsDisabled,
+      'isAppAuthorized': ?isAppAuthorized,
+      'kind': ?kind,
+      'labelInfo': ?labelInfo,
+      'labels': ?labels,
+      'lastModifyingUser': ?lastModifyingUser,
+      'lastModifyingUserName': ?lastModifyingUserName,
+      'lastViewedByMeDate': ?lastViewedByMeDate?.toUtc().toIso8601String(),
+      'linkShareMetadata': ?linkShareMetadata,
+      'markedViewedByMeDate': ?markedViewedByMeDate?.toUtc().toIso8601String(),
+      'md5Checksum': ?md5Checksum,
+      'mimeType': ?mimeType,
+      'modifiedByMeDate': ?modifiedByMeDate?.toUtc().toIso8601String(),
+      'modifiedDate': ?modifiedDate?.toUtc().toIso8601String(),
+      'openWithLinks': ?openWithLinks,
+      'originalFilename': ?originalFilename,
+      'ownedByMe': ?ownedByMe,
+      'ownerNames': ?ownerNames,
+      'owners': ?owners,
+      'parents': ?parents,
+      'permissionIds': ?permissionIds,
+      'permissions': ?permissions,
+      'properties': ?properties,
+      'quotaBytesUsed': ?quotaBytesUsed,
+      'resourceKey': ?resourceKey,
+      'selfLink': ?selfLink,
+      'sha1Checksum': ?sha1Checksum,
+      'sha256Checksum': ?sha256Checksum,
+      'shareable': ?shareable,
+      'shared': ?shared,
+      'sharedWithMeDate': ?sharedWithMeDate?.toUtc().toIso8601String(),
+      'sharingUser': ?sharingUser,
+      'shortcutDetails': ?shortcutDetails,
+      'spaces': ?spaces,
+      'teamDriveId': ?teamDriveId,
+      'thumbnail': ?thumbnail,
+      'thumbnailLink': ?thumbnailLink,
+      'thumbnailVersion': ?thumbnailVersion,
+      'title': ?title,
+      'trashedDate': ?trashedDate?.toUtc().toIso8601String(),
+      'trashingUser': ?trashingUser,
+      'userPermission': ?userPermission,
+      'version': ?version,
+      'videoMediaMetadata': ?videoMediaMetadata,
+      'webContentLink': ?webContentLink,
+      'webViewLink': ?webViewLink,
+      'writersCanShare': ?writersCanShare,
+    };
+  }
 }
 
 /// A list of files.
@@ -8566,29 +8963,36 @@ class FileList {
     : this(
         etag: json_['etag'] as core.String?,
         incompleteSearch: json_['incompleteSearch'] as core.bool?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => File.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextLink: json_['nextLink'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (incompleteSearch != null) 'incompleteSearch': incompleteSearch!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextLink != null) 'nextLink': nextLink!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final incompleteSearch = this.incompleteSearch;
+    final items = this.items;
+    final kind = this.kind;
+    final nextLink = this.nextLink;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'incompleteSearch': ?incompleteSearch,
+      'items': ?items,
+      'kind': ?kind,
+      'nextLink': ?nextLink,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A list of generated IDs which can be provided in insert requests
@@ -8606,19 +9010,19 @@ class GeneratedIds {
 
   GeneratedIds.fromJson(core.Map json_)
     : this(
-        ids:
-            (json_['ids'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        ids: (json_['ids'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
         space: json_['space'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ids != null) 'ids': ids!,
-    if (kind != null) 'kind': kind!,
-    if (space != null) 'space': space!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ids = this.ids;
+    final kind = this.kind;
+    final space = this.space;
+    return {'ids': ?ids, 'kind': ?kind, 'space': ?space};
+  }
 }
 
 /// Representation of a label and label fields.
@@ -8650,12 +9054,18 @@ class Label {
         revisionId: json_['revisionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fields != null) 'fields': fields!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (revisionId != null) 'revisionId': revisionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    final id = this.id;
+    final kind = this.kind;
+    final revisionId = this.revisionId;
+    return {
+      'fields': ?fields,
+      'id': ?id,
+      'kind': ?kind,
+      'revisionId': ?revisionId,
+    };
+  }
 }
 
 /// Representation of field, which is a typed key-value pair.
@@ -8703,52 +9113,54 @@ class LabelField {
 
   LabelField.fromJson(core.Map json_)
     : this(
-        dateString:
-            (json_['dateString'] as core.List?)
-                ?.map((value) => core.DateTime.parse(value as core.String))
-                .toList(),
+        dateString: (json_['dateString'] as core.List?)
+            ?.map((value) => core.DateTime.parse(value as core.String))
+            .toList(),
         id: json_['id'] as core.String?,
-        integer:
-            (json_['integer'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        integer: (json_['integer'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
-        selection:
-            (json_['selection'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        text:
-            (json_['text'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        user:
-            (json_['user'] as core.List?)
-                ?.map(
-                  (value) => User.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        selection: (json_['selection'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        text: (json_['text'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        user: (json_['user'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         valueType: json_['valueType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateString != null)
-      'dateString':
-          dateString!
-              .map(
-                (value) =>
-                    "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
-              )
-              .toList(),
-    if (id != null) 'id': id!,
-    if (integer != null) 'integer': integer!,
-    if (kind != null) 'kind': kind!,
-    if (selection != null) 'selection': selection!,
-    if (text != null) 'text': text!,
-    if (user != null) 'user': user!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateString = this.dateString;
+    final id = this.id;
+    final integer = this.integer;
+    final kind = this.kind;
+    final selection = this.selection;
+    final text = this.text;
+    final user = this.user;
+    final valueType = this.valueType;
+    return {
+      'dateString': ?dateString
+          ?.map(
+            (value) =>
+                "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
+          )
+          .toList(),
+      'id': ?id,
+      'integer': ?integer,
+      'kind': ?kind,
+      'selection': ?selection,
+      'text': ?text,
+      'user': ?user,
+      'valueType': ?valueType,
+    };
+  }
 }
 
 /// A modification to a label's field.
@@ -8796,46 +9208,49 @@ class LabelFieldModification {
     : this(
         fieldId: json_['fieldId'] as core.String?,
         kind: json_['kind'] as core.String?,
-        setDateValues:
-            (json_['setDateValues'] as core.List?)
-                ?.map((value) => core.DateTime.parse(value as core.String))
-                .toList(),
-        setIntegerValues:
-            (json_['setIntegerValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        setSelectionValues:
-            (json_['setSelectionValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        setTextValues:
-            (json_['setTextValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        setUserValues:
-            (json_['setUserValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        setDateValues: (json_['setDateValues'] as core.List?)
+            ?.map((value) => core.DateTime.parse(value as core.String))
+            .toList(),
+        setIntegerValues: (json_['setIntegerValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        setSelectionValues: (json_['setSelectionValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        setTextValues: (json_['setTextValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        setUserValues: (json_['setUserValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         unsetValues: json_['unsetValues'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldId != null) 'fieldId': fieldId!,
-    if (kind != null) 'kind': kind!,
-    if (setDateValues != null)
-      'setDateValues':
-          setDateValues!
-              .map(
-                (value) =>
-                    "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
-              )
-              .toList(),
-    if (setIntegerValues != null) 'setIntegerValues': setIntegerValues!,
-    if (setSelectionValues != null) 'setSelectionValues': setSelectionValues!,
-    if (setTextValues != null) 'setTextValues': setTextValues!,
-    if (setUserValues != null) 'setUserValues': setUserValues!,
-    if (unsetValues != null) 'unsetValues': unsetValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldId = this.fieldId;
+    final kind = this.kind;
+    final setDateValues = this.setDateValues;
+    final setIntegerValues = this.setIntegerValues;
+    final setSelectionValues = this.setSelectionValues;
+    final setTextValues = this.setTextValues;
+    final setUserValues = this.setUserValues;
+    final unsetValues = this.unsetValues;
+    return {
+      'fieldId': ?fieldId,
+      'kind': ?kind,
+      'setDateValues': ?setDateValues
+          ?.map(
+            (value) =>
+                "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}",
+          )
+          .toList(),
+      'setIntegerValues': ?setIntegerValues,
+      'setSelectionValues': ?setSelectionValues,
+      'setTextValues': ?setTextValues,
+      'setUserValues': ?setUserValues,
+      'unsetValues': ?unsetValues,
+    };
+  }
 }
 
 /// A list of labels applied to a file.
@@ -8857,23 +9272,22 @@ class LabelList {
 
   LabelList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Label.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A modification to a label on a file.
@@ -8902,25 +9316,30 @@ class LabelModification {
 
   LabelModification.fromJson(core.Map json_)
     : this(
-        fieldModifications:
-            (json_['fieldModifications'] as core.List?)
-                ?.map(
-                  (value) => LabelFieldModification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fieldModifications: (json_['fieldModifications'] as core.List?)
+            ?.map(
+              (value) => LabelFieldModification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         labelId: json_['labelId'] as core.String?,
         removeLabel: json_['removeLabel'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldModifications != null) 'fieldModifications': fieldModifications!,
-    if (kind != null) 'kind': kind!,
-    if (labelId != null) 'labelId': labelId!,
-    if (removeLabel != null) 'removeLabel': removeLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldModifications = this.fieldModifications;
+    final kind = this.kind;
+    final labelId = this.labelId;
+    final removeLabel = this.removeLabel;
+    return {
+      'fieldModifications': ?fieldModifications,
+      'kind': ?kind,
+      'labelId': ?labelId,
+      'removeLabel': ?removeLabel,
+    };
+  }
 }
 
 /// A request to modify the set of labels on a file.
@@ -8939,20 +9358,20 @@ class ModifyLabelsRequest {
   ModifyLabelsRequest.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        labelModifications:
-            (json_['labelModifications'] as core.List?)
-                ?.map(
-                  (value) => LabelModification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labelModifications: (json_['labelModifications'] as core.List?)
+            ?.map(
+              (value) => LabelModification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (labelModifications != null) 'labelModifications': labelModifications!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final labelModifications = this.labelModifications;
+    return {'kind': ?kind, 'labelModifications': ?labelModifications};
+  }
 }
 
 /// Response to a ModifyLabels request.
@@ -8970,20 +9389,19 @@ class ModifyLabelsResponse {
   ModifyLabelsResponse.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        modifiedLabels:
-            (json_['modifiedLabels'] as core.List?)
-                ?.map(
-                  (value) => Label.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        modifiedLabels: (json_['modifiedLabels'] as core.List?)
+            ?.map(
+              (value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (modifiedLabels != null) 'modifiedLabels': modifiedLabels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final modifiedLabels = this.modifiedLabels;
+    return {'kind': ?kind, 'modifiedLabels': ?modifiedLabels};
+  }
 }
 
 /// A list of a file's parents.
@@ -9005,24 +9423,29 @@ class ParentList {
   ParentList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => ParentReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => ParentReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A reference to a file's parent.
@@ -9071,13 +9494,20 @@ class ParentReference {
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (isRoot != null) 'isRoot': isRoot!,
-    if (kind != null) 'kind': kind!,
-    if (parentLink != null) 'parentLink': parentLink!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final isRoot = this.isRoot;
+    final kind = this.kind;
+    final parentLink = this.parentLink;
+    final selfLink = this.selfLink;
+    return {
+      'id': ?id,
+      'isRoot': ?isRoot,
+      'kind': ?kind,
+      'parentLink': ?parentLink,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 class PermissionPermissionDetails {
@@ -9129,23 +9559,29 @@ class PermissionPermissionDetails {
 
   PermissionPermissionDetails.fromJson(core.Map json_)
     : this(
-        additionalRoles:
-            (json_['additionalRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalRoles: (json_['additionalRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         inherited: json_['inherited'] as core.bool?,
         inheritedFrom: json_['inheritedFrom'] as core.String?,
         permissionType: json_['permissionType'] as core.String?,
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalRoles != null) 'additionalRoles': additionalRoles!,
-    if (inherited != null) 'inherited': inherited!,
-    if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
-    if (permissionType != null) 'permissionType': permissionType!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoles = this.additionalRoles;
+    final inherited = this.inherited;
+    final inheritedFrom = this.inheritedFrom;
+    final permissionType = this.permissionType;
+    final role = this.role;
+    return {
+      'additionalRoles': ?additionalRoles,
+      'inherited': ?inherited,
+      'inheritedFrom': ?inheritedFrom,
+      'permissionType': ?permissionType,
+      'role': ?role,
+    };
+  }
 }
 
 class PermissionTeamDrivePermissionDetails {
@@ -9199,10 +9635,9 @@ class PermissionTeamDrivePermissionDetails {
 
   PermissionTeamDrivePermissionDetails.fromJson(core.Map json_)
     : this(
-        additionalRoles:
-            (json_['additionalRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalRoles: (json_['additionalRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         inherited: json_['inherited'] as core.bool?,
         inheritedFrom: json_['inheritedFrom'] as core.String?,
         role: json_['role'] as core.String?,
@@ -9210,14 +9645,20 @@ class PermissionTeamDrivePermissionDetails {
             json_['teamDrivePermissionType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalRoles != null) 'additionalRoles': additionalRoles!,
-    if (inherited != null) 'inherited': inherited!,
-    if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
-    if (role != null) 'role': role!,
-    if (teamDrivePermissionType != null)
-      'teamDrivePermissionType': teamDrivePermissionType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoles = this.additionalRoles;
+    final inherited = this.inherited;
+    final inheritedFrom = this.inheritedFrom;
+    final role = this.role;
+    final teamDrivePermissionType = this.teamDrivePermissionType;
+    return {
+      'additionalRoles': ?additionalRoles,
+      'inherited': ?inherited,
+      'inheritedFrom': ?inheritedFrom,
+      'role': ?role,
+      'teamDrivePermissionType': ?teamDrivePermissionType,
+    };
+  }
 }
 
 /// A permission for a file.
@@ -9388,33 +9829,30 @@ class Permission {
 
   Permission.fromJson(core.Map json_)
     : this(
-        additionalRoles:
-            (json_['additionalRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalRoles: (json_['additionalRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         authKey: json_['authKey'] as core.String?,
         deleted: json_['deleted'] as core.bool?,
         domain: json_['domain'] as core.String?,
         emailAddress: json_['emailAddress'] as core.String?,
         etag: json_['etag'] as core.String?,
-        expirationDate:
-            json_.containsKey('expirationDate')
-                ? core.DateTime.parse(json_['expirationDate'] as core.String)
-                : null,
+        expirationDate: json_.containsKey('expirationDate')
+            ? core.DateTime.parse(json_['expirationDate'] as core.String)
+            : null,
         id: json_['id'] as core.String?,
         inheritedPermissionsDisabled:
             json_['inheritedPermissionsDisabled'] as core.bool?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         pendingOwner: json_['pendingOwner'] as core.bool?,
-        permissionDetails:
-            (json_['permissionDetails'] as core.List?)
-                ?.map(
-                  (value) => PermissionPermissionDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        permissionDetails: (json_['permissionDetails'] as core.List?)
+            ?.map(
+              (value) => PermissionPermissionDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         photoLink: json_['photoLink'] as core.String?,
         role: json_['role'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
@@ -9432,32 +9870,52 @@ class Permission {
         withLink: json_['withLink'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalRoles != null) 'additionalRoles': additionalRoles!,
-    if (authKey != null) 'authKey': authKey!,
-    if (deleted != null) 'deleted': deleted!,
-    if (domain != null) 'domain': domain!,
-    if (emailAddress != null) 'emailAddress': emailAddress!,
-    if (etag != null) 'etag': etag!,
-    if (expirationDate != null)
-      'expirationDate': expirationDate!.toUtc().toIso8601String(),
-    if (id != null) 'id': id!,
-    if (inheritedPermissionsDisabled != null)
-      'inheritedPermissionsDisabled': inheritedPermissionsDisabled!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (pendingOwner != null) 'pendingOwner': pendingOwner!,
-    if (permissionDetails != null) 'permissionDetails': permissionDetails!,
-    if (photoLink != null) 'photoLink': photoLink!,
-    if (role != null) 'role': role!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (teamDrivePermissionDetails != null)
-      'teamDrivePermissionDetails': teamDrivePermissionDetails!,
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-    if (view != null) 'view': view!,
-    if (withLink != null) 'withLink': withLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoles = this.additionalRoles;
+    final authKey = this.authKey;
+    final deleted = this.deleted;
+    final domain = this.domain;
+    final emailAddress = this.emailAddress;
+    final etag = this.etag;
+    final expirationDate = this.expirationDate;
+    final id = this.id;
+    final inheritedPermissionsDisabled = this.inheritedPermissionsDisabled;
+    final kind = this.kind;
+    final name = this.name;
+    final pendingOwner = this.pendingOwner;
+    final permissionDetails = this.permissionDetails;
+    final photoLink = this.photoLink;
+    final role = this.role;
+    final selfLink = this.selfLink;
+    final teamDrivePermissionDetails = this.teamDrivePermissionDetails;
+    final type = this.type;
+    final value = this.value;
+    final view = this.view;
+    final withLink = this.withLink;
+    return {
+      'additionalRoles': ?additionalRoles,
+      'authKey': ?authKey,
+      'deleted': ?deleted,
+      'domain': ?domain,
+      'emailAddress': ?emailAddress,
+      'etag': ?etag,
+      'expirationDate': ?expirationDate?.toUtc().toIso8601String(),
+      'id': ?id,
+      'inheritedPermissionsDisabled': ?inheritedPermissionsDisabled,
+      'kind': ?kind,
+      'name': ?name,
+      'pendingOwner': ?pendingOwner,
+      'permissionDetails': ?permissionDetails,
+      'photoLink': ?photoLink,
+      'role': ?role,
+      'selfLink': ?selfLink,
+      'teamDrivePermissionDetails': ?teamDrivePermissionDetails,
+      'type': ?type,
+      'value': ?value,
+      'view': ?view,
+      'withLink': ?withLink,
+    };
+  }
 }
 
 /// An ID for a user or group as seen in Permission items.
@@ -9476,10 +9934,11 @@ class PermissionId {
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final kind = this.kind;
+    return {'id': ?id, 'kind': ?kind};
+  }
 }
 
 /// A list of permissions associated with a file.
@@ -9514,26 +9973,32 @@ class PermissionList {
   PermissionList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Permission.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Permission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A key-value pair attached to a file that is either public or private to an
@@ -9594,14 +10059,22 @@ class Property {
         visibility: json_['visibility'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (key != null) 'key': key!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (value != null) 'value': value!,
-    if (visibility != null) 'visibility': visibility!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final key = this.key;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    final value = this.value;
+    final visibility = this.visibility;
+    return {
+      'etag': ?etag,
+      'key': ?key,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+      'value': ?value,
+      'visibility': ?visibility,
+    };
+  }
 }
 
 /// A collection of properties, key-value pairs that are either public or
@@ -9624,24 +10097,29 @@ class PropertyList {
   PropertyList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Property.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Property.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A revision of a file.
@@ -9780,26 +10258,25 @@ class Revision {
     : this(
         downloadUrl: json_['downloadUrl'] as core.String?,
         etag: json_['etag'] as core.String?,
-        exportLinks: (json_['exportLinks']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        exportLinks:
+            (json_['exportLinks'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         fileSize: json_['fileSize'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        lastModifyingUser:
-            json_.containsKey('lastModifyingUser')
-                ? User.fromJson(
-                  json_['lastModifyingUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lastModifyingUser: json_.containsKey('lastModifyingUser')
+            ? User.fromJson(
+                json_['lastModifyingUser']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastModifyingUserName: json_['lastModifyingUserName'] as core.String?,
         md5Checksum: json_['md5Checksum'] as core.String?,
         mimeType: json_['mimeType'] as core.String?,
-        modifiedDate:
-            json_.containsKey('modifiedDate')
-                ? core.DateTime.parse(json_['modifiedDate'] as core.String)
-                : null,
+        modifiedDate: json_.containsKey('modifiedDate')
+            ? core.DateTime.parse(json_['modifiedDate'] as core.String)
+            : null,
         originalFilename: json_['originalFilename'] as core.String?,
         pinned: json_['pinned'] as core.bool?,
         publishAuto: json_['publishAuto'] as core.bool?,
@@ -9809,29 +10286,46 @@ class Revision {
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-    if (etag != null) 'etag': etag!,
-    if (exportLinks != null) 'exportLinks': exportLinks!,
-    if (fileSize != null) 'fileSize': fileSize!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (lastModifyingUser != null) 'lastModifyingUser': lastModifyingUser!,
-    if (lastModifyingUserName != null)
-      'lastModifyingUserName': lastModifyingUserName!,
-    if (md5Checksum != null) 'md5Checksum': md5Checksum!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (modifiedDate != null)
-      'modifiedDate': modifiedDate!.toUtc().toIso8601String(),
-    if (originalFilename != null) 'originalFilename': originalFilename!,
-    if (pinned != null) 'pinned': pinned!,
-    if (publishAuto != null) 'publishAuto': publishAuto!,
-    if (published != null) 'published': published!,
-    if (publishedLink != null) 'publishedLink': publishedLink!,
-    if (publishedOutsideDomain != null)
-      'publishedOutsideDomain': publishedOutsideDomain!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final downloadUrl = this.downloadUrl;
+    final etag = this.etag;
+    final exportLinks = this.exportLinks;
+    final fileSize = this.fileSize;
+    final id = this.id;
+    final kind = this.kind;
+    final lastModifyingUser = this.lastModifyingUser;
+    final lastModifyingUserName = this.lastModifyingUserName;
+    final md5Checksum = this.md5Checksum;
+    final mimeType = this.mimeType;
+    final modifiedDate = this.modifiedDate;
+    final originalFilename = this.originalFilename;
+    final pinned = this.pinned;
+    final publishAuto = this.publishAuto;
+    final published = this.published;
+    final publishedLink = this.publishedLink;
+    final publishedOutsideDomain = this.publishedOutsideDomain;
+    final selfLink = this.selfLink;
+    return {
+      'downloadUrl': ?downloadUrl,
+      'etag': ?etag,
+      'exportLinks': ?exportLinks,
+      'fileSize': ?fileSize,
+      'id': ?id,
+      'kind': ?kind,
+      'lastModifyingUser': ?lastModifyingUser,
+      'lastModifyingUserName': ?lastModifyingUserName,
+      'md5Checksum': ?md5Checksum,
+      'mimeType': ?mimeType,
+      'modifiedDate': ?modifiedDate?.toUtc().toIso8601String(),
+      'originalFilename': ?originalFilename,
+      'pinned': ?pinned,
+      'publishAuto': ?publishAuto,
+      'published': ?published,
+      'publishedLink': ?publishedLink,
+      'publishedOutsideDomain': ?publishedOutsideDomain,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 /// A list of revisions of a file.
@@ -9869,26 +10363,32 @@ class RevisionList {
   RevisionList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Revision.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Revision.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+    };
+  }
 }
 
 class StartPageToken {
@@ -9908,10 +10408,11 @@ class StartPageToken {
         startPageToken: json_['startPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (startPageToken != null) 'startPageToken': startPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final startPageToken = this.startPageToken;
+    return {'kind': ?kind, 'startPageToken': ?startPageToken};
+  }
 }
 
 /// An image file and cropping parameters from which a background image for this
@@ -9963,12 +10464,18 @@ class TeamDriveBackgroundImageFile {
         yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (width != null) 'width': width!,
-    if (xCoordinate != null) 'xCoordinate': xCoordinate!,
-    if (yCoordinate != null) 'yCoordinate': yCoordinate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final width = this.width;
+    final xCoordinate = this.xCoordinate;
+    final yCoordinate = this.yCoordinate;
+    return {
+      'id': ?id,
+      'width': ?width,
+      'xCoordinate': ?xCoordinate,
+      'yCoordinate': ?yCoordinate,
+    };
+  }
 }
 
 /// Capabilities the current user has on this Team Drive.
@@ -10110,39 +10617,60 @@ class TeamDriveCapabilities {
         canTrashChildren: json_['canTrashChildren'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canAddChildren != null) 'canAddChildren': canAddChildren!,
-    if (canChangeCopyRequiresWriterPermissionRestriction != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final canAddChildren = this.canAddChildren;
+    final canChangeCopyRequiresWriterPermissionRestriction =
+        this.canChangeCopyRequiresWriterPermissionRestriction;
+    final canChangeDomainUsersOnlyRestriction =
+        this.canChangeDomainUsersOnlyRestriction;
+    final canChangeSharingFoldersRequiresOrganizerPermissionRestriction =
+        this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction;
+    final canChangeTeamDriveBackground = this.canChangeTeamDriveBackground;
+    final canChangeTeamMembersOnlyRestriction =
+        this.canChangeTeamMembersOnlyRestriction;
+    final canComment = this.canComment;
+    final canCopy = this.canCopy;
+    final canDeleteChildren = this.canDeleteChildren;
+    final canDeleteTeamDrive = this.canDeleteTeamDrive;
+    final canDownload = this.canDownload;
+    final canEdit = this.canEdit;
+    final canListChildren = this.canListChildren;
+    final canManageMembers = this.canManageMembers;
+    final canReadRevisions = this.canReadRevisions;
+    final canRemoveChildren = this.canRemoveChildren;
+    final canRename = this.canRename;
+    final canRenameTeamDrive = this.canRenameTeamDrive;
+    final canResetTeamDriveRestrictions = this.canResetTeamDriveRestrictions;
+    final canShare = this.canShare;
+    final canTrashChildren = this.canTrashChildren;
+    return {
+      'canAddChildren': ?canAddChildren,
       'canChangeCopyRequiresWriterPermissionRestriction':
-          canChangeCopyRequiresWriterPermissionRestriction!,
-    if (canChangeDomainUsersOnlyRestriction != null)
+          ?canChangeCopyRequiresWriterPermissionRestriction,
       'canChangeDomainUsersOnlyRestriction':
-          canChangeDomainUsersOnlyRestriction!,
-    if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction != null)
+          ?canChangeDomainUsersOnlyRestriction,
       'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
-    if (canChangeTeamDriveBackground != null)
-      'canChangeTeamDriveBackground': canChangeTeamDriveBackground!,
-    if (canChangeTeamMembersOnlyRestriction != null)
+          ?canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
+      'canChangeTeamDriveBackground': ?canChangeTeamDriveBackground,
       'canChangeTeamMembersOnlyRestriction':
-          canChangeTeamMembersOnlyRestriction!,
-    if (canComment != null) 'canComment': canComment!,
-    if (canCopy != null) 'canCopy': canCopy!,
-    if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
-    if (canDeleteTeamDrive != null) 'canDeleteTeamDrive': canDeleteTeamDrive!,
-    if (canDownload != null) 'canDownload': canDownload!,
-    if (canEdit != null) 'canEdit': canEdit!,
-    if (canListChildren != null) 'canListChildren': canListChildren!,
-    if (canManageMembers != null) 'canManageMembers': canManageMembers!,
-    if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
-    if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
-    if (canRename != null) 'canRename': canRename!,
-    if (canRenameTeamDrive != null) 'canRenameTeamDrive': canRenameTeamDrive!,
-    if (canResetTeamDriveRestrictions != null)
-      'canResetTeamDriveRestrictions': canResetTeamDriveRestrictions!,
-    if (canShare != null) 'canShare': canShare!,
-    if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
-  };
+          ?canChangeTeamMembersOnlyRestriction,
+      'canComment': ?canComment,
+      'canCopy': ?canCopy,
+      'canDeleteChildren': ?canDeleteChildren,
+      'canDeleteTeamDrive': ?canDeleteTeamDrive,
+      'canDownload': ?canDownload,
+      'canEdit': ?canEdit,
+      'canListChildren': ?canListChildren,
+      'canManageMembers': ?canManageMembers,
+      'canReadRevisions': ?canReadRevisions,
+      'canRemoveChildren': ?canRemoveChildren,
+      'canRename': ?canRename,
+      'canRenameTeamDrive': ?canRenameTeamDrive,
+      'canResetTeamDriveRestrictions': ?canResetTeamDriveRestrictions,
+      'canShare': ?canShare,
+      'canTrashChildren': ?canTrashChildren,
+    };
+  }
 }
 
 /// A set of restrictions that apply to this Team Drive or items inside this
@@ -10196,17 +10724,22 @@ class TeamDriveRestrictions {
         teamMembersOnly: json_['teamMembersOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminManagedRestrictions != null)
-      'adminManagedRestrictions': adminManagedRestrictions!,
-    if (copyRequiresWriterPermission != null)
-      'copyRequiresWriterPermission': copyRequiresWriterPermission!,
-    if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
-    if (sharingFoldersRequiresOrganizerPermission != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminManagedRestrictions = this.adminManagedRestrictions;
+    final copyRequiresWriterPermission = this.copyRequiresWriterPermission;
+    final domainUsersOnly = this.domainUsersOnly;
+    final sharingFoldersRequiresOrganizerPermission =
+        this.sharingFoldersRequiresOrganizerPermission;
+    final teamMembersOnly = this.teamMembersOnly;
+    return {
+      'adminManagedRestrictions': ?adminManagedRestrictions,
+      'copyRequiresWriterPermission': ?copyRequiresWriterPermission,
+      'domainUsersOnly': ?domainUsersOnly,
       'sharingFoldersRequiresOrganizerPermission':
-          sharingFoldersRequiresOrganizerPermission!,
-    if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly!,
-  };
+          ?sharingFoldersRequiresOrganizerPermission,
+      'teamMembersOnly': ?teamMembersOnly,
+    };
+  }
 }
 
 /// Deprecated: Use the `drive` collection instead.
@@ -10280,54 +10813,60 @@ class TeamDrive {
 
   TeamDrive.fromJson(core.Map json_)
     : this(
-        backgroundImageFile:
-            json_.containsKey('backgroundImageFile')
-                ? TeamDriveBackgroundImageFile.fromJson(
-                  json_['backgroundImageFile']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backgroundImageFile: json_.containsKey('backgroundImageFile')
+            ? TeamDriveBackgroundImageFile.fromJson(
+                json_['backgroundImageFile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         backgroundImageLink: json_['backgroundImageLink'] as core.String?,
-        capabilities:
-            json_.containsKey('capabilities')
-                ? TeamDriveCapabilities.fromJson(
-                  json_['capabilities'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        capabilities: json_.containsKey('capabilities')
+            ? TeamDriveCapabilities.fromJson(
+                json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         colorRgb: json_['colorRgb'] as core.String?,
-        createdDate:
-            json_.containsKey('createdDate')
-                ? core.DateTime.parse(json_['createdDate'] as core.String)
-                : null,
+        createdDate: json_.containsKey('createdDate')
+            ? core.DateTime.parse(json_['createdDate'] as core.String)
+            : null,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         orgUnitId: json_['orgUnitId'] as core.String?,
-        restrictions:
-            json_.containsKey('restrictions')
-                ? TeamDriveRestrictions.fromJson(
-                  json_['restrictions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        restrictions: json_.containsKey('restrictions')
+            ? TeamDriveRestrictions.fromJson(
+                json_['restrictions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         themeId: json_['themeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundImageFile != null)
-      'backgroundImageFile': backgroundImageFile!,
-    if (backgroundImageLink != null)
-      'backgroundImageLink': backgroundImageLink!,
-    if (capabilities != null) 'capabilities': capabilities!,
-    if (colorRgb != null) 'colorRgb': colorRgb!,
-    if (createdDate != null)
-      'createdDate': createdDate!.toUtc().toIso8601String(),
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-    if (restrictions != null) 'restrictions': restrictions!,
-    if (themeId != null) 'themeId': themeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundImageFile = this.backgroundImageFile;
+    final backgroundImageLink = this.backgroundImageLink;
+    final capabilities = this.capabilities;
+    final colorRgb = this.colorRgb;
+    final createdDate = this.createdDate;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final restrictions = this.restrictions;
+    final themeId = this.themeId;
+    return {
+      'backgroundImageFile': ?backgroundImageFile,
+      'backgroundImageLink': ?backgroundImageLink,
+      'capabilities': ?capabilities,
+      'colorRgb': ?colorRgb,
+      'createdDate': ?createdDate?.toUtc().toIso8601String(),
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'restrictions': ?restrictions,
+      'themeId': ?themeId,
+    };
+  }
 }
 
 /// A list of Team Drives.
@@ -10345,23 +10884,23 @@ class TeamDriveList {
 
   TeamDriveList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => TeamDrive.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => TeamDrive.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The user's profile picture.
@@ -10378,9 +10917,10 @@ class UserPicture {
   UserPicture.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// Information about a Drive user.
@@ -10437,21 +10977,27 @@ class User {
         isAuthenticatedUser: json_['isAuthenticatedUser'] as core.bool?,
         kind: json_['kind'] as core.String?,
         permissionId: json_['permissionId'] as core.String?,
-        picture:
-            json_.containsKey('picture')
-                ? UserPicture.fromJson(
-                  json_['picture'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        picture: json_.containsKey('picture')
+            ? UserPicture.fromJson(
+                json_['picture'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (emailAddress != null) 'emailAddress': emailAddress!,
-    if (isAuthenticatedUser != null)
-      'isAuthenticatedUser': isAuthenticatedUser!,
-    if (kind != null) 'kind': kind!,
-    if (permissionId != null) 'permissionId': permissionId!,
-    if (picture != null) 'picture': picture!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final emailAddress = this.emailAddress;
+    final isAuthenticatedUser = this.isAuthenticatedUser;
+    final kind = this.kind;
+    final permissionId = this.permissionId;
+    final picture = this.picture;
+    return {
+      'displayName': ?displayName,
+      'emailAddress': ?emailAddress,
+      'isAuthenticatedUser': ?isAuthenticatedUser,
+      'kind': ?kind,
+      'permissionId': ?permissionId,
+      'picture': ?picture,
+    };
+  }
 }

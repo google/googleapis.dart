@@ -113,7 +113,7 @@ class MediaResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -178,7 +178,7 @@ class ProjectsAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -234,7 +234,7 @@ class ProjectsAppsReleasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -285,7 +285,7 @@ class ProjectsAppsReleasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':distribute';
@@ -325,7 +325,7 @@ class ProjectsAppsReleasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -393,11 +393,11 @@ class ProjectsAppsReleasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/releases';
@@ -443,8 +443,8 @@ class ProjectsAppsReleasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -491,7 +491,7 @@ class ProjectsAppsReleasesFeedbackReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -530,7 +530,7 @@ class ProjectsAppsReleasesFeedbackReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -584,9 +584,9 @@ class ProjectsAppsReleasesFeedbackReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/feedbackReports';
@@ -644,7 +644,7 @@ class ProjectsAppsReleasesOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -687,7 +687,7 @@ class ProjectsAppsReleasesOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -728,7 +728,7 @@ class ProjectsAppsReleasesOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -786,12 +786,13 @@ class ProjectsAppsReleasesOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -842,7 +843,7 @@ class ProjectsAppsReleasesOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
@@ -894,7 +895,7 @@ class ProjectsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$group') + ':batchJoin';
@@ -940,7 +941,7 @@ class ProjectsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$group') + ':batchLeave';
@@ -991,8 +992,8 @@ class ProjectsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (groupId != null) 'groupId': [groupId],
-      if ($fields != null) 'fields': [$fields],
+      'groupId': ?groupId == null ? null : [groupId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/groups';
@@ -1031,7 +1032,7 @@ class ProjectsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1069,7 +1070,7 @@ class ProjectsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1119,9 +1120,9 @@ class ProjectsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/groups';
@@ -1166,8 +1167,8 @@ class ProjectsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1220,7 +1221,7 @@ class ProjectsTestersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$project') + '/testers:batchAdd';
@@ -1266,7 +1267,7 @@ class ProjectsTestersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1325,10 +1326,10 @@ class ProjectsTestersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/testers';
@@ -1376,8 +1377,8 @@ class ProjectsTestersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1516,43 +1517,52 @@ class GdataCompositeMedia {
   GdataCompositeMedia.fromJson(core.Map json_)
     : this(
         blobRef: json_['blobRef'] as core.String?,
-        blobstore2Info:
-            json_.containsKey('blobstore2Info')
-                ? GdataBlobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blobstore2Info: json_.containsKey('blobstore2Info')
+            ? GdataBlobstore2Info.fromJson(
+                json_['blobstore2Info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
         crc32cHash: json_['crc32cHash'] as core.int?,
         inline: json_['inline'] as core.String?,
         length: json_['length'] as core.String?,
         md5Hash: json_['md5Hash'] as core.String?,
-        objectId:
-            json_.containsKey('objectId')
-                ? GdataObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectId: json_.containsKey('objectId')
+            ? GdataObjectId.fromJson(
+                json_['objectId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         path: json_['path'] as core.String?,
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobRef != null) 'blobRef': blobRef!,
-    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-    if (cosmoBinaryReference != null)
-      'cosmoBinaryReference': cosmoBinaryReference!,
-    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-    if (inline != null) 'inline': inline!,
-    if (length != null) 'length': length!,
-    if (md5Hash != null) 'md5Hash': md5Hash!,
-    if (objectId != null) 'objectId': objectId!,
-    if (path != null) 'path': path!,
-    if (referenceType != null) 'referenceType': referenceType!,
-    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blobRef = this.blobRef;
+    final blobstore2Info = this.blobstore2Info;
+    final cosmoBinaryReference = this.cosmoBinaryReference;
+    final crc32cHash = this.crc32cHash;
+    final inline = this.inline;
+    final length = this.length;
+    final md5Hash = this.md5Hash;
+    final objectId = this.objectId;
+    final path = this.path;
+    final referenceType = this.referenceType;
+    final sha1Hash = this.sha1Hash;
+    return {
+      'blobRef': ?blobRef,
+      'blobstore2Info': ?blobstore2Info,
+      'cosmoBinaryReference': ?cosmoBinaryReference,
+      'crc32cHash': ?crc32cHash,
+      'inline': ?inline,
+      'length': ?length,
+      'md5Hash': ?md5Hash,
+      'objectId': ?objectId,
+      'path': ?path,
+      'referenceType': ?referenceType,
+      'sha1Hash': ?sha1Hash,
+    };
+  }
 }
 
 /// Detailed Content-Type information from Scotty.
@@ -1602,32 +1612,36 @@ class GdataDiffChecksumsResponse {
 
   GdataDiffChecksumsResponse.fromJson(core.Map json_)
     : this(
-        checksumsLocation:
-            json_.containsKey('checksumsLocation')
-                ? GdataCompositeMedia.fromJson(
-                  json_['checksumsLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checksumsLocation: json_.containsKey('checksumsLocation')
+            ? GdataCompositeMedia.fromJson(
+                json_['checksumsLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
-        objectLocation:
-            json_.containsKey('objectLocation')
-                ? GdataCompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectLocation: json_.containsKey('objectLocation')
+            ? GdataCompositeMedia.fromJson(
+                json_['objectLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         objectSizeBytes: json_['objectSizeBytes'] as core.String?,
         objectVersion: json_['objectVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
-    if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
-    if (objectLocation != null) 'objectLocation': objectLocation!,
-    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checksumsLocation = this.checksumsLocation;
+    final chunkSizeBytes = this.chunkSizeBytes;
+    final objectLocation = this.objectLocation;
+    final objectSizeBytes = this.objectSizeBytes;
+    final objectVersion = this.objectVersion;
+    return {
+      'checksumsLocation': ?checksumsLocation,
+      'chunkSizeBytes': ?chunkSizeBytes,
+      'objectLocation': ?objectLocation,
+      'objectSizeBytes': ?objectSizeBytes,
+      'objectVersion': ?objectVersion,
+    };
+  }
 }
 
 /// Backend response for a Diff download response.
@@ -1642,18 +1656,17 @@ class GdataDiffDownloadResponse {
 
   GdataDiffDownloadResponse.fromJson(core.Map json_)
     : this(
-        objectLocation:
-            json_.containsKey('objectLocation')
-                ? GdataCompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectLocation: json_.containsKey('objectLocation')
+            ? GdataCompositeMedia.fromJson(
+                json_['objectLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (objectLocation != null) 'objectLocation': objectLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectLocation = this.objectLocation;
+    return {'objectLocation': ?objectLocation};
+  }
 }
 
 /// A Diff upload request.
@@ -1688,26 +1701,29 @@ class GdataDiffUploadRequest {
 
   GdataDiffUploadRequest.fromJson(core.Map json_)
     : this(
-        checksumsInfo:
-            json_.containsKey('checksumsInfo')
-                ? GdataCompositeMedia.fromJson(
-                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        objectInfo:
-            json_.containsKey('objectInfo')
-                ? GdataCompositeMedia.fromJson(
-                  json_['objectInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checksumsInfo: json_.containsKey('checksumsInfo')
+            ? GdataCompositeMedia.fromJson(
+                json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        objectInfo: json_.containsKey('objectInfo')
+            ? GdataCompositeMedia.fromJson(
+                json_['objectInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         objectVersion: json_['objectVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
-    if (objectInfo != null) 'objectInfo': objectInfo!,
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checksumsInfo = this.checksumsInfo;
+    final objectInfo = this.objectInfo;
+    final objectVersion = this.objectVersion;
+    return {
+      'checksumsInfo': ?checksumsInfo,
+      'objectInfo': ?objectInfo,
+      'objectVersion': ?objectVersion,
+    };
+  }
 }
 
 /// Backend response for a Diff upload request.
@@ -1732,19 +1748,18 @@ class GdataDiffUploadResponse {
   GdataDiffUploadResponse.fromJson(core.Map json_)
     : this(
         objectVersion: json_['objectVersion'] as core.String?,
-        originalObject:
-            json_.containsKey('originalObject')
-                ? GdataCompositeMedia.fromJson(
-                  json_['originalObject']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        originalObject: json_.containsKey('originalObject')
+            ? GdataCompositeMedia.fromJson(
+                json_['originalObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-    if (originalObject != null) 'originalObject': originalObject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectVersion = this.objectVersion;
+    final originalObject = this.originalObject;
+    return {'objectVersion': ?objectVersion, 'originalObject': ?originalObject};
+  }
 }
 
 /// Backend response for a Diff get version response.
@@ -2037,73 +2052,62 @@ class GdataMedia {
         algorithm: json_['algorithm'] as core.String?,
         bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
         blobRef: json_['blobRef'] as core.String?,
-        blobstore2Info:
-            json_.containsKey('blobstore2Info')
-                ? GdataBlobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        compositeMedia:
-            (json_['compositeMedia'] as core.List?)
-                ?.map(
-                  (value) => GdataCompositeMedia.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        blobstore2Info: json_.containsKey('blobstore2Info')
+            ? GdataBlobstore2Info.fromJson(
+                json_['blobstore2Info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        compositeMedia: (json_['compositeMedia'] as core.List?)
+            ?.map(
+              (value) => GdataCompositeMedia.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         contentType: json_['contentType'] as core.String?,
-        contentTypeInfo:
-            json_.containsKey('contentTypeInfo')
-                ? GdataContentTypeInfo.fromJson(
-                  json_['contentTypeInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contentTypeInfo: json_.containsKey('contentTypeInfo')
+            ? GdataContentTypeInfo.fromJson(
+                json_['contentTypeInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
         crc32cHash: json_['crc32cHash'] as core.int?,
-        diffChecksumsResponse:
-            json_.containsKey('diffChecksumsResponse')
-                ? GdataDiffChecksumsResponse.fromJson(
-                  json_['diffChecksumsResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffDownloadResponse:
-            json_.containsKey('diffDownloadResponse')
-                ? GdataDiffDownloadResponse.fromJson(
-                  json_['diffDownloadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffUploadRequest:
-            json_.containsKey('diffUploadRequest')
-                ? GdataDiffUploadRequest.fromJson(
-                  json_['diffUploadRequest']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffUploadResponse:
-            json_.containsKey('diffUploadResponse')
-                ? GdataDiffUploadResponse.fromJson(
-                  json_['diffUploadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffVersionResponse:
-            json_.containsKey('diffVersionResponse')
-                ? GdataDiffVersionResponse.fromJson(
-                  json_['diffVersionResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        downloadParameters:
-            json_.containsKey('downloadParameters')
-                ? GdataDownloadParameters.fromJson(
-                  json_['downloadParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
+            ? GdataDiffChecksumsResponse.fromJson(
+                json_['diffChecksumsResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffDownloadResponse: json_.containsKey('diffDownloadResponse')
+            ? GdataDiffDownloadResponse.fromJson(
+                json_['diffDownloadResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffUploadRequest: json_.containsKey('diffUploadRequest')
+            ? GdataDiffUploadRequest.fromJson(
+                json_['diffUploadRequest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffUploadResponse: json_.containsKey('diffUploadResponse')
+            ? GdataDiffUploadResponse.fromJson(
+                json_['diffUploadResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffVersionResponse: json_.containsKey('diffVersionResponse')
+            ? GdataDiffVersionResponse.fromJson(
+                json_['diffVersionResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        downloadParameters: json_.containsKey('downloadParameters')
+            ? GdataDownloadParameters.fromJson(
+                json_['downloadParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         filename: json_['filename'] as core.String?,
         hash: json_['hash'] as core.String?,
         hashVerified: json_['hashVerified'] as core.bool?,
@@ -2112,12 +2116,11 @@ class GdataMedia {
         length: json_['length'] as core.String?,
         md5Hash: json_['md5Hash'] as core.String?,
         mediaId: json_['mediaId'] as core.String?,
-        objectId:
-            json_.containsKey('objectId')
-                ? GdataObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectId: json_.containsKey('objectId')
+            ? GdataObjectId.fromJson(
+                json_['objectId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         path: json_['path'] as core.String?,
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
@@ -2126,42 +2129,70 @@ class GdataMedia {
         token: json_['token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
-    if (blobRef != null) 'blobRef': blobRef!,
-    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-    if (compositeMedia != null) 'compositeMedia': compositeMedia!,
-    if (contentType != null) 'contentType': contentType!,
-    if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
-    if (cosmoBinaryReference != null)
-      'cosmoBinaryReference': cosmoBinaryReference!,
-    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-    if (diffChecksumsResponse != null)
-      'diffChecksumsResponse': diffChecksumsResponse!,
-    if (diffDownloadResponse != null)
-      'diffDownloadResponse': diffDownloadResponse!,
-    if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
-    if (diffUploadResponse != null) 'diffUploadResponse': diffUploadResponse!,
-    if (diffVersionResponse != null)
-      'diffVersionResponse': diffVersionResponse!,
-    if (downloadParameters != null) 'downloadParameters': downloadParameters!,
-    if (filename != null) 'filename': filename!,
-    if (hash != null) 'hash': hash!,
-    if (hashVerified != null) 'hashVerified': hashVerified!,
-    if (inline != null) 'inline': inline!,
-    if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
-    if (length != null) 'length': length!,
-    if (md5Hash != null) 'md5Hash': md5Hash!,
-    if (mediaId != null) 'mediaId': mediaId!,
-    if (objectId != null) 'objectId': objectId!,
-    if (path != null) 'path': path!,
-    if (referenceType != null) 'referenceType': referenceType!,
-    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-    if (sha256Hash != null) 'sha256Hash': sha256Hash!,
-    if (timestamp != null) 'timestamp': timestamp!,
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final bigstoreObjectRef = this.bigstoreObjectRef;
+    final blobRef = this.blobRef;
+    final blobstore2Info = this.blobstore2Info;
+    final compositeMedia = this.compositeMedia;
+    final contentType = this.contentType;
+    final contentTypeInfo = this.contentTypeInfo;
+    final cosmoBinaryReference = this.cosmoBinaryReference;
+    final crc32cHash = this.crc32cHash;
+    final diffChecksumsResponse = this.diffChecksumsResponse;
+    final diffDownloadResponse = this.diffDownloadResponse;
+    final diffUploadRequest = this.diffUploadRequest;
+    final diffUploadResponse = this.diffUploadResponse;
+    final diffVersionResponse = this.diffVersionResponse;
+    final downloadParameters = this.downloadParameters;
+    final filename = this.filename;
+    final hash = this.hash;
+    final hashVerified = this.hashVerified;
+    final inline = this.inline;
+    final isPotentialRetry = this.isPotentialRetry;
+    final length = this.length;
+    final md5Hash = this.md5Hash;
+    final mediaId = this.mediaId;
+    final objectId = this.objectId;
+    final path = this.path;
+    final referenceType = this.referenceType;
+    final sha1Hash = this.sha1Hash;
+    final sha256Hash = this.sha256Hash;
+    final timestamp = this.timestamp;
+    final token = this.token;
+    return {
+      'algorithm': ?algorithm,
+      'bigstoreObjectRef': ?bigstoreObjectRef,
+      'blobRef': ?blobRef,
+      'blobstore2Info': ?blobstore2Info,
+      'compositeMedia': ?compositeMedia,
+      'contentType': ?contentType,
+      'contentTypeInfo': ?contentTypeInfo,
+      'cosmoBinaryReference': ?cosmoBinaryReference,
+      'crc32cHash': ?crc32cHash,
+      'diffChecksumsResponse': ?diffChecksumsResponse,
+      'diffDownloadResponse': ?diffDownloadResponse,
+      'diffUploadRequest': ?diffUploadRequest,
+      'diffUploadResponse': ?diffUploadResponse,
+      'diffVersionResponse': ?diffVersionResponse,
+      'downloadParameters': ?downloadParameters,
+      'filename': ?filename,
+      'hash': ?hash,
+      'hashVerified': ?hashVerified,
+      'inline': ?inline,
+      'isPotentialRetry': ?isPotentialRetry,
+      'length': ?length,
+      'md5Hash': ?md5Hash,
+      'mediaId': ?mediaId,
+      'objectId': ?objectId,
+      'path': ?path,
+      'referenceType': ?referenceType,
+      'sha1Hash': ?sha1Hash,
+      'sha256Hash': ?sha256Hash,
+      'timestamp': ?timestamp,
+      'token': ?token,
+    };
+  }
 }
 
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
@@ -2207,20 +2238,23 @@ class GoogleFirebaseAppdistroV1AabInfo {
     : this(
         integrationState: json_['integrationState'] as core.String?,
         name: json_['name'] as core.String?,
-        testCertificate:
-            json_.containsKey('testCertificate')
-                ? GoogleFirebaseAppdistroV1TestCertificate.fromJson(
-                  json_['testCertificate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        testCertificate: json_.containsKey('testCertificate')
+            ? GoogleFirebaseAppdistroV1TestCertificate.fromJson(
+                json_['testCertificate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (integrationState != null) 'integrationState': integrationState!,
-    if (name != null) 'name': name!,
-    if (testCertificate != null) 'testCertificate': testCertificate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final integrationState = this.integrationState;
+    final name = this.name;
+    final testCertificate = this.testCertificate;
+    return {
+      'integrationState': ?integrationState,
+      'name': ?name,
+      'testCertificate': ?testCertificate,
+    };
+  }
 }
 
 /// The Request message for batch adding testers
@@ -2236,15 +2270,15 @@ class GoogleFirebaseAppdistroV1BatchAddTestersRequest {
 
   GoogleFirebaseAppdistroV1BatchAddTestersRequest.fromJson(core.Map json_)
     : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emails = this.emails;
+    return {'emails': ?emails};
+  }
 }
 
 /// The Response message for `BatchAddTesters`.
@@ -2256,19 +2290,19 @@ class GoogleFirebaseAppdistroV1BatchAddTestersResponse {
 
   GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(core.Map json_)
     : this(
-        testers:
-            (json_['testers'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        testers: (json_['testers'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (testers != null) 'testers': testers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final testers = this.testers;
+    return {'testers': ?testers};
+  }
 }
 
 /// The request message for `BatchDeleteReleases`.
@@ -2285,15 +2319,15 @@ class GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
 
   GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(core.Map json_)
     : this(
-        names:
-            (json_['names'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        names: (json_['names'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (names != null) 'names': names!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final names = this.names;
+    return {'names': ?names};
+  }
 }
 
 /// The request message for `BatchJoinGroup`
@@ -2317,17 +2351,16 @@ class GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(core.Map json_)
     : this(
         createMissingTesters: json_['createMissingTesters'] as core.bool?,
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createMissingTesters != null)
-      'createMissingTesters': createMissingTesters!,
-    if (emails != null) 'emails': emails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createMissingTesters = this.createMissingTesters;
+    final emails = this.emails;
+    return {'createMissingTesters': ?createMissingTesters, 'emails': ?emails};
+  }
 }
 
 /// Request message for `BatchLeaveGroup`
@@ -2343,15 +2376,15 @@ class GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
 
   GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.fromJson(core.Map json_)
     : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emails = this.emails;
+    return {'emails': ?emails};
+  }
 }
 
 /// The request message for `BatchRemoveTesters`.
@@ -2367,15 +2400,15 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(core.Map json_)
     : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emails = this.emails;
+    return {'emails': ?emails};
+  }
 }
 
 /// The response message for `BatchRemoveTesters`
@@ -2387,15 +2420,15 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(core.Map json_)
     : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emails = this.emails;
+    return {'emails': ?emails};
+  }
 }
 
 /// The request message for `DistributeRelease`.
@@ -2423,20 +2456,19 @@ class GoogleFirebaseAppdistroV1DistributeReleaseRequest {
 
   GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(core.Map json_)
     : this(
-        groupAliases:
-            (json_['groupAliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        testerEmails:
-            (json_['testerEmails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        groupAliases: (json_['groupAliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        testerEmails: (json_['testerEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupAliases != null) 'groupAliases': groupAliases!,
-    if (testerEmails != null) 'testerEmails': testerEmails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupAliases = this.groupAliases;
+    final testerEmails = this.testerEmails;
+    return {'groupAliases': ?groupAliases, 'testerEmails': ?testerEmails};
+  }
 }
 
 /// The response message for `DistributeRelease`.
@@ -2495,14 +2527,22 @@ class GoogleFirebaseAppdistroV1FeedbackReport {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (firebaseConsoleUri != null) 'firebaseConsoleUri': firebaseConsoleUri!,
-    if (name != null) 'name': name!,
-    if (screenshotUri != null) 'screenshotUri': screenshotUri!,
-    if (tester != null) 'tester': tester!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final firebaseConsoleUri = this.firebaseConsoleUri;
+    final name = this.name;
+    final screenshotUri = this.screenshotUri;
+    final tester = this.tester;
+    final text = this.text;
+    return {
+      'createTime': ?createTime,
+      'firebaseConsoleUri': ?firebaseConsoleUri,
+      'name': ?name,
+      'screenshotUri': ?screenshotUri,
+      'tester': ?tester,
+      'text': ?text,
+    };
+  }
 }
 
 /// A group which can contain testers.
@@ -2551,13 +2591,20 @@ class GoogleFirebaseAppdistroV1Group {
         testerCount: json_['testerCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (inviteLinkCount != null) 'inviteLinkCount': inviteLinkCount!,
-    if (name != null) 'name': name!,
-    if (releaseCount != null) 'releaseCount': releaseCount!,
-    if (testerCount != null) 'testerCount': testerCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final inviteLinkCount = this.inviteLinkCount;
+    final name = this.name;
+    final releaseCount = this.releaseCount;
+    final testerCount = this.testerCount;
+    return {
+      'displayName': ?displayName,
+      'inviteLinkCount': ?inviteLinkCount,
+      'name': ?name,
+      'releaseCount': ?releaseCount,
+      'testerCount': ?testerCount,
+    };
+  }
 }
 
 /// The response message for `ListFeedbackReports`.
@@ -2578,21 +2625,24 @@ class GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
 
   GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(core.Map json_)
     : this(
-        feedbackReports:
-            (json_['feedbackReports'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        feedbackReports: (json_['feedbackReports'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (feedbackReports != null) 'feedbackReports': feedbackReports!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final feedbackReports = this.feedbackReports;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'feedbackReports': ?feedbackReports,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The response message for `ListGroups`.
@@ -2613,21 +2663,21 @@ class GoogleFirebaseAppdistroV1ListGroupsResponse {
 
   GoogleFirebaseAppdistroV1ListGroupsResponse.fromJson(core.Map json_)
     : this(
-        groups:
-            (json_['groups'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppdistroV1Group.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        groups: (json_['groups'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppdistroV1Group.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groups != null) 'groups': groups!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groups = this.groups;
+    final nextPageToken = this.nextPageToken;
+    return {'groups': ?groups, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for `ListReleases`.
@@ -2649,20 +2699,20 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
   GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        releases:
-            (json_['releases'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppdistroV1Release.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        releases: (json_['releases'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppdistroV1Release.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (releases != null) 'releases': releases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final releases = this.releases;
+    return {'nextPageToken': ?nextPageToken, 'releases': ?releases};
+  }
 }
 
 /// The response message for `ListTesters`.
@@ -2684,20 +2734,20 @@ class GoogleFirebaseAppdistroV1ListTestersResponse {
   GoogleFirebaseAppdistroV1ListTestersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        testers:
-            (json_['testers'] as core.List?)
-                ?.map(
-                  (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        testers: (json_['testers'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (testers != null) 'testers': testers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final testers = this.testers;
+    return {'nextPageToken': ?nextPageToken, 'testers': ?testers};
+  }
 }
 
 /// A release of a Firebase app.
@@ -2781,28 +2831,39 @@ class GoogleFirebaseAppdistroV1Release {
         expireTime: json_['expireTime'] as core.String?,
         firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
         name: json_['name'] as core.String?,
-        releaseNotes:
-            json_.containsKey('releaseNotes')
-                ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
-                  json_['releaseNotes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        releaseNotes: json_.containsKey('releaseNotes')
+            ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
+                json_['releaseNotes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         testingUri: json_['testingUri'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (binaryDownloadUri != null) 'binaryDownloadUri': binaryDownloadUri!,
-    if (buildVersion != null) 'buildVersion': buildVersion!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayVersion != null) 'displayVersion': displayVersion!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (firebaseConsoleUri != null) 'firebaseConsoleUri': firebaseConsoleUri!,
-    if (name != null) 'name': name!,
-    if (releaseNotes != null) 'releaseNotes': releaseNotes!,
-    if (testingUri != null) 'testingUri': testingUri!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final binaryDownloadUri = this.binaryDownloadUri;
+    final buildVersion = this.buildVersion;
+    final createTime = this.createTime;
+    final displayVersion = this.displayVersion;
+    final expireTime = this.expireTime;
+    final firebaseConsoleUri = this.firebaseConsoleUri;
+    final name = this.name;
+    final releaseNotes = this.releaseNotes;
+    final testingUri = this.testingUri;
+    final updateTime = this.updateTime;
+    return {
+      'binaryDownloadUri': ?binaryDownloadUri,
+      'buildVersion': ?buildVersion,
+      'createTime': ?createTime,
+      'displayVersion': ?displayVersion,
+      'expireTime': ?expireTime,
+      'firebaseConsoleUri': ?firebaseConsoleUri,
+      'name': ?name,
+      'releaseNotes': ?releaseNotes,
+      'testingUri': ?testingUri,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Notes that belong to a release.
@@ -2815,9 +2876,10 @@ class GoogleFirebaseAppdistroV1ReleaseNotes {
   GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// App bundle test certificate
@@ -2844,11 +2906,16 @@ class GoogleFirebaseAppdistroV1TestCertificate {
         hashSha256: json_['hashSha256'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hashMd5 != null) 'hashMd5': hashMd5!,
-    if (hashSha1 != null) 'hashSha1': hashSha1!,
-    if (hashSha256 != null) 'hashSha256': hashSha256!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hashMd5 = this.hashMd5;
+    final hashSha1 = this.hashSha1;
+    final hashSha256 = this.hashSha256;
+    return {
+      'hashMd5': ?hashMd5,
+      'hashSha1': ?hashSha1,
+      'hashSha256': ?hashSha256,
+    };
+  }
 }
 
 /// A person that can be invited to test apps in a Firebase project.
@@ -2884,20 +2951,25 @@ class GoogleFirebaseAppdistroV1Tester {
   GoogleFirebaseAppdistroV1Tester.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        groups:
-            (json_['groups'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        groups: (json_['groups'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         lastActivityTime: json_['lastActivityTime'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (groups != null) 'groups': groups!,
-    if (lastActivityTime != null) 'lastActivityTime': lastActivityTime!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final groups = this.groups;
+    final lastActivityTime = this.lastActivityTime;
+    final name = this.name;
+    return {
+      'displayName': ?displayName,
+      'groups': ?groups,
+      'lastActivityTime': ?lastActivityTime,
+      'name': ?name,
+    };
+  }
 }
 
 /// Request message for `UploadRelease`.
@@ -2909,17 +2981,17 @@ class GoogleFirebaseAppdistroV1UploadReleaseRequest {
 
   GoogleFirebaseAppdistroV1UploadReleaseRequest.fromJson(core.Map json_)
     : this(
-        blob:
-            json_.containsKey('blob')
-                ? GdataMedia.fromJson(
-                  json_['blob'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blob: json_.containsKey('blob')
+            ? GdataMedia.fromJson(
+                json_['blob'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blob != null) 'blob': blob!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blob = this.blob;
+    return {'blob': ?blob};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2950,25 +3022,28 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLongrunningOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3025,30 +3100,34 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The request message for Operations.WaitOperation.

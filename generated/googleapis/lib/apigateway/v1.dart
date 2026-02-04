@@ -104,7 +104,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -159,11 +159,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -219,8 +219,8 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiId != null) 'apiId': [apiId],
-      if ($fields != null) 'fields': [$fields],
+      'apiId': ?apiId == null ? null : [apiId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apis';
@@ -260,7 +260,7 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -299,7 +299,7 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -356,9 +356,10 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -408,11 +409,11 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apis';
@@ -462,8 +463,8 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -512,7 +513,7 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -563,7 +564,7 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -619,8 +620,8 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiConfigId != null) 'apiConfigId': [apiConfigId],
-      if ($fields != null) 'fields': [$fields],
+      'apiConfigId': ?apiConfigId == null ? null : [apiConfigId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/configs';
@@ -660,7 +661,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -707,8 +708,8 @@ class ProjectsLocationsApisConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -765,9 +766,10 @@ class ProjectsLocationsApisConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -818,11 +820,11 @@ class ProjectsLocationsApisConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/configs';
@@ -872,8 +874,8 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -922,7 +924,7 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -973,7 +975,7 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1028,8 +1030,8 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (gatewayId != null) 'gatewayId': [gatewayId],
-      if ($fields != null) 'fields': [$fields],
+      'gatewayId': ?gatewayId == null ? null : [gatewayId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gateways';
@@ -1069,7 +1071,7 @@ class ProjectsLocationsGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1108,7 +1110,7 @@ class ProjectsLocationsGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1165,9 +1167,10 @@ class ProjectsLocationsGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1217,11 +1220,11 @@ class ProjectsLocationsGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gateways';
@@ -1271,8 +1274,8 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1321,7 +1324,7 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1372,7 +1375,7 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1432,7 +1435,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1470,7 +1473,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1509,7 +1512,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1566,12 +1569,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1663,15 +1667,24 @@ class ApigatewayApi {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (managedService != null) 'managedService': managedService!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final managedService = this.managedService;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'managedService': ?managedService,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An API Configuration is a combination of settings for both the Managed
@@ -1788,54 +1801,62 @@ class ApigatewayApiConfig {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         gatewayServiceAccount: json_['gatewayServiceAccount'] as core.String?,
-        grpcServices:
-            (json_['grpcServices'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApiConfigGrpcServiceDefinition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        grpcServices: (json_['grpcServices'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApiConfigGrpcServiceDefinition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        managedServiceConfigs:
-            (json_['managedServiceConfigs'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApiConfigFile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        managedServiceConfigs: (json_['managedServiceConfigs'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApiConfigFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        openapiDocuments:
-            (json_['openapiDocuments'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApiConfigOpenApiDocument.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        openapiDocuments: (json_['openapiDocuments'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApiConfigOpenApiDocument.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceConfigId: json_['serviceConfigId'] as core.String?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (gatewayServiceAccount != null)
-      'gatewayServiceAccount': gatewayServiceAccount!,
-    if (grpcServices != null) 'grpcServices': grpcServices!,
-    if (labels != null) 'labels': labels!,
-    if (managedServiceConfigs != null)
-      'managedServiceConfigs': managedServiceConfigs!,
-    if (name != null) 'name': name!,
-    if (openapiDocuments != null) 'openapiDocuments': openapiDocuments!,
-    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final gatewayServiceAccount = this.gatewayServiceAccount;
+    final grpcServices = this.grpcServices;
+    final labels = this.labels;
+    final managedServiceConfigs = this.managedServiceConfigs;
+    final name = this.name;
+    final openapiDocuments = this.openapiDocuments;
+    final serviceConfigId = this.serviceConfigId;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'gatewayServiceAccount': ?gatewayServiceAccount,
+      'grpcServices': ?grpcServices,
+      'labels': ?labels,
+      'managedServiceConfigs': ?managedServiceConfigs,
+      'name': ?name,
+      'openapiDocuments': ?openapiDocuments,
+      'serviceConfigId': ?serviceConfigId,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A lightweight description of a file.
@@ -1864,10 +1885,11 @@ class ApigatewayApiConfigFile {
         path: json_['path'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contents != null) 'contents': contents!,
-    if (path != null) 'path': path!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contents = this.contents;
+    final path = this.path;
+    return {'contents': ?contents, 'path': ?path};
+  }
 }
 
 /// A gRPC service definition.
@@ -1896,27 +1918,26 @@ class ApigatewayApiConfigGrpcServiceDefinition {
 
   ApigatewayApiConfigGrpcServiceDefinition.fromJson(core.Map json_)
     : this(
-        fileDescriptorSet:
-            json_.containsKey('fileDescriptorSet')
-                ? ApigatewayApiConfigFile.fromJson(
-                  json_['fileDescriptorSet']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        source:
-            (json_['source'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApiConfigFile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fileDescriptorSet: json_.containsKey('fileDescriptorSet')
+            ? ApigatewayApiConfigFile.fromJson(
+                json_['fileDescriptorSet']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        source: (json_['source'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApiConfigFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileDescriptorSet != null) 'fileDescriptorSet': fileDescriptorSet!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileDescriptorSet = this.fileDescriptorSet;
+    final source = this.source;
+    return {'fileDescriptorSet': ?fileDescriptorSet, 'source': ?source};
+  }
 }
 
 /// An OpenAPI Specification Document describing an API.
@@ -1928,17 +1949,17 @@ class ApigatewayApiConfigOpenApiDocument {
 
   ApigatewayApiConfigOpenApiDocument.fromJson(core.Map json_)
     : this(
-        document:
-            json_.containsKey('document')
-                ? ApigatewayApiConfigFile.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        document: json_.containsKey('document')
+            ? ApigatewayApiConfigFile.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (document != null) 'document': document!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final document = this.document;
+    return {'document': ?document};
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1972,21 +1993,21 @@ class ApigatewayAuditConfig {
 
   ApigatewayAuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayAuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => ApigatewayAuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2081,24 +2102,23 @@ class ApigatewayBinding {
 
   ApigatewayBinding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? ApigatewayExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? ApigatewayExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2209,16 +2229,26 @@ class ApigatewayGateway {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiConfig != null) 'apiConfig': apiConfig!,
-    if (createTime != null) 'createTime': createTime!,
-    if (defaultHostname != null) 'defaultHostname': defaultHostname!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiConfig = this.apiConfig;
+    final createTime = this.createTime;
+    final defaultHostname = this.defaultHostname;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'apiConfig': ?apiConfig,
+      'createTime': ?createTime,
+      'defaultHostname': ?defaultHostname,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Response message for ApiGatewayService.ListApiConfigs
@@ -2240,27 +2270,29 @@ class ApigatewayListApiConfigsResponse {
 
   ApigatewayListApiConfigsResponse.fromJson(core.Map json_)
     : this(
-        apiConfigs:
-            (json_['apiConfigs'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApiConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiConfigs: (json_['apiConfigs'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApiConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachableLocations:
-            (json_['unreachableLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachableLocations: (json_['unreachableLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiConfigs != null) 'apiConfigs': apiConfigs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachableLocations != null)
-      'unreachableLocations': unreachableLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiConfigs = this.apiConfigs;
+    final nextPageToken = this.nextPageToken;
+    final unreachableLocations = this.unreachableLocations;
+    return {
+      'apiConfigs': ?apiConfigs,
+      'nextPageToken': ?nextPageToken,
+      'unreachableLocations': ?unreachableLocations,
+    };
+  }
 }
 
 /// Response message for ApiGatewayService.ListApis
@@ -2282,27 +2314,29 @@ class ApigatewayListApisResponse {
 
   ApigatewayListApisResponse.fromJson(core.Map json_)
     : this(
-        apis:
-            (json_['apis'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayApi.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apis: (json_['apis'] as core.List?)
+            ?.map(
+              (value) => ApigatewayApi.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachableLocations:
-            (json_['unreachableLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachableLocations: (json_['unreachableLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apis != null) 'apis': apis!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachableLocations != null)
-      'unreachableLocations': unreachableLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apis = this.apis;
+    final nextPageToken = this.nextPageToken;
+    final unreachableLocations = this.unreachableLocations;
+    return {
+      'apis': ?apis,
+      'nextPageToken': ?nextPageToken,
+      'unreachableLocations': ?unreachableLocations,
+    };
+  }
 }
 
 /// Response message for ApiGatewayService.ListGateways
@@ -2324,27 +2358,29 @@ class ApigatewayListGatewaysResponse {
 
   ApigatewayListGatewaysResponse.fromJson(core.Map json_)
     : this(
-        gateways:
-            (json_['gateways'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayGateway.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        gateways: (json_['gateways'] as core.List?)
+            ?.map(
+              (value) => ApigatewayGateway.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachableLocations:
-            (json_['unreachableLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachableLocations: (json_['unreachableLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gateways != null) 'gateways': gateways!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachableLocations != null)
-      'unreachableLocations': unreachableLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gateways = this.gateways;
+    final nextPageToken = this.nextPageToken;
+    final unreachableLocations = this.unreachableLocations;
+    return {
+      'gateways': ?gateways,
+      'nextPageToken': ?nextPageToken,
+      'unreachableLocations': ?unreachableLocations,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2359,21 +2395,21 @@ class ApigatewayListLocationsResponse {
 
   ApigatewayListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => ApigatewayLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2401,25 +2437,28 @@ class ApigatewayListOperationsResponse {
   ApigatewayListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => ApigatewayOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2479,30 +2518,34 @@ class ApigatewayOperation {
   ApigatewayOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? ApigatewayStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? ApigatewayStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2597,32 +2640,36 @@ class ApigatewayPolicy {
 
   ApigatewayPolicy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayAuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => ApigatewayBinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => ApigatewayAuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => ApigatewayBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2644,19 +2691,19 @@ class ApigatewaySetIamPolicyRequest {
 
   ApigatewaySetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? ApigatewayPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? ApigatewayPolicy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

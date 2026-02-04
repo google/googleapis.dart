@@ -7726,10 +7726,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AnalysisResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnalysisResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnalysisResult(od);
       });
     },
@@ -7742,10 +7742,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata(
           od,
         );
@@ -7773,10 +7773,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AnnotationBoundary();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnnotationBoundary.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnnotationBoundary(od);
       });
     },
@@ -7788,10 +7788,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AnnotatorSelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnnotatorSelector(od);
       });
     },
@@ -7804,10 +7804,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig(od);
       });
     },
@@ -7820,10 +7820,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList(
           od,
         );
@@ -7838,10 +7838,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig(
           od,
         );
@@ -7855,10 +7855,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AnswerFeedback();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AnswerFeedback.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AnswerFeedback.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AnswerFeedback(od);
       });
     },
@@ -7871,10 +7871,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AppealAssessmentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AppealAssessmentRequest(od);
       });
     },
@@ -7887,10 +7887,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ArticleSuggestionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ArticleSuggestionData(od);
       });
     },
@@ -7913,10 +7913,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AssessmentRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AssessmentRule(od);
       });
     },
@@ -7928,10 +7928,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AuthorizedView();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AuthorizedView(od);
       });
     },
@@ -7943,10 +7943,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AuthorizedViewSet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AuthorizedViewSet(od);
       });
     },
@@ -7958,10 +7958,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1AutoLabelingRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AutoLabelingRule(od);
       });
     },
@@ -7974,10 +7974,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition(
           od,
         );
@@ -7992,10 +7992,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest(
           od,
         );
@@ -8010,10 +8010,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest(
           od,
         );
@@ -8028,10 +8028,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest(
           od,
         );
@@ -8046,10 +8046,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest(
           od,
         );
@@ -8064,10 +8064,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination(
           od,
         );
@@ -8082,10 +8082,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination(
           od,
         );
@@ -8100,10 +8100,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest(
           od,
         );
@@ -8118,10 +8118,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource(
           od,
         );
@@ -8136,10 +8136,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource(
           od,
         );
@@ -8154,10 +8154,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse(
           od,
         );
@@ -8172,10 +8172,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CalculateStatsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CalculateStatsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CalculateStatsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CalculateStatsRequest(od);
       });
     },
@@ -8188,10 +8188,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CalculateStatsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CalculateStatsResponse(od);
       });
     },
@@ -8204,10 +8204,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries(
           od,
         );
@@ -8222,10 +8222,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval(
           od,
         );
@@ -8239,10 +8239,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1CallAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CallAnnotation(od);
       });
     },
@@ -8265,10 +8265,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ChartDataSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ChartDataSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ChartDataSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ChartDataSource(od);
       });
     },
@@ -8306,10 +8306,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationCallMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationCallMetadata(od);
       });
     },
@@ -8322,10 +8322,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationCorrelationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationCorrelationInfo(od);
       });
     },
@@ -8338,10 +8338,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationDataOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationDataOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationDataOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationDataOptions(od);
       });
     },
@@ -8354,10 +8354,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationDataSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationDataSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationDataSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationDataSource(od);
       });
     },
@@ -8370,10 +8370,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio(
           od,
         );
@@ -8388,10 +8388,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationLevelSentiment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationLevelSentiment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationLevelSentiment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationLevelSentiment(od);
       });
     },
@@ -8404,10 +8404,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationLevelSilence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationLevelSilence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationLevelSilence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationLevelSilence(od);
       });
     },
@@ -8420,10 +8420,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationParticipant();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationParticipant.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationParticipant.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationParticipant(od);
       });
     },
@@ -8436,10 +8436,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationQualityMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationQualityMetadata(od);
       });
     },
@@ -8452,10 +8452,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo(
           od,
         );
@@ -8470,10 +8470,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData(
           od,
         );
@@ -8488,10 +8488,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationTranscript();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationTranscript.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscript.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationTranscript(od);
       });
     },
@@ -8504,10 +8504,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(
           od,
         );
@@ -8522,10 +8522,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata(
           od,
         );
@@ -8540,10 +8540,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(
           od,
         );
@@ -8557,10 +8557,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1CorrelationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CorrelationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CorrelationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CorrelationConfig(od);
       });
     },
@@ -8572,10 +8572,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1CorrelationRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CorrelationRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CorrelationRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CorrelationRule(od);
       });
     },
@@ -8588,10 +8588,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1CorrelationTypeConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1CorrelationTypeConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1CorrelationTypeConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1CorrelationTypeConfig(od);
       });
     },
@@ -8625,10 +8625,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1DateRangeConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DateRangeConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DateRangeConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DateRangeConfig(od);
       });
     },
@@ -8641,10 +8641,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange(
           od,
         );
@@ -8659,10 +8659,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DeployIssueModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DeployIssueModelRequest(od);
       });
     },
@@ -8675,10 +8675,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest(
           od,
         );
@@ -8692,10 +8692,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1DialogflowIntent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DialogflowIntent(od);
       });
     },
@@ -8708,10 +8708,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DialogflowInteractionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DialogflowInteractionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DialogflowInteractionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DialogflowInteractionData(od);
       });
     },
@@ -8723,10 +8723,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1DialogflowSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DialogflowSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DialogflowSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DialogflowSource(od);
       });
     },
@@ -8750,10 +8750,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata(
           od,
         );
@@ -8768,10 +8768,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata(
           od,
         );
@@ -8786,10 +8786,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata(
           od,
         );
@@ -8804,10 +8804,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata(
           od,
         );
@@ -8822,10 +8822,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata(
           od,
         );
@@ -8840,10 +8840,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata(
           od,
         );
@@ -8858,10 +8858,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata(
           od,
         );
@@ -8876,10 +8876,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata(
           od,
         );
@@ -8894,10 +8894,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata(
           od,
         );
@@ -8912,10 +8912,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata(
           od,
         );
@@ -8930,10 +8930,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata(
           od,
         );
@@ -8947,10 +8947,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1EncryptionSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1EncryptionSpec(od);
       });
     },
@@ -8973,10 +8973,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1EntityMentionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1EntityMentionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1EntityMentionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1EntityMentionData(od);
       });
     },
@@ -8988,10 +8988,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ExactMatchConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ExactMatchConfig(od);
       });
     },
@@ -9004,10 +9004,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest(od);
       });
     },
@@ -9020,10 +9020,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination(
           od,
         );
@@ -9038,10 +9038,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ExportIssueModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ExportIssueModelRequest(od);
       });
     },
@@ -9054,10 +9054,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination(
           od,
         );
@@ -9100,10 +9100,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest(od);
       });
     },
@@ -9127,10 +9127,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse(
           od,
         );
@@ -9144,10 +9144,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1GenerativeInsights();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsights.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsights.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsights(od);
       });
     },
@@ -9160,10 +9160,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint(
           od,
         );
@@ -9178,10 +9178,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation(
           od,
         );
@@ -9196,10 +9196,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage(
           od,
         );
@@ -9214,10 +9214,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage(
           od,
         );
@@ -9232,10 +9232,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput(
           od,
         );
@@ -9250,10 +9250,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage(
           od,
         );
@@ -9268,10 +9268,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest(od);
       });
     },
@@ -9295,10 +9295,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ImportIssueModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ImportIssueModelRequest(od);
       });
     },
@@ -9311,10 +9311,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource(
           od,
         );
@@ -9329,10 +9329,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IngestConversationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IngestConversationsRequest(od);
       });
     },
@@ -9345,10 +9345,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig(
           od,
         );
@@ -9363,10 +9363,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource(
           od,
         );
@@ -9381,10 +9381,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig(
           od,
         );
@@ -9399,10 +9399,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest(
           od,
         );
@@ -9427,10 +9427,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1IntentMatchData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IntentMatchData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IntentMatchData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IntentMatchData(od);
       });
     },
@@ -9442,10 +9442,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1InterruptionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1InterruptionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1InterruptionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1InterruptionData(od);
       });
     },
@@ -9468,10 +9468,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1IssueAssignment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueAssignment(od);
       });
     },
@@ -9483,10 +9483,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1IssueMatchData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueMatchData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueMatchData(od);
       });
     },
@@ -9510,10 +9510,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig(od);
       });
     },
@@ -9525,10 +9525,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1IssueModelLabelStats();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueModelLabelStats.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueModelLabelStats(od);
       });
     },
@@ -9541,10 +9541,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(
           od,
         );
@@ -9558,10 +9558,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1IssueModelResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1IssueModelResult(od);
       });
     },
@@ -9574,10 +9574,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse(
           od,
         );
@@ -9591,10 +9591,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListAnalysesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAnalysesResponse(od);
       });
     },
@@ -9607,10 +9607,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse(od);
       });
     },
@@ -9623,10 +9623,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse(od);
       });
     },
@@ -9639,10 +9639,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAssessmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAssessmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAssessmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAssessmentsResponse(od);
       });
     },
@@ -9655,10 +9655,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse(
           od,
         );
@@ -9673,10 +9673,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse(od);
       });
     },
@@ -9689,10 +9689,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse(
           od,
         );
@@ -9706,10 +9706,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListChartsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListChartsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListChartsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListChartsResponse(od);
       });
     },
@@ -9722,10 +9722,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListConversationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListConversationsResponse(od);
       });
     },
@@ -9738,10 +9738,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListDashboardsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListDashboardsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListDashboardsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListDashboardsResponse(od);
       });
     },
@@ -9753,10 +9753,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListDatasetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListDatasetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListDatasetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListDatasetsResponse(od);
       });
     },
@@ -9769,10 +9769,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse(od);
       });
     },
@@ -9785,10 +9785,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListIssueModelsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListIssueModelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListIssueModelsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListIssueModelsResponse(od);
       });
     },
@@ -9800,10 +9800,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListIssuesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListIssuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListIssuesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListIssuesResponse(od);
       });
     },
@@ -9815,10 +9815,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListNotesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListNotesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListNotesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListNotesResponse(od);
       });
     },
@@ -9831,10 +9831,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse(od);
       });
     },
@@ -9847,10 +9847,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse(od);
       });
     },
@@ -9863,10 +9863,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse(od);
       });
     },
@@ -9879,10 +9879,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse(
           od,
         );
@@ -9897,10 +9897,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse(od);
       });
     },
@@ -9912,10 +9912,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1ListViewsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1ListViewsResponse(od);
       });
     },
@@ -9938,10 +9938,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1NoteAssessmentNote();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1NoteAssessmentNote.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1NoteAssessmentNote.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1NoteAssessmentNote(od);
       });
     },
@@ -9954,10 +9954,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1NoteConversationTurnNote();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1NoteConversationTurnNote.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1NoteConversationTurnNote.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1NoteConversationTurnNote(od);
       });
     },
@@ -9969,10 +9969,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1NoteQaQuestionNote();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1NoteQaQuestionNote.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1NoteQaQuestionNote.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1NoteQaQuestionNote(od);
       });
     },
@@ -9984,10 +9984,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1PhraseMatchData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1PhraseMatchData(od);
       });
     },
@@ -9999,10 +9999,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1PhraseMatchRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1PhraseMatchRule(od);
       });
     },
@@ -10015,10 +10015,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig(od);
       });
     },
@@ -10030,10 +10030,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup(od);
       });
     },
@@ -10060,10 +10060,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1PublishAssessmentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1PublishAssessmentRequest(od);
       });
     },
@@ -10086,10 +10086,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QaAnswerAnswerSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerSource(od);
       });
     },
@@ -10101,10 +10101,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue(od);
       });
     },
@@ -10128,10 +10128,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice(od);
       });
     },
@@ -10143,10 +10143,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QaQuestionMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaQuestionMetrics(od);
       });
     },
@@ -10159,10 +10159,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig(
           od,
         );
@@ -10177,10 +10177,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions(
           od,
         );
@@ -10209,10 +10209,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata(od);
       });
     },
@@ -10238,10 +10238,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QaScorecardResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaScorecardResult(od);
       });
     },
@@ -10254,10 +10254,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(od);
       });
     },
@@ -10270,10 +10270,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource(od);
       });
     },
@@ -10285,10 +10285,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QaScorecardRevision();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QaScorecardRevision(od);
       });
     },
@@ -10328,10 +10328,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1QueryMetricsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QueryMetricsRequest(od);
       });
     },
@@ -10344,10 +10344,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest(
           od,
         );
@@ -10362,10 +10362,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource(
           od,
         );
@@ -10379,10 +10379,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1RedactionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1RedactionConfig(od);
       });
     },
@@ -10394,10 +10394,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1RegexMatchConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1RegexMatchConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1RegexMatchConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1RegexMatchConfig(od);
       });
     },
@@ -10409,10 +10409,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1RuntimeAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1RuntimeAnnotation(od);
       });
     },
@@ -10425,10 +10425,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput(od);
       });
     },
@@ -10441,10 +10441,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1SampleConversationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SampleConversationsRequest(od);
       });
     },
@@ -10482,10 +10482,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse(
           od,
         );
@@ -10525,10 +10525,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1SettingsAnalysisConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SettingsAnalysisConfig(od);
       });
     },
@@ -10540,10 +10540,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1SignedAudioUris();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SignedAudioUris.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SignedAudioUris.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SignedAudioUris(od);
       });
     },
@@ -10570,10 +10570,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData(od);
       });
     },
@@ -10585,10 +10585,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContactcenterinsightsV1SmartReplyData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1SmartReplyData(od);
       });
     },
@@ -10615,10 +10615,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest(od);
       });
     },
@@ -10631,10 +10631,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse(od);
       });
     },
@@ -10647,10 +10647,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest(od);
       });
     },
@@ -10663,10 +10663,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations(
           od,
         );
@@ -10681,10 +10681,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest(
           od,
         );
@@ -10699,10 +10699,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest(od);
       });
     },
@@ -10715,10 +10715,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest(
           od,
         );
@@ -10733,10 +10733,10 @@ void main() {
         final o =
             buildGoogleCloudContactcenterinsightsV1UploadConversationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContactcenterinsightsV1UploadConversationRequest(od);
       });
     },
@@ -10917,10 +10917,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest(
             obj,
           );
@@ -10986,10 +10986,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest(
             obj,
           );
@@ -11055,10 +11055,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest(
             obj,
           );
@@ -11124,10 +11124,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest(obj);
 
           final path = req.url.path;
@@ -11447,10 +11447,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QueryMetricsRequest(obj);
 
           final path = req.url.path;
@@ -11514,10 +11514,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest(
             obj,
           );
@@ -11583,10 +11583,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest(
             obj,
           );
@@ -11653,10 +11653,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1CorrelationConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1CorrelationConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1CorrelationConfig(obj);
 
           final path = req.url.path;
@@ -11795,17 +11795,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsAnalysisRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.analysisRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.analysisRules;
       final arg_request = buildGoogleCloudContactcenterinsightsV1AnalysisRule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AnalysisRule(obj);
 
           final path = req.url.path;
@@ -11864,8 +11865,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.analysisRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.analysisRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11918,8 +11920,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.analysisRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.analysisRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11976,8 +11979,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.analysisRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.analysisRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12050,18 +12054,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.analysisRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.analysisRules;
       final arg_request = buildGoogleCloudContactcenterinsightsV1AnalysisRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AnalysisRule(obj);
 
           final path = req.url.path;
@@ -12127,8 +12132,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAssessmentRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.assessmentRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.assessmentRules;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AssessmentRule();
       final arg_parent = 'foo';
@@ -12136,10 +12142,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AssessmentRule(obj);
 
           final path = req.url.path;
@@ -12203,8 +12209,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.assessmentRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.assessmentRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12257,8 +12264,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.assessmentRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.assessmentRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12315,8 +12323,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.assessmentRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.assessmentRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12389,8 +12398,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.assessmentRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.assessmentRules;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AssessmentRule();
       final arg_name = 'foo';
@@ -12398,10 +12408,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AssessmentRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AssessmentRule(obj);
 
           final path = req.url.path;
@@ -12467,10 +12477,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAuthorizedViewSetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AuthorizedViewSet();
       final arg_parent = 'foo';
@@ -12478,10 +12487,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AuthorizedViewSet(obj);
 
           final path = req.url.path;
@@ -12545,10 +12554,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -12610,10 +12618,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12670,10 +12677,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -12758,10 +12764,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AuthorizedViewSet();
       final arg_name = 'foo';
@@ -12769,10 +12774,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AuthorizedViewSet.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AuthorizedViewSet(obj);
 
           final path = req.url.path;
@@ -12838,10 +12843,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AuthorizedView();
       final arg_parent = 'foo';
@@ -12849,10 +12853,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AuthorizedView(obj);
 
           final path = req.url.path;
@@ -12916,10 +12920,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12972,20 +12975,19 @@ void main() {
 
     unittest.test('method--generativeInsights', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest();
       final arg_location = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest(obj);
 
           final path = req.url.path;
@@ -13042,10 +13044,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13102,10 +13103,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -13167,10 +13167,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -13255,10 +13254,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AuthorizedView();
       final arg_name = 'foo';
@@ -13266,10 +13264,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AuthorizedView(obj);
 
           final path = req.url.path;
@@ -13333,20 +13331,19 @@ void main() {
 
     unittest.test('method--queryMetrics', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1QueryMetricsRequest();
       final arg_location = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QueryMetricsRequest(obj);
 
           final path = req.url.path;
@@ -13403,20 +13400,19 @@ void main() {
 
     unittest.test('method--queryPerformanceOverview', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest(
             obj,
           );
@@ -13475,10 +13471,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_parent = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -13560,10 +13555,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -13626,10 +13620,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.authorizedViewSets.authorizedViews;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.authorizedViewSets.authorizedViews;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -13700,13 +13693,9 @@ void main() {
     () {
       unittest.test('method--calculateStats', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.conversations;
         final arg_location = 'foo';
         final arg_filter = 'foo';
         final arg_$fields = 'foo';
@@ -13773,13 +13762,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.conversations;
         final arg_name = 'foo';
         final arg_force = true;
         final arg_$fields = 'foo';
@@ -13841,13 +13826,9 @@ void main() {
 
       unittest.test('method--generateSignedAudio', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.conversations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -13908,13 +13889,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.conversations;
         final arg_name = 'foo';
         final arg_view = 'foo';
         final arg_$fields = 'foo';
@@ -13977,13 +13954,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.conversations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -14076,24 +14049,23 @@ void main() {
     () {
       unittest.test('method--appeal', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_request =
             buildGoogleCloudContactcenterinsightsV1AppealAssessmentRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1AppealAssessmentRequest(obj);
 
             final path = req.url.path;
@@ -14152,23 +14124,22 @@ void main() {
 
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_request = buildGoogleCloudContactcenterinsightsV1Assessment();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1Assessment.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1Assessment.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1Assessment(obj);
 
             final path = req.url.path;
@@ -14227,14 +14198,13 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_name = 'foo';
         final arg_force = true;
         final arg_$fields = 'foo';
@@ -14296,24 +14266,23 @@ void main() {
 
       unittest.test('method--finalize', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_request =
             buildGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest(
               obj,
             );
@@ -14374,14 +14343,13 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -14438,14 +14406,13 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -14524,24 +14491,23 @@ void main() {
 
       unittest.test('method--publish', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments;
         final arg_request =
             buildGoogleCloudContactcenterinsightsV1PublishAssessmentRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1PublishAssessmentRequest(
               obj,
             );
@@ -14607,15 +14573,14 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments
-                .notes;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments
+            .notes;
         final arg_request = buildGoogleCloudContactcenterinsightsV1Note();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -14682,15 +14647,14 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments
-                .notes;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments
+            .notes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -14743,15 +14707,14 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments
-                .notes;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments
+            .notes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -14823,15 +14786,14 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .assessments
-                .notes;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .assessments
+            .notes;
         final arg_request = buildGoogleCloudContactcenterinsightsV1Note();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -14909,14 +14871,13 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .feedbackLabels;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .feedbackLabels;
         final arg_request =
             buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
         final arg_parent = 'foo';
@@ -14924,10 +14885,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
             final path = req.url.path;
@@ -14991,14 +14952,13 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .feedbackLabels;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .feedbackLabels;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15051,14 +15011,13 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .feedbackLabels;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .feedbackLabels;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15115,14 +15074,13 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .feedbackLabels;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .feedbackLabels;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -15201,14 +15159,13 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(mock)
-                .projects
-                .locations
-                .authorizedViewSets
-                .authorizedViews
-                .conversations
-                .feedbackLabels;
+        final res = api.ContactcenterinsightsApi(mock)
+            .projects
+            .locations
+            .authorizedViewSets
+            .authorizedViews
+            .conversations
+            .feedbackLabels;
         final arg_request =
             buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
         final arg_name = 'foo';
@@ -15216,10 +15173,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
             final path = req.url.path;
@@ -15288,10 +15245,9 @@ void main() {
     () {
       unittest.test('method--cancel', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.authorizedViewSets.authorizedViews.operations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15344,10 +15300,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.authorizedViewSets.authorizedViews.operations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15402,10 +15357,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.authorizedViewSets.authorizedViews.operations;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.authorizedViewSets.authorizedViews.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -15492,10 +15446,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAutoLabelingRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AutoLabelingRule();
       final arg_parent = 'foo';
@@ -15503,10 +15456,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AutoLabelingRule(obj);
 
           final path = req.url.path;
@@ -15570,10 +15523,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15626,10 +15578,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15686,10 +15637,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15762,10 +15712,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AutoLabelingRule();
       final arg_name = 'foo';
@@ -15773,10 +15722,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AutoLabelingRule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AutoLabelingRule(obj);
 
           final path = req.url.path;
@@ -15840,20 +15789,19 @@ void main() {
 
     unittest.test('method--test', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.autoLabelingRules;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.autoLabelingRules;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest(
             obj,
           );
@@ -15917,18 +15865,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsResource', () {
     unittest.test('method--bulkAnalyze', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest(
             obj,
           );
@@ -15987,18 +15936,19 @@ void main() {
 
     unittest.test('method--bulkDelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest(
             obj,
           );
@@ -16057,8 +16007,9 @@ void main() {
 
     unittest.test('method--calculateStats', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_location = 'foo';
       final arg_filter = 'foo';
       final arg_$fields = 'foo';
@@ -16125,18 +16076,19 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Conversation();
       final arg_parent = 'foo';
       final arg_conversationId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1Conversation(obj);
 
           final path = req.url.path;
@@ -16200,8 +16152,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -16263,8 +16216,9 @@ void main() {
 
     unittest.test('method--generateSignedAudio', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16325,8 +16279,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -16389,18 +16344,19 @@ void main() {
 
     unittest.test('method--ingest', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1IngestConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1IngestConversationsRequest(
             obj,
           );
@@ -16459,8 +16415,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -16548,8 +16505,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Conversation();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -16559,10 +16517,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1Conversation(obj);
 
           final path = req.url.path;
@@ -16640,18 +16598,19 @@ void main() {
 
     unittest.test('method--sample', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1SampleConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1SampleConversationsRequest(
             obj,
           );
@@ -16710,18 +16669,19 @@ void main() {
 
     unittest.test('method--upload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1UploadConversationRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1UploadConversationRequest(obj);
 
           final path = req.url.path;
@@ -16780,10 +16740,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsAnalysesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.analyses;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.analyses;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Analysis();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -16848,10 +16807,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.analyses;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.analyses;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16904,10 +16862,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.analyses;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.analyses;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16964,10 +16921,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.analyses;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.analyses;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -17047,20 +17003,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsAssessmentsResource', () {
     unittest.test('method--appeal', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1AppealAssessmentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1AppealAssessmentRequest(obj);
 
           final path = req.url.path;
@@ -17119,10 +17074,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Assessment();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -17189,10 +17143,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -17254,20 +17207,19 @@ void main() {
 
     unittest.test('method--finalize', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest(obj);
 
           final path = req.url.path;
@@ -17326,10 +17278,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17386,10 +17337,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -17468,20 +17418,19 @@ void main() {
 
     unittest.test('method--publish', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1PublishAssessmentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1PublishAssessmentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1PublishAssessmentRequest(obj);
 
           final path = req.url.path;
@@ -17542,10 +17491,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsAssessmentsNotesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments.notes;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments.notes;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Note();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -17612,10 +17560,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments.notes;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments.notes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17668,10 +17615,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments.notes;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments.notes;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -17743,10 +17689,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.assessments.notes;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.assessments.notes;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Note();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -17821,10 +17766,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsFeedbackLabelsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.feedbackLabels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
       final arg_parent = 'foo';
@@ -17832,10 +17776,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
           final path = req.url.path;
@@ -17899,10 +17843,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.feedbackLabels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17955,10 +17898,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.feedbackLabels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18015,10 +17957,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.feedbackLabels;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -18097,10 +18038,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.feedbackLabels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
       final arg_name = 'foo';
@@ -18108,10 +18048,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
           final path = req.url.path;
@@ -18177,20 +18117,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsSegmentsResource', () {
     unittest.test('method--bulkAnalyze', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.conversations.segments;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.conversations.segments;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest(
             obj,
           );
@@ -18251,8 +18190,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDashboardsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.dashboards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Dashboard();
       final arg_parent = 'foo';
       final arg_dashboardId = 'foo';
@@ -18325,8 +18265,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.dashboards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18379,8 +18320,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.dashboards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18437,8 +18379,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.dashboards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -18523,8 +18466,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.dashboards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Dashboard();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18599,10 +18543,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDashboardsChartsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.dashboards.charts;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards.charts;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Chart();
       final arg_parent = 'foo';
       final arg_chartId = 'foo';
@@ -18675,10 +18618,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.dashboards.charts;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards.charts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18731,10 +18673,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.dashboards.charts;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards.charts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18791,10 +18732,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.dashboards.charts;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards.charts;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18851,10 +18791,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.dashboards.charts;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.dashboards.charts;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Chart();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18929,18 +18868,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsResource', () {
     unittest.test('method--bulkDeleteFeedbackLabels', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest(
             obj,
           );
@@ -18999,18 +18939,19 @@ void main() {
 
     unittest.test('method--bulkDownloadFeedbackLabels', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest(
             obj,
           );
@@ -19069,18 +19010,19 @@ void main() {
 
     unittest.test('method--bulkUploadFeedbackLabels', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest(
             obj,
           );
@@ -19139,8 +19081,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Dataset();
       final arg_parent = 'foo';
       final arg_datasetId = 'foo';
@@ -19213,8 +19156,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19269,8 +19213,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19327,8 +19272,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -19406,8 +19352,9 @@ void main() {
 
     unittest.test('method--listAllFeedbackLabels', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -19486,8 +19433,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.datasets;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Dataset();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19562,20 +19510,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsConversationsResource', () {
     unittest.test('method--bulkDelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest(
             obj,
           );
@@ -19634,20 +19581,19 @@ void main() {
 
     unittest.test('method--calculateStats', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1CalculateStatsRequest();
       final arg_location = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1CalculateStatsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1CalculateStatsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1CalculateStatsRequest(obj);
 
           final path = req.url.path;
@@ -19707,10 +19653,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -19772,10 +19717,9 @@ void main() {
 
     unittest.test('method--generateSignedAudio', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19836,10 +19780,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -19902,20 +19845,19 @@ void main() {
 
     unittest.test('method--ingest', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1IngestConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1IngestConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1IngestConversationsRequest(
             obj,
           );
@@ -19974,10 +19916,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -20065,20 +20006,19 @@ void main() {
 
     unittest.test('method--sample', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1SampleConversationsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1SampleConversationsRequest(
             obj,
           );
@@ -20139,10 +20079,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsConversationsFeedbackLabelsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations.feedbackLabels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
       final arg_parent = 'foo';
@@ -20150,10 +20089,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
           final path = req.url.path;
@@ -20217,10 +20156,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations.feedbackLabels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20273,10 +20211,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations.feedbackLabels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20333,10 +20270,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations.feedbackLabels;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -20415,10 +20351,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.conversations.feedbackLabels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.conversations.feedbackLabels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1FeedbackLabel();
       final arg_name = 'foo';
@@ -20426,10 +20361,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1FeedbackLabel(obj);
 
           final path = req.url.path;
@@ -20495,20 +20430,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsInsightsdataResource', () {
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.datasets.insightsdata;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.datasets.insightsdata;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest(obj);
 
           final path = req.url.path;
@@ -20567,18 +20501,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsEncryptionSpecResource', () {
     unittest.test('method--initialize', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.encryptionSpec;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.encryptionSpec;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest(
             obj,
           );
@@ -20639,18 +20574,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsInsightsdataResource', () {
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.insightsdata;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.insightsdata;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1ExportInsightsDataRequest(obj);
 
           final path = req.url.path;
@@ -20709,8 +20645,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsIssueModelsResource', () {
     unittest.test('method--calculateIssueModelStats', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_issueModel = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20771,8 +20708,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request = buildGoogleCloudContactcenterinsightsV1IssueModel();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -20837,8 +20775,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20893,18 +20832,19 @@ void main() {
 
     unittest.test('method--deploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1DeployIssueModelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1DeployIssueModelRequest(obj);
 
           final path = req.url.path;
@@ -20961,18 +20901,19 @@ void main() {
 
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1ExportIssueModelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1ExportIssueModelRequest(obj);
 
           final path = req.url.path;
@@ -21029,8 +20970,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21087,18 +21029,19 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1ImportIssueModelRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1ImportIssueModelRequest(obj);
 
           final path = req.url.path;
@@ -21155,8 +21098,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21214,8 +21158,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request = buildGoogleCloudContactcenterinsightsV1IssueModel();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -21288,18 +21233,19 @@ void main() {
 
     unittest.test('method--undeploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.issueModels;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1UndeployIssueModelRequest(obj);
 
           final path = req.url.path;
@@ -21358,10 +21304,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsIssueModelsIssuesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.issueModels.issues;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels.issues;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Issue();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -21426,10 +21371,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.issueModels.issues;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels.issues;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21482,10 +21426,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.issueModels.issues;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels.issues;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21542,10 +21485,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.issueModels.issues;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels.issues;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21602,10 +21544,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.issueModels.issues;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.issueModels.issues;
       final arg_request = buildGoogleCloudContactcenterinsightsV1Issue();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -21680,8 +21621,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.operations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21734,8 +21676,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.operations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21790,8 +21733,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.operations;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -21877,18 +21821,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsPhraseMatchersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.phraseMatchers;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.phraseMatchers;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1PhraseMatcher();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1PhraseMatcher(obj);
 
           final path = req.url.path;
@@ -21947,8 +21892,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.phraseMatchers;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.phraseMatchers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22001,8 +21947,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.phraseMatchers;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.phraseMatchers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22059,8 +22006,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.phraseMatchers;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.phraseMatchers;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -22139,8 +22087,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.phraseMatchers;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.phraseMatchers;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1PhraseMatcher();
       final arg_name = 'foo';
@@ -22148,10 +22097,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1PhraseMatcher(obj);
 
           final path = req.url.path;
@@ -22217,8 +22166,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsQaQuestionTagsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaQuestionTags;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaQuestionTags;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1QaQuestionTag();
       final arg_parent = 'foo';
@@ -22226,10 +22176,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QaQuestionTag(obj);
 
           final path = req.url.path;
@@ -22293,8 +22243,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaQuestionTags;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaQuestionTags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22349,8 +22300,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaQuestionTags;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaQuestionTags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22407,8 +22359,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaQuestionTags;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaQuestionTags;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_$fields = 'foo';
@@ -22475,8 +22428,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaQuestionTags;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaQuestionTags;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1QaQuestionTag();
       final arg_name = 'foo';
@@ -22484,10 +22438,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QaQuestionTag.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QaQuestionTag(obj);
 
           final path = req.url.path;
@@ -22551,18 +22505,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsQaScorecardsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaScorecards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards;
       final arg_request = buildGoogleCloudContactcenterinsightsV1QaScorecard();
       final arg_parent = 'foo';
       final arg_qaScorecardId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QaScorecard(obj);
 
           final path = req.url.path;
@@ -22626,8 +22581,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaScorecards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -22689,8 +22645,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaScorecards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22747,8 +22704,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaScorecards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -22827,18 +22785,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(mock).projects.locations.qaScorecards;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards;
       final arg_request = buildGoogleCloudContactcenterinsightsV1QaScorecard();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QaScorecard(obj);
 
           final path = req.url.path;
@@ -22904,10 +22863,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsQaScorecardsRevisionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1QaScorecardRevision();
       final arg_parent = 'foo';
@@ -22915,10 +22873,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1QaScorecardRevision(obj);
 
           final path = req.url.path;
@@ -22982,10 +22940,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -23047,20 +23004,19 @@ void main() {
 
     unittest.test('method--deploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest(
             obj,
           );
@@ -23121,10 +23077,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -23181,10 +23136,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -23269,20 +23223,19 @@ void main() {
 
     unittest.test('method--tuneQaScorecardRevision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest(
             obj,
           );
@@ -23341,20 +23294,19 @@ void main() {
 
     unittest.test('method--undeploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContactcenterinsightsApi(
-            mock,
-          ).projects.locations.qaScorecards.revisions;
+      final res = api.ContactcenterinsightsApi(
+        mock,
+      ).projects.locations.qaScorecards.revisions;
       final arg_request =
           buildGoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest(
             obj,
           );
@@ -23419,20 +23371,19 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.qaScorecards.revisions.qaQuestions;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.qaScorecards.revisions.qaQuestions;
         final arg_request = buildGoogleCloudContactcenterinsightsV1QaQuestion();
         final arg_parent = 'foo';
         final arg_qaQuestionId = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1QaQuestion(obj);
 
             final path = req.url.path;
@@ -23496,10 +23447,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.qaScorecards.revisions.qaQuestions;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.qaScorecards.revisions.qaQuestions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -23552,10 +23502,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.qaScorecards.revisions.qaQuestions;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.qaScorecards.revisions.qaQuestions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -23612,10 +23561,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.qaScorecards.revisions.qaQuestions;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.qaScorecards.revisions.qaQuestions;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -23688,20 +23636,19 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ContactcenterinsightsApi(
-              mock,
-            ).projects.locations.qaScorecards.revisions.qaQuestions;
+        final res = api.ContactcenterinsightsApi(
+          mock,
+        ).projects.locations.qaScorecards.revisions.qaQuestions;
         final arg_request = buildGoogleCloudContactcenterinsightsV1QaQuestion();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudContactcenterinsightsV1QaQuestion(obj);
 
             final path = req.url.path;

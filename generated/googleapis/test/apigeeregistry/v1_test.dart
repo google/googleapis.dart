@@ -2772,8 +2772,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisDeploymentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildApiDeployment();
       final arg_parent = 'foo';
       final arg_apiDeploymentId = 'foo';
@@ -2842,8 +2843,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -2905,8 +2907,9 @@ void main() {
 
     unittest.test('method--deleteRevision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2959,8 +2962,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3013,8 +3017,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3076,8 +3081,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3159,8 +3165,9 @@ void main() {
 
     unittest.test('method--listRevisions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3238,8 +3245,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildApiDeployment();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3314,8 +3322,9 @@ void main() {
 
     unittest.test('method--rollback', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildRollbackApiDeploymentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3378,8 +3387,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3442,8 +3452,9 @@ void main() {
 
     unittest.test('method--tagRevision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildTagApiDeploymentRevisionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3506,8 +3517,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.deployments;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3574,10 +3586,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisDeploymentsArtifactsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_request = buildArtifact();
       final arg_parent = 'foo';
       final arg_artifactId = 'foo';
@@ -3646,10 +3657,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3702,10 +3712,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3758,10 +3767,9 @@ void main() {
 
     unittest.test('method--getContents', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3814,10 +3822,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3897,10 +3904,9 @@ void main() {
 
     unittest.test('method--replaceArtifact', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.deployments.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.deployments.artifacts;
       final arg_request = buildArtifact();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4496,10 +4502,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisVersionsArtifactsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_request = buildArtifact();
       final arg_parent = 'foo';
       final arg_artifactId = 'foo';
@@ -4568,10 +4573,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4624,10 +4628,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4680,10 +4683,9 @@ void main() {
 
     unittest.test('method--getContents', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4736,10 +4738,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4801,10 +4802,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4884,10 +4884,9 @@ void main() {
 
     unittest.test('method--replaceArtifact', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_request = buildArtifact();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4950,10 +4949,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5016,10 +5014,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.artifacts;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5086,8 +5083,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisVersionsSpecsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildApiSpec();
       final arg_parent = 'foo';
       final arg_apiSpecId = 'foo';
@@ -5156,8 +5154,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -5219,8 +5218,9 @@ void main() {
 
     unittest.test('method--deleteRevision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5273,8 +5273,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5327,8 +5328,9 @@ void main() {
 
     unittest.test('method--getContents', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5381,8 +5383,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -5444,8 +5447,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5525,8 +5529,9 @@ void main() {
 
     unittest.test('method--listRevisions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5602,8 +5607,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildApiSpec();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -5678,8 +5684,9 @@ void main() {
 
     unittest.test('method--rollback', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildRollbackApiSpecRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5742,8 +5749,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5806,8 +5814,9 @@ void main() {
 
     unittest.test('method--tagRevision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildTagApiSpecRevisionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5870,8 +5879,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(mock).projects.locations.apis.versions.specs;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5938,10 +5948,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisVersionsSpecsArtifactsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_request = buildArtifact();
       final arg_parent = 'foo';
       final arg_artifactId = 'foo';
@@ -6010,10 +6019,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6066,10 +6074,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6122,10 +6129,9 @@ void main() {
 
     unittest.test('method--getContents', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6178,10 +6184,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -6243,10 +6248,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6326,10 +6330,9 @@ void main() {
 
     unittest.test('method--replaceArtifact', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_request = buildArtifact();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6392,10 +6395,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6458,10 +6460,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeRegistryApi(
-            mock,
-          ).projects.locations.apis.versions.specs.artifacts;
+      final res = api.ApigeeRegistryApi(
+        mock,
+      ).projects.locations.apis.versions.specs.artifacts;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

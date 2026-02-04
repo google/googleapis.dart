@@ -3432,14 +3432,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildBatchGetDocumentsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.BatchGetDocumentsResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = (oJson as core.List)
+          .map(
+            (value) => api.BatchGetDocumentsResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          )
+          .toList();
       checkBatchGetDocumentsResponse(od);
     });
   });
@@ -3769,10 +3768,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirestoreAdminV1BulkDeleteDocumentsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirestoreAdminV1BulkDeleteDocumentsRequest(od);
       });
     },
@@ -3806,10 +3805,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirestoreAdminV1CustomerManagedEncryptionOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirestoreAdminV1CustomerManagedEncryptionOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirestoreAdminV1CustomerManagedEncryptionOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirestoreAdminV1CustomerManagedEncryptionOptions(od);
       });
     },
@@ -3912,10 +3911,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirestoreAdminV1GoogleDefaultEncryptionOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirestoreAdminV1GoogleDefaultEncryptionOptions(od);
       });
     },
@@ -3971,10 +3970,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirestoreAdminV1ListBackupSchedulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirestoreAdminV1ListBackupSchedulesResponse(od);
       });
     },
@@ -4408,14 +4407,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRunAggregationQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.RunAggregationQueryResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = (oJson as core.List)
+          .map(
+            (value) => api.RunAggregationQueryResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          )
+          .toList();
       checkRunAggregationQueryResponse(od);
     });
   });
@@ -4446,14 +4444,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRunQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.RunQueryResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = (oJson as core.List)
+          .map(
+            (value) => api.RunQueryResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          )
+          .toList();
       checkRunQueryResponse(od);
     });
   });
@@ -4609,10 +4606,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirestoreAdminV1BulkDeleteDocumentsRequest(obj);
 
           final path = req.url.path;
@@ -5566,8 +5563,9 @@ void main() {
   unittest.group('resource-ProjectsDatabasesCollectionGroupsFieldsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.fields;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5622,8 +5620,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.fields;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5701,8 +5700,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.fields;
       final arg_request = buildGoogleFirestoreAdminV1Field();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5775,8 +5775,9 @@ void main() {
   unittest.group('resource-ProjectsDatabasesCollectionGroupsIndexesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.indexes;
       final arg_request = buildGoogleFirestoreAdminV1Index();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5841,8 +5842,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.indexes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5895,8 +5897,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.indexes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5951,8 +5954,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
+      final res = api.FirestoreApi(
+        mock,
+      ).projects.databases.collectionGroups.indexes;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -7624,10 +7628,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirestoreAdminV1DisableUserCredsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirestoreAdminV1DisableUserCredsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirestoreAdminV1DisableUserCredsRequest(obj);
 
           final path = req.url.path;
@@ -7873,10 +7877,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirestoreAdminV1ResetUserPasswordRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirestoreAdminV1ResetUserPasswordRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirestoreAdminV1ResetUserPasswordRequest(obj);
 
           final path = req.url.path;

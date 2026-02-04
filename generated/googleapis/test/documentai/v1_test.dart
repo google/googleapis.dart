@@ -5202,10 +5202,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1BatchDocumentsInputConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1BatchDocumentsInputConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1BatchDocumentsInputConfig(od);
       });
     },
@@ -5239,10 +5239,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DeployProcessorVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DeployProcessorVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DeployProcessorVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DeployProcessorVersionRequest(od);
       });
     },
@@ -5293,10 +5293,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunk();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunk(od);
       });
     },
@@ -5309,10 +5309,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter(
           od,
         );
@@ -5327,10 +5327,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader(
           od,
         );
@@ -5345,10 +5345,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan(
           od,
         );
@@ -5377,10 +5377,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock(
           od,
         );
@@ -5395,10 +5395,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock(
           od,
         );
@@ -5413,10 +5413,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry(
           od,
         );
@@ -5431,10 +5431,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan(
           od,
         );
@@ -5449,10 +5449,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock(
           od,
         );
@@ -5467,10 +5467,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell(
           od,
         );
@@ -5485,10 +5485,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow(
           od,
         );
@@ -5503,10 +5503,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock(
           od,
         );
@@ -5545,10 +5545,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentEntityNormalizedValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentEntityNormalizedValue(od);
       });
     },
@@ -5574,10 +5574,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentEntityValidationOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentEntityValidationOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentEntityValidationOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentEntityValidationOutput(od);
       });
     },
@@ -5590,10 +5590,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult(
           od,
         );
@@ -5619,10 +5619,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig(od);
       });
     },
@@ -5635,10 +5635,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig(
           od,
         );
@@ -5674,10 +5674,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageAnchorPageRef();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(od);
       });
     },
@@ -5700,10 +5700,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageDetectedBarcode();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageDetectedBarcode(od);
       });
     },
@@ -5715,10 +5715,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(od);
       });
     },
@@ -5763,10 +5763,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageImageQualityScores();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageImageQualityScores(od);
       });
     },
@@ -5779,10 +5779,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect(
           od,
         );
@@ -5862,10 +5862,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTableTableCell();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(od);
       });
     },
@@ -5877,10 +5877,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTableTableRow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(od);
       });
     },
@@ -5903,10 +5903,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(od);
       });
     },
@@ -5918,10 +5918,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(od);
       });
     },
@@ -5933,10 +5933,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageVisualElement();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageVisualElement(od);
       });
     },
@@ -5984,10 +5984,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentRevisionHumanReview();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentRevisionHumanReview(od);
       });
     },
@@ -6025,10 +6025,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues(od);
       });
     },
@@ -6041,10 +6041,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty(od);
       });
     },
@@ -6114,10 +6114,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(od);
       });
     },
@@ -6165,10 +6165,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1EvaluateProcessorVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1EvaluateProcessorVersionRequest(od);
       });
     },
@@ -6192,10 +6192,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics(od);
       });
     },
@@ -6230,10 +6230,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics(od);
       });
     },
@@ -6256,10 +6256,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1FetchProcessorTypesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1FetchProcessorTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1FetchProcessorTypesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1FetchProcessorTypesResponse(od);
       });
     },
@@ -6304,10 +6304,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1GenerateSchemaVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1GenerateSchemaVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1GenerateSchemaVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1GenerateSchemaVersionRequest(od);
       });
     },
@@ -6320,10 +6320,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams(
           od,
         );
@@ -6337,10 +6337,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1GenerateSchemaVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1GenerateSchemaVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1GenerateSchemaVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1GenerateSchemaVersionResponse(od);
       });
     },
@@ -6377,10 +6377,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ListProcessorTypesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ListProcessorTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ListProcessorTypesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ListProcessorTypesResponse(od);
       });
     },
@@ -6392,10 +6392,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ListProcessorVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ListProcessorVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ListProcessorVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ListProcessorVersionsResponse(od);
       });
     },
@@ -6421,10 +6421,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ListSchemaVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ListSchemaVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ListSchemaVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ListSchemaVersionsResponse(od);
       });
     },
@@ -6517,10 +6517,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector(od);
       });
     },
@@ -6532,10 +6532,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessOptionsLayoutConfig(od);
       });
     },
@@ -6548,10 +6548,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig(
           od,
         );
@@ -6609,10 +6609,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ProcessorTypeLocationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessorTypeLocationInfo(od);
       });
     },
@@ -6646,10 +6646,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(od);
       });
     },
@@ -6661,10 +6661,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo(od);
       });
     },
@@ -6677,10 +6677,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo(
           od,
         );
@@ -6695,10 +6695,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo(
           od,
         );
@@ -6759,10 +6759,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1SchemaGenerationIteration();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1SchemaGenerationIteration.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1SchemaGenerationIteration.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1SchemaGenerationIteration(od);
       });
     },
@@ -6786,10 +6786,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest(od);
       });
     },
@@ -6801,10 +6801,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1TrainProcessorVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1TrainProcessorVersionRequest(od);
       });
     },
@@ -6817,10 +6817,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions(
           od,
         );
@@ -6835,10 +6835,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions(
           od,
         );
@@ -6853,10 +6853,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData(od);
       });
     },
@@ -6868,10 +6868,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1UndeployProcessorVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1UndeployProcessorVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1UndeployProcessorVersionRequest(od);
       });
     },
@@ -7797,10 +7797,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1DisableProcessorRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1DisableProcessorRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1DisableProcessorRequest(obj);
 
           final path = req.url.path;
@@ -7863,10 +7863,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1EnableProcessorRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1EnableProcessorRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1EnableProcessorRequest(obj);
 
           final path = req.url.path;
@@ -8126,10 +8126,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest(obj);
 
           final path = req.url.path;
@@ -8190,19 +8190,18 @@ void main() {
     () {
       unittest.test('method--reviewDocument', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DocumentApi(
-              mock,
-            ).projects.locations.processors.humanReviewConfig;
+        final res = api.DocumentApi(
+          mock,
+        ).projects.locations.processors.humanReviewConfig;
         final arg_request = buildGoogleCloudDocumentaiV1ReviewDocumentRequest();
         final arg_humanReviewConfig = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDocumentaiV1ReviewDocumentRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDocumentaiV1ReviewDocumentRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDocumentaiV1ReviewDocumentRequest(obj);
 
             final path = req.url.path;
@@ -8262,8 +8261,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProcessorsProcessorVersionsResource', () {
     unittest.test('method--batchProcess', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request = buildGoogleCloudDocumentaiV1BatchProcessRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8328,8 +8328,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8384,18 +8385,19 @@ void main() {
 
     unittest.test('method--deploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request =
           buildGoogleCloudDocumentaiV1DeployProcessorVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1DeployProcessorVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1DeployProcessorVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1DeployProcessorVersionRequest(obj);
 
           final path = req.url.path;
@@ -8452,18 +8454,19 @@ void main() {
 
     unittest.test('method--evaluateProcessorVersion', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request =
           buildGoogleCloudDocumentaiV1EvaluateProcessorVersionRequest();
       final arg_processorVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1EvaluateProcessorVersionRequest(obj);
 
           final path = req.url.path;
@@ -8520,8 +8523,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8578,8 +8582,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8651,8 +8656,9 @@ void main() {
 
     unittest.test('method--process', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request = buildGoogleCloudDocumentaiV1ProcessRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8719,18 +8725,19 @@ void main() {
 
     unittest.test('method--train', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request =
           buildGoogleCloudDocumentaiV1TrainProcessorVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1TrainProcessorVersionRequest(obj);
 
           final path = req.url.path;
@@ -8787,18 +8794,19 @@ void main() {
 
     unittest.test('method--undeploy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.processors.processorVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.processors.processorVersions;
       final arg_request =
           buildGoogleCloudDocumentaiV1UndeployProcessorVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1UndeployProcessorVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1UndeployProcessorVersionRequest(obj);
 
           final path = req.url.path;
@@ -8859,10 +8867,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DocumentApi(
-              mock,
-            ).projects.locations.processors.processorVersions.evaluations;
+        final res = api.DocumentApi(
+          mock,
+        ).projects.locations.processors.processorVersions.evaluations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8919,10 +8926,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DocumentApi(
-              mock,
-            ).projects.locations.processors.processorVersions.evaluations;
+        final res = api.DocumentApi(
+          mock,
+        ).projects.locations.processors.processorVersions.evaluations;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -9332,8 +9338,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemasSchemaVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_request = buildGoogleCloudDocumentaiV1SchemaVersion();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9400,8 +9407,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9456,18 +9464,19 @@ void main() {
 
     unittest.test('method--generate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_request =
           buildGoogleCloudDocumentaiV1GenerateSchemaVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDocumentaiV1GenerateSchemaVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDocumentaiV1GenerateSchemaVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDocumentaiV1GenerateSchemaVersionRequest(obj);
 
           final path = req.url.path;
@@ -9526,8 +9535,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9584,8 +9594,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9657,8 +9668,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DocumentApi(mock).projects.locations.schemas.schemaVersions;
+      final res = api.DocumentApi(
+        mock,
+      ).projects.locations.schemas.schemaVersions;
       final arg_request = buildGoogleCloudDocumentaiV1SchemaVersion();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

@@ -5429,10 +5429,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildConfigManagementHierarchyControllerDeploymentState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ConfigManagementHierarchyControllerDeploymentState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ConfigManagementHierarchyControllerDeploymentState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkConfigManagementHierarchyControllerDeploymentState(od);
       });
     },
@@ -5752,10 +5752,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFleetObservabilityFleetObservabilityBaseFeatureState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFleetObservabilityFleetObservabilityBaseFeatureState(od);
       });
     },
@@ -5767,10 +5767,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFleetObservabilityFleetObservabilityLoggingState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FleetObservabilityFleetObservabilityLoggingState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FleetObservabilityFleetObservabilityLoggingState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFleetObservabilityFleetObservabilityLoggingState(od);
       });
     },
@@ -5782,10 +5782,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildFleetObservabilityFleetObservabilityMonitoringState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FleetObservabilityFleetObservabilityMonitoringState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FleetObservabilityFleetObservabilityMonitoringState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFleetObservabilityFleetObservabilityMonitoringState(od);
       });
     },
@@ -6493,10 +6493,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildPolicyControllerPolicyControllerDeploymentConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .PolicyControllerPolicyControllerDeploymentConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkPolicyControllerPolicyControllerDeploymentConfig(od);
       });
     },
@@ -8902,8 +8902,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMembershipsRbacrolebindingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_request = buildRBACRoleBinding();
       final arg_parent = 'foo';
       final arg_rbacrolebindingId = 'foo';
@@ -8972,8 +8973,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9026,8 +9028,9 @@ void main() {
 
     unittest.test('method--generateMembershipRBACRoleBindingYAML', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_request = buildRBACRoleBinding();
       final arg_parent = 'foo';
       final arg_rbacrolebindingId = 'foo';
@@ -9100,8 +9103,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9154,8 +9158,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9227,8 +9232,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.memberships.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.memberships.rbacrolebindings;
       final arg_request = buildRBACRoleBinding();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10516,8 +10522,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsScopesRbacrolebindingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.scopes.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.scopes.rbacrolebindings;
       final arg_request = buildRBACRoleBinding();
       final arg_parent = 'foo';
       final arg_rbacrolebindingId = 'foo';
@@ -10586,8 +10593,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.scopes.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.scopes.rbacrolebindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10640,8 +10648,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.scopes.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.scopes.rbacrolebindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10694,8 +10703,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.scopes.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.scopes.rbacrolebindings;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10767,8 +10777,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEHubApi(mock).projects.locations.scopes.rbacrolebindings;
+      final res = api.GKEHubApi(
+        mock,
+      ).projects.locations.scopes.rbacrolebindings;
       final arg_request = buildRBACRoleBinding();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

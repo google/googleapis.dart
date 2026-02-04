@@ -948,14 +948,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateMediationReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.GenerateMediationReportResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = (oJson as core.List)
+          .map(
+            (value) => api.GenerateMediationReportResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          )
+          .toList();
       checkGenerateMediationReportResponse(od);
     });
   });
@@ -986,14 +985,13 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateNetworkReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.GenerateNetworkReportResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = (oJson as core.List)
+          .map(
+            (value) => api.GenerateNetworkReportResponseElement.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          )
+          .toList();
       checkGenerateNetworkReportResponse(od);
     });
   });

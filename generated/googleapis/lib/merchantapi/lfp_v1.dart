@@ -111,7 +111,7 @@ class AccountsLfpInventoriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -159,7 +159,7 @@ class AccountsLfpMerchantStatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'lfp/v1/' + core.Uri.encodeFull('$name');
@@ -207,7 +207,7 @@ class AccountsLfpSalesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -249,7 +249,7 @@ class AccountsLfpStoresResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'lfp/v1/' + core.Uri.encodeFull('$name');
@@ -282,7 +282,7 @@ class AccountsLfpStoresResource {
   /// this method will complete with the same error.
   async.Future<LfpStore> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'lfp/v1/' + core.Uri.encodeFull('$name');
@@ -323,7 +323,7 @@ class AccountsLfpStoresResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -380,10 +380,10 @@ class AccountsLfpStoresResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (targetAccount != null) 'targetAccount': [targetAccount],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'targetAccount': ?targetAccount == null ? null : [targetAccount],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'lfp/v1/' + core.Uri.encodeFull('$parent') + '/lfpStores';
@@ -481,20 +481,25 @@ class CountrySettings {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (freeLocalListingsEnabled != null)
-      'freeLocalListingsEnabled': freeLocalListingsEnabled!,
-    if (instockServingVerificationState != null)
-      'instockServingVerificationState': instockServingVerificationState!,
-    if (inventoryVerificationState != null)
-      'inventoryVerificationState': inventoryVerificationState!,
-    if (localInventoryAdsEnabled != null)
-      'localInventoryAdsEnabled': localInventoryAdsEnabled!,
-    if (pickupServingVerificationState != null)
-      'pickupServingVerificationState': pickupServingVerificationState!,
-    if (productPageType != null) 'productPageType': productPageType!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final freeLocalListingsEnabled = this.freeLocalListingsEnabled;
+    final instockServingVerificationState =
+        this.instockServingVerificationState;
+    final inventoryVerificationState = this.inventoryVerificationState;
+    final localInventoryAdsEnabled = this.localInventoryAdsEnabled;
+    final pickupServingVerificationState = this.pickupServingVerificationState;
+    final productPageType = this.productPageType;
+    final regionCode = this.regionCode;
+    return {
+      'freeLocalListingsEnabled': ?freeLocalListingsEnabled,
+      'instockServingVerificationState': ?instockServingVerificationState,
+      'inventoryVerificationState': ?inventoryVerificationState,
+      'localInventoryAdsEnabled': ?localInventoryAdsEnabled,
+      'pickupServingVerificationState': ?pickupServingVerificationState,
+      'productPageType': ?productPageType,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -540,13 +545,18 @@ class InventoryStats {
         unsubmittedEntries: json_['unsubmittedEntries'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (submittedEntries != null) 'submittedEntries': submittedEntries!,
-    if (submittedInStockEntries != null)
-      'submittedInStockEntries': submittedInStockEntries!,
-    if (submittedProducts != null) 'submittedProducts': submittedProducts!,
-    if (unsubmittedEntries != null) 'unsubmittedEntries': unsubmittedEntries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final submittedEntries = this.submittedEntries;
+    final submittedInStockEntries = this.submittedInStockEntries;
+    final submittedProducts = this.submittedProducts;
+    final unsubmittedEntries = this.unsubmittedEntries;
+    return {
+      'submittedEntries': ?submittedEntries,
+      'submittedInStockEntries': ?submittedInStockEntries,
+      'submittedProducts': ?submittedProducts,
+      'unsubmittedEntries': ?unsubmittedEntries,
+    };
+  }
 }
 
 /// Local Inventory for the merchant.
@@ -681,34 +691,49 @@ class LfpInventory {
         offerId: json_['offerId'] as core.String?,
         pickupMethod: json_['pickupMethod'] as core.String?,
         pickupSla: json_['pickupSla'] as core.String?,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         quantity: json_['quantity'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
         storeCode: json_['storeCode'] as core.String?,
         targetAccount: json_['targetAccount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availability != null) 'availability': availability!,
-    if (collectionTime != null) 'collectionTime': collectionTime!,
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (gtin != null) 'gtin': gtin!,
-    if (name != null) 'name': name!,
-    if (offerId != null) 'offerId': offerId!,
-    if (pickupMethod != null) 'pickupMethod': pickupMethod!,
-    if (pickupSla != null) 'pickupSla': pickupSla!,
-    if (price != null) 'price': price!,
-    if (quantity != null) 'quantity': quantity!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (storeCode != null) 'storeCode': storeCode!,
-    if (targetAccount != null) 'targetAccount': targetAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availability = this.availability;
+    final collectionTime = this.collectionTime;
+    final contentLanguage = this.contentLanguage;
+    final feedLabel = this.feedLabel;
+    final gtin = this.gtin;
+    final name = this.name;
+    final offerId = this.offerId;
+    final pickupMethod = this.pickupMethod;
+    final pickupSla = this.pickupSla;
+    final price = this.price;
+    final quantity = this.quantity;
+    final regionCode = this.regionCode;
+    final storeCode = this.storeCode;
+    final targetAccount = this.targetAccount;
+    return {
+      'availability': ?availability,
+      'collectionTime': ?collectionTime,
+      'contentLanguage': ?contentLanguage,
+      'feedLabel': ?feedLabel,
+      'gtin': ?gtin,
+      'name': ?name,
+      'offerId': ?offerId,
+      'pickupMethod': ?pickupMethod,
+      'pickupSla': ?pickupSla,
+      'price': ?price,
+      'quantity': ?quantity,
+      'regionCode': ?regionCode,
+      'storeCode': ?storeCode,
+      'targetAccount': ?targetAccount,
+    };
+  }
 }
 
 /// The LFP state of a merchant.
@@ -751,40 +776,43 @@ class LfpMerchantState {
 
   LfpMerchantState.fromJson(core.Map json_)
     : this(
-        countrySettings:
-            (json_['countrySettings'] as core.List?)
-                ?.map(
-                  (value) => CountrySettings.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        inventoryStats:
-            json_.containsKey('inventoryStats')
-                ? InventoryStats.fromJson(
-                  json_['inventoryStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        countrySettings: (json_['countrySettings'] as core.List?)
+            ?.map(
+              (value) => CountrySettings.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        inventoryStats: json_.containsKey('inventoryStats')
+            ? InventoryStats.fromJson(
+                json_['inventoryStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         linkedGbps: json_['linkedGbps'] as core.String?,
         name: json_['name'] as core.String?,
-        storeStates:
-            (json_['storeStates'] as core.List?)
-                ?.map(
-                  (value) => LfpStoreState.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storeStates: (json_['storeStates'] as core.List?)
+            ?.map(
+              (value) => LfpStoreState.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (countrySettings != null) 'countrySettings': countrySettings!,
-    if (inventoryStats != null) 'inventoryStats': inventoryStats!,
-    if (linkedGbps != null) 'linkedGbps': linkedGbps!,
-    if (name != null) 'name': name!,
-    if (storeStates != null) 'storeStates': storeStates!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final countrySettings = this.countrySettings;
+    final inventoryStats = this.inventoryStats;
+    final linkedGbps = this.linkedGbps;
+    final name = this.name;
+    final storeStates = this.storeStates;
+    return {
+      'countrySettings': ?countrySettings,
+      'inventoryStats': ?inventoryStats,
+      'linkedGbps': ?linkedGbps,
+      'name': ?name,
+      'storeStates': ?storeStates,
+    };
+  }
 }
 
 /// A sale for the merchant.
@@ -889,12 +917,11 @@ class LfpSale {
         gtin: json_['gtin'] as core.String?,
         name: json_['name'] as core.String?,
         offerId: json_['offerId'] as core.String?,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         quantity: json_['quantity'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
         saleTime: json_['saleTime'] as core.String?,
@@ -903,20 +930,34 @@ class LfpSale {
         uid: json_['uid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (gtin != null) 'gtin': gtin!,
-    if (name != null) 'name': name!,
-    if (offerId != null) 'offerId': offerId!,
-    if (price != null) 'price': price!,
-    if (quantity != null) 'quantity': quantity!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (saleTime != null) 'saleTime': saleTime!,
-    if (storeCode != null) 'storeCode': storeCode!,
-    if (targetAccount != null) 'targetAccount': targetAccount!,
-    if (uid != null) 'uid': uid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentLanguage = this.contentLanguage;
+    final feedLabel = this.feedLabel;
+    final gtin = this.gtin;
+    final name = this.name;
+    final offerId = this.offerId;
+    final price = this.price;
+    final quantity = this.quantity;
+    final regionCode = this.regionCode;
+    final saleTime = this.saleTime;
+    final storeCode = this.storeCode;
+    final targetAccount = this.targetAccount;
+    final uid = this.uid;
+    return {
+      'contentLanguage': ?contentLanguage,
+      'feedLabel': ?feedLabel,
+      'gtin': ?gtin,
+      'name': ?name,
+      'offerId': ?offerId,
+      'price': ?price,
+      'quantity': ?quantity,
+      'regionCode': ?regionCode,
+      'saleTime': ?saleTime,
+      'storeCode': ?storeCode,
+      'targetAccount': ?targetAccount,
+      'uid': ?uid,
+    };
+  }
 }
 
 /// A store for the merchant.
@@ -1028,10 +1069,9 @@ class LfpStore {
 
   LfpStore.fromJson(core.Map json_)
     : this(
-        gcidCategory:
-            (json_['gcidCategory'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        gcidCategory: (json_['gcidCategory'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         matchingState: json_['matchingState'] as core.String?,
         matchingStateHint: json_['matchingStateHint'] as core.String?,
         name: json_['name'] as core.String?,
@@ -1044,19 +1084,32 @@ class LfpStore {
         websiteUri: json_['websiteUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcidCategory != null) 'gcidCategory': gcidCategory!,
-    if (matchingState != null) 'matchingState': matchingState!,
-    if (matchingStateHint != null) 'matchingStateHint': matchingStateHint!,
-    if (name != null) 'name': name!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (placeId != null) 'placeId': placeId!,
-    if (storeAddress != null) 'storeAddress': storeAddress!,
-    if (storeCode != null) 'storeCode': storeCode!,
-    if (storeName != null) 'storeName': storeName!,
-    if (targetAccount != null) 'targetAccount': targetAccount!,
-    if (websiteUri != null) 'websiteUri': websiteUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcidCategory = this.gcidCategory;
+    final matchingState = this.matchingState;
+    final matchingStateHint = this.matchingStateHint;
+    final name = this.name;
+    final phoneNumber = this.phoneNumber;
+    final placeId = this.placeId;
+    final storeAddress = this.storeAddress;
+    final storeCode = this.storeCode;
+    final storeName = this.storeName;
+    final targetAccount = this.targetAccount;
+    final websiteUri = this.websiteUri;
+    return {
+      'gcidCategory': ?gcidCategory,
+      'matchingState': ?matchingState,
+      'matchingStateHint': ?matchingStateHint,
+      'name': ?name,
+      'phoneNumber': ?phoneNumber,
+      'placeId': ?placeId,
+      'storeAddress': ?storeAddress,
+      'storeCode': ?storeCode,
+      'storeName': ?storeName,
+      'targetAccount': ?targetAccount,
+      'websiteUri': ?websiteUri,
+    };
+  }
 }
 
 /// The state of a specific merchant's store.
@@ -1090,11 +1143,16 @@ class LfpStoreState {
         storeCode: json_['storeCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matchingState != null) 'matchingState': matchingState!,
-    if (matchingStateHint != null) 'matchingStateHint': matchingStateHint!,
-    if (storeCode != null) 'storeCode': storeCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final matchingState = this.matchingState;
+    final matchingStateHint = this.matchingStateHint;
+    final storeCode = this.storeCode;
+    return {
+      'matchingState': ?matchingState,
+      'matchingStateHint': ?matchingStateHint,
+      'storeCode': ?storeCode,
+    };
+  }
 }
 
 /// Response message for the ListLfpStores method.
@@ -1111,21 +1169,21 @@ class ListLfpStoresResponse {
 
   ListLfpStoresResponse.fromJson(core.Map json_)
     : this(
-        lfpStores:
-            (json_['lfpStores'] as core.List?)
-                ?.map(
-                  (value) => LfpStore.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        lfpStores: (json_['lfpStores'] as core.List?)
+            ?.map(
+              (value) => LfpStore.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lfpStores != null) 'lfpStores': lfpStores!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lfpStores = this.lfpStores;
+    final nextPageToken = this.nextPageToken;
+    return {'lfpStores': ?lfpStores, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The price represented as a number and currency.

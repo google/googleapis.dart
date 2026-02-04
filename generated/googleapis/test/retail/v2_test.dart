@@ -6059,10 +6059,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest(od);
       });
     },
@@ -6075,10 +6075,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse(
           od,
         );
@@ -6140,10 +6140,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues(
           od,
         );
@@ -6158,10 +6158,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet(od);
       });
     },
@@ -6174,10 +6174,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue(od);
       });
     },
@@ -6190,10 +6190,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig(od);
       });
     },
@@ -6239,10 +6239,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CompleteQueryResponseAttributeResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CompleteQueryResponseAttributeResult(od);
       });
     },
@@ -6255,10 +6255,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CompleteQueryResponseCompletionResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CompleteQueryResponseCompletionResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CompleteQueryResponseCompletionResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CompleteQueryResponseCompletionResult(od);
       });
     },
@@ -6271,10 +6271,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2CompleteQueryResponseRecentSearchResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2CompleteQueryResponseRecentSearchResult(od);
       });
     },
@@ -6364,10 +6364,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchCustomizationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchCustomizationConfig(od);
       });
     },
@@ -6394,10 +6394,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec(
           od,
         );
@@ -6412,10 +6412,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchRequestSearchParams();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchRequestSearchParams.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchRequestSearchParams.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchRequestSearchParams(od);
       });
     },
@@ -6428,10 +6428,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchRequestUserAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchRequestUserAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchRequestUserAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchRequestUserAnswer(od);
       });
     },
@@ -6444,10 +6444,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer(
           od,
         );
@@ -6476,10 +6476,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult(
           od,
         );
@@ -6494,10 +6494,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter(
           od,
         );
@@ -6512,10 +6512,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion(
           od,
         );
@@ -6530,10 +6530,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer(
           od,
         );
@@ -6548,10 +6548,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ConversationalSearchResponseRefinedSearch();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ConversationalSearchResponseRefinedSearch(od);
       });
     },
@@ -6597,10 +6597,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ExperimentInfoServingConfigExperiment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ExperimentInfoServingConfigExperiment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ExperimentInfoServingConfigExperiment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ExperimentInfoServingConfigExperiment(od);
       });
     },
@@ -6612,10 +6612,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2ExportAnalyticsMetricsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ExportAnalyticsMetricsRequest(od);
       });
     },
@@ -6660,10 +6660,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2GenerativeQuestionsFeatureConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2GenerativeQuestionsFeatureConfig(od);
       });
     },
@@ -6758,10 +6758,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2IntentClassificationConfigExample();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2IntentClassificationConfigExample(od);
       });
     },
@@ -6774,10 +6774,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2IntentClassificationConfigInlineForceIntent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2IntentClassificationConfigInlineForceIntent(od);
       });
     },
@@ -6790,10 +6790,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2IntentClassificationConfigInlineSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2IntentClassificationConfigInlineSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2IntentClassificationConfigInlineSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2IntentClassificationConfigInlineSource(od);
       });
     },
@@ -6839,10 +6839,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ListGenerativeQuestionConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ListGenerativeQuestionConfigsResponse(od);
       });
     },
@@ -6913,10 +6913,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig(od);
       });
     },
@@ -6961,10 +6961,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2OutputConfigBigQueryDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2OutputConfigBigQueryDestination(od);
       });
     },
@@ -7023,10 +7023,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2PinControlMetadataProductPins();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2PinControlMetadataProductPins(od);
       });
     },
@@ -7060,10 +7060,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2PredictResponsePredictionResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2PredictResponsePredictionResult(od);
       });
     },
@@ -7240,10 +7240,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2RemoveCatalogAttributeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2RemoveCatalogAttributeRequest(od);
       });
     },
@@ -7266,10 +7266,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2RemoveFulfillmentPlacesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2RemoveFulfillmentPlacesRequest(od);
       });
     },
@@ -7281,10 +7281,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2RemoveLocalInventoriesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2RemoveLocalInventoriesRequest(od);
       });
     },
@@ -7296,10 +7296,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2ReplaceCatalogAttributeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2ReplaceCatalogAttributeRequest(od);
       });
     },
@@ -7381,10 +7381,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment(
           od,
         );
@@ -7509,10 +7509,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec(od);
       });
     },
@@ -7525,10 +7525,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchRequestConversationalSearchSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestConversationalSearchSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestConversationalSearchSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestConversationalSearchSpec(od);
       });
     },
@@ -7541,10 +7541,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer(
           od,
         );
@@ -7559,10 +7559,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer(
           od,
         );
@@ -7576,10 +7576,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestDynamicFacetSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestDynamicFacetSpec(od);
       });
     },
@@ -7602,10 +7602,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestFacetSpecFacetKey();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestFacetSpecFacetKey(od);
       });
     },
@@ -7617,10 +7617,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestPersonalizationSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestPersonalizationSpec(od);
       });
     },
@@ -7632,10 +7632,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestQueryExpansionSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestQueryExpansionSpec(od);
       });
     },
@@ -7647,10 +7647,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestSpellCorrectionSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestSpellCorrectionSpec(od);
       });
     },
@@ -7662,10 +7662,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchRequestTileNavigationSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchRequestTileNavigationSpec(od);
       });
     },
@@ -7689,10 +7689,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchResponseConversationalSearchResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseConversationalSearchResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseConversationalSearchResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseConversationalSearchResult(od);
       });
     },
@@ -7705,10 +7705,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter(
           od,
         );
@@ -7723,10 +7723,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer(
           od,
         );
@@ -7751,10 +7751,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchResponseFacetFacetValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseFacetFacetValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseFacetFacetValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseFacetFacetValue(od);
       });
     },
@@ -7766,10 +7766,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchResponseQueryExpansionInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseQueryExpansionInfo(od);
       });
     },
@@ -7795,10 +7795,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRetailV2SearchResponseTileNavigationResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2SearchResponseTileNavigationResult(od);
       });
     },
@@ -7877,10 +7877,10 @@ void main() {
         final o =
             buildGoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest(od);
       });
     },
@@ -8100,10 +8100,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2ExportAnalyticsMetricsRequest(obj);
 
           final path = req.url.path;
@@ -8823,10 +8823,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudRetailV2ConversationalSearchCustomizationConfig.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudRetailV2ConversationalSearchCustomizationConfig(
               obj,
             );
@@ -8976,10 +8976,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2GenerativeQuestionsFeatureConfig(obj);
 
           final path = req.url.path;
@@ -9045,17 +9045,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsAttributesConfigResource', () {
     unittest.test('method--addCatalogAttribute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.attributesConfig;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.attributesConfig;
       final arg_request = buildGoogleCloudRetailV2AddCatalogAttributeRequest();
       final arg_attributesConfig = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2AddCatalogAttributeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2AddCatalogAttributeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2AddCatalogAttributeRequest(obj);
 
           final path = req.url.path;
@@ -9114,18 +9115,19 @@ void main() {
 
     unittest.test('method--removeCatalogAttribute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.attributesConfig;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.attributesConfig;
       final arg_request =
           buildGoogleCloudRetailV2RemoveCatalogAttributeRequest();
       final arg_attributesConfig = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2RemoveCatalogAttributeRequest(obj);
 
           final path = req.url.path;
@@ -9184,18 +9186,19 @@ void main() {
 
     unittest.test('method--replaceCatalogAttribute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.attributesConfig;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.attributesConfig;
       final arg_request =
           buildGoogleCloudRetailV2ReplaceCatalogAttributeRequest();
       final arg_attributesConfig = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2ReplaceCatalogAttributeRequest(obj);
 
           final path = req.url.path;
@@ -9258,10 +9261,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudRetailApi(
-              mock,
-            ).projects.locations.catalogs.branches.operations;
+        final res = api.CloudRetailApi(
+          mock,
+        ).projects.locations.catalogs.branches.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9319,19 +9321,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsBranchesProductsResource', () {
     unittest.test('method--addFulfillmentPlaces', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2AddFulfillmentPlacesRequest();
       final arg_product = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2AddFulfillmentPlacesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2AddFulfillmentPlacesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2AddFulfillmentPlacesRequest(obj);
 
           final path = req.url.path;
@@ -9388,19 +9389,18 @@ void main() {
 
     unittest.test('method--addLocalInventories', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2AddLocalInventoriesRequest();
       final arg_product = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2AddLocalInventoriesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2AddLocalInventoriesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2AddLocalInventoriesRequest(obj);
 
           final path = req.url.path;
@@ -9457,10 +9457,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2Product();
       final arg_parent = 'foo';
       final arg_productId = 'foo';
@@ -9531,10 +9530,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9587,10 +9585,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9645,10 +9642,9 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2ImportProductsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9713,10 +9709,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -9800,10 +9795,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2Product();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -9880,10 +9874,9 @@ void main() {
 
     unittest.test('method--purge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2PurgeProductsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9948,20 +9941,19 @@ void main() {
 
     unittest.test('method--removeFulfillmentPlaces', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request =
           buildGoogleCloudRetailV2RemoveFulfillmentPlacesRequest();
       final arg_product = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2RemoveFulfillmentPlacesRequest(obj);
 
           final path = req.url.path;
@@ -10018,20 +10010,19 @@ void main() {
 
     unittest.test('method--removeLocalInventories', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request =
           buildGoogleCloudRetailV2RemoveLocalInventoriesRequest();
       final arg_product = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2RemoveLocalInventoriesRequest(obj);
 
           final path = req.url.path;
@@ -10088,10 +10079,9 @@ void main() {
 
     unittest.test('method--setInventory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.branches.products;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.branches.products;
       final arg_request = buildGoogleCloudRetailV2SetInventoryRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10158,17 +10148,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsCompletionDataResource', () {
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.completionData;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.completionData;
       final arg_request = buildGoogleCloudRetailV2ImportCompletionDataRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2ImportCompletionDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2ImportCompletionDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2ImportCompletionDataRequest(obj);
 
           final path = req.url.path;
@@ -10557,20 +10548,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsGenerativeQuestionResource', () {
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(
-            mock,
-          ).projects.locations.catalogs.generativeQuestion;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.generativeQuestion;
       final arg_request =
           buildGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest(
             obj,
           );
@@ -10636,10 +10626,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudRetailApi(
-              mock,
-            ).projects.locations.catalogs.generativeQuestions;
+        final res = api.CloudRetailApi(
+          mock,
+        ).projects.locations.catalogs.generativeQuestions;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -11211,8 +11200,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.operations;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11267,8 +11257,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.operations;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -11354,17 +11345,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsPlacementsResource', () {
     unittest.test('method--conversationalSearch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.placements;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.placements;
       final arg_request = buildGoogleCloudRetailV2ConversationalSearchRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2ConversationalSearchRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2ConversationalSearchRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2ConversationalSearchRequest(obj);
 
           final path = req.url.path;
@@ -11423,8 +11415,9 @@ void main() {
 
     unittest.test('method--predict', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.placements;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.placements;
       final arg_request = buildGoogleCloudRetailV2PredictRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
@@ -11491,8 +11484,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.placements;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.placements;
       final arg_request = buildGoogleCloudRetailV2SearchRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
@@ -11561,8 +11555,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsServingConfigsResource', () {
     unittest.test('method--addControl', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2AddControlRequest();
       final arg_servingConfig = 'foo';
       final arg_$fields = 'foo';
@@ -11629,17 +11624,18 @@ void main() {
 
     unittest.test('method--conversationalSearch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2ConversationalSearchRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRetailV2ConversationalSearchRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRetailV2ConversationalSearchRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRetailV2ConversationalSearchRequest(obj);
 
           final path = req.url.path;
@@ -11698,8 +11694,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2ServingConfig();
       final arg_parent = 'foo';
       final arg_servingConfigId = 'foo';
@@ -11772,8 +11769,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11826,8 +11824,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11884,8 +11883,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11957,8 +11957,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2ServingConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -12031,8 +12032,9 @@ void main() {
 
     unittest.test('method--predict', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2PredictRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
@@ -12099,8 +12101,9 @@ void main() {
 
     unittest.test('method--removeControl', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2RemoveControlRequest();
       final arg_servingConfig = 'foo';
       final arg_$fields = 'foo';
@@ -12167,8 +12170,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.servingConfigs;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.servingConfigs;
       final arg_request = buildGoogleCloudRetailV2SearchRequest();
       final arg_placement = 'foo';
       final arg_$fields = 'foo';
@@ -12237,8 +12241,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsUserEventsResource', () {
     unittest.test('method--collect', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2CollectUserEventRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12301,8 +12306,9 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2ImportUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12367,8 +12373,9 @@ void main() {
 
     unittest.test('method--purge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2PurgeUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12433,8 +12440,9 @@ void main() {
 
     unittest.test('method--rejoin', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2RejoinUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12499,8 +12507,9 @@ void main() {
 
     unittest.test('method--write', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
+      final res = api.CloudRetailApi(
+        mock,
+      ).projects.locations.catalogs.userEvents;
       final arg_request = buildGoogleCloudRetailV2UserEvent();
       final arg_parent = 'foo';
       final arg_writeAsync = true;

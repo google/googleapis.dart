@@ -1,7 +1,7 @@
 ## 1.0.8-wip
 
 - Fix detection of web usage.
-- Require `sdk: ^3.7.0`
+- Require `sdk: ^3.9.0`
 
 ## 1.0.7
 

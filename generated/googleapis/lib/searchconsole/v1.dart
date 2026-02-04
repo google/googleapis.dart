@@ -112,7 +112,7 @@ class SearchanalyticsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -164,7 +164,7 @@ class SitemapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -207,7 +207,7 @@ class SitemapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -254,8 +254,8 @@ class SitemapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (sitemapIndex != null) 'sitemapIndex': [sitemapIndex],
-      if ($fields != null) 'fields': [$fields],
+      'sitemapIndex': ?sitemapIndex == null ? null : [sitemapIndex],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -297,7 +297,7 @@ class SitemapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -336,7 +336,7 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<void> add(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
@@ -366,7 +366,7 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
@@ -398,7 +398,7 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<WmxSite> get(core.String siteUrl, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
@@ -427,7 +427,7 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'webmasters/v3/sites';
@@ -479,7 +479,7 @@ class UrlInspectionIndexResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/urlInspection/index:inspect';
@@ -533,7 +533,7 @@ class UrlTestingToolsMobileFriendlyTestResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/urlTestingTools/mobileFriendlyTest:run';
@@ -642,31 +642,39 @@ class AmpInspectionResult {
         ampIndexStatusVerdict: json_['ampIndexStatusVerdict'] as core.String?,
         ampUrl: json_['ampUrl'] as core.String?,
         indexingState: json_['indexingState'] as core.String?,
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map(
-                  (value) => AmpIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        issues: (json_['issues'] as core.List?)
+            ?.map(
+              (value) => AmpIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         lastCrawlTime: json_['lastCrawlTime'] as core.String?,
         pageFetchState: json_['pageFetchState'] as core.String?,
         robotsTxtState: json_['robotsTxtState'] as core.String?,
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ampIndexStatusVerdict != null)
-      'ampIndexStatusVerdict': ampIndexStatusVerdict!,
-    if (ampUrl != null) 'ampUrl': ampUrl!,
-    if (indexingState != null) 'indexingState': indexingState!,
-    if (issues != null) 'issues': issues!,
-    if (lastCrawlTime != null) 'lastCrawlTime': lastCrawlTime!,
-    if (pageFetchState != null) 'pageFetchState': pageFetchState!,
-    if (robotsTxtState != null) 'robotsTxtState': robotsTxtState!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ampIndexStatusVerdict = this.ampIndexStatusVerdict;
+    final ampUrl = this.ampUrl;
+    final indexingState = this.indexingState;
+    final issues = this.issues;
+    final lastCrawlTime = this.lastCrawlTime;
+    final pageFetchState = this.pageFetchState;
+    final robotsTxtState = this.robotsTxtState;
+    final verdict = this.verdict;
+    return {
+      'ampIndexStatusVerdict': ?ampIndexStatusVerdict,
+      'ampUrl': ?ampUrl,
+      'indexingState': ?indexingState,
+      'issues': ?issues,
+      'lastCrawlTime': ?lastCrawlTime,
+      'pageFetchState': ?pageFetchState,
+      'robotsTxtState': ?robotsTxtState,
+      'verdict': ?verdict,
+    };
+  }
 }
 
 /// AMP issue.
@@ -689,10 +697,11 @@ class AmpIssue {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issueMessage != null) 'issueMessage': issueMessage!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issueMessage = this.issueMessage;
+    final severity = this.severity;
+    return {'issueMessage': ?issueMessage, 'severity': ?severity};
+  }
 }
 
 class ApiDataRow {
@@ -715,20 +724,26 @@ class ApiDataRow {
         clicks: (json_['clicks'] as core.num?)?.toDouble(),
         ctr: (json_['ctr'] as core.num?)?.toDouble(),
         impressions: (json_['impressions'] as core.num?)?.toDouble(),
-        keys:
-            (json_['keys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        keys: (json_['keys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         position: (json_['position'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clicks != null) 'clicks': clicks!,
-    if (ctr != null) 'ctr': ctr!,
-    if (impressions != null) 'impressions': impressions!,
-    if (keys != null) 'keys': keys!,
-    if (position != null) 'position': position!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clicks = this.clicks;
+    final ctr = this.ctr;
+    final impressions = this.impressions;
+    final keys = this.keys;
+    final position = this.position;
+    return {
+      'clicks': ?clicks,
+      'ctr': ?ctr,
+      'impressions': ?impressions,
+      'keys': ?keys,
+      'position': ?position,
+    };
+  }
 }
 
 /// A filter test to be applied to each row in the data set, where a match can
@@ -768,11 +783,16 @@ class ApiDimensionFilter {
         operator: json_['operator'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (expression != null) 'expression': expression!,
-    if (operator != null) 'operator': operator!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimension = this.dimension;
+    final expression = this.expression;
+    final operator = this.operator;
+    return {
+      'dimension': ?dimension,
+      'expression': ?expression,
+      'operator': ?operator,
+    };
+  }
 }
 
 /// A set of dimension value filters to test against each row.
@@ -792,21 +812,21 @@ class ApiDimensionFilterGroup {
 
   ApiDimensionFilterGroup.fromJson(core.Map json_)
     : this(
-        filters:
-            (json_['filters'] as core.List?)
-                ?.map(
-                  (value) => ApiDimensionFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        filters: (json_['filters'] as core.List?)
+            ?.map(
+              (value) => ApiDimensionFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         groupType: json_['groupType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filters != null) 'filters': filters!,
-    if (groupType != null) 'groupType': groupType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filters = this.filters;
+    final groupType = this.groupType;
+    return {'filters': ?filters, 'groupType': ?groupType};
+  }
 }
 
 /// Blocked resource.
@@ -819,9 +839,10 @@ class BlockedResource {
   BlockedResource.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// Rich Results items grouped by type.
@@ -836,21 +857,20 @@ class DetectedItems {
 
   DetectedItems.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Item.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Item.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         richResultType: json_['richResultType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (richResultType != null) 'richResultType': richResultType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final richResultType = this.richResultType;
+    return {'items': ?items, 'richResultType': ?richResultType};
+  }
 }
 
 /// Describe image data.
@@ -880,10 +900,11 @@ class Image {
         mimeType: json_['mimeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeType = this.mimeType;
+    return {'data': ?data, 'mimeType': ?mimeType};
+  }
 }
 
 /// Results of index status inspection for either the live page or the version
@@ -1005,32 +1026,43 @@ class IndexStatusInspectionResult {
         indexingState: json_['indexingState'] as core.String?,
         lastCrawlTime: json_['lastCrawlTime'] as core.String?,
         pageFetchState: json_['pageFetchState'] as core.String?,
-        referringUrls:
-            (json_['referringUrls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        referringUrls: (json_['referringUrls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         robotsTxtState: json_['robotsTxtState'] as core.String?,
-        sitemap:
-            (json_['sitemap'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sitemap: (json_['sitemap'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         userCanonical: json_['userCanonical'] as core.String?,
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coverageState != null) 'coverageState': coverageState!,
-    if (crawledAs != null) 'crawledAs': crawledAs!,
-    if (googleCanonical != null) 'googleCanonical': googleCanonical!,
-    if (indexingState != null) 'indexingState': indexingState!,
-    if (lastCrawlTime != null) 'lastCrawlTime': lastCrawlTime!,
-    if (pageFetchState != null) 'pageFetchState': pageFetchState!,
-    if (referringUrls != null) 'referringUrls': referringUrls!,
-    if (robotsTxtState != null) 'robotsTxtState': robotsTxtState!,
-    if (sitemap != null) 'sitemap': sitemap!,
-    if (userCanonical != null) 'userCanonical': userCanonical!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coverageState = this.coverageState;
+    final crawledAs = this.crawledAs;
+    final googleCanonical = this.googleCanonical;
+    final indexingState = this.indexingState;
+    final lastCrawlTime = this.lastCrawlTime;
+    final pageFetchState = this.pageFetchState;
+    final referringUrls = this.referringUrls;
+    final robotsTxtState = this.robotsTxtState;
+    final sitemap = this.sitemap;
+    final userCanonical = this.userCanonical;
+    final verdict = this.verdict;
+    return {
+      'coverageState': ?coverageState,
+      'crawledAs': ?crawledAs,
+      'googleCanonical': ?googleCanonical,
+      'indexingState': ?indexingState,
+      'lastCrawlTime': ?lastCrawlTime,
+      'pageFetchState': ?pageFetchState,
+      'referringUrls': ?referringUrls,
+      'robotsTxtState': ?robotsTxtState,
+      'sitemap': ?sitemap,
+      'userCanonical': ?userCanonical,
+      'verdict': ?verdict,
+    };
+  }
 }
 
 /// Index inspection request.
@@ -1068,11 +1100,16 @@ class InspectUrlIndexRequest {
         siteUrl: json_['siteUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inspectionUrl != null) 'inspectionUrl': inspectionUrl!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (siteUrl != null) 'siteUrl': siteUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inspectionUrl = this.inspectionUrl;
+    final languageCode = this.languageCode;
+    final siteUrl = this.siteUrl;
+    return {
+      'inspectionUrl': ?inspectionUrl,
+      'languageCode': ?languageCode,
+      'siteUrl': ?siteUrl,
+    };
+  }
 }
 
 /// Index-Status inspection response.
@@ -1084,18 +1121,18 @@ class InspectUrlIndexResponse {
 
   InspectUrlIndexResponse.fromJson(core.Map json_)
     : this(
-        inspectionResult:
-            json_.containsKey('inspectionResult')
-                ? UrlInspectionResult.fromJson(
-                  json_['inspectionResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inspectionResult: json_.containsKey('inspectionResult')
+            ? UrlInspectionResult.fromJson(
+                json_['inspectionResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inspectionResult != null) 'inspectionResult': inspectionResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inspectionResult = this.inspectionResult;
+    return {'inspectionResult': ?inspectionResult};
+  }
 }
 
 /// A specific rich result found on the page.
@@ -1110,21 +1147,21 @@ class Item {
 
   Item.fromJson(core.Map json_)
     : this(
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map(
-                  (value) => RichResultsIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        issues: (json_['issues'] as core.List?)
+            ?.map(
+              (value) => RichResultsIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issues != null) 'issues': issues!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issues = this.issues;
+    final name = this.name;
+    return {'issues': ?issues, 'name': ?name};
+  }
 }
 
 /// An object that may be returned with your query results, providing context
@@ -1165,12 +1202,14 @@ class Metadata {
         firstIncompleteHour: json_['firstIncompleteHour'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (firstIncompleteDate != null)
-      'firstIncompleteDate': firstIncompleteDate!,
-    if (firstIncompleteHour != null)
-      'firstIncompleteHour': firstIncompleteHour!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final firstIncompleteDate = this.firstIncompleteDate;
+    final firstIncompleteHour = this.firstIncompleteHour;
+    return {
+      'firstIncompleteDate': ?firstIncompleteDate,
+      'firstIncompleteHour': ?firstIncompleteHour,
+    };
+  }
 }
 
 /// Mobile-friendly issue.
@@ -1201,9 +1240,10 @@ class MobileFriendlyIssue {
   MobileFriendlyIssue.fromJson(core.Map json_)
     : this(rule: json_['rule'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rule != null) 'rule': rule!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rule = this.rule;
+    return {'rule': ?rule};
+  }
 }
 
 /// Mobile-usability inspection results.
@@ -1226,21 +1266,21 @@ class MobileUsabilityInspectionResult {
 
   MobileUsabilityInspectionResult.fromJson(core.Map json_)
     : this(
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map(
-                  (value) => MobileUsabilityIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        issues: (json_['issues'] as core.List?)
+            ?.map(
+              (value) => MobileUsabilityIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issues != null) 'issues': issues!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issues = this.issues;
+    final verdict = this.verdict;
+    return {'issues': ?issues, 'verdict': ?verdict};
+  }
 }
 
 /// Mobile-usability issue.
@@ -1285,11 +1325,16 @@ class MobileUsabilityIssue {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issueType != null) 'issueType': issueType!,
-    if (message != null) 'message': message!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issueType = this.issueType;
+    final message = this.message;
+    final severity = this.severity;
+    return {
+      'issueType': ?issueType,
+      'message': ?message,
+      'severity': ?severity,
+    };
+  }
 }
 
 /// Information about a resource with issue.
@@ -1301,18 +1346,17 @@ class ResourceIssue {
 
   ResourceIssue.fromJson(core.Map json_)
     : this(
-        blockedResource:
-            json_.containsKey('blockedResource')
-                ? BlockedResource.fromJson(
-                  json_['blockedResource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blockedResource: json_.containsKey('blockedResource')
+            ? BlockedResource.fromJson(
+                json_['blockedResource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blockedResource != null) 'blockedResource': blockedResource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blockedResource = this.blockedResource;
+    return {'blockedResource': ?blockedResource};
+  }
 }
 
 /// Rich-Results inspection result, including any rich results found at this
@@ -1339,21 +1383,21 @@ class RichResultsInspectionResult {
 
   RichResultsInspectionResult.fromJson(core.Map json_)
     : this(
-        detectedItems:
-            (json_['detectedItems'] as core.List?)
-                ?.map(
-                  (value) => DetectedItems.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        detectedItems: (json_['detectedItems'] as core.List?)
+            ?.map(
+              (value) => DetectedItems.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         verdict: json_['verdict'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedItems != null) 'detectedItems': detectedItems!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedItems = this.detectedItems;
+    final verdict = this.verdict;
+    return {'detectedItems': ?detectedItems, 'verdict': ?verdict};
+  }
 }
 
 /// Severity and status of a single issue affecting a single rich result
@@ -1380,10 +1424,11 @@ class RichResultsIssue {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issueMessage != null) 'issueMessage': issueMessage!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issueMessage = this.issueMessage;
+    final severity = this.severity;
+    return {'issueMessage': ?issueMessage, 'severity': ?severity};
+  }
 }
 
 /// Mobile-friendly test request.
@@ -1404,10 +1449,11 @@ class RunMobileFriendlyTestRequest {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestScreenshot != null) 'requestScreenshot': requestScreenshot!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestScreenshot = this.requestScreenshot;
+    final url = this.url;
+    return {'requestScreenshot': ?requestScreenshot, 'url': ?url};
+  }
 }
 
 /// Mobile-friendly test response, including mobile-friendly issues and resource
@@ -1444,44 +1490,46 @@ class RunMobileFriendlyTestResponse {
   RunMobileFriendlyTestResponse.fromJson(core.Map json_)
     : this(
         mobileFriendliness: json_['mobileFriendliness'] as core.String?,
-        mobileFriendlyIssues:
-            (json_['mobileFriendlyIssues'] as core.List?)
-                ?.map(
-                  (value) => MobileFriendlyIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        resourceIssues:
-            (json_['resourceIssues'] as core.List?)
-                ?.map(
-                  (value) => ResourceIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        screenshot:
-            json_.containsKey('screenshot')
-                ? Image.fromJson(
-                  json_['screenshot'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        testStatus:
-            json_.containsKey('testStatus')
-                ? TestStatus.fromJson(
-                  json_['testStatus'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mobileFriendlyIssues: (json_['mobileFriendlyIssues'] as core.List?)
+            ?.map(
+              (value) => MobileFriendlyIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        resourceIssues: (json_['resourceIssues'] as core.List?)
+            ?.map(
+              (value) => ResourceIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        screenshot: json_.containsKey('screenshot')
+            ? Image.fromJson(
+                json_['screenshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        testStatus: json_.containsKey('testStatus')
+            ? TestStatus.fromJson(
+                json_['testStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileFriendliness != null) 'mobileFriendliness': mobileFriendliness!,
-    if (mobileFriendlyIssues != null)
-      'mobileFriendlyIssues': mobileFriendlyIssues!,
-    if (resourceIssues != null) 'resourceIssues': resourceIssues!,
-    if (screenshot != null) 'screenshot': screenshot!,
-    if (testStatus != null) 'testStatus': testStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileFriendliness = this.mobileFriendliness;
+    final mobileFriendlyIssues = this.mobileFriendlyIssues;
+    final resourceIssues = this.resourceIssues;
+    final screenshot = this.screenshot;
+    final testStatus = this.testStatus;
+    return {
+      'mobileFriendliness': ?mobileFriendliness,
+      'mobileFriendlyIssues': ?mobileFriendlyIssues,
+      'resourceIssues': ?resourceIssues,
+      'screenshot': ?screenshot,
+      'testStatus': ?testStatus,
+    };
+  }
 }
 
 class SearchAnalyticsQueryRequest {
@@ -1599,18 +1647,16 @@ class SearchAnalyticsQueryRequest {
     : this(
         aggregationType: json_['aggregationType'] as core.String?,
         dataState: json_['dataState'] as core.String?,
-        dimensionFilterGroups:
-            (json_['dimensionFilterGroups'] as core.List?)
-                ?.map(
-                  (value) => ApiDimensionFilterGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        dimensions:
-            (json_['dimensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dimensionFilterGroups: (json_['dimensionFilterGroups'] as core.List?)
+            ?.map(
+              (value) => ApiDimensionFilterGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        dimensions: (json_['dimensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         endDate: json_['endDate'] as core.String?,
         rowLimit: json_['rowLimit'] as core.int?,
         searchType: json_['searchType'] as core.String?,
@@ -1619,19 +1665,30 @@ class SearchAnalyticsQueryRequest {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregationType != null) 'aggregationType': aggregationType!,
-    if (dataState != null) 'dataState': dataState!,
-    if (dimensionFilterGroups != null)
-      'dimensionFilterGroups': dimensionFilterGroups!,
-    if (dimensions != null) 'dimensions': dimensions!,
-    if (endDate != null) 'endDate': endDate!,
-    if (rowLimit != null) 'rowLimit': rowLimit!,
-    if (searchType != null) 'searchType': searchType!,
-    if (startDate != null) 'startDate': startDate!,
-    if (startRow != null) 'startRow': startRow!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationType = this.aggregationType;
+    final dataState = this.dataState;
+    final dimensionFilterGroups = this.dimensionFilterGroups;
+    final dimensions = this.dimensions;
+    final endDate = this.endDate;
+    final rowLimit = this.rowLimit;
+    final searchType = this.searchType;
+    final startDate = this.startDate;
+    final startRow = this.startRow;
+    final type = this.type;
+    return {
+      'aggregationType': ?aggregationType,
+      'dataState': ?dataState,
+      'dimensionFilterGroups': ?dimensionFilterGroups,
+      'dimensions': ?dimensions,
+      'endDate': ?endDate,
+      'rowLimit': ?rowLimit,
+      'searchType': ?searchType,
+      'startDate': ?startDate,
+      'startRow': ?startRow,
+      'type': ?type,
+    };
+  }
 }
 
 /// A list of rows, one per result, grouped by key.
@@ -1664,30 +1721,32 @@ class SearchAnalyticsQueryResponse {
 
   SearchAnalyticsQueryResponse.fromJson(core.Map json_)
     : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? Metadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? Metadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         responseAggregationType:
             json_['responseAggregationType'] as core.String?,
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map(
-                  (value) => ApiDataRow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) => ApiDataRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (responseAggregationType != null)
-      'responseAggregationType': responseAggregationType!,
-    if (rows != null) 'rows': rows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final responseAggregationType = this.responseAggregationType;
+    final rows = this.rows;
+    return {
+      'metadata': ?metadata,
+      'responseAggregationType': ?responseAggregationType,
+      'rows': ?rows,
+    };
+  }
 }
 
 /// List of sitemaps.
@@ -1700,19 +1759,19 @@ class SitemapsListResponse {
 
   SitemapsListResponse.fromJson(core.Map json_)
     : this(
-        sitemap:
-            (json_['sitemap'] as core.List?)
-                ?.map(
-                  (value) => WmxSitemap.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sitemap: (json_['sitemap'] as core.List?)
+            ?.map(
+              (value) => WmxSitemap.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sitemap != null) 'sitemap': sitemap!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sitemap = this.sitemap;
+    return {'sitemap': ?sitemap};
+  }
 }
 
 /// List of sites with access level information.
@@ -1727,19 +1786,19 @@ class SitesListResponse {
 
   SitesListResponse.fromJson(core.Map json_)
     : this(
-        siteEntry:
-            (json_['siteEntry'] as core.List?)
-                ?.map(
-                  (value) => WmxSite.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        siteEntry: (json_['siteEntry'] as core.List?)
+            ?.map(
+              (value) => WmxSite.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (siteEntry != null) 'siteEntry': siteEntry!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final siteEntry = this.siteEntry;
+    return {'siteEntry': ?siteEntry};
+  }
 }
 
 /// Final state of the test, including error details if necessary.
@@ -1769,10 +1828,11 @@ class TestStatus {
         status: json_['status'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final status = this.status;
+    return {'details': ?details, 'status': ?status};
+  }
 }
 
 /// URL inspection result, including all inspection results.
@@ -1809,45 +1869,46 @@ class UrlInspectionResult {
 
   UrlInspectionResult.fromJson(core.Map json_)
     : this(
-        ampResult:
-            json_.containsKey('ampResult')
-                ? AmpInspectionResult.fromJson(
-                  json_['ampResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        indexStatusResult:
-            json_.containsKey('indexStatusResult')
-                ? IndexStatusInspectionResult.fromJson(
-                  json_['indexStatusResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ampResult: json_.containsKey('ampResult')
+            ? AmpInspectionResult.fromJson(
+                json_['ampResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        indexStatusResult: json_.containsKey('indexStatusResult')
+            ? IndexStatusInspectionResult.fromJson(
+                json_['indexStatusResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         inspectionResultLink: json_['inspectionResultLink'] as core.String?,
-        mobileUsabilityResult:
-            json_.containsKey('mobileUsabilityResult')
-                ? MobileUsabilityInspectionResult.fromJson(
-                  json_['mobileUsabilityResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        richResultsResult:
-            json_.containsKey('richResultsResult')
-                ? RichResultsInspectionResult.fromJson(
-                  json_['richResultsResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mobileUsabilityResult: json_.containsKey('mobileUsabilityResult')
+            ? MobileUsabilityInspectionResult.fromJson(
+                json_['mobileUsabilityResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        richResultsResult: json_.containsKey('richResultsResult')
+            ? RichResultsInspectionResult.fromJson(
+                json_['richResultsResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ampResult != null) 'ampResult': ampResult!,
-    if (indexStatusResult != null) 'indexStatusResult': indexStatusResult!,
-    if (inspectionResultLink != null)
-      'inspectionResultLink': inspectionResultLink!,
-    if (mobileUsabilityResult != null)
-      'mobileUsabilityResult': mobileUsabilityResult!,
-    if (richResultsResult != null) 'richResultsResult': richResultsResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ampResult = this.ampResult;
+    final indexStatusResult = this.indexStatusResult;
+    final inspectionResultLink = this.inspectionResultLink;
+    final mobileUsabilityResult = this.mobileUsabilityResult;
+    final richResultsResult = this.richResultsResult;
+    return {
+      'ampResult': ?ampResult,
+      'indexStatusResult': ?indexStatusResult,
+      'inspectionResultLink': ?inspectionResultLink,
+      'mobileUsabilityResult': ?mobileUsabilityResult,
+      'richResultsResult': ?richResultsResult,
+    };
+  }
 }
 
 /// Contains permission level information about a Search Console site.
@@ -1877,10 +1938,11 @@ class WmxSite {
         siteUrl: json_['siteUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (permissionLevel != null) 'permissionLevel': permissionLevel!,
-    if (siteUrl != null) 'siteUrl': siteUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final permissionLevel = this.permissionLevel;
+    final siteUrl = this.siteUrl;
+    return {'permissionLevel': ?permissionLevel, 'siteUrl': ?siteUrl};
+  }
 }
 
 /// Contains detailed information about a specific URL submitted as a
@@ -1946,14 +2008,13 @@ class WmxSitemap {
 
   WmxSitemap.fromJson(core.Map json_)
     : this(
-        contents:
-            (json_['contents'] as core.List?)
-                ?.map(
-                  (value) => WmxSitemapContent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        contents: (json_['contents'] as core.List?)
+            ?.map(
+              (value) => WmxSitemapContent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         errors: json_['errors'] as core.String?,
         isPending: json_['isPending'] as core.bool?,
         isSitemapsIndex: json_['isSitemapsIndex'] as core.bool?,
@@ -1964,17 +2025,28 @@ class WmxSitemap {
         warnings: json_['warnings'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contents != null) 'contents': contents!,
-    if (errors != null) 'errors': errors!,
-    if (isPending != null) 'isPending': isPending!,
-    if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex!,
-    if (lastDownloaded != null) 'lastDownloaded': lastDownloaded!,
-    if (lastSubmitted != null) 'lastSubmitted': lastSubmitted!,
-    if (path != null) 'path': path!,
-    if (type != null) 'type': type!,
-    if (warnings != null) 'warnings': warnings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contents = this.contents;
+    final errors = this.errors;
+    final isPending = this.isPending;
+    final isSitemapsIndex = this.isSitemapsIndex;
+    final lastDownloaded = this.lastDownloaded;
+    final lastSubmitted = this.lastSubmitted;
+    final path = this.path;
+    final type = this.type;
+    final warnings = this.warnings;
+    return {
+      'contents': ?contents,
+      'errors': ?errors,
+      'isPending': ?isPending,
+      'isSitemapsIndex': ?isSitemapsIndex,
+      'lastDownloaded': ?lastDownloaded,
+      'lastSubmitted': ?lastSubmitted,
+      'path': ?path,
+      'type': ?type,
+      'warnings': ?warnings,
+    };
+  }
 }
 
 /// Information about the various content types in the sitemap.
@@ -2012,9 +2084,10 @@ class WmxSitemapContent {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (indexed != null) 'indexed': indexed!,
-    if (submitted != null) 'submitted': submitted!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final indexed = this.indexed;
+    final submitted = this.submitted;
+    final type = this.type;
+    return {'indexed': ?indexed, 'submitted': ?submitted, 'type': ?type};
+  }
 }

@@ -4835,8 +4835,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProvisioningConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.provisioningConfigs;
       final arg_request = buildProvisioningConfig();
       final arg_parent = 'foo';
       final arg_email = 'foo';
@@ -4902,8 +4903,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.provisioningConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4956,8 +4958,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.provisioningConfigs;
       final arg_request = buildProvisioningConfig();
       final arg_name = 'foo';
       final arg_email = 'foo';
@@ -5029,8 +5032,9 @@ void main() {
 
     unittest.test('method--submit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.provisioningConfigs;
       final arg_request = buildSubmitProvisioningConfigRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5099,8 +5103,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProvisioningQuotasResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.provisioningQuotas;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.provisioningQuotas;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5753,8 +5758,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVolumesLunsResource', () {
     unittest.test('method--evict', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.luns;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.luns;
       final arg_request = buildEvictLunRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5817,8 +5823,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.luns;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.luns;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5871,8 +5878,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.luns;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.luns;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5942,8 +5950,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVolumesSnapshotsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.snapshots;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.snapshots;
       final arg_request = buildVolumeSnapshot();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6006,8 +6015,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.snapshots;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.snapshots;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6060,8 +6070,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.snapshots;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.snapshots;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6114,8 +6125,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.snapshots;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.snapshots;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6185,8 +6197,9 @@ void main() {
 
     unittest.test('method--restoreVolumeSnapshot', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BaremetalsolutionApi(mock).projects.locations.volumes.snapshots;
+      final res = api.BaremetalsolutionApi(
+        mock,
+      ).projects.locations.volumes.snapshots;
       final arg_request = buildRestoreVolumeSnapshotRequest();
       final arg_volumeSnapshot = 'foo';
       final arg_$fields = 'foo';

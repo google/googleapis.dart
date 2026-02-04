@@ -95,7 +95,7 @@ class AlertsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/alerts:batchDelete';
@@ -133,7 +133,7 @@ class AlertsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/alerts:batchUndelete';
@@ -182,8 +182,8 @@ class AlertsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
@@ -226,8 +226,8 @@ class AlertsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
@@ -272,8 +272,8 @@ class AlertsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -338,12 +338,12 @@ class AlertsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/alerts';
@@ -389,7 +389,7 @@ class AlertsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -447,8 +447,8 @@ class AlertsFeedbackResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -504,9 +504,9 @@ class AlertsFeedbackResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if (filter != null) 'filter': [filter],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -553,8 +553,8 @@ class V1beta1Resource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/settings';
@@ -596,8 +596,8 @@ class V1beta1Resource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/settings';
@@ -727,19 +727,17 @@ class Alert {
         alertId: json_['alertId'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         customerId: json_['customerId'] as core.String?,
-        data:
-            json_.containsKey('data')
-                ? json_['data'] as core.Map<core.String, core.dynamic>
-                : null,
+        data: json_.containsKey('data')
+            ? json_['data'] as core.Map<core.String, core.dynamic>
+            : null,
         deleted: json_['deleted'] as core.bool?,
         endTime: json_['endTime'] as core.String?,
         etag: json_['etag'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? AlertMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? AlertMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         securityInvestigationToolLink:
             json_['securityInvestigationToolLink'] as core.String?,
         source: json_['source'] as core.String?,
@@ -748,22 +746,36 @@ class Alert {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertId != null) 'alertId': alertId!,
-    if (createTime != null) 'createTime': createTime!,
-    if (customerId != null) 'customerId': customerId!,
-    if (data != null) 'data': data!,
-    if (deleted != null) 'deleted': deleted!,
-    if (endTime != null) 'endTime': endTime!,
-    if (etag != null) 'etag': etag!,
-    if (metadata != null) 'metadata': metadata!,
-    if (securityInvestigationToolLink != null)
-      'securityInvestigationToolLink': securityInvestigationToolLink!,
-    if (source != null) 'source': source!,
-    if (startTime != null) 'startTime': startTime!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertId = this.alertId;
+    final createTime = this.createTime;
+    final customerId = this.customerId;
+    final data = this.data;
+    final deleted = this.deleted;
+    final endTime = this.endTime;
+    final etag = this.etag;
+    final metadata = this.metadata;
+    final securityInvestigationToolLink = this.securityInvestigationToolLink;
+    final source = this.source;
+    final startTime = this.startTime;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'alertId': ?alertId,
+      'createTime': ?createTime,
+      'customerId': ?customerId,
+      'data': ?data,
+      'deleted': ?deleted,
+      'endTime': ?endTime,
+      'etag': ?etag,
+      'metadata': ?metadata,
+      'securityInvestigationToolLink': ?securityInvestigationToolLink,
+      'source': ?source,
+      'startTime': ?startTime,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A customer feedback about an alert.
@@ -822,14 +834,22 @@ class AlertFeedback {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertId != null) 'alertId': alertId!,
-    if (createTime != null) 'createTime': createTime!,
-    if (customerId != null) 'customerId': customerId!,
-    if (email != null) 'email': email!,
-    if (feedbackId != null) 'feedbackId': feedbackId!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertId = this.alertId;
+    final createTime = this.createTime;
+    final customerId = this.customerId;
+    final email = this.email;
+    final feedbackId = this.feedbackId;
+    final type = this.type;
+    return {
+      'alertId': ?alertId,
+      'createTime': ?createTime,
+      'customerId': ?customerId,
+      'email': ?email,
+      'feedbackId': ?feedbackId,
+      'type': ?type,
+    };
+  }
 }
 
 /// An alert metadata.
@@ -901,15 +921,24 @@ class AlertMetadata {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertId != null) 'alertId': alertId!,
-    if (assignee != null) 'assignee': assignee!,
-    if (customerId != null) 'customerId': customerId!,
-    if (etag != null) 'etag': etag!,
-    if (severity != null) 'severity': severity!,
-    if (status != null) 'status': status!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertId = this.alertId;
+    final assignee = this.assignee;
+    final customerId = this.customerId;
+    final etag = this.etag;
+    final severity = this.severity;
+    final status = this.status;
+    final updateTime = this.updateTime;
+    return {
+      'alertId': ?alertId,
+      'assignee': ?assignee,
+      'customerId': ?customerId,
+      'etag': ?etag,
+      'severity': ?severity,
+      'status': ?status,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A request to perform batch delete on alerts.
@@ -933,17 +962,17 @@ class BatchDeleteAlertsRequest {
 
   BatchDeleteAlertsRequest.fromJson(core.Map json_)
     : this(
-        alertId:
-            (json_['alertId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        alertId: (json_['alertId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         customerId: json_['customerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertId != null) 'alertId': alertId!,
-    if (customerId != null) 'customerId': customerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertId = this.alertId;
+    final customerId = this.customerId;
+    return {'alertId': ?alertId, 'customerId': ?customerId};
+  }
 }
 
 /// Response to batch delete operation on alerts.
@@ -958,24 +987,29 @@ class BatchDeleteAlertsResponse {
 
   BatchDeleteAlertsResponse.fromJson(core.Map json_)
     : this(
-        failedAlertStatus: (json_['failedAlertStatus']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                Status.fromJson(value as core.Map<core.String, core.dynamic>),
-              ),
-            ),
-        successAlertIds:
-            (json_['successAlertIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        failedAlertStatus:
+            (json_['failedAlertStatus'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        successAlertIds: (json_['successAlertIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedAlertStatus != null) 'failedAlertStatus': failedAlertStatus!,
-    if (successAlertIds != null) 'successAlertIds': successAlertIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedAlertStatus = this.failedAlertStatus;
+    final successAlertIds = this.successAlertIds;
+    return {
+      'failedAlertStatus': ?failedAlertStatus,
+      'successAlertIds': ?successAlertIds,
+    };
+  }
 }
 
 /// A request to perform batch undelete on alerts.
@@ -999,17 +1033,17 @@ class BatchUndeleteAlertsRequest {
 
   BatchUndeleteAlertsRequest.fromJson(core.Map json_)
     : this(
-        alertId:
-            (json_['alertId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        alertId: (json_['alertId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         customerId: json_['customerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertId != null) 'alertId': alertId!,
-    if (customerId != null) 'customerId': customerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertId = this.alertId;
+    final customerId = this.customerId;
+    return {'alertId': ?alertId, 'customerId': ?customerId};
+  }
 }
 
 /// Response to batch undelete operation on alerts.
@@ -1024,24 +1058,29 @@ class BatchUndeleteAlertsResponse {
 
   BatchUndeleteAlertsResponse.fromJson(core.Map json_)
     : this(
-        failedAlertStatus: (json_['failedAlertStatus']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                Status.fromJson(value as core.Map<core.String, core.dynamic>),
-              ),
-            ),
-        successAlertIds:
-            (json_['successAlertIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        failedAlertStatus:
+            (json_['failedAlertStatus'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        successAlertIds: (json_['successAlertIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedAlertStatus != null) 'failedAlertStatus': failedAlertStatus!,
-    if (successAlertIds != null) 'successAlertIds': successAlertIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedAlertStatus = this.failedAlertStatus;
+    final successAlertIds = this.successAlertIds;
+    return {
+      'failedAlertStatus': ?failedAlertStatus,
+      'successAlertIds': ?successAlertIds,
+    };
+  }
 }
 
 /// A reference to a Cloud Pubsub topic.
@@ -1073,10 +1112,11 @@ class CloudPubsubTopic {
         topicName: json_['topicName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payloadFormat != null) 'payloadFormat': payloadFormat!,
-    if (topicName != null) 'topicName': topicName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payloadFormat = this.payloadFormat;
+    final topicName = this.topicName;
+    return {'payloadFormat': ?payloadFormat, 'topicName': ?topicName};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1098,19 +1138,19 @@ class ListAlertFeedbackResponse {
 
   ListAlertFeedbackResponse.fromJson(core.Map json_)
     : this(
-        feedback:
-            (json_['feedback'] as core.List?)
-                ?.map(
-                  (value) => AlertFeedback.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        feedback: (json_['feedback'] as core.List?)
+            ?.map(
+              (value) => AlertFeedback.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (feedback != null) 'feedback': feedback!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final feedback = this.feedback;
+    return {'feedback': ?feedback};
+  }
 }
 
 /// Response message for an alert listing request.
@@ -1129,21 +1169,20 @@ class ListAlertsResponse {
 
   ListAlertsResponse.fromJson(core.Map json_)
     : this(
-        alerts:
-            (json_['alerts'] as core.List?)
-                ?.map(
-                  (value) => Alert.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        alerts: (json_['alerts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Alert.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alerts != null) 'alerts': alerts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alerts = this.alerts;
+    final nextPageToken = this.nextPageToken;
+    return {'alerts': ?alerts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Settings for callback notifications.
@@ -1158,18 +1197,18 @@ class Notification {
 
   Notification.fromJson(core.Map json_)
     : this(
-        cloudPubsubTopic:
-            json_.containsKey('cloudPubsubTopic')
-                ? CloudPubsubTopic.fromJson(
-                  json_['cloudPubsubTopic']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
+            ? CloudPubsubTopic.fromJson(
+                json_['cloudPubsubTopic']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudPubsubTopic != null) 'cloudPubsubTopic': cloudPubsubTopic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudPubsubTopic = this.cloudPubsubTopic;
+    return {'cloudPubsubTopic': ?cloudPubsubTopic};
+  }
 }
 
 /// Customer-level settings.
@@ -1181,19 +1220,19 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
     : this(
-        notifications:
-            (json_['notifications'] as core.List?)
-                ?.map(
-                  (value) => Notification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        notifications: (json_['notifications'] as core.List?)
+            ?.map(
+              (value) => Notification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (notifications != null) 'notifications': notifications!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final notifications = this.notifications;
+    return {'notifications': ?notifications};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1222,7 +1261,8 @@ class UndeleteAlertRequest {
   UndeleteAlertRequest.fromJson(core.Map json_)
     : this(customerId: json_['customerId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerId != null) 'customerId': customerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerId = this.customerId;
+    return {'customerId': ?customerId};
+  }
 }

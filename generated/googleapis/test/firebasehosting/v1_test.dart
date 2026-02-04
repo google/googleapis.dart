@@ -497,8 +497,9 @@ void main() {
   unittest.group('resource-ProjectsSitesCustomDomainsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseHostingApi(mock).projects.sites.customDomains.operations;
+      final res = api.FirebaseHostingApi(
+        mock,
+      ).projects.sites.customDomains.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -561,8 +562,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseHostingApi(mock).projects.sites.customDomains.operations;
+      final res = api.FirebaseHostingApi(
+        mock,
+      ).projects.sites.customDomains.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(

@@ -125,9 +125,9 @@ class ProjectsAndroidAppsDeliveryDataResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/deliveryData';
@@ -172,26 +172,30 @@ class GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
     : this(
         analyticsLabel: json_['analyticsLabel'] as core.String?,
         appId: json_['appId'] as core.String?,
-        data:
-            json_.containsKey('data')
-                ? GoogleFirebaseFcmDataV1beta1Data.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        date:
-            json_.containsKey('date')
-                ? GoogleTypeDate.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        data: json_.containsKey('data')
+            ? GoogleFirebaseFcmDataV1beta1Data.fromJson(
+                json_['data'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        date: json_.containsKey('date')
+            ? GoogleTypeDate.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
-    if (appId != null) 'appId': appId!,
-    if (data != null) 'data': data!,
-    if (date != null) 'date': date!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyticsLabel = this.analyticsLabel;
+    final appId = this.appId;
+    final data = this.data;
+    final date = this.date;
+    return {
+      'analyticsLabel': ?analyticsLabel,
+      'appId': ?appId,
+      'data': ?data,
+      'date': ?date,
+    };
+  }
 }
 
 /// Data detailing messaging delivery
@@ -239,48 +243,49 @@ class GoogleFirebaseFcmDataV1beta1Data {
             json_['countNotificationsAccepted'] as core.String?,
         deliveryPerformancePercents:
             json_.containsKey('deliveryPerformancePercents')
-                ? GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
-                  json_['deliveryPerformancePercents']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        messageInsightPercents:
-            json_.containsKey('messageInsightPercents')
-                ? GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
-                  json_['messageInsightPercents']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        messageOutcomePercents:
-            json_.containsKey('messageOutcomePercents')
-                ? GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
-                  json_['messageOutcomePercents']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
+                json_['deliveryPerformancePercents']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        messageInsightPercents: json_.containsKey('messageInsightPercents')
+            ? GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
+                json_['messageInsightPercents']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        messageOutcomePercents: json_.containsKey('messageOutcomePercents')
+            ? GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
+                json_['messageOutcomePercents']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         proxyNotificationInsightPercents:
             json_.containsKey('proxyNotificationInsightPercents')
-                ? GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
-                  json_['proxyNotificationInsightPercents']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
+                json_['proxyNotificationInsightPercents']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (countMessagesAccepted != null)
-      'countMessagesAccepted': countMessagesAccepted!,
-    if (countNotificationsAccepted != null)
-      'countNotificationsAccepted': countNotificationsAccepted!,
-    if (deliveryPerformancePercents != null)
-      'deliveryPerformancePercents': deliveryPerformancePercents!,
-    if (messageInsightPercents != null)
-      'messageInsightPercents': messageInsightPercents!,
-    if (messageOutcomePercents != null)
-      'messageOutcomePercents': messageOutcomePercents!,
-    if (proxyNotificationInsightPercents != null)
-      'proxyNotificationInsightPercents': proxyNotificationInsightPercents!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final countMessagesAccepted = this.countMessagesAccepted;
+    final countNotificationsAccepted = this.countNotificationsAccepted;
+    final deliveryPerformancePercents = this.deliveryPerformancePercents;
+    final messageInsightPercents = this.messageInsightPercents;
+    final messageOutcomePercents = this.messageOutcomePercents;
+    final proxyNotificationInsightPercents =
+        this.proxyNotificationInsightPercents;
+    return {
+      'countMessagesAccepted': ?countMessagesAccepted,
+      'countNotificationsAccepted': ?countNotificationsAccepted,
+      'deliveryPerformancePercents': ?deliveryPerformancePercents,
+      'messageInsightPercents': ?messageInsightPercents,
+      'messageOutcomePercents': ?messageOutcomePercents,
+      'proxyNotificationInsightPercents': ?proxyNotificationInsightPercents,
+    };
+  }
 }
 
 /// Overview of delivery performance for messages that were successfully
@@ -335,26 +340,31 @@ class GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
     core.Map json_,
   ) : this(
-        delayedDeviceDoze:
-            (json_['delayedDeviceDoze'] as core.num?)?.toDouble(),
-        delayedDeviceOffline:
-            (json_['delayedDeviceOffline'] as core.num?)?.toDouble(),
-        delayedMessageThrottled:
-            (json_['delayedMessageThrottled'] as core.num?)?.toDouble(),
-        delayedUserStopped:
-            (json_['delayedUserStopped'] as core.num?)?.toDouble(),
+        delayedDeviceDoze: (json_['delayedDeviceDoze'] as core.num?)
+            ?.toDouble(),
+        delayedDeviceOffline: (json_['delayedDeviceOffline'] as core.num?)
+            ?.toDouble(),
+        delayedMessageThrottled: (json_['delayedMessageThrottled'] as core.num?)
+            ?.toDouble(),
+        delayedUserStopped: (json_['delayedUserStopped'] as core.num?)
+            ?.toDouble(),
         deliveredNoDelay: (json_['deliveredNoDelay'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delayedDeviceDoze != null) 'delayedDeviceDoze': delayedDeviceDoze!,
-    if (delayedDeviceOffline != null)
-      'delayedDeviceOffline': delayedDeviceOffline!,
-    if (delayedMessageThrottled != null)
-      'delayedMessageThrottled': delayedMessageThrottled!,
-    if (delayedUserStopped != null) 'delayedUserStopped': delayedUserStopped!,
-    if (deliveredNoDelay != null) 'deliveredNoDelay': deliveredNoDelay!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delayedDeviceDoze = this.delayedDeviceDoze;
+    final delayedDeviceOffline = this.delayedDeviceOffline;
+    final delayedMessageThrottled = this.delayedMessageThrottled;
+    final delayedUserStopped = this.delayedUserStopped;
+    final deliveredNoDelay = this.deliveredNoDelay;
+    return {
+      'delayedDeviceDoze': ?delayedDeviceDoze,
+      'delayedDeviceOffline': ?delayedDeviceOffline,
+      'delayedMessageThrottled': ?delayedMessageThrottled,
+      'delayedUserStopped': ?delayedUserStopped,
+      'deliveredNoDelay': ?deliveredNoDelay,
+    };
+  }
 }
 
 /// Response message for ListAndroidDeliveryData.
@@ -378,23 +388,25 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
     core.Map json_,
   ) : this(
-        androidDeliveryData:
-            (json_['androidDeliveryData'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        androidDeliveryData: (json_['androidDeliveryData'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidDeliveryData != null)
-      'androidDeliveryData': androidDeliveryData!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidDeliveryData = this.androidDeliveryData;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'androidDeliveryData': ?androidDeliveryData,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Additional information about message delivery.
@@ -416,9 +428,10 @@ class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
         priorityLowered: (json_['priorityLowered'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (priorityLowered != null) 'priorityLowered': priorityLowered!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final priorityLowered = this.priorityLowered;
+    return {'priorityLowered': ?priorityLowered};
+  }
 }
 
 /// Percentage breakdown of message delivery outcomes.
@@ -490,29 +503,35 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
     : this(
         collapsed: (json_['collapsed'] as core.num?)?.toDouble(),
         delivered: (json_['delivered'] as core.num?)?.toDouble(),
-        droppedAppForceStopped:
-            (json_['droppedAppForceStopped'] as core.num?)?.toDouble(),
-        droppedDeviceInactive:
-            (json_['droppedDeviceInactive'] as core.num?)?.toDouble(),
+        droppedAppForceStopped: (json_['droppedAppForceStopped'] as core.num?)
+            ?.toDouble(),
+        droppedDeviceInactive: (json_['droppedDeviceInactive'] as core.num?)
+            ?.toDouble(),
         droppedTooManyPendingMessages:
             (json_['droppedTooManyPendingMessages'] as core.num?)?.toDouble(),
-        droppedTtlExpired:
-            (json_['droppedTtlExpired'] as core.num?)?.toDouble(),
+        droppedTtlExpired: (json_['droppedTtlExpired'] as core.num?)
+            ?.toDouble(),
         pending: (json_['pending'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (collapsed != null) 'collapsed': collapsed!,
-    if (delivered != null) 'delivered': delivered!,
-    if (droppedAppForceStopped != null)
-      'droppedAppForceStopped': droppedAppForceStopped!,
-    if (droppedDeviceInactive != null)
-      'droppedDeviceInactive': droppedDeviceInactive!,
-    if (droppedTooManyPendingMessages != null)
-      'droppedTooManyPendingMessages': droppedTooManyPendingMessages!,
-    if (droppedTtlExpired != null) 'droppedTtlExpired': droppedTtlExpired!,
-    if (pending != null) 'pending': pending!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final collapsed = this.collapsed;
+    final delivered = this.delivered;
+    final droppedAppForceStopped = this.droppedAppForceStopped;
+    final droppedDeviceInactive = this.droppedDeviceInactive;
+    final droppedTooManyPendingMessages = this.droppedTooManyPendingMessages;
+    final droppedTtlExpired = this.droppedTtlExpired;
+    final pending = this.pending;
+    return {
+      'collapsed': ?collapsed,
+      'delivered': ?delivered,
+      'droppedAppForceStopped': ?droppedAppForceStopped,
+      'droppedDeviceInactive': ?droppedDeviceInactive,
+      'droppedTooManyPendingMessages': ?droppedTooManyPendingMessages,
+      'droppedTtlExpired': ?droppedTtlExpired,
+      'pending': ?pending,
+    };
+  }
 }
 
 /// Additional information about
@@ -562,25 +581,31 @@ class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   ) : this(
         failed: (json_['failed'] as core.num?)?.toDouble(),
         proxied: (json_['proxied'] as core.num?)?.toDouble(),
-        skippedNotThrottled:
-            (json_['skippedNotThrottled'] as core.num?)?.toDouble(),
+        skippedNotThrottled: (json_['skippedNotThrottled'] as core.num?)
+            ?.toDouble(),
         skippedOptedOut: (json_['skippedOptedOut'] as core.num?)?.toDouble(),
-        skippedUnconfigured:
-            (json_['skippedUnconfigured'] as core.num?)?.toDouble(),
-        skippedUnsupported:
-            (json_['skippedUnsupported'] as core.num?)?.toDouble(),
+        skippedUnconfigured: (json_['skippedUnconfigured'] as core.num?)
+            ?.toDouble(),
+        skippedUnsupported: (json_['skippedUnsupported'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failed != null) 'failed': failed!,
-    if (proxied != null) 'proxied': proxied!,
-    if (skippedNotThrottled != null)
-      'skippedNotThrottled': skippedNotThrottled!,
-    if (skippedOptedOut != null) 'skippedOptedOut': skippedOptedOut!,
-    if (skippedUnconfigured != null)
-      'skippedUnconfigured': skippedUnconfigured!,
-    if (skippedUnsupported != null) 'skippedUnsupported': skippedUnsupported!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failed = this.failed;
+    final proxied = this.proxied;
+    final skippedNotThrottled = this.skippedNotThrottled;
+    final skippedOptedOut = this.skippedOptedOut;
+    final skippedUnconfigured = this.skippedUnconfigured;
+    final skippedUnsupported = this.skippedUnsupported;
+    return {
+      'failed': ?failed,
+      'proxied': ?proxied,
+      'skippedNotThrottled': ?skippedNotThrottled,
+      'skippedOptedOut': ?skippedOptedOut,
+      'skippedUnconfigured': ?skippedUnconfigured,
+      'skippedUnsupported': ?skippedUnsupported,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.

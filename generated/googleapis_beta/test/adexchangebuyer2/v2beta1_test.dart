@@ -5946,8 +5946,9 @@ void main() {
   unittest.group('resource-AccountsCreativesDealAssociationsResource', () {
     unittest.test('method--add', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).accounts.creatives.dealAssociations;
       final arg_request = buildAddDealAssociationRequest();
       final arg_accountId = 'foo';
       final arg_creativeId = 'foo';
@@ -6035,8 +6036,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).accounts.creatives.dealAssociations;
       final arg_accountId = 'foo';
       final arg_creativeId = 'foo';
       final arg_pageSize = 42;
@@ -6134,8 +6136,9 @@ void main() {
 
     unittest.test('method--remove', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).accounts.creatives.dealAssociations;
       final arg_request = buildRemoveDealAssociationRequest();
       final arg_accountId = 'foo';
       final arg_creativeId = 'foo';
@@ -7901,8 +7904,9 @@ void main() {
   unittest.group('resource-BiddersAccountsFilterSetsBidMetricsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets.bidMetrics;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.accounts.filterSets.bidMetrics;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7974,10 +7978,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.bidResponseErrors;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.bidResponseErrors;
         final arg_filterSetName = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8054,10 +8057,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.bidResponsesWithoutBids;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.bidResponsesWithoutBids;
         final arg_filterSetName = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8134,10 +8136,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.filteredBidRequests;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.filteredBidRequests;
         final arg_filterSetName = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8212,10 +8213,9 @@ void main() {
   unittest.group('resource-BiddersAccountsFilterSetsFilteredBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).bidders.accounts.filterSets.filteredBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.accounts.filterSets.filteredBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8287,10 +8287,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.filteredBids.creatives;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.filteredBids.creatives;
         final arg_filterSetName = 'foo';
         final arg_creativeStatusId = 42;
         final arg_pageSize = 42;
@@ -8369,10 +8368,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.filteredBids.details;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.filteredBids.details;
         final arg_filterSetName = 'foo';
         final arg_creativeStatusId = 42;
         final arg_pageSize = 42;
@@ -8451,10 +8449,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.impressionMetrics;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.impressionMetrics;
         final arg_filterSetName = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8529,8 +8526,9 @@ void main() {
   unittest.group('resource-BiddersAccountsFilterSetsLosingBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets.losingBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.accounts.filterSets.losingBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8602,10 +8600,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AdExchangeBuyerIIApi(
-              mock,
-            ).bidders.accounts.filterSets.nonBillableWinningBids;
+        final res = api.AdExchangeBuyerIIApi(
+          mock,
+        ).bidders.accounts.filterSets.nonBillableWinningBids;
         final arg_filterSetName = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8995,8 +8992,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsBidResponseErrorsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.bidResponseErrors;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.bidResponseErrors;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9070,10 +9068,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsBidResponsesWithoutBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).bidders.filterSets.bidResponsesWithoutBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.bidResponsesWithoutBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9147,8 +9144,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsFilteredBidRequestsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.filteredBidRequests;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.filteredBidRequests;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9222,8 +9220,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsFilteredBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.filteredBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.filteredBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9293,10 +9292,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsFilteredBidsCreativesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).bidders.filterSets.filteredBids.creatives;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.filteredBids.creatives;
       final arg_filterSetName = 'foo';
       final arg_creativeStatusId = 42;
       final arg_pageSize = 42;
@@ -9372,10 +9370,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsFilteredBidsDetailsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).bidders.filterSets.filteredBids.details;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.filteredBids.details;
       final arg_filterSetName = 'foo';
       final arg_creativeStatusId = 42;
       final arg_pageSize = 42;
@@ -9451,8 +9448,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsImpressionMetricsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.impressionMetrics;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.impressionMetrics;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9596,10 +9594,9 @@ void main() {
   unittest.group('resource-BiddersFilterSetsNonBillableWinningBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).bidders.filterSets.nonBillableWinningBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).bidders.filterSets.nonBillableWinningBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9988,8 +9985,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsBidResponseErrorsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).buyers.filterSets.bidResponseErrors;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.bidResponseErrors;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10063,10 +10061,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsBidResponsesWithoutBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).buyers.filterSets.bidResponsesWithoutBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.bidResponsesWithoutBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10140,8 +10137,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsFilteredBidRequestsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).buyers.filterSets.filteredBidRequests;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.filteredBidRequests;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10285,10 +10283,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsFilteredBidsCreativesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).buyers.filterSets.filteredBids.creatives;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.filteredBids.creatives;
       final arg_filterSetName = 'foo';
       final arg_creativeStatusId = 42;
       final arg_pageSize = 42;
@@ -10364,8 +10361,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsFilteredBidsDetailsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).buyers.filterSets.filteredBids.details;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.filteredBids.details;
       final arg_filterSetName = 'foo';
       final arg_creativeStatusId = 42;
       final arg_pageSize = 42;
@@ -10441,8 +10439,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsImpressionMetricsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(mock).buyers.filterSets.impressionMetrics;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.impressionMetrics;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10586,10 +10585,9 @@ void main() {
   unittest.group('resource-BuyersFilterSetsNonBillableWinningBidsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdExchangeBuyerIIApi(
-            mock,
-          ).buyers.filterSets.nonBillableWinningBids;
+      final res = api.AdExchangeBuyerIIApi(
+        mock,
+      ).buyers.filterSets.nonBillableWinningBids;
       final arg_filterSetName = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

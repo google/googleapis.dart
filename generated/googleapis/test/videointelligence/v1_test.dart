@@ -656,10 +656,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1AnnotateVideoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1AnnotateVideoRequest(od);
       });
     },
@@ -672,10 +672,10 @@ void main() {
         final o =
             buildGoogleCloudVideointelligenceV1ExplicitContentDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1ExplicitContentDetectionConfig(od);
       });
     },
@@ -687,10 +687,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1FaceDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1FaceDetectionConfig(od);
       });
     },
@@ -702,10 +702,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1LabelDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1LabelDetectionConfig(od);
       });
     },
@@ -717,10 +717,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1ObjectTrackingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1ObjectTrackingConfig(od);
       });
     },
@@ -732,10 +732,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1PersonDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1PersonDetectionConfig(od);
       });
     },
@@ -748,10 +748,10 @@ void main() {
         final o =
             buildGoogleCloudVideointelligenceV1ShotChangeDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1ShotChangeDetectionConfig(od);
       });
     },
@@ -775,10 +775,10 @@ void main() {
         final o =
             buildGoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(od);
       });
     },
@@ -790,10 +790,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudVideointelligenceV1TextDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudVideointelligenceV1TextDetectionConfig(od);
       });
     },
@@ -879,10 +879,9 @@ void main() {
   unittest.group('resource-OperationsProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(
-            mock,
-          ).operations.projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).operations.projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -935,10 +934,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(
-            mock,
-          ).operations.projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).operations.projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -991,10 +989,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(
-            mock,
-          ).operations.projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).operations.projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1051,8 +1048,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildGoogleLongrunningCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1115,8 +1113,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1169,8 +1168,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1225,8 +1225,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
+      final res = api.CloudVideoIntelligenceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -1312,10 +1313,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudVideointelligenceV1AnnotateVideoRequest(obj);
 
           final path = req.url.path;

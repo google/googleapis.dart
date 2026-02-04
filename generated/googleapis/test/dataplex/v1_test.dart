@@ -8165,10 +8165,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ActionFailedSecurityPolicyApply();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ActionFailedSecurityPolicyApply.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ActionFailedSecurityPolicyApply.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ActionFailedSecurityPolicyApply(od);
       });
     },
@@ -8180,10 +8180,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ActionIncompatibleDataSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ActionIncompatibleDataSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ActionIncompatibleDataSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ActionIncompatibleDataSchema(od);
       });
     },
@@ -8206,10 +8206,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ActionInvalidDataOrganization();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ActionInvalidDataOrganization.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ActionInvalidDataOrganization.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ActionInvalidDataOrganization(od);
       });
     },
@@ -8330,10 +8330,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations(od);
       });
     },
@@ -8346,10 +8346,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints(od);
       });
     },
@@ -8362,10 +8362,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue(od);
       });
     },
@@ -8399,10 +8399,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1AssetDiscoverySpecCsvOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1AssetDiscoverySpecCsvOptions(od);
       });
     },
@@ -8414,10 +8414,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1AssetDiscoverySpecJsonOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1AssetDiscoverySpecJsonOptions(od);
       });
     },
@@ -8640,10 +8640,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing(od);
       });
     },
@@ -8655,10 +8655,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataDiscoveryResultScanStatistics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoveryResultScanStatistics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoveryResultScanStatistics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoveryResultScanStatistics(od);
       });
     },
@@ -8682,10 +8682,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig(od);
       });
     },
@@ -8697,10 +8697,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataDiscoverySpecStorageConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoverySpecStorageConfig(od);
       });
     },
@@ -8713,10 +8713,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions(od);
       });
     },
@@ -8729,10 +8729,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions(od);
       });
     },
@@ -8755,10 +8755,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataDocumentationResultField();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDocumentationResultField.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDocumentationResultField.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDocumentationResultField(od);
       });
     },
@@ -8770,10 +8770,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataDocumentationResultQuery();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDocumentationResultQuery(od);
       });
     },
@@ -8785,10 +8785,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataDocumentationResultSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDocumentationResultSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDocumentationResultSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDocumentationResultSchema(od);
       });
     },
@@ -8801,10 +8801,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataDocumentationResultTableResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataDocumentationResultTableResult(od);
       });
     },
@@ -8872,10 +8872,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultPostScanActionsResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResult(od);
       });
     },
@@ -8888,10 +8888,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult(
           od,
         );
@@ -8919,10 +8919,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataProfileResultProfileField();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileField.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileField.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileField(od);
       });
     },
@@ -8935,10 +8935,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo(od);
       });
     },
@@ -8951,10 +8951,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo(
           od,
         );
@@ -8969,10 +8969,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo(
           od,
         );
@@ -8987,10 +8987,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo(
           od,
         );
@@ -9005,10 +9005,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(
           od,
         );
@@ -9033,10 +9033,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataProfileSpecPostScanActions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileSpecPostScanActions(od);
       });
     },
@@ -9049,10 +9049,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
           od,
         );
@@ -9066,10 +9066,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataProfileSpecSelectedFields();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataProfileSpecSelectedFields(od);
       });
     },
@@ -9129,10 +9129,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets(
           od,
         );
@@ -9147,10 +9147,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityResultPostScanActionsResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResult(od);
       });
     },
@@ -9163,10 +9163,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult(
           od,
         );
@@ -9191,10 +9191,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualityRuleNonNullExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleNonNullExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleNonNullExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleNonNullExpectation(od);
       });
     },
@@ -9206,10 +9206,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualityRuleRangeExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleRangeExpectation(od);
       });
     },
@@ -9221,10 +9221,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualityRuleRegexExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleRegexExpectation(od);
       });
     },
@@ -9248,10 +9248,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityRuleRowConditionExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleRowConditionExpectation(od);
       });
     },
@@ -9263,10 +9263,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualityRuleSetExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleSetExpectation(od);
       });
     },
@@ -9278,10 +9278,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualityRuleSqlAssertion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleSqlAssertion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleSqlAssertion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleSqlAssertion(od);
       });
     },
@@ -9294,10 +9294,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation(od);
       });
     },
@@ -9310,10 +9310,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityRuleTableConditionExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleTableConditionExpectation(od);
       });
     },
@@ -9326,10 +9326,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualityRuleUniquenessExpectation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualityRuleUniquenessExpectation(od);
       });
     },
@@ -9352,10 +9352,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataQualitySpecPostScanActions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActions(od);
       });
     },
@@ -9368,10 +9368,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport(
           od,
         );
@@ -9386,10 +9386,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger(
           od,
         );
@@ -9404,10 +9404,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger(
           od,
         );
@@ -9422,10 +9422,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport(
           od,
         );
@@ -9440,10 +9440,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients(od);
       });
     },
@@ -9456,10 +9456,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger(
           od,
         );
@@ -9484,10 +9484,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1DataScanCatalogPublishingStatus();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1DataScanCatalogPublishingStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1DataScanCatalogPublishingStatus.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1DataScanCatalogPublishingStatus(od);
       });
     },
@@ -9565,10 +9565,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1EncryptionConfigFailureDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1EncryptionConfigFailureDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1EncryptionConfigFailureDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1EncryptionConfigFailureDetails(od);
       });
     },
@@ -9606,10 +9606,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1EntityCompatibilityStatusCompatibility();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1EntityCompatibilityStatusCompatibility(od);
       });
     },
@@ -9742,10 +9742,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1EnvironmentInfrastructureSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1EnvironmentInfrastructureSpec(od);
       });
     },
@@ -9758,10 +9758,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources(
           od,
         );
@@ -9776,10 +9776,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime(
           od,
         );
@@ -9818,10 +9818,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1GenerateDataQualityRulesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1GenerateDataQualityRulesRequest(od);
       });
     },
@@ -9833,10 +9833,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1GenerateDataQualityRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1GenerateDataQualityRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1GenerateDataQualityRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1GenerateDataQualityRulesResponse(od);
       });
     },
@@ -9980,10 +9980,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ListDataAttributeBindingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ListDataAttributeBindingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ListDataAttributeBindingsResponse(od);
       });
     },
@@ -10062,10 +10062,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ListEncryptionConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ListEncryptionConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ListEncryptionConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ListEncryptionConfigsResponse(od);
       });
     },
@@ -10146,10 +10146,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ListGlossaryCategoriesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ListGlossaryCategoriesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ListGlossaryCategoriesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ListGlossaryCategoriesResponse(od);
       });
     },
@@ -10342,10 +10342,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope(od);
       });
     },
@@ -10386,10 +10386,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope(od);
       });
     },
@@ -10489,10 +10489,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ScannedDataIncrementalField();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ScannedDataIncrementalField.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ScannedDataIncrementalField.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ScannedDataIncrementalField(od);
       });
     },
@@ -10559,10 +10559,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1SearchEntriesResultSnippets();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1SearchEntriesResultSnippets.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1SearchEntriesResultSnippets.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1SearchEntriesResultSnippets(od);
       });
     },
@@ -10618,10 +10618,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1StorageFormatIcebergOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1StorageFormatIcebergOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1StorageFormatIcebergOptions(od);
       });
     },
@@ -10692,10 +10692,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources(
           od,
         );
@@ -10710,10 +10710,10 @@ void main() {
         final o =
             buildGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime(
           od,
         );
@@ -10727,10 +10727,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork(od);
       });
     },
@@ -10841,10 +10841,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions(od);
       });
     },
@@ -10856,10 +10856,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions(od);
       });
     },
@@ -11033,8 +11033,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsEncryptionConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_request = buildGoogleCloudDataplexV1EncryptionConfig();
       final arg_parent = 'foo';
       final arg_encryptionConfigId = 'foo';
@@ -11105,8 +11106,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -11167,8 +11169,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11225,8 +11228,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -11288,8 +11292,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11373,8 +11378,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_request = buildGoogleCloudDataplexV1EncryptionConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -11445,8 +11451,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -11509,8 +11516,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).organizations.locations.encryptionConfigs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).organizations.locations.encryptionConfigs;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -12884,8 +12892,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataAttributeBindingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_request = buildGoogleCloudDataplexV1DataAttributeBinding();
       final arg_parent = 'foo';
       final arg_dataAttributeBindingId = 'foo';
@@ -12962,8 +12971,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -13024,8 +13034,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13082,8 +13093,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -13145,8 +13157,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -13230,8 +13243,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_request = buildGoogleCloudDataplexV1DataAttributeBinding();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -13308,8 +13322,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -13372,8 +13387,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataAttributeBindings;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataAttributeBindings;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -13998,8 +14014,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataProductsDataAssetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataProducts.dataAssets;
       final arg_request = buildGoogleCloudDataplexV1DataAsset();
       final arg_parent = 'foo';
       final arg_dataAssetId = 'foo';
@@ -14076,8 +14093,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataProducts.dataAssets;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_validateOnly = true;
@@ -14144,8 +14162,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataProducts.dataAssets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14202,8 +14221,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataProducts.dataAssets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -14287,8 +14307,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataProducts.dataAssets;
       final arg_request = buildGoogleCloudDataplexV1DataAsset();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14515,10 +14536,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDataplexV1GenerateDataQualityRulesRequest(obj);
 
           final path = req.url.path;
@@ -15069,10 +15090,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDataplexV1GenerateDataQualityRulesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDataplexV1GenerateDataQualityRulesRequest(obj);
 
           final path = req.url.path;
@@ -15824,10 +15845,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataTaxonomiesAttributesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_request = buildGoogleCloudDataplexV1DataAttribute();
       final arg_parent = 'foo';
       final arg_dataAttributeId = 'foo';
@@ -15904,10 +15924,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -15968,10 +15987,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16028,10 +16046,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -16093,10 +16110,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -16180,10 +16196,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_request = buildGoogleCloudDataplexV1DataAttribute();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -16260,10 +16275,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -16326,10 +16340,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.dataTaxonomies.attributes;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.dataTaxonomies.attributes;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -16948,8 +16961,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDataplexV1Entry();
       final arg_parent = 'foo';
       final arg_entryId = 'foo';
@@ -17020,8 +17034,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17076,8 +17091,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
       final arg_aspectTypes = buildUnnamed166();
       final arg_paths = buildUnnamed167();
@@ -17147,8 +17163,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -17226,8 +17243,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDataplexV1Entry();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -17318,8 +17336,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntryLinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entryLinks;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entryLinks;
       final arg_request = buildGoogleCloudDataplexV1EntryLink();
       final arg_parent = 'foo';
       final arg_entryLinkId = 'foo';
@@ -17392,8 +17411,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entryLinks;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entryLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17450,8 +17470,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.entryGroups.entryLinks;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.entryGroups.entryLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18804,8 +18825,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlossariesCategoriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_request = buildGoogleCloudDataplexV1GlossaryCategory();
       final arg_parent = 'foo';
       final arg_categoryId = 'foo';
@@ -18878,8 +18900,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18932,8 +18955,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18990,8 +19014,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -19053,8 +19078,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -19138,8 +19164,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_request = buildGoogleCloudDataplexV1GlossaryCategory();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19212,8 +19239,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -19276,8 +19304,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.categories;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.categories;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -19346,8 +19375,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlossariesTermsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_request = buildGoogleCloudDataplexV1GlossaryTerm();
       final arg_parent = 'foo';
       final arg_termId = 'foo';
@@ -19420,8 +19450,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19474,8 +19505,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19532,8 +19564,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -19595,8 +19628,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -19680,8 +19714,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_request = buildGoogleCloudDataplexV1GlossaryTerm();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19754,8 +19789,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -19818,8 +19854,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.glossaries.terms;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.glossaries.terms;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -21230,8 +21267,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesContentitemsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_request = buildGoogleCloudDataplexV1Content();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -21302,8 +21340,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21356,8 +21395,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -21418,8 +21458,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -21481,8 +21522,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -21560,8 +21602,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_request = buildGoogleCloudDataplexV1Content();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -21638,8 +21681,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -21702,8 +21746,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.contentitems;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.contentitems;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -21772,8 +21817,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesEnvironmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_request = buildGoogleCloudDataplexV1Environment();
       final arg_parent = 'foo';
       final arg_environmentId = 'foo';
@@ -21850,8 +21896,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21906,8 +21953,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21964,8 +22012,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -22027,8 +22076,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -22112,8 +22162,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_request = buildGoogleCloudDataplexV1Environment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -22190,8 +22241,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -22254,8 +22306,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.environments;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.environments;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -22326,10 +22379,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDataplexApi(
-              mock,
-            ).projects.locations.lakes.environments.sessions;
+        final res = api.CloudDataplexApi(
+          mock,
+        ).projects.locations.lakes.environments.sessions;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -23017,8 +23069,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesTasksJobsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.tasks.jobs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.tasks.jobs;
       final arg_request = buildGoogleCloudDataplexV1CancelJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -23081,8 +23134,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.tasks.jobs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.tasks.jobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -23135,8 +23189,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.tasks.jobs;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.tasks.jobs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -23750,8 +23805,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesZonesActionsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.actions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.actions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -23825,8 +23881,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesZonesAssetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_request = buildGoogleCloudDataplexV1Asset();
       final arg_parent = 'foo';
       final arg_assetId = 'foo';
@@ -23903,8 +23960,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -23959,8 +24017,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -24015,8 +24074,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -24078,8 +24138,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -24163,8 +24224,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_request = buildGoogleCloudDataplexV1Asset();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -24241,8 +24303,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -24305,8 +24368,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.assets;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -24375,10 +24439,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesZonesAssetsActionsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.lakes.zones.assets.actions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.assets.actions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -24452,8 +24515,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesZonesEntitiesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.entities;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities;
       final arg_request = buildGoogleCloudDataplexV1Entity();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -24524,8 +24588,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.entities;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -24584,8 +24649,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.entities;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -24646,8 +24712,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.entities;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -24728,8 +24795,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.lakes.zones.entities;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities;
       final arg_request = buildGoogleCloudDataplexV1Entity();
       final arg_name = 'foo';
       final arg_validateOnly = true;
@@ -24802,10 +24870,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsLakesZonesEntitiesPartitionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.lakes.zones.entities.partitions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities.partitions;
       final arg_request = buildGoogleCloudDataplexV1Partition();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -24878,10 +24945,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.lakes.zones.entities.partitions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities.partitions;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -24940,10 +25006,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.lakes.zones.entities.partitions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities.partitions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -25000,10 +25065,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(
-            mock,
-          ).projects.locations.lakes.zones.entities.partitions;
+      final res = api.CloudDataplexApi(
+        mock,
+      ).projects.locations.lakes.zones.entities.partitions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -25441,10 +25505,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDataplexV1CancelMetadataJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDataplexV1CancelMetadataJobRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDataplexV1CancelMetadataJobRequest(obj);
 
           final path = req.url.path;

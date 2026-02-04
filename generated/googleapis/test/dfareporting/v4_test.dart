@@ -29107,10 +29107,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .DfareportingStudioCreativeAssetsInsertRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.DfareportingStudioCreativeAssetsInsertRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkDfareportingStudioCreativeAssetsInsertRequest(obj);
 
           final path = req.url.path;

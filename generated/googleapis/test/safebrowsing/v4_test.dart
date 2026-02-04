@@ -973,10 +973,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest(od);
       });
     },
@@ -989,10 +989,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(
           od,
         );
@@ -1007,10 +1007,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints(
           od,
         );
@@ -1025,10 +1025,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(od);
       });
     },
@@ -1041,10 +1041,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(
           od,
         );
@@ -1058,10 +1058,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4FindFullHashesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FindFullHashesRequest(od);
       });
     },
@@ -1073,10 +1073,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4FindFullHashesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(od);
       });
     },
@@ -1088,10 +1088,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4FindThreatMatchesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FindThreatMatchesRequest(od);
       });
     },
@@ -1103,10 +1103,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4FindThreatMatchesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4FindThreatMatchesResponse(od);
       });
     },
@@ -1118,10 +1118,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4ListThreatListsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4ListThreatListsResponse(od);
       });
     },
@@ -1195,10 +1195,10 @@ void main() {
         final o =
             buildGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry(od);
       });
     },
@@ -1232,10 +1232,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4ThreatHitThreatSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4ThreatHitThreatSource(od);
       });
     },
@@ -1272,10 +1272,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV4ThreatListDescriptor();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV4ThreatListDescriptor(od);
       });
     },
@@ -1454,10 +1454,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleSecuritySafebrowsingV4FindFullHashesRequest(obj);
 
           final path = req.url.path;
@@ -1578,10 +1578,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest(obj);
 
           final path = req.url.path;
@@ -1701,10 +1701,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleSecuritySafebrowsingV4FindThreatMatchesRequest(obj);
 
           final path = req.url.path;

@@ -5,7 +5,7 @@ repository: https://github.com/google/googleapis.dart/tree/master/discoveryapis_
 
 resolution: workspace
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.9.0
 
 dependencies:
   _discoveryapis_commons: ^1.0.0

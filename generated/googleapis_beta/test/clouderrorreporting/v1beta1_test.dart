@@ -1241,8 +1241,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGroupStatsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ClouderrorreportingApi(mock).projects.locations.groupStats;
+      final res = api.ClouderrorreportingApi(
+        mock,
+      ).projects.locations.groupStats;
       final arg_projectName = 'foo';
       final arg_alignment = 'foo';
       final arg_alignmentTime = 'foo';

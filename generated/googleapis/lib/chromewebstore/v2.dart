@@ -112,7 +112,7 @@ class MediaResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -178,7 +178,7 @@ class PublishersItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancelSubmission';
@@ -217,7 +217,7 @@ class PublishersItemsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':fetchStatus';
@@ -263,7 +263,7 @@ class PublishersItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':publish';
@@ -310,7 +310,7 @@ class PublishersItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -349,9 +349,10 @@ class DeployInfo {
   DeployInfo.fromJson(core.Map json_)
     : this(deployPercentage: json_['deployPercentage'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployPercentage != null) 'deployPercentage': deployPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployPercentage = this.deployPercentage;
+    return {'deployPercentage': ?deployPercentage};
+  }
 }
 
 /// Deployment information for a specific release channel
@@ -371,10 +372,11 @@ class DistributionChannel {
         deployPercentage: json_['deployPercentage'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crxVersion != null) 'crxVersion': crxVersion!,
-    if (deployPercentage != null) 'deployPercentage': deployPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crxVersion = this.crxVersion;
+    final deployPercentage = this.deployPercentage;
+    return {'crxVersion': ?crxVersion, 'deployPercentage': ?deployPercentage};
+  }
 }
 
 /// Response message for `FetchItemStatus`.
@@ -448,35 +450,42 @@ class FetchItemStatusResponse {
         publicKey: json_['publicKey'] as core.String?,
         publishedItemRevisionStatus:
             json_.containsKey('publishedItemRevisionStatus')
-                ? ItemRevisionStatus.fromJson(
-                  json_['publishedItemRevisionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ItemRevisionStatus.fromJson(
+                json_['publishedItemRevisionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         submittedItemRevisionStatus:
             json_.containsKey('submittedItemRevisionStatus')
-                ? ItemRevisionStatus.fromJson(
-                  json_['submittedItemRevisionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ItemRevisionStatus.fromJson(
+                json_['submittedItemRevisionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         takenDown: json_['takenDown'] as core.bool?,
         warned: json_['warned'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (itemId != null) 'itemId': itemId!,
-    if (lastAsyncUploadState != null)
-      'lastAsyncUploadState': lastAsyncUploadState!,
-    if (name != null) 'name': name!,
-    if (publicKey != null) 'publicKey': publicKey!,
-    if (publishedItemRevisionStatus != null)
-      'publishedItemRevisionStatus': publishedItemRevisionStatus!,
-    if (submittedItemRevisionStatus != null)
-      'submittedItemRevisionStatus': submittedItemRevisionStatus!,
-    if (takenDown != null) 'takenDown': takenDown!,
-    if (warned != null) 'warned': warned!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final itemId = this.itemId;
+    final lastAsyncUploadState = this.lastAsyncUploadState;
+    final name = this.name;
+    final publicKey = this.publicKey;
+    final publishedItemRevisionStatus = this.publishedItemRevisionStatus;
+    final submittedItemRevisionStatus = this.submittedItemRevisionStatus;
+    final takenDown = this.takenDown;
+    final warned = this.warned;
+    return {
+      'itemId': ?itemId,
+      'lastAsyncUploadState': ?lastAsyncUploadState,
+      'name': ?name,
+      'publicKey': ?publicKey,
+      'publishedItemRevisionStatus': ?publishedItemRevisionStatus,
+      'submittedItemRevisionStatus': ?submittedItemRevisionStatus,
+      'takenDown': ?takenDown,
+      'warned': ?warned,
+    };
+  }
 }
 
 /// Details on the status of an item revision.
@@ -501,22 +510,21 @@ class ItemRevisionStatus {
 
   ItemRevisionStatus.fromJson(core.Map json_)
     : this(
-        distributionChannels:
-            (json_['distributionChannels'] as core.List?)
-                ?.map(
-                  (value) => DistributionChannel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        distributionChannels: (json_['distributionChannels'] as core.List?)
+            ?.map(
+              (value) => DistributionChannel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (distributionChannels != null)
-      'distributionChannels': distributionChannels!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final distributionChannels = this.distributionChannels;
+    final state = this.state;
+    return {'distributionChannels': ?distributionChannels, 'state': ?state};
+  }
 }
 
 /// Request message for PublishItem.
@@ -556,23 +564,27 @@ class PublishItemRequest {
 
   PublishItemRequest.fromJson(core.Map json_)
     : this(
-        deployInfos:
-            (json_['deployInfos'] as core.List?)
-                ?.map(
-                  (value) => DeployInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deployInfos: (json_['deployInfos'] as core.List?)
+            ?.map(
+              (value) => DeployInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         publishType: json_['publishType'] as core.String?,
         skipReview: json_['skipReview'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployInfos != null) 'deployInfos': deployInfos!,
-    if (publishType != null) 'publishType': publishType!,
-    if (skipReview != null) 'skipReview': skipReview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployInfos = this.deployInfos;
+    final publishType = this.publishType;
+    final skipReview = this.skipReview;
+    return {
+      'deployInfos': ?deployInfos,
+      'publishType': ?publishType,
+      'skipReview': ?skipReview,
+    };
+  }
 }
 
 /// Response message for `PublishItem`.
@@ -607,11 +619,12 @@ class PublishItemResponse {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (itemId != null) 'itemId': itemId!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final itemId = this.itemId;
+    final name = this.name;
+    final state = this.state;
+    return {'itemId': ?itemId, 'name': ?name, 'state': ?state};
+  }
 }
 
 /// Request message for SetPublishedDeployPercentage.
@@ -629,9 +642,10 @@ class SetPublishedDeployPercentageRequest {
   SetPublishedDeployPercentageRequest.fromJson(core.Map json_)
     : this(deployPercentage: json_['deployPercentage'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployPercentage != null) 'deployPercentage': deployPercentage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployPercentage = this.deployPercentage;
+    return {'deployPercentage': ?deployPercentage};
+  }
 }
 
 /// Response message for `SetPublishedDeployPercentage`.
@@ -686,10 +700,16 @@ class UploadItemPackageResponse {
         uploadState: json_['uploadState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crxVersion != null) 'crxVersion': crxVersion!,
-    if (itemId != null) 'itemId': itemId!,
-    if (name != null) 'name': name!,
-    if (uploadState != null) 'uploadState': uploadState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crxVersion = this.crxVersion;
+    final itemId = this.itemId;
+    final name = this.name;
+    final uploadState = this.uploadState;
+    return {
+      'crxVersion': ?crxVersion,
+      'itemId': ?itemId,
+      'name': ?name,
+      'uploadState': ?uploadState,
+    };
+  }
 }

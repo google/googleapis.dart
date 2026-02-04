@@ -90,7 +90,7 @@ class V1Resource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/token';
@@ -279,15 +279,24 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
         subjectTokenType: json_['subjectTokenType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (grantType != null) 'grantType': grantType!,
-    if (options != null) 'options': options!,
-    if (requestedTokenType != null) 'requestedTokenType': requestedTokenType!,
-    if (scope != null) 'scope': scope!,
-    if (subjectToken != null) 'subjectToken': subjectToken!,
-    if (subjectTokenType != null) 'subjectTokenType': subjectTokenType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final grantType = this.grantType;
+    final options = this.options;
+    final requestedTokenType = this.requestedTokenType;
+    final scope = this.scope;
+    final subjectToken = this.subjectToken;
+    final subjectTokenType = this.subjectTokenType;
+    return {
+      'audience': ?audience,
+      'grantType': ?grantType,
+      'options': ?options,
+      'requestedTokenType': ?requestedTokenType,
+      'scope': ?scope,
+      'subjectToken': ?subjectToken,
+      'subjectTokenType': ?subjectTokenType,
+    };
+  }
 }
 
 /// Response message for ExchangeToken.
@@ -354,12 +363,18 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
         tokenType: json_['token_type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessBoundarySessionKey != null)
-      'access_boundary_session_key': accessBoundarySessionKey!,
-    if (accessToken != null) 'access_token': accessToken!,
-    if (expiresIn != null) 'expires_in': expiresIn!,
-    if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,
-    if (tokenType != null) 'token_type': tokenType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessBoundarySessionKey = this.accessBoundarySessionKey;
+    final accessToken = this.accessToken;
+    final expiresIn = this.expiresIn;
+    final issuedTokenType = this.issuedTokenType;
+    final tokenType = this.tokenType;
+    return {
+      'access_boundary_session_key': ?accessBoundarySessionKey,
+      'access_token': ?accessToken,
+      'expires_in': ?expiresIn,
+      'issued_token_type': ?issuedTokenType,
+      'token_type': ?tokenType,
+    };
+  }
 }

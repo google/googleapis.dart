@@ -98,7 +98,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -134,7 +134,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -183,7 +183,7 @@ class ProjectsBucketsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$bucket') + ':addFirebase';
@@ -218,7 +218,7 @@ class ProjectsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Bucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -264,9 +264,9 @@ class ProjectsBucketsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/buckets';
@@ -309,7 +309,7 @@ class ProjectsBucketsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$bucket') + ':removeFirebase';
@@ -362,7 +362,7 @@ class ProjectsDefaultBucketResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/defaultBucket';
@@ -394,9 +394,10 @@ class Bucket {
 
   Bucket.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// Spark tier-eligible Cloud Storage bucket.
@@ -432,23 +433,28 @@ class DefaultBucket {
 
   DefaultBucket.fromJson(core.Map json_)
     : this(
-        bucket:
-            json_.containsKey('bucket')
-                ? Bucket.fromJson(
-                  json_['bucket'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bucket: json_.containsKey('bucket')
+            ? Bucket.fromJson(
+                json_['bucket'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
         storageClass: json_['storageClass'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (storageClass != null) 'storageClass': storageClass!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final location = this.location;
+    final name = this.name;
+    final storageClass = this.storageClass;
+    return {
+      'bucket': ?bucket,
+      'location': ?location,
+      'name': ?name,
+      'storageClass': ?storageClass,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -473,21 +479,20 @@ class ListBucketsResponse {
 
   ListBucketsResponse.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => Bucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    final nextPageToken = this.nextPageToken;
+    return {'buckets': ?buckets, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The request used to unlink a Google Cloud Storage bucket from a Firebase

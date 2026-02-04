@@ -169,10 +169,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicyanalyzerV1QueryActivityResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicyanalyzerV1QueryActivityResponse(od);
       });
     },
@@ -181,10 +181,9 @@ void main() {
   unittest.group('resource-FoldersLocationsActivityTypesActivitiesResource', () {
     unittest.test('method--query', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicyAnalyzerApi(
-            mock,
-          ).folders.locations.activityTypes.activities;
+      final res = api.PolicyAnalyzerApi(
+        mock,
+      ).folders.locations.activityTypes.activities;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -266,10 +265,9 @@ void main() {
     () {
       unittest.test('method--query', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicyAnalyzerApi(
-              mock,
-            ).organizations.locations.activityTypes.activities;
+        final res = api.PolicyAnalyzerApi(
+          mock,
+        ).organizations.locations.activityTypes.activities;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -350,10 +348,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsActivityTypesActivitiesResource', () {
     unittest.test('method--query', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicyAnalyzerApi(
-            mock,
-          ).projects.locations.activityTypes.activities;
+      final res = api.PolicyAnalyzerApi(
+        mock,
+      ).projects.locations.activityTypes.activities;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

@@ -7888,10 +7888,9 @@ void main() {
     () {
       unittest.test('method--cancel', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.automationRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.automationRuns;
         final arg_request = buildCancelAutomationRunRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -7958,10 +7957,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.automationRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.automationRuns;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8014,10 +8012,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.automationRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.automationRuns;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -8102,10 +8099,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDeliveryPipelinesAutomationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.automations;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.automations;
       final arg_request = buildAutomation();
       final arg_parent = 'foo';
       final arg_automationId = 'foo';
@@ -8186,10 +8182,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.automations;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.automations;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -8266,10 +8261,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.automations;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.automations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8322,10 +8316,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.automations;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.automations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8405,10 +8398,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.automations;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.automations;
       final arg_request = buildAutomation();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -8497,10 +8489,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDeliveryPipelinesReleasesResource', () {
     unittest.test('method--abandon', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases;
       final arg_request = buildAbandonReleaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8563,10 +8554,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases;
       final arg_request = buildRelease();
       final arg_parent = 'foo';
       final arg_overrideDeployPolicy = buildUnnamed118();
@@ -8653,10 +8643,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8709,10 +8698,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8794,10 +8782,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource', () {
     unittest.test('method--advance', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildAdvanceRolloutRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8860,10 +8847,9 @@ void main() {
 
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildApproveRolloutRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8926,10 +8912,9 @@ void main() {
 
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildCancelRolloutRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8992,10 +8977,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildRollout();
       final arg_parent = 'foo';
       final arg_overrideDeployPolicy = buildUnnamed119();
@@ -9088,10 +9072,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9144,10 +9127,9 @@ void main() {
 
     unittest.test('method--ignoreJob', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildIgnoreJobRequest();
       final arg_rollout = 'foo';
       final arg_$fields = 'foo';
@@ -9210,10 +9192,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9293,10 +9274,9 @@ void main() {
 
     unittest.test('method--retryJob', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudDeployApi(
-            mock,
-          ).projects.locations.deliveryPipelines.releases.rollouts;
+      final res = api.CloudDeployApi(
+        mock,
+      ).projects.locations.deliveryPipelines.releases.rollouts;
       final arg_request = buildRetryJobRequest();
       final arg_rollout = 'foo';
       final arg_$fields = 'foo';
@@ -9363,10 +9343,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9419,10 +9398,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -9502,10 +9480,9 @@ void main() {
 
       unittest.test('method--terminate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudDeployApi(
-              mock,
-            ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
+        final res = api.CloudDeployApi(
+          mock,
+        ).projects.locations.deliveryPipelines.releases.rollouts.jobRuns;
         final arg_request = buildTerminateJobRunRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';

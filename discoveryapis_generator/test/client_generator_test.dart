@@ -70,8 +70,9 @@ void main() {
         'Empty',
       };
       final importMap = {for (var item in importItems) item: importUri};
-      final description =
-          File(p.join(dataPath, 'rest', 'toyapi.json')).readAsStringSync();
+      final description = File(
+        p.join(dataPath, 'rest', 'toyapi.json'),
+      ).readAsStringSync();
       final diPair = DescriptionImportPair(description, importMap);
       // Generate the client stubs.
       final results = generateClientStubs([diPair], outputDir.path);
@@ -89,8 +90,9 @@ void main() {
 
   group('features', () {
     test('dataWrapper', () {
-      final descriptionJson =
-          File(p.join(dataPath, 'wrapapi.json')).readAsStringSync();
+      final descriptionJson = File(
+        p.join(dataPath, 'wrapapi.json'),
+      ).readAsStringSync();
       final description = RestDescription.fromJson(
         jsonDecode(descriptionJson) as Map,
       );

@@ -133,10 +133,8 @@ class DartResourceMethod {
     if (namedParameters.isNotEmpty || mediaUpload || mediaDownload) {
       if (parameterString.isNotEmpty) parameterString.write(', ');
 
-      final namedString =
-          StringBuffer()..write(
-            namedParameters.map((param) => param.declaration).join(', '),
-          );
+      final namedString = StringBuffer()
+        ..write(namedParameters.map((param) => param.declaration).join(', '));
 
       if (mediaUpload) {
         if (namedString.isNotEmpty) namedString.write(', ');
@@ -287,27 +285,24 @@ class DartResourceMethod {
 
     final queryParams = <String>[];
     void encodeQueryParam(MethodParameter param) {
-      String propertyAssignment;
-      // NOTE: We need to special case array values, since they get encoded
-      // as repeated query parameters.
-      if (param.type is UnnamedArrayType || param.type is NamedArrayType) {
-        final innerType = (param.type as HasInnertype).innerType!;
-        String? expr;
-        if (innerType.needsPrimitiveEncoding) {
-          expr =
-              '${param.name}.map('
-              '(item) => ${innerType.primitiveEncoding('item')}).toList()';
+      if (param.required) {
+        String propertyAssignment;
+        if (param.type is UnnamedArrayType || param.type is NamedArrayType) {
+          final innerType = (param.type as HasInnertype).innerType!;
+          String? expr;
+          if (innerType.needsPrimitiveEncoding) {
+            expr =
+                '${param.name}.map('
+                '(item) => ${innerType.primitiveEncoding('item')}).toList()';
+          } else {
+            expr = param.name.name;
+          }
+          propertyAssignment = '${escapeDartString(param.jsonName!)}: $expr,';
         } else {
-          expr = param.name.name;
+          final expr = param.type.primitiveEncoding(param.name.name);
+          propertyAssignment = '${escapeDartString(param.jsonName!)}: [$expr],';
         }
 
-        propertyAssignment = '${escapeDartString(param.jsonName!)}: $expr,';
-      } else {
-        final expr = param.type.primitiveEncoding(param.name.name);
-        propertyAssignment = '${escapeDartString(param.jsonName!)}: [$expr],';
-      }
-
-      if (param.required) {
         if (param.type is UnnamedArrayType) {
           params.writeln('if (${param.name}.isEmpty) {');
           params.writeln(
@@ -318,7 +313,25 @@ class DartResourceMethod {
         }
         queryParams.add(propertyAssignment);
       } else {
-        queryParams.add('if (${param.name} != null) $propertyAssignment');
+        String propertyAssignment;
+        if (param.type is UnnamedArrayType || param.type is NamedArrayType) {
+          final innerType = (param.type as HasInnertype).innerType!;
+          String? expr;
+          if (innerType.needsPrimitiveEncoding) {
+            expr =
+                '${param.name}?.map('
+                '(item) => ${innerType.primitiveEncoding('item')}).toList()';
+          } else {
+            expr = param.name.name;
+          }
+          propertyAssignment = '${escapeDartString(param.jsonName!)}: ?$expr,';
+        } else {
+          final expr = param.type.primitiveEncoding(param.name.name);
+          propertyAssignment =
+              '${escapeDartString(param.jsonName!)}: '
+              '?${param.name} == null ? null : [$expr],';
+        }
+        queryParams.add(propertyAssignment);
       }
     }
 
@@ -374,26 +387,26 @@ final queryParams_ = <${core}String, ${core}List<${core}String>>{
       }
     }
 
-    final responseVar =
-        (returnType == null && !mediaDownload) ? '' : 'final response_ = ';
+    final responseVar = (returnType == null && !mediaDownload)
+        ? ''
+        : 'final response_ = ';
 
-    final downloadOptions =
-        mediaDownload
-            ? 'downloadOptions: downloadOptions,'
-            : returnType == null
-            ? 'downloadOptions: null,'
-            : '';
+    final downloadOptions = mediaDownload
+        ? 'downloadOptions: downloadOptions,'
+        : returnType == null
+        ? 'downloadOptions: null,'
+        : '';
 
     final bodyOption = requestParameter == null ? '' : 'body: body_,';
-    final queryParamsArg =
-        queryParams.isNotEmpty ? 'queryParams: queryParams_,' : '';
+    final queryParamsArg = queryParams.isNotEmpty
+        ? 'queryParams: queryParams_,'
+        : '';
     final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
-    final mediaResumableArg =
-        mediaUploadResumable
-            ? 'uploadOptions: uploadOptions,'
-            : mediaUpload
-            ? 'uploadOptions: ${imports.commons}.UploadOptions.defaultOptions,'
-            : '';
+    final mediaResumableArg = mediaUploadResumable
+        ? 'uploadOptions: uploadOptions,'
+        : mediaUpload
+        ? 'uploadOptions: ${imports.commons}.UploadOptions.defaultOptions,'
+        : '';
 
     final requestCode = StringBuffer();
 
@@ -406,12 +419,12 @@ $urlPatternCode
     );
 ''');
 
-    final data =
-        enableDataWrapper
-            ? "(response_ as ${imports.core.ref()}Map)['data']"
-            : 'response_';
-    final plainResponse =
-        returnType != null ? returnType!.jsonDecode(data) : 'null';
+    final data = enableDataWrapper
+        ? "(response_ as ${imports.core.ref()}Map)['data']"
+        : 'response_';
+    final plainResponse = returnType != null
+        ? returnType!.jsonDecode(data)
+        : 'null';
     if (mediaDownload) {
       requestCode.write('''
     if (downloadOptions.isMetadataDownload) {

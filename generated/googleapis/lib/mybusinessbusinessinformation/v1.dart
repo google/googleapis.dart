@@ -125,9 +125,9 @@ class AccountsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/locations';
@@ -194,12 +194,12 @@ class AccountsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/locations';
@@ -270,14 +270,14 @@ class AttributesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (categoryName != null) 'categoryName': [categoryName],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if (regionCode != null) 'regionCode': [regionCode],
-      if (showAll != null) 'showAll': ['${showAll}'],
-      if ($fields != null) 'fields': [$fields],
+      'categoryName': ?categoryName == null ? null : [categoryName],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'regionCode': ?regionCode == null ? null : [regionCode],
+      'showAll': ?showAll == null ? null : ['${showAll}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/attributes';
@@ -341,11 +341,11 @@ class CategoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (names != null) 'names': names,
-      if (regionCode != null) 'regionCode': [regionCode],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'names': ?names,
+      'regionCode': ?regionCode == null ? null : [regionCode],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/categories:batchGet';
@@ -411,13 +411,13 @@ class CategoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (regionCode != null) 'regionCode': [regionCode],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'regionCode': ?regionCode == null ? null : [regionCode],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/categories';
@@ -460,7 +460,7 @@ class ChainsResource {
   /// this method will complete with the same error.
   async.Future<Chain> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -500,9 +500,9 @@ class ChainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (chainName != null) 'chainName': [chainName],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if ($fields != null) 'fields': [$fields],
+      'chainName': ?chainName == null ? null : [chainName],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/chains:search';
@@ -546,7 +546,7 @@ class GoogleLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/googleLocations:search';
@@ -594,7 +594,7 @@ class LocationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -633,8 +633,8 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -670,7 +670,7 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -711,8 +711,8 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getGoogleUpdated';
@@ -763,9 +763,9 @@ class LocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -818,8 +818,8 @@ class LocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (attributeMask != null) 'attributeMask': [attributeMask],
-      if ($fields != null) 'fields': [$fields],
+      'attributeMask': ?attributeMask == null ? null : [attributeMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -865,7 +865,7 @@ class LocationsAttributesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getGoogleUpdated';
@@ -894,9 +894,10 @@ class AdWordsLocationExtensions {
   AdWordsLocationExtensions.fromJson(core.Map json_)
     : this(adPhone: json_['adPhone'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adPhone != null) 'adPhone': adPhone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adPhone = this.adPhone;
+    return {'adPhone': ?adPhone};
+  }
 }
 
 /// A location attribute.
@@ -955,33 +956,39 @@ class Attribute {
   Attribute.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        repeatedEnumValue:
-            json_.containsKey('repeatedEnumValue')
-                ? RepeatedEnumAttributeValue.fromJson(
-                  json_['repeatedEnumValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        uriValues:
-            (json_['uriValues'] as core.List?)
-                ?.map(
-                  (value) => UriAttributeValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        repeatedEnumValue: json_.containsKey('repeatedEnumValue')
+            ? RepeatedEnumAttributeValue.fromJson(
+                json_['repeatedEnumValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uriValues: (json_['uriValues'] as core.List?)
+            ?.map(
+              (value) => UriAttributeValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         valueType: json_['valueType'] as core.String?,
-        values:
-            json_.containsKey('values') ? json_['values'] as core.List : null,
+        values: json_.containsKey('values')
+            ? json_['values'] as core.List
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (repeatedEnumValue != null) 'repeatedEnumValue': repeatedEnumValue!,
-    if (uriValues != null) 'uriValues': uriValues!,
-    if (valueType != null) 'valueType': valueType!,
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final repeatedEnumValue = this.repeatedEnumValue;
+    final uriValues = this.uriValues;
+    final valueType = this.valueType;
+    final values = this.values;
+    return {
+      'name': ?name,
+      'repeatedEnumValue': ?repeatedEnumValue,
+      'uriValues': ?uriValues,
+      'valueType': ?valueType,
+      'values': ?values,
+    };
+  }
 }
 
 /// Metadata for an attribute.
@@ -1049,26 +1056,34 @@ class AttributeMetadata {
         groupDisplayName: json_['groupDisplayName'] as core.String?,
         parent: json_['parent'] as core.String?,
         repeatable: json_['repeatable'] as core.bool?,
-        valueMetadata:
-            (json_['valueMetadata'] as core.List?)
-                ?.map(
-                  (value) => AttributeValueMetadata.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        valueMetadata: (json_['valueMetadata'] as core.List?)
+            ?.map(
+              (value) => AttributeValueMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         valueType: json_['valueType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deprecated != null) 'deprecated': deprecated!,
-    if (displayName != null) 'displayName': displayName!,
-    if (groupDisplayName != null) 'groupDisplayName': groupDisplayName!,
-    if (parent != null) 'parent': parent!,
-    if (repeatable != null) 'repeatable': repeatable!,
-    if (valueMetadata != null) 'valueMetadata': valueMetadata!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deprecated = this.deprecated;
+    final displayName = this.displayName;
+    final groupDisplayName = this.groupDisplayName;
+    final parent = this.parent;
+    final repeatable = this.repeatable;
+    final valueMetadata = this.valueMetadata;
+    final valueType = this.valueType;
+    return {
+      'deprecated': ?deprecated,
+      'displayName': ?displayName,
+      'groupDisplayName': ?groupDisplayName,
+      'parent': ?parent,
+      'repeatable': ?repeatable,
+      'valueMetadata': ?valueMetadata,
+      'valueType': ?valueType,
+    };
+  }
 }
 
 /// Metadata for supported attribute values.
@@ -1095,10 +1110,11 @@ class AttributeValueMetadata {
         value: json_['value'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final value = this.value;
+    return {'displayName': ?displayName, 'value': ?value};
+  }
 }
 
 /// A container for all the attributes for a given location.
@@ -1116,21 +1132,21 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
     : this(
-        attributes:
-            (json_['attributes'] as core.List?)
-                ?.map(
-                  (value) => Attribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        attributes: (json_['attributes'] as core.List?)
+            ?.map(
+              (value) => Attribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final name = this.name;
+    return {'attributes': ?attributes, 'name': ?name};
+  }
 }
 
 /// Response message for BusinessCategories.BatchGetBusinessCategories.
@@ -1144,19 +1160,19 @@ class BatchGetCategoriesResponse {
 
   BatchGetCategoriesResponse.fromJson(core.Map json_)
     : this(
-        categories:
-            (json_['categories'] as core.List?)
-                ?.map(
-                  (value) => Category.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        categories: (json_['categories'] as core.List?)
+            ?.map(
+              (value) => Category.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (categories != null) 'categories': categories!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final categories = this.categories;
+    return {'categories': ?categories};
+  }
 }
 
 /// Represents the time periods that this location is open for business.
@@ -1175,19 +1191,19 @@ class BusinessHours {
 
   BusinessHours.fromJson(core.Map json_)
     : this(
-        periods:
-            (json_['periods'] as core.List?)
-                ?.map(
-                  (value) => TimePeriod.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        periods: (json_['periods'] as core.List?)
+            ?.map(
+              (value) => TimePeriod.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (periods != null) 'periods': periods!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final periods = this.periods;
+    return {'periods': ?periods};
+  }
 }
 
 /// A collection of categories that describes the business.
@@ -1216,28 +1232,28 @@ class Categories {
 
   Categories.fromJson(core.Map json_)
     : this(
-        additionalCategories:
-            (json_['additionalCategories'] as core.List?)
-                ?.map(
-                  (value) => Category.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        primaryCategory:
-            json_.containsKey('primaryCategory')
-                ? Category.fromJson(
-                  json_['primaryCategory']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additionalCategories: (json_['additionalCategories'] as core.List?)
+            ?.map(
+              (value) => Category.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        primaryCategory: json_.containsKey('primaryCategory')
+            ? Category.fromJson(
+                json_['primaryCategory'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalCategories != null)
-      'additionalCategories': additionalCategories!,
-    if (primaryCategory != null) 'primaryCategory': primaryCategory!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalCategories = this.additionalCategories;
+    final primaryCategory = this.primaryCategory;
+    return {
+      'additionalCategories': ?additionalCategories,
+      'primaryCategory': ?primaryCategory,
+    };
+  }
 }
 
 /// A category describing what this business is (not what it does).
@@ -1282,31 +1298,35 @@ class Category {
   Category.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        moreHoursTypes:
-            (json_['moreHoursTypes'] as core.List?)
-                ?.map(
-                  (value) => MoreHoursType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        moreHoursTypes: (json_['moreHoursTypes'] as core.List?)
+            ?.map(
+              (value) => MoreHoursType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        serviceTypes:
-            (json_['serviceTypes'] as core.List?)
-                ?.map(
-                  (value) => ServiceType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        serviceTypes: (json_['serviceTypes'] as core.List?)
+            ?.map(
+              (value) => ServiceType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (moreHoursTypes != null) 'moreHoursTypes': moreHoursTypes!,
-    if (name != null) 'name': name!,
-    if (serviceTypes != null) 'serviceTypes': serviceTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final moreHoursTypes = this.moreHoursTypes;
+    final name = this.name;
+    final serviceTypes = this.serviceTypes;
+    return {
+      'displayName': ?displayName,
+      'moreHoursTypes': ?moreHoursTypes,
+      'name': ?name,
+      'serviceTypes': ?serviceTypes,
+    };
+  }
 }
 
 /// A chain is a brand that your business's locations can be affiliated with.
@@ -1329,32 +1349,36 @@ class Chain {
 
   Chain.fromJson(core.Map json_)
     : this(
-        chainNames:
-            (json_['chainNames'] as core.List?)
-                ?.map(
-                  (value) => ChainName.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        chainNames: (json_['chainNames'] as core.List?)
+            ?.map(
+              (value) => ChainName.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         locationCount: json_['locationCount'] as core.int?,
         name: json_['name'] as core.String?,
-        websites:
-            (json_['websites'] as core.List?)
-                ?.map(
-                  (value) => ChainUri.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        websites: (json_['websites'] as core.List?)
+            ?.map(
+              (value) => ChainUri.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chainNames != null) 'chainNames': chainNames!,
-    if (locationCount != null) 'locationCount': locationCount!,
-    if (name != null) 'name': name!,
-    if (websites != null) 'websites': websites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chainNames = this.chainNames;
+    final locationCount = this.locationCount;
+    final name = this.name;
+    final websites = this.websites;
+    return {
+      'chainNames': ?chainNames,
+      'locationCount': ?locationCount,
+      'name': ?name,
+      'websites': ?websites,
+    };
+  }
 }
 
 /// Name to be used when displaying the chain.
@@ -1373,10 +1397,11 @@ class ChainName {
         languageCode: json_['languageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final languageCode = this.languageCode;
+    return {'displayName': ?displayName, 'languageCode': ?languageCode};
+  }
 }
 
 /// Url to be used when displaying the chain.
@@ -1388,9 +1413,10 @@ class ChainUri {
 
   ChainUri.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -1442,18 +1468,18 @@ class FreeFormServiceItem {
   FreeFormServiceItem.fromJson(core.Map json_)
     : this(
         category: json_['category'] as core.String?,
-        label:
-            json_.containsKey('label')
-                ? Label.fromJson(
-                  json_['label'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        label: json_.containsKey('label')
+            ? Label.fromJson(
+                json_['label'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (label != null) 'label': label!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final label = this.label;
+    return {'category': ?category, 'label': ?label};
+  }
 }
 
 /// Represents a Location that is present on Google.
@@ -1481,22 +1507,25 @@ class GoogleLocation {
 
   GoogleLocation.fromJson(core.Map json_)
     : this(
-        location:
-            json_.containsKey('location')
-                ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        location: json_.containsKey('location')
+            ? Location.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         requestAdminRightsUri: json_['requestAdminRightsUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (requestAdminRightsUri != null)
-      'requestAdminRightsUri': requestAdminRightsUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    final name = this.name;
+    final requestAdminRightsUri = this.requestAdminRightsUri;
+    return {
+      'location': ?location,
+      'name': ?name,
+      'requestAdminRightsUri': ?requestAdminRightsUri,
+    };
+  }
 }
 
 /// Represents a location that was modified by Google.
@@ -1516,20 +1545,24 @@ class GoogleUpdatedLocation {
   GoogleUpdatedLocation.fromJson(core.Map json_)
     : this(
         diffMask: json_['diffMask'] as core.String?,
-        location:
-            json_.containsKey('location')
-                ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        location: json_.containsKey('location')
+            ? Location.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pendingMask: json_['pendingMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diffMask != null) 'diffMask': diffMask!,
-    if (location != null) 'location': location!,
-    if (pendingMask != null) 'pendingMask': pendingMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diffMask = this.diffMask;
+    final location = this.location;
+    final pendingMask = this.pendingMask;
+    return {
+      'diffMask': ?diffMask,
+      'location': ?location,
+      'pendingMask': ?pendingMask,
+    };
+  }
 }
 
 /// Label to be used when displaying the price list, section, or item.
@@ -1560,11 +1593,16 @@ class Label {
         languageCode: json_['languageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final languageCode = this.languageCode;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'languageCode': ?languageCode,
+    };
+  }
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -1591,21 +1629,24 @@ class ListAttributeMetadataResponse {
 
   ListAttributeMetadataResponse.fromJson(core.Map json_)
     : this(
-        attributeMetadata:
-            (json_['attributeMetadata'] as core.List?)
-                ?.map(
-                  (value) => AttributeMetadata.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        attributeMetadata: (json_['attributeMetadata'] as core.List?)
+            ?.map(
+              (value) => AttributeMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributeMetadata != null) 'attributeMetadata': attributeMetadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributeMetadata = this.attributeMetadata;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'attributeMetadata': ?attributeMetadata,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for BusinessCategories.ListCategories.
@@ -1622,21 +1663,21 @@ class ListCategoriesResponse {
 
   ListCategoriesResponse.fromJson(core.Map json_)
     : this(
-        categories:
-            (json_['categories'] as core.List?)
-                ?.map(
-                  (value) => Category.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        categories: (json_['categories'] as core.List?)
+            ?.map(
+              (value) => Category.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (categories != null) 'categories': categories!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final categories = this.categories;
+    final nextPageToken = this.nextPageToken;
+    return {'categories': ?categories, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for Locations.ListLocations.
@@ -1661,23 +1702,27 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'locations': ?locations,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// A location.
@@ -1864,129 +1909,136 @@ class Location {
     : this(
         adWordsLocationExtensions:
             json_.containsKey('adWordsLocationExtensions')
-                ? AdWordsLocationExtensions.fromJson(
-                  json_['adWordsLocationExtensions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        categories:
-            json_.containsKey('categories')
-                ? Categories.fromJson(
-                  json_['categories'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+            ? AdWordsLocationExtensions.fromJson(
+                json_['adWordsLocationExtensions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        categories: json_.containsKey('categories')
+            ? Categories.fromJson(
+                json_['categories'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         languageCode: json_['languageCode'] as core.String?,
-        latlng:
-            json_.containsKey('latlng')
-                ? LatLng.fromJson(
-                  json_['latlng'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? Metadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        moreHours:
-            (json_['moreHours'] as core.List?)
-                ?.map(
-                  (value) => MoreHours.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        latlng: json_.containsKey('latlng')
+            ? LatLng.fromJson(
+                json_['latlng'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? Metadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        moreHours: (json_['moreHours'] as core.List?)
+            ?.map(
+              (value) => MoreHours.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        openInfo:
-            json_.containsKey('openInfo')
-                ? OpenInfo.fromJson(
-                  json_['openInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        phoneNumbers:
-            json_.containsKey('phoneNumbers')
-                ? PhoneNumbers.fromJson(
-                  json_['phoneNumbers'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        profile:
-            json_.containsKey('profile')
-                ? Profile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        regularHours:
-            json_.containsKey('regularHours')
-                ? BusinessHours.fromJson(
-                  json_['regularHours'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        relationshipData:
-            json_.containsKey('relationshipData')
-                ? RelationshipData.fromJson(
-                  json_['relationshipData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceArea:
-            json_.containsKey('serviceArea')
-                ? ServiceAreaBusiness.fromJson(
-                  json_['serviceArea'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceItems:
-            (json_['serviceItems'] as core.List?)
-                ?.map(
-                  (value) => ServiceItem.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        specialHours:
-            json_.containsKey('specialHours')
-                ? SpecialHours.fromJson(
-                  json_['specialHours'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        openInfo: json_.containsKey('openInfo')
+            ? OpenInfo.fromJson(
+                json_['openInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phoneNumbers: json_.containsKey('phoneNumbers')
+            ? PhoneNumbers.fromJson(
+                json_['phoneNumbers'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        profile: json_.containsKey('profile')
+            ? Profile.fromJson(
+                json_['profile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        regularHours: json_.containsKey('regularHours')
+            ? BusinessHours.fromJson(
+                json_['regularHours'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        relationshipData: json_.containsKey('relationshipData')
+            ? RelationshipData.fromJson(
+                json_['relationshipData']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceArea: json_.containsKey('serviceArea')
+            ? ServiceAreaBusiness.fromJson(
+                json_['serviceArea'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceItems: (json_['serviceItems'] as core.List?)
+            ?.map(
+              (value) => ServiceItem.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        specialHours: json_.containsKey('specialHours')
+            ? SpecialHours.fromJson(
+                json_['specialHours'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         storeCode: json_['storeCode'] as core.String?,
-        storefrontAddress:
-            json_.containsKey('storefrontAddress')
-                ? PostalAddress.fromJson(
-                  json_['storefrontAddress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storefrontAddress: json_.containsKey('storefrontAddress')
+            ? PostalAddress.fromJson(
+                json_['storefrontAddress']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
         websiteUri: json_['websiteUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adWordsLocationExtensions != null)
-      'adWordsLocationExtensions': adWordsLocationExtensions!,
-    if (categories != null) 'categories': categories!,
-    if (labels != null) 'labels': labels!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (latlng != null) 'latlng': latlng!,
-    if (metadata != null) 'metadata': metadata!,
-    if (moreHours != null) 'moreHours': moreHours!,
-    if (name != null) 'name': name!,
-    if (openInfo != null) 'openInfo': openInfo!,
-    if (phoneNumbers != null) 'phoneNumbers': phoneNumbers!,
-    if (profile != null) 'profile': profile!,
-    if (regularHours != null) 'regularHours': regularHours!,
-    if (relationshipData != null) 'relationshipData': relationshipData!,
-    if (serviceArea != null) 'serviceArea': serviceArea!,
-    if (serviceItems != null) 'serviceItems': serviceItems!,
-    if (specialHours != null) 'specialHours': specialHours!,
-    if (storeCode != null) 'storeCode': storeCode!,
-    if (storefrontAddress != null) 'storefrontAddress': storefrontAddress!,
-    if (title != null) 'title': title!,
-    if (websiteUri != null) 'websiteUri': websiteUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adWordsLocationExtensions = this.adWordsLocationExtensions;
+    final categories = this.categories;
+    final labels = this.labels;
+    final languageCode = this.languageCode;
+    final latlng = this.latlng;
+    final metadata = this.metadata;
+    final moreHours = this.moreHours;
+    final name = this.name;
+    final openInfo = this.openInfo;
+    final phoneNumbers = this.phoneNumbers;
+    final profile = this.profile;
+    final regularHours = this.regularHours;
+    final relationshipData = this.relationshipData;
+    final serviceArea = this.serviceArea;
+    final serviceItems = this.serviceItems;
+    final specialHours = this.specialHours;
+    final storeCode = this.storeCode;
+    final storefrontAddress = this.storefrontAddress;
+    final title = this.title;
+    final websiteUri = this.websiteUri;
+    return {
+      'adWordsLocationExtensions': ?adWordsLocationExtensions,
+      'categories': ?categories,
+      'labels': ?labels,
+      'languageCode': ?languageCode,
+      'latlng': ?latlng,
+      'metadata': ?metadata,
+      'moreHours': ?moreHours,
+      'name': ?name,
+      'openInfo': ?openInfo,
+      'phoneNumbers': ?phoneNumbers,
+      'profile': ?profile,
+      'regularHours': ?regularHours,
+      'relationshipData': ?relationshipData,
+      'serviceArea': ?serviceArea,
+      'serviceItems': ?serviceItems,
+      'specialHours': ?specialHours,
+      'storeCode': ?storeCode,
+      'storefrontAddress': ?storefrontAddress,
+      'title': ?title,
+      'websiteUri': ?websiteUri,
+    };
+  }
 }
 
 /// Additional non-user-editable information about the location.
@@ -2122,29 +2174,40 @@ class Metadata {
         placeId: json_['placeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canDelete != null) 'canDelete': canDelete!,
-    if (canHaveBusinessCalls != null)
-      'canHaveBusinessCalls': canHaveBusinessCalls!,
-    if (canHaveFoodMenus != null) 'canHaveFoodMenus': canHaveFoodMenus!,
-    if (canModifyServiceList != null)
-      'canModifyServiceList': canModifyServiceList!,
-    if (canOperateHealthData != null)
-      'canOperateHealthData': canOperateHealthData!,
-    if (canOperateLocalPost != null)
-      'canOperateLocalPost': canOperateLocalPost!,
-    if (canOperateLodgingData != null)
-      'canOperateLodgingData': canOperateLodgingData!,
-    if (duplicateLocation != null) 'duplicateLocation': duplicateLocation!,
-    if (hasGoogleUpdated != null) 'hasGoogleUpdated': hasGoogleUpdated!,
-    if (hasPendingEdits != null) 'hasPendingEdits': hasPendingEdits!,
-    if (hasVoiceOfMerchant != null) 'hasVoiceOfMerchant': hasVoiceOfMerchant!,
-    if (isParticularlyPersonalPlace != null)
-      'isParticularlyPersonalPlace': isParticularlyPersonalPlace!,
-    if (mapsUri != null) 'mapsUri': mapsUri!,
-    if (newReviewUri != null) 'newReviewUri': newReviewUri!,
-    if (placeId != null) 'placeId': placeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final canDelete = this.canDelete;
+    final canHaveBusinessCalls = this.canHaveBusinessCalls;
+    final canHaveFoodMenus = this.canHaveFoodMenus;
+    final canModifyServiceList = this.canModifyServiceList;
+    final canOperateHealthData = this.canOperateHealthData;
+    final canOperateLocalPost = this.canOperateLocalPost;
+    final canOperateLodgingData = this.canOperateLodgingData;
+    final duplicateLocation = this.duplicateLocation;
+    final hasGoogleUpdated = this.hasGoogleUpdated;
+    final hasPendingEdits = this.hasPendingEdits;
+    final hasVoiceOfMerchant = this.hasVoiceOfMerchant;
+    final isParticularlyPersonalPlace = this.isParticularlyPersonalPlace;
+    final mapsUri = this.mapsUri;
+    final newReviewUri = this.newReviewUri;
+    final placeId = this.placeId;
+    return {
+      'canDelete': ?canDelete,
+      'canHaveBusinessCalls': ?canHaveBusinessCalls,
+      'canHaveFoodMenus': ?canHaveFoodMenus,
+      'canModifyServiceList': ?canModifyServiceList,
+      'canOperateHealthData': ?canOperateHealthData,
+      'canOperateLocalPost': ?canOperateLocalPost,
+      'canOperateLodgingData': ?canOperateLodgingData,
+      'duplicateLocation': ?duplicateLocation,
+      'hasGoogleUpdated': ?hasGoogleUpdated,
+      'hasPendingEdits': ?hasPendingEdits,
+      'hasVoiceOfMerchant': ?hasVoiceOfMerchant,
+      'isParticularlyPersonalPlace': ?isParticularlyPersonalPlace,
+      'mapsUri': ?mapsUri,
+      'newReviewUri': ?newReviewUri,
+      'placeId': ?placeId,
+    };
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -2174,20 +2237,20 @@ class MoreHours {
   MoreHours.fromJson(core.Map json_)
     : this(
         hoursTypeId: json_['hoursTypeId'] as core.String?,
-        periods:
-            (json_['periods'] as core.List?)
-                ?.map(
-                  (value) => TimePeriod.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        periods: (json_['periods'] as core.List?)
+            ?.map(
+              (value) => TimePeriod.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hoursTypeId != null) 'hoursTypeId': hoursTypeId!,
-    if (periods != null) 'periods': periods!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hoursTypeId = this.hoursTypeId;
+    final periods = this.periods;
+    return {'hoursTypeId': ?hoursTypeId, 'periods': ?periods};
+  }
 }
 
 /// More hours types that a business can offers, in addition to its regular
@@ -2221,12 +2284,16 @@ class MoreHoursType {
         localizedDisplayName: json_['localizedDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (hoursTypeId != null) 'hoursTypeId': hoursTypeId!,
-    if (localizedDisplayName != null)
-      'localizedDisplayName': localizedDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final hoursTypeId = this.hoursTypeId;
+    final localizedDisplayName = this.localizedDisplayName;
+    return {
+      'displayName': ?displayName,
+      'hoursTypeId': ?hoursTypeId,
+      'localizedDisplayName': ?localizedDisplayName,
+    };
+  }
 }
 
 /// Information related to the opening state of the business.
@@ -2263,20 +2330,24 @@ class OpenInfo {
   OpenInfo.fromJson(core.Map json_)
     : this(
         canReopen: json_['canReopen'] as core.bool?,
-        openingDate:
-            json_.containsKey('openingDate')
-                ? Date.fromJson(
-                  json_['openingDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        openingDate: json_.containsKey('openingDate')
+            ? Date.fromJson(
+                json_['openingDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         status: json_['status'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canReopen != null) 'canReopen': canReopen!,
-    if (openingDate != null) 'openingDate': openingDate!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final canReopen = this.canReopen;
+    final openingDate = this.openingDate;
+    final status = this.status;
+    return {
+      'canReopen': ?canReopen,
+      'openingDate': ?openingDate,
+      'status': ?status,
+    };
+  }
 }
 
 /// A collection of phone numbers for the business.
@@ -2305,17 +2376,20 @@ class PhoneNumbers {
 
   PhoneNumbers.fromJson(core.Map json_)
     : this(
-        additionalPhones:
-            (json_['additionalPhones'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalPhones: (json_['additionalPhones'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         primaryPhone: json_['primaryPhone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalPhones != null) 'additionalPhones': additionalPhones!,
-    if (primaryPhone != null) 'primaryPhone': primaryPhone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalPhones = this.additionalPhones;
+    final primaryPhone = this.primaryPhone;
+    return {
+      'additionalPhones': ?additionalPhones,
+      'primaryPhone': ?primaryPhone,
+    };
+  }
 }
 
 /// Defines an area that's represented by a place ID.
@@ -2343,10 +2417,11 @@ class PlaceInfo {
         placeName: json_['placeName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (placeId != null) 'placeId': placeId!,
-    if (placeName != null) 'placeName': placeName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final placeId = this.placeId;
+    final placeName = this.placeName;
+    return {'placeId': ?placeId, 'placeName': ?placeName};
+  }
 }
 
 /// Defines the union of areas represented by a set of places.
@@ -2360,19 +2435,19 @@ class Places {
 
   Places.fromJson(core.Map json_)
     : this(
-        placeInfos:
-            (json_['placeInfos'] as core.List?)
-                ?.map(
-                  (value) => PlaceInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        placeInfos: (json_['placeInfos'] as core.List?)
+            ?.map(
+              (value) => PlaceInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (placeInfos != null) 'placeInfos': placeInfos!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final placeInfos = this.placeInfos;
+    return {'placeInfos': ?placeInfos};
+  }
 }
 
 /// Represents a postal address, such as for postal delivery or payments
@@ -2403,9 +2478,10 @@ class Profile {
   Profile.fromJson(core.Map json_)
     : this(description: json_['description'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
 }
 
 /// Information of all parent and children locations related to this one.
@@ -2429,29 +2505,31 @@ class RelationshipData {
 
   RelationshipData.fromJson(core.Map json_)
     : this(
-        childrenLocations:
-            (json_['childrenLocations'] as core.List?)
-                ?.map(
-                  (value) => RelevantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        childrenLocations: (json_['childrenLocations'] as core.List?)
+            ?.map(
+              (value) => RelevantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         parentChain: json_['parentChain'] as core.String?,
-        parentLocation:
-            json_.containsKey('parentLocation')
-                ? RelevantLocation.fromJson(
-                  json_['parentLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        parentLocation: json_.containsKey('parentLocation')
+            ? RelevantLocation.fromJson(
+                json_['parentLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (childrenLocations != null) 'childrenLocations': childrenLocations!,
-    if (parentChain != null) 'parentChain': parentChain!,
-    if (parentLocation != null) 'parentLocation': parentLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final childrenLocations = this.childrenLocations;
+    final parentChain = this.parentChain;
+    final parentLocation = this.parentLocation;
+    return {
+      'childrenLocations': ?childrenLocations,
+      'parentChain': ?parentChain,
+      'parentLocation': ?parentLocation,
+    };
+  }
 }
 
 /// Information about another location that is related to current one.
@@ -2488,10 +2566,11 @@ class RelevantLocation {
         relationType: json_['relationType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (placeId != null) 'placeId': placeId!,
-    if (relationType != null) 'relationType': relationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final placeId = this.placeId;
+    final relationType = this.relationType;
+    return {'placeId': ?placeId, 'relationType': ?relationType};
+  }
 }
 
 /// Values for an attribute with a `value_type` of REPEATED_ENUM.
@@ -2510,20 +2589,19 @@ class RepeatedEnumAttributeValue {
 
   RepeatedEnumAttributeValue.fromJson(core.Map json_)
     : this(
-        setValues:
-            (json_['setValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        unsetValues:
-            (json_['unsetValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        setValues: (json_['setValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        unsetValues: (json_['unsetValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (setValues != null) 'setValues': setValues!,
-    if (unsetValues != null) 'unsetValues': unsetValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final setValues = this.setValues;
+    final unsetValues = this.unsetValues;
+    return {'setValues': ?setValues, 'unsetValues': ?unsetValues};
+  }
 }
 
 /// Response message for Locations.SearchChains.
@@ -2538,19 +2616,18 @@ class SearchChainsResponse {
 
   SearchChainsResponse.fromJson(core.Map json_)
     : this(
-        chains:
-            (json_['chains'] as core.List?)
-                ?.map(
-                  (value) => Chain.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        chains: (json_['chains'] as core.List?)
+            ?.map(
+              (value) =>
+                  Chain.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chains != null) 'chains': chains!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chains = this.chains;
+    return {'chains': ?chains};
+  }
 }
 
 /// Request message for GoogleLocations.SearchGoogleLocations.
@@ -2577,21 +2654,21 @@ class SearchGoogleLocationsRequest {
 
   SearchGoogleLocationsRequest.fromJson(core.Map json_)
     : this(
-        location:
-            json_.containsKey('location')
-                ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        location: json_.containsKey('location')
+            ? Location.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pageSize: json_['pageSize'] as core.int?,
         query: json_['query'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (location != null) 'location': location!,
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    final pageSize = this.pageSize;
+    final query = this.query;
+    return {'location': ?location, 'pageSize': ?pageSize, 'query': ?query};
+  }
 }
 
 /// Response message for GoogleLocations.SearchGoogleLocations.
@@ -2604,19 +2681,19 @@ class SearchGoogleLocationsResponse {
 
   SearchGoogleLocationsResponse.fromJson(core.Map json_)
     : this(
-        googleLocations:
-            (json_['googleLocations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        googleLocations: (json_['googleLocations'] as core.List?)
+            ?.map(
+              (value) => GoogleLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (googleLocations != null) 'googleLocations': googleLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleLocations = this.googleLocations;
+    return {'googleLocations': ?googleLocations};
+  }
 }
 
 /// Service area businesses provide their service at the customer's location
@@ -2662,20 +2739,24 @@ class ServiceAreaBusiness {
   ServiceAreaBusiness.fromJson(core.Map json_)
     : this(
         businessType: json_['businessType'] as core.String?,
-        places:
-            json_.containsKey('places')
-                ? Places.fromJson(
-                  json_['places'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        places: json_.containsKey('places')
+            ? Places.fromJson(
+                json_['places'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (businessType != null) 'businessType': businessType!,
-    if (places != null) 'places': places!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessType = this.businessType;
+    final places = this.places;
+    final regionCode = this.regionCode;
+    return {
+      'businessType': ?businessType,
+      'places': ?places,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// A message that describes a single service item.
@@ -2709,35 +2790,35 @@ class ServiceItem {
 
   ServiceItem.fromJson(core.Map json_)
     : this(
-        freeFormServiceItem:
-            json_.containsKey('freeFormServiceItem')
-                ? FreeFormServiceItem.fromJson(
-                  json_['freeFormServiceItem']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        price:
-            json_.containsKey('price')
-                ? Money.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        structuredServiceItem:
-            json_.containsKey('structuredServiceItem')
-                ? StructuredServiceItem.fromJson(
-                  json_['structuredServiceItem']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        freeFormServiceItem: json_.containsKey('freeFormServiceItem')
+            ? FreeFormServiceItem.fromJson(
+                json_['freeFormServiceItem']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        price: json_.containsKey('price')
+            ? Money.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        structuredServiceItem: json_.containsKey('structuredServiceItem')
+            ? StructuredServiceItem.fromJson(
+                json_['structuredServiceItem']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (freeFormServiceItem != null)
-      'freeFormServiceItem': freeFormServiceItem!,
-    if (price != null) 'price': price!,
-    if (structuredServiceItem != null)
-      'structuredServiceItem': structuredServiceItem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final freeFormServiceItem = this.freeFormServiceItem;
+    final price = this.price;
+    final structuredServiceItem = this.structuredServiceItem;
+    return {
+      'freeFormServiceItem': ?freeFormServiceItem,
+      'price': ?price,
+      'structuredServiceItem': ?structuredServiceItem,
+    };
+  }
 }
 
 /// A message describing a service type that the business offers.
@@ -2760,10 +2841,11 @@ class ServiceType {
         serviceTypeId: json_['serviceTypeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (serviceTypeId != null) 'serviceTypeId': serviceTypeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final serviceTypeId = this.serviceTypeId;
+    return {'displayName': ?displayName, 'serviceTypeId': ?serviceTypeId};
+  }
 }
 
 /// Represents a single time period when a location's operational hours differ
@@ -2829,40 +2911,43 @@ class SpecialHourPeriod {
 
   SpecialHourPeriod.fromJson(core.Map json_)
     : this(
-        closeTime:
-            json_.containsKey('closeTime')
-                ? TimeOfDay.fromJson(
-                  json_['closeTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        closeTime: json_.containsKey('closeTime')
+            ? TimeOfDay.fromJson(
+                json_['closeTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         closed: json_['closed'] as core.bool?,
-        endDate:
-            json_.containsKey('endDate')
-                ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        openTime:
-            json_.containsKey('openTime')
-                ? TimeOfDay.fromJson(
-                  json_['openTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startDate:
-            json_.containsKey('startDate')
-                ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endDate: json_.containsKey('endDate')
+            ? Date.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openTime: json_.containsKey('openTime')
+            ? TimeOfDay.fromJson(
+                json_['openTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startDate: json_.containsKey('startDate')
+            ? Date.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (closeTime != null) 'closeTime': closeTime!,
-    if (closed != null) 'closed': closed!,
-    if (endDate != null) 'endDate': endDate!,
-    if (openTime != null) 'openTime': openTime!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final closeTime = this.closeTime;
+    final closed = this.closed;
+    final endDate = this.endDate;
+    final openTime = this.openTime;
+    final startDate = this.startDate;
+    return {
+      'closeTime': ?closeTime,
+      'closed': ?closed,
+      'endDate': ?endDate,
+      'openTime': ?openTime,
+      'startDate': ?startDate,
+    };
+  }
 }
 
 /// Represents a set of time periods when a location's operational hours differ
@@ -2877,19 +2962,19 @@ class SpecialHours {
 
   SpecialHours.fromJson(core.Map json_)
     : this(
-        specialHourPeriods:
-            (json_['specialHourPeriods'] as core.List?)
-                ?.map(
-                  (value) => SpecialHourPeriod.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        specialHourPeriods: (json_['specialHourPeriods'] as core.List?)
+            ?.map(
+              (value) => SpecialHourPeriod.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (specialHourPeriods != null) 'specialHourPeriods': specialHourPeriods!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final specialHourPeriods = this.specialHourPeriods;
+    return {'specialHourPeriods': ?specialHourPeriods};
+  }
 }
 
 /// Represents a structured service offered by the merchant.
@@ -2919,10 +3004,11 @@ class StructuredServiceItem {
         serviceTypeId: json_['serviceTypeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (serviceTypeId != null) 'serviceTypeId': serviceTypeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final serviceTypeId = this.serviceTypeId;
+    return {'description': ?description, 'serviceTypeId': ?serviceTypeId};
+  }
 }
 
 /// Represents a time of day.
@@ -2983,27 +3069,31 @@ class TimePeriod {
   TimePeriod.fromJson(core.Map json_)
     : this(
         closeDay: json_['closeDay'] as core.String?,
-        closeTime:
-            json_.containsKey('closeTime')
-                ? TimeOfDay.fromJson(
-                  json_['closeTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        closeTime: json_.containsKey('closeTime')
+            ? TimeOfDay.fromJson(
+                json_['closeTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         openDay: json_['openDay'] as core.String?,
-        openTime:
-            json_.containsKey('openTime')
-                ? TimeOfDay.fromJson(
-                  json_['openTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        openTime: json_.containsKey('openTime')
+            ? TimeOfDay.fromJson(
+                json_['openTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (closeDay != null) 'closeDay': closeDay!,
-    if (closeTime != null) 'closeTime': closeTime!,
-    if (openDay != null) 'openDay': openDay!,
-    if (openTime != null) 'openTime': openTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final closeDay = this.closeDay;
+    final closeTime = this.closeTime;
+    final openDay = this.openDay;
+    final openTime = this.openTime;
+    return {
+      'closeDay': ?closeDay,
+      'closeTime': ?closeTime,
+      'openDay': ?openDay,
+      'openTime': ?openTime,
+    };
+  }
 }
 
 /// Values for an attribute with a `value_type` of URL.
@@ -3018,7 +3108,8 @@ class UriAttributeValue {
   UriAttributeValue.fromJson(core.Map json_)
     : this(uri: json_['uri'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
+  }
 }

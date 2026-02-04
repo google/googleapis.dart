@@ -258,17 +258,16 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   int listenPort = 0,
   String? customPostAuthPage,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
-}) =>
-    AuthorizationCodeGrantServerFlow(
-      authEndpoints,
-      clientId,
-      scopes,
-      client,
-      userPrompt,
-      hostedDomain: hostedDomain,
-      listenPort: listenPort,
-      customPostAuthPage: customPostAuthPage,
-    ).run();
+}) => AuthorizationCodeGrantServerFlow(
+  authEndpoints,
+  clientId,
+  scopes,
+  client,
+  userPrompt,
+  hostedDomain: hostedDomain,
+  listenPort: listenPort,
+  customPostAuthPage: customPostAuthPage,
+).run();
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
@@ -289,12 +288,11 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
   PromptUserForConsentManual userPrompt, {
   String? hostedDomain,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
-}) =>
-    AuthorizationCodeGrantManualFlow(
-      authEndpoints,
-      clientId,
-      scopes,
-      client,
-      userPrompt,
-      hostedDomain: hostedDomain,
-    ).run();
+}) => AuthorizationCodeGrantManualFlow(
+  authEndpoints,
+  clientId,
+  scopes,
+  client,
+  userPrompt,
+  hostedDomain: hostedDomain,
+).run();

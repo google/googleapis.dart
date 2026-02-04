@@ -4802,8 +4802,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersInstancesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildInstance();
       final arg_parent = 'foo';
       final arg_instanceId = 'foo';
@@ -4884,8 +4885,9 @@ void main() {
 
     unittest.test('method--createsecondary', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildInstance();
       final arg_parent = 'foo';
       final arg_instanceId = 'foo';
@@ -4966,8 +4968,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -5038,8 +5041,9 @@ void main() {
 
     unittest.test('method--failover', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildFailoverInstanceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5102,8 +5106,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -5162,8 +5167,9 @@ void main() {
 
     unittest.test('method--getConnectionInfo', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5225,8 +5231,9 @@ void main() {
 
     unittest.test('method--injectFault', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildInjectFaultRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5289,8 +5296,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5370,8 +5378,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildInstance();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -5458,8 +5467,9 @@ void main() {
 
     unittest.test('method--restart', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.instances;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.instances;
       final arg_request = buildRestartInstanceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5524,8 +5534,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersUsersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.users;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.users;
       final arg_request = buildUser();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -5606,8 +5617,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.users;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.users;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_validateOnly = true;
@@ -5675,8 +5687,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.users;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.users;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5729,8 +5742,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.users;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.users;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5810,8 +5824,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(mock).projects.locations.clusters.users;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.clusters.users;
       final arg_request = buildUser();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -6151,10 +6166,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSupportedDatabaseFlagsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudAlloyDBAdminApi(
-            mock,
-          ).projects.locations.supportedDatabaseFlags;
+      final res = api.CloudAlloyDBAdminApi(
+        mock,
+      ).projects.locations.supportedDatabaseFlags;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

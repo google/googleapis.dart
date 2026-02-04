@@ -2840,10 +2840,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAppRestrictionsSchemaRestrictionRestrictionValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAppRestrictionsSchemaRestrictionRestrictionValue(od);
       });
     },

@@ -100,7 +100,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -136,7 +136,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -191,11 +191,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -241,8 +241,8 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -290,7 +290,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -325,7 +325,7 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -359,7 +359,7 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -407,9 +407,9 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -473,8 +473,8 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -521,7 +521,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':pause';
@@ -567,7 +567,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
@@ -612,7 +612,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
@@ -669,7 +669,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -707,7 +707,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -743,7 +743,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -798,12 +798,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -905,13 +906,12 @@ class AppEngineHttpTarget {
 
   AppEngineHttpTarget.fromJson(core.Map json_)
     : this(
-        appEngineRouting:
-            json_.containsKey('appEngineRouting')
-                ? AppEngineRouting.fromJson(
-                  json_['appEngineRouting']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appEngineRouting: json_.containsKey('appEngineRouting')
+            ? AppEngineRouting.fromJson(
+                json_['appEngineRouting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         body: json_['body'] as core.String?,
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -919,13 +919,20 @@ class AppEngineHttpTarget {
         relativeUri: json_['relativeUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineRouting != null) 'appEngineRouting': appEngineRouting!,
-    if (body != null) 'body': body!,
-    if (headers != null) 'headers': headers!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (relativeUri != null) 'relativeUri': relativeUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appEngineRouting = this.appEngineRouting;
+    final body = this.body;
+    final headers = this.headers;
+    final httpMethod = this.httpMethod;
+    final relativeUri = this.relativeUri;
+    return {
+      'appEngineRouting': ?appEngineRouting,
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod,
+      'relativeUri': ?relativeUri,
+    };
+  }
 }
 
 /// App Engine Routing.
@@ -999,12 +1006,18 @@ class AppEngineRouting {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (instance != null) 'instance': instance!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final instance = this.instance;
+    final service = this.service;
+    final version = this.version;
+    return {
+      'host': ?host,
+      'instance': ?instance,
+      'service': ?service,
+      'version': ?version,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1036,10 +1049,11 @@ class CmekConfig {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    final name = this.name;
+    return {'kmsKeyName': ?kmsKeyName, 'name': ?name};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1153,29 +1167,35 @@ class HttpTarget {
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         httpMethod: json_['httpMethod'] as core.String?,
-        oauthToken:
-            json_.containsKey('oauthToken')
-                ? OAuthToken.fromJson(
-                  json_['oauthToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oidcToken:
-            json_.containsKey('oidcToken')
-                ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        oauthToken: json_.containsKey('oauthToken')
+            ? OAuthToken.fromJson(
+                json_['oauthToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oidcToken: json_.containsKey('oidcToken')
+            ? OidcToken.fromJson(
+                json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (headers != null) 'headers': headers!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (oauthToken != null) 'oauthToken': oauthToken!,
-    if (oidcToken != null) 'oidcToken': oidcToken!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final headers = this.headers;
+    final httpMethod = this.httpMethod;
+    final oauthToken = this.oauthToken;
+    final oidcToken = this.oidcToken;
+    final uri = this.uri;
+    return {
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod,
+      'oauthToken': ?oauthToken,
+      'oidcToken': ?oidcToken,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Configuration for a job.
@@ -1327,67 +1347,78 @@ class Job {
 
   Job.fromJson(core.Map json_)
     : this(
-        appEngineHttpTarget:
-            json_.containsKey('appEngineHttpTarget')
-                ? AppEngineHttpTarget.fromJson(
-                  json_['appEngineHttpTarget']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appEngineHttpTarget: json_.containsKey('appEngineHttpTarget')
+            ? AppEngineHttpTarget.fromJson(
+                json_['appEngineHttpTarget']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attemptDeadline: json_['attemptDeadline'] as core.String?,
         description: json_['description'] as core.String?,
-        httpTarget:
-            json_.containsKey('httpTarget')
-                ? HttpTarget.fromJson(
-                  json_['httpTarget'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        httpTarget: json_.containsKey('httpTarget')
+            ? HttpTarget.fromJson(
+                json_['httpTarget'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastAttemptTime: json_['lastAttemptTime'] as core.String?,
         name: json_['name'] as core.String?,
-        pubsubTarget:
-            json_.containsKey('pubsubTarget')
-                ? PubsubTarget.fromJson(
-                  json_['pubsubTarget'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        retryConfig:
-            json_.containsKey('retryConfig')
-                ? RetryConfig.fromJson(
-                  json_['retryConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pubsubTarget: json_.containsKey('pubsubTarget')
+            ? PubsubTarget.fromJson(
+                json_['pubsubTarget'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retryConfig: json_.containsKey('retryConfig')
+            ? RetryConfig.fromJson(
+                json_['retryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         schedule: json_['schedule'] as core.String?,
         scheduleTime: json_['scheduleTime'] as core.String?,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? Status.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeZone: json_['timeZone'] as core.String?,
         userUpdateTime: json_['userUpdateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineHttpTarget != null)
-      'appEngineHttpTarget': appEngineHttpTarget!,
-    if (attemptDeadline != null) 'attemptDeadline': attemptDeadline!,
-    if (description != null) 'description': description!,
-    if (httpTarget != null) 'httpTarget': httpTarget!,
-    if (lastAttemptTime != null) 'lastAttemptTime': lastAttemptTime!,
-    if (name != null) 'name': name!,
-    if (pubsubTarget != null) 'pubsubTarget': pubsubTarget!,
-    if (retryConfig != null) 'retryConfig': retryConfig!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (schedule != null) 'schedule': schedule!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (userUpdateTime != null) 'userUpdateTime': userUpdateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appEngineHttpTarget = this.appEngineHttpTarget;
+    final attemptDeadline = this.attemptDeadline;
+    final description = this.description;
+    final httpTarget = this.httpTarget;
+    final lastAttemptTime = this.lastAttemptTime;
+    final name = this.name;
+    final pubsubTarget = this.pubsubTarget;
+    final retryConfig = this.retryConfig;
+    final satisfiesPzs = this.satisfiesPzs;
+    final schedule = this.schedule;
+    final scheduleTime = this.scheduleTime;
+    final state = this.state;
+    final status = this.status;
+    final timeZone = this.timeZone;
+    final userUpdateTime = this.userUpdateTime;
+    return {
+      'appEngineHttpTarget': ?appEngineHttpTarget,
+      'attemptDeadline': ?attemptDeadline,
+      'description': ?description,
+      'httpTarget': ?httpTarget,
+      'lastAttemptTime': ?lastAttemptTime,
+      'name': ?name,
+      'pubsubTarget': ?pubsubTarget,
+      'retryConfig': ?retryConfig,
+      'satisfiesPzs': ?satisfiesPzs,
+      'schedule': ?schedule,
+      'scheduleTime': ?scheduleTime,
+      'state': ?state,
+      'status': ?status,
+      'timeZone': ?timeZone,
+      'userUpdateTime': ?userUpdateTime,
+    };
+  }
 }
 
 /// Response message for listing jobs using ListJobs.
@@ -1407,21 +1438,20 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final nextPageToken = this.nextPageToken;
+    return {'jobs': ?jobs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -1436,21 +1466,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -1478,25 +1508,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1529,11 +1562,11 @@ class OAuthToken {
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final scope = this.scope;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    return {'scope': ?scope, 'serviceAccountEmail': ?serviceAccountEmail};
+  }
 }
 
 /// Contains information needed for generating an
@@ -1562,11 +1595,11 @@ class OidcToken {
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    return {'audience': ?audience, 'serviceAccountEmail': ?serviceAccountEmail};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1617,30 +1650,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Request message for PauseJob.
@@ -1686,18 +1723,20 @@ class PubsubTarget {
 
   PubsubTarget.fromJson(core.Map json_)
     : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         data: json_['data'] as core.String?,
         topicName: json_['topicName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (data != null) 'data': data!,
-    if (topicName != null) 'topicName': topicName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final data = this.data;
+    final topicName = this.topicName;
+    return {'attributes': ?attributes, 'data': ?data, 'topicName': ?topicName};
+  }
 }
 
 /// Request message for ResumeJob.
@@ -1771,13 +1810,20 @@ class RetryConfig {
         retryCount: json_['retryCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxBackoffDuration != null) 'maxBackoffDuration': maxBackoffDuration!,
-    if (maxDoublings != null) 'maxDoublings': maxDoublings!,
-    if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
-    if (minBackoffDuration != null) 'minBackoffDuration': minBackoffDuration!,
-    if (retryCount != null) 'retryCount': retryCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxBackoffDuration = this.maxBackoffDuration;
+    final maxDoublings = this.maxDoublings;
+    final maxRetryDuration = this.maxRetryDuration;
+    final minBackoffDuration = this.minBackoffDuration;
+    final retryCount = this.retryCount;
+    return {
+      'maxBackoffDuration': ?maxBackoffDuration,
+      'maxDoublings': ?maxDoublings,
+      'maxRetryDuration': ?maxRetryDuration,
+      'minBackoffDuration': ?minBackoffDuration,
+      'retryCount': ?retryCount,
+    };
+  }
 }
 
 /// Request message for forcing a job to run now using RunJob.

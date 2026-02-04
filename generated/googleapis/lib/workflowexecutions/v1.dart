@@ -121,7 +121,7 @@ class ProjectsLocationsWorkflowsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -176,7 +176,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -222,7 +222,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
@@ -265,7 +265,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -306,7 +306,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':exportData';
@@ -355,8 +355,8 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -439,12 +439,12 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
@@ -505,9 +505,9 @@ class ProjectsLocationsWorkflowsExecutionsCallbacksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/callbacks';
@@ -562,8 +562,8 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -641,13 +641,13 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (skip != null) 'skip': ['${skip}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'skip': ?skip == null ? null : ['${skip}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/stepEntries';
@@ -695,21 +695,26 @@ class Callback {
 
   Callback.fromJson(core.Map json_)
     : this(
-        availablePayloads:
-            (json_['availablePayloads'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        availablePayloads: (json_['availablePayloads'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         method: json_['method'] as core.String?,
         name: json_['name'] as core.String?,
         waiters: json_['waiters'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availablePayloads != null) 'availablePayloads': availablePayloads!,
-    if (method != null) 'method': method!,
-    if (name != null) 'name': name!,
-    if (waiters != null) 'waiters': waiters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availablePayloads = this.availablePayloads;
+    final method = this.method;
+    final name = this.name;
+    final waiters = this.waiters;
+    return {
+      'availablePayloads': ?availablePayloads,
+      'method': ?method,
+      'name': ?name,
+      'waiters': ?waiters,
+    };
+  }
 }
 
 /// Request for the CancelExecution method.
@@ -743,19 +748,23 @@ class Error {
     : this(
         context: json_['context'] as core.String?,
         payload: json_['payload'] as core.String?,
-        stackTrace:
-            json_.containsKey('stackTrace')
-                ? StackTrace.fromJson(
-                  json_['stackTrace'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stackTrace: json_.containsKey('stackTrace')
+            ? StackTrace.fromJson(
+                json_['stackTrace'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (context != null) 'context': context!,
-    if (payload != null) 'payload': payload!,
-    if (stackTrace != null) 'stackTrace': stackTrace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    final payload = this.payload;
+    final stackTrace = this.stackTrace;
+    return {
+      'context': ?context,
+      'payload': ?payload,
+      'stackTrace': ?stackTrace,
+    };
+  }
 }
 
 /// Exception describes why the step entry failed.
@@ -768,9 +777,10 @@ class Exception {
   Exception.fromJson(core.Map json_)
     : this(payload: json_['payload'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    return {'payload': ?payload};
+  }
 }
 
 /// A running instance of a
@@ -935,12 +945,11 @@ class Execution {
             json_['disableConcurrencyQuotaOverflowBuffering'] as core.bool?,
         duration: json_['duration'] as core.String?,
         endTime: json_['endTime'] as core.String?,
-        error:
-            json_.containsKey('error')
-                ? Error.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? Error.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -949,42 +958,57 @@ class Execution {
         result: json_['result'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
-        stateError:
-            json_.containsKey('stateError')
-                ? StateError.fromJson(
-                  json_['stateError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        status:
-            json_.containsKey('status')
-                ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stateError: json_.containsKey('stateError')
+            ? StateError.fromJson(
+                json_['stateError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? Status.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         workflowRevisionId: json_['workflowRevisionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (argument != null) 'argument': argument!,
-    if (callLogLevel != null) 'callLogLevel': callLogLevel!,
-    if (createTime != null) 'createTime': createTime!,
-    if (disableConcurrencyQuotaOverflowBuffering != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final argument = this.argument;
+    final callLogLevel = this.callLogLevel;
+    final createTime = this.createTime;
+    final disableConcurrencyQuotaOverflowBuffering =
+        this.disableConcurrencyQuotaOverflowBuffering;
+    final duration = this.duration;
+    final endTime = this.endTime;
+    final error = this.error;
+    final executionHistoryLevel = this.executionHistoryLevel;
+    final labels = this.labels;
+    final name = this.name;
+    final result = this.result;
+    final startTime = this.startTime;
+    final state = this.state;
+    final stateError = this.stateError;
+    final status = this.status;
+    final workflowRevisionId = this.workflowRevisionId;
+    return {
+      'argument': ?argument,
+      'callLogLevel': ?callLogLevel,
+      'createTime': ?createTime,
       'disableConcurrencyQuotaOverflowBuffering':
-          disableConcurrencyQuotaOverflowBuffering!,
-    if (duration != null) 'duration': duration!,
-    if (endTime != null) 'endTime': endTime!,
-    if (error != null) 'error': error!,
-    if (executionHistoryLevel != null)
-      'executionHistoryLevel': executionHistoryLevel!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (result != null) 'result': result!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-    if (stateError != null) 'stateError': stateError!,
-    if (status != null) 'status': status!,
-    if (workflowRevisionId != null) 'workflowRevisionId': workflowRevisionId!,
-  };
+          ?disableConcurrencyQuotaOverflowBuffering,
+      'duration': ?duration,
+      'endTime': ?endTime,
+      'error': ?error,
+      'executionHistoryLevel': ?executionHistoryLevel,
+      'labels': ?labels,
+      'name': ?name,
+      'result': ?result,
+      'startTime': ?startTime,
+      'state': ?state,
+      'stateError': ?stateError,
+      'status': ?status,
+      'workflowRevisionId': ?workflowRevisionId,
+    };
+  }
 }
 
 /// Response for the ExportData method.
@@ -998,9 +1022,10 @@ class ExportDataResponse {
   ExportDataResponse.fromJson(core.Map json_)
     : this(data: json_['data'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    return {'data': ?data};
+  }
 }
 
 /// RPC response object for the ListCallbacks method.
@@ -1017,21 +1042,21 @@ class ListCallbacksResponse {
 
   ListCallbacksResponse.fromJson(core.Map json_)
     : this(
-        callbacks:
-            (json_['callbacks'] as core.List?)
-                ?.map(
-                  (value) => Callback.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        callbacks: (json_['callbacks'] as core.List?)
+            ?.map(
+              (value) => Callback.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (callbacks != null) 'callbacks': callbacks!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final callbacks = this.callbacks;
+    final nextPageToken = this.nextPageToken;
+    return {'callbacks': ?callbacks, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for the ListExecutions method.
@@ -1048,21 +1073,21 @@ class ListExecutionsResponse {
 
   ListExecutionsResponse.fromJson(core.Map json_)
     : this(
-        executions:
-            (json_['executions'] as core.List?)
-                ?.map(
-                  (value) => Execution.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        executions: (json_['executions'] as core.List?)
+            ?.map(
+              (value) => Execution.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executions != null) 'executions': executions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executions = this.executions;
+    final nextPageToken = this.nextPageToken;
+    return {'executions': ?executions, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ExecutionHistory.ListStepEntries.
@@ -1092,22 +1117,26 @@ class ListStepEntriesResponse {
   ListStepEntriesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        stepEntries:
-            (json_['stepEntries'] as core.List?)
-                ?.map(
-                  (value) => StepEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        stepEntries: (json_['stepEntries'] as core.List?)
+            ?.map(
+              (value) => StepEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (stepEntries != null) 'stepEntries': stepEntries!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final stepEntries = this.stepEntries;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'stepEntries': ?stepEntries,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// NavigationInfo describes what steps if any come before or after this step,
@@ -1131,21 +1160,26 @@ class NavigationInfo {
 
   NavigationInfo.fromJson(core.Map json_)
     : this(
-        children:
-            (json_['children'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        children: (json_['children'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         next: json_['next'] as core.String?,
         parent: json_['parent'] as core.String?,
         previous: json_['previous'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (children != null) 'children': children!,
-    if (next != null) 'next': next!,
-    if (parent != null) 'parent': parent!,
-    if (previous != null) 'previous': previous!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final children = this.children;
+    final next = this.next;
+    final parent = this.parent;
+    final previous = this.previous;
+    return {
+      'children': ?children,
+      'next': ?next,
+      'parent': ?parent,
+      'previous': ?previous,
+    };
+  }
 }
 
 /// Position contains source position information about the stack trace element
@@ -1170,11 +1204,12 @@ class Position {
         line: json_['line'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (length != null) 'length': length!,
-    if (line != null) 'line': line!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final length = this.length;
+    final line = this.line;
+    return {'column': ?column, 'length': ?length, 'line': ?line};
+  }
 }
 
 /// A message that is published by publishers and consumed by subscribers.
@@ -1197,19 +1232,19 @@ class StackTrace {
 
   StackTrace.fromJson(core.Map json_)
     : this(
-        elements:
-            (json_['elements'] as core.List?)
-                ?.map(
-                  (value) => StackTraceElement.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        elements: (json_['elements'] as core.List?)
+            ?.map(
+              (value) => StackTraceElement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (elements != null) 'elements': elements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final elements = this.elements;
+    return {'elements': ?elements};
+  }
 }
 
 /// A single stack element (frame) where an error occurred.
@@ -1227,21 +1262,21 @@ class StackTraceElement {
 
   StackTraceElement.fromJson(core.Map json_)
     : this(
-        position:
-            json_.containsKey('position')
-                ? Position.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        position: json_.containsKey('position')
+            ? Position.fromJson(
+                json_['position'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         routine: json_['routine'] as core.String?,
         step: json_['step'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (position != null) 'position': position!,
-    if (routine != null) 'routine': routine!,
-    if (step != null) 'step': step!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final position = this.position;
+    final routine = this.routine;
+    final step = this.step;
+    return {'position': ?position, 'routine': ?routine, 'step': ?step};
+  }
 }
 
 /// Describes an error related to the current state of the Execution resource.
@@ -1263,19 +1298,18 @@ class Status {
 
   Status.fromJson(core.Map json_)
     : this(
-        currentSteps:
-            (json_['currentSteps'] as core.List?)
-                ?.map(
-                  (value) => Step.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        currentSteps: (json_['currentSteps'] as core.List?)
+            ?.map(
+              (value) =>
+                  Step.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentSteps != null) 'currentSteps': currentSteps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentSteps = this.currentSteps;
+    return {'currentSteps': ?currentSteps};
+  }
 }
 
 /// Represents a step of the workflow this execution is running.
@@ -1294,10 +1328,11 @@ class Step {
         step: json_['step'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (routine != null) 'routine': routine!,
-    if (step != null) 'step': step!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final routine = this.routine;
+    final step = this.step;
+    return {'routine': ?routine, 'step': ?step};
+  }
 }
 
 /// An StepEntry contains debugging information for a step transition in a
@@ -1423,54 +1458,63 @@ class StepEntry {
     : this(
         createTime: json_['createTime'] as core.String?,
         entryId: json_['entryId'] as core.String?,
-        exception:
-            json_.containsKey('exception')
-                ? Exception.fromJson(
-                  json_['exception'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        exception: json_.containsKey('exception')
+            ? Exception.fromJson(
+                json_['exception'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        navigationInfo:
-            json_.containsKey('navigationInfo')
-                ? NavigationInfo.fromJson(
-                  json_['navigationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        navigationInfo: json_.containsKey('navigationInfo')
+            ? NavigationInfo.fromJson(
+                json_['navigationInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         routine: json_['routine'] as core.String?,
         state: json_['state'] as core.String?,
         step: json_['step'] as core.String?,
-        stepEntryMetadata:
-            json_.containsKey('stepEntryMetadata')
-                ? StepEntryMetadata.fromJson(
-                  json_['stepEntryMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stepEntryMetadata: json_.containsKey('stepEntryMetadata')
+            ? StepEntryMetadata.fromJson(
+                json_['stepEntryMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         stepType: json_['stepType'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        variableData:
-            json_.containsKey('variableData')
-                ? VariableData.fromJson(
-                  json_['variableData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        variableData: json_.containsKey('variableData')
+            ? VariableData.fromJson(
+                json_['variableData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (entryId != null) 'entryId': entryId!,
-    if (exception != null) 'exception': exception!,
-    if (name != null) 'name': name!,
-    if (navigationInfo != null) 'navigationInfo': navigationInfo!,
-    if (routine != null) 'routine': routine!,
-    if (state != null) 'state': state!,
-    if (step != null) 'step': step!,
-    if (stepEntryMetadata != null) 'stepEntryMetadata': stepEntryMetadata!,
-    if (stepType != null) 'stepType': stepType!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (variableData != null) 'variableData': variableData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final entryId = this.entryId;
+    final exception = this.exception;
+    final name = this.name;
+    final navigationInfo = this.navigationInfo;
+    final routine = this.routine;
+    final state = this.state;
+    final step = this.step;
+    final stepEntryMetadata = this.stepEntryMetadata;
+    final stepType = this.stepType;
+    final updateTime = this.updateTime;
+    final variableData = this.variableData;
+    return {
+      'createTime': ?createTime,
+      'entryId': ?entryId,
+      'exception': ?exception,
+      'name': ?name,
+      'navigationInfo': ?navigationInfo,
+      'routine': ?routine,
+      'state': ?state,
+      'step': ?step,
+      'stepEntryMetadata': ?stepEntryMetadata,
+      'stepType': ?stepType,
+      'updateTime': ?updateTime,
+      'variableData': ?variableData,
+    };
+  }
 }
 
 /// StepEntryMetadata contains metadata information about this step.
@@ -1519,12 +1563,18 @@ class StepEntryMetadata {
         threadId: json_['threadId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expectedIteration != null) 'expectedIteration': expectedIteration!,
-    if (progressNumber != null) 'progressNumber': progressNumber!,
-    if (progressType != null) 'progressType': progressType!,
-    if (threadId != null) 'threadId': threadId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expectedIteration = this.expectedIteration;
+    final progressNumber = this.progressNumber;
+    final progressType = this.progressType;
+    final threadId = this.threadId;
+    return {
+      'expectedIteration': ?expectedIteration,
+      'progressNumber': ?progressNumber,
+      'progressType': ?progressType,
+      'threadId': ?threadId,
+    };
+  }
 }
 
 /// Request for the TriggerPubsubExecution method.
@@ -1565,21 +1615,26 @@ class TriggerPubsubExecutionRequest {
     : this(
         GCPCloudEventsMode: json_['GCPCloudEventsMode'] as core.String?,
         deliveryAttempt: json_['deliveryAttempt'] as core.int?,
-        message:
-            json_.containsKey('message')
-                ? PubsubMessage.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        message: json_.containsKey('message')
+            ? PubsubMessage.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         subscription: json_['subscription'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (GCPCloudEventsMode != null) 'GCPCloudEventsMode': GCPCloudEventsMode!,
-    if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
-    if (message != null) 'message': message!,
-    if (subscription != null) 'subscription': subscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final GCPCloudEventsMode = this.GCPCloudEventsMode;
+    final deliveryAttempt = this.deliveryAttempt;
+    final message = this.message;
+    final subscription = this.subscription;
+    return {
+      'GCPCloudEventsMode': ?GCPCloudEventsMode,
+      'deliveryAttempt': ?deliveryAttempt,
+      'message': ?message,
+      'subscription': ?subscription,
+    };
+  }
 }
 
 /// VariableData contains the variable data for this step.
@@ -1594,13 +1649,13 @@ class VariableData {
 
   VariableData.fromJson(core.Map json_)
     : this(
-        variables:
-            json_.containsKey('variables')
-                ? json_['variables'] as core.Map<core.String, core.dynamic>
-                : null,
+        variables: json_.containsKey('variables')
+            ? json_['variables'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (variables != null) 'variables': variables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final variables = this.variables;
+    return {'variables': ?variables};
+  }
 }

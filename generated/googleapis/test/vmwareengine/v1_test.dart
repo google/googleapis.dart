@@ -4834,8 +4834,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDnsBindPermissionResource', () {
     unittest.test('method--grant', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.dnsBindPermission;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.dnsBindPermission;
       final arg_request = buildGrantDnsBindPermissionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4898,8 +4899,9 @@ void main() {
 
     unittest.test('method--revoke', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.dnsBindPermission;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.dnsBindPermission;
       final arg_request = buildRevokeDnsBindPermissionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5315,10 +5317,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPeerings.peeringRoutes;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPeerings.peeringRoutes;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -5820,10 +5821,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPolicies.externalAccessRules;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPolicies.externalAccessRules;
         final arg_request = buildExternalAccessRule();
         final arg_parent = 'foo';
         final arg_externalAccessRuleId = 'foo';
@@ -5898,10 +5898,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPolicies.externalAccessRules;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPolicies.externalAccessRules;
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_$fields = 'foo';
@@ -5963,10 +5962,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPolicies.externalAccessRules;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPolicies.externalAccessRules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6019,10 +6017,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPolicies.externalAccessRules;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPolicies.externalAccessRules;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -6106,10 +6103,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.networkPolicies.externalAccessRules;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.networkPolicies.externalAccessRules;
         final arg_request = buildExternalAccessRule();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -7560,8 +7556,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsClustersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildCluster();
       final arg_parent = 'foo';
       final arg_clusterId = 'foo';
@@ -7642,8 +7639,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -7705,8 +7703,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7759,8 +7758,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7822,8 +7822,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7903,8 +7904,9 @@ void main() {
 
     unittest.test('method--mountDatastore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildMountDatastoreRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7967,8 +7969,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildCluster();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8049,8 +8052,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8113,8 +8117,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8179,8 +8184,9 @@ void main() {
 
     unittest.test('method--unmountDatastore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.clusters;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.clusters;
       final arg_request = buildUnmountDatastoreRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8247,10 +8253,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.clusters.nodes;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.clusters.nodes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8303,10 +8308,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.clusters.nodes;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.clusters.nodes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8377,10 +8381,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsExternalAddressesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.externalAddresses;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.externalAddresses;
       final arg_request = buildExternalAddress();
       final arg_parent = 'foo';
       final arg_externalAddressId = 'foo';
@@ -8455,10 +8458,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.externalAddresses;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.externalAddresses;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -8520,10 +8522,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.externalAddresses;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.externalAddresses;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8576,10 +8577,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.externalAddresses;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.externalAddresses;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8663,10 +8663,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.externalAddresses;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.externalAddresses;
       final arg_request = buildExternalAddress();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8743,10 +8742,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsHcxActivationKeysResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_request = buildHcxActivationKey();
       final arg_parent = 'foo';
       final arg_hcxActivationKeyId = 'foo';
@@ -8821,10 +8819,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8877,10 +8874,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -8942,10 +8938,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9017,10 +9012,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9083,10 +9077,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.hcxActivationKeys;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.hcxActivationKeys;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9153,10 +9146,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsLoggingServersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.loggingServers;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.loggingServers;
       final arg_request = buildLoggingServer();
       final arg_parent = 'foo';
       final arg_loggingServerId = 'foo';
@@ -9231,10 +9223,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.loggingServers;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.loggingServers;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -9296,10 +9287,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.loggingServers;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.loggingServers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9352,10 +9342,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.loggingServers;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.loggingServers;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9437,10 +9426,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(
-            mock,
-          ).projects.locations.privateClouds.loggingServers;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.loggingServers;
       final arg_request = buildLoggingServer();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -9519,10 +9507,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_request = buildManagementDnsZoneBinding();
         final arg_parent = 'foo';
         final arg_managementDnsZoneBindingId = 'foo';
@@ -9597,10 +9584,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_$fields = 'foo';
@@ -9662,10 +9648,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9718,10 +9703,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -9805,10 +9789,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_request = buildManagementDnsZoneBinding();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -9883,10 +9866,9 @@ void main() {
 
       unittest.test('method--repair', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateClouds.managementDnsZoneBindings;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateClouds.managementDnsZoneBindings;
         final arg_request = buildRepairManagementDnsZoneBindingRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -9952,8 +9934,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsSubnetsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.subnets;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.subnets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10006,8 +9989,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.subnets;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.subnets;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10075,8 +10059,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.subnets;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.subnets;
       final arg_request = buildSubnet();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10147,8 +10132,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateCloudsUpgradesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.upgrades;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.upgrades;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10201,8 +10187,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.upgrades;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.upgrades;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10282,8 +10269,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateClouds.upgrades;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateClouds.upgrades;
       final arg_request = buildUpgrade();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -10360,8 +10348,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateConnectionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateConnections;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_request = buildPrivateConnection();
       final arg_parent = 'foo';
       final arg_privateConnectionId = 'foo';
@@ -10436,8 +10425,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateConnections;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -10499,8 +10489,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateConnections;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10553,8 +10544,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateConnections;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10638,8 +10630,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.privateConnections;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.privateConnections;
       final arg_request = buildPrivateConnection();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -10718,10 +10711,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.VMwareEngineApi(
-              mock,
-            ).projects.locations.privateConnections.peeringRoutes;
+        final res = api.VMwareEngineApi(
+          mock,
+        ).projects.locations.privateConnections.peeringRoutes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -10796,8 +10788,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVmwareEngineNetworksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.vmwareEngineNetworks;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.vmwareEngineNetworks;
       final arg_request = buildVmwareEngineNetwork();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -10872,8 +10865,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.vmwareEngineNetworks;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.vmwareEngineNetworks;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -10938,8 +10932,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.vmwareEngineNetworks;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.vmwareEngineNetworks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10992,8 +10987,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.vmwareEngineNetworks;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.vmwareEngineNetworks;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11077,8 +11073,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.vmwareEngineNetworks;
+      final res = api.VMwareEngineApi(
+        mock,
+      ).projects.locations.vmwareEngineNetworks;
       final arg_request = buildVmwareEngineNetwork();
       final arg_name = 'foo';
       final arg_requestId = 'foo';

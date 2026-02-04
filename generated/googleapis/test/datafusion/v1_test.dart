@@ -2275,8 +2275,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInstancesDnsPeeringsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataFusionApi(mock).projects.locations.instances.dnsPeerings;
+      final res = api.DataFusionApi(
+        mock,
+      ).projects.locations.instances.dnsPeerings;
       final arg_request = buildDnsPeering();
       final arg_parent = 'foo';
       final arg_dnsPeeringId = 'foo';
@@ -2345,8 +2346,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataFusionApi(mock).projects.locations.instances.dnsPeerings;
+      final res = api.DataFusionApi(
+        mock,
+      ).projects.locations.instances.dnsPeerings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2399,8 +2401,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataFusionApi(mock).projects.locations.instances.dnsPeerings;
+      final res = api.DataFusionApi(
+        mock,
+      ).projects.locations.instances.dnsPeerings;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

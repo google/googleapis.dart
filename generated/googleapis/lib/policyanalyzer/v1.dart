@@ -151,10 +151,10 @@ class FoldersLocationsActivityTypesActivitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
@@ -256,10 +256,10 @@ class OrganizationsLocationsActivityTypesActivitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
@@ -359,10 +359,10 @@ class ProjectsLocationsActivityTypesActivitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
@@ -407,27 +407,31 @@ class GoogleCloudPolicyanalyzerV1Activity {
 
   GoogleCloudPolicyanalyzerV1Activity.fromJson(core.Map json_)
     : this(
-        activity:
-            json_.containsKey('activity')
-                ? json_['activity'] as core.Map<core.String, core.dynamic>
-                : null,
+        activity: json_.containsKey('activity')
+            ? json_['activity'] as core.Map<core.String, core.dynamic>
+            : null,
         activityType: json_['activityType'] as core.String?,
         fullResourceName: json_['fullResourceName'] as core.String?,
-        observationPeriod:
-            json_.containsKey('observationPeriod')
-                ? GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(
-                  json_['observationPeriod']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        observationPeriod: json_.containsKey('observationPeriod')
+            ? GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(
+                json_['observationPeriod']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activity != null) 'activity': activity!,
-    if (activityType != null) 'activityType': activityType!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (observationPeriod != null) 'observationPeriod': observationPeriod!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activity = this.activity;
+    final activityType = this.activityType;
+    final fullResourceName = this.fullResourceName;
+    final observationPeriod = this.observationPeriod;
+    return {
+      'activity': ?activity,
+      'activityType': ?activityType,
+      'fullResourceName': ?fullResourceName,
+      'observationPeriod': ?observationPeriod,
+    };
+  }
 }
 
 /// Represents data observation period.
@@ -450,10 +454,11 @@ class GoogleCloudPolicyanalyzerV1ObservationPeriod {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'endTime': ?endTime, 'startTime': ?startTime};
+  }
 }
 
 /// Response to the `QueryActivity` method.
@@ -475,19 +480,19 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
 
   GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(core.Map json_)
     : this(
-        activities:
-            (json_['activities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        activities: (json_['activities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activities != null) 'activities': activities!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activities = this.activities;
+    final nextPageToken = this.nextPageToken;
+    return {'activities': ?activities, 'nextPageToken': ?nextPageToken};
+  }
 }

@@ -6402,10 +6402,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(
-              mock,
-            ).courses.courseWork.addOnAttachments.studentSubmissions;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWork.addOnAttachments.studentSubmissions;
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
         final arg_attachmentId = 'foo';
@@ -6515,10 +6514,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(
-              mock,
-            ).courses.courseWork.addOnAttachments.studentSubmissions;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWork.addOnAttachments.studentSubmissions;
         final arg_request = buildAddOnAttachmentStudentSubmission();
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
@@ -8315,8 +8313,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWorkMaterials.addOnAttachments;
         final arg_request = buildAddOnAttachment();
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
@@ -8416,8 +8415,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWorkMaterials.addOnAttachments;
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
         final arg_attachmentId = 'foo';
@@ -8509,8 +8509,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWorkMaterials.addOnAttachments;
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
         final arg_attachmentId = 'foo';
@@ -8602,8 +8603,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWorkMaterials.addOnAttachments;
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
         final arg_pageSize = 42;
@@ -8706,8 +8708,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWorkMaterials.addOnAttachments;
         final arg_request = buildAddOnAttachment();
         final arg_courseId = 'foo';
         final arg_itemId = 'foo';
@@ -9410,10 +9413,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(
-              mock,
-            ).courses.posts.addOnAttachments.studentSubmissions;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.posts.addOnAttachments.studentSubmissions;
         final arg_courseId = 'foo';
         final arg_postId = 'foo';
         final arg_attachmentId = 'foo';
@@ -9523,10 +9525,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(
-              mock,
-            ).courses.posts.addOnAttachments.studentSubmissions;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.posts.addOnAttachments.studentSubmissions;
         final arg_request = buildAddOnAttachmentStudentSubmission();
         final arg_courseId = 'foo';
         final arg_postId = 'foo';
@@ -9966,8 +9967,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.studentGroups.studentGroupMembers;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.studentGroups.studentGroupMembers;
         final arg_request = buildStudentGroupMember();
         final arg_courseId = 'foo';
         final arg_studentGroupId = 'foo';
@@ -10055,8 +10057,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.studentGroups.studentGroupMembers;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.studentGroups.studentGroupMembers;
         final arg_courseId = 'foo';
         final arg_studentGroupId = 'foo';
         final arg_userId = 'foo';
@@ -10142,8 +10145,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ClassroomApi(mock).courses.studentGroups.studentGroupMembers;
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.studentGroups.studentGroupMembers;
         final arg_courseId = 'foo';
         final arg_studentGroupId = 'foo';
         final arg_pageSize = 42;

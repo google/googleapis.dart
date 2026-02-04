@@ -102,7 +102,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -139,7 +139,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -177,7 +177,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -233,8 +233,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -286,7 +286,7 @@ class FoldersApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -334,7 +334,7 @@ class FoldersApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
@@ -375,7 +375,7 @@ class FoldersApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -421,7 +421,7 @@ class FoldersApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
@@ -480,10 +480,10 @@ class FoldersApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
@@ -534,7 +534,7 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -571,7 +571,7 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -609,7 +609,7 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -665,8 +665,8 @@ class OrganizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -719,7 +719,7 @@ class OrganizationsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -768,7 +768,7 @@ class OrganizationsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
@@ -810,7 +810,7 @@ class OrganizationsApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -857,7 +857,7 @@ class OrganizationsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
@@ -916,10 +916,10 @@ class OrganizationsApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
@@ -970,7 +970,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1007,7 +1007,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1045,7 +1045,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1101,8 +1101,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1154,7 +1154,7 @@ class ProjectsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -1202,7 +1202,7 @@ class ProjectsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
@@ -1243,7 +1243,7 @@ class ProjectsApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1289,7 +1289,7 @@ class ProjectsApprovalRequestsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
@@ -1348,10 +1348,10 @@ class ProjectsApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
@@ -1387,10 +1387,11 @@ class AccessApprovalServiceAccount {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountEmail != null) 'accountEmail': accountEmail!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountEmail = this.accountEmail;
+    final name = this.name;
+    return {'accountEmail': ?accountEmail, 'name': ?name};
+  }
 }
 
 /// Settings on a Project/Folder/Organization related to Access Approval.
@@ -1564,35 +1565,30 @@ class AccessApprovalSettings {
                   ),
                 )
                 .toList(),
-        approvalPolicy:
-            json_.containsKey('approvalPolicy')
-                ? CustomerApprovalApprovalPolicy.fromJson(
-                  json_['approvalPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        effectiveApprovalPolicy:
-            json_.containsKey('effectiveApprovalPolicy')
-                ? CustomerApprovalApprovalPolicy.fromJson(
-                  json_['effectiveApprovalPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        approvalPolicy: json_.containsKey('approvalPolicy')
+            ? CustomerApprovalApprovalPolicy.fromJson(
+                json_['approvalPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        effectiveApprovalPolicy: json_.containsKey('effectiveApprovalPolicy')
+            ? CustomerApprovalApprovalPolicy.fromJson(
+                json_['effectiveApprovalPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
-        enrolledServices:
-            (json_['enrolledServices'] as core.List?)
-                ?.map(
-                  (value) => EnrolledService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        enrolledServices: (json_['enrolledServices'] as core.List?)
+            ?.map(
+              (value) => EnrolledService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         invalidKeyVersion: json_['invalidKeyVersion'] as core.bool?,
         name: json_['name'] as core.String?,
-        notificationEmails:
-            (json_['notificationEmails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        notificationEmails: (json_['notificationEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         notificationPubsubTopic:
             json_['notificationPubsubTopic'] as core.String?,
         preferNoBroadApprovalRequests:
@@ -1605,32 +1601,42 @@ class AccessApprovalSettings {
             json_['requireCustomerVisibleJustification'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
-    if (ancestorHasActiveKeyVersion != null)
-      'ancestorHasActiveKeyVersion': ancestorHasActiveKeyVersion!,
-    if (ancestorsEnrolledServices != null)
-      'ancestorsEnrolledServices': ancestorsEnrolledServices!,
-    if (approvalPolicy != null) 'approvalPolicy': approvalPolicy!,
-    if (effectiveApprovalPolicy != null)
-      'effectiveApprovalPolicy': effectiveApprovalPolicy!,
-    if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
-    if (enrolledServices != null) 'enrolledServices': enrolledServices!,
-    if (invalidKeyVersion != null) 'invalidKeyVersion': invalidKeyVersion!,
-    if (name != null) 'name': name!,
-    if (notificationEmails != null) 'notificationEmails': notificationEmails!,
-    if (notificationPubsubTopic != null)
-      'notificationPubsubTopic': notificationPubsubTopic!,
-    if (preferNoBroadApprovalRequests != null)
-      'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
-    if (preferredRequestExpirationDays != null)
-      'preferredRequestExpirationDays': preferredRequestExpirationDays!,
-    if (requestScopeMaxWidthPreference != null)
-      'requestScopeMaxWidthPreference': requestScopeMaxWidthPreference!,
-    if (requireCustomerVisibleJustification != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeKeyVersion = this.activeKeyVersion;
+    final ancestorHasActiveKeyVersion = this.ancestorHasActiveKeyVersion;
+    final ancestorsEnrolledServices = this.ancestorsEnrolledServices;
+    final approvalPolicy = this.approvalPolicy;
+    final effectiveApprovalPolicy = this.effectiveApprovalPolicy;
+    final enrolledAncestor = this.enrolledAncestor;
+    final enrolledServices = this.enrolledServices;
+    final invalidKeyVersion = this.invalidKeyVersion;
+    final name = this.name;
+    final notificationEmails = this.notificationEmails;
+    final notificationPubsubTopic = this.notificationPubsubTopic;
+    final preferNoBroadApprovalRequests = this.preferNoBroadApprovalRequests;
+    final preferredRequestExpirationDays = this.preferredRequestExpirationDays;
+    final requestScopeMaxWidthPreference = this.requestScopeMaxWidthPreference;
+    final requireCustomerVisibleJustification =
+        this.requireCustomerVisibleJustification;
+    return {
+      'activeKeyVersion': ?activeKeyVersion,
+      'ancestorHasActiveKeyVersion': ?ancestorHasActiveKeyVersion,
+      'ancestorsEnrolledServices': ?ancestorsEnrolledServices,
+      'approvalPolicy': ?approvalPolicy,
+      'effectiveApprovalPolicy': ?effectiveApprovalPolicy,
+      'enrolledAncestor': ?enrolledAncestor,
+      'enrolledServices': ?enrolledServices,
+      'invalidKeyVersion': ?invalidKeyVersion,
+      'name': ?name,
+      'notificationEmails': ?notificationEmails,
+      'notificationPubsubTopic': ?notificationPubsubTopic,
+      'preferNoBroadApprovalRequests': ?preferNoBroadApprovalRequests,
+      'preferredRequestExpirationDays': ?preferredRequestExpirationDays,
+      'requestScopeMaxWidthPreference': ?requestScopeMaxWidthPreference,
       'requireCustomerVisibleJustification':
-          requireCustomerVisibleJustification!,
-  };
+          ?requireCustomerVisibleJustification,
+    };
+  }
 }
 
 /// Physical assigned office and physical location of the Google administrator
@@ -1666,12 +1672,15 @@ class AccessLocations {
             json_['principalPhysicalLocationCountry'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (principalOfficeCountry != null)
-      'principalOfficeCountry': principalOfficeCountry!,
-    if (principalPhysicalLocationCountry != null)
-      'principalPhysicalLocationCountry': principalPhysicalLocationCountry!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final principalOfficeCountry = this.principalOfficeCountry;
+    final principalPhysicalLocationCountry =
+        this.principalPhysicalLocationCountry;
+    return {
+      'principalOfficeCountry': ?principalOfficeCountry,
+      'principalPhysicalLocationCountry': ?principalPhysicalLocationCountry,
+    };
+  }
 }
 
 class AccessReason {
@@ -1715,10 +1724,11 @@ class AccessReason {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detail != null) 'detail': detail!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detail = this.detail;
+    final type = this.type;
+    return {'detail': ?detail, 'type': ?type};
+  }
 }
 
 /// A request for the customer to approve access to a resource.
@@ -1784,70 +1794,73 @@ class ApprovalRequest {
 
   ApprovalRequest.fromJson(core.Map json_)
     : this(
-        approve:
-            json_.containsKey('approve')
-                ? ApproveDecision.fromJson(
-                  json_['approve'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dismiss:
-            json_.containsKey('dismiss')
-                ? DismissDecision.fromJson(
-                  json_['dismiss'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        approve: json_.containsKey('approve')
+            ? ApproveDecision.fromJson(
+                json_['approve'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dismiss: json_.containsKey('dismiss')
+            ? DismissDecision.fromJson(
+                json_['dismiss'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         requestTime: json_['requestTime'] as core.String?,
-        requestedAugmentedInfo:
-            json_.containsKey('requestedAugmentedInfo')
-                ? AugmentedInfo.fromJson(
-                  json_['requestedAugmentedInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestedAugmentedInfo: json_.containsKey('requestedAugmentedInfo')
+            ? AugmentedInfo.fromJson(
+                json_['requestedAugmentedInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestedDuration: json_['requestedDuration'] as core.String?,
         requestedExpiration: json_['requestedExpiration'] as core.String?,
-        requestedLocations:
-            json_.containsKey('requestedLocations')
-                ? AccessLocations.fromJson(
-                  json_['requestedLocations']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requestedReason:
-            json_.containsKey('requestedReason')
-                ? AccessReason.fromJson(
-                  json_['requestedReason']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestedLocations: json_.containsKey('requestedLocations')
+            ? AccessLocations.fromJson(
+                json_['requestedLocations']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestedReason: json_.containsKey('requestedReason')
+            ? AccessReason.fromJson(
+                json_['requestedReason'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestedResourceName: json_['requestedResourceName'] as core.String?,
         requestedResourceProperties:
             json_.containsKey('requestedResourceProperties')
-                ? ResourceProperties.fromJson(
-                  json_['requestedResourceProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ResourceProperties.fromJson(
+                json_['requestedResourceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approve != null) 'approve': approve!,
-    if (dismiss != null) 'dismiss': dismiss!,
-    if (name != null) 'name': name!,
-    if (requestTime != null) 'requestTime': requestTime!,
-    if (requestedAugmentedInfo != null)
-      'requestedAugmentedInfo': requestedAugmentedInfo!,
-    if (requestedDuration != null) 'requestedDuration': requestedDuration!,
-    if (requestedExpiration != null)
-      'requestedExpiration': requestedExpiration!,
-    if (requestedLocations != null) 'requestedLocations': requestedLocations!,
-    if (requestedReason != null) 'requestedReason': requestedReason!,
-    if (requestedResourceName != null)
-      'requestedResourceName': requestedResourceName!,
-    if (requestedResourceProperties != null)
-      'requestedResourceProperties': requestedResourceProperties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approve = this.approve;
+    final dismiss = this.dismiss;
+    final name = this.name;
+    final requestTime = this.requestTime;
+    final requestedAugmentedInfo = this.requestedAugmentedInfo;
+    final requestedDuration = this.requestedDuration;
+    final requestedExpiration = this.requestedExpiration;
+    final requestedLocations = this.requestedLocations;
+    final requestedReason = this.requestedReason;
+    final requestedResourceName = this.requestedResourceName;
+    final requestedResourceProperties = this.requestedResourceProperties;
+    return {
+      'approve': ?approve,
+      'dismiss': ?dismiss,
+      'name': ?name,
+      'requestTime': ?requestTime,
+      'requestedAugmentedInfo': ?requestedAugmentedInfo,
+      'requestedDuration': ?requestedDuration,
+      'requestedExpiration': ?requestedExpiration,
+      'requestedLocations': ?requestedLocations,
+      'requestedReason': ?requestedReason,
+      'requestedResourceName': ?requestedResourceName,
+      'requestedResourceProperties': ?requestedResourceProperties,
+    };
+  }
 }
 
 /// Request to approve an ApprovalRequest.
@@ -1860,9 +1873,10 @@ class ApproveApprovalRequestMessage {
   ApproveApprovalRequestMessage.fromJson(core.Map json_)
     : this(expireTime: json_['expireTime'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    return {'expireTime': ?expireTime};
+  }
 }
 
 /// A decision that has been made to approve access to a resource.
@@ -1901,22 +1915,29 @@ class ApproveDecision {
         expireTime: json_['expireTime'] as core.String?,
         invalidateTime: json_['invalidateTime'] as core.String?,
         policyApproved: json_['policyApproved'] as core.bool?,
-        signatureInfo:
-            json_.containsKey('signatureInfo')
-                ? SignatureInfo.fromJson(
-                  json_['signatureInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signatureInfo: json_.containsKey('signatureInfo')
+            ? SignatureInfo.fromJson(
+                json_['signatureInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approveTime != null) 'approveTime': approveTime!,
-    if (autoApproved != null) 'autoApproved': autoApproved!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (invalidateTime != null) 'invalidateTime': invalidateTime!,
-    if (policyApproved != null) 'policyApproved': policyApproved!,
-    if (signatureInfo != null) 'signatureInfo': signatureInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approveTime = this.approveTime;
+    final autoApproved = this.autoApproved;
+    final expireTime = this.expireTime;
+    final invalidateTime = this.invalidateTime;
+    final policyApproved = this.policyApproved;
+    final signatureInfo = this.signatureInfo;
+    return {
+      'approveTime': ?approveTime,
+      'autoApproved': ?autoApproved,
+      'expireTime': ?expireTime,
+      'invalidateTime': ?invalidateTime,
+      'policyApproved': ?policyApproved,
+      'signatureInfo': ?signatureInfo,
+    };
+  }
 }
 
 /// This field contains the augmented information of the request.
@@ -1932,9 +1953,10 @@ class AugmentedInfo {
   AugmentedInfo.fromJson(core.Map json_)
     : this(command: json_['command'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (command != null) 'command': command!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final command = this.command;
+    return {'command': ?command};
+  }
 }
 
 /// Represents all the policies that can be set for Customer Approval.
@@ -1967,10 +1989,13 @@ class CustomerApprovalApprovalPolicy {
             json_['justificationBasedApprovalPolicy'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (justificationBasedApprovalPolicy != null)
-      'justificationBasedApprovalPolicy': justificationBasedApprovalPolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final justificationBasedApprovalPolicy =
+        this.justificationBasedApprovalPolicy;
+    return {
+      'justificationBasedApprovalPolicy': ?justificationBasedApprovalPolicy,
+    };
+  }
 }
 
 /// Request to dismiss an approval request.
@@ -1994,10 +2019,11 @@ class DismissDecision {
         implicit: json_['implicit'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dismissTime != null) 'dismissTime': dismissTime!,
-    if (implicit != null) 'implicit': implicit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dismissTime = this.dismissTime;
+    final implicit = this.implicit;
+    return {'dismissTime': ?dismissTime, 'implicit': ?implicit};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2078,10 +2104,11 @@ class EnrolledService {
         enrollmentLevel: json_['enrollmentLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudProduct != null) 'cloudProduct': cloudProduct!,
-    if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudProduct = this.cloudProduct;
+    final enrollmentLevel = this.enrollmentLevel;
+    return {'cloudProduct': ?cloudProduct, 'enrollmentLevel': ?enrollmentLevel};
+  }
 }
 
 /// Request to invalidate an existing approval.
@@ -2099,21 +2126,24 @@ class ListApprovalRequestsResponse {
 
   ListApprovalRequestsResponse.fromJson(core.Map json_)
     : this(
-        approvalRequests:
-            (json_['approvalRequests'] as core.List?)
-                ?.map(
-                  (value) => ApprovalRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        approvalRequests: (json_['approvalRequests'] as core.List?)
+            ?.map(
+              (value) => ApprovalRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvalRequests != null) 'approvalRequests': approvalRequests!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvalRequests = this.approvalRequests;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'approvalRequests': ?approvalRequests,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The properties associated with the resource of the request.
@@ -2127,10 +2157,10 @@ class ResourceProperties {
   ResourceProperties.fromJson(core.Map json_)
     : this(excludesDescendants: json_['excludesDescendants'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludesDescendants != null)
-      'excludesDescendants': excludesDescendants!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludesDescendants = this.excludesDescendants;
+    return {'excludesDescendants': ?excludesDescendants};
+  }
 }
 
 /// Information about the digital signature of the resource.
@@ -2282,13 +2312,18 @@ class SignatureInfo {
         signature: json_['signature'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerKmsKeyVersion != null)
-      'customerKmsKeyVersion': customerKmsKeyVersion!,
-    if (googleKeyAlgorithm != null) 'googleKeyAlgorithm': googleKeyAlgorithm!,
-    if (googlePublicKeyPem != null) 'googlePublicKeyPem': googlePublicKeyPem!,
-    if (serializedApprovalRequest != null)
-      'serializedApprovalRequest': serializedApprovalRequest!,
-    if (signature != null) 'signature': signature!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerKmsKeyVersion = this.customerKmsKeyVersion;
+    final googleKeyAlgorithm = this.googleKeyAlgorithm;
+    final googlePublicKeyPem = this.googlePublicKeyPem;
+    final serializedApprovalRequest = this.serializedApprovalRequest;
+    final signature = this.signature;
+    return {
+      'customerKmsKeyVersion': ?customerKmsKeyVersion,
+      'googleKeyAlgorithm': ?googleKeyAlgorithm,
+      'googlePublicKeyPem': ?googlePublicKeyPem,
+      'serializedApprovalRequest': ?serializedApprovalRequest,
+      'signature': ?signature,
+    };
+  }
 }

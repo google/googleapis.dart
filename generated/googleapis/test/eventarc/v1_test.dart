@@ -2326,10 +2326,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineDestinationAuthenticationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineDestinationAuthenticationConfig(od);
       });
     },
@@ -2342,10 +2342,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken(
           od,
         );
@@ -2360,10 +2360,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken(
           od,
         );
@@ -2377,10 +2377,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEventarcV1PipelineDestinationHttpEndpoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineDestinationHttpEndpoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineDestinationHttpEndpoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineDestinationHttpEndpoint(od);
       });
     },
@@ -2392,10 +2392,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEventarcV1PipelineDestinationNetworkConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineDestinationNetworkConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineDestinationNetworkConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineDestinationNetworkConfig(od);
       });
     },
@@ -2418,10 +2418,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEventarcV1PipelineMediationTransformation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineMediationTransformation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineMediationTransformation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineMediationTransformation(od);
       });
     },
@@ -2433,10 +2433,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudEventarcV1PipelineMessagePayloadFormat();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineMessagePayloadFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineMessagePayloadFormat.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineMessagePayloadFormat(od);
       });
     },
@@ -2449,10 +2449,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat(od);
       });
     },
@@ -2465,10 +2465,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat(od);
       });
     },
@@ -2481,10 +2481,10 @@ void main() {
         final o =
             buildGoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat(
           od,
         );

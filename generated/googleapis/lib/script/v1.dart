@@ -200,28 +200,30 @@ class ProcessesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (userProcessFilter_deploymentId != null)
-        'userProcessFilter.deploymentId': [userProcessFilter_deploymentId],
-      if (userProcessFilter_endTime != null)
-        'userProcessFilter.endTime': [userProcessFilter_endTime],
-      if (userProcessFilter_functionName != null)
-        'userProcessFilter.functionName': [userProcessFilter_functionName],
-      if (userProcessFilter_projectName != null)
-        'userProcessFilter.projectName': [userProcessFilter_projectName],
-      if (userProcessFilter_scriptId != null)
-        'userProcessFilter.scriptId': [userProcessFilter_scriptId],
-      if (userProcessFilter_startTime != null)
-        'userProcessFilter.startTime': [userProcessFilter_startTime],
-      if (userProcessFilter_statuses != null)
-        'userProcessFilter.statuses': userProcessFilter_statuses,
-      if (userProcessFilter_types != null)
-        'userProcessFilter.types': userProcessFilter_types,
-      if (userProcessFilter_userAccessLevels != null)
-        'userProcessFilter.userAccessLevels':
-            userProcessFilter_userAccessLevels,
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'userProcessFilter.deploymentId': ?userProcessFilter_deploymentId == null
+          ? null
+          : [userProcessFilter_deploymentId],
+      'userProcessFilter.endTime': ?userProcessFilter_endTime == null
+          ? null
+          : [userProcessFilter_endTime],
+      'userProcessFilter.functionName': ?userProcessFilter_functionName == null
+          ? null
+          : [userProcessFilter_functionName],
+      'userProcessFilter.projectName': ?userProcessFilter_projectName == null
+          ? null
+          : [userProcessFilter_projectName],
+      'userProcessFilter.scriptId': ?userProcessFilter_scriptId == null
+          ? null
+          : [userProcessFilter_scriptId],
+      'userProcessFilter.startTime': ?userProcessFilter_startTime == null
+          ? null
+          : [userProcessFilter_startTime],
+      'userProcessFilter.statuses': ?userProcessFilter_statuses,
+      'userProcessFilter.types': ?userProcessFilter_types,
+      'userProcessFilter.userAccessLevels': ?userProcessFilter_userAccessLevels,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/processes';
@@ -298,25 +300,28 @@ class ProcessesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (scriptId != null) 'scriptId': [scriptId],
-      if (scriptProcessFilter_deploymentId != null)
-        'scriptProcessFilter.deploymentId': [scriptProcessFilter_deploymentId],
-      if (scriptProcessFilter_endTime != null)
-        'scriptProcessFilter.endTime': [scriptProcessFilter_endTime],
-      if (scriptProcessFilter_functionName != null)
-        'scriptProcessFilter.functionName': [scriptProcessFilter_functionName],
-      if (scriptProcessFilter_startTime != null)
-        'scriptProcessFilter.startTime': [scriptProcessFilter_startTime],
-      if (scriptProcessFilter_statuses != null)
-        'scriptProcessFilter.statuses': scriptProcessFilter_statuses,
-      if (scriptProcessFilter_types != null)
-        'scriptProcessFilter.types': scriptProcessFilter_types,
-      if (scriptProcessFilter_userAccessLevels != null)
-        'scriptProcessFilter.userAccessLevels':
-            scriptProcessFilter_userAccessLevels,
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'scriptId': ?scriptId == null ? null : [scriptId],
+      'scriptProcessFilter.deploymentId':
+          ?scriptProcessFilter_deploymentId == null
+          ? null
+          : [scriptProcessFilter_deploymentId],
+      'scriptProcessFilter.endTime': ?scriptProcessFilter_endTime == null
+          ? null
+          : [scriptProcessFilter_endTime],
+      'scriptProcessFilter.functionName':
+          ?scriptProcessFilter_functionName == null
+          ? null
+          : [scriptProcessFilter_functionName],
+      'scriptProcessFilter.startTime': ?scriptProcessFilter_startTime == null
+          ? null
+          : [scriptProcessFilter_startTime],
+      'scriptProcessFilter.statuses': ?scriptProcessFilter_statuses,
+      'scriptProcessFilter.types': ?scriptProcessFilter_types,
+      'scriptProcessFilter.userAccessLevels':
+          ?scriptProcessFilter_userAccessLevels,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/processes:listScriptProcesses';
@@ -364,7 +369,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/projects';
@@ -399,7 +404,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/projects/' + commons.escapeVariable('$scriptId');
@@ -438,8 +443,8 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (versionNumber != null) 'versionNumber': ['${versionNumber}'],
-      if ($fields != null) 'fields': [$fields],
+      'versionNumber': ?versionNumber == null ? null : ['${versionNumber}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -488,11 +493,13 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (metricsFilter_deploymentId != null)
-        'metricsFilter.deploymentId': [metricsFilter_deploymentId],
-      if (metricsGranularity != null)
-        'metricsGranularity': [metricsGranularity],
-      if ($fields != null) 'fields': [$fields],
+      'metricsFilter.deploymentId': ?metricsFilter_deploymentId == null
+          ? null
+          : [metricsFilter_deploymentId],
+      'metricsGranularity': ?metricsGranularity == null
+          ? null
+          : [metricsGranularity],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -536,7 +543,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -583,7 +590,7 @@ class ProjectsDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -624,7 +631,7 @@ class ProjectsDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -665,7 +672,7 @@ class ProjectsDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -714,9 +721,9 @@ class ProjectsDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -760,7 +767,7 @@ class ProjectsDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -812,7 +819,7 @@ class ProjectsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -851,7 +858,7 @@ class ProjectsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -898,9 +905,9 @@ class ProjectsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -949,7 +956,7 @@ class ScriptsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/scripts/' + commons.escapeVariable('$scriptId') + ':run';
@@ -980,21 +987,20 @@ class Content {
 
   Content.fromJson(core.Map json_)
     : this(
-        files:
-            (json_['files'] as core.List?)
-                ?.map(
-                  (value) => File.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         scriptId: json_['scriptId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (files != null) 'files': files!,
-    if (scriptId != null) 'scriptId': scriptId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final files = this.files;
+    final scriptId = this.scriptId;
+    return {'files': ?files, 'scriptId': ?scriptId};
+  }
 }
 
 /// Request to create a script project.
@@ -1016,10 +1022,11 @@ class CreateProjectRequest {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parentId != null) 'parentId': parentId!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parentId = this.parentId;
+    final title = this.title;
+    return {'parentId': ?parentId, 'title': ?title};
+  }
 }
 
 /// Representation of a single script deployment.
@@ -1045,31 +1052,35 @@ class Deployment {
 
   Deployment.fromJson(core.Map json_)
     : this(
-        deploymentConfig:
-            json_.containsKey('deploymentConfig')
-                ? DeploymentConfig.fromJson(
-                  json_['deploymentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deploymentConfig: json_.containsKey('deploymentConfig')
+            ? DeploymentConfig.fromJson(
+                json_['deploymentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deploymentId: json_['deploymentId'] as core.String?,
-        entryPoints:
-            (json_['entryPoints'] as core.List?)
-                ?.map(
-                  (value) => EntryPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entryPoints: (json_['entryPoints'] as core.List?)
+            ?.map(
+              (value) => EntryPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deploymentConfig != null) 'deploymentConfig': deploymentConfig!,
-    if (deploymentId != null) 'deploymentId': deploymentId!,
-    if (entryPoints != null) 'entryPoints': entryPoints!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentConfig = this.deploymentConfig;
+    final deploymentId = this.deploymentId;
+    final entryPoints = this.entryPoints;
+    final updateTime = this.updateTime;
+    return {
+      'deploymentConfig': ?deploymentConfig,
+      'deploymentId': ?deploymentId,
+      'entryPoints': ?entryPoints,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Metadata the defines how a deployment is configured.
@@ -1101,12 +1112,18 @@ class DeploymentConfig {
         versionNumber: json_['versionNumber'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (manifestFileName != null) 'manifestFileName': manifestFileName!,
-    if (scriptId != null) 'scriptId': scriptId!,
-    if (versionNumber != null) 'versionNumber': versionNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final manifestFileName = this.manifestFileName;
+    final scriptId = this.scriptId;
+    final versionNumber = this.versionNumber;
+    return {
+      'description': ?description,
+      'manifestFileName': ?manifestFileName,
+      'scriptId': ?scriptId,
+      'versionNumber': ?versionNumber,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1140,33 +1157,36 @@ class EntryPoint {
 
   EntryPoint.fromJson(core.Map json_)
     : this(
-        addOn:
-            json_.containsKey('addOn')
-                ? GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
-                  json_['addOn'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addOn: json_.containsKey('addOn')
+            ? GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
+                json_['addOn'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         entryPointType: json_['entryPointType'] as core.String?,
-        executionApi:
-            json_.containsKey('executionApi')
-                ? GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
-                  json_['executionApi'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        webApp:
-            json_.containsKey('webApp')
-                ? GoogleAppsScriptTypeWebAppEntryPoint.fromJson(
-                  json_['webApp'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionApi: json_.containsKey('executionApi')
+            ? GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
+                json_['executionApi'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webApp: json_.containsKey('webApp')
+            ? GoogleAppsScriptTypeWebAppEntryPoint.fromJson(
+                json_['webApp'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addOn != null) 'addOn': addOn!,
-    if (entryPointType != null) 'entryPointType': entryPointType!,
-    if (executionApi != null) 'executionApi': executionApi!,
-    if (webApp != null) 'webApp': webApp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addOn = this.addOn;
+    final entryPointType = this.entryPointType;
+    final executionApi = this.executionApi;
+    final webApp = this.webApp;
+    return {
+      'addOn': ?addOn,
+      'entryPointType': ?entryPointType,
+      'executionApi': ?executionApi,
+      'webApp': ?webApp,
+    };
+  }
 }
 
 /// A request to run the function in a script.
@@ -1225,19 +1245,24 @@ class ExecutionRequest {
     : this(
         devMode: json_['devMode'] as core.bool?,
         function: json_['function'] as core.String?,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.List
-                : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.List
+            : null,
         sessionState: json_['sessionState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (devMode != null) 'devMode': devMode!,
-    if (function != null) 'function': function!,
-    if (parameters != null) 'parameters': parameters!,
-    if (sessionState != null) 'sessionState': sessionState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final devMode = this.devMode;
+    final function = this.function;
+    final parameters = this.parameters;
+    final sessionState = this.sessionState;
+    return {
+      'devMode': ?devMode,
+      'function': ?function,
+      'parameters': ?parameters,
+      'sessionState': ?sessionState,
+    };
+  }
 }
 
 /// An individual file within a script project.
@@ -1293,34 +1318,40 @@ class File {
   File.fromJson(core.Map json_)
     : this(
         createTime: json_['createTime'] as core.String?,
-        functionSet:
-            json_.containsKey('functionSet')
-                ? GoogleAppsScriptTypeFunctionSet.fromJson(
-                  json_['functionSet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lastModifyUser:
-            json_.containsKey('lastModifyUser')
-                ? GoogleAppsScriptTypeUser.fromJson(
-                  json_['lastModifyUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        functionSet: json_.containsKey('functionSet')
+            ? GoogleAppsScriptTypeFunctionSet.fromJson(
+                json_['functionSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastModifyUser: json_.containsKey('lastModifyUser')
+            ? GoogleAppsScriptTypeUser.fromJson(
+                json_['lastModifyUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         source: json_['source'] as core.String?,
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (functionSet != null) 'functionSet': functionSet!,
-    if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!,
-    if (name != null) 'name': name!,
-    if (source != null) 'source': source!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final functionSet = this.functionSet;
+    final lastModifyUser = this.lastModifyUser;
+    final name = this.name;
+    final source = this.source;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'functionSet': ?functionSet,
+      'lastModifyUser': ?lastModifyUser,
+      'name': ?name,
+      'source': ?source,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An add-on entry point.
@@ -1366,14 +1397,22 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addOnType != null) 'addOnType': addOnType!,
-    if (description != null) 'description': description!,
-    if (helpUrl != null) 'helpUrl': helpUrl!,
-    if (postInstallTipUrl != null) 'postInstallTipUrl': postInstallTipUrl!,
-    if (reportIssueUrl != null) 'reportIssueUrl': reportIssueUrl!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addOnType = this.addOnType;
+    final description = this.description;
+    final helpUrl = this.helpUrl;
+    final postInstallTipUrl = this.postInstallTipUrl;
+    final reportIssueUrl = this.reportIssueUrl;
+    final title = this.title;
+    return {
+      'addOnType': ?addOnType,
+      'description': ?description,
+      'helpUrl': ?helpUrl,
+      'postInstallTipUrl': ?postInstallTipUrl,
+      'reportIssueUrl': ?reportIssueUrl,
+      'title': ?title,
+    };
+  }
 }
 
 /// API executable entry point configuration.
@@ -1396,9 +1435,10 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map json_)
     : this(access: json_['access'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (access != null) 'access': access!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final access = this.access;
+    return {'access': ?access};
+  }
 }
 
 /// An API executable entry point.
@@ -1410,18 +1450,18 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
 
   GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map json_)
     : this(
-        entryPointConfig:
-            json_.containsKey('entryPointConfig')
-                ? GoogleAppsScriptTypeExecutionApiConfig.fromJson(
-                  json_['entryPointConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        entryPointConfig: json_.containsKey('entryPointConfig')
+            ? GoogleAppsScriptTypeExecutionApiConfig.fromJson(
+                json_['entryPointConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entryPointConfig != null) 'entryPointConfig': entryPointConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryPointConfig = this.entryPointConfig;
+    return {'entryPointConfig': ?entryPointConfig};
+  }
 }
 
 /// Represents a function in a script project.
@@ -1437,16 +1477,16 @@ class GoogleAppsScriptTypeFunction {
   GoogleAppsScriptTypeFunction.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        parameters: (json_['parameters'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (parameters != null) 'parameters': parameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final parameters = this.parameters;
+    return {'name': ?name, 'parameters': ?parameters};
+  }
 }
 
 /// A set of functions.
@@ -1460,19 +1500,19 @@ class GoogleAppsScriptTypeFunctionSet {
 
   GoogleAppsScriptTypeFunctionSet.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map(
-                  (value) => GoogleAppsScriptTypeFunction.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) => GoogleAppsScriptTypeFunction.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Representation of a single script process execution that was started from
@@ -1561,16 +1601,26 @@ class GoogleAppsScriptTypeProcess {
         userAccessLevel: json_['userAccessLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (duration != null) 'duration': duration!,
-    if (functionName != null) 'functionName': functionName!,
-    if (processStatus != null) 'processStatus': processStatus!,
-    if (processType != null) 'processType': processType!,
-    if (projectName != null) 'projectName': projectName!,
-    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-    if (startTime != null) 'startTime': startTime!,
-    if (userAccessLevel != null) 'userAccessLevel': userAccessLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    final functionName = this.functionName;
+    final processStatus = this.processStatus;
+    final processType = this.processType;
+    final projectName = this.projectName;
+    final runtimeVersion = this.runtimeVersion;
+    final startTime = this.startTime;
+    final userAccessLevel = this.userAccessLevel;
+    return {
+      'duration': ?duration,
+      'functionName': ?functionName,
+      'processStatus': ?processStatus,
+      'processType': ?processType,
+      'projectName': ?projectName,
+      'runtimeVersion': ?runtimeVersion,
+      'startTime': ?startTime,
+      'userAccessLevel': ?userAccessLevel,
+    };
+  }
 }
 
 /// A simple user profile resource.
@@ -1597,12 +1647,18 @@ class GoogleAppsScriptTypeUser {
         photoUrl: json_['photoUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-    if (email != null) 'email': email!,
-    if (name != null) 'name': name!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final email = this.email;
+    final name = this.name;
+    final photoUrl = this.photoUrl;
+    return {
+      'domain': ?domain,
+      'email': ?email,
+      'name': ?name,
+      'photoUrl': ?photoUrl,
+    };
+  }
 }
 
 /// Web app entry point configuration.
@@ -1636,10 +1692,11 @@ class GoogleAppsScriptTypeWebAppConfig {
         executeAs: json_['executeAs'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (access != null) 'access': access!,
-    if (executeAs != null) 'executeAs': executeAs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final access = this.access;
+    final executeAs = this.executeAs;
+    return {'access': ?access, 'executeAs': ?executeAs};
+  }
 }
 
 /// A web application entry point.
@@ -1654,20 +1711,20 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
 
   GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map json_)
     : this(
-        entryPointConfig:
-            json_.containsKey('entryPointConfig')
-                ? GoogleAppsScriptTypeWebAppConfig.fromJson(
-                  json_['entryPointConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        entryPointConfig: json_.containsKey('entryPointConfig')
+            ? GoogleAppsScriptTypeWebAppConfig.fromJson(
+                json_['entryPointConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entryPointConfig != null) 'entryPointConfig': entryPointConfig!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryPointConfig = this.entryPointConfig;
+    final url = this.url;
+    return {'entryPointConfig': ?entryPointConfig, 'url': ?url};
+  }
 }
 
 /// Response with the list of deployments for the specified Apps Script project.
@@ -1683,21 +1740,21 @@ class ListDeploymentsResponse {
 
   ListDeploymentsResponse.fromJson(core.Map json_)
     : this(
-        deployments:
-            (json_['deployments'] as core.List?)
-                ?.map(
-                  (value) => Deployment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deployments: (json_['deployments'] as core.List?)
+            ?.map(
+              (value) => Deployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployments != null) 'deployments': deployments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployments = this.deployments;
+    final nextPageToken = this.nextPageToken;
+    return {'deployments': ?deployments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response with the list of Process resources.
@@ -1715,20 +1772,20 @@ class ListScriptProcessesResponse {
   ListScriptProcessesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        processes:
-            (json_['processes'] as core.List?)
-                ?.map(
-                  (value) => GoogleAppsScriptTypeProcess.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        processes: (json_['processes'] as core.List?)
+            ?.map(
+              (value) => GoogleAppsScriptTypeProcess.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (processes != null) 'processes': processes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final processes = this.processes;
+    return {'nextPageToken': ?nextPageToken, 'processes': ?processes};
+  }
 }
 
 /// Response with the list of Process resources.
@@ -1746,20 +1803,20 @@ class ListUserProcessesResponse {
   ListUserProcessesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        processes:
-            (json_['processes'] as core.List?)
-                ?.map(
-                  (value) => GoogleAppsScriptTypeProcess.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        processes: (json_['processes'] as core.List?)
+            ?.map(
+              (value) => GoogleAppsScriptTypeProcess.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (processes != null) 'processes': processes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final processes = this.processes;
+    return {'nextPageToken': ?nextPageToken, 'processes': ?processes};
+  }
 }
 
 /// Response with the list of the versions for the specified script project.
@@ -1777,20 +1834,20 @@ class ListVersionsResponse {
   ListVersionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => Version.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => Version.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final versions = this.versions;
+    return {'nextPageToken': ?nextPageToken, 'versions': ?versions};
+  }
 }
 
 /// Resource containing usage stats for a given script, based on the supplied
@@ -1809,37 +1866,39 @@ class Metrics {
 
   Metrics.fromJson(core.Map json_)
     : this(
-        activeUsers:
-            (json_['activeUsers'] as core.List?)
-                ?.map(
-                  (value) => MetricsValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        failedExecutions:
-            (json_['failedExecutions'] as core.List?)
-                ?.map(
-                  (value) => MetricsValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        totalExecutions:
-            (json_['totalExecutions'] as core.List?)
-                ?.map(
-                  (value) => MetricsValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        activeUsers: (json_['activeUsers'] as core.List?)
+            ?.map(
+              (value) => MetricsValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failedExecutions: (json_['failedExecutions'] as core.List?)
+            ?.map(
+              (value) => MetricsValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalExecutions: (json_['totalExecutions'] as core.List?)
+            ?.map(
+              (value) => MetricsValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeUsers != null) 'activeUsers': activeUsers!,
-    if (failedExecutions != null) 'failedExecutions': failedExecutions!,
-    if (totalExecutions != null) 'totalExecutions': totalExecutions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeUsers = this.activeUsers;
+    final failedExecutions = this.failedExecutions;
+    final totalExecutions = this.totalExecutions;
+    return {
+      'activeUsers': ?activeUsers,
+      'failedExecutions': ?failedExecutions,
+      'totalExecutions': ?totalExecutions,
+    };
+  }
 }
 
 /// Metrics value that holds number of executions counted.
@@ -1862,11 +1921,12 @@ class MetricsValue {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    final value = this.value;
+    return {'endTime': ?endTime, 'startTime': ?startTime, 'value': ?value};
+  }
 }
 
 /// A representation of an execution of an Apps Script function started with
@@ -1915,23 +1975,22 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final response = this.response;
+    return {'done': ?done, 'error': ?error, 'response': ?response};
+  }
 }
 
 /// The script project resource.
@@ -1973,34 +2032,40 @@ class Project {
   Project.fromJson(core.Map json_)
     : this(
         createTime: json_['createTime'] as core.String?,
-        creator:
-            json_.containsKey('creator')
-                ? GoogleAppsScriptTypeUser.fromJson(
-                  json_['creator'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lastModifyUser:
-            json_.containsKey('lastModifyUser')
-                ? GoogleAppsScriptTypeUser.fromJson(
-                  json_['lastModifyUser']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        creator: json_.containsKey('creator')
+            ? GoogleAppsScriptTypeUser.fromJson(
+                json_['creator'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastModifyUser: json_.containsKey('lastModifyUser')
+            ? GoogleAppsScriptTypeUser.fromJson(
+                json_['lastModifyUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         parentId: json_['parentId'] as core.String?,
         scriptId: json_['scriptId'] as core.String?,
         title: json_['title'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!,
-    if (parentId != null) 'parentId': parentId!,
-    if (scriptId != null) 'scriptId': scriptId!,
-    if (title != null) 'title': title!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final lastModifyUser = this.lastModifyUser;
+    final parentId = this.parentId;
+    final scriptId = this.scriptId;
+    final title = this.title;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'lastModifyUser': ?lastModifyUser,
+      'parentId': ?parentId,
+      'scriptId': ?scriptId,
+      'title': ?title,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// If a `run` call succeeds but the script function (or Apps Script itself)
@@ -2032,18 +2097,18 @@ class Status {
   Status.fromJson(core.Map json_)
     : this(
         code: json_['code'] as core.int?,
-        details:
-            (json_['details'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        details: (json_['details'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (details != null) 'details': details!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final details = this.details;
+    final message = this.message;
+    return {'code': ?code, 'details': ?details, 'message': ?message};
+  }
 }
 
 /// Request with deployment information to update an existing deployment.
@@ -2055,18 +2120,18 @@ class UpdateDeploymentRequest {
 
   UpdateDeploymentRequest.fromJson(core.Map json_)
     : this(
-        deploymentConfig:
-            json_.containsKey('deploymentConfig')
-                ? DeploymentConfig.fromJson(
-                  json_['deploymentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deploymentConfig: json_.containsKey('deploymentConfig')
+            ? DeploymentConfig.fromJson(
+                json_['deploymentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deploymentConfig != null) 'deploymentConfig': deploymentConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentConfig = this.deploymentConfig;
+    return {'deploymentConfig': ?deploymentConfig};
+  }
 }
 
 /// A resource representing a script project version.
@@ -2105,10 +2170,16 @@ class Version {
         versionNumber: json_['versionNumber'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (scriptId != null) 'scriptId': scriptId!,
-    if (versionNumber != null) 'versionNumber': versionNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final scriptId = this.scriptId;
+    final versionNumber = this.versionNumber;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'scriptId': ?scriptId,
+      'versionNumber': ?versionNumber,
+    };
+  }
 }

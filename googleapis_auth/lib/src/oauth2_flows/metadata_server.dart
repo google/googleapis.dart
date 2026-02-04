@@ -70,12 +70,11 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     final json = results.first as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
 
-    final scopes =
-        (results.last as String)
-            .replaceAll('\n', ' ')
-            .split(' ')
-            .where((part) => part.isNotEmpty)
-            .toList();
+    final scopes = (results.last as String)
+        .replaceAll('\n', ' ')
+        .split(' ')
+        .where((part) => part.isNotEmpty)
+        .toList();
 
     return AccessCredentials(accessToken, null, scopes);
   }

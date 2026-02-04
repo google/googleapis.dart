@@ -306,19 +306,17 @@ Future<http.StreamedResponse> validateResponse(
         final codeValue = error['code'];
         final message = error['message'] as String?;
 
-        final code =
-            codeValue is String ? int.tryParse(codeValue) : codeValue as int?;
+        final code = codeValue is String
+            ? int.tryParse(codeValue)
+            : codeValue as int?;
 
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
-          errors =
-              (error['errors'] as List)
-                  .map(
-                    (e) => client_requests.ApiRequestErrorDetail.fromJson(
-                      e as Map,
-                    ),
-                  )
-                  .toList();
+          errors = (error['errors'] as List)
+              .map(
+                (e) => client_requests.ApiRequestErrorDetail.fromJson(e as Map),
+              )
+              .toList();
         }
         throw client_requests.DetailedApiRequestError(
           code,

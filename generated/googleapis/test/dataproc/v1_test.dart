@@ -9048,10 +9048,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAccessSessionSparkApplicationEnvironmentInfoResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AccessSessionSparkApplicationEnvironmentInfoResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AccessSessionSparkApplicationEnvironmentInfoResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAccessSessionSparkApplicationEnvironmentInfoResponse(od);
       });
     },
@@ -9099,10 +9099,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAccessSessionSparkApplicationSqlSparkPlanGraphResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AccessSessionSparkApplicationSqlSparkPlanGraphResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AccessSessionSparkApplicationSqlSparkPlanGraphResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAccessSessionSparkApplicationSqlSparkPlanGraphResponse(od);
       });
     },
@@ -9114,10 +9114,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAccessSessionSparkApplicationStageAttemptResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AccessSessionSparkApplicationStageAttemptResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AccessSessionSparkApplicationStageAttemptResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAccessSessionSparkApplicationStageAttemptResponse(od);
       });
     },
@@ -9130,10 +9130,10 @@ void main() {
         final o =
             buildAccessSessionSparkApplicationStageRddOperationGraphResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AccessSessionSparkApplicationStageRddOperationGraphResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AccessSessionSparkApplicationStageRddOperationGraphResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAccessSessionSparkApplicationStageRddOperationGraphResponse(od);
       });
     },
@@ -9217,10 +9217,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAccessSparkApplicationStageRddOperationGraphResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AccessSparkApplicationStageRddOperationGraphResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AccessSparkApplicationStageRddOperationGraphResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAccessSparkApplicationStageRddOperationGraphResponse(od);
       });
     },
@@ -9815,10 +9815,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDataprocV1WorkflowTemplateEncryptionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDataprocV1WorkflowTemplateEncryptionConfig(od);
       });
     },
@@ -10731,10 +10731,10 @@ void main() {
         final o =
             buildSearchSessionSparkApplicationExecutorStageSummaryResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SearchSessionSparkApplicationExecutorStageSummaryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SearchSessionSparkApplicationExecutorStageSummaryResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSearchSessionSparkApplicationExecutorStageSummaryResponse(od);
       });
     },
@@ -10785,10 +10785,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSearchSessionSparkApplicationStageAttemptTasksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SearchSessionSparkApplicationStageAttemptTasksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SearchSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSearchSessionSparkApplicationStageAttemptTasksResponse(od);
       });
     },
@@ -10800,10 +10800,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSearchSessionSparkApplicationStageAttemptsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SearchSessionSparkApplicationStageAttemptsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SearchSessionSparkApplicationStageAttemptsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSearchSessionSparkApplicationStageAttemptsResponse(od);
       });
     },
@@ -10837,10 +10837,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSearchSparkApplicationExecutorStageSummaryResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SearchSparkApplicationExecutorStageSummaryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SearchSparkApplicationExecutorStageSummaryResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSearchSparkApplicationExecutorStageSummaryResponse(od);
       });
     },
@@ -11548,10 +11548,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSummarizeSessionSparkApplicationExecutorsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SummarizeSessionSparkApplicationExecutorsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SummarizeSessionSparkApplicationExecutorsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSummarizeSessionSparkApplicationExecutorsResponse(od);
       });
     },
@@ -11575,10 +11575,10 @@ void main() {
         final o =
             buildSummarizeSessionSparkApplicationStageAttemptTasksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SummarizeSessionSparkApplicationStageAttemptTasksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SummarizeSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSummarizeSessionSparkApplicationStageAttemptTasksResponse(od);
       });
     },
@@ -11626,10 +11626,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSummarizeSparkApplicationStageAttemptTasksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SummarizeSparkApplicationStageAttemptTasksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SummarizeSparkApplicationStageAttemptTasksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSummarizeSparkApplicationStageAttemptTasksResponse(od);
       });
     },
@@ -12703,8 +12703,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBatchesSparkApplicationsResource', () {
     unittest.test('method--access', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12770,8 +12771,9 @@ void main() {
 
     unittest.test('method--accessEnvironmentInfo', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -12837,8 +12839,9 @@ void main() {
 
     unittest.test('method--accessJob', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_jobId = 'foo';
       final arg_parent = 'foo';
@@ -12907,8 +12910,9 @@ void main() {
 
     unittest.test('method--accessSqlPlan', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_executionId = 'foo';
       final arg_parent = 'foo';
@@ -12980,8 +12984,9 @@ void main() {
 
     unittest.test('method--accessSqlQuery', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_details = true;
       final arg_executionId = 'foo';
@@ -13065,8 +13070,9 @@ void main() {
 
     unittest.test('method--accessStageAttempt', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageAttemptId = 42;
@@ -13150,8 +13156,9 @@ void main() {
 
     unittest.test('method--accessStageRddGraph', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageId = 'foo';
@@ -13223,8 +13230,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_parent = 'foo';
       final arg_applicationStatus = 'foo';
       final arg_maxEndTime = 'foo';
@@ -13326,8 +13334,9 @@ void main() {
 
     unittest.test('method--searchExecutorStageSummary', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13417,8 +13426,9 @@ void main() {
 
     unittest.test('method--searchExecutors', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_executorStatus = 'foo';
       final arg_pageSize = 42;
@@ -13502,8 +13512,9 @@ void main() {
 
     unittest.test('method--searchJobs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_jobStatus = 'foo';
       final arg_pageSize = 42;
@@ -13587,8 +13598,9 @@ void main() {
 
     unittest.test('method--searchSqlQueries', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_details = true;
       final arg_pageSize = 42;
@@ -13678,8 +13690,9 @@ void main() {
 
     unittest.test('method--searchStageAttemptTasks', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13781,8 +13794,9 @@ void main() {
 
     unittest.test('method--searchStageAttempts', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13872,8 +13886,9 @@ void main() {
 
     unittest.test('method--searchStages', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13963,8 +13978,9 @@ void main() {
 
     unittest.test('method--summarizeExecutors', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14030,8 +14046,9 @@ void main() {
 
     unittest.test('method--summarizeJobs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14097,8 +14114,9 @@ void main() {
 
     unittest.test('method--summarizeStageAttemptTasks', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageAttemptId = 42;
@@ -14176,8 +14194,9 @@ void main() {
 
     unittest.test('method--summarizeStages', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14243,8 +14262,9 @@ void main() {
 
     unittest.test('method--write', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.batches.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.batches.sparkApplications;
       final arg_request = buildWriteSparkApplicationContextRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -15193,8 +15213,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSessionsSparkApplicationsResource', () {
     unittest.test('method--access', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -15260,8 +15281,9 @@ void main() {
 
     unittest.test('method--accessEnvironmentInfo', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -15327,8 +15349,9 @@ void main() {
 
     unittest.test('method--accessJob', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_jobId = 'foo';
       final arg_parent = 'foo';
@@ -15397,8 +15420,9 @@ void main() {
 
     unittest.test('method--accessSqlPlan', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_executionId = 'foo';
       final arg_parent = 'foo';
@@ -15470,8 +15494,9 @@ void main() {
 
     unittest.test('method--accessSqlQuery', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_details = true;
       final arg_executionId = 'foo';
@@ -15555,8 +15580,9 @@ void main() {
 
     unittest.test('method--accessStageAttempt', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageAttemptId = 42;
@@ -15640,8 +15666,9 @@ void main() {
 
     unittest.test('method--accessStageRddGraph', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageId = 'foo';
@@ -15714,8 +15741,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_parent = 'foo';
       final arg_applicationStatus = 'foo';
       final arg_maxEndTime = 'foo';
@@ -15817,8 +15845,9 @@ void main() {
 
     unittest.test('method--searchExecutorStageSummary', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15909,8 +15938,9 @@ void main() {
 
     unittest.test('method--searchExecutors', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_executorStatus = 'foo';
       final arg_pageSize = 42;
@@ -15994,8 +16024,9 @@ void main() {
 
     unittest.test('method--searchJobs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_jobIds = buildUnnamed232();
       final arg_jobStatus = 'foo';
@@ -16082,8 +16113,9 @@ void main() {
 
     unittest.test('method--searchSqlQueries', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_details = true;
       final arg_operationIds = buildUnnamed233();
@@ -16179,8 +16211,9 @@ void main() {
 
     unittest.test('method--searchStageAttemptTasks', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -16282,8 +16315,9 @@ void main() {
 
     unittest.test('method--searchStageAttempts', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -16373,8 +16407,9 @@ void main() {
 
     unittest.test('method--searchStages', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -16467,8 +16502,9 @@ void main() {
 
     unittest.test('method--summarizeExecutors', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -16534,8 +16570,9 @@ void main() {
 
     unittest.test('method--summarizeJobs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_jobIds = buildUnnamed235();
       final arg_parent = 'foo';
@@ -16604,8 +16641,9 @@ void main() {
 
     unittest.test('method--summarizeStageAttemptTasks', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageAttemptId = 42;
@@ -16684,8 +16722,9 @@ void main() {
 
     unittest.test('method--summarizeStages', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_name = 'foo';
       final arg_parent = 'foo';
       final arg_stageIds = buildUnnamed236();
@@ -16754,8 +16793,9 @@ void main() {
 
     unittest.test('method--write', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataprocApi(mock).projects.locations.sessions.sparkApplications;
+      final res = api.DataprocApi(
+        mock,
+      ).projects.locations.sessions.sparkApplications;
       final arg_request = buildWriteSessionSparkApplicationContextRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

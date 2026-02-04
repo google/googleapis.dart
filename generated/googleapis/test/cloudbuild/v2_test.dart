@@ -1411,10 +1411,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig(od);
       });
     },
@@ -1437,10 +1437,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleDevtoolsCloudbuildV2ServiceDirectoryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsCloudbuildV2ServiceDirectoryConfig(od);
       });
     },
@@ -2421,8 +2421,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsRepositoriesResource', () {
     unittest.test('method--accessReadToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_request = buildFetchReadTokenRequest();
       final arg_repository = 'foo';
       final arg_$fields = 'foo';
@@ -2485,8 +2486,9 @@ void main() {
 
     unittest.test('method--accessReadWriteToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_request = buildFetchReadWriteTokenRequest();
       final arg_repository = 'foo';
       final arg_$fields = 'foo';
@@ -2551,8 +2553,9 @@ void main() {
 
     unittest.test('method--batchCreate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_request = buildBatchCreateRepositoriesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -2615,8 +2618,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_request = buildRepository();
       final arg_parent = 'foo';
       final arg_repositoryId = 'foo';
@@ -2685,8 +2689,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_validateOnly = true;
@@ -2751,8 +2756,9 @@ void main() {
 
     unittest.test('method--fetchGitRefs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_repository = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2826,8 +2832,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2880,8 +2887,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.connections.repositories;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.connections.repositories;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

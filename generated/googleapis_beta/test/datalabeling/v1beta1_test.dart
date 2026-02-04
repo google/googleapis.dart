@@ -3494,10 +3494,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata(od);
       });
     },
@@ -3520,10 +3520,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1AnnotationMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1AnnotationMetadata(od);
       });
     },
@@ -3560,10 +3560,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(od);
       });
     },
@@ -3612,10 +3612,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(od);
       });
     },
@@ -3638,10 +3638,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1BoundingPolyConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(od);
       });
     },
@@ -3653,10 +3653,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ClassificationMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ClassificationMetadata(od);
       });
     },
@@ -3668,10 +3668,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ClassificationMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ClassificationMetrics(od);
       });
     },
@@ -3683,10 +3683,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(od);
       });
     },
@@ -3712,10 +3712,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(od);
       });
     },
@@ -3728,10 +3728,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest(od);
       });
     },
@@ -3743,10 +3743,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1CreateDatasetRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1CreateDatasetRequest(od);
       });
     },
@@ -3759,10 +3759,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(od);
       });
     },
@@ -3774,10 +3774,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1CreateInstructionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1CreateInstructionRequest(od);
       });
     },
@@ -3858,10 +3858,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(od);
       });
     },
@@ -3873,10 +3873,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1EvaluationJobConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(od);
       });
     },
@@ -3977,10 +3977,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata(od);
       });
     },
@@ -4003,10 +4003,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1GcsFolderDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1GcsFolderDestination(od);
       });
     },
@@ -4029,10 +4029,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1HumanAnnotationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(od);
       });
     },
@@ -4045,10 +4045,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation(od);
       });
     },
@@ -4061,10 +4061,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation(od);
       });
     },
@@ -4077,10 +4077,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ImageClassificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(od);
       });
     },
@@ -4103,10 +4103,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(od);
       });
     },
@@ -4119,10 +4119,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(od);
       });
     },
@@ -4224,10 +4224,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(od);
       });
     },
@@ -4240,10 +4240,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(od);
       });
     },
@@ -4255,10 +4255,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ListDataItemsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(od);
       });
     },
@@ -4270,10 +4270,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ListDatasetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(od);
       });
     },
@@ -4286,10 +4286,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(od);
       });
     },
@@ -4301,10 +4301,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ListExamplesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(od);
       });
     },
@@ -4317,10 +4317,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(od);
       });
     },
@@ -4333,10 +4333,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(od);
       });
     },
@@ -4348,10 +4348,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ListInstructionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(od);
       });
     },
@@ -4363,10 +4363,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(od);
       });
     },
@@ -4378,10 +4378,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1NormalizedPolyline();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(od);
       });
     },
@@ -4407,10 +4407,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ObjectDetectionConfig(od);
       });
     },
@@ -4422,10 +4422,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics(od);
       });
     },
@@ -4437,10 +4437,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ObjectTrackingConfig(od);
       });
     },
@@ -4452,10 +4452,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(od);
       });
     },
@@ -4467,10 +4467,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata(od);
       });
     },
@@ -4508,10 +4508,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest(od);
       });
     },
@@ -4568,10 +4568,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata(od);
       });
     },
@@ -4584,10 +4584,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest(od);
       });
     },
@@ -4611,10 +4611,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(od);
       });
     },
@@ -4627,10 +4627,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(od);
       });
     },
@@ -4643,10 +4643,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(od);
       });
     },
@@ -4658,10 +4658,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1SegmentationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1SegmentationConfig(od);
       });
     },
@@ -4702,10 +4702,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1TextClassificationAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1TextClassificationAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1TextClassificationAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1TextClassificationAnnotation(od);
       });
     },
@@ -4717,10 +4717,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1TextClassificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(od);
       });
     },
@@ -4733,10 +4733,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation(od);
       });
     },
@@ -4749,10 +4749,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig(od);
       });
     },
@@ -4809,10 +4809,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(od);
       });
     },
@@ -4825,10 +4825,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1VideoClassificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(od);
       });
     },
@@ -4840,10 +4840,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatalabelingV1beta1VideoEventAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(od);
       });
     },
@@ -4856,10 +4856,10 @@ void main() {
         final o =
             buildGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(od);
       });
     },
@@ -4941,10 +4941,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest(
             obj,
           );
@@ -5203,10 +5203,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1CreateDatasetRequest(obj);
 
           final path = req.url.path;
@@ -5325,10 +5325,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1ExportDataRequest(obj);
 
           final path = req.url.path;
@@ -5449,10 +5449,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1ImportDataRequest(obj);
 
           final path = req.url.path;
@@ -5780,10 +5780,9 @@ void main() {
   unittest.group('resource-ProjectsDatasetsAnnotatedDatasetsDataItemsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataLabelingApi(
-            mock,
-          ).projects.datasets.annotatedDatasets.dataItems;
+      final res = api.DataLabelingApi(
+        mock,
+      ).projects.datasets.annotatedDatasets.dataItems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5840,10 +5839,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataLabelingApi(
-            mock,
-          ).projects.datasets.annotatedDatasets.dataItems;
+      final res = api.DataLabelingApi(
+        mock,
+      ).projects.datasets.annotatedDatasets.dataItems;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5923,10 +5921,9 @@ void main() {
   unittest.group('resource-ProjectsDatasetsAnnotatedDatasetsExamplesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataLabelingApi(
-            mock,
-          ).projects.datasets.annotatedDatasets.examples;
+      final res = api.DataLabelingApi(
+        mock,
+      ).projects.datasets.annotatedDatasets.examples;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_$fields = 'foo';
@@ -5992,10 +5989,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataLabelingApi(
-            mock,
-          ).projects.datasets.annotatedDatasets.examples;
+      final res = api.DataLabelingApi(
+        mock,
+      ).projects.datasets.annotatedDatasets.examples;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6077,10 +6073,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(
-              mock,
-            ).projects.datasets.annotatedDatasets.feedbackThreads;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6133,10 +6128,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(
-              mock,
-            ).projects.datasets.annotatedDatasets.feedbackThreads;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6193,10 +6187,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(
-              mock,
-            ).projects.datasets.annotatedDatasets.feedbackThreads;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6274,23 +6267,19 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(mock)
-                .projects
-                .datasets
-                .annotatedDatasets
-                .feedbackThreads
-                .feedbackMessages;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages;
         final arg_request =
             buildGoogleCloudDatalabelingV1beta1FeedbackMessage();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDatalabelingV1beta1FeedbackMessage(obj);
 
             final path = req.url.path;
@@ -6347,13 +6336,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(mock)
-                .projects
-                .datasets
-                .annotatedDatasets
-                .feedbackThreads
-                .feedbackMessages;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6406,13 +6391,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(mock)
-                .projects
-                .datasets
-                .annotatedDatasets
-                .feedbackThreads
-                .feedbackMessages;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6469,13 +6450,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataLabelingApi(mock)
-                .projects
-                .datasets
-                .annotatedDatasets
-                .feedbackThreads
-                .feedbackMessages;
+        final res = api.DataLabelingApi(
+          mock,
+        ).projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6747,20 +6724,19 @@ void main() {
   unittest.group('resource-ProjectsDatasetsEvaluationsExampleComparisonsResource', () {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataLabelingApi(
-            mock,
-          ).projects.datasets.evaluations.exampleComparisons;
+      final res = api.DataLabelingApi(
+        mock,
+      ).projects.datasets.evaluations.exampleComparisons;
       final arg_request =
           buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(
             obj,
           );
@@ -6831,10 +6807,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1LabelImageRequest(obj);
 
           final path = req.url.path;
@@ -6899,10 +6875,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1LabelTextRequest(obj);
 
           final path = req.url.path;
@@ -6968,10 +6944,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1LabelVideoRequest(obj);
 
           final path = req.url.path;
@@ -7037,10 +7013,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(obj);
 
           final path = req.url.path;
@@ -7368,10 +7344,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest(obj);
 
           final path = req.url.path;
@@ -7433,10 +7409,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest(obj);
 
           final path = req.url.path;
@@ -7580,10 +7556,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatalabelingV1beta1CreateInstructionRequest(obj);
 
           final path = req.url.path;

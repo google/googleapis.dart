@@ -131,20 +131,26 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (dailyMetrics != null) 'dailyMetrics': dailyMetrics,
-      if (dailyRange_endDate_day != null)
-        'dailyRange.endDate.day': ['${dailyRange_endDate_day}'],
-      if (dailyRange_endDate_month != null)
-        'dailyRange.endDate.month': ['${dailyRange_endDate_month}'],
-      if (dailyRange_endDate_year != null)
-        'dailyRange.endDate.year': ['${dailyRange_endDate_year}'],
-      if (dailyRange_startDate_day != null)
-        'dailyRange.startDate.day': ['${dailyRange_startDate_day}'],
-      if (dailyRange_startDate_month != null)
-        'dailyRange.startDate.month': ['${dailyRange_startDate_month}'],
-      if (dailyRange_startDate_year != null)
-        'dailyRange.startDate.year': ['${dailyRange_startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'dailyMetrics': ?dailyMetrics,
+      'dailyRange.endDate.day': ?dailyRange_endDate_day == null
+          ? null
+          : ['${dailyRange_endDate_day}'],
+      'dailyRange.endDate.month': ?dailyRange_endDate_month == null
+          ? null
+          : ['${dailyRange_endDate_month}'],
+      'dailyRange.endDate.year': ?dailyRange_endDate_year == null
+          ? null
+          : ['${dailyRange_endDate_year}'],
+      'dailyRange.startDate.day': ?dailyRange_startDate_day == null
+          ? null
+          : ['${dailyRange_startDate_day}'],
+      'dailyRange.startDate.month': ?dailyRange_startDate_month == null
+          ? null
+          : ['${dailyRange_startDate_month}'],
+      'dailyRange.startDate.year': ?dailyRange_startDate_year == null
+          ? null
+          : ['${dailyRange_startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -281,38 +287,45 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (dailyMetric != null) 'dailyMetric': [dailyMetric],
-      if (dailyRange_endDate_day != null)
-        'dailyRange.endDate.day': ['${dailyRange_endDate_day}'],
-      if (dailyRange_endDate_month != null)
-        'dailyRange.endDate.month': ['${dailyRange_endDate_month}'],
-      if (dailyRange_endDate_year != null)
-        'dailyRange.endDate.year': ['${dailyRange_endDate_year}'],
-      if (dailyRange_startDate_day != null)
-        'dailyRange.startDate.day': ['${dailyRange_startDate_day}'],
-      if (dailyRange_startDate_month != null)
-        'dailyRange.startDate.month': ['${dailyRange_startDate_month}'],
-      if (dailyRange_startDate_year != null)
-        'dailyRange.startDate.year': ['${dailyRange_startDate_year}'],
-      if (dailySubEntityType_dayOfWeek != null)
-        'dailySubEntityType.dayOfWeek': [dailySubEntityType_dayOfWeek],
-      if (dailySubEntityType_timeOfDay_hours != null)
-        'dailySubEntityType.timeOfDay.hours': [
-          '${dailySubEntityType_timeOfDay_hours}',
-        ],
-      if (dailySubEntityType_timeOfDay_minutes != null)
-        'dailySubEntityType.timeOfDay.minutes': [
-          '${dailySubEntityType_timeOfDay_minutes}',
-        ],
-      if (dailySubEntityType_timeOfDay_nanos != null)
-        'dailySubEntityType.timeOfDay.nanos': [
-          '${dailySubEntityType_timeOfDay_nanos}',
-        ],
-      if (dailySubEntityType_timeOfDay_seconds != null)
-        'dailySubEntityType.timeOfDay.seconds': [
-          '${dailySubEntityType_timeOfDay_seconds}',
-        ],
-      if ($fields != null) 'fields': [$fields],
+      'dailyMetric': ?dailyMetric == null ? null : [dailyMetric],
+      'dailyRange.endDate.day': ?dailyRange_endDate_day == null
+          ? null
+          : ['${dailyRange_endDate_day}'],
+      'dailyRange.endDate.month': ?dailyRange_endDate_month == null
+          ? null
+          : ['${dailyRange_endDate_month}'],
+      'dailyRange.endDate.year': ?dailyRange_endDate_year == null
+          ? null
+          : ['${dailyRange_endDate_year}'],
+      'dailyRange.startDate.day': ?dailyRange_startDate_day == null
+          ? null
+          : ['${dailyRange_startDate_day}'],
+      'dailyRange.startDate.month': ?dailyRange_startDate_month == null
+          ? null
+          : ['${dailyRange_startDate_month}'],
+      'dailyRange.startDate.year': ?dailyRange_startDate_year == null
+          ? null
+          : ['${dailyRange_startDate_year}'],
+      'dailySubEntityType.dayOfWeek': ?dailySubEntityType_dayOfWeek == null
+          ? null
+          : [dailySubEntityType_dayOfWeek],
+      'dailySubEntityType.timeOfDay.hours':
+          ?dailySubEntityType_timeOfDay_hours == null
+          ? null
+          : ['${dailySubEntityType_timeOfDay_hours}'],
+      'dailySubEntityType.timeOfDay.minutes':
+          ?dailySubEntityType_timeOfDay_minutes == null
+          ? null
+          : ['${dailySubEntityType_timeOfDay_minutes}'],
+      'dailySubEntityType.timeOfDay.nanos':
+          ?dailySubEntityType_timeOfDay_nanos == null
+          ? null
+          : ['${dailySubEntityType_timeOfDay_nanos}'],
+      'dailySubEntityType.timeOfDay.seconds':
+          ?dailySubEntityType_timeOfDay_seconds == null
+          ? null
+          : ['${dailySubEntityType_timeOfDay_seconds}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -417,21 +430,27 @@ class LocationsSearchkeywordsImpressionsMonthlyResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (monthlyRange_endMonth_day != null)
-        'monthlyRange.endMonth.day': ['${monthlyRange_endMonth_day}'],
-      if (monthlyRange_endMonth_month != null)
-        'monthlyRange.endMonth.month': ['${monthlyRange_endMonth_month}'],
-      if (monthlyRange_endMonth_year != null)
-        'monthlyRange.endMonth.year': ['${monthlyRange_endMonth_year}'],
-      if (monthlyRange_startMonth_day != null)
-        'monthlyRange.startMonth.day': ['${monthlyRange_startMonth_day}'],
-      if (monthlyRange_startMonth_month != null)
-        'monthlyRange.startMonth.month': ['${monthlyRange_startMonth_month}'],
-      if (monthlyRange_startMonth_year != null)
-        'monthlyRange.startMonth.year': ['${monthlyRange_startMonth_year}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'monthlyRange.endMonth.day': ?monthlyRange_endMonth_day == null
+          ? null
+          : ['${monthlyRange_endMonth_day}'],
+      'monthlyRange.endMonth.month': ?monthlyRange_endMonth_month == null
+          ? null
+          : ['${monthlyRange_endMonth_month}'],
+      'monthlyRange.endMonth.year': ?monthlyRange_endMonth_year == null
+          ? null
+          : ['${monthlyRange_endMonth_year}'],
+      'monthlyRange.startMonth.day': ?monthlyRange_startMonth_day == null
+          ? null
+          : ['${monthlyRange_startMonth_day}'],
+      'monthlyRange.startMonth.month': ?monthlyRange_startMonth_month == null
+          ? null
+          : ['${monthlyRange_startMonth_month}'],
+      'monthlyRange.startMonth.year': ?monthlyRange_startMonth_year == null
+          ? null
+          : ['${monthlyRange_startMonth_year}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -502,26 +521,29 @@ class DailyMetricTimeSeries {
   DailyMetricTimeSeries.fromJson(core.Map json_)
     : this(
         dailyMetric: json_['dailyMetric'] as core.String?,
-        dailySubEntityType:
-            json_.containsKey('dailySubEntityType')
-                ? DailySubEntityType.fromJson(
-                  json_['dailySubEntityType']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timeSeries:
-            json_.containsKey('timeSeries')
-                ? TimeSeries.fromJson(
-                  json_['timeSeries'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dailySubEntityType: json_.containsKey('dailySubEntityType')
+            ? DailySubEntityType.fromJson(
+                json_['dailySubEntityType']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timeSeries: json_.containsKey('timeSeries')
+            ? TimeSeries.fromJson(
+                json_['timeSeries'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dailyMetric != null) 'dailyMetric': dailyMetric!,
-    if (dailySubEntityType != null) 'dailySubEntityType': dailySubEntityType!,
-    if (timeSeries != null) 'timeSeries': timeSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dailyMetric = this.dailyMetric;
+    final dailySubEntityType = this.dailySubEntityType;
+    final timeSeries = this.timeSeries;
+    return {
+      'dailyMetric': ?dailyMetric,
+      'dailySubEntityType': ?dailySubEntityType,
+      'timeSeries': ?timeSeries,
+    };
+  }
 }
 
 /// Represents all possible subentity types that are associated with
@@ -551,18 +573,18 @@ class DailySubEntityType {
   DailySubEntityType.fromJson(core.Map json_)
     : this(
         dayOfWeek: json_['dayOfWeek'] as core.String?,
-        timeOfDay:
-            json_.containsKey('timeOfDay')
-                ? TimeOfDay.fromJson(
-                  json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeOfDay: json_.containsKey('timeOfDay')
+            ? TimeOfDay.fromJson(
+                json_['timeOfDay'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-    if (timeOfDay != null) 'timeOfDay': timeOfDay!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dayOfWeek = this.dayOfWeek;
+    final timeOfDay = this.timeOfDay;
+    return {'dayOfWeek': ?dayOfWeek, 'timeOfDay': ?timeOfDay};
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -594,19 +616,19 @@ class DatedValue {
 
   DatedValue.fromJson(core.Map json_)
     : this(
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (date != null) 'date': date!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final date = this.date;
+    final value = this.value;
+    return {'date': ?date, 'value': ?value};
+  }
 }
 
 /// Represents the response for FetchMultiDailyMetricsTimeSeries.
@@ -628,10 +650,10 @@ class FetchMultiDailyMetricsTimeSeriesResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (multiDailyMetricTimeSeries != null)
-      'multiDailyMetricTimeSeries': multiDailyMetricTimeSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final multiDailyMetricTimeSeries = this.multiDailyMetricTimeSeries;
+    return {'multiDailyMetricTimeSeries': ?multiDailyMetricTimeSeries};
+  }
 }
 
 /// Represents the response for GetDailyMetricsTimeSeries.
@@ -643,17 +665,17 @@ class GetDailyMetricsTimeSeriesResponse {
 
   GetDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
     : this(
-        timeSeries:
-            json_.containsKey('timeSeries')
-                ? TimeSeries.fromJson(
-                  json_['timeSeries'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeSeries: json_.containsKey('timeSeries')
+            ? TimeSeries.fromJson(
+                json_['timeSeries'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (timeSeries != null) 'timeSeries': timeSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final timeSeries = this.timeSeries;
+    return {'timeSeries': ?timeSeries};
+  }
 }
 
 /// Represents an insights value.
@@ -672,10 +694,11 @@ class InsightsValue {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (threshold != null) 'threshold': threshold!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final threshold = this.threshold;
+    final value = this.value;
+    return {'threshold': ?threshold, 'value': ?value};
+  }
 }
 
 /// Represents the response for ListSearchKeywordImpressionsMonthly.
@@ -707,21 +730,23 @@ class ListSearchKeywordImpressionsMonthlyResponse {
   ListSearchKeywordImpressionsMonthlyResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        searchKeywordsCounts:
-            (json_['searchKeywordsCounts'] as core.List?)
-                ?.map(
-                  (value) => SearchKeywordCount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        searchKeywordsCounts: (json_['searchKeywordsCounts'] as core.List?)
+            ?.map(
+              (value) => SearchKeywordCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (searchKeywordsCounts != null)
-      'searchKeywordsCounts': searchKeywordsCounts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final searchKeywordsCounts = this.searchKeywordsCounts;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'searchKeywordsCounts': ?searchKeywordsCounts,
+    };
+  }
 }
 
 /// Represents a list of tuples of DailyMetric-DailySubEntityType-TimeSeries.
@@ -733,20 +758,19 @@ class MultiDailyMetricTimeSeries {
 
   MultiDailyMetricTimeSeries.fromJson(core.Map json_)
     : this(
-        dailyMetricTimeSeries:
-            (json_['dailyMetricTimeSeries'] as core.List?)
-                ?.map(
-                  (value) => DailyMetricTimeSeries.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dailyMetricTimeSeries: (json_['dailyMetricTimeSeries'] as core.List?)
+            ?.map(
+              (value) => DailyMetricTimeSeries.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dailyMetricTimeSeries != null)
-      'dailyMetricTimeSeries': dailyMetricTimeSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dailyMetricTimeSeries = this.dailyMetricTimeSeries;
+    return {'dailyMetricTimeSeries': ?dailyMetricTimeSeries};
+  }
 }
 
 /// Represents a single search keyword and its value.
@@ -765,19 +789,19 @@ class SearchKeywordCount {
 
   SearchKeywordCount.fromJson(core.Map json_)
     : this(
-        insightsValue:
-            json_.containsKey('insightsValue')
-                ? InsightsValue.fromJson(
-                  json_['insightsValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        insightsValue: json_.containsKey('insightsValue')
+            ? InsightsValue.fromJson(
+                json_['insightsValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         searchKeyword: json_['searchKeyword'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (insightsValue != null) 'insightsValue': insightsValue!,
-    if (searchKeyword != null) 'searchKeyword': searchKeyword!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final insightsValue = this.insightsValue;
+    final searchKeyword = this.searchKeyword;
+    return {'insightsValue': ?insightsValue, 'searchKeyword': ?searchKeyword};
+  }
 }
 
 /// Represents a time of day.
@@ -797,17 +821,17 @@ class TimeSeries {
 
   TimeSeries.fromJson(core.Map json_)
     : this(
-        datedValues:
-            (json_['datedValues'] as core.List?)
-                ?.map(
-                  (value) => DatedValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        datedValues: (json_['datedValues'] as core.List?)
+            ?.map(
+              (value) => DatedValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datedValues != null) 'datedValues': datedValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datedValues = this.datedValues;
+    return {'datedValues': ?datedValues};
+  }
 }

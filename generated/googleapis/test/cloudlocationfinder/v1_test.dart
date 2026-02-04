@@ -414,8 +414,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCloudLocationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudLocationFinderApi(mock).projects.locations.cloudLocations;
+      final res = api.CloudLocationFinderApi(
+        mock,
+      ).projects.locations.cloudLocations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -468,8 +469,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudLocationFinderApi(mock).projects.locations.cloudLocations;
+      final res = api.CloudLocationFinderApi(
+        mock,
+      ).projects.locations.cloudLocations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -545,8 +547,9 @@ void main() {
 
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudLocationFinderApi(mock).projects.locations.cloudLocations;
+      final res = api.CloudLocationFinderApi(
+        mock,
+      ).projects.locations.cloudLocations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

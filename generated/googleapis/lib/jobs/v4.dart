@@ -107,7 +107,7 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -204,13 +204,13 @@ class ProjectsTenantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (company != null) 'company': [company],
-      if (languageCodes != null) 'languageCodes': languageCodes,
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (query != null) 'query': [query],
-      if (scope != null) 'scope': [scope],
-      if (type != null) 'type': [type],
-      if ($fields != null) 'fields': [$fields],
+      'company': ?company == null ? null : [company],
+      'languageCodes': ?languageCodes,
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'query': ?query == null ? null : [query],
+      'scope': ?scope == null ? null : [scope],
+      'type': ?type == null ? null : [type],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$tenant') + ':completeQuery';
@@ -253,7 +253,7 @@ class ProjectsTenantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/tenants';
@@ -288,7 +288,7 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -322,7 +322,7 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<Tenant> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -366,9 +366,9 @@ class ProjectsTenantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/tenants';
@@ -418,8 +418,8 @@ class ProjectsTenantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -474,7 +474,7 @@ class ProjectsTenantsClientEventsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/clientEvents';
@@ -525,7 +525,7 @@ class ProjectsTenantsCompaniesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/companies';
@@ -564,7 +564,7 @@ class ProjectsTenantsCompaniesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -600,7 +600,7 @@ class ProjectsTenantsCompaniesResource {
   /// this method will complete with the same error.
   async.Future<Company> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -649,10 +649,12 @@ class ProjectsTenantsCompaniesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (requireOpenJobs != null) 'requireOpenJobs': ['${requireOpenJobs}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'requireOpenJobs': ?requireOpenJobs == null
+          ? null
+          : ['${requireOpenJobs}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/companies';
@@ -703,8 +705,8 @@ class ProjectsTenantsCompaniesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -753,7 +755,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs:batchCreate';
@@ -796,7 +798,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs:batchDelete';
@@ -838,7 +840,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs:batchUpdate';
@@ -883,7 +885,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -921,7 +923,7 @@ class ProjectsTenantsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -956,7 +958,7 @@ class ProjectsTenantsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -1032,11 +1034,11 @@ class ProjectsTenantsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (jobView != null) 'jobView': [jobView],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'jobView': ?jobView == null ? null : [jobView],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -1091,8 +1093,8 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$name');
@@ -1137,7 +1139,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/jobs:search';
@@ -1188,7 +1190,7 @@ class ProjectsTenantsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1232,22 +1234,21 @@ class ApplicationInfo {
 
   ApplicationInfo.fromJson(core.Map json_)
     : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        emails: (json_['emails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         instruction: json_['instruction'] as core.String?,
-        uris:
-            (json_['uris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        uris: (json_['uris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-    if (instruction != null) 'instruction': instruction!,
-    if (uris != null) 'uris': uris!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emails = this.emails;
+    final instruction = this.instruction;
+    final uris = this.uris;
+    return {'emails': ?emails, 'instruction': ?instruction, 'uris': ?uris};
+  }
 }
 
 /// Request to create a batch of jobs.
@@ -1263,19 +1264,18 @@ class BatchCreateJobsRequest {
 
   BatchCreateJobsRequest.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    return {'jobs': ?jobs};
+  }
 }
 
 /// Request to delete a batch of jobs.
@@ -1291,15 +1291,15 @@ class BatchDeleteJobsRequest {
 
   BatchDeleteJobsRequest.fromJson(core.Map json_)
     : this(
-        names:
-            (json_['names'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        names: (json_['names'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (names != null) 'names': names!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final names = this.names;
+    return {'names': ?names};
+  }
 }
 
 /// Request to update a batch of jobs.
@@ -1326,21 +1326,20 @@ class BatchUpdateJobsRequest {
 
   BatchUpdateJobsRequest.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final updateMask = this.updateMask;
+    return {'jobs': ?jobs, 'updateMask': ?updateMask};
+  }
 }
 
 /// An event issued when an end user interacts with the application that
@@ -1388,22 +1387,28 @@ class ClientEvent {
         createTime: json_['createTime'] as core.String?,
         eventId: json_['eventId'] as core.String?,
         eventNotes: json_['eventNotes'] as core.String?,
-        jobEvent:
-            json_.containsKey('jobEvent')
-                ? JobEvent.fromJson(
-                  json_['jobEvent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jobEvent: json_.containsKey('jobEvent')
+            ? JobEvent.fromJson(
+                json_['jobEvent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (eventId != null) 'eventId': eventId!,
-    if (eventNotes != null) 'eventNotes': eventNotes!,
-    if (jobEvent != null) 'jobEvent': jobEvent!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final eventId = this.eventId;
+    final eventNotes = this.eventNotes;
+    final jobEvent = this.jobEvent;
+    final requestId = this.requestId;
+    return {
+      'createTime': ?createTime,
+      'eventId': ?eventId,
+      'eventNotes': ?eventNotes,
+      'jobEvent': ?jobEvent,
+      'requestId': ?requestId,
+    };
+  }
 }
 
 /// Parameters needed for commute search.
@@ -1471,32 +1476,37 @@ class CommuteFilter {
     : this(
         allowImpreciseAddresses: json_['allowImpreciseAddresses'] as core.bool?,
         commuteMethod: json_['commuteMethod'] as core.String?,
-        departureTime:
-            json_.containsKey('departureTime')
-                ? TimeOfDay.fromJson(
-                  json_['departureTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        departureTime: json_.containsKey('departureTime')
+            ? TimeOfDay.fromJson(
+                json_['departureTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         roadTraffic: json_['roadTraffic'] as core.String?,
-        startCoordinates:
-            json_.containsKey('startCoordinates')
-                ? LatLng.fromJson(
-                  json_['startCoordinates']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        startCoordinates: json_.containsKey('startCoordinates')
+            ? LatLng.fromJson(
+                json_['startCoordinates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         travelDuration: json_['travelDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowImpreciseAddresses != null)
-      'allowImpreciseAddresses': allowImpreciseAddresses!,
-    if (commuteMethod != null) 'commuteMethod': commuteMethod!,
-    if (departureTime != null) 'departureTime': departureTime!,
-    if (roadTraffic != null) 'roadTraffic': roadTraffic!,
-    if (startCoordinates != null) 'startCoordinates': startCoordinates!,
-    if (travelDuration != null) 'travelDuration': travelDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowImpreciseAddresses = this.allowImpreciseAddresses;
+    final commuteMethod = this.commuteMethod;
+    final departureTime = this.departureTime;
+    final roadTraffic = this.roadTraffic;
+    final startCoordinates = this.startCoordinates;
+    final travelDuration = this.travelDuration;
+    return {
+      'allowImpreciseAddresses': ?allowImpreciseAddresses,
+      'commuteMethod': ?commuteMethod,
+      'departureTime': ?departureTime,
+      'roadTraffic': ?roadTraffic,
+      'startCoordinates': ?startCoordinates,
+      'travelDuration': ?travelDuration,
+    };
+  }
 }
 
 /// Commute details related to this job.
@@ -1515,19 +1525,19 @@ class CommuteInfo {
 
   CommuteInfo.fromJson(core.Map json_)
     : this(
-        jobLocation:
-            json_.containsKey('jobLocation')
-                ? Location.fromJson(
-                  json_['jobLocation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jobLocation: json_.containsKey('jobLocation')
+            ? Location.fromJson(
+                json_['jobLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         travelDuration: json_['travelDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobLocation != null) 'jobLocation': jobLocation!,
-    if (travelDuration != null) 'travelDuration': travelDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobLocation = this.jobLocation;
+    final travelDuration = this.travelDuration;
+    return {'jobLocation': ?jobLocation, 'travelDuration': ?travelDuration};
+  }
 }
 
 /// A Company resource represents a company in the service.
@@ -1644,12 +1654,11 @@ class Company {
   Company.fromJson(core.Map json_)
     : this(
         careerSiteUri: json_['careerSiteUri'] as core.String?,
-        derivedInfo:
-            json_.containsKey('derivedInfo')
-                ? CompanyDerivedInfo.fromJson(
-                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        derivedInfo: json_.containsKey('derivedInfo')
+            ? CompanyDerivedInfo.fromJson(
+                json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         eeoText: json_['eeoText'] as core.String?,
         externalId: json_['externalId'] as core.String?,
@@ -1666,24 +1675,38 @@ class Company {
         websiteUri: json_['websiteUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (careerSiteUri != null) 'careerSiteUri': careerSiteUri!,
-    if (derivedInfo != null) 'derivedInfo': derivedInfo!,
-    if (displayName != null) 'displayName': displayName!,
-    if (eeoText != null) 'eeoText': eeoText!,
-    if (externalId != null) 'externalId': externalId!,
-    if (headquartersAddress != null)
-      'headquartersAddress': headquartersAddress!,
-    if (hiringAgency != null) 'hiringAgency': hiringAgency!,
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (keywordSearchableJobCustomAttributes != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final careerSiteUri = this.careerSiteUri;
+    final derivedInfo = this.derivedInfo;
+    final displayName = this.displayName;
+    final eeoText = this.eeoText;
+    final externalId = this.externalId;
+    final headquartersAddress = this.headquartersAddress;
+    final hiringAgency = this.hiringAgency;
+    final imageUri = this.imageUri;
+    final keywordSearchableJobCustomAttributes =
+        this.keywordSearchableJobCustomAttributes;
+    final name = this.name;
+    final size = this.size;
+    final suspended = this.suspended;
+    final websiteUri = this.websiteUri;
+    return {
+      'careerSiteUri': ?careerSiteUri,
+      'derivedInfo': ?derivedInfo,
+      'displayName': ?displayName,
+      'eeoText': ?eeoText,
+      'externalId': ?externalId,
+      'headquartersAddress': ?headquartersAddress,
+      'hiringAgency': ?hiringAgency,
+      'imageUri': ?imageUri,
       'keywordSearchableJobCustomAttributes':
-          keywordSearchableJobCustomAttributes!,
-    if (name != null) 'name': name!,
-    if (size != null) 'size': size!,
-    if (suspended != null) 'suspended': suspended!,
-    if (websiteUri != null) 'websiteUri': websiteUri!,
-  };
+          ?keywordSearchableJobCustomAttributes,
+      'name': ?name,
+      'size': ?size,
+      'suspended': ?suspended,
+      'websiteUri': ?websiteUri,
+    };
+  }
 }
 
 /// Derived details about the company.
@@ -1696,19 +1719,18 @@ class CompanyDerivedInfo {
 
   CompanyDerivedInfo.fromJson(core.Map json_)
     : this(
-        headquartersLocation:
-            json_.containsKey('headquartersLocation')
-                ? Location.fromJson(
-                  json_['headquartersLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        headquartersLocation: json_.containsKey('headquartersLocation')
+            ? Location.fromJson(
+                json_['headquartersLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headquartersLocation != null)
-      'headquartersLocation': headquartersLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final headquartersLocation = this.headquartersLocation;
+    return {'headquartersLocation': ?headquartersLocation};
+  }
 }
 
 /// A compensation entry that represents one component of compensation, such as
@@ -1781,34 +1803,39 @@ class CompensationEntry {
 
   CompensationEntry.fromJson(core.Map json_)
     : this(
-        amount:
-            json_.containsKey('amount')
-                ? Money.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        amount: json_.containsKey('amount')
+            ? Money.fromJson(
+                json_['amount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
-        expectedUnitsPerYear:
-            (json_['expectedUnitsPerYear'] as core.num?)?.toDouble(),
-        range:
-            json_.containsKey('range')
-                ? CompensationRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        expectedUnitsPerYear: (json_['expectedUnitsPerYear'] as core.num?)
+            ?.toDouble(),
+        range: json_.containsKey('range')
+            ? CompensationRange.fromJson(
+                json_['range'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         unit: json_['unit'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amount != null) 'amount': amount!,
-    if (description != null) 'description': description!,
-    if (expectedUnitsPerYear != null)
-      'expectedUnitsPerYear': expectedUnitsPerYear!,
-    if (range != null) 'range': range!,
-    if (type != null) 'type': type!,
-    if (unit != null) 'unit': unit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final description = this.description;
+    final expectedUnitsPerYear = this.expectedUnitsPerYear;
+    final range = this.range;
+    final type = this.type;
+    final unit = this.unit;
+    return {
+      'amount': ?amount,
+      'description': ?description,
+      'expectedUnitsPerYear': ?expectedUnitsPerYear,
+      'range': ?range,
+      'type': ?type,
+      'unit': ?unit,
+    };
+  }
 }
 
 /// Filter on job compensation type and amount.
@@ -1862,27 +1889,31 @@ class CompensationFilter {
     : this(
         includeJobsWithUnspecifiedCompensationRange:
             json_['includeJobsWithUnspecifiedCompensationRange'] as core.bool?,
-        range:
-            json_.containsKey('range')
-                ? CompensationRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        range: json_.containsKey('range')
+            ? CompensationRange.fromJson(
+                json_['range'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
-        units:
-            (json_['units'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        units: (json_['units'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeJobsWithUnspecifiedCompensationRange != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final includeJobsWithUnspecifiedCompensationRange =
+        this.includeJobsWithUnspecifiedCompensationRange;
+    final range = this.range;
+    final type = this.type;
+    final units = this.units;
+    return {
       'includeJobsWithUnspecifiedCompensationRange':
-          includeJobsWithUnspecifiedCompensationRange!,
-    if (range != null) 'range': range!,
-    if (type != null) 'type': type!,
-    if (units != null) 'units': units!,
-  };
+          ?includeJobsWithUnspecifiedCompensationRange,
+      'range': ?range,
+      'type': ?type,
+      'units': ?units,
+    };
+  }
 }
 
 /// Job compensation details.
@@ -1921,35 +1952,39 @@ class CompensationInfo {
     : this(
         annualizedBaseCompensationRange:
             json_.containsKey('annualizedBaseCompensationRange')
-                ? CompensationRange.fromJson(
-                  json_['annualizedBaseCompensationRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CompensationRange.fromJson(
+                json_['annualizedBaseCompensationRange']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         annualizedTotalCompensationRange:
             json_.containsKey('annualizedTotalCompensationRange')
-                ? CompensationRange.fromJson(
-                  json_['annualizedTotalCompensationRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) => CompensationEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+            ? CompensationRange.fromJson(
+                json_['annualizedTotalCompensationRange']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => CompensationEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annualizedBaseCompensationRange != null)
-      'annualizedBaseCompensationRange': annualizedBaseCompensationRange!,
-    if (annualizedTotalCompensationRange != null)
-      'annualizedTotalCompensationRange': annualizedTotalCompensationRange!,
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annualizedBaseCompensationRange =
+        this.annualizedBaseCompensationRange;
+    final annualizedTotalCompensationRange =
+        this.annualizedTotalCompensationRange;
+    final entries = this.entries;
+    return {
+      'annualizedBaseCompensationRange': ?annualizedBaseCompensationRange,
+      'annualizedTotalCompensationRange': ?annualizedTotalCompensationRange,
+      'entries': ?entries,
+    };
+  }
 }
 
 /// Compensation range.
@@ -1970,26 +2005,26 @@ class CompensationRange {
 
   CompensationRange.fromJson(core.Map json_)
     : this(
-        maxCompensation:
-            json_.containsKey('maxCompensation')
-                ? Money.fromJson(
-                  json_['maxCompensation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        minCompensation:
-            json_.containsKey('minCompensation')
-                ? Money.fromJson(
-                  json_['minCompensation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        maxCompensation: json_.containsKey('maxCompensation')
+            ? Money.fromJson(
+                json_['maxCompensation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minCompensation: json_.containsKey('minCompensation')
+            ? Money.fromJson(
+                json_['minCompensation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxCompensation != null) 'maxCompensation': maxCompensation!,
-    if (minCompensation != null) 'minCompensation': minCompensation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxCompensation = this.maxCompensation;
+    final minCompensation = this.minCompensation;
+    return {
+      'maxCompensation': ?maxCompensation,
+      'minCompensation': ?minCompensation,
+    };
+  }
 }
 
 /// Response of auto-complete query.
@@ -2005,26 +2040,25 @@ class CompleteQueryResponse {
 
   CompleteQueryResponse.fromJson(core.Map json_)
     : this(
-        completionResults:
-            (json_['completionResults'] as core.List?)
-                ?.map(
-                  (value) => CompletionResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        completionResults: (json_['completionResults'] as core.List?)
+            ?.map(
+              (value) => CompletionResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionResults != null) 'completionResults': completionResults!,
-    if (metadata != null) 'metadata': metadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionResults = this.completionResults;
+    final metadata = this.metadata;
+    return {'completionResults': ?completionResults, 'metadata': ?metadata};
+  }
 }
 
 /// Resource that represents completion results.
@@ -2059,11 +2093,12 @@ class CompletionResult {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (suggestion != null) 'suggestion': suggestion!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageUri = this.imageUri;
+    final suggestion = this.suggestion;
+    final type = this.type;
+    return {'imageUri': ?imageUri, 'suggestion': ?suggestion, 'type': ?type};
+  }
 }
 
 /// Custom attribute values that are either filterable or non-filterable.
@@ -2110,22 +2145,26 @@ class CustomAttribute {
     : this(
         filterable: json_['filterable'] as core.bool?,
         keywordSearchable: json_['keywordSearchable'] as core.bool?,
-        longValues:
-            (json_['longValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        stringValues:
-            (json_['stringValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        longValues: (json_['longValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        stringValues: (json_['stringValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filterable != null) 'filterable': filterable!,
-    if (keywordSearchable != null) 'keywordSearchable': keywordSearchable!,
-    if (longValues != null) 'longValues': longValues!,
-    if (stringValues != null) 'stringValues': stringValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filterable = this.filterable;
+    final keywordSearchable = this.keywordSearchable;
+    final longValues = this.longValues;
+    final stringValues = this.stringValues;
+    return {
+      'filterable': ?filterable,
+      'keywordSearchable': ?keywordSearchable,
+      'longValues': ?longValues,
+      'stringValues': ?stringValues,
+    };
+  }
 }
 
 /// Custom ranking information for SearchJobsRequest.
@@ -2187,10 +2226,14 @@ class CustomRankingInfo {
         rankingExpression: json_['rankingExpression'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (importanceLevel != null) 'importanceLevel': importanceLevel!,
-    if (rankingExpression != null) 'rankingExpression': rankingExpression!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final importanceLevel = this.importanceLevel;
+    final rankingExpression = this.rankingExpression;
+    return {
+      'importanceLevel': ?importanceLevel,
+      'rankingExpression': ?rankingExpression,
+    };
+  }
 }
 
 /// Device information collected from the job seeker, candidate, or other entity
@@ -2227,10 +2270,11 @@ class DeviceInfo {
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceType != null) 'deviceType': deviceType!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceType = this.deviceType;
+    final id = this.id;
+    return {'deviceType': ?deviceType, 'id': ?id};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2254,9 +2298,10 @@ class HistogramQuery {
   HistogramQuery.fromJson(core.Map json_)
     : this(histogramQuery: json_['histogramQuery'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histogramQuery != null) 'histogramQuery': histogramQuery!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final histogramQuery = this.histogramQuery;
+    return {'histogramQuery': ?histogramQuery};
+  }
 }
 
 /// Histogram result that matches HistogramQuery specified in searches.
@@ -2283,10 +2328,11 @@ class HistogramQueryResult {
         histogramQuery: json_['histogramQuery'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histogram != null) 'histogram': histogram!,
-    if (histogramQuery != null) 'histogramQuery': histogramQuery!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final histogram = this.histogram;
+    final histogramQuery = this.histogramQuery;
+    return {'histogram': ?histogram, 'histogramQuery': ?histogramQuery};
+  }
 }
 
 /// A Job resource represents a job posting (also referred to as a "job listing"
@@ -2612,57 +2658,49 @@ class Job {
 
   Job.fromJson(core.Map json_)
     : this(
-        addresses:
-            (json_['addresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        applicationInfo:
-            json_.containsKey('applicationInfo')
-                ? ApplicationInfo.fromJson(
-                  json_['applicationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addresses: (json_['addresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        applicationInfo: json_.containsKey('applicationInfo')
+            ? ApplicationInfo.fromJson(
+                json_['applicationInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         company: json_['company'] as core.String?,
         companyDisplayName: json_['companyDisplayName'] as core.String?,
-        compensationInfo:
-            json_.containsKey('compensationInfo')
-                ? CompensationInfo.fromJson(
-                  json_['compensationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customAttributes: (json_['customAttributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                CustomAttribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        compensationInfo: json_.containsKey('compensationInfo')
+            ? CompensationInfo.fromJson(
+                json_['compensationInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customAttributes:
+            (json_['customAttributes'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CustomAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        degreeTypes:
-            (json_['degreeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        degreeTypes: (json_['degreeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         department: json_['department'] as core.String?,
-        derivedInfo:
-            json_.containsKey('derivedInfo')
-                ? JobDerivedInfo.fromJson(
-                  json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        derivedInfo: json_.containsKey('derivedInfo')
+            ? JobDerivedInfo.fromJson(
+                json_['derivedInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
-        employmentTypes:
-            (json_['employmentTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        employmentTypes: (json_['employmentTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         incentives: json_['incentives'] as core.String?,
-        jobBenefits:
-            (json_['jobBenefits'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        jobBenefits: (json_['jobBenefits'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         jobEndTime: json_['jobEndTime'] as core.String?,
         jobLevel: json_['jobLevel'] as core.String?,
         jobStartTime: json_['jobStartTime'] as core.String?,
@@ -2673,13 +2711,12 @@ class Job {
         postingPublishTime: json_['postingPublishTime'] as core.String?,
         postingRegion: json_['postingRegion'] as core.String?,
         postingUpdateTime: json_['postingUpdateTime'] as core.String?,
-        processingOptions:
-            json_.containsKey('processingOptions')
-                ? ProcessingOptions.fromJson(
-                  json_['processingOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        processingOptions: json_.containsKey('processingOptions')
+            ? ProcessingOptions.fromJson(
+                json_['processingOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         promotionValue: json_['promotionValue'] as core.int?,
         qualifications: json_['qualifications'] as core.String?,
         requisitionId: json_['requisitionId'] as core.String?,
@@ -2688,38 +2725,70 @@ class Job {
         visibility: json_['visibility'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addresses != null) 'addresses': addresses!,
-    if (applicationInfo != null) 'applicationInfo': applicationInfo!,
-    if (company != null) 'company': company!,
-    if (companyDisplayName != null) 'companyDisplayName': companyDisplayName!,
-    if (compensationInfo != null) 'compensationInfo': compensationInfo!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (degreeTypes != null) 'degreeTypes': degreeTypes!,
-    if (department != null) 'department': department!,
-    if (derivedInfo != null) 'derivedInfo': derivedInfo!,
-    if (description != null) 'description': description!,
-    if (employmentTypes != null) 'employmentTypes': employmentTypes!,
-    if (incentives != null) 'incentives': incentives!,
-    if (jobBenefits != null) 'jobBenefits': jobBenefits!,
-    if (jobEndTime != null) 'jobEndTime': jobEndTime!,
-    if (jobLevel != null) 'jobLevel': jobLevel!,
-    if (jobStartTime != null) 'jobStartTime': jobStartTime!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (postingCreateTime != null) 'postingCreateTime': postingCreateTime!,
-    if (postingExpireTime != null) 'postingExpireTime': postingExpireTime!,
-    if (postingPublishTime != null) 'postingPublishTime': postingPublishTime!,
-    if (postingRegion != null) 'postingRegion': postingRegion!,
-    if (postingUpdateTime != null) 'postingUpdateTime': postingUpdateTime!,
-    if (processingOptions != null) 'processingOptions': processingOptions!,
-    if (promotionValue != null) 'promotionValue': promotionValue!,
-    if (qualifications != null) 'qualifications': qualifications!,
-    if (requisitionId != null) 'requisitionId': requisitionId!,
-    if (responsibilities != null) 'responsibilities': responsibilities!,
-    if (title != null) 'title': title!,
-    if (visibility != null) 'visibility': visibility!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addresses = this.addresses;
+    final applicationInfo = this.applicationInfo;
+    final company = this.company;
+    final companyDisplayName = this.companyDisplayName;
+    final compensationInfo = this.compensationInfo;
+    final customAttributes = this.customAttributes;
+    final degreeTypes = this.degreeTypes;
+    final department = this.department;
+    final derivedInfo = this.derivedInfo;
+    final description = this.description;
+    final employmentTypes = this.employmentTypes;
+    final incentives = this.incentives;
+    final jobBenefits = this.jobBenefits;
+    final jobEndTime = this.jobEndTime;
+    final jobLevel = this.jobLevel;
+    final jobStartTime = this.jobStartTime;
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final postingCreateTime = this.postingCreateTime;
+    final postingExpireTime = this.postingExpireTime;
+    final postingPublishTime = this.postingPublishTime;
+    final postingRegion = this.postingRegion;
+    final postingUpdateTime = this.postingUpdateTime;
+    final processingOptions = this.processingOptions;
+    final promotionValue = this.promotionValue;
+    final qualifications = this.qualifications;
+    final requisitionId = this.requisitionId;
+    final responsibilities = this.responsibilities;
+    final title = this.title;
+    final visibility = this.visibility;
+    return {
+      'addresses': ?addresses,
+      'applicationInfo': ?applicationInfo,
+      'company': ?company,
+      'companyDisplayName': ?companyDisplayName,
+      'compensationInfo': ?compensationInfo,
+      'customAttributes': ?customAttributes,
+      'degreeTypes': ?degreeTypes,
+      'department': ?department,
+      'derivedInfo': ?derivedInfo,
+      'description': ?description,
+      'employmentTypes': ?employmentTypes,
+      'incentives': ?incentives,
+      'jobBenefits': ?jobBenefits,
+      'jobEndTime': ?jobEndTime,
+      'jobLevel': ?jobLevel,
+      'jobStartTime': ?jobStartTime,
+      'languageCode': ?languageCode,
+      'name': ?name,
+      'postingCreateTime': ?postingCreateTime,
+      'postingExpireTime': ?postingExpireTime,
+      'postingPublishTime': ?postingPublishTime,
+      'postingRegion': ?postingRegion,
+      'postingUpdateTime': ?postingUpdateTime,
+      'processingOptions': ?processingOptions,
+      'promotionValue': ?promotionValue,
+      'qualifications': ?qualifications,
+      'requisitionId': ?requisitionId,
+      'responsibilities': ?responsibilities,
+      'title': ?title,
+      'visibility': ?visibility,
+    };
+  }
 }
 
 /// Derived details about the job posting.
@@ -2736,24 +2805,23 @@ class JobDerivedInfo {
 
   JobDerivedInfo.fromJson(core.Map json_)
     : this(
-        jobCategories:
-            (json_['jobCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobCategories: (json_['jobCategories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobCategories != null) 'jobCategories': jobCategories!,
-    if (locations != null) 'locations': locations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobCategories = this.jobCategories;
+    final locations = this.locations;
+    return {'jobCategories': ?jobCategories, 'locations': ?locations};
+  }
 }
 
 /// An event issued when a job seeker interacts with the application that
@@ -2842,17 +2910,17 @@ class JobEvent {
 
   JobEvent.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final type = this.type;
+    return {'jobs': ?jobs, 'type': ?type};
+  }
 }
 
 /// The query required to perform a search query.
@@ -3004,82 +3072,86 @@ class JobQuery {
 
   JobQuery.fromJson(core.Map json_)
     : this(
-        commuteFilter:
-            json_.containsKey('commuteFilter')
-                ? CommuteFilter.fromJson(
-                  json_['commuteFilter'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        companies:
-            (json_['companies'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        companyDisplayNames:
-            (json_['companyDisplayNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        compensationFilter:
-            json_.containsKey('compensationFilter')
-                ? CompensationFilter.fromJson(
-                  json_['compensationFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        commuteFilter: json_.containsKey('commuteFilter')
+            ? CommuteFilter.fromJson(
+                json_['commuteFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        companies: (json_['companies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        companyDisplayNames: (json_['companyDisplayNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        compensationFilter: json_.containsKey('compensationFilter')
+            ? CompensationFilter.fromJson(
+                json_['compensationFilter']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customAttributeFilter: json_['customAttributeFilter'] as core.String?,
         disableSpellCheck: json_['disableSpellCheck'] as core.bool?,
-        employmentTypes:
-            (json_['employmentTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        excludedJobs:
-            (json_['excludedJobs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        jobCategories:
-            (json_['jobCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        languageCodes:
-            (json_['languageCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        locationFilters:
-            (json_['locationFilters'] as core.List?)
-                ?.map(
-                  (value) => LocationFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        publishTimeRange:
-            json_.containsKey('publishTimeRange')
-                ? TimestampRange.fromJson(
-                  json_['publishTimeRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        employmentTypes: (json_['employmentTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        excludedJobs: (json_['excludedJobs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        jobCategories: (json_['jobCategories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        languageCodes: (json_['languageCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        locationFilters: (json_['locationFilters'] as core.List?)
+            ?.map(
+              (value) => LocationFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        publishTimeRange: json_.containsKey('publishTimeRange')
+            ? TimestampRange.fromJson(
+                json_['publishTimeRange']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         query: json_['query'] as core.String?,
         queryLanguageCode: json_['queryLanguageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commuteFilter != null) 'commuteFilter': commuteFilter!,
-    if (companies != null) 'companies': companies!,
-    if (companyDisplayNames != null)
-      'companyDisplayNames': companyDisplayNames!,
-    if (compensationFilter != null) 'compensationFilter': compensationFilter!,
-    if (customAttributeFilter != null)
-      'customAttributeFilter': customAttributeFilter!,
-    if (disableSpellCheck != null) 'disableSpellCheck': disableSpellCheck!,
-    if (employmentTypes != null) 'employmentTypes': employmentTypes!,
-    if (excludedJobs != null) 'excludedJobs': excludedJobs!,
-    if (jobCategories != null) 'jobCategories': jobCategories!,
-    if (languageCodes != null) 'languageCodes': languageCodes!,
-    if (locationFilters != null) 'locationFilters': locationFilters!,
-    if (publishTimeRange != null) 'publishTimeRange': publishTimeRange!,
-    if (query != null) 'query': query!,
-    if (queryLanguageCode != null) 'queryLanguageCode': queryLanguageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commuteFilter = this.commuteFilter;
+    final companies = this.companies;
+    final companyDisplayNames = this.companyDisplayNames;
+    final compensationFilter = this.compensationFilter;
+    final customAttributeFilter = this.customAttributeFilter;
+    final disableSpellCheck = this.disableSpellCheck;
+    final employmentTypes = this.employmentTypes;
+    final excludedJobs = this.excludedJobs;
+    final jobCategories = this.jobCategories;
+    final languageCodes = this.languageCodes;
+    final locationFilters = this.locationFilters;
+    final publishTimeRange = this.publishTimeRange;
+    final query = this.query;
+    final queryLanguageCode = this.queryLanguageCode;
+    return {
+      'commuteFilter': ?commuteFilter,
+      'companies': ?companies,
+      'companyDisplayNames': ?companyDisplayNames,
+      'compensationFilter': ?compensationFilter,
+      'customAttributeFilter': ?customAttributeFilter,
+      'disableSpellCheck': ?disableSpellCheck,
+      'employmentTypes': ?employmentTypes,
+      'excludedJobs': ?excludedJobs,
+      'jobCategories': ?jobCategories,
+      'languageCodes': ?languageCodes,
+      'locationFilters': ?locationFilters,
+      'publishTimeRange': ?publishTimeRange,
+      'query': ?query,
+      'queryLanguageCode': ?queryLanguageCode,
+    };
+  }
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -3105,28 +3177,31 @@ class ListCompaniesResponse {
 
   ListCompaniesResponse.fromJson(core.Map json_)
     : this(
-        companies:
-            (json_['companies'] as core.List?)
-                ?.map(
-                  (value) => Company.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        companies: (json_['companies'] as core.List?)
+            ?.map(
+              (value) => Company.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (companies != null) 'companies': companies!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final companies = this.companies;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'companies': ?companies,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// List jobs response.
@@ -3148,28 +3223,30 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'jobs': ?jobs,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The List tenants response object.
@@ -3188,28 +3265,30 @@ class ListTenantsResponse {
 
   ListTenantsResponse.fromJson(core.Map json_)
     : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tenants:
-            (json_['tenants'] as core.List?)
-                ?.map(
-                  (value) => Tenant.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tenants: (json_['tenants'] as core.List?)
+            ?.map(
+              (value) =>
+                  Tenant.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tenants != null) 'tenants': tenants!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final tenants = this.tenants;
+    return {
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'tenants': ?tenants,
+    };
+  }
 }
 
 /// A resource that represents a location with full geographic information.
@@ -3265,28 +3344,32 @@ class Location {
 
   Location.fromJson(core.Map json_)
     : this(
-        latLng:
-            json_.containsKey('latLng')
-                ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latLng: json_.containsKey('latLng')
+            ? LatLng.fromJson(
+                json_['latLng'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         locationType: json_['locationType'] as core.String?,
-        postalAddress:
-            json_.containsKey('postalAddress')
-                ? PostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        postalAddress: json_.containsKey('postalAddress')
+            ? PostalAddress.fromJson(
+                json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         radiusMiles: (json_['radiusMiles'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latLng != null) 'latLng': latLng!,
-    if (locationType != null) 'locationType': locationType!,
-    if (postalAddress != null) 'postalAddress': postalAddress!,
-    if (radiusMiles != null) 'radiusMiles': radiusMiles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latLng = this.latLng;
+    final locationType = this.locationType;
+    final postalAddress = this.postalAddress;
+    final radiusMiles = this.radiusMiles;
+    return {
+      'latLng': ?latLng,
+      'locationType': ?locationType,
+      'postalAddress': ?postalAddress,
+      'radiusMiles': ?radiusMiles,
+    };
+  }
 }
 
 /// Geographic region of the search.
@@ -3359,24 +3442,29 @@ class LocationFilter {
     : this(
         address: json_['address'] as core.String?,
         distanceInMiles: (json_['distanceInMiles'] as core.num?)?.toDouble(),
-        latLng:
-            json_.containsKey('latLng')
-                ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latLng: json_.containsKey('latLng')
+            ? LatLng.fromJson(
+                json_['latLng'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionCode: json_['regionCode'] as core.String?,
         telecommutePreference: json_['telecommutePreference'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (distanceInMiles != null) 'distanceInMiles': distanceInMiles!,
-    if (latLng != null) 'latLng': latLng!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (telecommutePreference != null)
-      'telecommutePreference': telecommutePreference!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final distanceInMiles = this.distanceInMiles;
+    final latLng = this.latLng;
+    final regionCode = this.regionCode;
+    final telecommutePreference = this.telecommutePreference;
+    return {
+      'address': ?address,
+      'distanceInMiles': ?distanceInMiles,
+      'latLng': ?latLng,
+      'regionCode': ?regionCode,
+      'telecommutePreference': ?telecommutePreference,
+    };
+  }
 }
 
 /// Job entry with metadata inside SearchJobsResponse.
@@ -3414,30 +3502,33 @@ class MatchingJob {
 
   MatchingJob.fromJson(core.Map json_)
     : this(
-        commuteInfo:
-            json_.containsKey('commuteInfo')
-                ? CommuteInfo.fromJson(
-                  json_['commuteInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        job:
-            json_.containsKey('job')
-                ? Job.fromJson(
-                  json_['job'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        commuteInfo: json_.containsKey('commuteInfo')
+            ? CommuteInfo.fromJson(
+                json_['commuteInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        job: json_.containsKey('job')
+            ? Job.fromJson(json_['job'] as core.Map<core.String, core.dynamic>)
+            : null,
         jobSummary: json_['jobSummary'] as core.String?,
         jobTitleSnippet: json_['jobTitleSnippet'] as core.String?,
         searchTextSnippet: json_['searchTextSnippet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commuteInfo != null) 'commuteInfo': commuteInfo!,
-    if (job != null) 'job': job!,
-    if (jobSummary != null) 'jobSummary': jobSummary!,
-    if (jobTitleSnippet != null) 'jobTitleSnippet': jobTitleSnippet!,
-    if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commuteInfo = this.commuteInfo;
+    final job = this.job;
+    final jobSummary = this.jobSummary;
+    final jobTitleSnippet = this.jobTitleSnippet;
+    final searchTextSnippet = this.searchTextSnippet;
+    return {
+      'commuteInfo': ?commuteInfo,
+      'job': ?job,
+      'jobSummary': ?jobSummary,
+      'jobTitleSnippet': ?jobTitleSnippet,
+      'searchTextSnippet': ?searchTextSnippet,
+    };
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -3491,30 +3582,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Represents a postal address, such as for postal delivery or payments
@@ -3563,11 +3658,14 @@ class ProcessingOptions {
         htmlSanitization: json_['htmlSanitization'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableStreetAddressResolution != null)
-      'disableStreetAddressResolution': disableStreetAddressResolution!,
-    if (htmlSanitization != null) 'htmlSanitization': htmlSanitization!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableStreetAddressResolution = this.disableStreetAddressResolution;
+    final htmlSanitization = this.htmlSanitization;
+    return {
+      'disableStreetAddressResolution': ?disableStreetAddressResolution,
+      'htmlSanitization': ?htmlSanitization,
+    };
+  }
 }
 
 /// Meta information related to the job searcher or entity conducting the job
@@ -3629,24 +3727,30 @@ class RequestMetadata {
   RequestMetadata.fromJson(core.Map json_)
     : this(
         allowMissingIds: json_['allowMissingIds'] as core.bool?,
-        deviceInfo:
-            json_.containsKey('deviceInfo')
-                ? DeviceInfo.fromJson(
-                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deviceInfo: json_.containsKey('deviceInfo')
+            ? DeviceInfo.fromJson(
+                json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domain: json_['domain'] as core.String?,
         sessionId: json_['sessionId'] as core.String?,
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissingIds != null) 'allowMissingIds': allowMissingIds!,
-    if (deviceInfo != null) 'deviceInfo': deviceInfo!,
-    if (domain != null) 'domain': domain!,
-    if (sessionId != null) 'sessionId': sessionId!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissingIds = this.allowMissingIds;
+    final deviceInfo = this.deviceInfo;
+    final domain = this.domain;
+    final sessionId = this.sessionId;
+    final userId = this.userId;
+    return {
+      'allowMissingIds': ?allowMissingIds,
+      'deviceInfo': ?deviceInfo,
+      'domain': ?domain,
+      'sessionId': ?sessionId,
+      'userId': ?userId,
+    };
+  }
 }
 
 /// Additional information returned to client, such as debugging information.
@@ -3947,30 +4051,27 @@ class SearchJobsRequest {
 
   SearchJobsRequest.fromJson(core.Map json_)
     : this(
-        customRankingInfo:
-            json_.containsKey('customRankingInfo')
-                ? CustomRankingInfo.fromJson(
-                  json_['customRankingInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customRankingInfo: json_.containsKey('customRankingInfo')
+            ? CustomRankingInfo.fromJson(
+                json_['customRankingInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableKeywordMatch: json_['disableKeywordMatch'] as core.bool?,
         diversificationLevel: json_['diversificationLevel'] as core.String?,
         enableBroadening: json_['enableBroadening'] as core.bool?,
-        histogramQueries:
-            (json_['histogramQueries'] as core.List?)
-                ?.map(
-                  (value) => HistogramQuery.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        jobQuery:
-            json_.containsKey('jobQuery')
-                ? JobQuery.fromJson(
-                  json_['jobQuery'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        histogramQueries: (json_['histogramQueries'] as core.List?)
+            ?.map(
+              (value) => HistogramQuery.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        jobQuery: json_.containsKey('jobQuery')
+            ? JobQuery.fromJson(
+                json_['jobQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         jobView: json_['jobView'] as core.String?,
         keywordMatchMode: json_['keywordMatchMode'] as core.String?,
         maxPageSize: json_['maxPageSize'] as core.int?,
@@ -3978,35 +4079,48 @@ class SearchJobsRequest {
         orderBy: json_['orderBy'] as core.String?,
         pageToken: json_['pageToken'] as core.String?,
         relevanceThreshold: json_['relevanceThreshold'] as core.String?,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         searchMode: json_['searchMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customRankingInfo != null) 'customRankingInfo': customRankingInfo!,
-    if (disableKeywordMatch != null)
-      'disableKeywordMatch': disableKeywordMatch!,
-    if (diversificationLevel != null)
-      'diversificationLevel': diversificationLevel!,
-    if (enableBroadening != null) 'enableBroadening': enableBroadening!,
-    if (histogramQueries != null) 'histogramQueries': histogramQueries!,
-    if (jobQuery != null) 'jobQuery': jobQuery!,
-    if (jobView != null) 'jobView': jobView!,
-    if (keywordMatchMode != null) 'keywordMatchMode': keywordMatchMode!,
-    if (maxPageSize != null) 'maxPageSize': maxPageSize!,
-    if (offset != null) 'offset': offset!,
-    if (orderBy != null) 'orderBy': orderBy!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (relevanceThreshold != null) 'relevanceThreshold': relevanceThreshold!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-    if (searchMode != null) 'searchMode': searchMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customRankingInfo = this.customRankingInfo;
+    final disableKeywordMatch = this.disableKeywordMatch;
+    final diversificationLevel = this.diversificationLevel;
+    final enableBroadening = this.enableBroadening;
+    final histogramQueries = this.histogramQueries;
+    final jobQuery = this.jobQuery;
+    final jobView = this.jobView;
+    final keywordMatchMode = this.keywordMatchMode;
+    final maxPageSize = this.maxPageSize;
+    final offset = this.offset;
+    final orderBy = this.orderBy;
+    final pageToken = this.pageToken;
+    final relevanceThreshold = this.relevanceThreshold;
+    final requestMetadata = this.requestMetadata;
+    final searchMode = this.searchMode;
+    return {
+      'customRankingInfo': ?customRankingInfo,
+      'disableKeywordMatch': ?disableKeywordMatch,
+      'diversificationLevel': ?diversificationLevel,
+      'enableBroadening': ?enableBroadening,
+      'histogramQueries': ?histogramQueries,
+      'jobQuery': ?jobQuery,
+      'jobView': ?jobView,
+      'keywordMatchMode': ?keywordMatchMode,
+      'maxPageSize': ?maxPageSize,
+      'offset': ?offset,
+      'orderBy': ?orderBy,
+      'pageToken': ?pageToken,
+      'relevanceThreshold': ?relevanceThreshold,
+      'requestMetadata': ?requestMetadata,
+      'searchMode': ?searchMode,
+    };
+  }
 }
 
 /// Response for SearchJob method.
@@ -4067,59 +4181,61 @@ class SearchJobsResponse {
   SearchJobsResponse.fromJson(core.Map json_)
     : this(
         broadenedQueryJobsCount: json_['broadenedQueryJobsCount'] as core.int?,
-        histogramQueryResults:
-            (json_['histogramQueryResults'] as core.List?)
-                ?.map(
-                  (value) => HistogramQueryResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        locationFilters:
-            (json_['locationFilters'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        matchingJobs:
-            (json_['matchingJobs'] as core.List?)
-                ?.map(
-                  (value) => MatchingJob.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        histogramQueryResults: (json_['histogramQueryResults'] as core.List?)
+            ?.map(
+              (value) => HistogramQueryResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        locationFilters: (json_['locationFilters'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        matchingJobs: (json_['matchingJobs'] as core.List?)
+            ?.map(
+              (value) => MatchingJob.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextPageToken: json_['nextPageToken'] as core.String?,
-        spellCorrection:
-            json_.containsKey('spellCorrection')
-                ? SpellingCorrection.fromJson(
-                  json_['spellCorrection']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        spellCorrection: json_.containsKey('spellCorrection')
+            ? SpellingCorrection.fromJson(
+                json_['spellCorrection'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (broadenedQueryJobsCount != null)
-      'broadenedQueryJobsCount': broadenedQueryJobsCount!,
-    if (histogramQueryResults != null)
-      'histogramQueryResults': histogramQueryResults!,
-    if (locationFilters != null) 'locationFilters': locationFilters!,
-    if (matchingJobs != null) 'matchingJobs': matchingJobs!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (spellCorrection != null) 'spellCorrection': spellCorrection!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final broadenedQueryJobsCount = this.broadenedQueryJobsCount;
+    final histogramQueryResults = this.histogramQueryResults;
+    final locationFilters = this.locationFilters;
+    final matchingJobs = this.matchingJobs;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final spellCorrection = this.spellCorrection;
+    final totalSize = this.totalSize;
+    return {
+      'broadenedQueryJobsCount': ?broadenedQueryJobsCount,
+      'histogramQueryResults': ?histogramQueryResults,
+      'locationFilters': ?locationFilters,
+      'matchingJobs': ?matchingJobs,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'spellCorrection': ?spellCorrection,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Spell check result.
@@ -4147,11 +4263,16 @@ class SpellingCorrection {
         correctedText: json_['correctedText'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (corrected != null) 'corrected': corrected!,
-    if (correctedHtml != null) 'correctedHtml': correctedHtml!,
-    if (correctedText != null) 'correctedText': correctedText!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final corrected = this.corrected;
+    final correctedHtml = this.correctedHtml;
+    final correctedText = this.correctedText;
+    return {
+      'corrected': ?corrected,
+      'correctedHtml': ?correctedHtml,
+      'correctedText': ?correctedText,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4192,10 +4313,11 @@ class Tenant {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalId != null) 'externalId': externalId!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalId = this.externalId;
+    final name = this.name;
+    return {'externalId': ?externalId, 'name': ?name};
+  }
 }
 
 /// Represents a time of day.
@@ -4221,8 +4343,9 @@ class TimestampRange {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'endTime': ?endTime, 'startTime': ?startTime};
+  }
 }

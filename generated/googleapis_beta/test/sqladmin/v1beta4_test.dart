@@ -5109,10 +5109,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildExportContextSqlExportOptionsPostgresExportOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ExportContextSqlExportOptionsPostgresExportOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ExportContextSqlExportOptionsPostgresExportOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkExportContextSqlExportOptionsPostgresExportOptions(od);
       });
     },
@@ -5281,10 +5281,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildImportContextSqlImportOptionsPostgresImportOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ImportContextSqlImportOptionsPostgresImportOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ImportContextSqlImportOptionsPostgresImportOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkImportContextSqlImportOptionsPostgresImportOptions(od);
       });
     },
@@ -11525,10 +11525,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .SqlInstancesVerifyExternalSyncSettingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.SqlInstancesVerifyExternalSyncSettingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkSqlInstancesVerifyExternalSyncSettingsRequest(obj);
 
           final path = req.url.path;

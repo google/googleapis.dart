@@ -108,7 +108,7 @@ class LocationsWorkforcePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
@@ -173,7 +173,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
@@ -224,7 +224,7 @@ class ProjectsServiceAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
@@ -269,7 +269,7 @@ class ProjectsServiceAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateIdToken';
@@ -307,7 +307,7 @@ class ProjectsServiceAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
@@ -351,7 +351,7 @@ class ProjectsServiceAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
@@ -396,7 +396,7 @@ class ProjectsServiceAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
@@ -453,22 +453,21 @@ class GenerateAccessTokenRequest {
 
   GenerateAccessTokenRequest.fromJson(core.Map json_)
     : this(
-        delegates:
-            (json_['delegates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        delegates: (json_['delegates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         lifetime: json_['lifetime'] as core.String?,
-        scope:
-            (json_['scope'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        scope: (json_['scope'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegates != null) 'delegates': delegates!,
-    if (lifetime != null) 'lifetime': lifetime!,
-    if (scope != null) 'scope': scope!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegates = this.delegates;
+    final lifetime = this.lifetime;
+    final scope = this.scope;
+    return {'delegates': ?delegates, 'lifetime': ?lifetime, 'scope': ?scope};
+  }
 }
 
 class GenerateAccessTokenResponse {
@@ -488,10 +487,11 @@ class GenerateAccessTokenResponse {
         expireTime: json_['expireTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (expireTime != null) 'expireTime': expireTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final expireTime = this.expireTime;
+    return {'accessToken': ?accessToken, 'expireTime': ?expireTime};
+  }
 }
 
 class GenerateIdTokenRequest {
@@ -536,22 +536,26 @@ class GenerateIdTokenRequest {
   GenerateIdTokenRequest.fromJson(core.Map json_)
     : this(
         audience: json_['audience'] as core.String?,
-        delegates:
-            (json_['delegates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        delegates: (json_['delegates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         includeEmail: json_['includeEmail'] as core.bool?,
         organizationNumberIncluded:
             json_['organizationNumberIncluded'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (delegates != null) 'delegates': delegates!,
-    if (includeEmail != null) 'includeEmail': includeEmail!,
-    if (organizationNumberIncluded != null)
-      'organizationNumberIncluded': organizationNumberIncluded!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final delegates = this.delegates;
+    final includeEmail = this.includeEmail;
+    final organizationNumberIncluded = this.organizationNumberIncluded;
+    return {
+      'audience': ?audience,
+      'delegates': ?delegates,
+      'includeEmail': ?includeEmail,
+      'organizationNumberIncluded': ?organizationNumberIncluded,
+    };
+  }
 }
 
 class GenerateIdTokenResponse {
@@ -572,9 +576,10 @@ class GenerateIdTokenResponse {
   GenerateIdTokenResponse.fromJson(core.Map json_)
     : this(token: json_['token'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final token = this.token;
+    return {'token': ?token};
+  }
 }
 
 /// Represents a list of allowed locations for given service account.
@@ -610,17 +615,17 @@ class SignBlobRequest {
 
   SignBlobRequest.fromJson(core.Map json_)
     : this(
-        delegates:
-            (json_['delegates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        delegates: (json_['delegates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         payload: json_['payload'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegates != null) 'delegates': delegates!,
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegates = this.delegates;
+    final payload = this.payload;
+    return {'delegates': ?delegates, 'payload': ?payload};
+  }
 }
 
 class SignBlobResponse {
@@ -662,10 +667,11 @@ class SignBlobResponse {
         signedBlob: json_['signedBlob'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyId != null) 'keyId': keyId!,
-    if (signedBlob != null) 'signedBlob': signedBlob!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyId = this.keyId;
+    final signedBlob = this.signedBlob;
+    return {'keyId': ?keyId, 'signedBlob': ?signedBlob};
+  }
 }
 
 class SignJwtRequest {
@@ -695,17 +701,17 @@ class SignJwtRequest {
 
   SignJwtRequest.fromJson(core.Map json_)
     : this(
-        delegates:
-            (json_['delegates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        delegates: (json_['delegates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         payload: json_['payload'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegates != null) 'delegates': delegates!,
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegates = this.delegates;
+    final payload = this.payload;
+    return {'delegates': ?delegates, 'payload': ?payload};
+  }
 }
 
 class SignJwtResponse {
@@ -740,10 +746,11 @@ class SignJwtResponse {
         signedJwt: json_['signedJwt'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyId != null) 'keyId': keyId!,
-    if (signedJwt != null) 'signedJwt': signedJwt!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyId = this.keyId;
+    final signedJwt = this.signedJwt;
+    return {'keyId': ?keyId, 'signedJwt': ?signedJwt};
+  }
 }
 
 /// Represents a list of allowed locations for given workforce pool.

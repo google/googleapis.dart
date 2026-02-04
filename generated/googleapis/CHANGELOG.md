@@ -1,5 +1,7 @@
 ## 16.0.0-wip
 
+- Require `sdk: ^3.9.0`
+
 ### APIs
 - `appsmarket` - new
 - `bigquerydatapolicy` - added `v2`

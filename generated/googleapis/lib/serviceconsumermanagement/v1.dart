@@ -104,7 +104,7 @@ class OperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -141,7 +141,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -176,7 +176,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -231,12 +231,13 @@ class OperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -309,10 +310,10 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':search';
@@ -367,7 +368,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addProject';
@@ -424,7 +425,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':applyProjectConfig';
@@ -476,7 +477,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':attachProject';
@@ -526,7 +527,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
@@ -568,7 +569,7 @@ class ServicesTenancyUnitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -618,7 +619,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteProject';
@@ -677,10 +678,10 @@ class ServicesTenancyUnitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
@@ -731,7 +732,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':removeProject';
@@ -778,7 +779,7 @@ class ServicesTenancyUnitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undeleteProject';
@@ -811,19 +812,19 @@ class AddTenantProjectRequest {
 
   AddTenantProjectRequest.fromJson(core.Map json_)
     : this(
-        projectConfig:
-            json_.containsKey('projectConfig')
-                ? TenantProjectConfig.fromJson(
-                  json_['projectConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        projectConfig: json_.containsKey('projectConfig')
+            ? TenantProjectConfig.fromJson(
+                json_['projectConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (projectConfig != null) 'projectConfig': projectConfig!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectConfig = this.projectConfig;
+    final tag = this.tag;
+    return {'projectConfig': ?projectConfig, 'tag': ?tag};
+  }
 }
 
 /// Request to apply configuration to an existing tenant project.
@@ -842,19 +843,19 @@ class ApplyTenantProjectConfigRequest {
 
   ApplyTenantProjectConfigRequest.fromJson(core.Map json_)
     : this(
-        projectConfig:
-            json_.containsKey('projectConfig')
-                ? TenantProjectConfig.fromJson(
-                  json_['projectConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        projectConfig: json_.containsKey('projectConfig')
+            ? TenantProjectConfig.fromJson(
+                json_['projectConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (projectConfig != null) 'projectConfig': projectConfig!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectConfig = this.projectConfig;
+    final tag = this.tag;
+    return {'projectConfig': ?projectConfig, 'tag': ?tag};
+  }
 }
 
 /// Request to attach an existing project to the tenancy unit as a new tenant
@@ -891,11 +892,16 @@ class AttachTenantProjectRequest {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalResource != null) 'externalResource': externalResource!,
-    if (reservedResource != null) 'reservedResource': reservedResource!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalResource = this.externalResource;
+    final reservedResource = this.reservedResource;
+    final tag = this.tag;
+    return {
+      'externalResource': ?externalResource,
+      'reservedResource': ?reservedResource,
+      'tag': ?tag,
+    };
+  }
 }
 
 /// Describes the billing configuration for a new tenant project.
@@ -910,9 +916,10 @@ class BillingConfig {
   BillingConfig.fromJson(core.Map json_)
     : this(billingAccount: json_['billingAccount'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (billingAccount != null) 'billingAccount': billingAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingAccount = this.billingAccount;
+    return {'billingAccount': ?billingAccount};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -938,9 +945,10 @@ class CreateTenancyUnitRequest {
   CreateTenancyUnitRequest.fromJson(core.Map json_)
     : this(tenancyUnitId: json_['tenancyUnitId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tenancyUnitId != null) 'tenancyUnitId': tenancyUnitId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tenancyUnitId = this.tenancyUnitId;
+    return {'tenancyUnitId': ?tenancyUnitId};
+  }
 }
 
 /// Request message to delete tenant project resource from the tenancy unit.
@@ -979,25 +987,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the list request.
@@ -1013,20 +1024,20 @@ class ListTenancyUnitsResponse {
   ListTenancyUnitsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tenancyUnits:
-            (json_['tenancyUnits'] as core.List?)
-                ?.map(
-                  (value) => TenancyUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tenancyUnits: (json_['tenancyUnits'] as core.List?)
+            ?.map(
+              (value) => TenancyUnit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tenancyUnits = this.tenancyUnits;
+    return {'nextPageToken': ?nextPageToken, 'tenancyUnits': ?tenancyUnits};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1077,30 +1088,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Translates to IAM Policy bindings (without auditing at this level)
@@ -1121,17 +1136,17 @@ class PolicyBinding {
 
   PolicyBinding.fromJson(core.Map json_)
     : this(
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final members = this.members;
+    final role = this.role;
+    return {'members': ?members, 'role': ?role};
+  }
 }
 
 /// Request message to remove a tenant project resource from the tenancy unit.
@@ -1150,20 +1165,20 @@ class SearchTenancyUnitsResponse {
   SearchTenancyUnitsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tenancyUnits:
-            (json_['tenancyUnits'] as core.List?)
-                ?.map(
-                  (value) => TenancyUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tenancyUnits: (json_['tenancyUnits'] as core.List?)
+            ?.map(
+              (value) => TenancyUnit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tenancyUnits != null) 'tenancyUnits': tenancyUnits!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tenancyUnits = this.tenancyUnits;
+    return {'nextPageToken': ?nextPageToken, 'tenancyUnits': ?tenancyUnits};
+  }
 }
 
 /// Describes the service account configuration for the tenant project.
@@ -1184,16 +1199,16 @@ class ServiceAccountConfig {
   ServiceAccountConfig.fromJson(core.Map json_)
     : this(
         accountId: json_['accountId'] as core.String?,
-        tenantProjectRoles:
-            (json_['tenantProjectRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        tenantProjectRoles: (json_['tenantProjectRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (tenantProjectRoles != null) 'tenantProjectRoles': tenantProjectRoles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final tenantProjectRoles = this.tenantProjectRoles;
+    return {'accountId': ?accountId, 'tenantProjectRoles': ?tenantProjectRoles};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1249,23 +1264,29 @@ class TenancyUnit {
         createTime: json_['createTime'] as core.String?,
         name: json_['name'] as core.String?,
         service: json_['service'] as core.String?,
-        tenantResources:
-            (json_['tenantResources'] as core.List?)
-                ?.map(
-                  (value) => TenantResource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tenantResources: (json_['tenantResources'] as core.List?)
+            ?.map(
+              (value) => TenantResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumer != null) 'consumer': consumer!,
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (service != null) 'service': service!,
-    if (tenantResources != null) 'tenantResources': tenantResources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumer = this.consumer;
+    final createTime = this.createTime;
+    final name = this.name;
+    final service = this.service;
+    final tenantResources = this.tenantResources;
+    return {
+      'consumer': ?consumer,
+      'createTime': ?createTime,
+      'name': ?name,
+      'service': ?service,
+      'tenantResources': ?tenantResources,
+    };
+  }
 }
 
 /// This structure defines a tenant project to be added to the specified tenancy
@@ -1315,46 +1336,48 @@ class TenantProjectConfig {
 
   TenantProjectConfig.fromJson(core.Map json_)
     : this(
-        billingConfig:
-            json_.containsKey('billingConfig')
-                ? BillingConfig.fromJson(
-                  json_['billingConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        billingConfig: json_.containsKey('billingConfig')
+            ? BillingConfig.fromJson(
+                json_['billingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         folder: json_['folder'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        serviceAccountConfig:
-            json_.containsKey('serviceAccountConfig')
-                ? ServiceAccountConfig.fromJson(
-                  json_['serviceAccountConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        services:
-            (json_['services'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        tenantProjectPolicy:
-            json_.containsKey('tenantProjectPolicy')
-                ? TenantProjectPolicy.fromJson(
-                  json_['tenantProjectPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceAccountConfig: json_.containsKey('serviceAccountConfig')
+            ? ServiceAccountConfig.fromJson(
+                json_['serviceAccountConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        services: (json_['services'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tenantProjectPolicy: json_.containsKey('tenantProjectPolicy')
+            ? TenantProjectPolicy.fromJson(
+                json_['tenantProjectPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (billingConfig != null) 'billingConfig': billingConfig!,
-    if (folder != null) 'folder': folder!,
-    if (labels != null) 'labels': labels!,
-    if (serviceAccountConfig != null)
-      'serviceAccountConfig': serviceAccountConfig!,
-    if (services != null) 'services': services!,
-    if (tenantProjectPolicy != null)
-      'tenantProjectPolicy': tenantProjectPolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingConfig = this.billingConfig;
+    final folder = this.folder;
+    final labels = this.labels;
+    final serviceAccountConfig = this.serviceAccountConfig;
+    final services = this.services;
+    final tenantProjectPolicy = this.tenantProjectPolicy;
+    return {
+      'billingConfig': ?billingConfig,
+      'folder': ?folder,
+      'labels': ?labels,
+      'serviceAccountConfig': ?serviceAccountConfig,
+      'services': ?services,
+      'tenantProjectPolicy': ?tenantProjectPolicy,
+    };
+  }
 }
 
 /// Describes policy settings that can be applied to a newly created tenant
@@ -1369,19 +1392,19 @@ class TenantProjectPolicy {
 
   TenantProjectPolicy.fromJson(core.Map json_)
     : this(
-        policyBindings:
-            (json_['policyBindings'] as core.List?)
-                ?.map(
-                  (value) => PolicyBinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        policyBindings: (json_['policyBindings'] as core.List?)
+            ?.map(
+              (value) => PolicyBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policyBindings != null) 'policyBindings': policyBindings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policyBindings = this.policyBindings;
+    return {'policyBindings': ?policyBindings};
+  }
 }
 
 /// Resource constituting the TenancyUnit.
@@ -1431,13 +1454,18 @@ class TenantResource {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (migratedTenantProject != null)
-      'migratedTenantProject': migratedTenantProject!,
-    if (resource != null) 'resource': resource!,
-    if (status != null) 'status': status!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final migratedTenantProject = this.migratedTenantProject;
+    final resource = this.resource;
+    final status = this.status;
+    final tag = this.tag;
+    return {
+      'migratedTenantProject': ?migratedTenantProject,
+      'resource': ?resource,
+      'status': ?status,
+      'tag': ?tag,
+    };
+  }
 }
 
 /// Request message to undelete tenant project resource previously deleted from

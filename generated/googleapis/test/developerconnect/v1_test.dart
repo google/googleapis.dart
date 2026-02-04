@@ -2961,8 +2961,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAccountConnectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.accountConnectors;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors;
       final arg_request = buildAccountConnector();
       final arg_parent = 'foo';
       final arg_accountConnectorId = 'foo';
@@ -3043,8 +3044,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.accountConnectors;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_force = true;
@@ -3121,8 +3123,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.accountConnectors;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3175,8 +3178,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.accountConnectors;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3260,8 +3264,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.accountConnectors;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors;
       final arg_request = buildAccountConnector();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3350,10 +3355,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAccountConnectorsUsersResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -3424,10 +3428,9 @@ void main() {
 
     unittest.test('method--deleteSelf', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3480,10 +3483,9 @@ void main() {
 
     unittest.test('method--fetchAccessToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_request = buildFetchAccessTokenRequest();
       final arg_accountConnector = 'foo';
       final arg_$fields = 'foo';
@@ -3546,10 +3548,9 @@ void main() {
 
     unittest.test('method--fetchSelf', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3602,10 +3603,9 @@ void main() {
 
     unittest.test('method--finishOAuthFlow', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_accountConnector = 'foo';
       final arg_googleOauthParams_scopes = buildUnnamed43();
       final arg_googleOauthParams_ticket = 'foo';
@@ -3691,10 +3691,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3774,10 +3773,9 @@ void main() {
 
     unittest.test('method--startOAuthFlow', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.accountConnectors.users;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.accountConnectors.users;
       final arg_accountConnector = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4404,10 +4402,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsGitRepositoryLinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildGitRepositoryLink();
       final arg_parent = 'foo';
       final arg_gitRepositoryLinkId = 'foo';
@@ -4488,10 +4485,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -4562,10 +4558,9 @@ void main() {
 
     unittest.test('method--fetchGitRefs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_gitRepositoryLink = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4639,10 +4634,9 @@ void main() {
 
     unittest.test('method--fetchReadToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildFetchReadTokenRequest();
       final arg_gitRepositoryLink = 'foo';
       final arg_$fields = 'foo';
@@ -4705,10 +4699,9 @@ void main() {
 
     unittest.test('method--fetchReadWriteToken', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildFetchReadWriteTokenRequest();
       final arg_gitRepositoryLink = 'foo';
       final arg_$fields = 'foo';
@@ -4773,10 +4766,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4829,10 +4821,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4916,10 +4907,9 @@ void main() {
 
     unittest.test('method--processBitbucketCloudWebhook', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildProcessBitbucketCloudWebhookRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4982,10 +4972,9 @@ void main() {
 
     unittest.test('method--processBitbucketDataCenterWebhook', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildProcessBitbucketDataCenterWebhookRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5048,10 +5037,9 @@ void main() {
 
     unittest.test('method--processGitLabEnterpriseWebhook', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildProcessGitLabEnterpriseWebhookRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5114,10 +5102,9 @@ void main() {
 
     unittest.test('method--processGitLabWebhook', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(
-            mock,
-          ).projects.locations.connections.gitRepositoryLinks;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.connections.gitRepositoryLinks;
       final arg_request = buildProcessGitLabWebhookRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5182,8 +5169,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInsightsConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.insightsConfigs;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.insightsConfigs;
       final arg_request = buildInsightsConfig();
       final arg_parent = 'foo';
       final arg_insightsConfigId = 'foo';
@@ -5258,8 +5246,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.insightsConfigs;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.insightsConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -5330,8 +5319,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.insightsConfigs;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.insightsConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5384,8 +5374,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.insightsConfigs;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.insightsConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5467,8 +5458,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DeveloperConnectApi(mock).projects.locations.insightsConfigs;
+      final res = api.DeveloperConnectApi(
+        mock,
+      ).projects.locations.insightsConfigs;
       final arg_request = buildInsightsConfig();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -5553,10 +5545,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DeveloperConnectApi(
-              mock,
-            ).projects.locations.insightsConfigs.deploymentEvents;
+        final res = api.DeveloperConnectApi(
+          mock,
+        ).projects.locations.insightsConfigs.deploymentEvents;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5609,10 +5600,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DeveloperConnectApi(
-              mock,
-            ).projects.locations.insightsConfigs.deploymentEvents;
+        final res = api.DeveloperConnectApi(
+          mock,
+        ).projects.locations.insightsConfigs.deploymentEvents;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;

@@ -11585,10 +11585,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback(
           od,
         );
@@ -11603,10 +11603,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback(
           od,
         );
@@ -11621,10 +11621,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback(
           od,
         );
@@ -11675,10 +11675,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult(
           od,
         );
@@ -11693,10 +11693,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion(
           od,
         );
@@ -11725,10 +11725,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion(
           od,
         );
@@ -11743,10 +11743,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult(
           od,
         );
@@ -11761,10 +11761,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion(
           od,
         );
@@ -11779,10 +11779,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse(od);
       });
     },
@@ -11794,10 +11794,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2AgentCoachingSuggestionSources();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2AgentCoachingSuggestionSources(od);
       });
     },
@@ -11878,10 +11878,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ArticleSuggestionModelMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ArticleSuggestionModelMetadata(od);
       });
     },
@@ -11937,10 +11937,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchCreateEntitiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchCreateEntitiesRequest(od);
       });
     },
@@ -11952,10 +11952,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchDeleteEntitiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchDeleteEntitiesRequest(od);
       });
     },
@@ -11967,10 +11967,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchDeleteEntityTypesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchDeleteEntityTypesRequest(od);
       });
     },
@@ -11982,10 +11982,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchDeleteIntentsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchDeleteIntentsRequest(od);
       });
     },
@@ -11997,10 +11997,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchUpdateEntitiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchUpdateEntitiesRequest(od);
       });
     },
@@ -12012,10 +12012,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchUpdateEntityTypesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchUpdateEntityTypesRequest(od);
       });
     },
@@ -12027,10 +12027,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2BatchUpdateIntentsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2BatchUpdateIntentsRequest(od);
       });
     },
@@ -12043,10 +12043,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest(od);
       });
     },
@@ -12058,10 +12058,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2CompleteConversationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2CompleteConversationRequest(od);
       });
     },
@@ -12131,10 +12131,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ConversationContextReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationContextReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationContextReference(od);
       });
     },
@@ -12147,10 +12147,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ConversationContextReferenceContextContent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationContextReferenceContextContent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationContextReferenceContextContent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationContextReferenceContextContent(
           od,
         );
@@ -12197,10 +12197,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ConversationModelEvaluation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationModelEvaluation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationModelEvaluation(od);
       });
     },
@@ -12238,10 +12238,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ConversationTelephonyConnectionInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationTelephonyConnectionInfo(od);
       });
     },
@@ -12254,10 +12254,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent(
           od,
         );
@@ -12272,10 +12272,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader(
           od,
         );
@@ -12290,10 +12290,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2CreateConversationModelEvaluationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2CreateConversationModelEvaluationRequest(
           od,
         );
@@ -12307,10 +12307,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2CustomPronunciationParams();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2CustomPronunciationParams.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2CustomPronunciationParams(od);
       });
     },
@@ -12322,10 +12322,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2DeployConversationModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2DeployConversationModelRequest(od);
       });
     },
@@ -12498,10 +12498,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig(od);
       });
     },
@@ -12514,10 +12514,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig(od);
       });
     },
@@ -12639,10 +12639,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2FulfillmentGenericWebService();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2FulfillmentGenericWebService(od);
       });
     },
@@ -12677,10 +12677,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateStatelessSuggestionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSuggestionRequest(od);
       });
     },
@@ -12693,10 +12693,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateStatelessSuggestionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSuggestionResponse(od);
       });
     },
@@ -12708,10 +12708,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2GenerateStatelessSummaryRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSummaryRequest(od);
       });
     },
@@ -12724,10 +12724,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation(
           od,
         );
@@ -12742,10 +12742,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateStatelessSummaryResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSummaryResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSummaryResponse(od);
       });
     },
@@ -12758,10 +12758,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary(od);
       });
     },
@@ -12773,10 +12773,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2GenerateSuggestionsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateSuggestionsRequest(od);
       });
     },
@@ -12788,10 +12788,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2GenerateSuggestionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateSuggestionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateSuggestionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateSuggestionsResponse(od);
       });
     },
@@ -12804,10 +12804,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer(
           od,
         );
@@ -12843,10 +12843,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2GeneratorEvaluationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorEvaluationConfig(od);
       });
     },
@@ -12859,10 +12859,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig(
           od,
         );
@@ -12877,10 +12877,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig(
           od,
         );
@@ -12895,10 +12895,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig(
           od,
         );
@@ -12913,10 +12913,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig(
           od,
         );
@@ -12941,10 +12941,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo(od);
       });
     },
@@ -12956,10 +12956,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2HumanAgentAssistantConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfig(od);
       });
     },
@@ -12972,10 +12972,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig(
           od,
         );
@@ -12990,10 +12990,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig(
           od,
         );
@@ -13008,10 +13008,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig(
           od,
         );
@@ -13026,10 +13026,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig(
           od,
         );
@@ -13044,10 +13044,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig(
           od,
         );
@@ -13062,10 +13062,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig(
           od,
         );
@@ -13080,10 +13080,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings(
           od,
         );
@@ -13098,10 +13098,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource(
           od,
         );
@@ -13116,10 +13116,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig(
           od,
         );
@@ -13134,10 +13134,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource(
           od,
         );
@@ -13152,10 +13152,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource(
           od,
         );
@@ -13170,10 +13170,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections(
           od,
         );
@@ -13188,10 +13188,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings(
           od,
         );
@@ -13220,10 +13220,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig(od);
       });
     },
@@ -13236,10 +13236,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig(
           od,
         );
@@ -13264,10 +13264,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ImportConversationDataRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ImportConversationDataRequest(od);
       });
     },
@@ -13318,10 +13318,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IngestContextReferencesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IngestContextReferencesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IngestContextReferencesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IngestContextReferencesRequest(od);
       });
     },
@@ -13333,10 +13333,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IngestContextReferencesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IngestContextReferencesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IngestContextReferencesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IngestContextReferencesResponse(od);
       });
     },
@@ -13349,10 +13349,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IngestedContextReferenceDebugInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IngestedContextReferenceDebugInfo(od);
       });
     },
@@ -13365,10 +13365,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo(
           od,
         );
@@ -13382,10 +13382,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2InitializeEncryptionSpecRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2InitializeEncryptionSpecRequest(od);
       });
     },
@@ -13491,10 +13491,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageBasicCardButton();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageBasicCardButton(od);
       });
     },
@@ -13507,10 +13507,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction(
           od,
         );
@@ -13524,10 +13524,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard(od);
       });
     },
@@ -13540,10 +13540,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
           od,
         );
@@ -13558,10 +13558,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
           od,
         );
@@ -13600,10 +13600,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageCarouselSelect();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageCarouselSelect(od);
       });
     },
@@ -13615,10 +13615,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageCarouselSelectItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageCarouselSelectItem(od);
       });
     },
@@ -13630,10 +13630,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageColumnProperties();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageColumnProperties(od);
       });
     },
@@ -13656,10 +13656,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion(od);
       });
     },
@@ -13685,10 +13685,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageListSelectItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageListSelectItem(od);
       });
     },
@@ -13700,10 +13700,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageMediaContent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageMediaContent(od);
       });
     },
@@ -13716,10 +13716,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
           od,
         );
@@ -13733,10 +13733,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageQuickReplies();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageQuickReplies(od);
       });
     },
@@ -13748,10 +13748,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageSelectItemInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageSelectItemInfo(od);
       });
     },
@@ -13763,10 +13763,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageSimpleResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageSimpleResponse(od);
       });
     },
@@ -13778,10 +13778,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageSimpleResponses();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageSimpleResponses(od);
       });
     },
@@ -13835,10 +13835,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageTableCardCell();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageTableCardCell(od);
       });
     },
@@ -13850,10 +13850,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2IntentMessageTableCardRow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2IntentMessageTableCardRow(od);
       });
     },
@@ -13935,10 +13935,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer(od);
       });
     },
@@ -13951,10 +13951,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource(
           od,
         );
@@ -13969,10 +13969,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource(
           od,
         );
@@ -13987,10 +13987,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet(
           od,
         );
@@ -14005,10 +14005,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery(od);
       });
     },
@@ -14035,10 +14035,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior(
           od,
         );
@@ -14063,10 +14063,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ListAnswerRecordsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListAnswerRecordsResponse(od);
       });
     },
@@ -14090,10 +14090,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ListConversationDatasetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListConversationDatasetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListConversationDatasetsResponse(od);
       });
     },
@@ -14106,10 +14106,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ListConversationModelEvaluationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListConversationModelEvaluationsResponse(
           od,
         );
@@ -14123,10 +14123,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ListConversationModelsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListConversationModelsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListConversationModelsResponse(od);
       });
     },
@@ -14139,10 +14139,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ListConversationProfilesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListConversationProfilesResponse(od);
       });
     },
@@ -14154,10 +14154,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ListConversationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListConversationsResponse(od);
       });
     },
@@ -14209,10 +14209,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ListGeneratorEvaluationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListGeneratorEvaluationsResponse(od);
       });
     },
@@ -14249,10 +14249,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ListKnowledgeBasesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListKnowledgeBasesResponse(od);
       });
     },
@@ -14289,10 +14289,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ListSessionEntityTypesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ListSessionEntityTypesResponse(od);
       });
     },
@@ -14469,10 +14469,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig(od);
       });
     },
@@ -14529,10 +14529,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource(od);
       });
     },
@@ -14559,10 +14559,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior(
           od,
         );
@@ -14591,10 +14591,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig(od);
       });
     },
@@ -14607,10 +14607,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs(
           od,
         );
@@ -14625,10 +14625,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec(
           od,
         );
@@ -14643,10 +14643,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec(
           od,
         );
@@ -14661,10 +14661,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec(
           od,
         );
@@ -14679,10 +14679,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint(
           od,
         );
@@ -14697,10 +14697,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs(
           od,
         );
@@ -14739,10 +14739,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SentimentAnalysisRequestConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SentimentAnalysisRequestConfig(od);
       });
     },
@@ -14780,10 +14780,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency(od);
       });
     },
@@ -14807,10 +14807,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest(od);
       });
     },
@@ -14855,10 +14855,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics(od);
       });
     },
@@ -14935,10 +14935,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(od);
       });
     },
@@ -14951,10 +14951,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SuggestConversationSummaryResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(od);
       });
     },
@@ -14967,10 +14967,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary(
           od,
         );
@@ -14985,10 +14985,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection(
           od,
         );
@@ -15016,10 +15016,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SuggestFaqAnswersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestFaqAnswersResponse(od);
       });
     },
@@ -15031,10 +15031,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest(od);
       });
     },
@@ -15046,10 +15046,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SuggestKnowledgeAssistResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestKnowledgeAssistResponse(od);
       });
     },
@@ -15061,10 +15061,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SuggestSmartRepliesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestSmartRepliesRequest(od);
       });
     },
@@ -15076,10 +15076,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SuggestSmartRepliesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SuggestSmartRepliesResponse(od);
       });
     },
@@ -15149,10 +15149,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SummarizationEvaluationMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetrics(od);
       });
     },
@@ -15165,10 +15165,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition(
           od,
         );
@@ -15183,10 +15183,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition(
           od,
         );
@@ -15201,10 +15201,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric(
           od,
         );
@@ -15219,10 +15219,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric(
           od,
         );
@@ -15237,10 +15237,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail(
           od,
         );
@@ -15255,10 +15255,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail(
           od,
         );
@@ -15273,10 +15273,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail(
           od,
         );
@@ -15291,10 +15291,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition(
           od,
         );
@@ -15309,10 +15309,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult(
           od,
         );
@@ -15327,10 +15327,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric(
           od,
         );
@@ -15345,10 +15345,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken(
           od,
         );
@@ -15363,10 +15363,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult(
           od,
         );
@@ -15416,10 +15416,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2SummarySuggestionSummarySection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2SummarySuggestionSummarySection(od);
       });
     },
@@ -15489,10 +15489,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig(od);
       });
     },
@@ -15505,10 +15505,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig(od);
       });
     },
@@ -15520,10 +15520,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ToolAuthenticationOAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolAuthenticationOAuthConfig(od);
       });
     },
@@ -15536,10 +15536,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig(
           od,
         );
@@ -15612,10 +15612,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation(od);
       });
     },
@@ -15660,10 +15660,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowV2ToolServiceDirectoryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2ToolServiceDirectoryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2ToolServiceDirectoryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2ToolServiceDirectoryConfig(od);
       });
     },
@@ -15709,10 +15709,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowV2UndeployConversationModelRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowV2UndeployConversationModelRequest(od);
       });
     },
@@ -16560,10 +16560,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -16627,10 +16627,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -17045,10 +17045,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchCreateEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -17112,10 +17112,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -17179,10 +17179,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -17736,8 +17736,9 @@ void main() {
   unittest.group('resource-ProjectsAgentEnvironmentsUsersSessionsResource', () {
     unittest.test('method--deleteContexts', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.environments.users.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17793,8 +17794,9 @@ void main() {
 
     unittest.test('method--detectIntent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.environments.users.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions;
       final arg_request = buildGoogleCloudDialogflowV2DetectIntentRequest();
       final arg_session = 'foo';
       final arg_$fields = 'foo';
@@ -17863,10 +17865,9 @@ void main() {
   unittest.group('resource-ProjectsAgentEnvironmentsUsersSessionsContextsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.agent.environments.users.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions.contexts;
       final arg_request = buildGoogleCloudDialogflowV2Context();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -17933,10 +17934,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.agent.environments.users.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions.contexts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17989,10 +17989,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.agent.environments.users.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions.contexts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18049,10 +18048,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.agent.environments.users.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions.contexts;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18124,10 +18122,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.agent.environments.users.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.environments.users.sessions.contexts;
       final arg_request = buildGoogleCloudDialogflowV2Context();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18204,10 +18201,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.agent.environments.users.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -18274,10 +18270,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.agent.environments.users.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -18330,10 +18325,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.agent.environments.users.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -18390,10 +18384,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.agent.environments.users.sessions.entityTypes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -18465,10 +18458,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.agent.environments.users.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -18551,10 +18543,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteIntentsRequest(obj);
 
           final path = req.url.path;
@@ -18618,10 +18610,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateIntentsRequest(obj);
 
           final path = req.url.path;
@@ -19392,8 +19384,9 @@ void main() {
   unittest.group('resource-ProjectsAgentKnowledgeBasesDocumentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2Document();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -19458,8 +19451,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19514,8 +19508,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19572,8 +19567,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -19651,8 +19647,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2Document();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19723,8 +19720,9 @@ void main() {
 
     unittest.test('method--reload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.agent.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2ReloadDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -21105,10 +21103,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ImportConversationDataRequest(obj);
 
           final path = req.url.path;
@@ -21366,10 +21364,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2DeployConversationModelRequest(obj);
 
           final path = req.url.path;
@@ -21562,10 +21560,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2UndeployConversationModelRequest(obj);
 
           final path = req.url.path;
@@ -21624,8 +21622,9 @@ void main() {
   unittest.group('resource-ProjectsConversationModelsEvaluationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.conversationModels.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversationModels.evaluations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21682,8 +21681,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.conversationModels.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversationModels.evaluations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -21765,10 +21765,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest(obj);
 
           final path = req.url.path;
@@ -22154,10 +22154,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest(obj);
 
           final path = req.url.path;
@@ -22223,10 +22223,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2CompleteConversationRequest(obj);
 
           final path = req.url.path;
@@ -22913,19 +22913,18 @@ void main() {
   unittest.group('resource-ProjectsConversationsParticipantsSuggestionsResource', () {
     unittest.test('method--suggestArticles', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.conversations.participants.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversations.participants.suggestions;
       final arg_request = buildGoogleCloudDialogflowV2SuggestArticlesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestArticlesRequest(obj);
 
           final path = req.url.path;
@@ -22984,20 +22983,19 @@ void main() {
 
     unittest.test('method--suggestFaqAnswers', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.conversations.participants.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversations.participants.suggestions;
       final arg_request =
           buildGoogleCloudDialogflowV2SuggestFaqAnswersRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestFaqAnswersRequest(obj);
 
           final path = req.url.path;
@@ -23056,20 +23054,19 @@ void main() {
 
     unittest.test('method--suggestKnowledgeAssist', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.conversations.participants.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversations.participants.suggestions;
       final arg_request =
           buildGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest(obj);
 
           final path = req.url.path;
@@ -23128,20 +23125,19 @@ void main() {
 
     unittest.test('method--suggestSmartReplies', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.conversations.participants.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.conversations.participants.suggestions;
       final arg_request =
           buildGoogleCloudDialogflowV2SuggestSmartRepliesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestSmartRepliesRequest(obj);
 
           final path = req.url.path;
@@ -23209,10 +23205,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2GenerateSuggestionsRequest(obj);
 
           final path = req.url.path;
@@ -23277,10 +23273,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SearchKnowledgeRequest(obj);
 
           final path = req.url.path;
@@ -23346,10 +23342,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(obj);
 
           final path = req.url.path;
@@ -24145,10 +24141,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ImportDocumentsRequest(obj);
 
           final path = req.url.path;
@@ -25338,10 +25334,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -25405,10 +25401,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -25816,18 +25812,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentEntityTypesEntitiesResource', () {
     unittest.test('method--batchCreate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.entityTypes.entities;
       final arg_request =
           buildGoogleCloudDialogflowV2BatchCreateEntitiesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchCreateEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchCreateEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -25884,18 +25881,19 @@ void main() {
 
     unittest.test('method--batchDelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.entityTypes.entities;
       final arg_request =
           buildGoogleCloudDialogflowV2BatchDeleteEntitiesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -25952,18 +25950,19 @@ void main() {
 
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.entityTypes.entities;
       final arg_request =
           buildGoogleCloudDialogflowV2BatchUpdateEntitiesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateEntitiesRequest(obj);
 
           final path = req.url.path;
@@ -26433,10 +26432,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.intents;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.intents;
         final arg_parent = 'foo';
         final arg_intentView = 'foo';
         final arg_languageCode = 'foo';
@@ -26525,10 +26523,9 @@ void main() {
     () {
       unittest.test('method--deleteContexts', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -26584,10 +26581,9 @@ void main() {
 
       unittest.test('method--detectIntent', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions;
         final arg_request = buildGoogleCloudDialogflowV2DetectIntentRequest();
         final arg_session = 'foo';
         final arg_$fields = 'foo';
@@ -26659,10 +26655,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.contexts;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.contexts;
         final arg_request = buildGoogleCloudDialogflowV2Context();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -26729,10 +26724,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.contexts;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.contexts;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -26785,10 +26779,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.contexts;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.contexts;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -26845,10 +26838,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.contexts;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.contexts;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -26920,10 +26912,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.contexts;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.contexts;
         final arg_request = buildGoogleCloudDialogflowV2Context();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -27001,10 +26992,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -27071,10 +27061,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -27127,10 +27116,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -27187,10 +27175,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.entityTypes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -27262,10 +27249,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agent.environments.users.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agent.environments.users.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -27348,10 +27334,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchDeleteIntentsRequest(obj);
 
           final path = req.url.path;
@@ -27415,10 +27401,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2BatchUpdateIntentsRequest(obj);
 
           final path = req.url.path;
@@ -27975,8 +27961,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentSessionsContextsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.contexts;
       final arg_request = buildGoogleCloudDialogflowV2Context();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -28043,8 +28030,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.contexts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28097,8 +28085,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.contexts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28155,8 +28144,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.contexts;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -28228,8 +28218,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.contexts;
       final arg_request = buildGoogleCloudDialogflowV2Context();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -28304,8 +28295,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentSessionsEntityTypesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.entityTypes;
       final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -28372,8 +28364,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.entityTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28426,8 +28419,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.entityTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28484,8 +28478,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.entityTypes;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -28557,8 +28552,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agent.sessions.entityTypes;
       final arg_request = buildGoogleCloudDialogflowV2SessionEntityType();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -29110,8 +29106,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationDatasetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationDatasets;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationDatasets;
       final arg_request = buildGoogleCloudDialogflowV2ConversationDataset();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -29176,8 +29173,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationDatasets;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationDatasets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -29232,8 +29230,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationDatasets;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationDatasets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -29290,18 +29289,19 @@ void main() {
 
     unittest.test('method--importConversationData', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationDatasets;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationDatasets;
       final arg_request =
           buildGoogleCloudDialogflowV2ImportConversationDataRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ImportConversationDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ImportConversationDataRequest(obj);
 
           final path = req.url.path;
@@ -29358,8 +29358,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationDatasets;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationDatasets;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -29560,10 +29561,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2DeployConversationModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2DeployConversationModelRequest(obj);
 
           final path = req.url.path;
@@ -29756,10 +29757,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2UndeployConversationModelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2UndeployConversationModelRequest(obj);
 
           final path = req.url.path;
@@ -29818,20 +29819,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationModelsEvaluationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.conversationModels.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationModels.evaluations;
       final arg_request =
           buildGoogleCloudDialogflowV2CreateConversationModelEvaluationRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2CreateConversationModelEvaluationRequest(
             obj,
           );
@@ -29890,10 +29890,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.conversationModels.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationModels.evaluations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -29950,10 +29949,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.conversationModels.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationModels.evaluations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -30028,18 +30026,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationProfilesResource', () {
     unittest.test('method--clearSuggestionFeatureConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_request =
           buildGoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest();
       final arg_conversationProfile = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest(obj);
 
           final path = req.url.path;
@@ -30096,8 +30095,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_request = buildGoogleCloudDialogflowV2ConversationProfile();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -30164,8 +30164,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30218,8 +30219,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30276,8 +30278,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -30349,8 +30352,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_request = buildGoogleCloudDialogflowV2ConversationProfile();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -30423,18 +30427,19 @@ void main() {
 
     unittest.test('method--setSuggestionFeatureConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversationProfiles;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversationProfiles;
       final arg_request =
           buildGoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest();
       final arg_conversationProfile = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest(obj);
 
           final path = req.url.path;
@@ -30500,10 +30505,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2CompleteConversationRequest(obj);
 
           final path = req.url.path;
@@ -30699,10 +30704,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2IngestContextReferencesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2IngestContextReferencesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2IngestContextReferencesRequest(obj);
 
           final path = req.url.path;
@@ -30841,8 +30846,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsMessagesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.messages;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.messages;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -30922,8 +30928,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsParticipantsResource', () {
     unittest.test('method--analyzeContent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.participants;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.participants;
       final arg_request = buildGoogleCloudDialogflowV2AnalyzeContentRequest();
       final arg_participant = 'foo';
       final arg_$fields = 'foo';
@@ -30990,8 +30997,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.participants;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.participants;
       final arg_request = buildGoogleCloudDialogflowV2Participant();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -31058,8 +31066,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.participants;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.participants;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -31116,8 +31125,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.participants;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.participants;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -31189,8 +31199,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.participants;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.participants;
       final arg_request = buildGoogleCloudDialogflowV2Participant();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -31267,20 +31278,19 @@ void main() {
     () {
       unittest.test('method--suggestArticles', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.conversations.participants.suggestions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.conversations.participants.suggestions;
         final arg_request =
             buildGoogleCloudDialogflowV2SuggestArticlesRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowV2SuggestArticlesRequest(obj);
 
             final path = req.url.path;
@@ -31339,20 +31349,19 @@ void main() {
 
       unittest.test('method--suggestFaqAnswers', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.conversations.participants.suggestions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.conversations.participants.suggestions;
         final arg_request =
             buildGoogleCloudDialogflowV2SuggestFaqAnswersRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowV2SuggestFaqAnswersRequest(obj);
 
             final path = req.url.path;
@@ -31411,20 +31420,19 @@ void main() {
 
       unittest.test('method--suggestKnowledgeAssist', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.conversations.participants.suggestions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.conversations.participants.suggestions;
         final arg_request =
             buildGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowV2SuggestKnowledgeAssistRequest(obj);
 
             final path = req.url.path;
@@ -31483,20 +31491,19 @@ void main() {
 
       unittest.test('method--suggestSmartReplies', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.conversations.participants.suggestions;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.conversations.participants.suggestions;
         final arg_request =
             buildGoogleCloudDialogflowV2SuggestSmartRepliesRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowV2SuggestSmartRepliesRequest(obj);
 
             final path = req.url.path;
@@ -31558,18 +31565,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsConversationsSuggestionsResource', () {
     unittest.test('method--generate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.suggestions;
       final arg_request =
           buildGoogleCloudDialogflowV2GenerateSuggestionsRequest();
       final arg_conversation = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2GenerateSuggestionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2GenerateSuggestionsRequest(obj);
 
           final path = req.url.path;
@@ -31628,17 +31636,18 @@ void main() {
 
     unittest.test('method--searchKnowledge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.suggestions;
       final arg_request = buildGoogleCloudDialogflowV2SearchKnowledgeRequest();
       final arg_conversation = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SearchKnowledgeRequest(obj);
 
           final path = req.url.path;
@@ -31697,18 +31706,19 @@ void main() {
 
     unittest.test('method--suggestConversationSummary', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.conversations.suggestions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.conversations.suggestions;
       final arg_request =
           buildGoogleCloudDialogflowV2SuggestConversationSummaryRequest();
       final arg_conversation = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SuggestConversationSummaryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SuggestConversationSummaryRequest(obj);
 
           final path = req.url.path;
@@ -31777,10 +31787,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2InitializeEncryptionSpecRequest(obj);
 
           final path = req.url.path;
@@ -32169,8 +32179,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGeneratorsEvaluationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.generators.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.generators.evaluations;
       final arg_request = buildGoogleCloudDialogflowV2GeneratorEvaluation();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -32235,8 +32246,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.generators.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.generators.evaluations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32289,8 +32301,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.generators.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.generators.evaluations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32347,8 +32360,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.generators.evaluations;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.generators.evaluations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -32761,8 +32775,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsKnowledgeBasesDocumentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2Document();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -32827,8 +32842,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32883,8 +32899,9 @@ void main() {
 
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2ExportDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -32949,8 +32966,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -33007,17 +33025,18 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2ImportDocumentsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2ImportDocumentsRequest(obj);
 
           final path = req.url.path;
@@ -33074,8 +33093,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -33153,8 +33173,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2Document();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -33225,8 +33246,9 @@ void main() {
 
     unittest.test('method--reload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.knowledgeBases.documents;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.knowledgeBases.documents;
       final arg_request = buildGoogleCloudDialogflowV2ReloadDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -33811,18 +33833,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsStatelessSuggestionResource', () {
     unittest.test('method--generate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.statelessSuggestion;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.statelessSuggestion;
       final arg_request =
           buildGoogleCloudDialogflowV2GenerateStatelessSuggestionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2GenerateStatelessSuggestionRequest(obj);
 
           final path = req.url.path;
@@ -33891,10 +33914,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2GenerateStatelessSummaryRequest(obj);
 
           final path = req.url.path;
@@ -33959,10 +33982,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SearchKnowledgeRequest(obj);
 
           final path = req.url.path;
@@ -34548,10 +34571,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2GenerateStatelessSummaryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2GenerateStatelessSummaryRequest(obj);
 
           final path = req.url.path;
@@ -34616,10 +34639,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowV2SearchKnowledgeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowV2SearchKnowledgeRequest(obj);
 
           final path = req.url.path;

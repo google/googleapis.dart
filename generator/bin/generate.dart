@@ -8,30 +8,28 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:googleapis_generator_dependency/googleapis_generator.dart';
 
-ArgParser _downloadCommandArgParser() =>
-    ArgParser()..addOption(
-      'output-dir',
-      abbr: 'o',
-      help: 'Output directory of discovery documents.',
-      defaultsTo: 'googleapis-discovery-documents',
-    );
+ArgParser _downloadCommandArgParser() => ArgParser()
+  ..addOption(
+    'output-dir',
+    abbr: 'o',
+    help: 'Output directory of discovery documents.',
+    defaultsTo: 'googleapis-discovery-documents',
+  );
 
-ArgParser _runConfigCommandArgParser() =>
-    ArgParser()
-      ..addCommand('download')
-      ..addCommand('generate')
-      ..addOption(
-        'config-file',
-        help: 'Configuration file describing package generation.',
-        defaultsTo: 'config.yaml',
-      )
-      ..addFlag('delete-existing', defaultsTo: true);
+ArgParser _runConfigCommandArgParser() => ArgParser()
+  ..addCommand('download')
+  ..addCommand('generate')
+  ..addOption(
+    'config-file',
+    help: 'Configuration file describing package generation.',
+    defaultsTo: 'config.yaml',
+  )
+  ..addFlag('delete-existing', defaultsTo: true);
 
-ArgParser _globalArgParser() =>
-    ArgParser()
-      ..addCommand('download', _downloadCommandArgParser())
-      ..addCommand('run_config', _runConfigCommandArgParser())
-      ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
+ArgParser _globalArgParser() => ArgParser()
+  ..addCommand('download', _downloadCommandArgParser())
+  ..addCommand('run_config', _runConfigCommandArgParser())
+  ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
 
 ArgResults _parseArguments(ArgParser parser, List<String> arguments) {
   try {

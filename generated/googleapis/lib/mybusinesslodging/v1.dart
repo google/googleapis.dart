@@ -95,8 +95,8 @@ class LocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -141,8 +141,8 @@ class LocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -189,8 +189,8 @@ class LocationsLodgingResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (readMask != null) 'readMask': [readMask],
-      if ($fields != null) 'fields': [$fields],
+      'readMask': ?readMask == null ? null : [readMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getGoogleUpdated';
@@ -311,24 +311,30 @@ class Accessibility {
             json_['mobilityAccessiblePoolException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobilityAccessible != null) 'mobilityAccessible': mobilityAccessible!,
-    if (mobilityAccessibleElevator != null)
-      'mobilityAccessibleElevator': mobilityAccessibleElevator!,
-    if (mobilityAccessibleElevatorException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobilityAccessible = this.mobilityAccessible;
+    final mobilityAccessibleElevator = this.mobilityAccessibleElevator;
+    final mobilityAccessibleElevatorException =
+        this.mobilityAccessibleElevatorException;
+    final mobilityAccessibleException = this.mobilityAccessibleException;
+    final mobilityAccessibleParking = this.mobilityAccessibleParking;
+    final mobilityAccessibleParkingException =
+        this.mobilityAccessibleParkingException;
+    final mobilityAccessiblePool = this.mobilityAccessiblePool;
+    final mobilityAccessiblePoolException =
+        this.mobilityAccessiblePoolException;
+    return {
+      'mobilityAccessible': ?mobilityAccessible,
+      'mobilityAccessibleElevator': ?mobilityAccessibleElevator,
       'mobilityAccessibleElevatorException':
-          mobilityAccessibleElevatorException!,
-    if (mobilityAccessibleException != null)
-      'mobilityAccessibleException': mobilityAccessibleException!,
-    if (mobilityAccessibleParking != null)
-      'mobilityAccessibleParking': mobilityAccessibleParking!,
-    if (mobilityAccessibleParkingException != null)
-      'mobilityAccessibleParkingException': mobilityAccessibleParkingException!,
-    if (mobilityAccessiblePool != null)
-      'mobilityAccessiblePool': mobilityAccessiblePool!,
-    if (mobilityAccessiblePoolException != null)
-      'mobilityAccessiblePoolException': mobilityAccessiblePoolException!,
-  };
+          ?mobilityAccessibleElevatorException,
+      'mobilityAccessibleException': ?mobilityAccessibleException,
+      'mobilityAccessibleParking': ?mobilityAccessibleParking,
+      'mobilityAccessibleParkingException': ?mobilityAccessibleParkingException,
+      'mobilityAccessiblePool': ?mobilityAccessiblePool,
+      'mobilityAccessiblePoolException': ?mobilityAccessiblePoolException,
+    };
+  }
 }
 
 /// Amenities and features related to leisure and play.
@@ -732,54 +738,78 @@ class Activities {
             json_['watercraftRentalException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beachAccess != null) 'beachAccess': beachAccess!,
-    if (beachAccessException != null)
-      'beachAccessException': beachAccessException!,
-    if (beachFront != null) 'beachFront': beachFront!,
-    if (beachFrontException != null)
-      'beachFrontException': beachFrontException!,
-    if (bicycleRental != null) 'bicycleRental': bicycleRental!,
-    if (bicycleRentalException != null)
-      'bicycleRentalException': bicycleRentalException!,
-    if (boutiqueStores != null) 'boutiqueStores': boutiqueStores!,
-    if (boutiqueStoresException != null)
-      'boutiqueStoresException': boutiqueStoresException!,
-    if (casino != null) 'casino': casino!,
-    if (casinoException != null) 'casinoException': casinoException!,
-    if (freeBicycleRental != null) 'freeBicycleRental': freeBicycleRental!,
-    if (freeBicycleRentalException != null)
-      'freeBicycleRentalException': freeBicycleRentalException!,
-    if (freeWatercraftRental != null)
-      'freeWatercraftRental': freeWatercraftRental!,
-    if (freeWatercraftRentalException != null)
-      'freeWatercraftRentalException': freeWatercraftRentalException!,
-    if (gameRoom != null) 'gameRoom': gameRoom!,
-    if (gameRoomException != null) 'gameRoomException': gameRoomException!,
-    if (golf != null) 'golf': golf!,
-    if (golfException != null) 'golfException': golfException!,
-    if (horsebackRiding != null) 'horsebackRiding': horsebackRiding!,
-    if (horsebackRidingException != null)
-      'horsebackRidingException': horsebackRidingException!,
-    if (nightclub != null) 'nightclub': nightclub!,
-    if (nightclubException != null) 'nightclubException': nightclubException!,
-    if (privateBeach != null) 'privateBeach': privateBeach!,
-    if (privateBeachException != null)
-      'privateBeachException': privateBeachException!,
-    if (scuba != null) 'scuba': scuba!,
-    if (scubaException != null) 'scubaException': scubaException!,
-    if (snorkeling != null) 'snorkeling': snorkeling!,
-    if (snorkelingException != null)
-      'snorkelingException': snorkelingException!,
-    if (tennis != null) 'tennis': tennis!,
-    if (tennisException != null) 'tennisException': tennisException!,
-    if (waterSkiing != null) 'waterSkiing': waterSkiing!,
-    if (waterSkiingException != null)
-      'waterSkiingException': waterSkiingException!,
-    if (watercraftRental != null) 'watercraftRental': watercraftRental!,
-    if (watercraftRentalException != null)
-      'watercraftRentalException': watercraftRentalException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final beachAccess = this.beachAccess;
+    final beachAccessException = this.beachAccessException;
+    final beachFront = this.beachFront;
+    final beachFrontException = this.beachFrontException;
+    final bicycleRental = this.bicycleRental;
+    final bicycleRentalException = this.bicycleRentalException;
+    final boutiqueStores = this.boutiqueStores;
+    final boutiqueStoresException = this.boutiqueStoresException;
+    final casino = this.casino;
+    final casinoException = this.casinoException;
+    final freeBicycleRental = this.freeBicycleRental;
+    final freeBicycleRentalException = this.freeBicycleRentalException;
+    final freeWatercraftRental = this.freeWatercraftRental;
+    final freeWatercraftRentalException = this.freeWatercraftRentalException;
+    final gameRoom = this.gameRoom;
+    final gameRoomException = this.gameRoomException;
+    final golf = this.golf;
+    final golfException = this.golfException;
+    final horsebackRiding = this.horsebackRiding;
+    final horsebackRidingException = this.horsebackRidingException;
+    final nightclub = this.nightclub;
+    final nightclubException = this.nightclubException;
+    final privateBeach = this.privateBeach;
+    final privateBeachException = this.privateBeachException;
+    final scuba = this.scuba;
+    final scubaException = this.scubaException;
+    final snorkeling = this.snorkeling;
+    final snorkelingException = this.snorkelingException;
+    final tennis = this.tennis;
+    final tennisException = this.tennisException;
+    final waterSkiing = this.waterSkiing;
+    final waterSkiingException = this.waterSkiingException;
+    final watercraftRental = this.watercraftRental;
+    final watercraftRentalException = this.watercraftRentalException;
+    return {
+      'beachAccess': ?beachAccess,
+      'beachAccessException': ?beachAccessException,
+      'beachFront': ?beachFront,
+      'beachFrontException': ?beachFrontException,
+      'bicycleRental': ?bicycleRental,
+      'bicycleRentalException': ?bicycleRentalException,
+      'boutiqueStores': ?boutiqueStores,
+      'boutiqueStoresException': ?boutiqueStoresException,
+      'casino': ?casino,
+      'casinoException': ?casinoException,
+      'freeBicycleRental': ?freeBicycleRental,
+      'freeBicycleRentalException': ?freeBicycleRentalException,
+      'freeWatercraftRental': ?freeWatercraftRental,
+      'freeWatercraftRentalException': ?freeWatercraftRentalException,
+      'gameRoom': ?gameRoom,
+      'gameRoomException': ?gameRoomException,
+      'golf': ?golf,
+      'golfException': ?golfException,
+      'horsebackRiding': ?horsebackRiding,
+      'horsebackRidingException': ?horsebackRidingException,
+      'nightclub': ?nightclub,
+      'nightclubException': ?nightclubException,
+      'privateBeach': ?privateBeach,
+      'privateBeachException': ?privateBeachException,
+      'scuba': ?scuba,
+      'scubaException': ?scubaException,
+      'snorkeling': ?snorkeling,
+      'snorkelingException': ?snorkelingException,
+      'tennis': ?tennis,
+      'tennisException': ?tennisException,
+      'waterSkiing': ?waterSkiing,
+      'waterSkiingException': ?waterSkiingException,
+      'watercraftRental': ?watercraftRental,
+      'watercraftRentalException': ?watercraftRentalException,
+    };
+  }
 }
 
 /// Features of the property of specific interest to the business traveler.
@@ -859,17 +889,22 @@ class Business {
         meetingRoomsException: json_['meetingRoomsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (businessCenter != null) 'businessCenter': businessCenter!,
-    if (businessCenterException != null)
-      'businessCenterException': businessCenterException!,
-    if (meetingRooms != null) 'meetingRooms': meetingRooms!,
-    if (meetingRoomsCount != null) 'meetingRoomsCount': meetingRoomsCount!,
-    if (meetingRoomsCountException != null)
-      'meetingRoomsCountException': meetingRoomsCountException!,
-    if (meetingRoomsException != null)
-      'meetingRoomsException': meetingRoomsException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessCenter = this.businessCenter;
+    final businessCenterException = this.businessCenterException;
+    final meetingRooms = this.meetingRooms;
+    final meetingRoomsCount = this.meetingRoomsCount;
+    final meetingRoomsCountException = this.meetingRoomsCountException;
+    final meetingRoomsException = this.meetingRoomsException;
+    return {
+      'businessCenter': ?businessCenter,
+      'businessCenterException': ?businessCenterException,
+      'meetingRooms': ?meetingRooms,
+      'meetingRoomsCount': ?meetingRoomsCount,
+      'meetingRoomsCountException': ?meetingRoomsCountException,
+      'meetingRoomsException': ?meetingRoomsException,
+    };
+  }
 }
 
 /// The ways in which the property provides guests with the ability to access
@@ -968,21 +1003,28 @@ class Connectivity {
         wifiAvailableException: json_['wifiAvailableException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (freeWifi != null) 'freeWifi': freeWifi!,
-    if (freeWifiException != null) 'freeWifiException': freeWifiException!,
-    if (publicAreaWifiAvailable != null)
-      'publicAreaWifiAvailable': publicAreaWifiAvailable!,
-    if (publicAreaWifiAvailableException != null)
-      'publicAreaWifiAvailableException': publicAreaWifiAvailableException!,
-    if (publicInternetTerminal != null)
-      'publicInternetTerminal': publicInternetTerminal!,
-    if (publicInternetTerminalException != null)
-      'publicInternetTerminalException': publicInternetTerminalException!,
-    if (wifiAvailable != null) 'wifiAvailable': wifiAvailable!,
-    if (wifiAvailableException != null)
-      'wifiAvailableException': wifiAvailableException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final freeWifi = this.freeWifi;
+    final freeWifiException = this.freeWifiException;
+    final publicAreaWifiAvailable = this.publicAreaWifiAvailable;
+    final publicAreaWifiAvailableException =
+        this.publicAreaWifiAvailableException;
+    final publicInternetTerminal = this.publicInternetTerminal;
+    final publicInternetTerminalException =
+        this.publicInternetTerminalException;
+    final wifiAvailable = this.wifiAvailable;
+    final wifiAvailableException = this.wifiAvailableException;
+    return {
+      'freeWifi': ?freeWifi,
+      'freeWifiException': ?freeWifiException,
+      'publicAreaWifiAvailable': ?publicAreaWifiAvailable,
+      'publicAreaWifiAvailableException': ?publicAreaWifiAvailableException,
+      'publicInternetTerminal': ?publicInternetTerminal,
+      'publicInternetTerminalException': ?publicInternetTerminalException,
+      'wifiAvailable': ?wifiAvailable,
+      'wifiAvailableException': ?wifiAvailableException,
+    };
+  }
 }
 
 /// An eco certificate awarded to the hotel.
@@ -1054,11 +1096,16 @@ class EcoCertification {
         ecoCertificate: json_['ecoCertificate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (awarded != null) 'awarded': awarded!,
-    if (awardedException != null) 'awardedException': awardedException!,
-    if (ecoCertificate != null) 'ecoCertificate': ecoCertificate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final awarded = this.awarded;
+    final awardedException = this.awardedException;
+    final ecoCertificate = this.ecoCertificate;
+    return {
+      'awarded': ?awarded,
+      'awardedException': ?awardedException,
+      'ecoCertificate': ?ecoCertificate,
+    };
+  }
 }
 
 /// Energy efficiency practices implemented at the hotel.
@@ -1258,40 +1305,50 @@ class EnergyEfficiency {
                 as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carbonFreeEnergySources != null)
-      'carbonFreeEnergySources': carbonFreeEnergySources!,
-    if (carbonFreeEnergySourcesException != null)
-      'carbonFreeEnergySourcesException': carbonFreeEnergySourcesException!,
-    if (energyConservationProgram != null)
-      'energyConservationProgram': energyConservationProgram!,
-    if (energyConservationProgramException != null)
-      'energyConservationProgramException': energyConservationProgramException!,
-    if (energyEfficientHeatingAndCoolingSystems != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final carbonFreeEnergySources = this.carbonFreeEnergySources;
+    final carbonFreeEnergySourcesException =
+        this.carbonFreeEnergySourcesException;
+    final energyConservationProgram = this.energyConservationProgram;
+    final energyConservationProgramException =
+        this.energyConservationProgramException;
+    final energyEfficientHeatingAndCoolingSystems =
+        this.energyEfficientHeatingAndCoolingSystems;
+    final energyEfficientHeatingAndCoolingSystemsException =
+        this.energyEfficientHeatingAndCoolingSystemsException;
+    final energyEfficientLighting = this.energyEfficientLighting;
+    final energyEfficientLightingException =
+        this.energyEfficientLightingException;
+    final energySavingThermostats = this.energySavingThermostats;
+    final energySavingThermostatsException =
+        this.energySavingThermostatsException;
+    final greenBuildingDesign = this.greenBuildingDesign;
+    final greenBuildingDesignException = this.greenBuildingDesignException;
+    final independentOrganizationAuditsEnergyUse =
+        this.independentOrganizationAuditsEnergyUse;
+    final independentOrganizationAuditsEnergyUseException =
+        this.independentOrganizationAuditsEnergyUseException;
+    return {
+      'carbonFreeEnergySources': ?carbonFreeEnergySources,
+      'carbonFreeEnergySourcesException': ?carbonFreeEnergySourcesException,
+      'energyConservationProgram': ?energyConservationProgram,
+      'energyConservationProgramException': ?energyConservationProgramException,
       'energyEfficientHeatingAndCoolingSystems':
-          energyEfficientHeatingAndCoolingSystems!,
-    if (energyEfficientHeatingAndCoolingSystemsException != null)
+          ?energyEfficientHeatingAndCoolingSystems,
       'energyEfficientHeatingAndCoolingSystemsException':
-          energyEfficientHeatingAndCoolingSystemsException!,
-    if (energyEfficientLighting != null)
-      'energyEfficientLighting': energyEfficientLighting!,
-    if (energyEfficientLightingException != null)
-      'energyEfficientLightingException': energyEfficientLightingException!,
-    if (energySavingThermostats != null)
-      'energySavingThermostats': energySavingThermostats!,
-    if (energySavingThermostatsException != null)
-      'energySavingThermostatsException': energySavingThermostatsException!,
-    if (greenBuildingDesign != null)
-      'greenBuildingDesign': greenBuildingDesign!,
-    if (greenBuildingDesignException != null)
-      'greenBuildingDesignException': greenBuildingDesignException!,
-    if (independentOrganizationAuditsEnergyUse != null)
+          ?energyEfficientHeatingAndCoolingSystemsException,
+      'energyEfficientLighting': ?energyEfficientLighting,
+      'energyEfficientLightingException': ?energyEfficientLightingException,
+      'energySavingThermostats': ?energySavingThermostats,
+      'energySavingThermostatsException': ?energySavingThermostatsException,
+      'greenBuildingDesign': ?greenBuildingDesign,
+      'greenBuildingDesignException': ?greenBuildingDesignException,
       'independentOrganizationAuditsEnergyUse':
-          independentOrganizationAuditsEnergyUse!,
-    if (independentOrganizationAuditsEnergyUseException != null)
+          ?independentOrganizationAuditsEnergyUse,
       'independentOrganizationAuditsEnergyUseException':
-          independentOrganizationAuditsEnergyUseException!,
-  };
+          ?independentOrganizationAuditsEnergyUseException,
+    };
+  }
 }
 
 /// Enhanced cleaning measures implemented by the hotel during COVID-19.
@@ -1426,40 +1483,52 @@ class EnhancedCleaning {
             json_['guestRoomsEnhancedCleaningException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commercialGradeDisinfectantCleaning != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final commercialGradeDisinfectantCleaning =
+        this.commercialGradeDisinfectantCleaning;
+    final commercialGradeDisinfectantCleaningException =
+        this.commercialGradeDisinfectantCleaningException;
+    final commonAreasEnhancedCleaning = this.commonAreasEnhancedCleaning;
+    final commonAreasEnhancedCleaningException =
+        this.commonAreasEnhancedCleaningException;
+    final employeesTrainedCleaningProcedures =
+        this.employeesTrainedCleaningProcedures;
+    final employeesTrainedCleaningProceduresException =
+        this.employeesTrainedCleaningProceduresException;
+    final employeesTrainedThoroughHandWashing =
+        this.employeesTrainedThoroughHandWashing;
+    final employeesTrainedThoroughHandWashingException =
+        this.employeesTrainedThoroughHandWashingException;
+    final employeesWearProtectiveEquipment =
+        this.employeesWearProtectiveEquipment;
+    final employeesWearProtectiveEquipmentException =
+        this.employeesWearProtectiveEquipmentException;
+    final guestRoomsEnhancedCleaning = this.guestRoomsEnhancedCleaning;
+    final guestRoomsEnhancedCleaningException =
+        this.guestRoomsEnhancedCleaningException;
+    return {
       'commercialGradeDisinfectantCleaning':
-          commercialGradeDisinfectantCleaning!,
-    if (commercialGradeDisinfectantCleaningException != null)
+          ?commercialGradeDisinfectantCleaning,
       'commercialGradeDisinfectantCleaningException':
-          commercialGradeDisinfectantCleaningException!,
-    if (commonAreasEnhancedCleaning != null)
-      'commonAreasEnhancedCleaning': commonAreasEnhancedCleaning!,
-    if (commonAreasEnhancedCleaningException != null)
+          ?commercialGradeDisinfectantCleaningException,
+      'commonAreasEnhancedCleaning': ?commonAreasEnhancedCleaning,
       'commonAreasEnhancedCleaningException':
-          commonAreasEnhancedCleaningException!,
-    if (employeesTrainedCleaningProcedures != null)
-      'employeesTrainedCleaningProcedures': employeesTrainedCleaningProcedures!,
-    if (employeesTrainedCleaningProceduresException != null)
+          ?commonAreasEnhancedCleaningException,
+      'employeesTrainedCleaningProcedures': ?employeesTrainedCleaningProcedures,
       'employeesTrainedCleaningProceduresException':
-          employeesTrainedCleaningProceduresException!,
-    if (employeesTrainedThoroughHandWashing != null)
+          ?employeesTrainedCleaningProceduresException,
       'employeesTrainedThoroughHandWashing':
-          employeesTrainedThoroughHandWashing!,
-    if (employeesTrainedThoroughHandWashingException != null)
+          ?employeesTrainedThoroughHandWashing,
       'employeesTrainedThoroughHandWashingException':
-          employeesTrainedThoroughHandWashingException!,
-    if (employeesWearProtectiveEquipment != null)
-      'employeesWearProtectiveEquipment': employeesWearProtectiveEquipment!,
-    if (employeesWearProtectiveEquipmentException != null)
+          ?employeesTrainedThoroughHandWashingException,
+      'employeesWearProtectiveEquipment': ?employeesWearProtectiveEquipment,
       'employeesWearProtectiveEquipmentException':
-          employeesWearProtectiveEquipmentException!,
-    if (guestRoomsEnhancedCleaning != null)
-      'guestRoomsEnhancedCleaning': guestRoomsEnhancedCleaning!,
-    if (guestRoomsEnhancedCleaningException != null)
+          ?employeesWearProtectiveEquipmentException,
+      'guestRoomsEnhancedCleaning': ?guestRoomsEnhancedCleaning,
       'guestRoomsEnhancedCleaningException':
-          guestRoomsEnhancedCleaningException!,
-  };
+          ?guestRoomsEnhancedCleaningException,
+    };
+  }
 }
 
 /// Services and amenities for families and young guests.
@@ -1563,19 +1632,26 @@ class Families {
         kidsFriendlyException: json_['kidsFriendlyException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (babysitting != null) 'babysitting': babysitting!,
-    if (babysittingException != null)
-      'babysittingException': babysittingException!,
-    if (kidsActivities != null) 'kidsActivities': kidsActivities!,
-    if (kidsActivitiesException != null)
-      'kidsActivitiesException': kidsActivitiesException!,
-    if (kidsClub != null) 'kidsClub': kidsClub!,
-    if (kidsClubException != null) 'kidsClubException': kidsClubException!,
-    if (kidsFriendly != null) 'kidsFriendly': kidsFriendly!,
-    if (kidsFriendlyException != null)
-      'kidsFriendlyException': kidsFriendlyException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final babysitting = this.babysitting;
+    final babysittingException = this.babysittingException;
+    final kidsActivities = this.kidsActivities;
+    final kidsActivitiesException = this.kidsActivitiesException;
+    final kidsClub = this.kidsClub;
+    final kidsClubException = this.kidsClubException;
+    final kidsFriendly = this.kidsFriendly;
+    final kidsFriendlyException = this.kidsFriendlyException;
+    return {
+      'babysitting': ?babysitting,
+      'babysittingException': ?babysittingException,
+      'kidsActivities': ?kidsActivities,
+      'kidsActivitiesException': ?kidsActivitiesException,
+      'kidsClub': ?kidsClub,
+      'kidsClubException': ?kidsClubException,
+      'kidsFriendly': ?kidsFriendly,
+      'kidsFriendlyException': ?kidsFriendlyException,
+    };
+  }
 }
 
 /// Meals, snacks, and beverages available at the property.
@@ -1851,43 +1927,59 @@ class FoodAndDrink {
             json_['vendingMachineException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bar != null) 'bar': bar!,
-    if (barException != null) 'barException': barException!,
-    if (breakfastAvailable != null) 'breakfastAvailable': breakfastAvailable!,
-    if (breakfastAvailableException != null)
-      'breakfastAvailableException': breakfastAvailableException!,
-    if (breakfastBuffet != null) 'breakfastBuffet': breakfastBuffet!,
-    if (breakfastBuffetException != null)
-      'breakfastBuffetException': breakfastBuffetException!,
-    if (buffet != null) 'buffet': buffet!,
-    if (buffetException != null) 'buffetException': buffetException!,
-    if (dinnerBuffet != null) 'dinnerBuffet': dinnerBuffet!,
-    if (dinnerBuffetException != null)
-      'dinnerBuffetException': dinnerBuffetException!,
-    if (freeBreakfast != null) 'freeBreakfast': freeBreakfast!,
-    if (freeBreakfastException != null)
-      'freeBreakfastException': freeBreakfastException!,
-    if (restaurant != null) 'restaurant': restaurant!,
-    if (restaurantException != null)
-      'restaurantException': restaurantException!,
-    if (restaurantsCount != null) 'restaurantsCount': restaurantsCount!,
-    if (restaurantsCountException != null)
-      'restaurantsCountException': restaurantsCountException!,
-    if (roomService != null) 'roomService': roomService!,
-    if (roomServiceException != null)
-      'roomServiceException': roomServiceException!,
-    if (tableService != null) 'tableService': tableService!,
-    if (tableServiceException != null)
-      'tableServiceException': tableServiceException!,
-    if (twentyFourHourRoomService != null)
-      'twentyFourHourRoomService': twentyFourHourRoomService!,
-    if (twentyFourHourRoomServiceException != null)
-      'twentyFourHourRoomServiceException': twentyFourHourRoomServiceException!,
-    if (vendingMachine != null) 'vendingMachine': vendingMachine!,
-    if (vendingMachineException != null)
-      'vendingMachineException': vendingMachineException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bar = this.bar;
+    final barException = this.barException;
+    final breakfastAvailable = this.breakfastAvailable;
+    final breakfastAvailableException = this.breakfastAvailableException;
+    final breakfastBuffet = this.breakfastBuffet;
+    final breakfastBuffetException = this.breakfastBuffetException;
+    final buffet = this.buffet;
+    final buffetException = this.buffetException;
+    final dinnerBuffet = this.dinnerBuffet;
+    final dinnerBuffetException = this.dinnerBuffetException;
+    final freeBreakfast = this.freeBreakfast;
+    final freeBreakfastException = this.freeBreakfastException;
+    final restaurant = this.restaurant;
+    final restaurantException = this.restaurantException;
+    final restaurantsCount = this.restaurantsCount;
+    final restaurantsCountException = this.restaurantsCountException;
+    final roomService = this.roomService;
+    final roomServiceException = this.roomServiceException;
+    final tableService = this.tableService;
+    final tableServiceException = this.tableServiceException;
+    final twentyFourHourRoomService = this.twentyFourHourRoomService;
+    final twentyFourHourRoomServiceException =
+        this.twentyFourHourRoomServiceException;
+    final vendingMachine = this.vendingMachine;
+    final vendingMachineException = this.vendingMachineException;
+    return {
+      'bar': ?bar,
+      'barException': ?barException,
+      'breakfastAvailable': ?breakfastAvailable,
+      'breakfastAvailableException': ?breakfastAvailableException,
+      'breakfastBuffet': ?breakfastBuffet,
+      'breakfastBuffetException': ?breakfastBuffetException,
+      'buffet': ?buffet,
+      'buffetException': ?buffetException,
+      'dinnerBuffet': ?dinnerBuffet,
+      'dinnerBuffetException': ?dinnerBuffetException,
+      'freeBreakfast': ?freeBreakfast,
+      'freeBreakfastException': ?freeBreakfastException,
+      'restaurant': ?restaurant,
+      'restaurantException': ?restaurantException,
+      'restaurantsCount': ?restaurantsCount,
+      'restaurantsCountException': ?restaurantsCountException,
+      'roomService': ?roomService,
+      'roomServiceException': ?roomServiceException,
+      'tableService': ?tableService,
+      'tableServiceException': ?tableServiceException,
+      'twentyFourHourRoomService': ?twentyFourHourRoomService,
+      'twentyFourHourRoomServiceException': ?twentyFourHourRoomServiceException,
+      'vendingMachine': ?vendingMachine,
+      'vendingMachineException': ?vendingMachineException,
+    };
+  }
 }
 
 /// Response message for LodgingService.GetGoogleUpdatedLodging
@@ -1909,18 +2001,18 @@ class GetGoogleUpdatedLodgingResponse {
   GetGoogleUpdatedLodgingResponse.fromJson(core.Map json_)
     : this(
         diffMask: json_['diffMask'] as core.String?,
-        lodging:
-            json_.containsKey('lodging')
-                ? Lodging.fromJson(
-                  json_['lodging'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lodging: json_.containsKey('lodging')
+            ? Lodging.fromJson(
+                json_['lodging'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diffMask != null) 'diffMask': diffMask!,
-    if (lodging != null) 'lodging': lodging!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diffMask = this.diffMask;
+    final lodging = this.lodging;
+    return {'diffMask': ?diffMask, 'lodging': ?lodging};
+  }
 }
 
 /// Features and available amenities in the guest unit.
@@ -2155,53 +2247,66 @@ class GuestUnitFeatures {
         suiteException: json_['suiteException'] as core.String?,
         tier: json_['tier'] as core.String?,
         tierException: json_['tierException'] as core.String?,
-        totalLivingAreas:
-            json_.containsKey('totalLivingAreas')
-                ? LivingArea.fromJson(
-                  json_['totalLivingAreas']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        views:
-            json_.containsKey('views')
-                ? ViewsFromUnit.fromJson(
-                  json_['views'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        totalLivingAreas: json_.containsKey('totalLivingAreas')
+            ? LivingArea.fromJson(
+                json_['totalLivingAreas']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        views: json_.containsKey('views')
+            ? ViewsFromUnit.fromJson(
+                json_['views'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bungalowOrVilla != null) 'bungalowOrVilla': bungalowOrVilla!,
-    if (bungalowOrVillaException != null)
-      'bungalowOrVillaException': bungalowOrVillaException!,
-    if (connectingUnitAvailable != null)
-      'connectingUnitAvailable': connectingUnitAvailable!,
-    if (connectingUnitAvailableException != null)
-      'connectingUnitAvailableException': connectingUnitAvailableException!,
-    if (executiveFloor != null) 'executiveFloor': executiveFloor!,
-    if (executiveFloorException != null)
-      'executiveFloorException': executiveFloorException!,
-    if (maxAdultOccupantsCount != null)
-      'maxAdultOccupantsCount': maxAdultOccupantsCount!,
-    if (maxAdultOccupantsCountException != null)
-      'maxAdultOccupantsCountException': maxAdultOccupantsCountException!,
-    if (maxChildOccupantsCount != null)
-      'maxChildOccupantsCount': maxChildOccupantsCount!,
-    if (maxChildOccupantsCountException != null)
-      'maxChildOccupantsCountException': maxChildOccupantsCountException!,
-    if (maxOccupantsCount != null) 'maxOccupantsCount': maxOccupantsCount!,
-    if (maxOccupantsCountException != null)
-      'maxOccupantsCountException': maxOccupantsCountException!,
-    if (privateHome != null) 'privateHome': privateHome!,
-    if (privateHomeException != null)
-      'privateHomeException': privateHomeException!,
-    if (suite != null) 'suite': suite!,
-    if (suiteException != null) 'suiteException': suiteException!,
-    if (tier != null) 'tier': tier!,
-    if (tierException != null) 'tierException': tierException!,
-    if (totalLivingAreas != null) 'totalLivingAreas': totalLivingAreas!,
-    if (views != null) 'views': views!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bungalowOrVilla = this.bungalowOrVilla;
+    final bungalowOrVillaException = this.bungalowOrVillaException;
+    final connectingUnitAvailable = this.connectingUnitAvailable;
+    final connectingUnitAvailableException =
+        this.connectingUnitAvailableException;
+    final executiveFloor = this.executiveFloor;
+    final executiveFloorException = this.executiveFloorException;
+    final maxAdultOccupantsCount = this.maxAdultOccupantsCount;
+    final maxAdultOccupantsCountException =
+        this.maxAdultOccupantsCountException;
+    final maxChildOccupantsCount = this.maxChildOccupantsCount;
+    final maxChildOccupantsCountException =
+        this.maxChildOccupantsCountException;
+    final maxOccupantsCount = this.maxOccupantsCount;
+    final maxOccupantsCountException = this.maxOccupantsCountException;
+    final privateHome = this.privateHome;
+    final privateHomeException = this.privateHomeException;
+    final suite = this.suite;
+    final suiteException = this.suiteException;
+    final tier = this.tier;
+    final tierException = this.tierException;
+    final totalLivingAreas = this.totalLivingAreas;
+    final views = this.views;
+    return {
+      'bungalowOrVilla': ?bungalowOrVilla,
+      'bungalowOrVillaException': ?bungalowOrVillaException,
+      'connectingUnitAvailable': ?connectingUnitAvailable,
+      'connectingUnitAvailableException': ?connectingUnitAvailableException,
+      'executiveFloor': ?executiveFloor,
+      'executiveFloorException': ?executiveFloorException,
+      'maxAdultOccupantsCount': ?maxAdultOccupantsCount,
+      'maxAdultOccupantsCountException': ?maxAdultOccupantsCountException,
+      'maxChildOccupantsCount': ?maxChildOccupantsCount,
+      'maxChildOccupantsCountException': ?maxChildOccupantsCountException,
+      'maxOccupantsCount': ?maxOccupantsCount,
+      'maxOccupantsCountException': ?maxOccupantsCountException,
+      'privateHome': ?privateHome,
+      'privateHomeException': ?privateHomeException,
+      'suite': ?suite,
+      'suiteException': ?suiteException,
+      'tier': ?tier,
+      'tierException': ?tierException,
+      'totalLivingAreas': ?totalLivingAreas,
+      'views': ?views,
+    };
+  }
 }
 
 /// A specific type of unit primarily defined by its features.
@@ -2227,24 +2332,23 @@ class GuestUnitType {
 
   GuestUnitType.fromJson(core.Map json_)
     : this(
-        codes:
-            (json_['codes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        features:
-            json_.containsKey('features')
-                ? GuestUnitFeatures.fromJson(
-                  json_['features'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        codes: (json_['codes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        features: json_.containsKey('features')
+            ? GuestUnitFeatures.fromJson(
+                json_['features'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         label: json_['label'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (codes != null) 'codes': codes!,
-    if (features != null) 'features': features!,
-    if (label != null) 'label': label!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final codes = this.codes;
+    final features = this.features;
+    final label = this.label;
+    return {'codes': ?codes, 'features': ?features, 'label': ?label};
+  }
 }
 
 /// Health and safety measures implemented by the hotel during COVID-19.
@@ -2274,51 +2378,52 @@ class HealthAndSafety {
 
   HealthAndSafety.fromJson(core.Map json_)
     : this(
-        enhancedCleaning:
-            json_.containsKey('enhancedCleaning')
-                ? EnhancedCleaning.fromJson(
-                  json_['enhancedCleaning']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        increasedFoodSafety:
-            json_.containsKey('increasedFoodSafety')
-                ? IncreasedFoodSafety.fromJson(
-                  json_['increasedFoodSafety']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        minimizedContact:
-            json_.containsKey('minimizedContact')
-                ? MinimizedContact.fromJson(
-                  json_['minimizedContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        personalProtection:
-            json_.containsKey('personalProtection')
-                ? PersonalProtection.fromJson(
-                  json_['personalProtection']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        physicalDistancing:
-            json_.containsKey('physicalDistancing')
-                ? PhysicalDistancing.fromJson(
-                  json_['physicalDistancing']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        enhancedCleaning: json_.containsKey('enhancedCleaning')
+            ? EnhancedCleaning.fromJson(
+                json_['enhancedCleaning']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        increasedFoodSafety: json_.containsKey('increasedFoodSafety')
+            ? IncreasedFoodSafety.fromJson(
+                json_['increasedFoodSafety']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minimizedContact: json_.containsKey('minimizedContact')
+            ? MinimizedContact.fromJson(
+                json_['minimizedContact']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        personalProtection: json_.containsKey('personalProtection')
+            ? PersonalProtection.fromJson(
+                json_['personalProtection']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        physicalDistancing: json_.containsKey('physicalDistancing')
+            ? PhysicalDistancing.fromJson(
+                json_['physicalDistancing']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enhancedCleaning != null) 'enhancedCleaning': enhancedCleaning!,
-    if (increasedFoodSafety != null)
-      'increasedFoodSafety': increasedFoodSafety!,
-    if (minimizedContact != null) 'minimizedContact': minimizedContact!,
-    if (personalProtection != null) 'personalProtection': personalProtection!,
-    if (physicalDistancing != null) 'physicalDistancing': physicalDistancing!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enhancedCleaning = this.enhancedCleaning;
+    final increasedFoodSafety = this.increasedFoodSafety;
+    final minimizedContact = this.minimizedContact;
+    final personalProtection = this.personalProtection;
+    final physicalDistancing = this.physicalDistancing;
+    return {
+      'enhancedCleaning': ?enhancedCleaning,
+      'increasedFoodSafety': ?increasedFoodSafety,
+      'minimizedContact': ?minimizedContact,
+      'personalProtection': ?personalProtection,
+      'physicalDistancing': ?physicalDistancing,
+    };
+  }
 }
 
 /// Conveniences provided in guest units to facilitate an easier, more
@@ -2397,18 +2502,22 @@ class Housekeeping {
             json_['turndownServiceException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dailyHousekeeping != null) 'dailyHousekeeping': dailyHousekeeping!,
-    if (dailyHousekeepingException != null)
-      'dailyHousekeepingException': dailyHousekeepingException!,
-    if (housekeepingAvailable != null)
-      'housekeepingAvailable': housekeepingAvailable!,
-    if (housekeepingAvailableException != null)
-      'housekeepingAvailableException': housekeepingAvailableException!,
-    if (turndownService != null) 'turndownService': turndownService!,
-    if (turndownServiceException != null)
-      'turndownServiceException': turndownServiceException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dailyHousekeeping = this.dailyHousekeeping;
+    final dailyHousekeepingException = this.dailyHousekeepingException;
+    final housekeepingAvailable = this.housekeepingAvailable;
+    final housekeepingAvailableException = this.housekeepingAvailableException;
+    final turndownService = this.turndownService;
+    final turndownServiceException = this.turndownServiceException;
+    return {
+      'dailyHousekeeping': ?dailyHousekeeping,
+      'dailyHousekeepingException': ?dailyHousekeepingException,
+      'housekeepingAvailable': ?housekeepingAvailable,
+      'housekeepingAvailableException': ?housekeepingAvailableException,
+      'turndownService': ?turndownService,
+      'turndownServiceException': ?turndownServiceException,
+    };
+  }
 }
 
 /// Increased food safety measures implemented by the hotel during COVID-19.
@@ -2518,29 +2627,38 @@ class IncreasedFoodSafety {
             json_['singleUseFoodMenusException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diningAreasAdditionalSanitation != null)
-      'diningAreasAdditionalSanitation': diningAreasAdditionalSanitation!,
-    if (diningAreasAdditionalSanitationException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final diningAreasAdditionalSanitation =
+        this.diningAreasAdditionalSanitation;
+    final diningAreasAdditionalSanitationException =
+        this.diningAreasAdditionalSanitationException;
+    final disposableFlatware = this.disposableFlatware;
+    final disposableFlatwareException = this.disposableFlatwareException;
+    final foodPreparationAndServingAdditionalSafety =
+        this.foodPreparationAndServingAdditionalSafety;
+    final foodPreparationAndServingAdditionalSafetyException =
+        this.foodPreparationAndServingAdditionalSafetyException;
+    final individualPackagedMeals = this.individualPackagedMeals;
+    final individualPackagedMealsException =
+        this.individualPackagedMealsException;
+    final singleUseFoodMenus = this.singleUseFoodMenus;
+    final singleUseFoodMenusException = this.singleUseFoodMenusException;
+    return {
+      'diningAreasAdditionalSanitation': ?diningAreasAdditionalSanitation,
       'diningAreasAdditionalSanitationException':
-          diningAreasAdditionalSanitationException!,
-    if (disposableFlatware != null) 'disposableFlatware': disposableFlatware!,
-    if (disposableFlatwareException != null)
-      'disposableFlatwareException': disposableFlatwareException!,
-    if (foodPreparationAndServingAdditionalSafety != null)
+          ?diningAreasAdditionalSanitationException,
+      'disposableFlatware': ?disposableFlatware,
+      'disposableFlatwareException': ?disposableFlatwareException,
       'foodPreparationAndServingAdditionalSafety':
-          foodPreparationAndServingAdditionalSafety!,
-    if (foodPreparationAndServingAdditionalSafetyException != null)
+          ?foodPreparationAndServingAdditionalSafety,
       'foodPreparationAndServingAdditionalSafetyException':
-          foodPreparationAndServingAdditionalSafetyException!,
-    if (individualPackagedMeals != null)
-      'individualPackagedMeals': individualPackagedMeals!,
-    if (individualPackagedMealsException != null)
-      'individualPackagedMealsException': individualPackagedMealsException!,
-    if (singleUseFoodMenus != null) 'singleUseFoodMenus': singleUseFoodMenus!,
-    if (singleUseFoodMenusException != null)
-      'singleUseFoodMenusException': singleUseFoodMenusException!,
-  };
+          ?foodPreparationAndServingAdditionalSafetyException,
+      'individualPackagedMeals': ?individualPackagedMeals,
+      'individualPackagedMealsException': ?individualPackagedMealsException,
+      'singleUseFoodMenus': ?singleUseFoodMenus,
+      'singleUseFoodMenusException': ?singleUseFoodMenusException,
+    };
+  }
 }
 
 /// Language spoken by at least one staff member.
@@ -2576,11 +2694,16 @@ class LanguageSpoken {
         spokenException: json_['spokenException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (spoken != null) 'spoken': spoken!,
-    if (spokenException != null) 'spokenException': spokenException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCode = this.languageCode;
+    final spoken = this.spoken;
+    final spokenException = this.spokenException;
+    return {
+      'languageCode': ?languageCode,
+      'spoken': ?spoken,
+      'spokenException': ?spokenException,
+    };
+  }
 }
 
 /// An individual room, such as kitchen, bathroom, bedroom, within a bookable
@@ -2611,45 +2734,47 @@ class LivingArea {
 
   LivingArea.fromJson(core.Map json_)
     : this(
-        accessibility:
-            json_.containsKey('accessibility')
-                ? LivingAreaAccessibility.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        eating:
-            json_.containsKey('eating')
-                ? LivingAreaEating.fromJson(
-                  json_['eating'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        features:
-            json_.containsKey('features')
-                ? LivingAreaFeatures.fromJson(
-                  json_['features'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        layout:
-            json_.containsKey('layout')
-                ? LivingAreaLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sleeping:
-            json_.containsKey('sleeping')
-                ? LivingAreaSleeping.fromJson(
-                  json_['sleeping'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessibility: json_.containsKey('accessibility')
+            ? LivingAreaAccessibility.fromJson(
+                json_['accessibility'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eating: json_.containsKey('eating')
+            ? LivingAreaEating.fromJson(
+                json_['eating'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        features: json_.containsKey('features')
+            ? LivingAreaFeatures.fromJson(
+                json_['features'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        layout: json_.containsKey('layout')
+            ? LivingAreaLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sleeping: json_.containsKey('sleeping')
+            ? LivingAreaSleeping.fromJson(
+                json_['sleeping'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessibility != null) 'accessibility': accessibility!,
-    if (eating != null) 'eating': eating!,
-    if (features != null) 'features': features!,
-    if (layout != null) 'layout': layout!,
-    if (sleeping != null) 'sleeping': sleeping!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessibility = this.accessibility;
+    final eating = this.eating;
+    final features = this.features;
+    final layout = this.layout;
+    final sleeping = this.sleeping;
+    return {
+      'accessibility': ?accessibility,
+      'eating': ?eating,
+      'features': ?features,
+      'layout': ?layout,
+      'sleeping': ?sleeping,
+    };
+  }
 }
 
 /// Accessibility features of the living area.
@@ -2846,40 +2971,49 @@ class LivingAreaAccessibility {
             json_['mobilityAccessibleUnitException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adaCompliantUnit != null) 'adaCompliantUnit': adaCompliantUnit!,
-    if (adaCompliantUnitException != null)
-      'adaCompliantUnitException': adaCompliantUnitException!,
-    if (hearingAccessibleDoorbell != null)
-      'hearingAccessibleDoorbell': hearingAccessibleDoorbell!,
-    if (hearingAccessibleDoorbellException != null)
-      'hearingAccessibleDoorbellException': hearingAccessibleDoorbellException!,
-    if (hearingAccessibleFireAlarm != null)
-      'hearingAccessibleFireAlarm': hearingAccessibleFireAlarm!,
-    if (hearingAccessibleFireAlarmException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final adaCompliantUnit = this.adaCompliantUnit;
+    final adaCompliantUnitException = this.adaCompliantUnitException;
+    final hearingAccessibleDoorbell = this.hearingAccessibleDoorbell;
+    final hearingAccessibleDoorbellException =
+        this.hearingAccessibleDoorbellException;
+    final hearingAccessibleFireAlarm = this.hearingAccessibleFireAlarm;
+    final hearingAccessibleFireAlarmException =
+        this.hearingAccessibleFireAlarmException;
+    final hearingAccessibleUnit = this.hearingAccessibleUnit;
+    final hearingAccessibleUnitException = this.hearingAccessibleUnitException;
+    final mobilityAccessibleBathtub = this.mobilityAccessibleBathtub;
+    final mobilityAccessibleBathtubException =
+        this.mobilityAccessibleBathtubException;
+    final mobilityAccessibleShower = this.mobilityAccessibleShower;
+    final mobilityAccessibleShowerException =
+        this.mobilityAccessibleShowerException;
+    final mobilityAccessibleToilet = this.mobilityAccessibleToilet;
+    final mobilityAccessibleToiletException =
+        this.mobilityAccessibleToiletException;
+    final mobilityAccessibleUnit = this.mobilityAccessibleUnit;
+    final mobilityAccessibleUnitException =
+        this.mobilityAccessibleUnitException;
+    return {
+      'adaCompliantUnit': ?adaCompliantUnit,
+      'adaCompliantUnitException': ?adaCompliantUnitException,
+      'hearingAccessibleDoorbell': ?hearingAccessibleDoorbell,
+      'hearingAccessibleDoorbellException': ?hearingAccessibleDoorbellException,
+      'hearingAccessibleFireAlarm': ?hearingAccessibleFireAlarm,
       'hearingAccessibleFireAlarmException':
-          hearingAccessibleFireAlarmException!,
-    if (hearingAccessibleUnit != null)
-      'hearingAccessibleUnit': hearingAccessibleUnit!,
-    if (hearingAccessibleUnitException != null)
-      'hearingAccessibleUnitException': hearingAccessibleUnitException!,
-    if (mobilityAccessibleBathtub != null)
-      'mobilityAccessibleBathtub': mobilityAccessibleBathtub!,
-    if (mobilityAccessibleBathtubException != null)
-      'mobilityAccessibleBathtubException': mobilityAccessibleBathtubException!,
-    if (mobilityAccessibleShower != null)
-      'mobilityAccessibleShower': mobilityAccessibleShower!,
-    if (mobilityAccessibleShowerException != null)
-      'mobilityAccessibleShowerException': mobilityAccessibleShowerException!,
-    if (mobilityAccessibleToilet != null)
-      'mobilityAccessibleToilet': mobilityAccessibleToilet!,
-    if (mobilityAccessibleToiletException != null)
-      'mobilityAccessibleToiletException': mobilityAccessibleToiletException!,
-    if (mobilityAccessibleUnit != null)
-      'mobilityAccessibleUnit': mobilityAccessibleUnit!,
-    if (mobilityAccessibleUnitException != null)
-      'mobilityAccessibleUnitException': mobilityAccessibleUnitException!,
-  };
+          ?hearingAccessibleFireAlarmException,
+      'hearingAccessibleUnit': ?hearingAccessibleUnit,
+      'hearingAccessibleUnitException': ?hearingAccessibleUnitException,
+      'mobilityAccessibleBathtub': ?mobilityAccessibleBathtub,
+      'mobilityAccessibleBathtubException': ?mobilityAccessibleBathtubException,
+      'mobilityAccessibleShower': ?mobilityAccessibleShower,
+      'mobilityAccessibleShowerException': ?mobilityAccessibleShowerException,
+      'mobilityAccessibleToilet': ?mobilityAccessibleToilet,
+      'mobilityAccessibleToiletException': ?mobilityAccessibleToiletException,
+      'mobilityAccessibleUnit': ?mobilityAccessibleUnit,
+      'mobilityAccessibleUnitException': ?mobilityAccessibleUnitException,
+    };
+  }
 }
 
 /// Information about eating features in the living area.
@@ -3237,47 +3371,74 @@ class LivingAreaEating {
         toasterException: json_['toasterException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coffeeMaker != null) 'coffeeMaker': coffeeMaker!,
-    if (coffeeMakerException != null)
-      'coffeeMakerException': coffeeMakerException!,
-    if (cookware != null) 'cookware': cookware!,
-    if (cookwareException != null) 'cookwareException': cookwareException!,
-    if (dishwasher != null) 'dishwasher': dishwasher!,
-    if (dishwasherException != null)
-      'dishwasherException': dishwasherException!,
-    if (indoorGrill != null) 'indoorGrill': indoorGrill!,
-    if (indoorGrillException != null)
-      'indoorGrillException': indoorGrillException!,
-    if (kettle != null) 'kettle': kettle!,
-    if (kettleException != null) 'kettleException': kettleException!,
-    if (kitchenAvailable != null) 'kitchenAvailable': kitchenAvailable!,
-    if (kitchenAvailableException != null)
-      'kitchenAvailableException': kitchenAvailableException!,
-    if (microwave != null) 'microwave': microwave!,
-    if (microwaveException != null) 'microwaveException': microwaveException!,
-    if (minibar != null) 'minibar': minibar!,
-    if (minibarException != null) 'minibarException': minibarException!,
-    if (outdoorGrill != null) 'outdoorGrill': outdoorGrill!,
-    if (outdoorGrillException != null)
-      'outdoorGrillException': outdoorGrillException!,
-    if (oven != null) 'oven': oven!,
-    if (ovenException != null) 'ovenException': ovenException!,
-    if (refrigerator != null) 'refrigerator': refrigerator!,
-    if (refrigeratorException != null)
-      'refrigeratorException': refrigeratorException!,
-    if (sink != null) 'sink': sink!,
-    if (sinkException != null) 'sinkException': sinkException!,
-    if (snackbar != null) 'snackbar': snackbar!,
-    if (snackbarException != null) 'snackbarException': snackbarException!,
-    if (stove != null) 'stove': stove!,
-    if (stoveException != null) 'stoveException': stoveException!,
-    if (teaStation != null) 'teaStation': teaStation!,
-    if (teaStationException != null)
-      'teaStationException': teaStationException!,
-    if (toaster != null) 'toaster': toaster!,
-    if (toasterException != null) 'toasterException': toasterException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coffeeMaker = this.coffeeMaker;
+    final coffeeMakerException = this.coffeeMakerException;
+    final cookware = this.cookware;
+    final cookwareException = this.cookwareException;
+    final dishwasher = this.dishwasher;
+    final dishwasherException = this.dishwasherException;
+    final indoorGrill = this.indoorGrill;
+    final indoorGrillException = this.indoorGrillException;
+    final kettle = this.kettle;
+    final kettleException = this.kettleException;
+    final kitchenAvailable = this.kitchenAvailable;
+    final kitchenAvailableException = this.kitchenAvailableException;
+    final microwave = this.microwave;
+    final microwaveException = this.microwaveException;
+    final minibar = this.minibar;
+    final minibarException = this.minibarException;
+    final outdoorGrill = this.outdoorGrill;
+    final outdoorGrillException = this.outdoorGrillException;
+    final oven = this.oven;
+    final ovenException = this.ovenException;
+    final refrigerator = this.refrigerator;
+    final refrigeratorException = this.refrigeratorException;
+    final sink = this.sink;
+    final sinkException = this.sinkException;
+    final snackbar = this.snackbar;
+    final snackbarException = this.snackbarException;
+    final stove = this.stove;
+    final stoveException = this.stoveException;
+    final teaStation = this.teaStation;
+    final teaStationException = this.teaStationException;
+    final toaster = this.toaster;
+    final toasterException = this.toasterException;
+    return {
+      'coffeeMaker': ?coffeeMaker,
+      'coffeeMakerException': ?coffeeMakerException,
+      'cookware': ?cookware,
+      'cookwareException': ?cookwareException,
+      'dishwasher': ?dishwasher,
+      'dishwasherException': ?dishwasherException,
+      'indoorGrill': ?indoorGrill,
+      'indoorGrillException': ?indoorGrillException,
+      'kettle': ?kettle,
+      'kettleException': ?kettleException,
+      'kitchenAvailable': ?kitchenAvailable,
+      'kitchenAvailableException': ?kitchenAvailableException,
+      'microwave': ?microwave,
+      'microwaveException': ?microwaveException,
+      'minibar': ?minibar,
+      'minibarException': ?minibarException,
+      'outdoorGrill': ?outdoorGrill,
+      'outdoorGrillException': ?outdoorGrillException,
+      'oven': ?oven,
+      'ovenException': ?ovenException,
+      'refrigerator': ?refrigerator,
+      'refrigeratorException': ?refrigeratorException,
+      'sink': ?sink,
+      'sinkException': ?sinkException,
+      'snackbar': ?snackbar,
+      'snackbarException': ?snackbarException,
+      'stove': ?stove,
+      'stoveException': ?stoveException,
+      'teaStation': ?teaStation,
+      'teaStationException': ?teaStationException,
+      'toaster': ?toaster,
+      'toasterException': ?toasterException,
+    };
+  }
 }
 
 /// Features in the living area.
@@ -3724,59 +3885,91 @@ class LivingAreaFeatures {
         washerException: json_['washerException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airConditioning != null) 'airConditioning': airConditioning!,
-    if (airConditioningException != null)
-      'airConditioningException': airConditioningException!,
-    if (bathtub != null) 'bathtub': bathtub!,
-    if (bathtubException != null) 'bathtubException': bathtubException!,
-    if (bidet != null) 'bidet': bidet!,
-    if (bidetException != null) 'bidetException': bidetException!,
-    if (dryer != null) 'dryer': dryer!,
-    if (dryerException != null) 'dryerException': dryerException!,
-    if (electronicRoomKey != null) 'electronicRoomKey': electronicRoomKey!,
-    if (electronicRoomKeyException != null)
-      'electronicRoomKeyException': electronicRoomKeyException!,
-    if (fireplace != null) 'fireplace': fireplace!,
-    if (fireplaceException != null) 'fireplaceException': fireplaceException!,
-    if (hairdryer != null) 'hairdryer': hairdryer!,
-    if (hairdryerException != null) 'hairdryerException': hairdryerException!,
-    if (heating != null) 'heating': heating!,
-    if (heatingException != null) 'heatingException': heatingException!,
-    if (inunitSafe != null) 'inunitSafe': inunitSafe!,
-    if (inunitSafeException != null)
-      'inunitSafeException': inunitSafeException!,
-    if (inunitWifiAvailable != null)
-      'inunitWifiAvailable': inunitWifiAvailable!,
-    if (inunitWifiAvailableException != null)
-      'inunitWifiAvailableException': inunitWifiAvailableException!,
-    if (ironingEquipment != null) 'ironingEquipment': ironingEquipment!,
-    if (ironingEquipmentException != null)
-      'ironingEquipmentException': ironingEquipmentException!,
-    if (payPerViewMovies != null) 'payPerViewMovies': payPerViewMovies!,
-    if (payPerViewMoviesException != null)
-      'payPerViewMoviesException': payPerViewMoviesException!,
-    if (privateBathroom != null) 'privateBathroom': privateBathroom!,
-    if (privateBathroomException != null)
-      'privateBathroomException': privateBathroomException!,
-    if (shower != null) 'shower': shower!,
-    if (showerException != null) 'showerException': showerException!,
-    if (toilet != null) 'toilet': toilet!,
-    if (toiletException != null) 'toiletException': toiletException!,
-    if (tv != null) 'tv': tv!,
-    if (tvCasting != null) 'tvCasting': tvCasting!,
-    if (tvCastingException != null) 'tvCastingException': tvCastingException!,
-    if (tvException != null) 'tvException': tvException!,
-    if (tvStreaming != null) 'tvStreaming': tvStreaming!,
-    if (tvStreamingException != null)
-      'tvStreamingException': tvStreamingException!,
-    if (universalPowerAdapters != null)
-      'universalPowerAdapters': universalPowerAdapters!,
-    if (universalPowerAdaptersException != null)
-      'universalPowerAdaptersException': universalPowerAdaptersException!,
-    if (washer != null) 'washer': washer!,
-    if (washerException != null) 'washerException': washerException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airConditioning = this.airConditioning;
+    final airConditioningException = this.airConditioningException;
+    final bathtub = this.bathtub;
+    final bathtubException = this.bathtubException;
+    final bidet = this.bidet;
+    final bidetException = this.bidetException;
+    final dryer = this.dryer;
+    final dryerException = this.dryerException;
+    final electronicRoomKey = this.electronicRoomKey;
+    final electronicRoomKeyException = this.electronicRoomKeyException;
+    final fireplace = this.fireplace;
+    final fireplaceException = this.fireplaceException;
+    final hairdryer = this.hairdryer;
+    final hairdryerException = this.hairdryerException;
+    final heating = this.heating;
+    final heatingException = this.heatingException;
+    final inunitSafe = this.inunitSafe;
+    final inunitSafeException = this.inunitSafeException;
+    final inunitWifiAvailable = this.inunitWifiAvailable;
+    final inunitWifiAvailableException = this.inunitWifiAvailableException;
+    final ironingEquipment = this.ironingEquipment;
+    final ironingEquipmentException = this.ironingEquipmentException;
+    final payPerViewMovies = this.payPerViewMovies;
+    final payPerViewMoviesException = this.payPerViewMoviesException;
+    final privateBathroom = this.privateBathroom;
+    final privateBathroomException = this.privateBathroomException;
+    final shower = this.shower;
+    final showerException = this.showerException;
+    final toilet = this.toilet;
+    final toiletException = this.toiletException;
+    final tv = this.tv;
+    final tvCasting = this.tvCasting;
+    final tvCastingException = this.tvCastingException;
+    final tvException = this.tvException;
+    final tvStreaming = this.tvStreaming;
+    final tvStreamingException = this.tvStreamingException;
+    final universalPowerAdapters = this.universalPowerAdapters;
+    final universalPowerAdaptersException =
+        this.universalPowerAdaptersException;
+    final washer = this.washer;
+    final washerException = this.washerException;
+    return {
+      'airConditioning': ?airConditioning,
+      'airConditioningException': ?airConditioningException,
+      'bathtub': ?bathtub,
+      'bathtubException': ?bathtubException,
+      'bidet': ?bidet,
+      'bidetException': ?bidetException,
+      'dryer': ?dryer,
+      'dryerException': ?dryerException,
+      'electronicRoomKey': ?electronicRoomKey,
+      'electronicRoomKeyException': ?electronicRoomKeyException,
+      'fireplace': ?fireplace,
+      'fireplaceException': ?fireplaceException,
+      'hairdryer': ?hairdryer,
+      'hairdryerException': ?hairdryerException,
+      'heating': ?heating,
+      'heatingException': ?heatingException,
+      'inunitSafe': ?inunitSafe,
+      'inunitSafeException': ?inunitSafeException,
+      'inunitWifiAvailable': ?inunitWifiAvailable,
+      'inunitWifiAvailableException': ?inunitWifiAvailableException,
+      'ironingEquipment': ?ironingEquipment,
+      'ironingEquipmentException': ?ironingEquipmentException,
+      'payPerViewMovies': ?payPerViewMovies,
+      'payPerViewMoviesException': ?payPerViewMoviesException,
+      'privateBathroom': ?privateBathroom,
+      'privateBathroomException': ?privateBathroomException,
+      'shower': ?shower,
+      'showerException': ?showerException,
+      'toilet': ?toilet,
+      'toiletException': ?toiletException,
+      'tv': ?tv,
+      'tvCasting': ?tvCasting,
+      'tvCastingException': ?tvCastingException,
+      'tvException': ?tvException,
+      'tvStreaming': ?tvStreaming,
+      'tvStreamingException': ?tvStreamingException,
+      'universalPowerAdapters': ?universalPowerAdapters,
+      'universalPowerAdaptersException': ?universalPowerAdaptersException,
+      'washer': ?washer,
+      'washerException': ?washerException,
+    };
+  }
 }
 
 /// Information about the layout of the living area.
@@ -3903,8 +4096,8 @@ class LivingAreaLayout {
     : this(
         balcony: json_['balcony'] as core.bool?,
         balconyException: json_['balconyException'] as core.String?,
-        livingAreaSqMeters:
-            (json_['livingAreaSqMeters'] as core.num?)?.toDouble(),
+        livingAreaSqMeters: (json_['livingAreaSqMeters'] as core.num?)
+            ?.toDouble(),
         livingAreaSqMetersException:
             json_['livingAreaSqMetersException'] as core.String?,
         loft: json_['loft'] as core.bool?,
@@ -3917,22 +4110,34 @@ class LivingAreaLayout {
         stairsException: json_['stairsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (balcony != null) 'balcony': balcony!,
-    if (balconyException != null) 'balconyException': balconyException!,
-    if (livingAreaSqMeters != null) 'livingAreaSqMeters': livingAreaSqMeters!,
-    if (livingAreaSqMetersException != null)
-      'livingAreaSqMetersException': livingAreaSqMetersException!,
-    if (loft != null) 'loft': loft!,
-    if (loftException != null) 'loftException': loftException!,
-    if (nonSmoking != null) 'nonSmoking': nonSmoking!,
-    if (nonSmokingException != null)
-      'nonSmokingException': nonSmokingException!,
-    if (patio != null) 'patio': patio!,
-    if (patioException != null) 'patioException': patioException!,
-    if (stairs != null) 'stairs': stairs!,
-    if (stairsException != null) 'stairsException': stairsException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final balcony = this.balcony;
+    final balconyException = this.balconyException;
+    final livingAreaSqMeters = this.livingAreaSqMeters;
+    final livingAreaSqMetersException = this.livingAreaSqMetersException;
+    final loft = this.loft;
+    final loftException = this.loftException;
+    final nonSmoking = this.nonSmoking;
+    final nonSmokingException = this.nonSmokingException;
+    final patio = this.patio;
+    final patioException = this.patioException;
+    final stairs = this.stairs;
+    final stairsException = this.stairsException;
+    return {
+      'balcony': ?balcony,
+      'balconyException': ?balconyException,
+      'livingAreaSqMeters': ?livingAreaSqMeters,
+      'livingAreaSqMetersException': ?livingAreaSqMetersException,
+      'loft': ?loft,
+      'loftException': ?loftException,
+      'nonSmoking': ?nonSmoking,
+      'nonSmokingException': ?nonSmokingException,
+      'patio': ?patio,
+      'patioException': ?patioException,
+      'stairs': ?stairs,
+      'stairsException': ?stairsException,
+    };
+  }
 }
 
 /// Information about sleeping features in the living area.
@@ -4253,51 +4458,66 @@ class LivingAreaSleeping {
             json_['syntheticPillowsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bedsCount != null) 'bedsCount': bedsCount!,
-    if (bedsCountException != null) 'bedsCountException': bedsCountException!,
-    if (bunkBedsCount != null) 'bunkBedsCount': bunkBedsCount!,
-    if (bunkBedsCountException != null)
-      'bunkBedsCountException': bunkBedsCountException!,
-    if (cribsCount != null) 'cribsCount': cribsCount!,
-    if (cribsCountException != null)
-      'cribsCountException': cribsCountException!,
-    if (doubleBedsCount != null) 'doubleBedsCount': doubleBedsCount!,
-    if (doubleBedsCountException != null)
-      'doubleBedsCountException': doubleBedsCountException!,
-    if (featherPillows != null) 'featherPillows': featherPillows!,
-    if (featherPillowsException != null)
-      'featherPillowsException': featherPillowsException!,
-    if (hypoallergenicBedding != null)
-      'hypoallergenicBedding': hypoallergenicBedding!,
-    if (hypoallergenicBeddingException != null)
-      'hypoallergenicBeddingException': hypoallergenicBeddingException!,
-    if (kingBedsCount != null) 'kingBedsCount': kingBedsCount!,
-    if (kingBedsCountException != null)
-      'kingBedsCountException': kingBedsCountException!,
-    if (memoryFoamPillows != null) 'memoryFoamPillows': memoryFoamPillows!,
-    if (memoryFoamPillowsException != null)
-      'memoryFoamPillowsException': memoryFoamPillowsException!,
-    if (otherBedsCount != null) 'otherBedsCount': otherBedsCount!,
-    if (otherBedsCountException != null)
-      'otherBedsCountException': otherBedsCountException!,
-    if (queenBedsCount != null) 'queenBedsCount': queenBedsCount!,
-    if (queenBedsCountException != null)
-      'queenBedsCountException': queenBedsCountException!,
-    if (rollAwayBedsCount != null) 'rollAwayBedsCount': rollAwayBedsCount!,
-    if (rollAwayBedsCountException != null)
-      'rollAwayBedsCountException': rollAwayBedsCountException!,
-    if (singleOrTwinBedsCount != null)
-      'singleOrTwinBedsCount': singleOrTwinBedsCount!,
-    if (singleOrTwinBedsCountException != null)
-      'singleOrTwinBedsCountException': singleOrTwinBedsCountException!,
-    if (sofaBedsCount != null) 'sofaBedsCount': sofaBedsCount!,
-    if (sofaBedsCountException != null)
-      'sofaBedsCountException': sofaBedsCountException!,
-    if (syntheticPillows != null) 'syntheticPillows': syntheticPillows!,
-    if (syntheticPillowsException != null)
-      'syntheticPillowsException': syntheticPillowsException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bedsCount = this.bedsCount;
+    final bedsCountException = this.bedsCountException;
+    final bunkBedsCount = this.bunkBedsCount;
+    final bunkBedsCountException = this.bunkBedsCountException;
+    final cribsCount = this.cribsCount;
+    final cribsCountException = this.cribsCountException;
+    final doubleBedsCount = this.doubleBedsCount;
+    final doubleBedsCountException = this.doubleBedsCountException;
+    final featherPillows = this.featherPillows;
+    final featherPillowsException = this.featherPillowsException;
+    final hypoallergenicBedding = this.hypoallergenicBedding;
+    final hypoallergenicBeddingException = this.hypoallergenicBeddingException;
+    final kingBedsCount = this.kingBedsCount;
+    final kingBedsCountException = this.kingBedsCountException;
+    final memoryFoamPillows = this.memoryFoamPillows;
+    final memoryFoamPillowsException = this.memoryFoamPillowsException;
+    final otherBedsCount = this.otherBedsCount;
+    final otherBedsCountException = this.otherBedsCountException;
+    final queenBedsCount = this.queenBedsCount;
+    final queenBedsCountException = this.queenBedsCountException;
+    final rollAwayBedsCount = this.rollAwayBedsCount;
+    final rollAwayBedsCountException = this.rollAwayBedsCountException;
+    final singleOrTwinBedsCount = this.singleOrTwinBedsCount;
+    final singleOrTwinBedsCountException = this.singleOrTwinBedsCountException;
+    final sofaBedsCount = this.sofaBedsCount;
+    final sofaBedsCountException = this.sofaBedsCountException;
+    final syntheticPillows = this.syntheticPillows;
+    final syntheticPillowsException = this.syntheticPillowsException;
+    return {
+      'bedsCount': ?bedsCount,
+      'bedsCountException': ?bedsCountException,
+      'bunkBedsCount': ?bunkBedsCount,
+      'bunkBedsCountException': ?bunkBedsCountException,
+      'cribsCount': ?cribsCount,
+      'cribsCountException': ?cribsCountException,
+      'doubleBedsCount': ?doubleBedsCount,
+      'doubleBedsCountException': ?doubleBedsCountException,
+      'featherPillows': ?featherPillows,
+      'featherPillowsException': ?featherPillowsException,
+      'hypoallergenicBedding': ?hypoallergenicBedding,
+      'hypoallergenicBeddingException': ?hypoallergenicBeddingException,
+      'kingBedsCount': ?kingBedsCount,
+      'kingBedsCountException': ?kingBedsCountException,
+      'memoryFoamPillows': ?memoryFoamPillows,
+      'memoryFoamPillowsException': ?memoryFoamPillowsException,
+      'otherBedsCount': ?otherBedsCount,
+      'otherBedsCountException': ?otherBedsCountException,
+      'queenBedsCount': ?queenBedsCount,
+      'queenBedsCountException': ?queenBedsCountException,
+      'rollAwayBedsCount': ?rollAwayBedsCount,
+      'rollAwayBedsCountException': ?rollAwayBedsCountException,
+      'singleOrTwinBedsCount': ?singleOrTwinBedsCount,
+      'singleOrTwinBedsCountException': ?singleOrTwinBedsCountException,
+      'sofaBedsCount': ?sofaBedsCount,
+      'sofaBedsCountException': ?sofaBedsCountException,
+      'syntheticPillows': ?syntheticPillows,
+      'syntheticPillowsException': ?syntheticPillowsException,
+    };
+  }
 }
 
 /// Lodging of a location that provides accomodations.
@@ -4414,172 +4634,172 @@ class Lodging {
 
   Lodging.fromJson(core.Map json_)
     : this(
-        accessibility:
-            json_.containsKey('accessibility')
-                ? Accessibility.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        activities:
-            json_.containsKey('activities')
-                ? Activities.fromJson(
-                  json_['activities'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        allUnits:
-            json_.containsKey('allUnits')
-                ? GuestUnitFeatures.fromJson(
-                  json_['allUnits'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        business:
-            json_.containsKey('business')
-                ? Business.fromJson(
-                  json_['business'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        commonLivingArea:
-            json_.containsKey('commonLivingArea')
-                ? LivingArea.fromJson(
-                  json_['commonLivingArea']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        connectivity:
-            json_.containsKey('connectivity')
-                ? Connectivity.fromJson(
-                  json_['connectivity'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        families:
-            json_.containsKey('families')
-                ? Families.fromJson(
-                  json_['families'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        foodAndDrink:
-            json_.containsKey('foodAndDrink')
-                ? FoodAndDrink.fromJson(
-                  json_['foodAndDrink'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        guestUnits:
-            (json_['guestUnits'] as core.List?)
-                ?.map(
-                  (value) => GuestUnitType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        healthAndSafety:
-            json_.containsKey('healthAndSafety')
-                ? HealthAndSafety.fromJson(
-                  json_['healthAndSafety']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        housekeeping:
-            json_.containsKey('housekeeping')
-                ? Housekeeping.fromJson(
-                  json_['housekeeping'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? LodgingMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessibility: json_.containsKey('accessibility')
+            ? Accessibility.fromJson(
+                json_['accessibility'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        activities: json_.containsKey('activities')
+            ? Activities.fromJson(
+                json_['activities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        allUnits: json_.containsKey('allUnits')
+            ? GuestUnitFeatures.fromJson(
+                json_['allUnits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        business: json_.containsKey('business')
+            ? Business.fromJson(
+                json_['business'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        commonLivingArea: json_.containsKey('commonLivingArea')
+            ? LivingArea.fromJson(
+                json_['commonLivingArea']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        connectivity: json_.containsKey('connectivity')
+            ? Connectivity.fromJson(
+                json_['connectivity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        families: json_.containsKey('families')
+            ? Families.fromJson(
+                json_['families'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        foodAndDrink: json_.containsKey('foodAndDrink')
+            ? FoodAndDrink.fromJson(
+                json_['foodAndDrink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        guestUnits: (json_['guestUnits'] as core.List?)
+            ?.map(
+              (value) => GuestUnitType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        healthAndSafety: json_.containsKey('healthAndSafety')
+            ? HealthAndSafety.fromJson(
+                json_['healthAndSafety'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        housekeeping: json_.containsKey('housekeeping')
+            ? Housekeeping.fromJson(
+                json_['housekeeping'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? LodgingMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        parking:
-            json_.containsKey('parking')
-                ? Parking.fromJson(
-                  json_['parking'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pets:
-            json_.containsKey('pets')
-                ? Pets.fromJson(
-                  json_['pets'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        policies:
-            json_.containsKey('policies')
-                ? Policies.fromJson(
-                  json_['policies'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pools:
-            json_.containsKey('pools')
-                ? Pools.fromJson(
-                  json_['pools'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        property:
-            json_.containsKey('property')
-                ? Property.fromJson(
-                  json_['property'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        services:
-            json_.containsKey('services')
-                ? Services.fromJson(
-                  json_['services'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        someUnits:
-            json_.containsKey('someUnits')
-                ? GuestUnitFeatures.fromJson(
-                  json_['someUnits'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sustainability:
-            json_.containsKey('sustainability')
-                ? Sustainability.fromJson(
-                  json_['sustainability']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        transportation:
-            json_.containsKey('transportation')
-                ? Transportation.fromJson(
-                  json_['transportation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wellness:
-            json_.containsKey('wellness')
-                ? Wellness.fromJson(
-                  json_['wellness'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        parking: json_.containsKey('parking')
+            ? Parking.fromJson(
+                json_['parking'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pets: json_.containsKey('pets')
+            ? Pets.fromJson(
+                json_['pets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        policies: json_.containsKey('policies')
+            ? Policies.fromJson(
+                json_['policies'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pools: json_.containsKey('pools')
+            ? Pools.fromJson(
+                json_['pools'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        property: json_.containsKey('property')
+            ? Property.fromJson(
+                json_['property'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        services: json_.containsKey('services')
+            ? Services.fromJson(
+                json_['services'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        someUnits: json_.containsKey('someUnits')
+            ? GuestUnitFeatures.fromJson(
+                json_['someUnits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sustainability: json_.containsKey('sustainability')
+            ? Sustainability.fromJson(
+                json_['sustainability'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transportation: json_.containsKey('transportation')
+            ? Transportation.fromJson(
+                json_['transportation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wellness: json_.containsKey('wellness')
+            ? Wellness.fromJson(
+                json_['wellness'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessibility != null) 'accessibility': accessibility!,
-    if (activities != null) 'activities': activities!,
-    if (allUnits != null) 'allUnits': allUnits!,
-    if (business != null) 'business': business!,
-    if (commonLivingArea != null) 'commonLivingArea': commonLivingArea!,
-    if (connectivity != null) 'connectivity': connectivity!,
-    if (families != null) 'families': families!,
-    if (foodAndDrink != null) 'foodAndDrink': foodAndDrink!,
-    if (guestUnits != null) 'guestUnits': guestUnits!,
-    if (healthAndSafety != null) 'healthAndSafety': healthAndSafety!,
-    if (housekeeping != null) 'housekeeping': housekeeping!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (parking != null) 'parking': parking!,
-    if (pets != null) 'pets': pets!,
-    if (policies != null) 'policies': policies!,
-    if (pools != null) 'pools': pools!,
-    if (property != null) 'property': property!,
-    if (services != null) 'services': services!,
-    if (someUnits != null) 'someUnits': someUnits!,
-    if (sustainability != null) 'sustainability': sustainability!,
-    if (transportation != null) 'transportation': transportation!,
-    if (wellness != null) 'wellness': wellness!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessibility = this.accessibility;
+    final activities = this.activities;
+    final allUnits = this.allUnits;
+    final business = this.business;
+    final commonLivingArea = this.commonLivingArea;
+    final connectivity = this.connectivity;
+    final families = this.families;
+    final foodAndDrink = this.foodAndDrink;
+    final guestUnits = this.guestUnits;
+    final healthAndSafety = this.healthAndSafety;
+    final housekeeping = this.housekeeping;
+    final metadata = this.metadata;
+    final name = this.name;
+    final parking = this.parking;
+    final pets = this.pets;
+    final policies = this.policies;
+    final pools = this.pools;
+    final property = this.property;
+    final services = this.services;
+    final someUnits = this.someUnits;
+    final sustainability = this.sustainability;
+    final transportation = this.transportation;
+    final wellness = this.wellness;
+    return {
+      'accessibility': ?accessibility,
+      'activities': ?activities,
+      'allUnits': ?allUnits,
+      'business': ?business,
+      'commonLivingArea': ?commonLivingArea,
+      'connectivity': ?connectivity,
+      'families': ?families,
+      'foodAndDrink': ?foodAndDrink,
+      'guestUnits': ?guestUnits,
+      'healthAndSafety': ?healthAndSafety,
+      'housekeeping': ?housekeeping,
+      'metadata': ?metadata,
+      'name': ?name,
+      'parking': ?parking,
+      'pets': ?pets,
+      'policies': ?policies,
+      'pools': ?pools,
+      'property': ?property,
+      'services': ?services,
+      'someUnits': ?someUnits,
+      'sustainability': ?sustainability,
+      'transportation': ?transportation,
+      'wellness': ?wellness,
+    };
+  }
 }
 
 /// Metadata for the Lodging.
@@ -4597,9 +4817,10 @@ class LodgingMetadata {
   LodgingMetadata.fromJson(core.Map json_)
     : this(updateTime: json_['updateTime'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final updateTime = this.updateTime;
+    return {'updateTime': ?updateTime};
+  }
 }
 
 /// Minimized contact measures implemented by the hotel during COVID-19.
@@ -4749,40 +4970,49 @@ class MinimizedContact {
             json_['roomBookingsBufferException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contactlessCheckinCheckout != null)
-      'contactlessCheckinCheckout': contactlessCheckinCheckout!,
-    if (contactlessCheckinCheckoutException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactlessCheckinCheckout = this.contactlessCheckinCheckout;
+    final contactlessCheckinCheckoutException =
+        this.contactlessCheckinCheckoutException;
+    final digitalGuestRoomKeys = this.digitalGuestRoomKeys;
+    final digitalGuestRoomKeysException = this.digitalGuestRoomKeysException;
+    final housekeepingScheduledRequestOnly =
+        this.housekeepingScheduledRequestOnly;
+    final housekeepingScheduledRequestOnlyException =
+        this.housekeepingScheduledRequestOnlyException;
+    final noHighTouchItemsCommonAreas = this.noHighTouchItemsCommonAreas;
+    final noHighTouchItemsCommonAreasException =
+        this.noHighTouchItemsCommonAreasException;
+    final noHighTouchItemsGuestRooms = this.noHighTouchItemsGuestRooms;
+    final noHighTouchItemsGuestRoomsException =
+        this.noHighTouchItemsGuestRoomsException;
+    final plasticKeycardsDisinfected = this.plasticKeycardsDisinfected;
+    final plasticKeycardsDisinfectedException =
+        this.plasticKeycardsDisinfectedException;
+    final roomBookingsBuffer = this.roomBookingsBuffer;
+    final roomBookingsBufferException = this.roomBookingsBufferException;
+    return {
+      'contactlessCheckinCheckout': ?contactlessCheckinCheckout,
       'contactlessCheckinCheckoutException':
-          contactlessCheckinCheckoutException!,
-    if (digitalGuestRoomKeys != null)
-      'digitalGuestRoomKeys': digitalGuestRoomKeys!,
-    if (digitalGuestRoomKeysException != null)
-      'digitalGuestRoomKeysException': digitalGuestRoomKeysException!,
-    if (housekeepingScheduledRequestOnly != null)
-      'housekeepingScheduledRequestOnly': housekeepingScheduledRequestOnly!,
-    if (housekeepingScheduledRequestOnlyException != null)
+          ?contactlessCheckinCheckoutException,
+      'digitalGuestRoomKeys': ?digitalGuestRoomKeys,
+      'digitalGuestRoomKeysException': ?digitalGuestRoomKeysException,
+      'housekeepingScheduledRequestOnly': ?housekeepingScheduledRequestOnly,
       'housekeepingScheduledRequestOnlyException':
-          housekeepingScheduledRequestOnlyException!,
-    if (noHighTouchItemsCommonAreas != null)
-      'noHighTouchItemsCommonAreas': noHighTouchItemsCommonAreas!,
-    if (noHighTouchItemsCommonAreasException != null)
+          ?housekeepingScheduledRequestOnlyException,
+      'noHighTouchItemsCommonAreas': ?noHighTouchItemsCommonAreas,
       'noHighTouchItemsCommonAreasException':
-          noHighTouchItemsCommonAreasException!,
-    if (noHighTouchItemsGuestRooms != null)
-      'noHighTouchItemsGuestRooms': noHighTouchItemsGuestRooms!,
-    if (noHighTouchItemsGuestRoomsException != null)
+          ?noHighTouchItemsCommonAreasException,
+      'noHighTouchItemsGuestRooms': ?noHighTouchItemsGuestRooms,
       'noHighTouchItemsGuestRoomsException':
-          noHighTouchItemsGuestRoomsException!,
-    if (plasticKeycardsDisinfected != null)
-      'plasticKeycardsDisinfected': plasticKeycardsDisinfected!,
-    if (plasticKeycardsDisinfectedException != null)
+          ?noHighTouchItemsGuestRoomsException,
+      'plasticKeycardsDisinfected': ?plasticKeycardsDisinfected,
       'plasticKeycardsDisinfectedException':
-          plasticKeycardsDisinfectedException!,
-    if (roomBookingsBuffer != null) 'roomBookingsBuffer': roomBookingsBuffer!,
-    if (roomBookingsBufferException != null)
-      'roomBookingsBufferException': roomBookingsBufferException!,
-  };
+          ?plasticKeycardsDisinfectedException,
+      'roomBookingsBuffer': ?roomBookingsBuffer,
+      'roomBookingsBufferException': ?roomBookingsBufferException,
+    };
+  }
 }
 
 /// Parking options at the property.
@@ -4955,33 +5185,40 @@ class Parking {
             json_['valetParkingAvailableException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (electricCarChargingStations != null)
-      'electricCarChargingStations': electricCarChargingStations!,
-    if (electricCarChargingStationsException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final electricCarChargingStations = this.electricCarChargingStations;
+    final electricCarChargingStationsException =
+        this.electricCarChargingStationsException;
+    final freeParking = this.freeParking;
+    final freeParkingException = this.freeParkingException;
+    final freeSelfParking = this.freeSelfParking;
+    final freeSelfParkingException = this.freeSelfParkingException;
+    final freeValetParking = this.freeValetParking;
+    final freeValetParkingException = this.freeValetParkingException;
+    final parkingAvailable = this.parkingAvailable;
+    final parkingAvailableException = this.parkingAvailableException;
+    final selfParkingAvailable = this.selfParkingAvailable;
+    final selfParkingAvailableException = this.selfParkingAvailableException;
+    final valetParkingAvailable = this.valetParkingAvailable;
+    final valetParkingAvailableException = this.valetParkingAvailableException;
+    return {
+      'electricCarChargingStations': ?electricCarChargingStations,
       'electricCarChargingStationsException':
-          electricCarChargingStationsException!,
-    if (freeParking != null) 'freeParking': freeParking!,
-    if (freeParkingException != null)
-      'freeParkingException': freeParkingException!,
-    if (freeSelfParking != null) 'freeSelfParking': freeSelfParking!,
-    if (freeSelfParkingException != null)
-      'freeSelfParkingException': freeSelfParkingException!,
-    if (freeValetParking != null) 'freeValetParking': freeValetParking!,
-    if (freeValetParkingException != null)
-      'freeValetParkingException': freeValetParkingException!,
-    if (parkingAvailable != null) 'parkingAvailable': parkingAvailable!,
-    if (parkingAvailableException != null)
-      'parkingAvailableException': parkingAvailableException!,
-    if (selfParkingAvailable != null)
-      'selfParkingAvailable': selfParkingAvailable!,
-    if (selfParkingAvailableException != null)
-      'selfParkingAvailableException': selfParkingAvailableException!,
-    if (valetParkingAvailable != null)
-      'valetParkingAvailable': valetParkingAvailable!,
-    if (valetParkingAvailableException != null)
-      'valetParkingAvailableException': valetParkingAvailableException!,
-  };
+          ?electricCarChargingStationsException,
+      'freeParking': ?freeParking,
+      'freeParkingException': ?freeParkingException,
+      'freeSelfParking': ?freeSelfParking,
+      'freeSelfParkingException': ?freeSelfParkingException,
+      'freeValetParking': ?freeValetParking,
+      'freeValetParkingException': ?freeValetParkingException,
+      'parkingAvailable': ?parkingAvailable,
+      'parkingAvailableException': ?parkingAvailableException,
+      'selfParkingAvailable': ?selfParkingAvailable,
+      'selfParkingAvailableException': ?selfParkingAvailableException,
+      'valetParkingAvailable': ?valetParkingAvailable,
+      'valetParkingAvailableException': ?valetParkingAvailableException,
+    };
+  }
 }
 
 /// Forms of payment accepted at the property.
@@ -5100,19 +5337,30 @@ class PaymentOptions {
         mobileNfcException: json_['mobileNfcException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cash != null) 'cash': cash!,
-    if (cashException != null) 'cashException': cashException!,
-    if (cheque != null) 'cheque': cheque!,
-    if (chequeException != null) 'chequeException': chequeException!,
-    if (creditCard != null) 'creditCard': creditCard!,
-    if (creditCardException != null)
-      'creditCardException': creditCardException!,
-    if (debitCard != null) 'debitCard': debitCard!,
-    if (debitCardException != null) 'debitCardException': debitCardException!,
-    if (mobileNfc != null) 'mobileNfc': mobileNfc!,
-    if (mobileNfcException != null) 'mobileNfcException': mobileNfcException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cash = this.cash;
+    final cashException = this.cashException;
+    final cheque = this.cheque;
+    final chequeException = this.chequeException;
+    final creditCard = this.creditCard;
+    final creditCardException = this.creditCardException;
+    final debitCard = this.debitCard;
+    final debitCardException = this.debitCardException;
+    final mobileNfc = this.mobileNfc;
+    final mobileNfcException = this.mobileNfcException;
+    return {
+      'cash': ?cash,
+      'cashException': ?cashException,
+      'cheque': ?cheque,
+      'chequeException': ?chequeException,
+      'creditCard': ?creditCard,
+      'creditCardException': ?creditCardException,
+      'debitCard': ?debitCard,
+      'debitCardException': ?debitCardException,
+      'mobileNfc': ?mobileNfc,
+      'mobileNfcException': ?mobileNfcException,
+    };
+  }
 }
 
 /// Personal protection measures implemented by the hotel during COVID-19.
@@ -5204,26 +5452,33 @@ class PersonalProtection {
             json_['protectiveEquipmentAvailableException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commonAreasOfferSanitizingItems != null)
-      'commonAreasOfferSanitizingItems': commonAreasOfferSanitizingItems!,
-    if (commonAreasOfferSanitizingItemsException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final commonAreasOfferSanitizingItems =
+        this.commonAreasOfferSanitizingItems;
+    final commonAreasOfferSanitizingItemsException =
+        this.commonAreasOfferSanitizingItemsException;
+    final faceMaskRequired = this.faceMaskRequired;
+    final faceMaskRequiredException = this.faceMaskRequiredException;
+    final guestRoomHygieneKitsAvailable = this.guestRoomHygieneKitsAvailable;
+    final guestRoomHygieneKitsAvailableException =
+        this.guestRoomHygieneKitsAvailableException;
+    final protectiveEquipmentAvailable = this.protectiveEquipmentAvailable;
+    final protectiveEquipmentAvailableException =
+        this.protectiveEquipmentAvailableException;
+    return {
+      'commonAreasOfferSanitizingItems': ?commonAreasOfferSanitizingItems,
       'commonAreasOfferSanitizingItemsException':
-          commonAreasOfferSanitizingItemsException!,
-    if (faceMaskRequired != null) 'faceMaskRequired': faceMaskRequired!,
-    if (faceMaskRequiredException != null)
-      'faceMaskRequiredException': faceMaskRequiredException!,
-    if (guestRoomHygieneKitsAvailable != null)
-      'guestRoomHygieneKitsAvailable': guestRoomHygieneKitsAvailable!,
-    if (guestRoomHygieneKitsAvailableException != null)
+          ?commonAreasOfferSanitizingItemsException,
+      'faceMaskRequired': ?faceMaskRequired,
+      'faceMaskRequiredException': ?faceMaskRequiredException,
+      'guestRoomHygieneKitsAvailable': ?guestRoomHygieneKitsAvailable,
       'guestRoomHygieneKitsAvailableException':
-          guestRoomHygieneKitsAvailableException!,
-    if (protectiveEquipmentAvailable != null)
-      'protectiveEquipmentAvailable': protectiveEquipmentAvailable!,
-    if (protectiveEquipmentAvailableException != null)
+          ?guestRoomHygieneKitsAvailableException,
+      'protectiveEquipmentAvailable': ?protectiveEquipmentAvailable,
       'protectiveEquipmentAvailableException':
-          protectiveEquipmentAvailableException!,
-  };
+          ?protectiveEquipmentAvailableException,
+    };
+  }
 }
 
 /// Policies regarding guest-owned animals.
@@ -5323,20 +5578,26 @@ class Pets {
             json_['petsAllowedFreeException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (catsAllowed != null) 'catsAllowed': catsAllowed!,
-    if (catsAllowedException != null)
-      'catsAllowedException': catsAllowedException!,
-    if (dogsAllowed != null) 'dogsAllowed': dogsAllowed!,
-    if (dogsAllowedException != null)
-      'dogsAllowedException': dogsAllowedException!,
-    if (petsAllowed != null) 'petsAllowed': petsAllowed!,
-    if (petsAllowedException != null)
-      'petsAllowedException': petsAllowedException!,
-    if (petsAllowedFree != null) 'petsAllowedFree': petsAllowedFree!,
-    if (petsAllowedFreeException != null)
-      'petsAllowedFreeException': petsAllowedFreeException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final catsAllowed = this.catsAllowed;
+    final catsAllowedException = this.catsAllowedException;
+    final dogsAllowed = this.dogsAllowed;
+    final dogsAllowedException = this.dogsAllowedException;
+    final petsAllowed = this.petsAllowed;
+    final petsAllowedException = this.petsAllowedException;
+    final petsAllowedFree = this.petsAllowedFree;
+    final petsAllowedFreeException = this.petsAllowedFreeException;
+    return {
+      'catsAllowed': ?catsAllowed,
+      'catsAllowedException': ?catsAllowedException,
+      'dogsAllowed': ?dogsAllowed,
+      'dogsAllowedException': ?dogsAllowedException,
+      'petsAllowed': ?petsAllowed,
+      'petsAllowedException': ?petsAllowedException,
+      'petsAllowedFree': ?petsAllowedFree,
+      'petsAllowedFreeException': ?petsAllowedFreeException,
+    };
+  }
 }
 
 /// Physical distancing measures implemented by the hotel during COVID-19.
@@ -5448,32 +5709,40 @@ class PhysicalDistancing {
             json_['wellnessAreasHavePrivateSpacesException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commonAreasPhysicalDistancingArranged != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final commonAreasPhysicalDistancingArranged =
+        this.commonAreasPhysicalDistancingArranged;
+    final commonAreasPhysicalDistancingArrangedException =
+        this.commonAreasPhysicalDistancingArrangedException;
+    final physicalDistancingRequired = this.physicalDistancingRequired;
+    final physicalDistancingRequiredException =
+        this.physicalDistancingRequiredException;
+    final safetyDividers = this.safetyDividers;
+    final safetyDividersException = this.safetyDividersException;
+    final sharedAreasLimitedOccupancy = this.sharedAreasLimitedOccupancy;
+    final sharedAreasLimitedOccupancyException =
+        this.sharedAreasLimitedOccupancyException;
+    final wellnessAreasHavePrivateSpaces = this.wellnessAreasHavePrivateSpaces;
+    final wellnessAreasHavePrivateSpacesException =
+        this.wellnessAreasHavePrivateSpacesException;
+    return {
       'commonAreasPhysicalDistancingArranged':
-          commonAreasPhysicalDistancingArranged!,
-    if (commonAreasPhysicalDistancingArrangedException != null)
+          ?commonAreasPhysicalDistancingArranged,
       'commonAreasPhysicalDistancingArrangedException':
-          commonAreasPhysicalDistancingArrangedException!,
-    if (physicalDistancingRequired != null)
-      'physicalDistancingRequired': physicalDistancingRequired!,
-    if (physicalDistancingRequiredException != null)
+          ?commonAreasPhysicalDistancingArrangedException,
+      'physicalDistancingRequired': ?physicalDistancingRequired,
       'physicalDistancingRequiredException':
-          physicalDistancingRequiredException!,
-    if (safetyDividers != null) 'safetyDividers': safetyDividers!,
-    if (safetyDividersException != null)
-      'safetyDividersException': safetyDividersException!,
-    if (sharedAreasLimitedOccupancy != null)
-      'sharedAreasLimitedOccupancy': sharedAreasLimitedOccupancy!,
-    if (sharedAreasLimitedOccupancyException != null)
+          ?physicalDistancingRequiredException,
+      'safetyDividers': ?safetyDividers,
+      'safetyDividersException': ?safetyDividersException,
+      'sharedAreasLimitedOccupancy': ?sharedAreasLimitedOccupancy,
       'sharedAreasLimitedOccupancyException':
-          sharedAreasLimitedOccupancyException!,
-    if (wellnessAreasHavePrivateSpaces != null)
-      'wellnessAreasHavePrivateSpaces': wellnessAreasHavePrivateSpaces!,
-    if (wellnessAreasHavePrivateSpacesException != null)
+          ?sharedAreasLimitedOccupancyException,
+      'wellnessAreasHavePrivateSpaces': ?wellnessAreasHavePrivateSpaces,
       'wellnessAreasHavePrivateSpacesException':
-          wellnessAreasHavePrivateSpacesException!,
-  };
+          ?wellnessAreasHavePrivateSpacesException,
+    };
+  }
 }
 
 /// Property rules that impact guests.
@@ -5650,19 +5919,17 @@ class Policies {
         allInclusiveOnly: json_['allInclusiveOnly'] as core.bool?,
         allInclusiveOnlyException:
             json_['allInclusiveOnlyException'] as core.String?,
-        checkinTime:
-            json_.containsKey('checkinTime')
-                ? TimeOfDay.fromJson(
-                  json_['checkinTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checkinTime: json_.containsKey('checkinTime')
+            ? TimeOfDay.fromJson(
+                json_['checkinTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         checkinTimeException: json_['checkinTimeException'] as core.String?,
-        checkoutTime:
-            json_.containsKey('checkoutTime')
-                ? TimeOfDay.fromJson(
-                  json_['checkoutTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checkoutTime: json_.containsKey('checkoutTime')
+            ? TimeOfDay.fromJson(
+                json_['checkoutTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         checkoutTimeException: json_['checkoutTimeException'] as core.String?,
         kidsStayFree: json_['kidsStayFree'] as core.bool?,
         kidsStayFreeException: json_['kidsStayFreeException'] as core.String?,
@@ -5671,47 +5938,54 @@ class Policies {
         maxKidsStayFreeCount: json_['maxKidsStayFreeCount'] as core.int?,
         maxKidsStayFreeCountException:
             json_['maxKidsStayFreeCountException'] as core.String?,
-        paymentOptions:
-            json_.containsKey('paymentOptions')
-                ? PaymentOptions.fromJson(
-                  json_['paymentOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        paymentOptions: json_.containsKey('paymentOptions')
+            ? PaymentOptions.fromJson(
+                json_['paymentOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smokeFreeProperty: json_['smokeFreeProperty'] as core.bool?,
         smokeFreePropertyException:
             json_['smokeFreePropertyException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allInclusiveAvailable != null)
-      'allInclusiveAvailable': allInclusiveAvailable!,
-    if (allInclusiveAvailableException != null)
-      'allInclusiveAvailableException': allInclusiveAvailableException!,
-    if (allInclusiveOnly != null) 'allInclusiveOnly': allInclusiveOnly!,
-    if (allInclusiveOnlyException != null)
-      'allInclusiveOnlyException': allInclusiveOnlyException!,
-    if (checkinTime != null) 'checkinTime': checkinTime!,
-    if (checkinTimeException != null)
-      'checkinTimeException': checkinTimeException!,
-    if (checkoutTime != null) 'checkoutTime': checkoutTime!,
-    if (checkoutTimeException != null)
-      'checkoutTimeException': checkoutTimeException!,
-    if (kidsStayFree != null) 'kidsStayFree': kidsStayFree!,
-    if (kidsStayFreeException != null)
-      'kidsStayFreeException': kidsStayFreeException!,
-    if (maxChildAge != null) 'maxChildAge': maxChildAge!,
-    if (maxChildAgeException != null)
-      'maxChildAgeException': maxChildAgeException!,
-    if (maxKidsStayFreeCount != null)
-      'maxKidsStayFreeCount': maxKidsStayFreeCount!,
-    if (maxKidsStayFreeCountException != null)
-      'maxKidsStayFreeCountException': maxKidsStayFreeCountException!,
-    if (paymentOptions != null) 'paymentOptions': paymentOptions!,
-    if (smokeFreeProperty != null) 'smokeFreeProperty': smokeFreeProperty!,
-    if (smokeFreePropertyException != null)
-      'smokeFreePropertyException': smokeFreePropertyException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allInclusiveAvailable = this.allInclusiveAvailable;
+    final allInclusiveAvailableException = this.allInclusiveAvailableException;
+    final allInclusiveOnly = this.allInclusiveOnly;
+    final allInclusiveOnlyException = this.allInclusiveOnlyException;
+    final checkinTime = this.checkinTime;
+    final checkinTimeException = this.checkinTimeException;
+    final checkoutTime = this.checkoutTime;
+    final checkoutTimeException = this.checkoutTimeException;
+    final kidsStayFree = this.kidsStayFree;
+    final kidsStayFreeException = this.kidsStayFreeException;
+    final maxChildAge = this.maxChildAge;
+    final maxChildAgeException = this.maxChildAgeException;
+    final maxKidsStayFreeCount = this.maxKidsStayFreeCount;
+    final maxKidsStayFreeCountException = this.maxKidsStayFreeCountException;
+    final paymentOptions = this.paymentOptions;
+    final smokeFreeProperty = this.smokeFreeProperty;
+    final smokeFreePropertyException = this.smokeFreePropertyException;
+    return {
+      'allInclusiveAvailable': ?allInclusiveAvailable,
+      'allInclusiveAvailableException': ?allInclusiveAvailableException,
+      'allInclusiveOnly': ?allInclusiveOnly,
+      'allInclusiveOnlyException': ?allInclusiveOnlyException,
+      'checkinTime': ?checkinTime,
+      'checkinTimeException': ?checkinTimeException,
+      'checkoutTime': ?checkoutTime,
+      'checkoutTimeException': ?checkoutTimeException,
+      'kidsStayFree': ?kidsStayFree,
+      'kidsStayFreeException': ?kidsStayFreeException,
+      'maxChildAge': ?maxChildAge,
+      'maxChildAgeException': ?maxChildAgeException,
+      'maxKidsStayFreeCount': ?maxKidsStayFreeCount,
+      'maxKidsStayFreeCountException': ?maxKidsStayFreeCountException,
+      'paymentOptions': ?paymentOptions,
+      'smokeFreeProperty': ?smokeFreeProperty,
+      'smokeFreePropertyException': ?smokeFreePropertyException,
+    };
+  }
 }
 
 /// Swimming pool or recreational water facilities available at the hotel.
@@ -6025,43 +6299,66 @@ class Pools {
         wavePoolException: json_['wavePoolException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adultPool != null) 'adultPool': adultPool!,
-    if (adultPoolException != null) 'adultPoolException': adultPoolException!,
-    if (hotTub != null) 'hotTub': hotTub!,
-    if (hotTubException != null) 'hotTubException': hotTubException!,
-    if (indoorPool != null) 'indoorPool': indoorPool!,
-    if (indoorPoolException != null)
-      'indoorPoolException': indoorPoolException!,
-    if (indoorPoolsCount != null) 'indoorPoolsCount': indoorPoolsCount!,
-    if (indoorPoolsCountException != null)
-      'indoorPoolsCountException': indoorPoolsCountException!,
-    if (lazyRiver != null) 'lazyRiver': lazyRiver!,
-    if (lazyRiverException != null) 'lazyRiverException': lazyRiverException!,
-    if (lifeguard != null) 'lifeguard': lifeguard!,
-    if (lifeguardException != null) 'lifeguardException': lifeguardException!,
-    if (outdoorPool != null) 'outdoorPool': outdoorPool!,
-    if (outdoorPoolException != null)
-      'outdoorPoolException': outdoorPoolException!,
-    if (outdoorPoolsCount != null) 'outdoorPoolsCount': outdoorPoolsCount!,
-    if (outdoorPoolsCountException != null)
-      'outdoorPoolsCountException': outdoorPoolsCountException!,
-    if (pool != null) 'pool': pool!,
-    if (poolException != null) 'poolException': poolException!,
-    if (poolsCount != null) 'poolsCount': poolsCount!,
-    if (poolsCountException != null)
-      'poolsCountException': poolsCountException!,
-    if (wadingPool != null) 'wadingPool': wadingPool!,
-    if (wadingPoolException != null)
-      'wadingPoolException': wadingPoolException!,
-    if (waterPark != null) 'waterPark': waterPark!,
-    if (waterParkException != null) 'waterParkException': waterParkException!,
-    if (waterslide != null) 'waterslide': waterslide!,
-    if (waterslideException != null)
-      'waterslideException': waterslideException!,
-    if (wavePool != null) 'wavePool': wavePool!,
-    if (wavePoolException != null) 'wavePoolException': wavePoolException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adultPool = this.adultPool;
+    final adultPoolException = this.adultPoolException;
+    final hotTub = this.hotTub;
+    final hotTubException = this.hotTubException;
+    final indoorPool = this.indoorPool;
+    final indoorPoolException = this.indoorPoolException;
+    final indoorPoolsCount = this.indoorPoolsCount;
+    final indoorPoolsCountException = this.indoorPoolsCountException;
+    final lazyRiver = this.lazyRiver;
+    final lazyRiverException = this.lazyRiverException;
+    final lifeguard = this.lifeguard;
+    final lifeguardException = this.lifeguardException;
+    final outdoorPool = this.outdoorPool;
+    final outdoorPoolException = this.outdoorPoolException;
+    final outdoorPoolsCount = this.outdoorPoolsCount;
+    final outdoorPoolsCountException = this.outdoorPoolsCountException;
+    final pool = this.pool;
+    final poolException = this.poolException;
+    final poolsCount = this.poolsCount;
+    final poolsCountException = this.poolsCountException;
+    final wadingPool = this.wadingPool;
+    final wadingPoolException = this.wadingPoolException;
+    final waterPark = this.waterPark;
+    final waterParkException = this.waterParkException;
+    final waterslide = this.waterslide;
+    final waterslideException = this.waterslideException;
+    final wavePool = this.wavePool;
+    final wavePoolException = this.wavePoolException;
+    return {
+      'adultPool': ?adultPool,
+      'adultPoolException': ?adultPoolException,
+      'hotTub': ?hotTub,
+      'hotTubException': ?hotTubException,
+      'indoorPool': ?indoorPool,
+      'indoorPoolException': ?indoorPoolException,
+      'indoorPoolsCount': ?indoorPoolsCount,
+      'indoorPoolsCountException': ?indoorPoolsCountException,
+      'lazyRiver': ?lazyRiver,
+      'lazyRiverException': ?lazyRiverException,
+      'lifeguard': ?lifeguard,
+      'lifeguardException': ?lifeguardException,
+      'outdoorPool': ?outdoorPool,
+      'outdoorPoolException': ?outdoorPoolException,
+      'outdoorPoolsCount': ?outdoorPoolsCount,
+      'outdoorPoolsCountException': ?outdoorPoolsCountException,
+      'pool': ?pool,
+      'poolException': ?poolException,
+      'poolsCount': ?poolsCount,
+      'poolsCountException': ?poolsCountException,
+      'wadingPool': ?wadingPool,
+      'wadingPoolException': ?wadingPoolException,
+      'waterPark': ?waterPark,
+      'waterParkException': ?waterParkException,
+      'waterslide': ?waterslide,
+      'waterslideException': ?waterslideException,
+      'wavePool': ?wavePool,
+      'wavePoolException': ?wavePoolException,
+    };
+  }
 }
 
 /// General factual information about the property's physical structure and
@@ -6160,19 +6457,26 @@ class Property {
         roomsCountException: json_['roomsCountException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (builtYear != null) 'builtYear': builtYear!,
-    if (builtYearException != null) 'builtYearException': builtYearException!,
-    if (floorsCount != null) 'floorsCount': floorsCount!,
-    if (floorsCountException != null)
-      'floorsCountException': floorsCountException!,
-    if (lastRenovatedYear != null) 'lastRenovatedYear': lastRenovatedYear!,
-    if (lastRenovatedYearException != null)
-      'lastRenovatedYearException': lastRenovatedYearException!,
-    if (roomsCount != null) 'roomsCount': roomsCount!,
-    if (roomsCountException != null)
-      'roomsCountException': roomsCountException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final builtYear = this.builtYear;
+    final builtYearException = this.builtYearException;
+    final floorsCount = this.floorsCount;
+    final floorsCountException = this.floorsCountException;
+    final lastRenovatedYear = this.lastRenovatedYear;
+    final lastRenovatedYearException = this.lastRenovatedYearException;
+    final roomsCount = this.roomsCount;
+    final roomsCountException = this.roomsCountException;
+    return {
+      'builtYear': ?builtYear,
+      'builtYearException': ?builtYearException,
+      'floorsCount': ?floorsCount,
+      'floorsCountException': ?floorsCountException,
+      'lastRenovatedYear': ?lastRenovatedYear,
+      'lastRenovatedYearException': ?lastRenovatedYearException,
+      'roomsCount': ?roomsCount,
+      'roomsCountException': ?roomsCountException,
+    };
+  }
 }
 
 /// Conveniences or help provided by the property to facilitate an easier, more
@@ -6447,14 +6751,13 @@ class Services {
             json_['fullServiceLaundryException'] as core.String?,
         giftShop: json_['giftShop'] as core.bool?,
         giftShopException: json_['giftShopException'] as core.String?,
-        languagesSpoken:
-            (json_['languagesSpoken'] as core.List?)
-                ?.map(
-                  (value) => LanguageSpoken.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        languagesSpoken: (json_['languagesSpoken'] as core.List?)
+            ?.map(
+              (value) => LanguageSpoken.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selfServiceLaundry: json_['selfServiceLaundry'] as core.bool?,
         selfServiceLaundryException:
             json_['selfServiceLaundryException'] as core.String?,
@@ -6467,42 +6770,61 @@ class Services {
         wakeUpCallsException: json_['wakeUpCallsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baggageStorage != null) 'baggageStorage': baggageStorage!,
-    if (baggageStorageException != null)
-      'baggageStorageException': baggageStorageException!,
-    if (concierge != null) 'concierge': concierge!,
-    if (conciergeException != null) 'conciergeException': conciergeException!,
-    if (convenienceStore != null) 'convenienceStore': convenienceStore!,
-    if (convenienceStoreException != null)
-      'convenienceStoreException': convenienceStoreException!,
-    if (currencyExchange != null) 'currencyExchange': currencyExchange!,
-    if (currencyExchangeException != null)
-      'currencyExchangeException': currencyExchangeException!,
-    if (elevator != null) 'elevator': elevator!,
-    if (elevatorException != null) 'elevatorException': elevatorException!,
-    if (frontDesk != null) 'frontDesk': frontDesk!,
-    if (frontDeskException != null) 'frontDeskException': frontDeskException!,
-    if (fullServiceLaundry != null) 'fullServiceLaundry': fullServiceLaundry!,
-    if (fullServiceLaundryException != null)
-      'fullServiceLaundryException': fullServiceLaundryException!,
-    if (giftShop != null) 'giftShop': giftShop!,
-    if (giftShopException != null) 'giftShopException': giftShopException!,
-    if (languagesSpoken != null) 'languagesSpoken': languagesSpoken!,
-    if (selfServiceLaundry != null) 'selfServiceLaundry': selfServiceLaundry!,
-    if (selfServiceLaundryException != null)
-      'selfServiceLaundryException': selfServiceLaundryException!,
-    if (socialHour != null) 'socialHour': socialHour!,
-    if (socialHourException != null)
-      'socialHourException': socialHourException!,
-    if (twentyFourHourFrontDesk != null)
-      'twentyFourHourFrontDesk': twentyFourHourFrontDesk!,
-    if (twentyFourHourFrontDeskException != null)
-      'twentyFourHourFrontDeskException': twentyFourHourFrontDeskException!,
-    if (wakeUpCalls != null) 'wakeUpCalls': wakeUpCalls!,
-    if (wakeUpCallsException != null)
-      'wakeUpCallsException': wakeUpCallsException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baggageStorage = this.baggageStorage;
+    final baggageStorageException = this.baggageStorageException;
+    final concierge = this.concierge;
+    final conciergeException = this.conciergeException;
+    final convenienceStore = this.convenienceStore;
+    final convenienceStoreException = this.convenienceStoreException;
+    final currencyExchange = this.currencyExchange;
+    final currencyExchangeException = this.currencyExchangeException;
+    final elevator = this.elevator;
+    final elevatorException = this.elevatorException;
+    final frontDesk = this.frontDesk;
+    final frontDeskException = this.frontDeskException;
+    final fullServiceLaundry = this.fullServiceLaundry;
+    final fullServiceLaundryException = this.fullServiceLaundryException;
+    final giftShop = this.giftShop;
+    final giftShopException = this.giftShopException;
+    final languagesSpoken = this.languagesSpoken;
+    final selfServiceLaundry = this.selfServiceLaundry;
+    final selfServiceLaundryException = this.selfServiceLaundryException;
+    final socialHour = this.socialHour;
+    final socialHourException = this.socialHourException;
+    final twentyFourHourFrontDesk = this.twentyFourHourFrontDesk;
+    final twentyFourHourFrontDeskException =
+        this.twentyFourHourFrontDeskException;
+    final wakeUpCalls = this.wakeUpCalls;
+    final wakeUpCallsException = this.wakeUpCallsException;
+    return {
+      'baggageStorage': ?baggageStorage,
+      'baggageStorageException': ?baggageStorageException,
+      'concierge': ?concierge,
+      'conciergeException': ?conciergeException,
+      'convenienceStore': ?convenienceStore,
+      'convenienceStoreException': ?convenienceStoreException,
+      'currencyExchange': ?currencyExchange,
+      'currencyExchangeException': ?currencyExchangeException,
+      'elevator': ?elevator,
+      'elevatorException': ?elevatorException,
+      'frontDesk': ?frontDesk,
+      'frontDeskException': ?frontDeskException,
+      'fullServiceLaundry': ?fullServiceLaundry,
+      'fullServiceLaundryException': ?fullServiceLaundryException,
+      'giftShop': ?giftShop,
+      'giftShopException': ?giftShopException,
+      'languagesSpoken': ?languagesSpoken,
+      'selfServiceLaundry': ?selfServiceLaundry,
+      'selfServiceLaundryException': ?selfServiceLaundryException,
+      'socialHour': ?socialHour,
+      'socialHourException': ?socialHourException,
+      'twentyFourHourFrontDesk': ?twentyFourHourFrontDesk,
+      'twentyFourHourFrontDeskException': ?twentyFourHourFrontDeskException,
+      'wakeUpCalls': ?wakeUpCalls,
+      'wakeUpCallsException': ?wakeUpCallsException,
+    };
+  }
 }
 
 /// Sustainability practices implemented at the hotel.
@@ -6538,52 +6860,52 @@ class Sustainability {
 
   Sustainability.fromJson(core.Map json_)
     : this(
-        energyEfficiency:
-            json_.containsKey('energyEfficiency')
-                ? EnergyEfficiency.fromJson(
-                  json_['energyEfficiency']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        energyEfficiency: json_.containsKey('energyEfficiency')
+            ? EnergyEfficiency.fromJson(
+                json_['energyEfficiency']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sustainabilityCertifications:
             json_.containsKey('sustainabilityCertifications')
-                ? SustainabilityCertifications.fromJson(
-                  json_['sustainabilityCertifications']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sustainableSourcing:
-            json_.containsKey('sustainableSourcing')
-                ? SustainableSourcing.fromJson(
-                  json_['sustainableSourcing']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wasteReduction:
-            json_.containsKey('wasteReduction')
-                ? WasteReduction.fromJson(
-                  json_['wasteReduction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        waterConservation:
-            json_.containsKey('waterConservation')
-                ? WaterConservation.fromJson(
-                  json_['waterConservation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? SustainabilityCertifications.fromJson(
+                json_['sustainabilityCertifications']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sustainableSourcing: json_.containsKey('sustainableSourcing')
+            ? SustainableSourcing.fromJson(
+                json_['sustainableSourcing']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wasteReduction: json_.containsKey('wasteReduction')
+            ? WasteReduction.fromJson(
+                json_['wasteReduction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        waterConservation: json_.containsKey('waterConservation')
+            ? WaterConservation.fromJson(
+                json_['waterConservation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (energyEfficiency != null) 'energyEfficiency': energyEfficiency!,
-    if (sustainabilityCertifications != null)
-      'sustainabilityCertifications': sustainabilityCertifications!,
-    if (sustainableSourcing != null)
-      'sustainableSourcing': sustainableSourcing!,
-    if (wasteReduction != null) 'wasteReduction': wasteReduction!,
-    if (waterConservation != null) 'waterConservation': waterConservation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final energyEfficiency = this.energyEfficiency;
+    final sustainabilityCertifications = this.sustainabilityCertifications;
+    final sustainableSourcing = this.sustainableSourcing;
+    final wasteReduction = this.wasteReduction;
+    final waterConservation = this.waterConservation;
+    return {
+      'energyEfficiency': ?energyEfficiency,
+      'sustainabilityCertifications': ?sustainabilityCertifications,
+      'sustainableSourcing': ?sustainableSourcing,
+      'wasteReduction': ?wasteReduction,
+      'waterConservation': ?waterConservation,
+    };
+  }
 }
 
 /// Sustainability certifications the hotel has been awarded.
@@ -6652,29 +6974,32 @@ class SustainabilityCertifications {
         breeamCertification: json_['breeamCertification'] as core.String?,
         breeamCertificationException:
             json_['breeamCertificationException'] as core.String?,
-        ecoCertifications:
-            (json_['ecoCertifications'] as core.List?)
-                ?.map(
-                  (value) => EcoCertification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ecoCertifications: (json_['ecoCertifications'] as core.List?)
+            ?.map(
+              (value) => EcoCertification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         leedCertification: json_['leedCertification'] as core.String?,
         leedCertificationException:
             json_['leedCertificationException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (breeamCertification != null)
-      'breeamCertification': breeamCertification!,
-    if (breeamCertificationException != null)
-      'breeamCertificationException': breeamCertificationException!,
-    if (ecoCertifications != null) 'ecoCertifications': ecoCertifications!,
-    if (leedCertification != null) 'leedCertification': leedCertification!,
-    if (leedCertificationException != null)
-      'leedCertificationException': leedCertificationException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final breeamCertification = this.breeamCertification;
+    final breeamCertificationException = this.breeamCertificationException;
+    final ecoCertifications = this.ecoCertifications;
+    final leedCertification = this.leedCertification;
+    final leedCertificationException = this.leedCertificationException;
+    return {
+      'breeamCertification': ?breeamCertification,
+      'breeamCertificationException': ?breeamCertificationException,
+      'ecoCertifications': ?ecoCertifications,
+      'leedCertification': ?leedCertification,
+      'leedCertificationException': ?leedCertificationException,
+    };
+  }
 }
 
 /// Sustainable sourcing practices implemented at the hotel.
@@ -6875,40 +7200,48 @@ class SustainableSourcing {
             json_['vegetarianMealsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ecoFriendlyToiletries != null)
-      'ecoFriendlyToiletries': ecoFriendlyToiletries!,
-    if (ecoFriendlyToiletriesException != null)
-      'ecoFriendlyToiletriesException': ecoFriendlyToiletriesException!,
-    if (locallySourcedFoodAndBeverages != null)
-      'locallySourcedFoodAndBeverages': locallySourcedFoodAndBeverages!,
-    if (locallySourcedFoodAndBeveragesException != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final ecoFriendlyToiletries = this.ecoFriendlyToiletries;
+    final ecoFriendlyToiletriesException = this.ecoFriendlyToiletriesException;
+    final locallySourcedFoodAndBeverages = this.locallySourcedFoodAndBeverages;
+    final locallySourcedFoodAndBeveragesException =
+        this.locallySourcedFoodAndBeveragesException;
+    final organicCageFreeEggs = this.organicCageFreeEggs;
+    final organicCageFreeEggsException = this.organicCageFreeEggsException;
+    final organicFoodAndBeverages = this.organicFoodAndBeverages;
+    final organicFoodAndBeveragesException =
+        this.organicFoodAndBeveragesException;
+    final responsiblePurchasingPolicy = this.responsiblePurchasingPolicy;
+    final responsiblePurchasingPolicyException =
+        this.responsiblePurchasingPolicyException;
+    final responsiblySourcesSeafood = this.responsiblySourcesSeafood;
+    final responsiblySourcesSeafoodException =
+        this.responsiblySourcesSeafoodException;
+    final veganMeals = this.veganMeals;
+    final veganMealsException = this.veganMealsException;
+    final vegetarianMeals = this.vegetarianMeals;
+    final vegetarianMealsException = this.vegetarianMealsException;
+    return {
+      'ecoFriendlyToiletries': ?ecoFriendlyToiletries,
+      'ecoFriendlyToiletriesException': ?ecoFriendlyToiletriesException,
+      'locallySourcedFoodAndBeverages': ?locallySourcedFoodAndBeverages,
       'locallySourcedFoodAndBeveragesException':
-          locallySourcedFoodAndBeveragesException!,
-    if (organicCageFreeEggs != null)
-      'organicCageFreeEggs': organicCageFreeEggs!,
-    if (organicCageFreeEggsException != null)
-      'organicCageFreeEggsException': organicCageFreeEggsException!,
-    if (organicFoodAndBeverages != null)
-      'organicFoodAndBeverages': organicFoodAndBeverages!,
-    if (organicFoodAndBeveragesException != null)
-      'organicFoodAndBeveragesException': organicFoodAndBeveragesException!,
-    if (responsiblePurchasingPolicy != null)
-      'responsiblePurchasingPolicy': responsiblePurchasingPolicy!,
-    if (responsiblePurchasingPolicyException != null)
+          ?locallySourcedFoodAndBeveragesException,
+      'organicCageFreeEggs': ?organicCageFreeEggs,
+      'organicCageFreeEggsException': ?organicCageFreeEggsException,
+      'organicFoodAndBeverages': ?organicFoodAndBeverages,
+      'organicFoodAndBeveragesException': ?organicFoodAndBeveragesException,
+      'responsiblePurchasingPolicy': ?responsiblePurchasingPolicy,
       'responsiblePurchasingPolicyException':
-          responsiblePurchasingPolicyException!,
-    if (responsiblySourcesSeafood != null)
-      'responsiblySourcesSeafood': responsiblySourcesSeafood!,
-    if (responsiblySourcesSeafoodException != null)
-      'responsiblySourcesSeafoodException': responsiblySourcesSeafoodException!,
-    if (veganMeals != null) 'veganMeals': veganMeals!,
-    if (veganMealsException != null)
-      'veganMealsException': veganMealsException!,
-    if (vegetarianMeals != null) 'vegetarianMeals': vegetarianMeals!,
-    if (vegetarianMealsException != null)
-      'vegetarianMealsException': vegetarianMealsException!,
-  };
+          ?responsiblePurchasingPolicyException,
+      'responsiblySourcesSeafood': ?responsiblySourcesSeafood,
+      'responsiblySourcesSeafoodException': ?responsiblySourcesSeafoodException,
+      'veganMeals': ?veganMeals,
+      'veganMealsException': ?veganMealsException,
+      'vegetarianMeals': ?vegetarianMeals,
+      'vegetarianMealsException': ?vegetarianMealsException,
+    };
+  }
 }
 
 /// Represents a time of day.
@@ -7089,30 +7422,38 @@ class Transportation {
         transferException: json_['transferException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airportShuttle != null) 'airportShuttle': airportShuttle!,
-    if (airportShuttleException != null)
-      'airportShuttleException': airportShuttleException!,
-    if (carRentalOnProperty != null)
-      'carRentalOnProperty': carRentalOnProperty!,
-    if (carRentalOnPropertyException != null)
-      'carRentalOnPropertyException': carRentalOnPropertyException!,
-    if (freeAirportShuttle != null) 'freeAirportShuttle': freeAirportShuttle!,
-    if (freeAirportShuttleException != null)
-      'freeAirportShuttleException': freeAirportShuttleException!,
-    if (freePrivateCarService != null)
-      'freePrivateCarService': freePrivateCarService!,
-    if (freePrivateCarServiceException != null)
-      'freePrivateCarServiceException': freePrivateCarServiceException!,
-    if (localShuttle != null) 'localShuttle': localShuttle!,
-    if (localShuttleException != null)
-      'localShuttleException': localShuttleException!,
-    if (privateCarService != null) 'privateCarService': privateCarService!,
-    if (privateCarServiceException != null)
-      'privateCarServiceException': privateCarServiceException!,
-    if (transfer != null) 'transfer': transfer!,
-    if (transferException != null) 'transferException': transferException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airportShuttle = this.airportShuttle;
+    final airportShuttleException = this.airportShuttleException;
+    final carRentalOnProperty = this.carRentalOnProperty;
+    final carRentalOnPropertyException = this.carRentalOnPropertyException;
+    final freeAirportShuttle = this.freeAirportShuttle;
+    final freeAirportShuttleException = this.freeAirportShuttleException;
+    final freePrivateCarService = this.freePrivateCarService;
+    final freePrivateCarServiceException = this.freePrivateCarServiceException;
+    final localShuttle = this.localShuttle;
+    final localShuttleException = this.localShuttleException;
+    final privateCarService = this.privateCarService;
+    final privateCarServiceException = this.privateCarServiceException;
+    final transfer = this.transfer;
+    final transferException = this.transferException;
+    return {
+      'airportShuttle': ?airportShuttle,
+      'airportShuttleException': ?airportShuttleException,
+      'carRentalOnProperty': ?carRentalOnProperty,
+      'carRentalOnPropertyException': ?carRentalOnPropertyException,
+      'freeAirportShuttle': ?freeAirportShuttle,
+      'freeAirportShuttleException': ?freeAirportShuttleException,
+      'freePrivateCarService': ?freePrivateCarService,
+      'freePrivateCarServiceException': ?freePrivateCarServiceException,
+      'localShuttle': ?localShuttle,
+      'localShuttleException': ?localShuttleException,
+      'privateCarService': ?privateCarService,
+      'privateCarServiceException': ?privateCarServiceException,
+      'transfer': ?transfer,
+      'transferException': ?transferException,
+    };
+  }
 }
 
 /// Views available from the guest unit itself.
@@ -7287,27 +7628,42 @@ class ViewsFromUnit {
         valleyViewException: json_['valleyViewException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beachView != null) 'beachView': beachView!,
-    if (beachViewException != null) 'beachViewException': beachViewException!,
-    if (cityView != null) 'cityView': cityView!,
-    if (cityViewException != null) 'cityViewException': cityViewException!,
-    if (gardenView != null) 'gardenView': gardenView!,
-    if (gardenViewException != null)
-      'gardenViewException': gardenViewException!,
-    if (lakeView != null) 'lakeView': lakeView!,
-    if (lakeViewException != null) 'lakeViewException': lakeViewException!,
-    if (landmarkView != null) 'landmarkView': landmarkView!,
-    if (landmarkViewException != null)
-      'landmarkViewException': landmarkViewException!,
-    if (oceanView != null) 'oceanView': oceanView!,
-    if (oceanViewException != null) 'oceanViewException': oceanViewException!,
-    if (poolView != null) 'poolView': poolView!,
-    if (poolViewException != null) 'poolViewException': poolViewException!,
-    if (valleyView != null) 'valleyView': valleyView!,
-    if (valleyViewException != null)
-      'valleyViewException': valleyViewException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final beachView = this.beachView;
+    final beachViewException = this.beachViewException;
+    final cityView = this.cityView;
+    final cityViewException = this.cityViewException;
+    final gardenView = this.gardenView;
+    final gardenViewException = this.gardenViewException;
+    final lakeView = this.lakeView;
+    final lakeViewException = this.lakeViewException;
+    final landmarkView = this.landmarkView;
+    final landmarkViewException = this.landmarkViewException;
+    final oceanView = this.oceanView;
+    final oceanViewException = this.oceanViewException;
+    final poolView = this.poolView;
+    final poolViewException = this.poolViewException;
+    final valleyView = this.valleyView;
+    final valleyViewException = this.valleyViewException;
+    return {
+      'beachView': ?beachView,
+      'beachViewException': ?beachViewException,
+      'cityView': ?cityView,
+      'cityViewException': ?cityViewException,
+      'gardenView': ?gardenView,
+      'gardenViewException': ?gardenViewException,
+      'lakeView': ?lakeView,
+      'lakeViewException': ?lakeViewException,
+      'landmarkView': ?landmarkView,
+      'landmarkViewException': ?landmarkViewException,
+      'oceanView': ?oceanView,
+      'oceanViewException': ?oceanViewException,
+      'poolView': ?poolView,
+      'poolViewException': ?poolViewException,
+      'valleyView': ?valleyView,
+      'valleyViewException': ?valleyViewException,
+    };
+  }
 }
 
 /// Waste reduction practices implemented at the hotel.
@@ -7701,75 +8057,94 @@ class WasteReduction {
             json_['waterBottleFillingStationsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (compostableFoodContainersAndCutlery != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final compostableFoodContainersAndCutlery =
+        this.compostableFoodContainersAndCutlery;
+    final compostableFoodContainersAndCutleryException =
+        this.compostableFoodContainersAndCutleryException;
+    final compostsExcessFood = this.compostsExcessFood;
+    final compostsExcessFoodException = this.compostsExcessFoodException;
+    final donatesExcessFood = this.donatesExcessFood;
+    final donatesExcessFoodException = this.donatesExcessFoodException;
+    final foodWasteReductionProgram = this.foodWasteReductionProgram;
+    final foodWasteReductionProgramException =
+        this.foodWasteReductionProgramException;
+    final noSingleUsePlasticStraws = this.noSingleUsePlasticStraws;
+    final noSingleUsePlasticStrawsException =
+        this.noSingleUsePlasticStrawsException;
+    final noSingleUsePlasticWaterBottles = this.noSingleUsePlasticWaterBottles;
+    final noSingleUsePlasticWaterBottlesException =
+        this.noSingleUsePlasticWaterBottlesException;
+    final noStyrofoamFoodContainers = this.noStyrofoamFoodContainers;
+    final noStyrofoamFoodContainersException =
+        this.noStyrofoamFoodContainersException;
+    final recyclingProgram = this.recyclingProgram;
+    final recyclingProgramException = this.recyclingProgramException;
+    final refillableToiletryContainers = this.refillableToiletryContainers;
+    final refillableToiletryContainersException =
+        this.refillableToiletryContainersException;
+    final safelyDisposesBatteries = this.safelyDisposesBatteries;
+    final safelyDisposesBatteriesException =
+        this.safelyDisposesBatteriesException;
+    final safelyDisposesElectronics = this.safelyDisposesElectronics;
+    final safelyDisposesElectronicsException =
+        this.safelyDisposesElectronicsException;
+    final safelyDisposesLightbulbs = this.safelyDisposesLightbulbs;
+    final safelyDisposesLightbulbsException =
+        this.safelyDisposesLightbulbsException;
+    final safelyHandlesHazardousSubstances =
+        this.safelyHandlesHazardousSubstances;
+    final safelyHandlesHazardousSubstancesException =
+        this.safelyHandlesHazardousSubstancesException;
+    final soapDonationProgram = this.soapDonationProgram;
+    final soapDonationProgramException = this.soapDonationProgramException;
+    final toiletryDonationProgram = this.toiletryDonationProgram;
+    final toiletryDonationProgramException =
+        this.toiletryDonationProgramException;
+    final waterBottleFillingStations = this.waterBottleFillingStations;
+    final waterBottleFillingStationsException =
+        this.waterBottleFillingStationsException;
+    return {
       'compostableFoodContainersAndCutlery':
-          compostableFoodContainersAndCutlery!,
-    if (compostableFoodContainersAndCutleryException != null)
+          ?compostableFoodContainersAndCutlery,
       'compostableFoodContainersAndCutleryException':
-          compostableFoodContainersAndCutleryException!,
-    if (compostsExcessFood != null) 'compostsExcessFood': compostsExcessFood!,
-    if (compostsExcessFoodException != null)
-      'compostsExcessFoodException': compostsExcessFoodException!,
-    if (donatesExcessFood != null) 'donatesExcessFood': donatesExcessFood!,
-    if (donatesExcessFoodException != null)
-      'donatesExcessFoodException': donatesExcessFoodException!,
-    if (foodWasteReductionProgram != null)
-      'foodWasteReductionProgram': foodWasteReductionProgram!,
-    if (foodWasteReductionProgramException != null)
-      'foodWasteReductionProgramException': foodWasteReductionProgramException!,
-    if (noSingleUsePlasticStraws != null)
-      'noSingleUsePlasticStraws': noSingleUsePlasticStraws!,
-    if (noSingleUsePlasticStrawsException != null)
-      'noSingleUsePlasticStrawsException': noSingleUsePlasticStrawsException!,
-    if (noSingleUsePlasticWaterBottles != null)
-      'noSingleUsePlasticWaterBottles': noSingleUsePlasticWaterBottles!,
-    if (noSingleUsePlasticWaterBottlesException != null)
+          ?compostableFoodContainersAndCutleryException,
+      'compostsExcessFood': ?compostsExcessFood,
+      'compostsExcessFoodException': ?compostsExcessFoodException,
+      'donatesExcessFood': ?donatesExcessFood,
+      'donatesExcessFoodException': ?donatesExcessFoodException,
+      'foodWasteReductionProgram': ?foodWasteReductionProgram,
+      'foodWasteReductionProgramException': ?foodWasteReductionProgramException,
+      'noSingleUsePlasticStraws': ?noSingleUsePlasticStraws,
+      'noSingleUsePlasticStrawsException': ?noSingleUsePlasticStrawsException,
+      'noSingleUsePlasticWaterBottles': ?noSingleUsePlasticWaterBottles,
       'noSingleUsePlasticWaterBottlesException':
-          noSingleUsePlasticWaterBottlesException!,
-    if (noStyrofoamFoodContainers != null)
-      'noStyrofoamFoodContainers': noStyrofoamFoodContainers!,
-    if (noStyrofoamFoodContainersException != null)
-      'noStyrofoamFoodContainersException': noStyrofoamFoodContainersException!,
-    if (recyclingProgram != null) 'recyclingProgram': recyclingProgram!,
-    if (recyclingProgramException != null)
-      'recyclingProgramException': recyclingProgramException!,
-    if (refillableToiletryContainers != null)
-      'refillableToiletryContainers': refillableToiletryContainers!,
-    if (refillableToiletryContainersException != null)
+          ?noSingleUsePlasticWaterBottlesException,
+      'noStyrofoamFoodContainers': ?noStyrofoamFoodContainers,
+      'noStyrofoamFoodContainersException': ?noStyrofoamFoodContainersException,
+      'recyclingProgram': ?recyclingProgram,
+      'recyclingProgramException': ?recyclingProgramException,
+      'refillableToiletryContainers': ?refillableToiletryContainers,
       'refillableToiletryContainersException':
-          refillableToiletryContainersException!,
-    if (safelyDisposesBatteries != null)
-      'safelyDisposesBatteries': safelyDisposesBatteries!,
-    if (safelyDisposesBatteriesException != null)
-      'safelyDisposesBatteriesException': safelyDisposesBatteriesException!,
-    if (safelyDisposesElectronics != null)
-      'safelyDisposesElectronics': safelyDisposesElectronics!,
-    if (safelyDisposesElectronicsException != null)
-      'safelyDisposesElectronicsException': safelyDisposesElectronicsException!,
-    if (safelyDisposesLightbulbs != null)
-      'safelyDisposesLightbulbs': safelyDisposesLightbulbs!,
-    if (safelyDisposesLightbulbsException != null)
-      'safelyDisposesLightbulbsException': safelyDisposesLightbulbsException!,
-    if (safelyHandlesHazardousSubstances != null)
-      'safelyHandlesHazardousSubstances': safelyHandlesHazardousSubstances!,
-    if (safelyHandlesHazardousSubstancesException != null)
+          ?refillableToiletryContainersException,
+      'safelyDisposesBatteries': ?safelyDisposesBatteries,
+      'safelyDisposesBatteriesException': ?safelyDisposesBatteriesException,
+      'safelyDisposesElectronics': ?safelyDisposesElectronics,
+      'safelyDisposesElectronicsException': ?safelyDisposesElectronicsException,
+      'safelyDisposesLightbulbs': ?safelyDisposesLightbulbs,
+      'safelyDisposesLightbulbsException': ?safelyDisposesLightbulbsException,
+      'safelyHandlesHazardousSubstances': ?safelyHandlesHazardousSubstances,
       'safelyHandlesHazardousSubstancesException':
-          safelyHandlesHazardousSubstancesException!,
-    if (soapDonationProgram != null)
-      'soapDonationProgram': soapDonationProgram!,
-    if (soapDonationProgramException != null)
-      'soapDonationProgramException': soapDonationProgramException!,
-    if (toiletryDonationProgram != null)
-      'toiletryDonationProgram': toiletryDonationProgram!,
-    if (toiletryDonationProgramException != null)
-      'toiletryDonationProgramException': toiletryDonationProgramException!,
-    if (waterBottleFillingStations != null)
-      'waterBottleFillingStations': waterBottleFillingStations!,
-    if (waterBottleFillingStationsException != null)
+          ?safelyHandlesHazardousSubstancesException,
+      'soapDonationProgram': ?soapDonationProgram,
+      'soapDonationProgramException': ?soapDonationProgramException,
+      'toiletryDonationProgram': ?toiletryDonationProgram,
+      'toiletryDonationProgramException': ?toiletryDonationProgramException,
+      'waterBottleFillingStations': ?waterBottleFillingStations,
       'waterBottleFillingStationsException':
-          waterBottleFillingStationsException!,
-  };
+          ?waterBottleFillingStationsException,
+    };
+  }
 }
 
 /// Water conservation practices implemented at the hotel.
@@ -7921,29 +8296,38 @@ class WaterConservation {
             json_['waterSavingToiletsException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (independentOrganizationAuditsWaterUse != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final independentOrganizationAuditsWaterUse =
+        this.independentOrganizationAuditsWaterUse;
+    final independentOrganizationAuditsWaterUseException =
+        this.independentOrganizationAuditsWaterUseException;
+    final linenReuseProgram = this.linenReuseProgram;
+    final linenReuseProgramException = this.linenReuseProgramException;
+    final towelReuseProgram = this.towelReuseProgram;
+    final towelReuseProgramException = this.towelReuseProgramException;
+    final waterSavingShowers = this.waterSavingShowers;
+    final waterSavingShowersException = this.waterSavingShowersException;
+    final waterSavingSinks = this.waterSavingSinks;
+    final waterSavingSinksException = this.waterSavingSinksException;
+    final waterSavingToilets = this.waterSavingToilets;
+    final waterSavingToiletsException = this.waterSavingToiletsException;
+    return {
       'independentOrganizationAuditsWaterUse':
-          independentOrganizationAuditsWaterUse!,
-    if (independentOrganizationAuditsWaterUseException != null)
+          ?independentOrganizationAuditsWaterUse,
       'independentOrganizationAuditsWaterUseException':
-          independentOrganizationAuditsWaterUseException!,
-    if (linenReuseProgram != null) 'linenReuseProgram': linenReuseProgram!,
-    if (linenReuseProgramException != null)
-      'linenReuseProgramException': linenReuseProgramException!,
-    if (towelReuseProgram != null) 'towelReuseProgram': towelReuseProgram!,
-    if (towelReuseProgramException != null)
-      'towelReuseProgramException': towelReuseProgramException!,
-    if (waterSavingShowers != null) 'waterSavingShowers': waterSavingShowers!,
-    if (waterSavingShowersException != null)
-      'waterSavingShowersException': waterSavingShowersException!,
-    if (waterSavingSinks != null) 'waterSavingSinks': waterSavingSinks!,
-    if (waterSavingSinksException != null)
-      'waterSavingSinksException': waterSavingSinksException!,
-    if (waterSavingToilets != null) 'waterSavingToilets': waterSavingToilets!,
-    if (waterSavingToiletsException != null)
-      'waterSavingToiletsException': waterSavingToiletsException!,
-  };
+          ?independentOrganizationAuditsWaterUseException,
+      'linenReuseProgram': ?linenReuseProgram,
+      'linenReuseProgramException': ?linenReuseProgramException,
+      'towelReuseProgram': ?towelReuseProgram,
+      'towelReuseProgramException': ?towelReuseProgramException,
+      'waterSavingShowers': ?waterSavingShowers,
+      'waterSavingShowersException': ?waterSavingShowersException,
+      'waterSavingSinks': ?waterSavingSinks,
+      'waterSavingSinksException': ?waterSavingSinksException,
+      'waterSavingToilets': ?waterSavingToilets,
+      'waterSavingToiletsException': ?waterSavingToiletsException,
+    };
+  }
 }
 
 /// Guest facilities at the property to promote or maintain health, beauty, and
@@ -8214,34 +8598,52 @@ class Wellness {
         weightMachineException: json_['weightMachineException'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (doctorOnCall != null) 'doctorOnCall': doctorOnCall!,
-    if (doctorOnCallException != null)
-      'doctorOnCallException': doctorOnCallException!,
-    if (ellipticalMachine != null) 'ellipticalMachine': ellipticalMachine!,
-    if (ellipticalMachineException != null)
-      'ellipticalMachineException': ellipticalMachineException!,
-    if (fitnessCenter != null) 'fitnessCenter': fitnessCenter!,
-    if (fitnessCenterException != null)
-      'fitnessCenterException': fitnessCenterException!,
-    if (freeFitnessCenter != null) 'freeFitnessCenter': freeFitnessCenter!,
-    if (freeFitnessCenterException != null)
-      'freeFitnessCenterException': freeFitnessCenterException!,
-    if (freeWeights != null) 'freeWeights': freeWeights!,
-    if (freeWeightsException != null)
-      'freeWeightsException': freeWeightsException!,
-    if (massage != null) 'massage': massage!,
-    if (massageException != null) 'massageException': massageException!,
-    if (salon != null) 'salon': salon!,
-    if (salonException != null) 'salonException': salonException!,
-    if (sauna != null) 'sauna': sauna!,
-    if (saunaException != null) 'saunaException': saunaException!,
-    if (spa != null) 'spa': spa!,
-    if (spaException != null) 'spaException': spaException!,
-    if (treadmill != null) 'treadmill': treadmill!,
-    if (treadmillException != null) 'treadmillException': treadmillException!,
-    if (weightMachine != null) 'weightMachine': weightMachine!,
-    if (weightMachineException != null)
-      'weightMachineException': weightMachineException!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final doctorOnCall = this.doctorOnCall;
+    final doctorOnCallException = this.doctorOnCallException;
+    final ellipticalMachine = this.ellipticalMachine;
+    final ellipticalMachineException = this.ellipticalMachineException;
+    final fitnessCenter = this.fitnessCenter;
+    final fitnessCenterException = this.fitnessCenterException;
+    final freeFitnessCenter = this.freeFitnessCenter;
+    final freeFitnessCenterException = this.freeFitnessCenterException;
+    final freeWeights = this.freeWeights;
+    final freeWeightsException = this.freeWeightsException;
+    final massage = this.massage;
+    final massageException = this.massageException;
+    final salon = this.salon;
+    final salonException = this.salonException;
+    final sauna = this.sauna;
+    final saunaException = this.saunaException;
+    final spa = this.spa;
+    final spaException = this.spaException;
+    final treadmill = this.treadmill;
+    final treadmillException = this.treadmillException;
+    final weightMachine = this.weightMachine;
+    final weightMachineException = this.weightMachineException;
+    return {
+      'doctorOnCall': ?doctorOnCall,
+      'doctorOnCallException': ?doctorOnCallException,
+      'ellipticalMachine': ?ellipticalMachine,
+      'ellipticalMachineException': ?ellipticalMachineException,
+      'fitnessCenter': ?fitnessCenter,
+      'fitnessCenterException': ?fitnessCenterException,
+      'freeFitnessCenter': ?freeFitnessCenter,
+      'freeFitnessCenterException': ?freeFitnessCenterException,
+      'freeWeights': ?freeWeights,
+      'freeWeightsException': ?freeWeightsException,
+      'massage': ?massage,
+      'massageException': ?massageException,
+      'salon': ?salon,
+      'salonException': ?salonException,
+      'sauna': ?sauna,
+      'saunaException': ?saunaException,
+      'spa': ?spa,
+      'spaException': ?spaException,
+      'treadmill': ?treadmill,
+      'treadmillException': ?treadmillException,
+      'weightMachine': ?weightMachine,
+      'weightMachineException': ?weightMachineException,
+    };
+  }
 }

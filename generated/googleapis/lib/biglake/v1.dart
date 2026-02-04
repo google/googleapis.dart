@@ -129,9 +129,10 @@ class ProjectsCatalogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -173,7 +174,7 @@ class ProjectsCatalogsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -233,9 +234,10 @@ class ProjectsCatalogsNamespacesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -278,7 +280,7 @@ class ProjectsCatalogsNamespacesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -342,8 +344,8 @@ class ProjectsLocationsCatalogsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (catalogId != null) 'catalogId': [catalogId],
-      if ($fields != null) 'fields': [$fields],
+      'catalogId': ?catalogId == null ? null : [catalogId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/catalogs';
@@ -378,7 +380,7 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<Catalog> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -412,7 +414,7 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<Catalog> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -460,9 +462,9 @@ class ProjectsLocationsCatalogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/catalogs';
@@ -520,8 +522,8 @@ class ProjectsLocationsCatalogsDatabasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (databaseId != null) 'databaseId': [databaseId],
-      if ($fields != null) 'fields': [$fields],
+      'databaseId': ?databaseId == null ? null : [databaseId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
@@ -559,7 +561,7 @@ class ProjectsLocationsCatalogsDatabasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -593,7 +595,7 @@ class ProjectsLocationsCatalogsDatabasesResource {
   /// this method will complete with the same error.
   async.Future<Database> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -643,9 +645,9 @@ class ProjectsLocationsCatalogsDatabasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
@@ -694,8 +696,8 @@ class ProjectsLocationsCatalogsDatabasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -749,8 +751,8 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tableId != null) 'tableId': [tableId],
-      if ($fields != null) 'fields': [$fields],
+      'tableId': ?tableId == null ? null : [tableId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tables';
@@ -785,7 +787,7 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   /// this method will complete with the same error.
   async.Future<Table> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -819,7 +821,7 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   /// this method will complete with the same error.
   async.Future<Table> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -877,10 +879,10 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tables';
@@ -929,8 +931,8 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -973,7 +975,7 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rename';
@@ -1019,21 +1021,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1128,24 +1130,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Catalog is the container of databases.
@@ -1199,13 +1200,20 @@ class Catalog {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Database is the container of tables.
@@ -1267,26 +1275,34 @@ class Database {
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
-        hiveOptions:
-            json_.containsKey('hiveOptions')
-                ? HiveDatabaseOptions.fromJson(
-                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        hiveOptions: json_.containsKey('hiveOptions')
+            ? HiveDatabaseOptions.fromJson(
+                json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (hiveOptions != null) 'hiveOptions': hiveOptions!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final expireTime = this.expireTime;
+    final hiveOptions = this.hiveOptions;
+    final name = this.name;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'expireTime': ?expireTime,
+      'hiveOptions': ?hiveOptions,
+      'name': ?name,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1323,15 +1339,17 @@ class HiveDatabaseOptions {
   HiveDatabaseOptions.fromJson(core.Map json_)
     : this(
         locationUri: json_['locationUri'] as core.String?,
-        parameters: (json_['parameters']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationUri != null) 'locationUri': locationUri!,
-    if (parameters != null) 'parameters': parameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationUri = this.locationUri;
+    final parameters = this.parameters;
+    return {'locationUri': ?locationUri, 'parameters': ?parameters};
+  }
 }
 
 /// Options of a Hive table.
@@ -1351,24 +1369,29 @@ class HiveTableOptions {
 
   HiveTableOptions.fromJson(core.Map json_)
     : this(
-        parameters: (json_['parameters']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        storageDescriptor:
-            json_.containsKey('storageDescriptor')
-                ? StorageDescriptor.fromJson(
-                  json_['storageDescriptor']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        storageDescriptor: json_.containsKey('storageDescriptor')
+            ? StorageDescriptor.fromJson(
+                json_['storageDescriptor']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tableType: json_['tableType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parameters != null) 'parameters': parameters!,
-    if (storageDescriptor != null) 'storageDescriptor': storageDescriptor!,
-    if (tableType != null) 'tableType': tableType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
+    final storageDescriptor = this.storageDescriptor;
+    final tableType = this.tableType;
+    return {
+      'parameters': ?parameters,
+      'storageDescriptor': ?storageDescriptor,
+      'tableType': ?tableType,
+    };
+  }
 }
 
 /// Response message for the ListCatalogs method.
@@ -1385,21 +1408,21 @@ class ListCatalogsResponse {
 
   ListCatalogsResponse.fromJson(core.Map json_)
     : this(
-        catalogs:
-            (json_['catalogs'] as core.List?)
-                ?.map(
-                  (value) => Catalog.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        catalogs: (json_['catalogs'] as core.List?)
+            ?.map(
+              (value) => Catalog.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (catalogs != null) 'catalogs': catalogs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalogs = this.catalogs;
+    final nextPageToken = this.nextPageToken;
+    return {'catalogs': ?catalogs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListDatabases method.
@@ -1416,21 +1439,21 @@ class ListDatabasesResponse {
 
   ListDatabasesResponse.fromJson(core.Map json_)
     : this(
-        databases:
-            (json_['databases'] as core.List?)
-                ?.map(
-                  (value) => Database.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        databases: (json_['databases'] as core.List?)
+            ?.map(
+              (value) => Database.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databases != null) 'databases': databases!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databases = this.databases;
+    final nextPageToken = this.nextPageToken;
+    return {'databases': ?databases, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListTables method.
@@ -1448,20 +1471,19 @@ class ListTablesResponse {
   ListTablesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tables:
-            (json_['tables'] as core.List?)
-                ?.map(
-                  (value) => Table.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tables: (json_['tables'] as core.List?)
+            ?.map(
+              (value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tables != null) 'tables': tables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tables = this.tables;
+    return {'nextPageToken': ?nextPageToken, 'tables': ?tables};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1556,32 +1578,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Request message for the RenameTable method in MetastoreService
@@ -1599,9 +1625,10 @@ class RenameTableRequest {
   RenameTableRequest.fromJson(core.Map json_)
     : this(newName: json_['newName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newName != null) 'newName': newName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newName = this.newName;
+    return {'newName': ?newName};
+  }
 }
 
 /// Serializer and deserializer information.
@@ -1614,9 +1641,10 @@ class SerDeInfo {
   SerDeInfo.fromJson(core.Map json_)
     : this(serializationLib: json_['serializationLib'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serializationLib != null) 'serializationLib': serializationLib!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final serializationLib = this.serializationLib;
+    return {'serializationLib': ?serializationLib};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1638,19 +1666,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Stores physical storage information of the data.
@@ -1680,20 +1708,25 @@ class StorageDescriptor {
         inputFormat: json_['inputFormat'] as core.String?,
         locationUri: json_['locationUri'] as core.String?,
         outputFormat: json_['outputFormat'] as core.String?,
-        serdeInfo:
-            json_.containsKey('serdeInfo')
-                ? SerDeInfo.fromJson(
-                  json_['serdeInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serdeInfo: json_.containsKey('serdeInfo')
+            ? SerDeInfo.fromJson(
+                json_['serdeInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputFormat != null) 'inputFormat': inputFormat!,
-    if (locationUri != null) 'locationUri': locationUri!,
-    if (outputFormat != null) 'outputFormat': outputFormat!,
-    if (serdeInfo != null) 'serdeInfo': serdeInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputFormat = this.inputFormat;
+    final locationUri = this.locationUri;
+    final outputFormat = this.outputFormat;
+    final serdeInfo = this.serdeInfo;
+    return {
+      'inputFormat': ?inputFormat,
+      'locationUri': ?locationUri,
+      'outputFormat': ?outputFormat,
+      'serdeInfo': ?serdeInfo,
+    };
+  }
 }
 
 /// Represents a table.
@@ -1763,25 +1796,34 @@ class Table {
         deleteTime: json_['deleteTime'] as core.String?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
-        hiveOptions:
-            json_.containsKey('hiveOptions')
-                ? HiveTableOptions.fromJson(
-                  json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        hiveOptions: json_.containsKey('hiveOptions')
+            ? HiveTableOptions.fromJson(
+                json_['hiveOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (hiveOptions != null) 'hiveOptions': hiveOptions!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final hiveOptions = this.hiveOptions;
+    final name = this.name;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'hiveOptions': ?hiveOptions,
+      'name': ?name,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }

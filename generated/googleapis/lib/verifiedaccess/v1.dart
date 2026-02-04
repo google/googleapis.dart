@@ -85,7 +85,7 @@ class ChallengeResource {
   async.Future<Challenge> create(Empty request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/challenge';
@@ -121,7 +121,7 @@ class ChallengeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/challenge:verify';
@@ -151,26 +151,27 @@ class Challenge {
 
   Challenge.fromJson(core.Map json_)
     : this(
-        alternativeChallenge:
-            json_.containsKey('alternativeChallenge')
-                ? SignedData.fromJson(
-                  json_['alternativeChallenge']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        challenge:
-            json_.containsKey('challenge')
-                ? SignedData.fromJson(
-                  json_['challenge'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        alternativeChallenge: json_.containsKey('alternativeChallenge')
+            ? SignedData.fromJson(
+                json_['alternativeChallenge']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        challenge: json_.containsKey('challenge')
+            ? SignedData.fromJson(
+                json_['challenge'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternativeChallenge != null)
-      'alternativeChallenge': alternativeChallenge!,
-    if (challenge != null) 'challenge': challenge!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternativeChallenge = this.alternativeChallenge;
+    final challenge = this.challenge;
+    return {
+      'alternativeChallenge': ?alternativeChallenge,
+      'challenge': ?challenge,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -213,10 +214,11 @@ class SignedData {
         signature: json_['signature'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (signature != null) 'signature': signature!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final signature = this.signature;
+    return {'data': ?data, 'signature': ?signature};
+  }
 }
 
 /// signed ChallengeResponse
@@ -239,20 +241,23 @@ class VerifyChallengeResponseRequest {
 
   VerifyChallengeResponseRequest.fromJson(core.Map json_)
     : this(
-        challengeResponse:
-            json_.containsKey('challengeResponse')
-                ? SignedData.fromJson(
-                  json_['challengeResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        challengeResponse: json_.containsKey('challengeResponse')
+            ? SignedData.fromJson(
+                json_['challengeResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         expectedIdentity: json_['expectedIdentity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challengeResponse != null) 'challengeResponse': challengeResponse!,
-    if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challengeResponse = this.challengeResponse;
+    final expectedIdentity = this.expectedIdentity;
+    return {
+      'challengeResponse': ?challengeResponse,
+      'expectedIdentity': ?expectedIdentity,
+    };
+  }
 }
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
@@ -305,12 +310,18 @@ class VerifyChallengeResponseResult {
         verificationOutput: json_['verificationOutput'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
-    if (deviceEnrollmentId != null) 'deviceEnrollmentId': deviceEnrollmentId!,
-    if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
-    if (signedPublicKeyAndChallenge != null)
-      'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
-    if (verificationOutput != null) 'verificationOutput': verificationOutput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestedDeviceId = this.attestedDeviceId;
+    final deviceEnrollmentId = this.deviceEnrollmentId;
+    final devicePermanentId = this.devicePermanentId;
+    final signedPublicKeyAndChallenge = this.signedPublicKeyAndChallenge;
+    final verificationOutput = this.verificationOutput;
+    return {
+      'attestedDeviceId': ?attestedDeviceId,
+      'deviceEnrollmentId': ?deviceEnrollmentId,
+      'devicePermanentId': ?devicePermanentId,
+      'signedPublicKeyAndChallenge': ?signedPublicKeyAndChallenge,
+      'verificationOutput': ?verificationOutput,
+    };
+  }
 }

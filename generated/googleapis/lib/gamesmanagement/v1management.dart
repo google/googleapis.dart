@@ -96,7 +96,7 @@ class AchievementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -136,7 +136,7 @@ class AchievementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/achievements/reset';
@@ -167,7 +167,7 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/achievements/resetAllForAllPlayers';
@@ -202,7 +202,7 @@ class AchievementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -241,7 +241,7 @@ class AchievementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/achievements/resetMultipleForAllPlayers';
@@ -293,9 +293,9 @@ class ApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -339,7 +339,7 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> reset(core.String eventId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -373,7 +373,7 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> resetAll({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/events/reset';
@@ -402,7 +402,7 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/events/resetAllForAllPlayers';
@@ -437,7 +437,7 @@ class EventsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -476,7 +476,7 @@ class EventsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/events/resetMultipleForAllPlayers';
@@ -522,7 +522,7 @@ class PlayersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -565,7 +565,7 @@ class PlayersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -613,7 +613,7 @@ class ScoresResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -653,7 +653,7 @@ class ScoresResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/scores/reset';
@@ -684,7 +684,7 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/scores/resetAllForAllPlayers';
@@ -719,7 +719,7 @@ class ScoresResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -758,7 +758,7 @@ class ScoresResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'games/v1management/scores/resetMultipleForAllPlayers';
@@ -789,20 +789,20 @@ class AchievementResetAllResponse {
   AchievementResetAllResponse.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => AchievementResetResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => AchievementResetResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final results = this.results;
+    return {'kind': ?kind, 'results': ?results};
+  }
 }
 
 class AchievementResetMultipleForAllRequest {
@@ -819,17 +819,17 @@ class AchievementResetMultipleForAllRequest {
 
   AchievementResetMultipleForAllRequest.fromJson(core.Map json_)
     : this(
-        achievementIds:
-            (json_['achievement_ids'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        achievementIds: (json_['achievement_ids'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (achievementIds != null) 'achievement_ids': achievementIds!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final achievementIds = this.achievementIds;
+    final kind = this.kind;
+    return {'achievement_ids': ?achievementIds, 'kind': ?kind};
+  }
 }
 
 /// An achievement reset response.
@@ -868,12 +868,18 @@ class AchievementResetResponse {
         updateOccurred: json_['updateOccurred'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentState != null) 'currentState': currentState!,
-    if (definitionId != null) 'definitionId': definitionId!,
-    if (kind != null) 'kind': kind!,
-    if (updateOccurred != null) 'updateOccurred': updateOccurred!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentState = this.currentState;
+    final definitionId = this.definitionId;
+    final kind = this.kind;
+    final updateOccurred = this.updateOccurred;
+    return {
+      'currentState': ?currentState,
+      'definitionId': ?definitionId,
+      'kind': ?kind,
+      'updateOccurred': ?updateOccurred,
+    };
+  }
 }
 
 /// Multiple events reset all request.
@@ -891,17 +897,17 @@ class EventsResetMultipleForAllRequest {
 
   EventsResetMultipleForAllRequest.fromJson(core.Map json_)
     : this(
-        eventIds:
-            (json_['event_ids'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        eventIds: (json_['event_ids'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eventIds != null) 'event_ids': eventIds!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventIds = this.eventIds;
+    final kind = this.kind;
+    return {'event_ids': ?eventIds, 'kind': ?kind};
+  }
 }
 
 /// 1P/3P metadata about the player's experience.
@@ -933,30 +939,32 @@ class GamesPlayerExperienceInfoResource {
     : this(
         currentExperiencePoints:
             json_['currentExperiencePoints'] as core.String?,
-        currentLevel:
-            json_.containsKey('currentLevel')
-                ? GamesPlayerLevelResource.fromJson(
-                  json_['currentLevel'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        currentLevel: json_.containsKey('currentLevel')
+            ? GamesPlayerLevelResource.fromJson(
+                json_['currentLevel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastLevelUpTimestampMillis:
             json_['lastLevelUpTimestampMillis'] as core.String?,
-        nextLevel:
-            json_.containsKey('nextLevel')
-                ? GamesPlayerLevelResource.fromJson(
-                  json_['nextLevel'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nextLevel: json_.containsKey('nextLevel')
+            ? GamesPlayerLevelResource.fromJson(
+                json_['nextLevel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentExperiencePoints != null)
-      'currentExperiencePoints': currentExperiencePoints!,
-    if (currentLevel != null) 'currentLevel': currentLevel!,
-    if (lastLevelUpTimestampMillis != null)
-      'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
-    if (nextLevel != null) 'nextLevel': nextLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentExperiencePoints = this.currentExperiencePoints;
+    final currentLevel = this.currentLevel;
+    final lastLevelUpTimestampMillis = this.lastLevelUpTimestampMillis;
+    final nextLevel = this.nextLevel;
+    return {
+      'currentExperiencePoints': ?currentExperiencePoints,
+      'currentLevel': ?currentLevel,
+      'lastLevelUpTimestampMillis': ?lastLevelUpTimestampMillis,
+      'nextLevel': ?nextLevel,
+    };
+  }
 }
 
 /// 1P/3P metadata about a user's level.
@@ -983,13 +991,16 @@ class GamesPlayerLevelResource {
         minExperiencePoints: json_['minExperiencePoints'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (level != null) 'level': level!,
-    if (maxExperiencePoints != null)
-      'maxExperiencePoints': maxExperiencePoints!,
-    if (minExperiencePoints != null)
-      'minExperiencePoints': minExperiencePoints!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final level = this.level;
+    final maxExperiencePoints = this.maxExperiencePoints;
+    final minExperiencePoints = this.minExperiencePoints;
+    return {
+      'level': ?level,
+      'maxExperiencePoints': ?maxExperiencePoints,
+      'minExperiencePoints': ?minExperiencePoints,
+    };
+  }
 }
 
 /// The HiddenPlayer resource.
@@ -1017,19 +1028,23 @@ class HiddenPlayer {
     : this(
         hiddenTimeMillis: json_['hiddenTimeMillis'] as core.String?,
         kind: json_['kind'] as core.String?,
-        player:
-            json_.containsKey('player')
-                ? Player.fromJson(
-                  json_['player'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        player: json_.containsKey('player')
+            ? Player.fromJson(
+                json_['player'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hiddenTimeMillis != null) 'hiddenTimeMillis': hiddenTimeMillis!,
-    if (kind != null) 'kind': kind!,
-    if (player != null) 'player': player!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hiddenTimeMillis = this.hiddenTimeMillis;
+    final kind = this.kind;
+    final player = this.player;
+    return {
+      'hiddenTimeMillis': ?hiddenTimeMillis,
+      'kind': ?kind,
+      'player': ?player,
+    };
+  }
 }
 
 /// A list of hidden players.
@@ -1049,23 +1064,23 @@ class HiddenPlayerList {
 
   HiddenPlayerList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => HiddenPlayer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => HiddenPlayer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// An object representation of the individual components of the player's name.
@@ -1090,10 +1105,11 @@ class PlayerName {
         givenName: json_['givenName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (familyName != null) 'familyName': familyName!,
-    if (givenName != null) 'givenName': givenName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final familyName = this.familyName;
+    final givenName = this.givenName;
+    return {'familyName': ?familyName, 'givenName': ?givenName};
+  }
 }
 
 /// A Player resource.
@@ -1163,45 +1179,53 @@ class Player {
         bannerUrlLandscape: json_['bannerUrlLandscape'] as core.String?,
         bannerUrlPortrait: json_['bannerUrlPortrait'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        experienceInfo:
-            json_.containsKey('experienceInfo')
-                ? GamesPlayerExperienceInfoResource.fromJson(
-                  json_['experienceInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        experienceInfo: json_.containsKey('experienceInfo')
+            ? GamesPlayerExperienceInfoResource.fromJson(
+                json_['experienceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        name:
-            json_.containsKey('name')
-                ? PlayerName.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        name: json_.containsKey('name')
+            ? PlayerName.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         originalPlayerId: json_['originalPlayerId'] as core.String?,
         playerId: json_['playerId'] as core.String?,
-        profileSettings:
-            json_.containsKey('profileSettings')
-                ? ProfileSettings.fromJson(
-                  json_['profileSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        profileSettings: json_.containsKey('profileSettings')
+            ? ProfileSettings.fromJson(
+                json_['profileSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
-    if (bannerUrlLandscape != null) 'bannerUrlLandscape': bannerUrlLandscape!,
-    if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
-    if (displayName != null) 'displayName': displayName!,
-    if (experienceInfo != null) 'experienceInfo': experienceInfo!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
-    if (playerId != null) 'playerId': playerId!,
-    if (profileSettings != null) 'profileSettings': profileSettings!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final avatarImageUrl = this.avatarImageUrl;
+    final bannerUrlLandscape = this.bannerUrlLandscape;
+    final bannerUrlPortrait = this.bannerUrlPortrait;
+    final displayName = this.displayName;
+    final experienceInfo = this.experienceInfo;
+    final kind = this.kind;
+    final name = this.name;
+    final originalPlayerId = this.originalPlayerId;
+    final playerId = this.playerId;
+    final profileSettings = this.profileSettings;
+    final title = this.title;
+    return {
+      'avatarImageUrl': ?avatarImageUrl,
+      'bannerUrlLandscape': ?bannerUrlLandscape,
+      'bannerUrlPortrait': ?bannerUrlPortrait,
+      'displayName': ?displayName,
+      'experienceInfo': ?experienceInfo,
+      'kind': ?kind,
+      'name': ?name,
+      'originalPlayerId': ?originalPlayerId,
+      'playerId': ?playerId,
+      'profileSettings': ?profileSettings,
+      'title': ?title,
+    };
+  }
 }
 
 /// A list of leaderboard reset resources.
@@ -1220,20 +1244,20 @@ class PlayerScoreResetAllResponse {
   PlayerScoreResetAllResponse.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => PlayerScoreResetResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => PlayerScoreResetResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final results = this.results;
+    return {'kind': ?kind, 'results': ?results};
+  }
 }
 
 /// A list of reset leaderboard entry resources.
@@ -1264,18 +1288,21 @@ class PlayerScoreResetResponse {
     : this(
         definitionId: json_['definitionId'] as core.String?,
         kind: json_['kind'] as core.String?,
-        resetScoreTimeSpans:
-            (json_['resetScoreTimeSpans'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resetScoreTimeSpans: (json_['resetScoreTimeSpans'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (definitionId != null) 'definitionId': definitionId!,
-    if (kind != null) 'kind': kind!,
-    if (resetScoreTimeSpans != null)
-      'resetScoreTimeSpans': resetScoreTimeSpans!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final definitionId = this.definitionId;
+    final kind = this.kind;
+    final resetScoreTimeSpans = this.resetScoreTimeSpans;
+    return {
+      'definitionId': ?definitionId,
+      'kind': ?kind,
+      'resetScoreTimeSpans': ?resetScoreTimeSpans,
+    };
+  }
 }
 
 /// Profile settings
@@ -1294,10 +1321,11 @@ class ProfileSettings {
         profileVisible: json_['profileVisible'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (profileVisible != null) 'profileVisible': profileVisible!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final profileVisible = this.profileVisible;
+    return {'kind': ?kind, 'profileVisible': ?profileVisible};
+  }
 }
 
 class ScoresResetMultipleForAllRequest {
@@ -1315,14 +1343,14 @@ class ScoresResetMultipleForAllRequest {
   ScoresResetMultipleForAllRequest.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        leaderboardIds:
-            (json_['leaderboard_ids'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        leaderboardIds: (json_['leaderboard_ids'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (leaderboardIds != null) 'leaderboard_ids': leaderboardIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final leaderboardIds = this.leaderboardIds;
+    return {'kind': ?kind, 'leaderboard_ids': ?leaderboardIds};
+  }
 }

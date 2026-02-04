@@ -2593,8 +2593,9 @@ void main() {
   unittest.group('resource-BiddersAuctionPackagesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).bidders.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).bidders.auctionPackages;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2678,8 +2679,9 @@ void main() {
   unittest.group('resource-BiddersFinalizedDealsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).bidders.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).bidders.finalizedDeals;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2761,8 +2763,9 @@ void main() {
 
     unittest.test('method--setReadyToServe', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).bidders.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).bidders.finalizedDeals;
       final arg_request = buildSetReadyToServeRequest();
       final arg_deal = 'foo';
       final arg_$fields = 'foo';
@@ -2827,8 +2830,9 @@ void main() {
   unittest.group('resource-BuyersAuctionPackagesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2881,8 +2885,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2964,8 +2969,9 @@ void main() {
 
     unittest.test('method--subscribe', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_request = buildSubscribeAuctionPackageRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3028,8 +3034,9 @@ void main() {
 
     unittest.test('method--subscribeClients', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_request = buildSubscribeClientsRequest();
       final arg_auctionPackage = 'foo';
       final arg_$fields = 'foo';
@@ -3092,8 +3099,9 @@ void main() {
 
     unittest.test('method--unsubscribe', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_request = buildUnsubscribeAuctionPackageRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3156,8 +3164,9 @@ void main() {
 
     unittest.test('method--unsubscribeClients', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.auctionPackages;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.auctionPackages;
       final arg_request = buildUnsubscribeClientsRequest();
       final arg_auctionPackage = 'foo';
       final arg_$fields = 'foo';
@@ -3974,8 +3983,9 @@ void main() {
   unittest.group('resource-BuyersFinalizedDealsResource', () {
     unittest.test('method--addCreative', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_request = buildAddCreativeRequest();
       final arg_deal = 'foo';
       final arg_$fields = 'foo';
@@ -4038,8 +4048,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4092,8 +4103,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4175,8 +4187,9 @@ void main() {
 
     unittest.test('method--pause', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_request = buildPauseFinalizedDealRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4239,8 +4252,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_request = buildResumeFinalizedDealRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4303,8 +4317,9 @@ void main() {
 
     unittest.test('method--setReadyToServe', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.finalizedDeals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.finalizedDeals;
       final arg_request = buildSetReadyToServeRequest();
       final arg_deal = 'foo';
       final arg_$fields = 'foo';
@@ -4819,8 +4834,9 @@ void main() {
   unittest.group('resource-BuyersProposalsDealsResource', () {
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.proposals.deals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.proposals.deals;
       final arg_request = buildBatchUpdateDealsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4883,8 +4899,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.proposals.deals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.proposals.deals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4937,8 +4954,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.proposals.deals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.proposals.deals;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5006,8 +5024,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.proposals.deals;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.proposals.deals;
       final arg_request = buildDeal();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5078,8 +5097,9 @@ void main() {
   unittest.group('resource-BuyersPublisherProfilesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.publisherProfiles;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.publisherProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5132,8 +5152,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AuthorizedBuyersMarketplaceApi(mock).buyers.publisherProfiles;
+      final res = api.AuthorizedBuyersMarketplaceApi(
+        mock,
+      ).buyers.publisherProfiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

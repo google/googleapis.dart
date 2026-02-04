@@ -4249,8 +4249,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupVaultsBackupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.backupVaults.backups;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.backupVaults.backups;
       final arg_request = buildBackup();
       final arg_parent = 'foo';
       final arg_backupId = 'foo';
@@ -4319,8 +4320,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.backupVaults.backups;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.backupVaults.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4373,8 +4375,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.backupVaults.backups;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.backupVaults.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4427,8 +4430,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.backupVaults.backups;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.backupVaults.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4508,8 +4512,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.backupVaults.backups;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.backupVaults.backups;
       final arg_request = buildBackup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6585,8 +6590,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVolumesQuotaRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.quotaRules;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.quotaRules;
       final arg_request = buildQuotaRule();
       final arg_parent = 'foo';
       final arg_quotaRuleId = 'foo';
@@ -6655,8 +6661,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.quotaRules;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.quotaRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6709,8 +6716,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.quotaRules;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.quotaRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6763,8 +6771,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.quotaRules;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.quotaRules;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6844,8 +6853,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.quotaRules;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.quotaRules;
       final arg_request = buildQuotaRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6916,8 +6926,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVolumesReplicationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildReplication();
       final arg_parent = 'foo';
       final arg_replicationId = 'foo';
@@ -6986,8 +6997,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7040,8 +7052,9 @@ void main() {
 
     unittest.test('method--establishPeering', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildEstablishPeeringRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7104,8 +7117,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7158,8 +7172,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7239,8 +7254,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildReplication();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7309,8 +7325,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildResumeReplicationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7373,8 +7390,9 @@ void main() {
 
     unittest.test('method--reverseDirection', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildReverseReplicationDirectionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7437,8 +7455,9 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildStopReplicationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7501,8 +7520,9 @@ void main() {
 
     unittest.test('method--sync', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetAppFilesApi(mock).projects.locations.volumes.replications;
+      final res = api.NetAppFilesApi(
+        mock,
+      ).projects.locations.volumes.replications;
       final arg_request = buildSyncReplicationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

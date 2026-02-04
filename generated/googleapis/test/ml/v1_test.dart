@@ -2781,10 +2781,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig(
           od,
         );
@@ -2799,10 +2799,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig(
           od,
         );
@@ -2817,10 +2817,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(od);
       });
     },
@@ -2844,10 +2844,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(od);
       });
     },
@@ -2860,10 +2860,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec(od);
       });
     },
@@ -2875,10 +2875,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec(od);
       });
     },
@@ -2891,10 +2891,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(od);
       });
     },
@@ -2907,10 +2907,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec(
           od,
         );
@@ -2925,10 +2925,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec(
           od,
         );
@@ -2943,10 +2943,10 @@ void main() {
         final o =
             buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec(
           od,
         );
@@ -3070,10 +3070,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest(od);
       });
     },
@@ -4555,8 +4555,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4609,8 +4610,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4667,8 +4669,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsStudiesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies;
       final arg_request = buildGoogleCloudMlV1Study();
       final arg_parent = 'foo';
       final arg_studyId = 'foo';
@@ -4737,8 +4740,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4791,8 +4795,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4845,8 +4850,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4905,10 +4911,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsStudiesTrialsResource', () {
     unittest.test('method--addMeasurement', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1AddTrialMeasurementRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4971,20 +4976,19 @@ void main() {
 
     unittest.test('method--checkEarlyStoppingState', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request =
           buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest(obj);
 
           final path = req.url.path;
@@ -5041,10 +5045,9 @@ void main() {
 
     unittest.test('method--complete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1CompleteTrialRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5107,10 +5110,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1Trial();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5173,10 +5175,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5229,10 +5230,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5285,10 +5285,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5345,10 +5344,9 @@ void main() {
 
     unittest.test('method--listOptimalTrials', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1ListOptimalTrialsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5415,10 +5413,9 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1StopTrialRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5481,10 +5478,9 @@ void main() {
 
     unittest.test('method--suggest', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(
-            mock,
-          ).projects.locations.studies.trials;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.locations.studies.trials;
       final arg_request = buildGoogleCloudMlV1SuggestTrialsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6065,8 +6061,9 @@ void main() {
   unittest.group('resource-ProjectsModelsVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_request = buildGoogleCloudMlV1Version();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6131,8 +6128,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6187,8 +6185,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6241,8 +6240,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6320,8 +6320,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_request = buildGoogleCloudMlV1Version();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6392,8 +6393,9 @@ void main() {
 
     unittest.test('method--setDefault', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
+      final res = api.CloudMachineLearningEngineApi(
+        mock,
+      ).projects.models.versions;
       final arg_request = buildGoogleCloudMlV1SetDefaultVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

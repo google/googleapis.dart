@@ -7426,10 +7426,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule(
           od,
         );
@@ -7491,10 +7491,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1ResourceApplicationAttributes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1ResourceApplicationAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1ResourceApplicationAttributes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1ResourceApplicationAttributes(od);
       });
     },
@@ -7507,10 +7507,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo(
           od,
         );
@@ -7525,10 +7525,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality(
           od,
         );
@@ -7543,10 +7543,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment(
           od,
         );
@@ -7586,10 +7586,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(od);
       });
     },
@@ -7602,10 +7602,10 @@ void main() {
         final o =
             buildGoogleCloudSecuritycenterV1SensitiveDataProtectionMapping();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritycenterV1SensitiveDataProtectionMapping(od);
       });
     },
@@ -7836,10 +7836,10 @@ void main() {
         final o =
             buildListDescendantEventThreatDetectionCustomModulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListDescendantEventThreatDetectionCustomModulesResponse(od);
       });
     },
@@ -7852,10 +7852,10 @@ void main() {
         final o =
             buildListDescendantSecurityHealthAnalyticsCustomModulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListDescendantSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListDescendantSecurityHealthAnalyticsCustomModulesResponse(od);
       });
     },
@@ -7867,10 +7867,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildListEffectiveEventThreatDetectionCustomModulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListEffectiveEventThreatDetectionCustomModulesResponse(od);
       });
     },
@@ -7883,10 +7883,10 @@ void main() {
         final o =
             buildListEffectiveSecurityHealthAnalyticsCustomModulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListEffectiveSecurityHealthAnalyticsCustomModulesResponse(od);
       });
     },
@@ -7978,10 +7978,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildListSecurityHealthAnalyticsCustomModulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListSecurityHealthAnalyticsCustomModulesResponse(od);
       });
     },
@@ -8519,10 +8519,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSimulateSecurityHealthAnalyticsCustomModuleRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSimulateSecurityHealthAnalyticsCustomModuleRequest(od);
       });
     },
@@ -8534,10 +8534,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSimulateSecurityHealthAnalyticsCustomModuleResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSimulateSecurityHealthAnalyticsCustomModuleResponse(od);
       });
     },
@@ -8695,10 +8695,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildValidateEventThreatDetectionCustomModuleResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ValidateEventThreatDetectionCustomModuleResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ValidateEventThreatDetectionCustomModuleResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkValidateEventThreatDetectionCustomModuleResponse(od);
       });
     },
@@ -9317,20 +9317,19 @@ void main() {
   unittest.group('resource-FoldersEventThreatDetectionSettingsResource', () {
     unittest.test('method--validateCustomModule', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings;
       final arg_request =
           buildValidateEventThreatDetectionCustomModuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .ValidateEventThreatDetectionCustomModuleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.ValidateEventThreatDetectionCustomModuleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkValidateEventThreatDetectionCustomModuleRequest(obj);
 
           final path = req.url.path;
@@ -9391,10 +9390,9 @@ void main() {
   unittest.group('resource-FoldersEventThreatDetectionSettingsCustomModulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_request = buildEventThreatDetectionCustomModule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9461,10 +9459,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9517,10 +9514,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9577,10 +9573,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9652,10 +9647,9 @@ void main() {
 
     unittest.test('method--listDescendant', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9727,10 +9721,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.eventThreatDetectionSettings.customModules;
       final arg_request = buildEventThreatDetectionCustomModule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -9807,10 +9800,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).folders.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).folders.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9867,10 +9859,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).folders.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).folders.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -10011,8 +10002,9 @@ void main() {
   unittest.group('resource-FoldersLocationsMuteConfigsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10065,8 +10057,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10123,8 +10116,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.locations.muteConfigs;
       final arg_request = buildGoogleCloudSecuritycenterV1MuteConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10525,8 +10519,9 @@ void main() {
   unittest.group('resource-FoldersNotificationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_parent = 'foo';
       final arg_configId = 'foo';
@@ -10595,8 +10590,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10649,8 +10645,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10703,8 +10700,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.notificationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10776,8 +10774,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).folders.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10848,20 +10847,19 @@ void main() {
   unittest.group('resource-FoldersSecurityHealthAnalyticsSettingsCustomModulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
             obj,
           );
@@ -10923,10 +10921,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10979,10 +10976,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11040,10 +11036,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11115,10 +11110,9 @@ void main() {
 
     unittest.test('method--listDescendant', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11191,10 +11185,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
       final arg_name = 'foo';
@@ -11202,10 +11195,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
             obj,
           );
@@ -11272,20 +11265,19 @@ void main() {
 
     unittest.test('method--simulate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildSimulateSecurityHealthAnalyticsCustomModuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkSimulateSecurityHealthAnalyticsCustomModuleRequest(obj);
 
           final path = req.url.path;
@@ -11348,10 +11340,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).folders.securityHealthAnalyticsSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).folders.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -11409,10 +11400,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).folders.securityHealthAnalyticsSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).folders.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -11991,10 +11981,9 @@ void main() {
   unittest.group('resource-FoldersSourcesFindingsExternalSystemsResource', () {
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).folders.sources.findings.externalSystems;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).folders.sources.findings.externalSystems;
       final arg_request = buildGoogleCloudSecuritycenterV1ExternalSystem();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -12573,8 +12562,9 @@ void main() {
   unittest.group('resource-OrganizationsBigQueryExportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.bigQueryExports;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.bigQueryExports;
       final arg_request = buildGoogleCloudSecuritycenterV1BigQueryExport();
       final arg_parent = 'foo';
       final arg_bigQueryExportId = 'foo';
@@ -12647,8 +12637,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.bigQueryExports;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.bigQueryExports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12701,8 +12692,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.bigQueryExports;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.bigQueryExports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12759,8 +12751,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.bigQueryExports;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.bigQueryExports;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12830,8 +12823,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.bigQueryExports;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.bigQueryExports;
       final arg_request = buildGoogleCloudSecuritycenterV1BigQueryExport();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -12908,20 +12902,19 @@ void main() {
     () {
       unittest.test('method--validateCustomModule', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings;
         final arg_request =
             buildValidateEventThreatDetectionCustomModuleRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .ValidateEventThreatDetectionCustomModuleRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.ValidateEventThreatDetectionCustomModuleRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkValidateEventThreatDetectionCustomModuleRequest(obj);
 
             final path = req.url.path;
@@ -12985,10 +12978,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_request = buildEventThreatDetectionCustomModule();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -13055,10 +13047,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -13111,10 +13102,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -13171,10 +13161,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -13246,10 +13235,9 @@ void main() {
 
       unittest.test('method--listDescendant', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -13322,10 +13310,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.customModules;
         final arg_request = buildEventThreatDetectionCustomModule();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -13403,10 +13390,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -13463,10 +13449,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -13607,10 +13592,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsMuteConfigsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13663,10 +13647,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13723,10 +13706,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.locations.muteConfigs;
       final arg_request = buildGoogleCloudSecuritycenterV1MuteConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14127,8 +14109,9 @@ void main() {
   unittest.group('resource-OrganizationsNotificationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_parent = 'foo';
       final arg_configId = 'foo';
@@ -14197,8 +14180,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14251,8 +14235,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14305,8 +14290,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.notificationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14378,8 +14364,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14691,8 +14678,9 @@ void main() {
   unittest.group('resource-OrganizationsResourceValueConfigsResource', () {
     unittest.test('method--batchCreate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.resourceValueConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.resourceValueConfigs;
       final arg_request = buildBatchCreateResourceValueConfigsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14759,8 +14747,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.resourceValueConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.resourceValueConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14813,8 +14802,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.resourceValueConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.resourceValueConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14871,8 +14861,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.resourceValueConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.resourceValueConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14944,18 +14935,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.resourceValueConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.resourceValueConfigs;
       final arg_request = buildGoogleCloudSecuritycenterV1ResourceValueConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudSecuritycenterV1ResourceValueConfig(obj);
 
           final path = req.url.path;
@@ -15023,20 +15015,19 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_request =
             buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
               obj,
             );
@@ -15098,10 +15089,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15154,10 +15144,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15215,10 +15204,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -15290,10 +15278,9 @@ void main() {
 
       unittest.test('method--listDescendant', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -15366,10 +15353,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_request =
             buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
         final arg_name = 'foo';
@@ -15377,10 +15363,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
               obj,
             );
@@ -15447,20 +15433,19 @@ void main() {
 
       unittest.test('method--simulate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.securityHealthAnalyticsSettings.customModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.customModules;
         final arg_request =
             buildSimulateSecurityHealthAnalyticsCustomModuleRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkSimulateSecurityHealthAnalyticsCustomModuleRequest(obj);
 
             final path = req.url.path;
@@ -15524,11 +15509,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(mock)
-                .organizations
-                .securityHealthAnalyticsSettings
-                .effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15586,11 +15569,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(mock)
-                .organizations
-                .securityHealthAnalyticsSettings
-                .effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -15723,10 +15704,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.simulations.attackExposureResults.attackPaths;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.simulations.attackExposureResults.attackPaths;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -15805,10 +15785,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.simulations.attackExposureResults.valuedResources;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.simulations.attackExposureResults.valuedResources;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -15895,10 +15874,9 @@ void main() {
   unittest.group('resource-OrganizationsSimulationsAttackPathsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.simulations.attackPaths;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.simulations.attackPaths;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -15974,10 +15952,9 @@ void main() {
   unittest.group('resource-OrganizationsSimulationsValuedResourcesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.simulations.valuedResources;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.simulations.valuedResources;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16030,10 +16007,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).organizations.simulations.valuedResources;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.simulations.valuedResources;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -16119,10 +16095,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.simulations.valuedResources.attackPaths;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.simulations.valuedResources.attackPaths;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -16645,8 +16620,9 @@ void main() {
   unittest.group('resource-OrganizationsSourcesFindingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildFinding();
       final arg_parent = 'foo';
       final arg_findingId = 'foo';
@@ -16715,8 +16691,9 @@ void main() {
 
     unittest.test('method--group', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildGroupFindingsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -16779,8 +16756,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_parent = 'foo';
       final arg_compareDuration = 'foo';
       final arg_fieldMask = 'foo';
@@ -16878,8 +16856,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildFinding();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -16948,8 +16927,9 @@ void main() {
 
     unittest.test('method--setMute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildSetMuteRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -17012,8 +16992,9 @@ void main() {
 
     unittest.test('method--setState', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildSetFindingStateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -17076,8 +17057,9 @@ void main() {
 
     unittest.test('method--updateSecurityMarks', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.sources.findings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.sources.findings;
       final arg_request = buildSecurityMarks();
       final arg_name = 'foo';
       final arg_startTime = 'foo';
@@ -17156,10 +17138,9 @@ void main() {
     () {
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).organizations.sources.findings.externalSystems;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).organizations.sources.findings.externalSystems;
         final arg_request = buildGoogleCloudSecuritycenterV1ExternalSystem();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -17235,8 +17216,9 @@ void main() {
   unittest.group('resource-OrganizationsValuedResourcesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).organizations.valuedResources;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).organizations.valuedResources;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -17886,20 +17868,19 @@ void main() {
   unittest.group('resource-ProjectsEventThreatDetectionSettingsResource', () {
     unittest.test('method--validateCustomModule', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings;
       final arg_request =
           buildValidateEventThreatDetectionCustomModuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .ValidateEventThreatDetectionCustomModuleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.ValidateEventThreatDetectionCustomModuleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkValidateEventThreatDetectionCustomModuleRequest(obj);
 
           final path = req.url.path;
@@ -17960,10 +17941,9 @@ void main() {
   unittest.group('resource-ProjectsEventThreatDetectionSettingsCustomModulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_request = buildEventThreatDetectionCustomModule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -18030,10 +18010,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18086,10 +18065,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18146,10 +18124,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18221,10 +18198,9 @@ void main() {
 
     unittest.test('method--listDescendant', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18296,10 +18272,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.eventThreatDetectionSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.eventThreatDetectionSettings.customModules;
       final arg_request = buildEventThreatDetectionCustomModule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18376,10 +18351,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).projects.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).projects.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -18436,10 +18410,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).projects.eventThreatDetectionSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).projects.eventThreatDetectionSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -18580,8 +18553,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMuteConfigsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18634,8 +18608,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.locations.muteConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18692,8 +18667,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.locations.muteConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.locations.muteConfigs;
       final arg_request = buildGoogleCloudSecuritycenterV1MuteConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19094,8 +19070,9 @@ void main() {
   unittest.group('resource-ProjectsNotificationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_parent = 'foo';
       final arg_configId = 'foo';
@@ -19164,8 +19141,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19218,8 +19196,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19272,8 +19251,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.notificationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -19345,8 +19325,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(mock).projects.notificationConfigs;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.notificationConfigs;
       final arg_request = buildNotificationConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19417,20 +19398,19 @@ void main() {
   unittest.group('resource-ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
             obj,
           );
@@ -19492,10 +19472,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19548,10 +19527,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19609,10 +19587,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -19684,10 +19661,9 @@ void main() {
 
     unittest.test('method--listDescendant', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -19760,10 +19736,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule();
       final arg_name = 'foo';
@@ -19771,10 +19746,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule(
             obj,
           );
@@ -19841,20 +19816,19 @@ void main() {
 
     unittest.test('method--simulate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.securityHealthAnalyticsSettings.customModules;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.securityHealthAnalyticsSettings.customModules;
       final arg_request =
           buildSimulateSecurityHealthAnalyticsCustomModuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkSimulateSecurityHealthAnalyticsCustomModuleRequest(obj);
 
           final path = req.url.path;
@@ -19917,10 +19891,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).projects.securityHealthAnalyticsSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).projects.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -19978,10 +19951,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecurityCommandCenterApi(
-              mock,
-            ).projects.securityHealthAnalyticsSettings.effectiveCustomModules;
+        final res = api.SecurityCommandCenterApi(
+          mock,
+        ).projects.securityHealthAnalyticsSettings.effectiveCustomModules;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -20560,10 +20532,9 @@ void main() {
   unittest.group('resource-ProjectsSourcesFindingsExternalSystemsResource', () {
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityCommandCenterApi(
-            mock,
-          ).projects.sources.findings.externalSystems;
+      final res = api.SecurityCommandCenterApi(
+        mock,
+      ).projects.sources.findings.externalSystems;
       final arg_request = buildGoogleCloudSecuritycenterV1ExternalSystem();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

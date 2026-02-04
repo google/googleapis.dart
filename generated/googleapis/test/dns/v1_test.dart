@@ -2552,10 +2552,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildPolicyAlternativeNameServerConfigTargetNameServer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkPolicyAlternativeNameServerConfigTargetNameServer(od);
       });
     },

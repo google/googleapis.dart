@@ -4,7 +4,7 @@ description: Auto-generated client libraries for accessing Google APIs described
 repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
 resolution: workspace
 environment:
-  sdk: '^3.7.0'
+  sdk: '^3.9.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: ^1.0.0

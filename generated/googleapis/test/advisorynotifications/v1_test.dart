@@ -430,10 +430,10 @@ void main() {
         final o =
             buildGoogleCloudAdvisorynotificationsV1ListNotificationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAdvisorynotificationsV1ListNotificationsResponse(od);
       });
     },
@@ -484,10 +484,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAdvisorynotificationsV1NotificationSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAdvisorynotificationsV1NotificationSettings(od);
       });
     },
@@ -655,10 +655,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsNotificationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdvisorynotificationsApi(
-            mock,
-          ).organizations.locations.notifications;
+      final res = api.AdvisorynotificationsApi(
+        mock,
+      ).organizations.locations.notifications;
       final arg_name = 'foo';
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
@@ -724,10 +723,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdvisorynotificationsApi(
-            mock,
-          ).organizations.locations.notifications;
+      final res = api.AdvisorynotificationsApi(
+        mock,
+      ).organizations.locations.notifications;
       final arg_parent = 'foo';
       final arg_languageCode = 'foo';
       final arg_pageSize = 42;
@@ -937,8 +935,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsNotificationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdvisorynotificationsApi(mock).projects.locations.notifications;
+      final res = api.AdvisorynotificationsApi(
+        mock,
+      ).projects.locations.notifications;
       final arg_name = 'foo';
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
@@ -1004,8 +1003,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AdvisorynotificationsApi(mock).projects.locations.notifications;
+      final res = api.AdvisorynotificationsApi(
+        mock,
+      ).projects.locations.notifications;
       final arg_parent = 'foo';
       final arg_languageCode = 'foo';
       final arg_pageSize = 42;

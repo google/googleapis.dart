@@ -4287,10 +4287,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAuthzPolicyAuthzRuleRequestResourceTagValueIdSet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAuthzPolicyAuthzRuleRequestResourceTagValueIdSet(od);
       });
     },
@@ -4773,10 +4773,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildInterceptEndpointGroupAssociationLocationDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .InterceptEndpointGroupAssociationLocationDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.InterceptEndpointGroupAssociationLocationDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkInterceptEndpointGroupAssociationLocationDetails(od);
       });
     },
@@ -4825,10 +4825,10 @@ void main() {
         final o =
             buildListAddressGroupReferencesResponseAddressGroupReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListAddressGroupReferencesResponseAddressGroupReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListAddressGroupReferencesResponseAddressGroupReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListAddressGroupReferencesResponseAddressGroupReference(od);
       });
     },
@@ -5223,10 +5223,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildMirroringEndpointGroupAssociationLocationDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .MirroringEndpointGroupAssociationLocationDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.MirroringEndpointGroupAssociationLocationDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkMirroringEndpointGroupAssociationLocationDetails(od);
       });
     },
@@ -5414,8 +5414,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsAddressGroupsResource', () {
     unittest.test('method--addItems', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_request = buildAddAddressGroupItemsRequest();
       final arg_addressGroup = 'foo';
       final arg_$fields = 'foo';
@@ -5478,8 +5479,9 @@ void main() {
 
     unittest.test('method--cloneItems', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_request = buildCloneAddressGroupItemsRequest();
       final arg_addressGroup = 'foo';
       final arg_$fields = 'foo';
@@ -5542,8 +5544,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_request = buildAddressGroup();
       final arg_parent = 'foo';
       final arg_addressGroupId = 'foo';
@@ -5618,8 +5621,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5681,8 +5685,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5735,8 +5740,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5810,8 +5816,9 @@ void main() {
 
     unittest.test('method--listReferences', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_addressGroup = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5883,8 +5890,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_request = buildAddressGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5959,8 +5967,9 @@ void main() {
 
     unittest.test('method--removeItems', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.addressGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
       final arg_request = buildRemoveAddressGroupItemsRequest();
       final arg_addressGroup = 'foo';
       final arg_$fields = 'foo';
@@ -6025,10 +6034,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsFirewallEndpointsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.firewallEndpoints;
       final arg_request = buildFirewallEndpoint();
       final arg_parent = 'foo';
       final arg_firewallEndpointId = 'foo';
@@ -6103,10 +6111,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.firewallEndpoints;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -6168,10 +6175,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.firewallEndpoints;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6224,10 +6230,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.firewallEndpoints;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6311,10 +6316,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.firewallEndpoints;
       final arg_request = buildFirewallEndpoint();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -6391,8 +6395,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.operations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6455,8 +6460,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.operations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6509,8 +6515,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.operations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6563,8 +6570,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.operations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6646,10 +6654,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsSecurityProfileGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.securityProfileGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfileGroups;
       final arg_request = buildSecurityProfileGroup();
       final arg_parent = 'foo';
       final arg_securityProfileGroupId = 'foo';
@@ -6718,10 +6725,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.securityProfileGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfileGroups;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -6780,10 +6786,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.securityProfileGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfileGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6836,10 +6841,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.securityProfileGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfileGroups;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6911,10 +6915,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).organizations.locations.securityProfileGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfileGroups;
       final arg_request = buildSecurityProfileGroup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6985,8 +6988,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsSecurityProfilesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.securityProfiles;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfiles;
       final arg_request = buildSecurityProfile();
       final arg_parent = 'foo';
       final arg_securityProfileId = 'foo';
@@ -7055,8 +7059,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.securityProfiles;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfiles;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -7115,8 +7120,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.securityProfiles;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7169,8 +7175,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.securityProfiles;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfiles;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7240,8 +7247,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).organizations.locations.securityProfiles;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.securityProfiles;
       final arg_request = buildSecurityProfile();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -8241,8 +8249,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAuthorizationPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_request = buildAuthorizationPolicy();
       final arg_parent = 'foo';
       final arg_authorizationPolicyId = 'foo';
@@ -8311,8 +8320,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8365,8 +8375,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8419,8 +8430,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -8482,8 +8494,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8555,8 +8568,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_request = buildAuthorizationPolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -8625,8 +8639,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8689,8 +8704,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.authorizationPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.authorizationPolicies;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9298,10 +9314,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackendAuthenticationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.backendAuthenticationConfigs;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.backendAuthenticationConfigs;
       final arg_request = buildBackendAuthenticationConfig();
       final arg_parent = 'foo';
       final arg_backendAuthenticationConfigId = 'foo';
@@ -9370,10 +9385,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.backendAuthenticationConfigs;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.backendAuthenticationConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -9432,10 +9446,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.backendAuthenticationConfigs;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.backendAuthenticationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9490,10 +9503,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.backendAuthenticationConfigs;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.backendAuthenticationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9565,10 +9577,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.backendAuthenticationConfigs;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.backendAuthenticationConfigs;
       final arg_request = buildBackendAuthenticationConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -9639,8 +9650,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsClientTlsPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_request = buildClientTlsPolicy();
       final arg_parent = 'foo';
       final arg_clientTlsPolicyId = 'foo';
@@ -9709,8 +9721,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9763,8 +9776,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9817,8 +9831,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -9880,8 +9895,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9953,8 +9969,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_request = buildClientTlsPolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10023,8 +10040,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10087,8 +10105,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.clientTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.clientTlsPolicies;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10157,8 +10176,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDnsThreatDetectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.dnsThreatDetectors;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.dnsThreatDetectors;
       final arg_request = buildDnsThreatDetector();
       final arg_parent = 'foo';
       final arg_dnsThreatDetectorId = 'foo';
@@ -10227,8 +10247,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.dnsThreatDetectors;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.dnsThreatDetectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10281,8 +10302,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.dnsThreatDetectors;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.dnsThreatDetectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10335,8 +10357,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.dnsThreatDetectors;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.dnsThreatDetectors;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10408,8 +10431,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.dnsThreatDetectors;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.dnsThreatDetectors;
       final arg_request = buildDnsThreatDetector();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10480,10 +10504,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsFirewallEndpointAssociationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.firewallEndpointAssociations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpointAssociations;
       final arg_request = buildFirewallEndpointAssociation();
       final arg_parent = 'foo';
       final arg_firewallEndpointAssociationId = 'foo';
@@ -10558,10 +10581,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.firewallEndpointAssociations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpointAssociations;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -10623,10 +10645,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.firewallEndpointAssociations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpointAssociations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10681,10 +10702,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.firewallEndpointAssociations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpointAssociations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10768,10 +10788,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.firewallEndpointAssociations;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpointAssociations;
       final arg_request = buildFirewallEndpointAssociation();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -10848,8 +10867,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsFirewallEndpointsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
       final arg_request = buildFirewallEndpoint();
       final arg_parent = 'foo';
       final arg_firewallEndpointId = 'foo';
@@ -10924,8 +10944,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -10987,8 +11008,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11041,8 +11063,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11126,8 +11149,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.firewallEndpoints;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
       final arg_request = buildFirewallEndpoint();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -11204,10 +11228,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGatewaySecurityPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies;
       final arg_request = buildGatewaySecurityPolicy();
       final arg_parent = 'foo';
       final arg_gatewaySecurityPolicyId = 'foo';
@@ -11276,10 +11299,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11332,10 +11354,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11388,10 +11409,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11463,10 +11483,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies;
       final arg_request = buildGatewaySecurityPolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -11537,10 +11556,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGatewaySecurityPoliciesRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies.rules;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies.rules;
       final arg_request = buildGatewaySecurityPolicyRule();
       final arg_parent = 'foo';
       final arg_gatewaySecurityPolicyRuleId = 'foo';
@@ -11609,10 +11627,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies.rules;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies.rules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11665,10 +11682,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies.rules;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies.rules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11721,10 +11737,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies.rules;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies.rules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11796,10 +11811,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.gatewaySecurityPolicies.rules;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.gatewaySecurityPolicies.rules;
       final arg_request = buildGatewaySecurityPolicyRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -11870,10 +11884,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInterceptDeploymentGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeploymentGroups;
       final arg_request = buildInterceptDeploymentGroup();
       final arg_parent = 'foo';
       final arg_interceptDeploymentGroupId = 'foo';
@@ -11948,10 +11961,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeploymentGroups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -12013,10 +12025,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeploymentGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12069,10 +12080,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeploymentGroups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -12156,10 +12166,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeploymentGroups;
       final arg_request = buildInterceptDeploymentGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -12236,8 +12245,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInterceptDeploymentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.interceptDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeployments;
       final arg_request = buildInterceptDeployment();
       final arg_parent = 'foo';
       final arg_interceptDeploymentId = 'foo';
@@ -12312,8 +12322,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.interceptDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeployments;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -12375,8 +12386,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.interceptDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12429,8 +12441,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.interceptDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeployments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -12514,8 +12527,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.interceptDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptDeployments;
       final arg_request = buildInterceptDeployment();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -12594,10 +12608,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.interceptEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.interceptEndpointGroupAssociations;
         final arg_request = buildInterceptEndpointGroupAssociation();
         final arg_parent = 'foo';
         final arg_interceptEndpointGroupAssociationId = 'foo';
@@ -12673,10 +12686,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.interceptEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.interceptEndpointGroupAssociations;
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_$fields = 'foo';
@@ -12738,10 +12750,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.interceptEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.interceptEndpointGroupAssociations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -12798,10 +12809,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.interceptEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.interceptEndpointGroupAssociations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -12885,10 +12895,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.interceptEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.interceptEndpointGroupAssociations;
         final arg_request = buildInterceptEndpointGroupAssociation();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -12966,10 +12975,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInterceptEndpointGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptEndpointGroups;
       final arg_request = buildInterceptEndpointGroup();
       final arg_parent = 'foo';
       final arg_interceptEndpointGroupId = 'foo';
@@ -13044,10 +13052,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptEndpointGroups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -13109,10 +13116,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptEndpointGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13165,10 +13171,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptEndpointGroups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -13252,10 +13257,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.interceptEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.interceptEndpointGroups;
       final arg_request = buildInterceptEndpointGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -13332,10 +13336,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMirroringDeploymentGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeploymentGroups;
       final arg_request = buildMirroringDeploymentGroup();
       final arg_parent = 'foo';
       final arg_mirroringDeploymentGroupId = 'foo';
@@ -13410,10 +13413,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeploymentGroups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -13475,10 +13477,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeploymentGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13531,10 +13532,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeploymentGroups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -13618,10 +13618,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringDeploymentGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeploymentGroups;
       final arg_request = buildMirroringDeploymentGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -13698,8 +13697,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMirroringDeploymentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.mirroringDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeployments;
       final arg_request = buildMirroringDeployment();
       final arg_parent = 'foo';
       final arg_mirroringDeploymentId = 'foo';
@@ -13774,8 +13774,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.mirroringDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeployments;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -13837,8 +13838,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.mirroringDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -13891,8 +13893,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.mirroringDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeployments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -13976,8 +13979,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.mirroringDeployments;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringDeployments;
       final arg_request = buildMirroringDeployment();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -14056,10 +14060,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.mirroringEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.mirroringEndpointGroupAssociations;
         final arg_request = buildMirroringEndpointGroupAssociation();
         final arg_parent = 'foo';
         final arg_mirroringEndpointGroupAssociationId = 'foo';
@@ -14135,10 +14138,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.mirroringEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.mirroringEndpointGroupAssociations;
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_$fields = 'foo';
@@ -14200,10 +14202,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.mirroringEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.mirroringEndpointGroupAssociations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -14260,10 +14261,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.mirroringEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.mirroringEndpointGroupAssociations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -14347,10 +14347,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkSecurityApi(
-              mock,
-            ).projects.locations.mirroringEndpointGroupAssociations;
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.mirroringEndpointGroupAssociations;
         final arg_request = buildMirroringEndpointGroupAssociation();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -14428,10 +14427,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMirroringEndpointGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringEndpointGroups;
       final arg_request = buildMirroringEndpointGroup();
       final arg_parent = 'foo';
       final arg_mirroringEndpointGroupId = 'foo';
@@ -14506,10 +14504,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringEndpointGroups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -14571,10 +14568,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringEndpointGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14627,10 +14623,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringEndpointGroups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -14714,10 +14709,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(
-            mock,
-          ).projects.locations.mirroringEndpointGroups;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.mirroringEndpointGroups;
       final arg_request = buildMirroringEndpointGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -15045,8 +15039,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServerTlsPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_request = buildServerTlsPolicy();
       final arg_parent = 'foo';
       final arg_serverTlsPolicyId = 'foo';
@@ -15115,8 +15110,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15169,8 +15165,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15223,8 +15220,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -15286,8 +15284,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15365,8 +15364,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_request = buildServerTlsPolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -15435,8 +15435,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -15499,8 +15500,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.serverTlsPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.serverTlsPolicies;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -15569,8 +15571,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTlsInspectionPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.tlsInspectionPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.tlsInspectionPolicies;
       final arg_request = buildTlsInspectionPolicy();
       final arg_parent = 'foo';
       final arg_tlsInspectionPolicyId = 'foo';
@@ -15639,8 +15642,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.tlsInspectionPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.tlsInspectionPolicies;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -15702,8 +15706,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.tlsInspectionPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.tlsInspectionPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15756,8 +15761,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.tlsInspectionPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.tlsInspectionPolicies;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15829,8 +15835,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkSecurityApi(mock).projects.locations.tlsInspectionPolicies;
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.tlsInspectionPolicies;
       final arg_request = buildTlsInspectionPolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

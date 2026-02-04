@@ -108,7 +108,7 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -144,7 +144,7 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -189,9 +189,9 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/accounts';
@@ -240,9 +240,9 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + ':listChildAccounts';
@@ -290,7 +290,7 @@ class AccountsAdclientsResource {
   /// this method will complete with the same error.
   async.Future<AdClient> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -331,7 +331,7 @@ class AccountsAdclientsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/adcode';
@@ -381,9 +381,9 @@ class AccountsAdclientsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/adclients';
@@ -442,7 +442,7 @@ class AccountsAdclientsAdunitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/adunits';
@@ -477,7 +477,7 @@ class AccountsAdclientsAdunitsResource {
   /// this method will complete with the same error.
   async.Future<AdUnit> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -519,7 +519,7 @@ class AccountsAdclientsAdunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/adcode';
@@ -568,9 +568,9 @@ class AccountsAdclientsAdunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/adunits';
@@ -622,9 +622,9 @@ class AccountsAdclientsAdunitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -679,8 +679,8 @@ class AccountsAdclientsAdunitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -733,7 +733,7 @@ class AccountsAdclientsCustomchannelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/customchannels';
@@ -775,7 +775,7 @@ class AccountsAdclientsCustomchannelsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -812,7 +812,7 @@ class AccountsAdclientsCustomchannelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -862,9 +862,9 @@ class AccountsAdclientsCustomchannelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/customchannels';
@@ -915,9 +915,9 @@ class AccountsAdclientsCustomchannelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + ':listLinkedAdUnits';
@@ -969,8 +969,8 @@ class AccountsAdclientsCustomchannelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1014,7 +1014,7 @@ class AccountsAdclientsUrlchannelsResource {
   /// this method will complete with the same error.
   async.Future<UrlChannel> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1064,9 +1064,9 @@ class AccountsAdclientsUrlchannelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/urlchannels';
@@ -1117,8 +1117,8 @@ class AccountsAlertsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/alerts';
@@ -1162,7 +1162,7 @@ class AccountsPaymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/payments';
@@ -1207,7 +1207,7 @@ class AccountsPolicyIssuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1258,9 +1258,9 @@ class AccountsPolicyIssuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/policyIssues';
@@ -1400,22 +1400,26 @@ class AccountsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currencyCode != null) 'currencyCode': [currencyCode],
-      if (dateRange != null) 'dateRange': [dateRange],
-      if (dimensions != null) 'dimensions': dimensions,
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (filters != null) 'filters': filters,
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (limit != null) 'limit': ['${limit}'],
-      if (metrics != null) 'metrics': metrics,
-      if (orderBy != null) 'orderBy': orderBy,
-      if (reportingTimeZone != null) 'reportingTimeZone': [reportingTimeZone],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'dateRange': ?dateRange == null ? null : [dateRange],
+      'dimensions': ?dimensions,
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'filters': ?filters,
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'limit': ?limit == null ? null : ['${limit}'],
+      'metrics': ?metrics,
+      'orderBy': ?orderBy,
+      'reportingTimeZone': ?reportingTimeZone == null
+          ? null
+          : [reportingTimeZone],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$account') + '/reports:generate';
@@ -1546,22 +1550,26 @@ class AccountsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currencyCode != null) 'currencyCode': [currencyCode],
-      if (dateRange != null) 'dateRange': [dateRange],
-      if (dimensions != null) 'dimensions': dimensions,
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (filters != null) 'filters': filters,
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (limit != null) 'limit': ['${limit}'],
-      if (metrics != null) 'metrics': metrics,
-      if (orderBy != null) 'orderBy': orderBy,
-      if (reportingTimeZone != null) 'reportingTimeZone': [reportingTimeZone],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'dateRange': ?dateRange == null ? null : [dateRange],
+      'dimensions': ?dimensions,
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'filters': ?filters,
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'limit': ?limit == null ? null : ['${limit}'],
+      'metrics': ?metrics,
+      'orderBy': ?orderBy,
+      'reportingTimeZone': ?reportingTimeZone == null
+          ? null
+          : [reportingTimeZone],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1598,7 +1606,7 @@ class AccountsReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/saved';
@@ -1711,17 +1719,21 @@ class AccountsReportsSavedResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currencyCode != null) 'currencyCode': [currencyCode],
-      if (dateRange != null) 'dateRange': [dateRange],
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (reportingTimeZone != null) 'reportingTimeZone': [reportingTimeZone],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'dateRange': ?dateRange == null ? null : [dateRange],
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'reportingTimeZone': ?reportingTimeZone == null
+          ? null
+          : [reportingTimeZone],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/saved:generate';
@@ -1827,17 +1839,21 @@ class AccountsReportsSavedResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currencyCode != null) 'currencyCode': [currencyCode],
-      if (dateRange != null) 'dateRange': [dateRange],
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (reportingTimeZone != null) 'reportingTimeZone': [reportingTimeZone],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'dateRange': ?dateRange == null ? null : [dateRange],
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'reportingTimeZone': ?reportingTimeZone == null
+          ? null
+          : [reportingTimeZone],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/saved:generateCsv';
@@ -1884,9 +1900,9 @@ class AccountsReportsSavedResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/reports/saved';
@@ -1927,7 +1943,7 @@ class AccountsSitesResource {
   /// this method will complete with the same error.
   async.Future<Site> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1974,9 +1990,9 @@ class AccountsSitesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sites';
@@ -2058,29 +2074,36 @@ class Account {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
-        pendingTasks:
-            (json_['pendingTasks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        pendingTasks: (json_['pendingTasks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         premium: json_['premium'] as core.bool?,
         state: json_['state'] as core.String?,
-        timeZone:
-            json_.containsKey('timeZone')
-                ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeZone: json_.containsKey('timeZone')
+            ? TimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (pendingTasks != null) 'pendingTasks': pendingTasks!,
-    if (premium != null) 'premium': premium!,
-    if (state != null) 'state': state!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final name = this.name;
+    final pendingTasks = this.pendingTasks;
+    final premium = this.premium;
+    final state = this.state;
+    final timeZone = this.timeZone;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'name': ?name,
+      'pendingTasks': ?pendingTasks,
+      'premium': ?premium,
+      'state': ?state,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// Representation of an ad blocking recovery tag.
@@ -2108,11 +2131,11 @@ class AdBlockingRecoveryTag {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorProtectionCode != null)
-      'errorProtectionCode': errorProtectionCode!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorProtectionCode = this.errorProtectionCode;
+    final tag = this.tag;
+    return {'errorProtectionCode': ?errorProtectionCode, 'tag': ?tag};
+  }
 }
 
 /// Representation of an ad client.
@@ -2171,13 +2194,18 @@ class AdClient {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (productCode != null) 'productCode': productCode!,
-    if (reportingDimensionId != null)
-      'reportingDimensionId': reportingDimensionId!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final productCode = this.productCode;
+    final reportingDimensionId = this.reportingDimensionId;
+    final state = this.state;
+    return {
+      'name': ?name,
+      'productCode': ?productCode,
+      'reportingDimensionId': ?reportingDimensionId,
+      'state': ?state,
+    };
+  }
 }
 
 /// Representation of the AdSense code for a given ad client.
@@ -2209,11 +2237,12 @@ class AdClientAdCode {
         ampHead: json_['ampHead'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adCode != null) 'adCode': adCode!,
-    if (ampBody != null) 'ampBody': ampBody!,
-    if (ampHead != null) 'ampHead': ampHead!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adCode = this.adCode;
+    final ampBody = this.ampBody;
+    final ampHead = this.ampHead;
+    return {'adCode': ?adCode, 'ampBody': ?ampBody, 'ampHead': ?ampHead};
+  }
 }
 
 /// Representation of an ad unit.
@@ -2264,27 +2293,32 @@ class AdUnit {
 
   AdUnit.fromJson(core.Map json_)
     : this(
-        contentAdsSettings:
-            json_.containsKey('contentAdsSettings')
-                ? ContentAdsSettings.fromJson(
-                  json_['contentAdsSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contentAdsSettings: json_.containsKey('contentAdsSettings')
+            ? ContentAdsSettings.fromJson(
+                json_['contentAdsSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
         reportingDimensionId: json_['reportingDimensionId'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentAdsSettings != null) 'contentAdsSettings': contentAdsSettings!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (reportingDimensionId != null)
-      'reportingDimensionId': reportingDimensionId!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentAdsSettings = this.contentAdsSettings;
+    final displayName = this.displayName;
+    final name = this.name;
+    final reportingDimensionId = this.reportingDimensionId;
+    final state = this.state;
+    return {
+      'contentAdsSettings': ?contentAdsSettings,
+      'displayName': ?displayName,
+      'name': ?name,
+      'reportingDimensionId': ?reportingDimensionId,
+      'state': ?state,
+    };
+  }
 }
 
 /// Representation of the ad unit code for a given ad unit.
@@ -2304,9 +2338,10 @@ class AdUnitAdCode {
   AdUnitAdCode.fromJson(core.Map json_)
     : this(adCode: json_['adCode'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adCode != null) 'adCode': adCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adCode = this.adCode;
+    return {'adCode': ?adCode};
+  }
 }
 
 /// Representation of an alert.
@@ -2354,12 +2389,18 @@ class Alert {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (message != null) 'message': message!,
-    if (name != null) 'name': name!,
-    if (severity != null) 'severity': severity!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final name = this.name;
+    final severity = this.severity;
+    final type = this.type;
+    return {
+      'message': ?message,
+      'name': ?name,
+      'severity': ?severity,
+      'type': ?type,
+    };
+  }
 }
 
 /// Cell representation.
@@ -2373,9 +2414,10 @@ class Cell {
 
   Cell.fromJson(core.Map json_) : this(value: json_['value'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// Settings specific to content ads (AFC).
@@ -2408,10 +2450,11 @@ class ContentAdsSettings {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (size != null) 'size': size!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final size = this.size;
+    final type = this.type;
+    return {'size': ?size, 'type': ?type};
+  }
 }
 
 /// Representation of a custom channel.
@@ -2455,13 +2498,18 @@ class CustomChannel {
         reportingDimensionId: json_['reportingDimensionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (active != null) 'active': active!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (reportingDimensionId != null)
-      'reportingDimensionId': reportingDimensionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final active = this.active;
+    final displayName = this.displayName;
+    final name = this.name;
+    final reportingDimensionId = this.reportingDimensionId;
+    return {
+      'active': ?active,
+      'displayName': ?displayName,
+      'name': ?name,
+      'reportingDimensionId': ?reportingDimensionId,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -2519,11 +2567,12 @@ class Header {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final name = this.name;
+    final type = this.type;
+    return {'currencyCode': ?currencyCode, 'name': ?name, 'type': ?type};
+  }
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -2561,21 +2610,21 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the ad client list rpc.
@@ -2593,21 +2642,21 @@ class ListAdClientsResponse {
 
   ListAdClientsResponse.fromJson(core.Map json_)
     : this(
-        adClients:
-            (json_['adClients'] as core.List?)
-                ?.map(
-                  (value) => AdClient.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        adClients: (json_['adClients'] as core.List?)
+            ?.map(
+              (value) => AdClient.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adClients != null) 'adClients': adClients!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adClients = this.adClients;
+    final nextPageToken = this.nextPageToken;
+    return {'adClients': ?adClients, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the adunit list rpc.
@@ -2625,21 +2674,20 @@ class ListAdUnitsResponse {
 
   ListAdUnitsResponse.fromJson(core.Map json_)
     : this(
-        adUnits:
-            (json_['adUnits'] as core.List?)
-                ?.map(
-                  (value) => AdUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        adUnits: (json_['adUnits'] as core.List?)
+            ?.map(
+              (value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adUnits != null) 'adUnits': adUnits!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adUnits = this.adUnits;
+    final nextPageToken = this.nextPageToken;
+    return {'adUnits': ?adUnits, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the alerts list rpc.
@@ -2651,19 +2699,18 @@ class ListAlertsResponse {
 
   ListAlertsResponse.fromJson(core.Map json_)
     : this(
-        alerts:
-            (json_['alerts'] as core.List?)
-                ?.map(
-                  (value) => Alert.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        alerts: (json_['alerts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Alert.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alerts != null) 'alerts': alerts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alerts = this.alerts;
+    return {'alerts': ?alerts};
+  }
 }
 
 /// Response definition for the child account list rpc.
@@ -2681,21 +2728,21 @@ class ListChildAccountsResponse {
 
   ListChildAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the custom channel list rpc.
@@ -2713,21 +2760,21 @@ class ListCustomChannelsResponse {
 
   ListCustomChannelsResponse.fromJson(core.Map json_)
     : this(
-        customChannels:
-            (json_['customChannels'] as core.List?)
-                ?.map(
-                  (value) => CustomChannel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customChannels: (json_['customChannels'] as core.List?)
+            ?.map(
+              (value) => CustomChannel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customChannels != null) 'customChannels': customChannels!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customChannels = this.customChannels;
+    final nextPageToken = this.nextPageToken;
+    return {'customChannels': ?customChannels, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the ad units linked to a custom channel list rpc.
@@ -2745,21 +2792,20 @@ class ListLinkedAdUnitsResponse {
 
   ListLinkedAdUnitsResponse.fromJson(core.Map json_)
     : this(
-        adUnits:
-            (json_['adUnits'] as core.List?)
-                ?.map(
-                  (value) => AdUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        adUnits: (json_['adUnits'] as core.List?)
+            ?.map(
+              (value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adUnits != null) 'adUnits': adUnits!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adUnits = this.adUnits;
+    final nextPageToken = this.nextPageToken;
+    return {'adUnits': ?adUnits, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the custom channels linked to an adunit list rpc.
@@ -2777,21 +2823,21 @@ class ListLinkedCustomChannelsResponse {
 
   ListLinkedCustomChannelsResponse.fromJson(core.Map json_)
     : this(
-        customChannels:
-            (json_['customChannels'] as core.List?)
-                ?.map(
-                  (value) => CustomChannel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customChannels: (json_['customChannels'] as core.List?)
+            ?.map(
+              (value) => CustomChannel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customChannels != null) 'customChannels': customChannels!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customChannels = this.customChannels;
+    final nextPageToken = this.nextPageToken;
+    return {'customChannels': ?customChannels, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response definition for the payments list rpc.
@@ -2803,19 +2849,19 @@ class ListPaymentsResponse {
 
   ListPaymentsResponse.fromJson(core.Map json_)
     : this(
-        payments:
-            (json_['payments'] as core.List?)
-                ?.map(
-                  (value) => Payment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        payments: (json_['payments'] as core.List?)
+            ?.map(
+              (value) => Payment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payments != null) 'payments': payments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payments = this.payments;
+    return {'payments': ?payments};
+  }
 }
 
 /// Response definition for the policy issues list rpc.
@@ -2838,20 +2884,20 @@ class ListPolicyIssuesResponse {
   ListPolicyIssuesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        policyIssues:
-            (json_['policyIssues'] as core.List?)
-                ?.map(
-                  (value) => PolicyIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        policyIssues: (json_['policyIssues'] as core.List?)
+            ?.map(
+              (value) => PolicyIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (policyIssues != null) 'policyIssues': policyIssues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final policyIssues = this.policyIssues;
+    return {'nextPageToken': ?nextPageToken, 'policyIssues': ?policyIssues};
+  }
 }
 
 /// Response definition for the saved reports list rpc.
@@ -2870,20 +2916,20 @@ class ListSavedReportsResponse {
   ListSavedReportsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        savedReports:
-            (json_['savedReports'] as core.List?)
-                ?.map(
-                  (value) => SavedReport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        savedReports: (json_['savedReports'] as core.List?)
+            ?.map(
+              (value) => SavedReport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (savedReports != null) 'savedReports': savedReports!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final savedReports = this.savedReports;
+    return {'nextPageToken': ?nextPageToken, 'savedReports': ?savedReports};
+  }
 }
 
 /// Response definition for the sites list rpc.
@@ -2902,20 +2948,19 @@ class ListSitesResponse {
   ListSitesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sites:
-            (json_['sites'] as core.List?)
-                ?.map(
-                  (value) => Site.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        sites: (json_['sites'] as core.List?)
+            ?.map(
+              (value) =>
+                  Site.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sites != null) 'sites': sites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sites = this.sites;
+    return {'nextPageToken': ?nextPageToken, 'sites': ?sites};
+  }
 }
 
 /// Response definition for the url channels list rpc.
@@ -2934,20 +2979,20 @@ class ListUrlChannelsResponse {
   ListUrlChannelsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        urlChannels:
-            (json_['urlChannels'] as core.List?)
-                ?.map(
-                  (value) => UrlChannel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        urlChannels: (json_['urlChannels'] as core.List?)
+            ?.map(
+              (value) => UrlChannel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (urlChannels != null) 'urlChannels': urlChannels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final urlChannels = this.urlChannels;
+    return {'nextPageToken': ?nextPageToken, 'urlChannels': ?urlChannels};
+  }
 }
 
 /// Representation of an unpaid or paid payment.
@@ -2990,20 +3035,20 @@ class Payment {
   Payment.fromJson(core.Map json_)
     : this(
         amount: json_['amount'] as core.String?,
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amount != null) 'amount': amount!,
-    if (date != null) 'date': date!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final date = this.date;
+    final name = this.name;
+    return {'amount': ?amount, 'date': ?date, 'name': ?name};
+  }
 }
 
 /// Representation of a policy issue for a single entity (site, site-section, or
@@ -3142,62 +3187,70 @@ class PolicyIssue {
   PolicyIssue.fromJson(core.Map json_)
     : this(
         action: json_['action'] as core.String?,
-        adClients:
-            (json_['adClients'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        adClients: (json_['adClients'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         adRequestCount: json_['adRequestCount'] as core.String?,
         entityType: json_['entityType'] as core.String?,
-        firstDetectedDate:
-            json_.containsKey('firstDetectedDate')
-                ? Date.fromJson(
-                  json_['firstDetectedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lastDetectedDate:
-            json_.containsKey('lastDetectedDate')
-                ? Date.fromJson(
-                  json_['lastDetectedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        firstDetectedDate: json_.containsKey('firstDetectedDate')
+            ? Date.fromJson(
+                json_['firstDetectedDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastDetectedDate: json_.containsKey('lastDetectedDate')
+            ? Date.fromJson(
+                json_['lastDetectedDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        policyTopics:
-            (json_['policyTopics'] as core.List?)
-                ?.map(
-                  (value) => PolicyTopic.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        policyTopics: (json_['policyTopics'] as core.List?)
+            ?.map(
+              (value) => PolicyTopic.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         site: json_['site'] as core.String?,
         siteSection: json_['siteSection'] as core.String?,
         uri: json_['uri'] as core.String?,
-        warningEscalationDate:
-            json_.containsKey('warningEscalationDate')
-                ? Date.fromJson(
-                  json_['warningEscalationDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        warningEscalationDate: json_.containsKey('warningEscalationDate')
+            ? Date.fromJson(
+                json_['warningEscalationDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (adClients != null) 'adClients': adClients!,
-    if (adRequestCount != null) 'adRequestCount': adRequestCount!,
-    if (entityType != null) 'entityType': entityType!,
-    if (firstDetectedDate != null) 'firstDetectedDate': firstDetectedDate!,
-    if (lastDetectedDate != null) 'lastDetectedDate': lastDetectedDate!,
-    if (name != null) 'name': name!,
-    if (policyTopics != null) 'policyTopics': policyTopics!,
-    if (site != null) 'site': site!,
-    if (siteSection != null) 'siteSection': siteSection!,
-    if (uri != null) 'uri': uri!,
-    if (warningEscalationDate != null)
-      'warningEscalationDate': warningEscalationDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final adClients = this.adClients;
+    final adRequestCount = this.adRequestCount;
+    final entityType = this.entityType;
+    final firstDetectedDate = this.firstDetectedDate;
+    final lastDetectedDate = this.lastDetectedDate;
+    final name = this.name;
+    final policyTopics = this.policyTopics;
+    final site = this.site;
+    final siteSection = this.siteSection;
+    final uri = this.uri;
+    final warningEscalationDate = this.warningEscalationDate;
+    return {
+      'action': ?action,
+      'adClients': ?adClients,
+      'adRequestCount': ?adRequestCount,
+      'entityType': ?entityType,
+      'firstDetectedDate': ?firstDetectedDate,
+      'lastDetectedDate': ?lastDetectedDate,
+      'name': ?name,
+      'policyTopics': ?policyTopics,
+      'site': ?site,
+      'siteSection': ?siteSection,
+      'uri': ?uri,
+      'warningEscalationDate': ?warningEscalationDate,
+    };
+  }
 }
 
 /// Information about a particular policy topic.
@@ -3252,11 +3305,12 @@ class PolicyTopic {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mustFix != null) 'mustFix': mustFix!,
-    if (topic != null) 'topic': topic!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mustFix = this.mustFix;
+    final topic = this.topic;
+    final type = this.type;
+    return {'mustFix': ?mustFix, 'topic': ?topic, 'type': ?type};
+  }
 }
 
 /// Result of a generated report.
@@ -3314,63 +3368,64 @@ class ReportResult {
 
   ReportResult.fromJson(core.Map json_)
     : this(
-        averages:
-            json_.containsKey('averages')
-                ? Row.fromJson(
-                  json_['averages'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        endDate:
-            json_.containsKey('endDate')
-                ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        headers:
-            (json_['headers'] as core.List?)
-                ?.map(
-                  (value) => Header.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map(
-                  (value) => Row.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        startDate:
-            json_.containsKey('startDate')
-                ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        averages: json_.containsKey('averages')
+            ? Row.fromJson(
+                json_['averages'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endDate: json_.containsKey('endDate')
+            ? Date.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        headers: (json_['headers'] as core.List?)
+            ?.map(
+              (value) =>
+                  Header.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        startDate: json_.containsKey('startDate')
+            ? Date.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalMatchedRows: json_['totalMatchedRows'] as core.String?,
-        totals:
-            json_.containsKey('totals')
-                ? Row.fromJson(
-                  json_['totals'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        warnings:
-            (json_['warnings'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        totals: json_.containsKey('totals')
+            ? Row.fromJson(
+                json_['totals'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        warnings: (json_['warnings'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averages != null) 'averages': averages!,
-    if (endDate != null) 'endDate': endDate!,
-    if (headers != null) 'headers': headers!,
-    if (rows != null) 'rows': rows!,
-    if (startDate != null) 'startDate': startDate!,
-    if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows!,
-    if (totals != null) 'totals': totals!,
-    if (warnings != null) 'warnings': warnings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averages = this.averages;
+    final endDate = this.endDate;
+    final headers = this.headers;
+    final rows = this.rows;
+    final startDate = this.startDate;
+    final totalMatchedRows = this.totalMatchedRows;
+    final totals = this.totals;
+    final warnings = this.warnings;
+    return {
+      'averages': ?averages,
+      'endDate': ?endDate,
+      'headers': ?headers,
+      'rows': ?rows,
+      'startDate': ?startDate,
+      'totalMatchedRows': ?totalMatchedRows,
+      'totals': ?totals,
+      'warnings': ?warnings,
+    };
+  }
 }
 
 /// Row representation.
@@ -3382,19 +3437,18 @@ class Row {
 
   Row.fromJson(core.Map json_)
     : this(
-        cells:
-            (json_['cells'] as core.List?)
-                ?.map(
-                  (value) => Cell.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cells: (json_['cells'] as core.List?)
+            ?.map(
+              (value) =>
+                  Cell.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cells != null) 'cells': cells!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    return {'cells': ?cells};
+  }
 }
 
 /// Representation of a saved report.
@@ -3417,10 +3471,11 @@ class SavedReport {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final title = this.title;
+    return {'name': ?name, 'title': ?title};
+  }
 }
 
 /// Representation of a Site.
@@ -3481,14 +3536,20 @@ class Site {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoAdsEnabled != null) 'autoAdsEnabled': autoAdsEnabled!,
-    if (domain != null) 'domain': domain!,
-    if (name != null) 'name': name!,
-    if (reportingDimensionId != null)
-      'reportingDimensionId': reportingDimensionId!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoAdsEnabled = this.autoAdsEnabled;
+    final domain = this.domain;
+    final name = this.name;
+    final reportingDimensionId = this.reportingDimensionId;
+    final state = this.state;
+    return {
+      'autoAdsEnabled': ?autoAdsEnabled,
+      'domain': ?domain,
+      'name': ?name,
+      'reportingDimensionId': ?reportingDimensionId,
+      'state': ?state,
+    };
+  }
 }
 
 /// Represents a time zone from the
@@ -3528,10 +3589,14 @@ class UrlChannel {
         uriPattern: json_['uriPattern'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (reportingDimensionId != null)
-      'reportingDimensionId': reportingDimensionId!,
-    if (uriPattern != null) 'uriPattern': uriPattern!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final reportingDimensionId = this.reportingDimensionId;
+    final uriPattern = this.uriPattern;
+    return {
+      'name': ?name,
+      'reportingDimensionId': ?reportingDimensionId,
+      'uriPattern': ?uriPattern,
+    };
+  }
 }

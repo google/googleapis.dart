@@ -101,7 +101,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -159,7 +159,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -220,8 +220,8 @@ class ProjectsHistoriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -266,7 +266,7 @@ class ProjectsHistoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -324,10 +324,10 @@ class ProjectsHistoriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filterByName != null) 'filterByName': [filterByName],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filterByName': ?filterByName == null ? null : [filterByName],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -396,8 +396,8 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -447,7 +447,7 @@ class ProjectsHistoriesExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -506,9 +506,9 @@ class ProjectsHistoriesExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -569,8 +569,8 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -627,7 +627,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -684,7 +684,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -747,7 +747,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -810,9 +810,9 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -889,8 +889,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (locale != null) 'locale': [locale],
-      if ($fields != null) 'fields': [$fields],
+      'locale': ?locale == null ? null : [locale],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -949,8 +949,8 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1005,7 +1005,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1059,7 +1059,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1127,9 +1127,9 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1196,8 +1196,8 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1260,7 +1260,7 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1329,7 +1329,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1405,7 +1405,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1466,7 +1466,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1531,8 +1531,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': filter,
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1610,7 +1610,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1687,9 +1687,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1761,7 +1761,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1829,9 +1829,9 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1907,9 +1907,9 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1971,12 +1971,18 @@ class AndroidAppInfo {
         versionName: json_['versionName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (packageName != null) 'packageName': packageName!,
-    if (versionCode != null) 'versionCode': versionCode!,
-    if (versionName != null) 'versionName': versionName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final packageName = this.packageName;
+    final versionCode = this.versionCode;
+    final versionName = this.versionName;
+    return {
+      'name': ?name,
+      'packageName': ?packageName,
+      'versionCode': ?versionCode,
+      'versionName': ?versionName,
+    };
+  }
 }
 
 /// A test of an Android application that can control an Android component
@@ -2015,19 +2021,24 @@ class AndroidInstrumentationTest {
     : this(
         testPackageId: json_['testPackageId'] as core.String?,
         testRunnerClass: json_['testRunnerClass'] as core.String?,
-        testTargets:
-            (json_['testTargets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        testTargets: (json_['testTargets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         useOrchestrator: json_['useOrchestrator'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (testPackageId != null) 'testPackageId': testPackageId!,
-    if (testRunnerClass != null) 'testRunnerClass': testRunnerClass!,
-    if (testTargets != null) 'testTargets': testTargets!,
-    if (useOrchestrator != null) 'useOrchestrator': useOrchestrator!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final testPackageId = this.testPackageId;
+    final testRunnerClass = this.testRunnerClass;
+    final testTargets = this.testTargets;
+    final useOrchestrator = this.useOrchestrator;
+    return {
+      'testPackageId': ?testPackageId,
+      'testRunnerClass': ?testRunnerClass,
+      'testTargets': ?testTargets,
+      'useOrchestrator': ?useOrchestrator,
+    };
+  }
 }
 
 /// A test of an android application that explores the application on a virtual
@@ -2075,14 +2086,20 @@ class AndroidRoboTest {
         maxSteps: json_['maxSteps'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appInitialActivity != null) 'appInitialActivity': appInitialActivity!,
-    if (bootstrapPackageId != null) 'bootstrapPackageId': bootstrapPackageId!,
-    if (bootstrapRunnerClass != null)
-      'bootstrapRunnerClass': bootstrapRunnerClass!,
-    if (maxDepth != null) 'maxDepth': maxDepth!,
-    if (maxSteps != null) 'maxSteps': maxSteps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appInitialActivity = this.appInitialActivity;
+    final bootstrapPackageId = this.bootstrapPackageId;
+    final bootstrapRunnerClass = this.bootstrapRunnerClass;
+    final maxDepth = this.maxDepth;
+    final maxSteps = this.maxSteps;
+    return {
+      'appInitialActivity': ?appInitialActivity,
+      'bootstrapPackageId': ?bootstrapPackageId,
+      'bootstrapRunnerClass': ?bootstrapRunnerClass,
+      'maxDepth': ?maxDepth,
+      'maxSteps': ?maxSteps,
+    };
+  }
 }
 
 /// An Android mobile test specification.
@@ -2112,50 +2129,49 @@ class AndroidTest {
 
   AndroidTest.fromJson(core.Map json_)
     : this(
-        androidAppInfo:
-            json_.containsKey('androidAppInfo')
-                ? AndroidAppInfo.fromJson(
-                  json_['androidAppInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        androidAppInfo: json_.containsKey('androidAppInfo')
+            ? AndroidAppInfo.fromJson(
+                json_['androidAppInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         androidInstrumentationTest:
             json_.containsKey('androidInstrumentationTest')
-                ? AndroidInstrumentationTest.fromJson(
-                  json_['androidInstrumentationTest']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        androidRoboTest:
-            json_.containsKey('androidRoboTest')
-                ? AndroidRoboTest.fromJson(
-                  json_['androidRoboTest']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        androidTestLoop:
-            json_.containsKey('androidTestLoop')
-                ? AndroidTestLoop.fromJson(
-                  json_['androidTestLoop']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        testTimeout:
-            json_.containsKey('testTimeout')
-                ? Duration.fromJson(
-                  json_['testTimeout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? AndroidInstrumentationTest.fromJson(
+                json_['androidInstrumentationTest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        androidRoboTest: json_.containsKey('androidRoboTest')
+            ? AndroidRoboTest.fromJson(
+                json_['androidRoboTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        androidTestLoop: json_.containsKey('androidTestLoop')
+            ? AndroidTestLoop.fromJson(
+                json_['androidTestLoop'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        testTimeout: json_.containsKey('testTimeout')
+            ? Duration.fromJson(
+                json_['testTimeout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!,
-    if (androidInstrumentationTest != null)
-      'androidInstrumentationTest': androidInstrumentationTest!,
-    if (androidRoboTest != null) 'androidRoboTest': androidRoboTest!,
-    if (androidTestLoop != null) 'androidTestLoop': androidTestLoop!,
-    if (testTimeout != null) 'testTimeout': testTimeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidAppInfo = this.androidAppInfo;
+    final androidInstrumentationTest = this.androidInstrumentationTest;
+    final androidRoboTest = this.androidRoboTest;
+    final androidTestLoop = this.androidTestLoop;
+    final testTimeout = this.testTimeout;
+    return {
+      'androidAppInfo': ?androidAppInfo,
+      'androidInstrumentationTest': ?androidInstrumentationTest,
+      'androidRoboTest': ?androidRoboTest,
+      'androidTestLoop': ?androidTestLoop,
+      'testTimeout': ?testTimeout,
+    };
+  }
 }
 
 /// Test Loops are tests that can be launched by the app itself, determining
@@ -2231,10 +2247,11 @@ class Any {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (typeUrl != null) 'typeUrl': typeUrl!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final typeUrl = this.typeUrl;
+    final value = this.value;
+    return {'typeUrl': ?typeUrl, 'value': ?value};
+  }
 }
 
 class AppStartTime {
@@ -2259,26 +2276,27 @@ class AppStartTime {
 
   AppStartTime.fromJson(core.Map json_)
     : this(
-        fullyDrawnTime:
-            json_.containsKey('fullyDrawnTime')
-                ? Duration.fromJson(
-                  json_['fullyDrawnTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        initialDisplayTime:
-            json_.containsKey('initialDisplayTime')
-                ? Duration.fromJson(
-                  json_['initialDisplayTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fullyDrawnTime: json_.containsKey('fullyDrawnTime')
+            ? Duration.fromJson(
+                json_['fullyDrawnTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        initialDisplayTime: json_.containsKey('initialDisplayTime')
+            ? Duration.fromJson(
+                json_['initialDisplayTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fullyDrawnTime != null) 'fullyDrawnTime': fullyDrawnTime!,
-    if (initialDisplayTime != null) 'initialDisplayTime': initialDisplayTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullyDrawnTime = this.fullyDrawnTime;
+    final initialDisplayTime = this.initialDisplayTime;
+    return {
+      'fullyDrawnTime': ?fullyDrawnTime,
+      'initialDisplayTime': ?initialDisplayTime,
+    };
+  }
 }
 
 /// Encapsulates the metadata for basic sample series represented by a line
@@ -2333,11 +2351,16 @@ class BasicPerfSampleSeries {
         sampleSeriesLabel: json_['sampleSeriesLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (perfMetricType != null) 'perfMetricType': perfMetricType!,
-    if (perfUnit != null) 'perfUnit': perfUnit!,
-    if (sampleSeriesLabel != null) 'sampleSeriesLabel': sampleSeriesLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final perfMetricType = this.perfMetricType;
+    final perfUnit = this.perfUnit;
+    final sampleSeriesLabel = this.sampleSeriesLabel;
+    return {
+      'perfMetricType': ?perfMetricType,
+      'perfUnit': ?perfUnit,
+      'sampleSeriesLabel': ?sampleSeriesLabel,
+    };
+  }
 }
 
 /// The request must provide up to a maximum of 5000 samples to be created; a
@@ -2350,19 +2373,19 @@ class BatchCreatePerfSamplesRequest {
 
   BatchCreatePerfSamplesRequest.fromJson(core.Map json_)
     : this(
-        perfSamples:
-            (json_['perfSamples'] as core.List?)
-                ?.map(
-                  (value) => PerfSample.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        perfSamples: (json_['perfSamples'] as core.List?)
+            ?.map(
+              (value) => PerfSample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (perfSamples != null) 'perfSamples': perfSamples!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final perfSamples = this.perfSamples;
+    return {'perfSamples': ?perfSamples};
+  }
 }
 
 class BatchCreatePerfSamplesResponse {
@@ -2372,19 +2395,19 @@ class BatchCreatePerfSamplesResponse {
 
   BatchCreatePerfSamplesResponse.fromJson(core.Map json_)
     : this(
-        perfSamples:
-            (json_['perfSamples'] as core.List?)
-                ?.map(
-                  (value) => PerfSample.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        perfSamples: (json_['perfSamples'] as core.List?)
+            ?.map(
+              (value) => PerfSample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (perfSamples != null) 'perfSamples': perfSamples!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final perfSamples = this.perfSamples;
+    return {'perfSamples': ?perfSamples};
+  }
 }
 
 class CPUInfo {
@@ -2406,11 +2429,16 @@ class CPUInfo {
         numberOfCores: json_['numberOfCores'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuProcessor != null) 'cpuProcessor': cpuProcessor!,
-    if (cpuSpeedInGhz != null) 'cpuSpeedInGhz': cpuSpeedInGhz!,
-    if (numberOfCores != null) 'numberOfCores': numberOfCores!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuProcessor = this.cpuProcessor;
+    final cpuSpeedInGhz = this.cpuSpeedInGhz;
+    final numberOfCores = this.numberOfCores;
+    return {
+      'cpuProcessor': ?cpuProcessor,
+      'cpuSpeedInGhz': ?cpuSpeedInGhz,
+      'numberOfCores': ?numberOfCores,
+    };
+  }
 }
 
 /// A Duration represents a signed, fixed-length span of time represented as a
@@ -2444,10 +2472,11 @@ class Duration {
         seconds: json_['seconds'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nanos != null) 'nanos': nanos!,
-    if (seconds != null) 'seconds': seconds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nanos = this.nanos;
+    final seconds = this.seconds;
+    return {'nanos': ?nanos, 'seconds': ?seconds};
+  }
 }
 
 /// An Environment represents the set of test runs (Steps) from the parent
@@ -2532,69 +2561,74 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
     : this(
-        completionTime:
-            json_.containsKey('completionTime')
-                ? Timestamp.fromJson(
-                  json_['completionTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        creationTime:
-            json_.containsKey('creationTime')
-                ? Timestamp.fromJson(
-                  json_['creationTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dimensionValue:
-            (json_['dimensionValue'] as core.List?)
-                ?.map(
-                  (value) => EnvironmentDimensionValueEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        completionTime: json_.containsKey('completionTime')
+            ? Timestamp.fromJson(
+                json_['completionTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        creationTime: json_.containsKey('creationTime')
+            ? Timestamp.fromJson(
+                json_['creationTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionValue: (json_['dimensionValue'] as core.List?)
+            ?.map(
+              (value) => EnvironmentDimensionValueEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         displayName: json_['displayName'] as core.String?,
         environmentId: json_['environmentId'] as core.String?,
-        environmentResult:
-            json_.containsKey('environmentResult')
-                ? MergedResult.fromJson(
-                  json_['environmentResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        environmentResult: json_.containsKey('environmentResult')
+            ? MergedResult.fromJson(
+                json_['environmentResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         executionId: json_['executionId'] as core.String?,
         historyId: json_['historyId'] as core.String?,
         projectId: json_['projectId'] as core.String?,
-        resultsStorage:
-            json_.containsKey('resultsStorage')
-                ? ResultsStorage.fromJson(
-                  json_['resultsStorage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        shardSummaries:
-            (json_['shardSummaries'] as core.List?)
-                ?.map(
-                  (value) => ShardSummary.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resultsStorage: json_.containsKey('resultsStorage')
+            ? ResultsStorage.fromJson(
+                json_['resultsStorage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shardSummaries: (json_['shardSummaries'] as core.List?)
+            ?.map(
+              (value) => ShardSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (dimensionValue != null) 'dimensionValue': dimensionValue!,
-    if (displayName != null) 'displayName': displayName!,
-    if (environmentId != null) 'environmentId': environmentId!,
-    if (environmentResult != null) 'environmentResult': environmentResult!,
-    if (executionId != null) 'executionId': executionId!,
-    if (historyId != null) 'historyId': historyId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (resultsStorage != null) 'resultsStorage': resultsStorage!,
-    if (shardSummaries != null) 'shardSummaries': shardSummaries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionTime = this.completionTime;
+    final creationTime = this.creationTime;
+    final dimensionValue = this.dimensionValue;
+    final displayName = this.displayName;
+    final environmentId = this.environmentId;
+    final environmentResult = this.environmentResult;
+    final executionId = this.executionId;
+    final historyId = this.historyId;
+    final projectId = this.projectId;
+    final resultsStorage = this.resultsStorage;
+    final shardSummaries = this.shardSummaries;
+    return {
+      'completionTime': ?completionTime,
+      'creationTime': ?creationTime,
+      'dimensionValue': ?dimensionValue,
+      'displayName': ?displayName,
+      'environmentId': ?environmentId,
+      'environmentResult': ?environmentResult,
+      'executionId': ?executionId,
+      'historyId': ?historyId,
+      'projectId': ?projectId,
+      'resultsStorage': ?resultsStorage,
+      'shardSummaries': ?shardSummaries,
+    };
+  }
 }
 
 typedef EnvironmentDimensionValueEntry = $Entry;
@@ -2687,56 +2721,58 @@ class Execution {
 
   Execution.fromJson(core.Map json_)
     : this(
-        completionTime:
-            json_.containsKey('completionTime')
-                ? Timestamp.fromJson(
-                  json_['completionTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        creationTime:
-            json_.containsKey('creationTime')
-                ? Timestamp.fromJson(
-                  json_['creationTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dimensionDefinitions:
-            (json_['dimensionDefinitions'] as core.List?)
-                ?.map(
-                  (value) => MatrixDimensionDefinition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        completionTime: json_.containsKey('completionTime')
+            ? Timestamp.fromJson(
+                json_['completionTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        creationTime: json_.containsKey('creationTime')
+            ? Timestamp.fromJson(
+                json_['creationTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionDefinitions: (json_['dimensionDefinitions'] as core.List?)
+            ?.map(
+              (value) => MatrixDimensionDefinition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         executionId: json_['executionId'] as core.String?,
-        outcome:
-            json_.containsKey('outcome')
-                ? Outcome.fromJson(
-                  json_['outcome'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        specification:
-            json_.containsKey('specification')
-                ? Specification.fromJson(
-                  json_['specification'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outcome: json_.containsKey('outcome')
+            ? Outcome.fromJson(
+                json_['outcome'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        specification: json_.containsKey('specification')
+            ? Specification.fromJson(
+                json_['specification'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         testExecutionMatrixId: json_['testExecutionMatrixId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (dimensionDefinitions != null)
-      'dimensionDefinitions': dimensionDefinitions!,
-    if (executionId != null) 'executionId': executionId!,
-    if (outcome != null) 'outcome': outcome!,
-    if (specification != null) 'specification': specification!,
-    if (state != null) 'state': state!,
-    if (testExecutionMatrixId != null)
-      'testExecutionMatrixId': testExecutionMatrixId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionTime = this.completionTime;
+    final creationTime = this.creationTime;
+    final dimensionDefinitions = this.dimensionDefinitions;
+    final executionId = this.executionId;
+    final outcome = this.outcome;
+    final specification = this.specification;
+    final state = this.state;
+    final testExecutionMatrixId = this.testExecutionMatrixId;
+    return {
+      'completionTime': ?completionTime,
+      'creationTime': ?creationTime,
+      'dimensionDefinitions': ?dimensionDefinitions,
+      'executionId': ?executionId,
+      'outcome': ?outcome,
+      'specification': ?specification,
+      'state': ?state,
+      'testExecutionMatrixId': ?testExecutionMatrixId,
+    };
+  }
 }
 
 /// Details for an outcome with a FAILURE outcome summary.
@@ -2788,15 +2824,24 @@ class FailureDetail {
         unableToCrawl: json_['unableToCrawl'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crashed != null) 'crashed': crashed!,
-    if (deviceOutOfMemory != null) 'deviceOutOfMemory': deviceOutOfMemory!,
-    if (failedRoboscript != null) 'failedRoboscript': failedRoboscript!,
-    if (notInstalled != null) 'notInstalled': notInstalled!,
-    if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
-    if (timedOut != null) 'timedOut': timedOut!,
-    if (unableToCrawl != null) 'unableToCrawl': unableToCrawl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crashed = this.crashed;
+    final deviceOutOfMemory = this.deviceOutOfMemory;
+    final failedRoboscript = this.failedRoboscript;
+    final notInstalled = this.notInstalled;
+    final otherNativeCrash = this.otherNativeCrash;
+    final timedOut = this.timedOut;
+    final unableToCrawl = this.unableToCrawl;
+    return {
+      'crashed': ?crashed,
+      'deviceOutOfMemory': ?deviceOutOfMemory,
+      'failedRoboscript': ?failedRoboscript,
+      'notInstalled': ?notInstalled,
+      'otherNativeCrash': ?otherNativeCrash,
+      'timedOut': ?timedOut,
+      'unableToCrawl': ?unableToCrawl,
+    };
+  }
 }
 
 /// A reference to a file.
@@ -2815,9 +2860,10 @@ class FileReference {
   FileReference.fromJson(core.Map json_)
     : this(fileUri: json_['fileUri'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileUri != null) 'fileUri': fileUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileUri = this.fileUri;
+    return {'fileUri': ?fileUri};
+  }
 }
 
 /// Graphics statistics for the App.
@@ -2885,14 +2931,13 @@ class GraphicsStats {
 
   GraphicsStats.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => GraphicsStatsBucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) => GraphicsStatsBucket.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         highInputLatencyCount: json_['highInputLatencyCount'] as core.String?,
         jankyFrames: json_['jankyFrames'] as core.String?,
         missedVsyncCount: json_['missedVsyncCount'] as core.String?,
@@ -2906,22 +2951,34 @@ class GraphicsStats {
         totalFrames: json_['totalFrames'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-    if (highInputLatencyCount != null)
-      'highInputLatencyCount': highInputLatencyCount!,
-    if (jankyFrames != null) 'jankyFrames': jankyFrames!,
-    if (missedVsyncCount != null) 'missedVsyncCount': missedVsyncCount!,
-    if (p50Millis != null) 'p50Millis': p50Millis!,
-    if (p90Millis != null) 'p90Millis': p90Millis!,
-    if (p95Millis != null) 'p95Millis': p95Millis!,
-    if (p99Millis != null) 'p99Millis': p99Millis!,
-    if (slowBitmapUploadCount != null)
-      'slowBitmapUploadCount': slowBitmapUploadCount!,
-    if (slowDrawCount != null) 'slowDrawCount': slowDrawCount!,
-    if (slowUiThreadCount != null) 'slowUiThreadCount': slowUiThreadCount!,
-    if (totalFrames != null) 'totalFrames': totalFrames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    final highInputLatencyCount = this.highInputLatencyCount;
+    final jankyFrames = this.jankyFrames;
+    final missedVsyncCount = this.missedVsyncCount;
+    final p50Millis = this.p50Millis;
+    final p90Millis = this.p90Millis;
+    final p95Millis = this.p95Millis;
+    final p99Millis = this.p99Millis;
+    final slowBitmapUploadCount = this.slowBitmapUploadCount;
+    final slowDrawCount = this.slowDrawCount;
+    final slowUiThreadCount = this.slowUiThreadCount;
+    final totalFrames = this.totalFrames;
+    return {
+      'buckets': ?buckets,
+      'highInputLatencyCount': ?highInputLatencyCount,
+      'jankyFrames': ?jankyFrames,
+      'missedVsyncCount': ?missedVsyncCount,
+      'p50Millis': ?p50Millis,
+      'p90Millis': ?p90Millis,
+      'p95Millis': ?p95Millis,
+      'p99Millis': ?p99Millis,
+      'slowBitmapUploadCount': ?slowBitmapUploadCount,
+      'slowDrawCount': ?slowDrawCount,
+      'slowUiThreadCount': ?slowUiThreadCount,
+      'totalFrames': ?totalFrames,
+    };
+  }
 }
 
 class GraphicsStatsBucket {
@@ -2939,10 +2996,11 @@ class GraphicsStatsBucket {
         renderMillis: json_['renderMillis'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (frameCount != null) 'frameCount': frameCount!,
-    if (renderMillis != null) 'renderMillis': renderMillis!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final frameCount = this.frameCount;
+    final renderMillis = this.renderMillis;
+    return {'frameCount': ?frameCount, 'renderMillis': ?renderMillis};
+  }
 }
 
 /// A History represents a sorted list of Executions ordered by the
@@ -2991,12 +3049,18 @@ class History {
         testPlatform: json_['testPlatform'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (historyId != null) 'historyId': historyId!,
-    if (name != null) 'name': name!,
-    if (testPlatform != null) 'testPlatform': testPlatform!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final historyId = this.historyId;
+    final name = this.name;
+    final testPlatform = this.testPlatform;
+    return {
+      'displayName': ?displayName,
+      'historyId': ?historyId,
+      'name': ?name,
+      'testPlatform': ?testPlatform,
+    };
+  }
 }
 
 /// An image, with a link to the main image and a thumbnail.
@@ -3022,33 +3086,36 @@ class Image {
 
   Image.fromJson(core.Map json_)
     : this(
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceImage:
-            json_.containsKey('sourceImage')
-                ? ToolOutputReference.fromJson(
-                  json_['sourceImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceImage: json_.containsKey('sourceImage')
+            ? ToolOutputReference.fromJson(
+                json_['sourceImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         stepId: json_['stepId'] as core.String?,
-        thumbnail:
-            json_.containsKey('thumbnail')
-                ? Thumbnail.fromJson(
-                  json_['thumbnail'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        thumbnail: json_.containsKey('thumbnail')
+            ? Thumbnail.fromJson(
+                json_['thumbnail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (sourceImage != null) 'sourceImage': sourceImage!,
-    if (stepId != null) 'stepId': stepId!,
-    if (thumbnail != null) 'thumbnail': thumbnail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final sourceImage = this.sourceImage;
+    final stepId = this.stepId;
+    final thumbnail = this.thumbnail;
+    return {
+      'error': ?error,
+      'sourceImage': ?sourceImage,
+      'stepId': ?stepId,
+      'thumbnail': ?thumbnail,
+    };
+  }
 }
 
 /// Details for an outcome with an INCONCLUSIVE outcome summary.
@@ -3084,12 +3151,16 @@ class InconclusiveDetail {
         infrastructureFailure: json_['infrastructureFailure'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (abortedByUser != null) 'abortedByUser': abortedByUser!,
-    if (hasErrorLogs != null) 'hasErrorLogs': hasErrorLogs!,
-    if (infrastructureFailure != null)
-      'infrastructureFailure': infrastructureFailure!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final abortedByUser = this.abortedByUser;
+    final hasErrorLogs = this.hasErrorLogs;
+    final infrastructureFailure = this.infrastructureFailure;
+    return {
+      'abortedByUser': ?abortedByUser,
+      'hasErrorLogs': ?hasErrorLogs,
+      'infrastructureFailure': ?infrastructureFailure,
+    };
+  }
 }
 
 /// Step Id and outcome of each individual step that was run as a group with
@@ -3133,21 +3204,26 @@ class IndividualOutcome {
     : this(
         multistepNumber: json_['multistepNumber'] as core.int?,
         outcomeSummary: json_['outcomeSummary'] as core.String?,
-        runDuration:
-            json_.containsKey('runDuration')
-                ? Duration.fromJson(
-                  json_['runDuration'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        runDuration: json_.containsKey('runDuration')
+            ? Duration.fromJson(
+                json_['runDuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         stepId: json_['stepId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (multistepNumber != null) 'multistepNumber': multistepNumber!,
-    if (outcomeSummary != null) 'outcomeSummary': outcomeSummary!,
-    if (runDuration != null) 'runDuration': runDuration!,
-    if (stepId != null) 'stepId': stepId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final multistepNumber = this.multistepNumber;
+    final outcomeSummary = this.outcomeSummary;
+    final runDuration = this.runDuration;
+    final stepId = this.stepId;
+    return {
+      'multistepNumber': ?multistepNumber,
+      'outcomeSummary': ?outcomeSummary,
+      'runDuration': ?runDuration,
+      'stepId': ?stepId,
+    };
+  }
 }
 
 /// iOS app information
@@ -3162,9 +3238,10 @@ class IosAppInfo {
   IosAppInfo.fromJson(core.Map json_)
     : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// A Robo test for an iOS application.
@@ -3197,45 +3274,47 @@ class IosTest {
 
   IosTest.fromJson(core.Map json_)
     : this(
-        iosAppInfo:
-            json_.containsKey('iosAppInfo')
-                ? IosAppInfo.fromJson(
-                  json_['iosAppInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        iosRoboTest:
-            json_.containsKey('iosRoboTest')
-                ? IosRoboTest.fromJson(
-                  json_['iosRoboTest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        iosTestLoop:
-            json_.containsKey('iosTestLoop')
-                ? IosTestLoop.fromJson(
-                  json_['iosTestLoop'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        iosXcTest:
-            json_.containsKey('iosXcTest')
-                ? IosXcTest.fromJson(
-                  json_['iosXcTest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        testTimeout:
-            json_.containsKey('testTimeout')
-                ? Duration.fromJson(
-                  json_['testTimeout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        iosAppInfo: json_.containsKey('iosAppInfo')
+            ? IosAppInfo.fromJson(
+                json_['iosAppInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        iosRoboTest: json_.containsKey('iosRoboTest')
+            ? IosRoboTest.fromJson(
+                json_['iosRoboTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        iosTestLoop: json_.containsKey('iosTestLoop')
+            ? IosTestLoop.fromJson(
+                json_['iosTestLoop'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        iosXcTest: json_.containsKey('iosXcTest')
+            ? IosXcTest.fromJson(
+                json_['iosXcTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        testTimeout: json_.containsKey('testTimeout')
+            ? Duration.fromJson(
+                json_['testTimeout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (iosAppInfo != null) 'iosAppInfo': iosAppInfo!,
-    if (iosRoboTest != null) 'iosRoboTest': iosRoboTest!,
-    if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!,
-    if (iosXcTest != null) 'iosXcTest': iosXcTest!,
-    if (testTimeout != null) 'testTimeout': testTimeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final iosAppInfo = this.iosAppInfo;
+    final iosRoboTest = this.iosRoboTest;
+    final iosTestLoop = this.iosTestLoop;
+    final iosXcTest = this.iosXcTest;
+    final testTimeout = this.testTimeout;
+    return {
+      'iosAppInfo': ?iosAppInfo,
+      'iosRoboTest': ?iosRoboTest,
+      'iosTestLoop': ?iosTestLoop,
+      'iosXcTest': ?iosXcTest,
+      'testTimeout': ?testTimeout,
+    };
+  }
 }
 
 /// A game loop test of an iOS application.
@@ -3248,9 +3327,10 @@ class IosTestLoop {
   IosTestLoop.fromJson(core.Map json_)
     : this(bundleId: json_['bundleId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bundleId != null) 'bundleId': bundleId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bundleId = this.bundleId;
+    return {'bundleId': ?bundleId};
+  }
 }
 
 /// A test of an iOS application that uses the XCTest framework.
@@ -3269,10 +3349,11 @@ class IosXcTest {
         xcodeVersion: json_['xcodeVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bundleId != null) 'bundleId': bundleId!,
-    if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bundleId = this.bundleId;
+    final xcodeVersion = this.xcodeVersion;
+    return {'bundleId': ?bundleId, 'xcodeVersion': ?xcodeVersion};
+  }
 }
 
 /// Response message for EnvironmentService.ListEnvironments.
@@ -3310,27 +3391,33 @@ class ListEnvironmentsResponse {
 
   ListEnvironmentsResponse.fromJson(core.Map json_)
     : this(
-        environments:
-            (json_['environments'] as core.List?)
-                ?.map(
-                  (value) => Environment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        environments: (json_['environments'] as core.List?)
+            ?.map(
+              (value) => Environment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         executionId: json_['executionId'] as core.String?,
         historyId: json_['historyId'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         projectId: json_['projectId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environments != null) 'environments': environments!,
-    if (executionId != null) 'executionId': executionId!,
-    if (historyId != null) 'historyId': historyId!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (projectId != null) 'projectId': projectId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final environments = this.environments;
+    final executionId = this.executionId;
+    final historyId = this.historyId;
+    final nextPageToken = this.nextPageToken;
+    final projectId = this.projectId;
+    return {
+      'environments': ?environments,
+      'executionId': ?executionId,
+      'historyId': ?historyId,
+      'nextPageToken': ?nextPageToken,
+      'projectId': ?projectId,
+    };
+  }
 }
 
 class ListExecutionsResponse {
@@ -3348,21 +3435,21 @@ class ListExecutionsResponse {
 
   ListExecutionsResponse.fromJson(core.Map json_)
     : this(
-        executions:
-            (json_['executions'] as core.List?)
-                ?.map(
-                  (value) => Execution.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        executions: (json_['executions'] as core.List?)
+            ?.map(
+              (value) => Execution.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executions != null) 'executions': executions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executions = this.executions;
+    final nextPageToken = this.nextPageToken;
+    return {'executions': ?executions, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for HistoryService.List
@@ -3383,21 +3470,21 @@ class ListHistoriesResponse {
 
   ListHistoriesResponse.fromJson(core.Map json_)
     : this(
-        histories:
-            (json_['histories'] as core.List?)
-                ?.map(
-                  (value) => History.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        histories: (json_['histories'] as core.List?)
+            ?.map(
+              (value) => History.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histories != null) 'histories': histories!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final histories = this.histories;
+    final nextPageToken = this.nextPageToken;
+    return {'histories': ?histories, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class ListPerfSampleSeriesResponse {
@@ -3408,19 +3495,19 @@ class ListPerfSampleSeriesResponse {
 
   ListPerfSampleSeriesResponse.fromJson(core.Map json_)
     : this(
-        perfSampleSeries:
-            (json_['perfSampleSeries'] as core.List?)
-                ?.map(
-                  (value) => PerfSampleSeries.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        perfSampleSeries: (json_['perfSampleSeries'] as core.List?)
+            ?.map(
+              (value) => PerfSampleSeries.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (perfSampleSeries != null) 'perfSampleSeries': perfSampleSeries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final perfSampleSeries = this.perfSampleSeries;
+    return {'perfSampleSeries': ?perfSampleSeries};
+  }
 }
 
 class ListPerfSamplesResponse {
@@ -3437,20 +3524,20 @@ class ListPerfSamplesResponse {
   ListPerfSamplesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        perfSamples:
-            (json_['perfSamples'] as core.List?)
-                ?.map(
-                  (value) => PerfSample.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        perfSamples: (json_['perfSamples'] as core.List?)
+            ?.map(
+              (value) => PerfSample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (perfSamples != null) 'perfSamples': perfSamples!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final perfSamples = this.perfSamples;
+    return {'nextPageToken': ?nextPageToken, 'perfSamples': ?perfSamples};
+  }
 }
 
 class ListScreenshotClustersResponse {
@@ -3461,19 +3548,19 @@ class ListScreenshotClustersResponse {
 
   ListScreenshotClustersResponse.fromJson(core.Map json_)
     : this(
-        clusters:
-            (json_['clusters'] as core.List?)
-                ?.map(
-                  (value) => ScreenshotCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        clusters: (json_['clusters'] as core.List?)
+            ?.map(
+              (value) => ScreenshotCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusters != null) 'clusters': clusters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusters = this.clusters;
+    return {'clusters': ?clusters};
+  }
 }
 
 /// Response message for AccessibilityService.ListStepAccessibilityClusters.
@@ -3496,21 +3583,21 @@ class ListStepAccessibilityClustersResponse {
 
   ListStepAccessibilityClustersResponse.fromJson(core.Map json_)
     : this(
-        clusters:
-            (json_['clusters'] as core.List?)
-                ?.map(
-                  (value) => SuggestionClusterProto.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        clusters: (json_['clusters'] as core.List?)
+            ?.map(
+              (value) => SuggestionClusterProto.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusters != null) 'clusters': clusters!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusters = this.clusters;
+    final name = this.name;
+    return {'clusters': ?clusters, 'name': ?name};
+  }
 }
 
 /// A response containing the thumbnails in a step.
@@ -3536,20 +3623,19 @@ class ListStepThumbnailsResponse {
   ListStepThumbnailsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        thumbnails:
-            (json_['thumbnails'] as core.List?)
-                ?.map(
-                  (value) => Image.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        thumbnails: (json_['thumbnails'] as core.List?)
+            ?.map(
+              (value) =>
+                  Image.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (thumbnails != null) 'thumbnails': thumbnails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final thumbnails = this.thumbnails;
+    return {'nextPageToken': ?nextPageToken, 'thumbnails': ?thumbnails};
+  }
 }
 
 /// Response message for StepService.List.
@@ -3568,20 +3654,19 @@ class ListStepsResponse {
   ListStepsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        steps:
-            (json_['steps'] as core.List?)
-                ?.map(
-                  (value) => Step.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        steps: (json_['steps'] as core.List?)
+            ?.map(
+              (value) =>
+                  Step.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (steps != null) 'steps': steps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final steps = this.steps;
+    return {'nextPageToken': ?nextPageToken, 'steps': ?steps};
+  }
 }
 
 /// Response message for StepService.ListTestCases.
@@ -3596,20 +3681,20 @@ class ListTestCasesResponse {
   ListTestCasesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        testCases:
-            (json_['testCases'] as core.List?)
-                ?.map(
-                  (value) => TestCase.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        testCases: (json_['testCases'] as core.List?)
+            ?.map(
+              (value) => TestCase.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (testCases != null) 'testCases': testCases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final testCases = this.testCases;
+    return {'nextPageToken': ?nextPageToken, 'testCases': ?testCases};
+  }
 }
 
 /// One dimension of the matrix of different runs of a step.
@@ -3630,12 +3715,14 @@ class MemoryInfo {
         memoryTotalInKibibyte: json_['memoryTotalInKibibyte'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (memoryCapInKibibyte != null)
-      'memoryCapInKibibyte': memoryCapInKibibyte!,
-    if (memoryTotalInKibibyte != null)
-      'memoryTotalInKibibyte': memoryTotalInKibibyte!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final memoryCapInKibibyte = this.memoryCapInKibibyte;
+    final memoryTotalInKibibyte = this.memoryTotalInKibibyte;
+    return {
+      'memoryCapInKibibyte': ?memoryCapInKibibyte,
+      'memoryTotalInKibibyte': ?memoryTotalInKibibyte,
+    };
+  }
 }
 
 /// Merged test result for environment.
@@ -3676,28 +3763,31 @@ class MergedResult {
 
   MergedResult.fromJson(core.Map json_)
     : this(
-        outcome:
-            json_.containsKey('outcome')
-                ? Outcome.fromJson(
-                  json_['outcome'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outcome: json_.containsKey('outcome')
+            ? Outcome.fromJson(
+                json_['outcome'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
-        testSuiteOverviews:
-            (json_['testSuiteOverviews'] as core.List?)
-                ?.map(
-                  (value) => TestSuiteOverview.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        testSuiteOverviews: (json_['testSuiteOverviews'] as core.List?)
+            ?.map(
+              (value) => TestSuiteOverview.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outcome != null) 'outcome': outcome!,
-    if (state != null) 'state': state!,
-    if (testSuiteOverviews != null) 'testSuiteOverviews': testSuiteOverviews!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outcome = this.outcome;
+    final state = this.state;
+    final testSuiteOverviews = this.testSuiteOverviews;
+    return {
+      'outcome': ?outcome,
+      'state': ?state,
+      'testSuiteOverviews': ?testSuiteOverviews,
+    };
+  }
 }
 
 /// Details when multiple steps are run with the same configuration as a group.
@@ -3719,20 +3809,24 @@ class MultiStep {
   MultiStep.fromJson(core.Map json_)
     : this(
         multistepNumber: json_['multistepNumber'] as core.int?,
-        primaryStep:
-            json_.containsKey('primaryStep')
-                ? PrimaryStep.fromJson(
-                  json_['primaryStep'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        primaryStep: json_.containsKey('primaryStep')
+            ? PrimaryStep.fromJson(
+                json_['primaryStep'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         primaryStepId: json_['primaryStepId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (multistepNumber != null) 'multistepNumber': multistepNumber!,
-    if (primaryStep != null) 'primaryStep': primaryStep!,
-    if (primaryStepId != null) 'primaryStepId': primaryStepId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final multistepNumber = this.multistepNumber;
+    final primaryStep = this.primaryStep;
+    final primaryStepId = this.primaryStepId;
+    return {
+      'multistepNumber': ?multistepNumber,
+      'primaryStep': ?primaryStep,
+      'primaryStepId': ?primaryStepId,
+    };
+  }
 }
 
 /// Interprets a result so that humans and machines can act on it.
@@ -3790,41 +3884,44 @@ class Outcome {
 
   Outcome.fromJson(core.Map json_)
     : this(
-        failureDetail:
-            json_.containsKey('failureDetail')
-                ? FailureDetail.fromJson(
-                  json_['failureDetail'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inconclusiveDetail:
-            json_.containsKey('inconclusiveDetail')
-                ? InconclusiveDetail.fromJson(
-                  json_['inconclusiveDetail']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        skippedDetail:
-            json_.containsKey('skippedDetail')
-                ? SkippedDetail.fromJson(
-                  json_['skippedDetail'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        successDetail:
-            json_.containsKey('successDetail')
-                ? SuccessDetail.fromJson(
-                  json_['successDetail'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        failureDetail: json_.containsKey('failureDetail')
+            ? FailureDetail.fromJson(
+                json_['failureDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inconclusiveDetail: json_.containsKey('inconclusiveDetail')
+            ? InconclusiveDetail.fromJson(
+                json_['inconclusiveDetail']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        skippedDetail: json_.containsKey('skippedDetail')
+            ? SkippedDetail.fromJson(
+                json_['skippedDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        successDetail: json_.containsKey('successDetail')
+            ? SuccessDetail.fromJson(
+                json_['successDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         summary: json_['summary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failureDetail != null) 'failureDetail': failureDetail!,
-    if (inconclusiveDetail != null) 'inconclusiveDetail': inconclusiveDetail!,
-    if (skippedDetail != null) 'skippedDetail': skippedDetail!,
-    if (successDetail != null) 'successDetail': successDetail!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failureDetail = this.failureDetail;
+    final inconclusiveDetail = this.inconclusiveDetail;
+    final skippedDetail = this.skippedDetail;
+    final successDetail = this.successDetail;
+    final summary = this.summary;
+    return {
+      'failureDetail': ?failureDetail,
+      'inconclusiveDetail': ?inconclusiveDetail,
+      'skippedDetail': ?skippedDetail,
+      'successDetail': ?successDetail,
+      'summary': ?summary,
+    };
+  }
 }
 
 /// Encapsulates performance environment info
@@ -3839,24 +3936,23 @@ class PerfEnvironment {
 
   PerfEnvironment.fromJson(core.Map json_)
     : this(
-        cpuInfo:
-            json_.containsKey('cpuInfo')
-                ? CPUInfo.fromJson(
-                  json_['cpuInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        memoryInfo:
-            json_.containsKey('memoryInfo')
-                ? MemoryInfo.fromJson(
-                  json_['memoryInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cpuInfo: json_.containsKey('cpuInfo')
+            ? CPUInfo.fromJson(
+                json_['cpuInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        memoryInfo: json_.containsKey('memoryInfo')
+            ? MemoryInfo.fromJson(
+                json_['memoryInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuInfo != null) 'cpuInfo': cpuInfo!,
-    if (memoryInfo != null) 'memoryInfo': memoryInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuInfo = this.cpuInfo;
+    final memoryInfo = this.memoryInfo;
+    return {'cpuInfo': ?cpuInfo, 'memoryInfo': ?memoryInfo};
+  }
 }
 
 /// A summary of perf metrics collected and performance environment info
@@ -3909,45 +4005,50 @@ class PerfMetricsSummary {
 
   PerfMetricsSummary.fromJson(core.Map json_)
     : this(
-        appStartTime:
-            json_.containsKey('appStartTime')
-                ? AppStartTime.fromJson(
-                  json_['appStartTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appStartTime: json_.containsKey('appStartTime')
+            ? AppStartTime.fromJson(
+                json_['appStartTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         executionId: json_['executionId'] as core.String?,
-        graphicsStats:
-            json_.containsKey('graphicsStats')
-                ? GraphicsStats.fromJson(
-                  json_['graphicsStats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        graphicsStats: json_.containsKey('graphicsStats')
+            ? GraphicsStats.fromJson(
+                json_['graphicsStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         historyId: json_['historyId'] as core.String?,
-        perfEnvironment:
-            json_.containsKey('perfEnvironment')
-                ? PerfEnvironment.fromJson(
-                  json_['perfEnvironment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        perfMetrics:
-            (json_['perfMetrics'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        perfEnvironment: json_.containsKey('perfEnvironment')
+            ? PerfEnvironment.fromJson(
+                json_['perfEnvironment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        perfMetrics: (json_['perfMetrics'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         projectId: json_['projectId'] as core.String?,
         stepId: json_['stepId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appStartTime != null) 'appStartTime': appStartTime!,
-    if (executionId != null) 'executionId': executionId!,
-    if (graphicsStats != null) 'graphicsStats': graphicsStats!,
-    if (historyId != null) 'historyId': historyId!,
-    if (perfEnvironment != null) 'perfEnvironment': perfEnvironment!,
-    if (perfMetrics != null) 'perfMetrics': perfMetrics!,
-    if (projectId != null) 'projectId': projectId!,
-    if (stepId != null) 'stepId': stepId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appStartTime = this.appStartTime;
+    final executionId = this.executionId;
+    final graphicsStats = this.graphicsStats;
+    final historyId = this.historyId;
+    final perfEnvironment = this.perfEnvironment;
+    final perfMetrics = this.perfMetrics;
+    final projectId = this.projectId;
+    final stepId = this.stepId;
+    return {
+      'appStartTime': ?appStartTime,
+      'executionId': ?executionId,
+      'graphicsStats': ?graphicsStats,
+      'historyId': ?historyId,
+      'perfEnvironment': ?perfEnvironment,
+      'perfMetrics': ?perfMetrics,
+      'projectId': ?projectId,
+      'stepId': ?stepId,
+    };
+  }
 }
 
 /// Resource representing a single performance measure or data point
@@ -3962,19 +4063,19 @@ class PerfSample {
 
   PerfSample.fromJson(core.Map json_)
     : this(
-        sampleTime:
-            json_.containsKey('sampleTime')
-                ? Timestamp.fromJson(
-                  json_['sampleTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sampleTime: json_.containsKey('sampleTime')
+            ? Timestamp.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         value: (json_['value'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sampleTime != null) 'sampleTime': sampleTime!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sampleTime = this.sampleTime;
+    final value = this.value;
+    return {'sampleTime': ?sampleTime, 'value': ?value};
+  }
 }
 
 /// Resource representing a collection of performance samples (or data points)
@@ -4014,13 +4115,12 @@ class PerfSampleSeries {
 
   PerfSampleSeries.fromJson(core.Map json_)
     : this(
-        basicPerfSampleSeries:
-            json_.containsKey('basicPerfSampleSeries')
-                ? BasicPerfSampleSeries.fromJson(
-                  json_['basicPerfSampleSeries']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        basicPerfSampleSeries: json_.containsKey('basicPerfSampleSeries')
+            ? BasicPerfSampleSeries.fromJson(
+                json_['basicPerfSampleSeries']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         executionId: json_['executionId'] as core.String?,
         historyId: json_['historyId'] as core.String?,
         projectId: json_['projectId'] as core.String?,
@@ -4028,15 +4128,22 @@ class PerfSampleSeries {
         stepId: json_['stepId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (basicPerfSampleSeries != null)
-      'basicPerfSampleSeries': basicPerfSampleSeries!,
-    if (executionId != null) 'executionId': executionId!,
-    if (historyId != null) 'historyId': historyId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (sampleSeriesId != null) 'sampleSeriesId': sampleSeriesId!,
-    if (stepId != null) 'stepId': stepId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final basicPerfSampleSeries = this.basicPerfSampleSeries;
+    final executionId = this.executionId;
+    final historyId = this.historyId;
+    final projectId = this.projectId;
+    final sampleSeriesId = this.sampleSeriesId;
+    final stepId = this.stepId;
+    return {
+      'basicPerfSampleSeries': ?basicPerfSampleSeries,
+      'executionId': ?executionId,
+      'historyId': ?historyId,
+      'projectId': ?projectId,
+      'sampleSeriesId': ?sampleSeriesId,
+      'stepId': ?stepId,
+    };
+  }
 }
 
 /// Stores rollup test status of multiple steps that were run as a group and
@@ -4067,21 +4174,21 @@ class PrimaryStep {
 
   PrimaryStep.fromJson(core.Map json_)
     : this(
-        individualOutcome:
-            (json_['individualOutcome'] as core.List?)
-                ?.map(
-                  (value) => IndividualOutcome.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        individualOutcome: (json_['individualOutcome'] as core.List?)
+            ?.map(
+              (value) => IndividualOutcome.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         rollUp: json_['rollUp'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (individualOutcome != null) 'individualOutcome': individualOutcome!,
-    if (rollUp != null) 'rollUp': rollUp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final individualOutcome = this.individualOutcome;
+    final rollUp = this.rollUp;
+    return {'individualOutcome': ?individualOutcome, 'rollUp': ?rollUp};
+  }
 }
 
 /// Per-project settings for the Tool Results service.
@@ -4106,10 +4213,11 @@ class ProjectSettings {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultBucket != null) 'defaultBucket': defaultBucket!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultBucket = this.defaultBucket;
+    final name = this.name;
+    return {'defaultBucket': ?defaultBucket, 'name': ?name};
+  }
 }
 
 /// Request message for StepService.PublishXunitXmlFiles.
@@ -4124,19 +4232,19 @@ class PublishXunitXmlFilesRequest {
 
   PublishXunitXmlFilesRequest.fromJson(core.Map json_)
     : this(
-        xunitXmlFiles:
-            (json_['xunitXmlFiles'] as core.List?)
-                ?.map(
-                  (value) => FileReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        xunitXmlFiles: (json_['xunitXmlFiles'] as core.List?)
+            ?.map(
+              (value) => FileReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (xunitXmlFiles != null) 'xunitXmlFiles': xunitXmlFiles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final xunitXmlFiles = this.xunitXmlFiles;
+    return {'xunitXmlFiles': ?xunitXmlFiles};
+  }
 }
 
 /// A rectangular region.
@@ -4171,12 +4279,18 @@ class RegionProto {
         widthPx: json_['widthPx'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (heightPx != null) 'heightPx': heightPx!,
-    if (leftPx != null) 'leftPx': leftPx!,
-    if (topPx != null) 'topPx': topPx!,
-    if (widthPx != null) 'widthPx': widthPx!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final heightPx = this.heightPx;
+    final leftPx = this.leftPx;
+    final topPx = this.topPx;
+    final widthPx = this.widthPx;
+    return {
+      'heightPx': ?heightPx,
+      'leftPx': ?leftPx,
+      'topPx': ?topPx,
+      'widthPx': ?widthPx,
+    };
+  }
 }
 
 /// The storage for test results.
@@ -4191,25 +4305,27 @@ class ResultsStorage {
 
   ResultsStorage.fromJson(core.Map json_)
     : this(
-        resultsStoragePath:
-            json_.containsKey('resultsStoragePath')
-                ? FileReference.fromJson(
-                  json_['resultsStoragePath']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        xunitXmlFile:
-            json_.containsKey('xunitXmlFile')
-                ? FileReference.fromJson(
-                  json_['xunitXmlFile'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resultsStoragePath: json_.containsKey('resultsStoragePath')
+            ? FileReference.fromJson(
+                json_['resultsStoragePath']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        xunitXmlFile: json_.containsKey('xunitXmlFile')
+            ? FileReference.fromJson(
+                json_['xunitXmlFile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resultsStoragePath != null) 'resultsStoragePath': resultsStoragePath!,
-    if (xunitXmlFile != null) 'xunitXmlFile': xunitXmlFile!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resultsStoragePath = this.resultsStoragePath;
+    final xunitXmlFile = this.xunitXmlFile;
+    return {
+      'resultsStoragePath': ?resultsStoragePath,
+      'xunitXmlFile': ?xunitXmlFile,
+    };
+  }
 }
 
 /// IMPORTANT: It is unsafe to accept this message from an untrusted source,
@@ -4236,11 +4352,14 @@ class SafeHtmlProto {
                 as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final privateDoNotAccessOrElseSafeHtmlWrappedValue =
+        this.privateDoNotAccessOrElseSafeHtmlWrappedValue;
+    return {
       'privateDoNotAccessOrElseSafeHtmlWrappedValue':
-          privateDoNotAccessOrElseSafeHtmlWrappedValue!,
-  };
+          ?privateDoNotAccessOrElseSafeHtmlWrappedValue,
+    };
+  }
 }
 
 class Screen {
@@ -4274,12 +4393,18 @@ class Screen {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileReference != null) 'fileReference': fileReference!,
-    if (locale != null) 'locale': locale!,
-    if (model != null) 'model': model!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileReference = this.fileReference;
+    final locale = this.locale;
+    final model = this.model;
+    final version = this.version;
+    return {
+      'fileReference': ?fileReference,
+      'locale': ?locale,
+      'model': ?model,
+      'version': ?version,
+    };
+  }
 }
 
 class ScreenshotCluster {
@@ -4312,28 +4437,31 @@ class ScreenshotCluster {
     : this(
         activity: json_['activity'] as core.String?,
         clusterId: json_['clusterId'] as core.String?,
-        keyScreen:
-            json_.containsKey('keyScreen')
-                ? Screen.fromJson(
-                  json_['keyScreen'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        screens:
-            (json_['screens'] as core.List?)
-                ?.map(
-                  (value) => Screen.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        keyScreen: json_.containsKey('keyScreen')
+            ? Screen.fromJson(
+                json_['keyScreen'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        screens: (json_['screens'] as core.List?)
+            ?.map(
+              (value) =>
+                  Screen.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activity != null) 'activity': activity!,
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (keyScreen != null) 'keyScreen': keyScreen!,
-    if (screens != null) 'screens': screens!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activity = this.activity;
+    final clusterId = this.clusterId;
+    final keyScreen = this.keyScreen;
+    final screens = this.screens;
+    return {
+      'activity': ?activity,
+      'clusterId': ?clusterId,
+      'keyScreen': ?keyScreen,
+      'screens': ?screens,
+    };
+  }
 }
 
 /// Result summary for a shard in an environment.
@@ -4351,26 +4479,25 @@ class ShardSummary {
 
   ShardSummary.fromJson(core.Map json_)
     : this(
-        runs:
-            (json_['runs'] as core.List?)
-                ?.map(
-                  (value) => StepSummary.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        shardResult:
-            json_.containsKey('shardResult')
-                ? MergedResult.fromJson(
-                  json_['shardResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        runs: (json_['runs'] as core.List?)
+            ?.map(
+              (value) => StepSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        shardResult: json_.containsKey('shardResult')
+            ? MergedResult.fromJson(
+                json_['shardResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (runs != null) 'runs': runs!,
-    if (shardResult != null) 'shardResult': shardResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final runs = this.runs;
+    final shardResult = this.shardResult;
+    return {'runs': ?runs, 'shardResult': ?shardResult};
+  }
 }
 
 /// Details for an outcome with a SKIPPED outcome summary.
@@ -4398,13 +4525,16 @@ class SkippedDetail {
         incompatibleDevice: json_['incompatibleDevice'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (incompatibleAppVersion != null)
-      'incompatibleAppVersion': incompatibleAppVersion!,
-    if (incompatibleArchitecture != null)
-      'incompatibleArchitecture': incompatibleArchitecture!,
-    if (incompatibleDevice != null) 'incompatibleDevice': incompatibleDevice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final incompatibleAppVersion = this.incompatibleAppVersion;
+    final incompatibleArchitecture = this.incompatibleArchitecture;
+    final incompatibleDevice = this.incompatibleDevice;
+    return {
+      'incompatibleAppVersion': ?incompatibleAppVersion,
+      'incompatibleArchitecture': ?incompatibleArchitecture,
+      'incompatibleDevice': ?incompatibleDevice,
+    };
+  }
 }
 
 /// The details about how to run the execution.
@@ -4419,24 +4549,23 @@ class Specification {
 
   Specification.fromJson(core.Map json_)
     : this(
-        androidTest:
-            json_.containsKey('androidTest')
-                ? AndroidTest.fromJson(
-                  json_['androidTest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        iosTest:
-            json_.containsKey('iosTest')
-                ? IosTest.fromJson(
-                  json_['iosTest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        androidTest: json_.containsKey('androidTest')
+            ? AndroidTest.fromJson(
+                json_['androidTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        iosTest: json_.containsKey('iosTest')
+            ? IosTest.fromJson(
+                json_['iosTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidTest != null) 'androidTest': androidTest!,
-    if (iosTest != null) 'iosTest': iosTest!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidTest = this.androidTest;
+    final iosTest = this.iosTest;
+    return {'androidTest': ?androidTest, 'iosTest': ?iosTest};
+  }
 }
 
 /// A stacktrace.
@@ -4451,9 +4580,10 @@ class StackTrace {
   StackTrace.fromJson(core.Map json_)
     : this(exception: json_['exception'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exception != null) 'exception': exception!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exception = this.exception;
+    return {'exception': ?exception};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4637,99 +4767,104 @@ class Step {
 
   Step.fromJson(core.Map json_)
     : this(
-        completionTime:
-            json_.containsKey('completionTime')
-                ? Timestamp.fromJson(
-                  json_['completionTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        creationTime:
-            json_.containsKey('creationTime')
-                ? Timestamp.fromJson(
-                  json_['creationTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        completionTime: json_.containsKey('completionTime')
+            ? Timestamp.fromJson(
+                json_['completionTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        creationTime: json_.containsKey('creationTime')
+            ? Timestamp.fromJson(
+                json_['creationTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
-        deviceUsageDuration:
-            json_.containsKey('deviceUsageDuration')
-                ? Duration.fromJson(
-                  json_['deviceUsageDuration']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dimensionValue:
-            (json_['dimensionValue'] as core.List?)
-                ?.map(
-                  (value) => StepDimensionValueEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deviceUsageDuration: json_.containsKey('deviceUsageDuration')
+            ? Duration.fromJson(
+                json_['deviceUsageDuration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionValue: (json_['dimensionValue'] as core.List?)
+            ?.map(
+              (value) => StepDimensionValueEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         hasImages: json_['hasImages'] as core.bool?,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map(
-                  (value) => StepLabelsEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        multiStep:
-            json_.containsKey('multiStep')
-                ? MultiStep.fromJson(
-                  json_['multiStep'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) => StepLabelsEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        multiStep: json_.containsKey('multiStep')
+            ? MultiStep.fromJson(
+                json_['multiStep'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        outcome:
-            json_.containsKey('outcome')
-                ? Outcome.fromJson(
-                  json_['outcome'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        runDuration:
-            json_.containsKey('runDuration')
-                ? Duration.fromJson(
-                  json_['runDuration'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outcome: json_.containsKey('outcome')
+            ? Outcome.fromJson(
+                json_['outcome'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        runDuration: json_.containsKey('runDuration')
+            ? Duration.fromJson(
+                json_['runDuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         stepId: json_['stepId'] as core.String?,
-        testExecutionStep:
-            json_.containsKey('testExecutionStep')
-                ? TestExecutionStep.fromJson(
-                  json_['testExecutionStep']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolExecutionStep:
-            json_.containsKey('toolExecutionStep')
-                ? ToolExecutionStep.fromJson(
-                  json_['toolExecutionStep']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        testExecutionStep: json_.containsKey('testExecutionStep')
+            ? TestExecutionStep.fromJson(
+                json_['testExecutionStep']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolExecutionStep: json_.containsKey('toolExecutionStep')
+            ? ToolExecutionStep.fromJson(
+                json_['toolExecutionStep']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (description != null) 'description': description!,
-    if (deviceUsageDuration != null)
-      'deviceUsageDuration': deviceUsageDuration!,
-    if (dimensionValue != null) 'dimensionValue': dimensionValue!,
-    if (hasImages != null) 'hasImages': hasImages!,
-    if (labels != null) 'labels': labels!,
-    if (multiStep != null) 'multiStep': multiStep!,
-    if (name != null) 'name': name!,
-    if (outcome != null) 'outcome': outcome!,
-    if (runDuration != null) 'runDuration': runDuration!,
-    if (state != null) 'state': state!,
-    if (stepId != null) 'stepId': stepId!,
-    if (testExecutionStep != null) 'testExecutionStep': testExecutionStep!,
-    if (toolExecutionStep != null) 'toolExecutionStep': toolExecutionStep!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionTime = this.completionTime;
+    final creationTime = this.creationTime;
+    final description = this.description;
+    final deviceUsageDuration = this.deviceUsageDuration;
+    final dimensionValue = this.dimensionValue;
+    final hasImages = this.hasImages;
+    final labels = this.labels;
+    final multiStep = this.multiStep;
+    final name = this.name;
+    final outcome = this.outcome;
+    final runDuration = this.runDuration;
+    final state = this.state;
+    final stepId = this.stepId;
+    final testExecutionStep = this.testExecutionStep;
+    final toolExecutionStep = this.toolExecutionStep;
+    return {
+      'completionTime': ?completionTime,
+      'creationTime': ?creationTime,
+      'description': ?description,
+      'deviceUsageDuration': ?deviceUsageDuration,
+      'dimensionValue': ?dimensionValue,
+      'hasImages': ?hasImages,
+      'labels': ?labels,
+      'multiStep': ?multiStep,
+      'name': ?name,
+      'outcome': ?outcome,
+      'runDuration': ?runDuration,
+      'state': ?state,
+      'stepId': ?stepId,
+      'testExecutionStep': ?testExecutionStep,
+      'toolExecutionStep': ?toolExecutionStep,
+    };
+  }
 }
 
 typedef StepDimensionValueEntry = $Entry;
@@ -4750,9 +4885,10 @@ class SuccessDetail {
   SuccessDetail.fromJson(core.Map json_)
     : this(otherNativeCrash: json_['otherNativeCrash'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final otherNativeCrash = this.otherNativeCrash;
+    return {'otherNativeCrash': ?otherNativeCrash};
+  }
 }
 
 /// A set of similar suggestions that we suspect are closely related.
@@ -4784,20 +4920,20 @@ class SuggestionClusterProto {
   SuggestionClusterProto.fromJson(core.Map json_)
     : this(
         category: json_['category'] as core.String?,
-        suggestions:
-            (json_['suggestions'] as core.List?)
-                ?.map(
-                  (value) => SuggestionProto.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        suggestions: (json_['suggestions'] as core.List?)
+            ?.map(
+              (value) => SuggestionProto.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (suggestions != null) 'suggestions': suggestions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final suggestions = this.suggestions;
+    return {'category': ?category, 'suggestions': ?suggestions};
+  }
 }
 
 class SuggestionProto {
@@ -4879,45 +5015,54 @@ class SuggestionProto {
   SuggestionProto.fromJson(core.Map json_)
     : this(
         helpUrl: json_['helpUrl'] as core.String?,
-        longMessage:
-            json_.containsKey('longMessage')
-                ? SafeHtmlProto.fromJson(
-                  json_['longMessage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        longMessage: json_.containsKey('longMessage')
+            ? SafeHtmlProto.fromJson(
+                json_['longMessage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         priority: json_['priority'] as core.String?,
         pseudoResourceId: json_['pseudoResourceId'] as core.String?,
-        region:
-            json_.containsKey('region')
-                ? RegionProto.fromJson(
-                  json_['region'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        region: json_.containsKey('region')
+            ? RegionProto.fromJson(
+                json_['region'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resourceName: json_['resourceName'] as core.String?,
         screenId: json_['screenId'] as core.String?,
-        secondaryPriority:
-            (json_['secondaryPriority'] as core.num?)?.toDouble(),
-        shortMessage:
-            json_.containsKey('shortMessage')
-                ? SafeHtmlProto.fromJson(
-                  json_['shortMessage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        secondaryPriority: (json_['secondaryPriority'] as core.num?)
+            ?.toDouble(),
+        shortMessage: json_.containsKey('shortMessage')
+            ? SafeHtmlProto.fromJson(
+                json_['shortMessage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (helpUrl != null) 'helpUrl': helpUrl!,
-    if (longMessage != null) 'longMessage': longMessage!,
-    if (priority != null) 'priority': priority!,
-    if (pseudoResourceId != null) 'pseudoResourceId': pseudoResourceId!,
-    if (region != null) 'region': region!,
-    if (resourceName != null) 'resourceName': resourceName!,
-    if (screenId != null) 'screenId': screenId!,
-    if (secondaryPriority != null) 'secondaryPriority': secondaryPriority!,
-    if (shortMessage != null) 'shortMessage': shortMessage!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final helpUrl = this.helpUrl;
+    final longMessage = this.longMessage;
+    final priority = this.priority;
+    final pseudoResourceId = this.pseudoResourceId;
+    final region = this.region;
+    final resourceName = this.resourceName;
+    final screenId = this.screenId;
+    final secondaryPriority = this.secondaryPriority;
+    final shortMessage = this.shortMessage;
+    final title = this.title;
+    return {
+      'helpUrl': ?helpUrl,
+      'longMessage': ?longMessage,
+      'priority': ?priority,
+      'pseudoResourceId': ?pseudoResourceId,
+      'region': ?region,
+      'resourceName': ?resourceName,
+      'screenId': ?screenId,
+      'secondaryPriority': ?secondaryPriority,
+      'shortMessage': ?shortMessage,
+      'title': ?title,
+    };
+  }
 }
 
 class TestCase {
@@ -4983,63 +5128,68 @@ class TestCase {
 
   TestCase.fromJson(core.Map json_)
     : this(
-        elapsedTime:
-            json_.containsKey('elapsedTime')
-                ? Duration.fromJson(
-                  json_['elapsedTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        endTime:
-            json_.containsKey('endTime')
-                ? Timestamp.fromJson(
-                  json_['endTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        elapsedTime: json_.containsKey('elapsedTime')
+            ? Duration.fromJson(
+                json_['elapsedTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endTime: json_.containsKey('endTime')
+            ? Timestamp.fromJson(
+                json_['endTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         skippedMessage: json_['skippedMessage'] as core.String?,
-        stackTraces:
-            (json_['stackTraces'] as core.List?)
-                ?.map(
-                  (value) => StackTrace.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        startTime:
-            json_.containsKey('startTime')
-                ? Timestamp.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stackTraces: (json_['stackTraces'] as core.List?)
+            ?.map(
+              (value) => StackTrace.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        startTime: json_.containsKey('startTime')
+            ? Timestamp.fromJson(
+                json_['startTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         status: json_['status'] as core.String?,
         testCaseId: json_['testCaseId'] as core.String?,
-        testCaseReference:
-            json_.containsKey('testCaseReference')
-                ? TestCaseReference.fromJson(
-                  json_['testCaseReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolOutputs:
-            (json_['toolOutputs'] as core.List?)
-                ?.map(
-                  (value) => ToolOutputReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        testCaseReference: json_.containsKey('testCaseReference')
+            ? TestCaseReference.fromJson(
+                json_['testCaseReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolOutputs: (json_['toolOutputs'] as core.List?)
+            ?.map(
+              (value) => ToolOutputReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (elapsedTime != null) 'elapsedTime': elapsedTime!,
-    if (endTime != null) 'endTime': endTime!,
-    if (skippedMessage != null) 'skippedMessage': skippedMessage!,
-    if (stackTraces != null) 'stackTraces': stackTraces!,
-    if (startTime != null) 'startTime': startTime!,
-    if (status != null) 'status': status!,
-    if (testCaseId != null) 'testCaseId': testCaseId!,
-    if (testCaseReference != null) 'testCaseReference': testCaseReference!,
-    if (toolOutputs != null) 'toolOutputs': toolOutputs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final elapsedTime = this.elapsedTime;
+    final endTime = this.endTime;
+    final skippedMessage = this.skippedMessage;
+    final stackTraces = this.stackTraces;
+    final startTime = this.startTime;
+    final status = this.status;
+    final testCaseId = this.testCaseId;
+    final testCaseReference = this.testCaseReference;
+    final toolOutputs = this.toolOutputs;
+    return {
+      'elapsedTime': ?elapsedTime,
+      'endTime': ?endTime,
+      'skippedMessage': ?skippedMessage,
+      'stackTraces': ?stackTraces,
+      'startTime': ?startTime,
+      'status': ?status,
+      'testCaseId': ?testCaseId,
+      'testCaseReference': ?testCaseReference,
+      'toolOutputs': ?toolOutputs,
+    };
+  }
 }
 
 /// A reference to a test case.
@@ -5068,11 +5218,16 @@ class TestCaseReference {
         testSuiteName: json_['testSuiteName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (className != null) 'className': className!,
-    if (name != null) 'name': name!,
-    if (testSuiteName != null) 'testSuiteName': testSuiteName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final className = this.className;
+    final name = this.name;
+    final testSuiteName = this.testSuiteName;
+    return {
+      'className': ?className,
+      'name': ?name,
+      'testSuiteName': ?testSuiteName,
+    };
+  }
 }
 
 /// A step that represents running tests.
@@ -5120,42 +5275,44 @@ class TestExecutionStep {
 
   TestExecutionStep.fromJson(core.Map json_)
     : this(
-        testIssues:
-            (json_['testIssues'] as core.List?)
-                ?.map(
-                  (value) => TestIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        testSuiteOverviews:
-            (json_['testSuiteOverviews'] as core.List?)
-                ?.map(
-                  (value) => TestSuiteOverview.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        testTiming:
-            json_.containsKey('testTiming')
-                ? TestTiming.fromJson(
-                  json_['testTiming'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolExecution:
-            json_.containsKey('toolExecution')
-                ? ToolExecution.fromJson(
-                  json_['toolExecution'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        testIssues: (json_['testIssues'] as core.List?)
+            ?.map(
+              (value) => TestIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        testSuiteOverviews: (json_['testSuiteOverviews'] as core.List?)
+            ?.map(
+              (value) => TestSuiteOverview.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        testTiming: json_.containsKey('testTiming')
+            ? TestTiming.fromJson(
+                json_['testTiming'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolExecution: json_.containsKey('toolExecution')
+            ? ToolExecution.fromJson(
+                json_['toolExecution'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (testIssues != null) 'testIssues': testIssues!,
-    if (testSuiteOverviews != null) 'testSuiteOverviews': testSuiteOverviews!,
-    if (testTiming != null) 'testTiming': testTiming!,
-    if (toolExecution != null) 'toolExecution': toolExecution!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final testIssues = this.testIssues;
+    final testSuiteOverviews = this.testSuiteOverviews;
+    final testTiming = this.testTiming;
+    final toolExecution = this.toolExecution;
+    return {
+      'testIssues': ?testIssues,
+      'testSuiteOverviews': ?testSuiteOverviews,
+      'testTiming': ?testTiming,
+      'toolExecution': ?toolExecution,
+    };
+  }
 }
 
 /// An issue detected occurring during a test execution.
@@ -5269,30 +5426,36 @@ class TestIssue {
         category: json_['category'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
         severity: json_['severity'] as core.String?,
-        stackTrace:
-            json_.containsKey('stackTrace')
-                ? StackTrace.fromJson(
-                  json_['stackTrace'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stackTrace: json_.containsKey('stackTrace')
+            ? StackTrace.fromJson(
+                json_['stackTrace'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
-        warningMigration:
-            json_.containsKey('warning_migration')
-                ? Any.fromJson(
-                  json_['warning_migration']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        warningMigration: json_.containsKey('warning_migration')
+            ? Any.fromJson(
+                json_['warning_migration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (severity != null) 'severity': severity!,
-    if (stackTrace != null) 'stackTrace': stackTrace!,
-    if (type != null) 'type': type!,
-    if (warningMigration != null) 'warning_migration': warningMigration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final errorMessage = this.errorMessage;
+    final severity = this.severity;
+    final stackTrace = this.stackTrace;
+    final type = this.type;
+    final warningMigration = this.warningMigration;
+    return {
+      'category': ?category,
+      'errorMessage': ?errorMessage,
+      'severity': ?severity,
+      'stackTrace': ?stackTrace,
+      'type': ?type,
+      'warning_migration': ?warningMigration,
+    };
+  }
 }
 
 /// A summary of a test suite result either parsed from XML or uploaded directly
@@ -5363,36 +5526,44 @@ class TestSuiteOverview {
 
   TestSuiteOverview.fromJson(core.Map json_)
     : this(
-        elapsedTime:
-            json_.containsKey('elapsedTime')
-                ? Duration.fromJson(
-                  json_['elapsedTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        elapsedTime: json_.containsKey('elapsedTime')
+            ? Duration.fromJson(
+                json_['elapsedTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         errorCount: json_['errorCount'] as core.int?,
         failureCount: json_['failureCount'] as core.int?,
         flakyCount: json_['flakyCount'] as core.int?,
         name: json_['name'] as core.String?,
         skippedCount: json_['skippedCount'] as core.int?,
         totalCount: json_['totalCount'] as core.int?,
-        xmlSource:
-            json_.containsKey('xmlSource')
-                ? FileReference.fromJson(
-                  json_['xmlSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        xmlSource: json_.containsKey('xmlSource')
+            ? FileReference.fromJson(
+                json_['xmlSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (elapsedTime != null) 'elapsedTime': elapsedTime!,
-    if (errorCount != null) 'errorCount': errorCount!,
-    if (failureCount != null) 'failureCount': failureCount!,
-    if (flakyCount != null) 'flakyCount': flakyCount!,
-    if (name != null) 'name': name!,
-    if (skippedCount != null) 'skippedCount': skippedCount!,
-    if (totalCount != null) 'totalCount': totalCount!,
-    if (xmlSource != null) 'xmlSource': xmlSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final elapsedTime = this.elapsedTime;
+    final errorCount = this.errorCount;
+    final failureCount = this.failureCount;
+    final flakyCount = this.flakyCount;
+    final name = this.name;
+    final skippedCount = this.skippedCount;
+    final totalCount = this.totalCount;
+    final xmlSource = this.xmlSource;
+    return {
+      'elapsedTime': ?elapsedTime,
+      'errorCount': ?errorCount,
+      'failureCount': ?failureCount,
+      'flakyCount': ?flakyCount,
+      'name': ?name,
+      'skippedCount': ?skippedCount,
+      'totalCount': ?totalCount,
+      'xmlSource': ?xmlSource,
+    };
+  }
 }
 
 /// Testing timing break down to know phases.
@@ -5407,19 +5578,18 @@ class TestTiming {
 
   TestTiming.fromJson(core.Map json_)
     : this(
-        testProcessDuration:
-            json_.containsKey('testProcessDuration')
-                ? Duration.fromJson(
-                  json_['testProcessDuration']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        testProcessDuration: json_.containsKey('testProcessDuration')
+            ? Duration.fromJson(
+                json_['testProcessDuration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (testProcessDuration != null)
-      'testProcessDuration': testProcessDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final testProcessDuration = this.testProcessDuration;
+    return {'testProcessDuration': ?testProcessDuration};
+  }
 }
 
 /// A single thumbnail, with its size and format.
@@ -5464,12 +5634,18 @@ class Thumbnail {
         widthPx: json_['widthPx'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentType != null) 'contentType': contentType!,
-    if (data != null) 'data': data!,
-    if (heightPx != null) 'heightPx': heightPx!,
-    if (widthPx != null) 'widthPx': widthPx!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentType = this.contentType;
+    final data = this.data;
+    final heightPx = this.heightPx;
+    final widthPx = this.widthPx;
+    return {
+      'contentType': ?contentType,
+      'data': ?data,
+      'heightPx': ?heightPx,
+      'widthPx': ?widthPx,
+    };
+  }
 }
 
 /// A Timestamp represents a point in time independent of any time zone or local
@@ -5505,10 +5681,11 @@ class Timestamp {
         seconds: json_['seconds'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nanos != null) 'nanos': nanos!,
-    if (seconds != null) 'seconds': seconds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nanos = this.nanos;
+    final seconds = this.seconds;
+    return {'nanos': ?nanos, 'seconds': ?seconds};
+  }
 }
 
 /// An execution of an arbitrary tool.
@@ -5557,41 +5734,42 @@ class ToolExecution {
 
   ToolExecution.fromJson(core.Map json_)
     : this(
-        commandLineArguments:
-            (json_['commandLineArguments'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exitCode:
-            json_.containsKey('exitCode')
-                ? ToolExitCode.fromJson(
-                  json_['exitCode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolLogs:
-            (json_['toolLogs'] as core.List?)
-                ?.map(
-                  (value) => FileReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        toolOutputs:
-            (json_['toolOutputs'] as core.List?)
-                ?.map(
-                  (value) => ToolOutputReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        commandLineArguments: (json_['commandLineArguments'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        exitCode: json_.containsKey('exitCode')
+            ? ToolExitCode.fromJson(
+                json_['exitCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolLogs: (json_['toolLogs'] as core.List?)
+            ?.map(
+              (value) => FileReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        toolOutputs: (json_['toolOutputs'] as core.List?)
+            ?.map(
+              (value) => ToolOutputReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commandLineArguments != null)
-      'commandLineArguments': commandLineArguments!,
-    if (exitCode != null) 'exitCode': exitCode!,
-    if (toolLogs != null) 'toolLogs': toolLogs!,
-    if (toolOutputs != null) 'toolOutputs': toolOutputs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commandLineArguments = this.commandLineArguments;
+    final exitCode = this.exitCode;
+    final toolLogs = this.toolLogs;
+    final toolOutputs = this.toolOutputs;
+    return {
+      'commandLineArguments': ?commandLineArguments,
+      'exitCode': ?exitCode,
+      'toolLogs': ?toolLogs,
+      'toolOutputs': ?toolOutputs,
+    };
+  }
 }
 
 /// Generic tool step to be used for binaries we do not explicitly support.
@@ -5608,17 +5786,17 @@ class ToolExecutionStep {
 
   ToolExecutionStep.fromJson(core.Map json_)
     : this(
-        toolExecution:
-            json_.containsKey('toolExecution')
-                ? ToolExecution.fromJson(
-                  json_['toolExecution'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        toolExecution: json_.containsKey('toolExecution')
+            ? ToolExecution.fromJson(
+                json_['toolExecution'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (toolExecution != null) 'toolExecution': toolExecution!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolExecution = this.toolExecution;
+    return {'toolExecution': ?toolExecution};
+  }
 }
 
 /// Exit code from a tool execution.
@@ -5634,9 +5812,10 @@ class ToolExitCode {
   ToolExitCode.fromJson(core.Map json_)
     : this(number: json_['number'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (number != null) 'number': number!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final number = this.number;
+    return {'number': ?number};
+  }
 }
 
 /// A reference to a ToolExecution output file.
@@ -5662,29 +5841,31 @@ class ToolOutputReference {
 
   ToolOutputReference.fromJson(core.Map json_)
     : this(
-        creationTime:
-            json_.containsKey('creationTime')
-                ? Timestamp.fromJson(
-                  json_['creationTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        output:
-            json_.containsKey('output')
-                ? FileReference.fromJson(
-                  json_['output'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        testCase:
-            json_.containsKey('testCase')
-                ? TestCaseReference.fromJson(
-                  json_['testCase'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        creationTime: json_.containsKey('creationTime')
+            ? Timestamp.fromJson(
+                json_['creationTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        output: json_.containsKey('output')
+            ? FileReference.fromJson(
+                json_['output'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        testCase: json_.containsKey('testCase')
+            ? TestCaseReference.fromJson(
+                json_['testCase'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (output != null) 'output': output!,
-    if (testCase != null) 'testCase': testCase!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTime = this.creationTime;
+    final output = this.output;
+    final testCase = this.testCase;
+    return {
+      'creationTime': ?creationTime,
+      'output': ?output,
+      'testCase': ?testCase,
+    };
+  }
 }

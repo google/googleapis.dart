@@ -519,10 +519,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(od);
       });
     },
@@ -534,10 +534,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating(od);
       });
     },
@@ -549,10 +549,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(od);
       });
     },
@@ -565,10 +565,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(od);
       });
     },
@@ -581,10 +581,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(od);
       });
     },
@@ -597,10 +597,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(od);
       });
     },
@@ -613,10 +613,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse(
           od,
         );
@@ -631,10 +631,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(
           od,
         );
@@ -649,10 +649,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
           od,
         );
@@ -667,10 +667,10 @@ void main() {
         final o =
             buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
           od,
         );
@@ -684,10 +684,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFactcheckingFactchecktoolsV1alpha1Publisher();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFactcheckingFactchecktoolsV1alpha1Publisher(od);
       });
     },
@@ -900,10 +900,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
             obj,
           );
@@ -1163,10 +1163,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
             obj,
           );

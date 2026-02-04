@@ -2991,8 +2991,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsActionsResource', () {
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.actions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.actions;
       final arg_request = buildExecuteActionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3055,8 +3056,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.actions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.actions;
       final arg_name = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_view = 'foo';
@@ -3121,8 +3123,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.actions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.actions;
       final arg_parent = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_pageSize = 42;
@@ -3201,8 +3204,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsEntityTypesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.entityTypes;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes;
       final arg_name = 'foo';
       final arg_contextMetadata = 'foo';
       final arg_executionConfig_headers = 'foo';
@@ -3273,8 +3277,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.entityTypes;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes;
       final arg_parent = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_pageSize = 42;
@@ -3353,10 +3358,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsEntityTypesEntitiesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_request = buildEntity();
       final arg_parent = 'foo';
       final arg_executionConfig_headers = 'foo';
@@ -3425,10 +3429,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_name = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_$fields = 'foo';
@@ -3490,10 +3493,9 @@ void main() {
 
     unittest.test('method--deleteEntitiesWithConditions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_entityType = 'foo';
       final arg_conditions = 'foo';
       final arg_executionConfig_headers = 'foo';
@@ -3561,10 +3563,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_name = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_$fields = 'foo';
@@ -3626,10 +3627,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_parent = 'foo';
       final arg_conditions = 'foo';
       final arg_executionConfig_headers = 'foo';
@@ -3718,10 +3718,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_request = buildEntity();
       final arg_name = 'foo';
       final arg_executionConfig_headers = 'foo';
@@ -3790,10 +3789,9 @@ void main() {
 
     unittest.test('method--updateEntitiesWithConditions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.entityTypes.entities;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.entityTypes.entities;
       final arg_request = buildEntity();
       final arg_entityType = 'foo';
       final arg_conditions = 'foo';
@@ -3874,8 +3872,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsResourcesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.resources;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.resources;
       final arg_name = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_$fields = 'foo';
@@ -3937,8 +3936,9 @@ void main() {
 
     unittest.test('method--getResourcePost', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.resources;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.resources;
       final arg_request = buildGetResourcePostRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4001,8 +4001,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.resources;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.resources;
       final arg_parent = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_pageSize = 42;
@@ -4078,8 +4079,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsToolsResource', () {
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.tools_1;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.tools_1;
       final arg_request = buildExecuteToolRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4142,8 +4144,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.connections.tools_1;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.tools_1;
       final arg_parent = 'foo';
       final arg_executionConfig_headers = 'foo';
       final arg_pageSize = 42;

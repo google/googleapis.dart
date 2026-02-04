@@ -101,7 +101,7 @@ class AccountsReportsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -234,29 +234,38 @@ class BestSellersBrandView {
         relativeDemandChange: json_['relativeDemandChange'] as core.String?,
         reportCategoryId: json_['reportCategoryId'] as core.String?,
         reportCountryCode: json_['reportCountryCode'] as core.String?,
-        reportDate:
-            json_.containsKey('reportDate')
-                ? Date.fromJson(
-                  json_['reportDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reportDate: json_.containsKey('reportDate')
+            ? Date.fromJson(
+                json_['reportDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reportGranularity: json_['reportGranularity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brand != null) 'brand': brand!,
-    if (previousRank != null) 'previousRank': previousRank!,
-    if (previousRelativeDemand != null)
-      'previousRelativeDemand': previousRelativeDemand!,
-    if (rank != null) 'rank': rank!,
-    if (relativeDemand != null) 'relativeDemand': relativeDemand!,
-    if (relativeDemandChange != null)
-      'relativeDemandChange': relativeDemandChange!,
-    if (reportCategoryId != null) 'reportCategoryId': reportCategoryId!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (reportDate != null) 'reportDate': reportDate!,
-    if (reportGranularity != null) 'reportGranularity': reportGranularity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final previousRank = this.previousRank;
+    final previousRelativeDemand = this.previousRelativeDemand;
+    final rank = this.rank;
+    final relativeDemand = this.relativeDemand;
+    final relativeDemandChange = this.relativeDemandChange;
+    final reportCategoryId = this.reportCategoryId;
+    final reportCountryCode = this.reportCountryCode;
+    final reportDate = this.reportDate;
+    final reportGranularity = this.reportGranularity;
+    return {
+      'brand': ?brand,
+      'previousRank': ?previousRank,
+      'previousRelativeDemand': ?previousRelativeDemand,
+      'rank': ?rank,
+      'relativeDemand': ?relativeDemand,
+      'relativeDemandChange': ?relativeDemandChange,
+      'reportCategoryId': ?reportCategoryId,
+      'reportCountryCode': ?reportCountryCode,
+      'reportDate': ?reportDate,
+      'reportGranularity': ?reportGranularity,
+    };
+  }
 }
 
 /// Fields available for query in `best_sellers_product_cluster_view` table.
@@ -453,44 +462,60 @@ class BestSellersProductClusterView {
         relativeDemandChange: json_['relativeDemandChange'] as core.String?,
         reportCategoryId: json_['reportCategoryId'] as core.String?,
         reportCountryCode: json_['reportCountryCode'] as core.String?,
-        reportDate:
-            json_.containsKey('reportDate')
-                ? Date.fromJson(
-                  json_['reportDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reportDate: json_.containsKey('reportDate')
+            ? Date.fromJson(
+                json_['reportDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reportGranularity: json_['reportGranularity'] as core.String?,
         title: json_['title'] as core.String?,
-        variantGtins:
-            (json_['variantGtins'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        variantGtins: (json_['variantGtins'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brand != null) 'brand': brand!,
-    if (brandInventoryStatus != null)
-      'brandInventoryStatus': brandInventoryStatus!,
-    if (categoryL1 != null) 'categoryL1': categoryL1!,
-    if (categoryL2 != null) 'categoryL2': categoryL2!,
-    if (categoryL3 != null) 'categoryL3': categoryL3!,
-    if (categoryL4 != null) 'categoryL4': categoryL4!,
-    if (categoryL5 != null) 'categoryL5': categoryL5!,
-    if (inventoryStatus != null) 'inventoryStatus': inventoryStatus!,
-    if (previousRank != null) 'previousRank': previousRank!,
-    if (previousRelativeDemand != null)
-      'previousRelativeDemand': previousRelativeDemand!,
-    if (rank != null) 'rank': rank!,
-    if (relativeDemand != null) 'relativeDemand': relativeDemand!,
-    if (relativeDemandChange != null)
-      'relativeDemandChange': relativeDemandChange!,
-    if (reportCategoryId != null) 'reportCategoryId': reportCategoryId!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (reportDate != null) 'reportDate': reportDate!,
-    if (reportGranularity != null) 'reportGranularity': reportGranularity!,
-    if (title != null) 'title': title!,
-    if (variantGtins != null) 'variantGtins': variantGtins!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final brandInventoryStatus = this.brandInventoryStatus;
+    final categoryL1 = this.categoryL1;
+    final categoryL2 = this.categoryL2;
+    final categoryL3 = this.categoryL3;
+    final categoryL4 = this.categoryL4;
+    final categoryL5 = this.categoryL5;
+    final inventoryStatus = this.inventoryStatus;
+    final previousRank = this.previousRank;
+    final previousRelativeDemand = this.previousRelativeDemand;
+    final rank = this.rank;
+    final relativeDemand = this.relativeDemand;
+    final relativeDemandChange = this.relativeDemandChange;
+    final reportCategoryId = this.reportCategoryId;
+    final reportCountryCode = this.reportCountryCode;
+    final reportDate = this.reportDate;
+    final reportGranularity = this.reportGranularity;
+    final title = this.title;
+    final variantGtins = this.variantGtins;
+    return {
+      'brand': ?brand,
+      'brandInventoryStatus': ?brandInventoryStatus,
+      'categoryL1': ?categoryL1,
+      'categoryL2': ?categoryL2,
+      'categoryL3': ?categoryL3,
+      'categoryL4': ?categoryL4,
+      'categoryL5': ?categoryL5,
+      'inventoryStatus': ?inventoryStatus,
+      'previousRank': ?previousRank,
+      'previousRelativeDemand': ?previousRelativeDemand,
+      'rank': ?rank,
+      'relativeDemand': ?relativeDemand,
+      'relativeDemandChange': ?relativeDemandChange,
+      'reportCategoryId': ?reportCategoryId,
+      'reportCountryCode': ?reportCountryCode,
+      'reportDate': ?reportDate,
+      'reportGranularity': ?reportGranularity,
+      'title': ?title,
+      'variantGtins': ?variantGtins,
+    };
+  }
 }
 
 /// Fields available for query in `competitive_visibility_benchmark_view` table.
@@ -557,12 +582,11 @@ class CompetitiveVisibilityBenchmarkView {
         categoryBenchmarkVisibilityTrend:
             (json_['categoryBenchmarkVisibilityTrend'] as core.num?)
                 ?.toDouble(),
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reportCategoryId: json_['reportCategoryId'] as core.String?,
         reportCountryCode: json_['reportCountryCode'] as core.String?,
         trafficSource: json_['trafficSource'] as core.String?,
@@ -570,16 +594,23 @@ class CompetitiveVisibilityBenchmarkView {
             (json_['yourDomainVisibilityTrend'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (categoryBenchmarkVisibilityTrend != null)
-      'categoryBenchmarkVisibilityTrend': categoryBenchmarkVisibilityTrend!,
-    if (date != null) 'date': date!,
-    if (reportCategoryId != null) 'reportCategoryId': reportCategoryId!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (trafficSource != null) 'trafficSource': trafficSource!,
-    if (yourDomainVisibilityTrend != null)
-      'yourDomainVisibilityTrend': yourDomainVisibilityTrend!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final categoryBenchmarkVisibilityTrend =
+        this.categoryBenchmarkVisibilityTrend;
+    final date = this.date;
+    final reportCategoryId = this.reportCategoryId;
+    final reportCountryCode = this.reportCountryCode;
+    final trafficSource = this.trafficSource;
+    final yourDomainVisibilityTrend = this.yourDomainVisibilityTrend;
+    return {
+      'categoryBenchmarkVisibilityTrend': ?categoryBenchmarkVisibilityTrend,
+      'date': ?date,
+      'reportCategoryId': ?reportCategoryId,
+      'reportCountryCode': ?reportCountryCode,
+      'trafficSource': ?trafficSource,
+      'yourDomainVisibilityTrend': ?yourDomainVisibilityTrend,
+    };
+  }
 }
 
 /// Fields available for query in `competitive_visibility_competitor_view`
@@ -684,38 +715,50 @@ class CompetitiveVisibilityCompetitorView {
   CompetitiveVisibilityCompetitorView.fromJson(core.Map json_)
     : this(
         adsOrganicRatio: (json_['adsOrganicRatio'] as core.num?)?.toDouble(),
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domain: json_['domain'] as core.String?,
-        higherPositionRate:
-            (json_['higherPositionRate'] as core.num?)?.toDouble(),
+        higherPositionRate: (json_['higherPositionRate'] as core.num?)
+            ?.toDouble(),
         isYourDomain: json_['isYourDomain'] as core.bool?,
         pageOverlapRate: (json_['pageOverlapRate'] as core.num?)?.toDouble(),
         rank: json_['rank'] as core.String?,
-        relativeVisibility:
-            (json_['relativeVisibility'] as core.num?)?.toDouble(),
+        relativeVisibility: (json_['relativeVisibility'] as core.num?)
+            ?.toDouble(),
         reportCategoryId: json_['reportCategoryId'] as core.String?,
         reportCountryCode: json_['reportCountryCode'] as core.String?,
         trafficSource: json_['trafficSource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adsOrganicRatio != null) 'adsOrganicRatio': adsOrganicRatio!,
-    if (date != null) 'date': date!,
-    if (domain != null) 'domain': domain!,
-    if (higherPositionRate != null) 'higherPositionRate': higherPositionRate!,
-    if (isYourDomain != null) 'isYourDomain': isYourDomain!,
-    if (pageOverlapRate != null) 'pageOverlapRate': pageOverlapRate!,
-    if (rank != null) 'rank': rank!,
-    if (relativeVisibility != null) 'relativeVisibility': relativeVisibility!,
-    if (reportCategoryId != null) 'reportCategoryId': reportCategoryId!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (trafficSource != null) 'trafficSource': trafficSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adsOrganicRatio = this.adsOrganicRatio;
+    final date = this.date;
+    final domain = this.domain;
+    final higherPositionRate = this.higherPositionRate;
+    final isYourDomain = this.isYourDomain;
+    final pageOverlapRate = this.pageOverlapRate;
+    final rank = this.rank;
+    final relativeVisibility = this.relativeVisibility;
+    final reportCategoryId = this.reportCategoryId;
+    final reportCountryCode = this.reportCountryCode;
+    final trafficSource = this.trafficSource;
+    return {
+      'adsOrganicRatio': ?adsOrganicRatio,
+      'date': ?date,
+      'domain': ?domain,
+      'higherPositionRate': ?higherPositionRate,
+      'isYourDomain': ?isYourDomain,
+      'pageOverlapRate': ?pageOverlapRate,
+      'rank': ?rank,
+      'relativeVisibility': ?relativeVisibility,
+      'reportCategoryId': ?reportCategoryId,
+      'reportCountryCode': ?reportCountryCode,
+      'trafficSource': ?trafficSource,
+    };
+  }
 }
 
 /// Fields available for query in `competitive_visibility_top_merchant_view`
@@ -810,15 +853,14 @@ class CompetitiveVisibilityTopMerchantView {
   CompetitiveVisibilityTopMerchantView.fromJson(core.Map json_)
     : this(
         adsOrganicRatio: (json_['adsOrganicRatio'] as core.num?)?.toDouble(),
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domain: json_['domain'] as core.String?,
-        higherPositionRate:
-            (json_['higherPositionRate'] as core.num?)?.toDouble(),
+        higherPositionRate: (json_['higherPositionRate'] as core.num?)
+            ?.toDouble(),
         isYourDomain: json_['isYourDomain'] as core.bool?,
         pageOverlapRate: (json_['pageOverlapRate'] as core.num?)?.toDouble(),
         rank: json_['rank'] as core.String?,
@@ -827,18 +869,30 @@ class CompetitiveVisibilityTopMerchantView {
         trafficSource: json_['trafficSource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adsOrganicRatio != null) 'adsOrganicRatio': adsOrganicRatio!,
-    if (date != null) 'date': date!,
-    if (domain != null) 'domain': domain!,
-    if (higherPositionRate != null) 'higherPositionRate': higherPositionRate!,
-    if (isYourDomain != null) 'isYourDomain': isYourDomain!,
-    if (pageOverlapRate != null) 'pageOverlapRate': pageOverlapRate!,
-    if (rank != null) 'rank': rank!,
-    if (reportCategoryId != null) 'reportCategoryId': reportCategoryId!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (trafficSource != null) 'trafficSource': trafficSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adsOrganicRatio = this.adsOrganicRatio;
+    final date = this.date;
+    final domain = this.domain;
+    final higherPositionRate = this.higherPositionRate;
+    final isYourDomain = this.isYourDomain;
+    final pageOverlapRate = this.pageOverlapRate;
+    final rank = this.rank;
+    final reportCategoryId = this.reportCategoryId;
+    final reportCountryCode = this.reportCountryCode;
+    final trafficSource = this.trafficSource;
+    return {
+      'adsOrganicRatio': ?adsOrganicRatio,
+      'date': ?date,
+      'domain': ?domain,
+      'higherPositionRate': ?higherPositionRate,
+      'isYourDomain': ?isYourDomain,
+      'pageOverlapRate': ?pageOverlapRate,
+      'rank': ?rank,
+      'reportCategoryId': ?reportCategoryId,
+      'reportCountryCode': ?reportCountryCode,
+      'trafficSource': ?trafficSource,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -911,23 +965,25 @@ class IssueSeverityPerReportingContext {
 
   IssueSeverityPerReportingContext.fromJson(core.Map json_)
     : this(
-        demotedCountries:
-            (json_['demotedCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        disapprovedCountries:
-            (json_['disapprovedCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        demotedCountries: (json_['demotedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        disapprovedCountries: (json_['disapprovedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         reportingContext: json_['reportingContext'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (demotedCountries != null) 'demotedCountries': demotedCountries!,
-    if (disapprovedCountries != null)
-      'disapprovedCountries': disapprovedCountries!,
-    if (reportingContext != null) 'reportingContext': reportingContext!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final demotedCountries = this.demotedCountries;
+    final disapprovedCountries = this.disapprovedCountries;
+    final reportingContext = this.reportingContext;
+    return {
+      'demotedCountries': ?demotedCountries,
+      'disapprovedCountries': ?disapprovedCountries,
+      'reportingContext': ?reportingContext,
+    };
+  }
 }
 
 /// Item issue associated with the product.
@@ -953,25 +1009,24 @@ class ItemIssue {
   ItemIssue.fromJson(core.Map json_)
     : this(
         resolution: json_['resolution'] as core.String?,
-        severity:
-            json_.containsKey('severity')
-                ? ItemIssueSeverity.fromJson(
-                  json_['severity'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        type:
-            json_.containsKey('type')
-                ? ItemIssueType.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        severity: json_.containsKey('severity')
+            ? ItemIssueSeverity.fromJson(
+                json_['severity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        type: json_.containsKey('type')
+            ? ItemIssueType.fromJson(
+                json_['type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resolution != null) 'resolution': resolution!,
-    if (severity != null) 'severity': severity!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resolution = this.resolution;
+    final severity = this.severity;
+    final type = this.type;
+    return {'resolution': ?resolution, 'severity': ?severity, 'type': ?type};
+  }
 }
 
 /// How the issue affects the serving of the product.
@@ -1009,11 +1064,14 @@ class ItemIssueSeverity {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregatedSeverity != null) 'aggregatedSeverity': aggregatedSeverity!,
-    if (severityPerReportingContext != null)
-      'severityPerReportingContext': severityPerReportingContext!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregatedSeverity = this.aggregatedSeverity;
+    final severityPerReportingContext = this.severityPerReportingContext;
+    return {
+      'aggregatedSeverity': ?aggregatedSeverity,
+      'severityPerReportingContext': ?severityPerReportingContext,
+    };
+  }
 }
 
 /// Issue type.
@@ -1033,10 +1091,11 @@ class ItemIssueType {
         code: json_['code'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canonicalAttribute != null) 'canonicalAttribute': canonicalAttribute!,
-    if (code != null) 'code': code!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final canonicalAttribute = this.canonicalAttribute;
+    final code = this.code;
+    return {'canonicalAttribute': ?canonicalAttribute, 'code': ?code};
+  }
 }
 
 /// Fields available for query in `non_product_performance_view` table.
@@ -1090,28 +1149,33 @@ class NonProductPerformanceView {
     : this(
         clickThroughRate: (json_['clickThroughRate'] as core.num?)?.toDouble(),
         clicks: json_['clicks'] as core.String?,
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         impressions: json_['impressions'] as core.String?,
-        week:
-            json_.containsKey('week')
-                ? Date.fromJson(
-                  json_['week'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        week: json_.containsKey('week')
+            ? Date.fromJson(
+                json_['week'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clickThroughRate != null) 'clickThroughRate': clickThroughRate!,
-    if (clicks != null) 'clicks': clicks!,
-    if (date != null) 'date': date!,
-    if (impressions != null) 'impressions': impressions!,
-    if (week != null) 'week': week!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clickThroughRate = this.clickThroughRate;
+    final clicks = this.clicks;
+    final date = this.date;
+    final impressions = this.impressions;
+    final week = this.week;
+    return {
+      'clickThroughRate': ?clickThroughRate,
+      'clicks': ?clicks,
+      'date': ?date,
+      'impressions': ?impressions,
+      'week': ?week,
+    };
+  }
 }
 
 /// The price represented as a number and currency.
@@ -1213,13 +1277,11 @@ class PriceCompetitivenessProductView {
 
   PriceCompetitivenessProductView.fromJson(core.Map json_)
     : this(
-        benchmarkPrice:
-            json_.containsKey('benchmarkPrice')
-                ? Price.fromJson(
-                  json_['benchmarkPrice']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        benchmarkPrice: json_.containsKey('benchmarkPrice')
+            ? Price.fromJson(
+                json_['benchmarkPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         brand: json_['brand'] as core.String?,
         categoryL1: json_['categoryL1'] as core.String?,
         categoryL2: json_['categoryL2'] as core.String?,
@@ -1228,12 +1290,11 @@ class PriceCompetitivenessProductView {
         categoryL5: json_['categoryL5'] as core.String?,
         id: json_['id'] as core.String?,
         offerId: json_['offerId'] as core.String?,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         productTypeL1: json_['productTypeL1'] as core.String?,
         productTypeL2: json_['productTypeL2'] as core.String?,
         productTypeL3: json_['productTypeL3'] as core.String?,
@@ -1243,25 +1304,44 @@ class PriceCompetitivenessProductView {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (benchmarkPrice != null) 'benchmarkPrice': benchmarkPrice!,
-    if (brand != null) 'brand': brand!,
-    if (categoryL1 != null) 'categoryL1': categoryL1!,
-    if (categoryL2 != null) 'categoryL2': categoryL2!,
-    if (categoryL3 != null) 'categoryL3': categoryL3!,
-    if (categoryL4 != null) 'categoryL4': categoryL4!,
-    if (categoryL5 != null) 'categoryL5': categoryL5!,
-    if (id != null) 'id': id!,
-    if (offerId != null) 'offerId': offerId!,
-    if (price != null) 'price': price!,
-    if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
-    if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
-    if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
-    if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
-    if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
-    if (reportCountryCode != null) 'reportCountryCode': reportCountryCode!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final benchmarkPrice = this.benchmarkPrice;
+    final brand = this.brand;
+    final categoryL1 = this.categoryL1;
+    final categoryL2 = this.categoryL2;
+    final categoryL3 = this.categoryL3;
+    final categoryL4 = this.categoryL4;
+    final categoryL5 = this.categoryL5;
+    final id = this.id;
+    final offerId = this.offerId;
+    final price = this.price;
+    final productTypeL1 = this.productTypeL1;
+    final productTypeL2 = this.productTypeL2;
+    final productTypeL3 = this.productTypeL3;
+    final productTypeL4 = this.productTypeL4;
+    final productTypeL5 = this.productTypeL5;
+    final reportCountryCode = this.reportCountryCode;
+    final title = this.title;
+    return {
+      'benchmarkPrice': ?benchmarkPrice,
+      'brand': ?brand,
+      'categoryL1': ?categoryL1,
+      'categoryL2': ?categoryL2,
+      'categoryL3': ?categoryL3,
+      'categoryL4': ?categoryL4,
+      'categoryL5': ?categoryL5,
+      'id': ?id,
+      'offerId': ?offerId,
+      'price': ?price,
+      'productTypeL1': ?productTypeL1,
+      'productTypeL2': ?productTypeL2,
+      'productTypeL3': ?productTypeL3,
+      'productTypeL4': ?productTypeL4,
+      'productTypeL5': ?productTypeL5,
+      'reportCountryCode': ?reportCountryCode,
+      'title': ?title,
+    };
+  }
 }
 
 /// Fields available for query in `price_insights_product_view` table.
@@ -1400,52 +1480,70 @@ class PriceInsightsProductView {
         predictedImpressionsChangeFraction:
             (json_['predictedImpressionsChangeFraction'] as core.num?)
                 ?.toDouble(),
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         productTypeL1: json_['productTypeL1'] as core.String?,
         productTypeL2: json_['productTypeL2'] as core.String?,
         productTypeL3: json_['productTypeL3'] as core.String?,
         productTypeL4: json_['productTypeL4'] as core.String?,
         productTypeL5: json_['productTypeL5'] as core.String?,
-        suggestedPrice:
-            json_.containsKey('suggestedPrice')
-                ? Price.fromJson(
-                  json_['suggestedPrice']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        suggestedPrice: json_.containsKey('suggestedPrice')
+            ? Price.fromJson(
+                json_['suggestedPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brand != null) 'brand': brand!,
-    if (categoryL1 != null) 'categoryL1': categoryL1!,
-    if (categoryL2 != null) 'categoryL2': categoryL2!,
-    if (categoryL3 != null) 'categoryL3': categoryL3!,
-    if (categoryL4 != null) 'categoryL4': categoryL4!,
-    if (categoryL5 != null) 'categoryL5': categoryL5!,
-    if (effectiveness != null) 'effectiveness': effectiveness!,
-    if (id != null) 'id': id!,
-    if (offerId != null) 'offerId': offerId!,
-    if (predictedClicksChangeFraction != null)
-      'predictedClicksChangeFraction': predictedClicksChangeFraction!,
-    if (predictedConversionsChangeFraction != null)
-      'predictedConversionsChangeFraction': predictedConversionsChangeFraction!,
-    if (predictedImpressionsChangeFraction != null)
-      'predictedImpressionsChangeFraction': predictedImpressionsChangeFraction!,
-    if (price != null) 'price': price!,
-    if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
-    if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
-    if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
-    if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
-    if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
-    if (suggestedPrice != null) 'suggestedPrice': suggestedPrice!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final categoryL1 = this.categoryL1;
+    final categoryL2 = this.categoryL2;
+    final categoryL3 = this.categoryL3;
+    final categoryL4 = this.categoryL4;
+    final categoryL5 = this.categoryL5;
+    final effectiveness = this.effectiveness;
+    final id = this.id;
+    final offerId = this.offerId;
+    final predictedClicksChangeFraction = this.predictedClicksChangeFraction;
+    final predictedConversionsChangeFraction =
+        this.predictedConversionsChangeFraction;
+    final predictedImpressionsChangeFraction =
+        this.predictedImpressionsChangeFraction;
+    final price = this.price;
+    final productTypeL1 = this.productTypeL1;
+    final productTypeL2 = this.productTypeL2;
+    final productTypeL3 = this.productTypeL3;
+    final productTypeL4 = this.productTypeL4;
+    final productTypeL5 = this.productTypeL5;
+    final suggestedPrice = this.suggestedPrice;
+    final title = this.title;
+    return {
+      'brand': ?brand,
+      'categoryL1': ?categoryL1,
+      'categoryL2': ?categoryL2,
+      'categoryL3': ?categoryL3,
+      'categoryL4': ?categoryL4,
+      'categoryL5': ?categoryL5,
+      'effectiveness': ?effectiveness,
+      'id': ?id,
+      'offerId': ?offerId,
+      'predictedClicksChangeFraction': ?predictedClicksChangeFraction,
+      'predictedConversionsChangeFraction': ?predictedConversionsChangeFraction,
+      'predictedImpressionsChangeFraction': ?predictedImpressionsChangeFraction,
+      'price': ?price,
+      'productTypeL1': ?productTypeL1,
+      'productTypeL2': ?productTypeL2,
+      'productTypeL3': ?productTypeL3,
+      'productTypeL4': ?productTypeL4,
+      'productTypeL5': ?productTypeL5,
+      'suggestedPrice': ?suggestedPrice,
+      'title': ?title,
+    };
+  }
 }
 
 /// Fields available for query in `product_performance_view` table.
@@ -1675,13 +1773,11 @@ class ProductPerformanceView {
         clickThroughRate: (json_['clickThroughRate'] as core.num?)?.toDouble(),
         clicks: json_['clicks'] as core.String?,
         conversionRate: (json_['conversionRate'] as core.num?)?.toDouble(),
-        conversionValue:
-            json_.containsKey('conversionValue')
-                ? Price.fromJson(
-                  json_['conversionValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conversionValue: json_.containsKey('conversionValue')
+            ? Price.fromJson(
+                json_['conversionValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         conversions: (json_['conversions'] as core.num?)?.toDouble(),
         customLabel0: json_['customLabel0'] as core.String?,
         customLabel1: json_['customLabel1'] as core.String?,
@@ -1689,12 +1785,11 @@ class ProductPerformanceView {
         customLabel3: json_['customLabel3'] as core.String?,
         customLabel4: json_['customLabel4'] as core.String?,
         customerCountryCode: json_['customerCountryCode'] as core.String?,
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         impressions: json_['impressions'] as core.String?,
         marketingMethod: json_['marketingMethod'] as core.String?,
         offerId: json_['offerId'] as core.String?,
@@ -1704,45 +1799,73 @@ class ProductPerformanceView {
         productTypeL4: json_['productTypeL4'] as core.String?,
         productTypeL5: json_['productTypeL5'] as core.String?,
         title: json_['title'] as core.String?,
-        week:
-            json_.containsKey('week')
-                ? Date.fromJson(
-                  json_['week'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        week: json_.containsKey('week')
+            ? Date.fromJson(
+                json_['week'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brand != null) 'brand': brand!,
-    if (categoryL1 != null) 'categoryL1': categoryL1!,
-    if (categoryL2 != null) 'categoryL2': categoryL2!,
-    if (categoryL3 != null) 'categoryL3': categoryL3!,
-    if (categoryL4 != null) 'categoryL4': categoryL4!,
-    if (categoryL5 != null) 'categoryL5': categoryL5!,
-    if (clickThroughRate != null) 'clickThroughRate': clickThroughRate!,
-    if (clicks != null) 'clicks': clicks!,
-    if (conversionRate != null) 'conversionRate': conversionRate!,
-    if (conversionValue != null) 'conversionValue': conversionValue!,
-    if (conversions != null) 'conversions': conversions!,
-    if (customLabel0 != null) 'customLabel0': customLabel0!,
-    if (customLabel1 != null) 'customLabel1': customLabel1!,
-    if (customLabel2 != null) 'customLabel2': customLabel2!,
-    if (customLabel3 != null) 'customLabel3': customLabel3!,
-    if (customLabel4 != null) 'customLabel4': customLabel4!,
-    if (customerCountryCode != null)
-      'customerCountryCode': customerCountryCode!,
-    if (date != null) 'date': date!,
-    if (impressions != null) 'impressions': impressions!,
-    if (marketingMethod != null) 'marketingMethod': marketingMethod!,
-    if (offerId != null) 'offerId': offerId!,
-    if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
-    if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
-    if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
-    if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
-    if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
-    if (title != null) 'title': title!,
-    if (week != null) 'week': week!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final categoryL1 = this.categoryL1;
+    final categoryL2 = this.categoryL2;
+    final categoryL3 = this.categoryL3;
+    final categoryL4 = this.categoryL4;
+    final categoryL5 = this.categoryL5;
+    final clickThroughRate = this.clickThroughRate;
+    final clicks = this.clicks;
+    final conversionRate = this.conversionRate;
+    final conversionValue = this.conversionValue;
+    final conversions = this.conversions;
+    final customLabel0 = this.customLabel0;
+    final customLabel1 = this.customLabel1;
+    final customLabel2 = this.customLabel2;
+    final customLabel3 = this.customLabel3;
+    final customLabel4 = this.customLabel4;
+    final customerCountryCode = this.customerCountryCode;
+    final date = this.date;
+    final impressions = this.impressions;
+    final marketingMethod = this.marketingMethod;
+    final offerId = this.offerId;
+    final productTypeL1 = this.productTypeL1;
+    final productTypeL2 = this.productTypeL2;
+    final productTypeL3 = this.productTypeL3;
+    final productTypeL4 = this.productTypeL4;
+    final productTypeL5 = this.productTypeL5;
+    final title = this.title;
+    final week = this.week;
+    return {
+      'brand': ?brand,
+      'categoryL1': ?categoryL1,
+      'categoryL2': ?categoryL2,
+      'categoryL3': ?categoryL3,
+      'categoryL4': ?categoryL4,
+      'categoryL5': ?categoryL5,
+      'clickThroughRate': ?clickThroughRate,
+      'clicks': ?clicks,
+      'conversionRate': ?conversionRate,
+      'conversionValue': ?conversionValue,
+      'conversions': ?conversions,
+      'customLabel0': ?customLabel0,
+      'customLabel1': ?customLabel1,
+      'customLabel2': ?customLabel2,
+      'customLabel3': ?customLabel3,
+      'customLabel4': ?customLabel4,
+      'customerCountryCode': ?customerCountryCode,
+      'date': ?date,
+      'impressions': ?impressions,
+      'marketingMethod': ?marketingMethod,
+      'offerId': ?offerId,
+      'productTypeL1': ?productTypeL1,
+      'productTypeL2': ?productTypeL2,
+      'productTypeL3': ?productTypeL3,
+      'productTypeL4': ?productTypeL4,
+      'productTypeL5': ?productTypeL5,
+      'title': ?title,
+      'week': ?week,
+    };
+  }
 }
 
 /// Fields available for query in `product_view` table.
@@ -1948,36 +2071,31 @@ class ProductView {
         clickPotentialRank: json_['clickPotentialRank'] as core.String?,
         condition: json_['condition'] as core.String?,
         creationTime: json_['creationTime'] as core.String?,
-        expirationDate:
-            json_.containsKey('expirationDate')
-                ? Date.fromJson(
-                  json_['expirationDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        expirationDate: json_.containsKey('expirationDate')
+            ? Date.fromJson(
+                json_['expirationDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         feedLabel: json_['feedLabel'] as core.String?,
-        gtin:
-            (json_['gtin'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        gtin: (json_['gtin'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         id: json_['id'] as core.String?,
         itemGroupId: json_['itemGroupId'] as core.String?,
-        itemIssues:
-            (json_['itemIssues'] as core.List?)
-                ?.map(
-                  (value) => ItemIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        itemIssues: (json_['itemIssues'] as core.List?)
+            ?.map(
+              (value) => ItemIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         languageCode: json_['languageCode'] as core.String?,
         offerId: json_['offerId'] as core.String?,
-        price:
-            json_.containsKey('price')
-                ? Price.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         productTypeL1: json_['productTypeL1'] as core.String?,
         productTypeL2: json_['productTypeL2'] as core.String?,
         productTypeL3: json_['productTypeL3'] as core.String?,
@@ -1988,39 +2106,71 @@ class ProductView {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregatedReportingContextStatus != null)
-      'aggregatedReportingContextStatus': aggregatedReportingContextStatus!,
-    if (availability != null) 'availability': availability!,
-    if (brand != null) 'brand': brand!,
-    if (categoryL1 != null) 'categoryL1': categoryL1!,
-    if (categoryL2 != null) 'categoryL2': categoryL2!,
-    if (categoryL3 != null) 'categoryL3': categoryL3!,
-    if (categoryL4 != null) 'categoryL4': categoryL4!,
-    if (categoryL5 != null) 'categoryL5': categoryL5!,
-    if (channel != null) 'channel': channel!,
-    if (clickPotential != null) 'clickPotential': clickPotential!,
-    if (clickPotentialRank != null) 'clickPotentialRank': clickPotentialRank!,
-    if (condition != null) 'condition': condition!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (expirationDate != null) 'expirationDate': expirationDate!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (gtin != null) 'gtin': gtin!,
-    if (id != null) 'id': id!,
-    if (itemGroupId != null) 'itemGroupId': itemGroupId!,
-    if (itemIssues != null) 'itemIssues': itemIssues!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (offerId != null) 'offerId': offerId!,
-    if (price != null) 'price': price!,
-    if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
-    if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
-    if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
-    if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
-    if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
-    if (shippingLabel != null) 'shippingLabel': shippingLabel!,
-    if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregatedReportingContextStatus =
+        this.aggregatedReportingContextStatus;
+    final availability = this.availability;
+    final brand = this.brand;
+    final categoryL1 = this.categoryL1;
+    final categoryL2 = this.categoryL2;
+    final categoryL3 = this.categoryL3;
+    final categoryL4 = this.categoryL4;
+    final categoryL5 = this.categoryL5;
+    final channel = this.channel;
+    final clickPotential = this.clickPotential;
+    final clickPotentialRank = this.clickPotentialRank;
+    final condition = this.condition;
+    final creationTime = this.creationTime;
+    final expirationDate = this.expirationDate;
+    final feedLabel = this.feedLabel;
+    final gtin = this.gtin;
+    final id = this.id;
+    final itemGroupId = this.itemGroupId;
+    final itemIssues = this.itemIssues;
+    final languageCode = this.languageCode;
+    final offerId = this.offerId;
+    final price = this.price;
+    final productTypeL1 = this.productTypeL1;
+    final productTypeL2 = this.productTypeL2;
+    final productTypeL3 = this.productTypeL3;
+    final productTypeL4 = this.productTypeL4;
+    final productTypeL5 = this.productTypeL5;
+    final shippingLabel = this.shippingLabel;
+    final thumbnailLink = this.thumbnailLink;
+    final title = this.title;
+    return {
+      'aggregatedReportingContextStatus': ?aggregatedReportingContextStatus,
+      'availability': ?availability,
+      'brand': ?brand,
+      'categoryL1': ?categoryL1,
+      'categoryL2': ?categoryL2,
+      'categoryL3': ?categoryL3,
+      'categoryL4': ?categoryL4,
+      'categoryL5': ?categoryL5,
+      'channel': ?channel,
+      'clickPotential': ?clickPotential,
+      'clickPotentialRank': ?clickPotentialRank,
+      'condition': ?condition,
+      'creationTime': ?creationTime,
+      'expirationDate': ?expirationDate,
+      'feedLabel': ?feedLabel,
+      'gtin': ?gtin,
+      'id': ?id,
+      'itemGroupId': ?itemGroupId,
+      'itemIssues': ?itemIssues,
+      'languageCode': ?languageCode,
+      'offerId': ?offerId,
+      'price': ?price,
+      'productTypeL1': ?productTypeL1,
+      'productTypeL2': ?productTypeL2,
+      'productTypeL3': ?productTypeL3,
+      'productTypeL4': ?productTypeL4,
+      'productTypeL5': ?productTypeL5,
+      'shippingLabel': ?shippingLabel,
+      'thumbnailLink': ?thumbnailLink,
+      'title': ?title,
+    };
+  }
 }
 
 /// Result row returned from the search query.
@@ -2077,100 +2227,103 @@ class ReportRow {
 
   ReportRow.fromJson(core.Map json_)
     : this(
-        bestSellersBrandView:
-            json_.containsKey('bestSellersBrandView')
-                ? BestSellersBrandView.fromJson(
-                  json_['bestSellersBrandView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bestSellersBrandView: json_.containsKey('bestSellersBrandView')
+            ? BestSellersBrandView.fromJson(
+                json_['bestSellersBrandView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bestSellersProductClusterView:
             json_.containsKey('bestSellersProductClusterView')
-                ? BestSellersProductClusterView.fromJson(
-                  json_['bestSellersProductClusterView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BestSellersProductClusterView.fromJson(
+                json_['bestSellersProductClusterView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         competitiveVisibilityBenchmarkView:
             json_.containsKey('competitiveVisibilityBenchmarkView')
-                ? CompetitiveVisibilityBenchmarkView.fromJson(
-                  json_['competitiveVisibilityBenchmarkView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CompetitiveVisibilityBenchmarkView.fromJson(
+                json_['competitiveVisibilityBenchmarkView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         competitiveVisibilityCompetitorView:
             json_.containsKey('competitiveVisibilityCompetitorView')
-                ? CompetitiveVisibilityCompetitorView.fromJson(
-                  json_['competitiveVisibilityCompetitorView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CompetitiveVisibilityCompetitorView.fromJson(
+                json_['competitiveVisibilityCompetitorView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         competitiveVisibilityTopMerchantView:
             json_.containsKey('competitiveVisibilityTopMerchantView')
-                ? CompetitiveVisibilityTopMerchantView.fromJson(
-                  json_['competitiveVisibilityTopMerchantView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CompetitiveVisibilityTopMerchantView.fromJson(
+                json_['competitiveVisibilityTopMerchantView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nonProductPerformanceView:
             json_.containsKey('nonProductPerformanceView')
-                ? NonProductPerformanceView.fromJson(
-                  json_['nonProductPerformanceView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? NonProductPerformanceView.fromJson(
+                json_['nonProductPerformanceView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         priceCompetitivenessProductView:
             json_.containsKey('priceCompetitivenessProductView')
-                ? PriceCompetitivenessProductView.fromJson(
-                  json_['priceCompetitivenessProductView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        priceInsightsProductView:
-            json_.containsKey('priceInsightsProductView')
-                ? PriceInsightsProductView.fromJson(
-                  json_['priceInsightsProductView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productPerformanceView:
-            json_.containsKey('productPerformanceView')
-                ? ProductPerformanceView.fromJson(
-                  json_['productPerformanceView']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productView:
-            json_.containsKey('productView')
-                ? ProductView.fromJson(
-                  json_['productView'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? PriceCompetitivenessProductView.fromJson(
+                json_['priceCompetitivenessProductView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        priceInsightsProductView: json_.containsKey('priceInsightsProductView')
+            ? PriceInsightsProductView.fromJson(
+                json_['priceInsightsProductView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productPerformanceView: json_.containsKey('productPerformanceView')
+            ? ProductPerformanceView.fromJson(
+                json_['productPerformanceView']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productView: json_.containsKey('productView')
+            ? ProductView.fromJson(
+                json_['productView'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bestSellersBrandView != null)
-      'bestSellersBrandView': bestSellersBrandView!,
-    if (bestSellersProductClusterView != null)
-      'bestSellersProductClusterView': bestSellersProductClusterView!,
-    if (competitiveVisibilityBenchmarkView != null)
-      'competitiveVisibilityBenchmarkView': competitiveVisibilityBenchmarkView!,
-    if (competitiveVisibilityCompetitorView != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final bestSellersBrandView = this.bestSellersBrandView;
+    final bestSellersProductClusterView = this.bestSellersProductClusterView;
+    final competitiveVisibilityBenchmarkView =
+        this.competitiveVisibilityBenchmarkView;
+    final competitiveVisibilityCompetitorView =
+        this.competitiveVisibilityCompetitorView;
+    final competitiveVisibilityTopMerchantView =
+        this.competitiveVisibilityTopMerchantView;
+    final nonProductPerformanceView = this.nonProductPerformanceView;
+    final priceCompetitivenessProductView =
+        this.priceCompetitivenessProductView;
+    final priceInsightsProductView = this.priceInsightsProductView;
+    final productPerformanceView = this.productPerformanceView;
+    final productView = this.productView;
+    return {
+      'bestSellersBrandView': ?bestSellersBrandView,
+      'bestSellersProductClusterView': ?bestSellersProductClusterView,
+      'competitiveVisibilityBenchmarkView': ?competitiveVisibilityBenchmarkView,
       'competitiveVisibilityCompetitorView':
-          competitiveVisibilityCompetitorView!,
-    if (competitiveVisibilityTopMerchantView != null)
+          ?competitiveVisibilityCompetitorView,
       'competitiveVisibilityTopMerchantView':
-          competitiveVisibilityTopMerchantView!,
-    if (nonProductPerformanceView != null)
-      'nonProductPerformanceView': nonProductPerformanceView!,
-    if (priceCompetitivenessProductView != null)
-      'priceCompetitivenessProductView': priceCompetitivenessProductView!,
-    if (priceInsightsProductView != null)
-      'priceInsightsProductView': priceInsightsProductView!,
-    if (productPerformanceView != null)
-      'productPerformanceView': productPerformanceView!,
-    if (productView != null) 'productView': productView!,
-  };
+          ?competitiveVisibilityTopMerchantView,
+      'nonProductPerformanceView': ?nonProductPerformanceView,
+      'priceCompetitivenessProductView': ?priceCompetitivenessProductView,
+      'priceInsightsProductView': ?priceInsightsProductView,
+      'productPerformanceView': ?productPerformanceView,
+      'productView': ?productView,
+    };
+  }
 }
 
 /// Request message for the `ReportService.Search` method.
@@ -2210,11 +2363,12 @@ class SearchRequest {
         query: json_['query'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final query = this.query;
+    return {'pageSize': ?pageSize, 'pageToken': ?pageToken, 'query': ?query};
+  }
 }
 
 /// Response message for the `ReportService.Search` method.
@@ -2232,18 +2386,18 @@ class SearchResponse {
   SearchResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => ReportRow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => ReportRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final results = this.results;
+    return {'nextPageToken': ?nextPageToken, 'results': ?results};
+  }
 }

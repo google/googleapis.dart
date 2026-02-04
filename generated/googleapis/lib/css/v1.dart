@@ -104,8 +104,8 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -162,11 +162,11 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fullName != null) 'fullName': [fullName],
-      if (labelId != null) 'labelId': [labelId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'fullName': ?fullName == null ? null : [fullName],
+      'labelId': ?labelId == null ? null : [labelId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':listChildAccounts';
@@ -207,7 +207,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':updateLabels';
@@ -263,9 +263,10 @@ class AccountsCssProductInputsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (supplementalFeedId != null)
-        'supplementalFeedId': [supplementalFeedId],
-      if ($fields != null) 'fields': [$fields],
+      'supplementalFeedId': ?supplementalFeedId == null
+          ? null
+          : [supplementalFeedId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -318,8 +319,8 @@ class AccountsCssProductInputsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (feedId != null) 'feedId': [feedId],
-      if ($fields != null) 'fields': [$fields],
+      'feedId': ?feedId == null ? null : [feedId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -380,8 +381,8 @@ class AccountsCssProductInputsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -427,7 +428,7 @@ class AccountsCssProductsResource {
   /// this method will complete with the same error.
   async.Future<CssProduct> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -482,9 +483,9 @@ class AccountsCssProductsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cssProducts';
@@ -531,7 +532,7 @@ class AccountsLabelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/labels';
@@ -567,7 +568,7 @@ class AccountsLabelsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -614,9 +615,9 @@ class AccountsLabelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/labels';
@@ -658,7 +659,7 @@ class AccountsLabelsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -715,9 +716,9 @@ class AccountsQuotasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/quotas';
@@ -797,31 +798,39 @@ class Account {
   Account.fromJson(core.Map json_)
     : this(
         accountType: json_['accountType'] as core.String?,
-        automaticLabelIds:
-            (json_['automaticLabelIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        automaticLabelIds: (json_['automaticLabelIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         displayName: json_['displayName'] as core.String?,
         fullName: json_['fullName'] as core.String?,
         homepageUri: json_['homepageUri'] as core.String?,
-        labelIds:
-            (json_['labelIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        labelIds: (json_['labelIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
         parent: json_['parent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountType != null) 'accountType': accountType!,
-    if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
-    if (displayName != null) 'displayName': displayName!,
-    if (fullName != null) 'fullName': fullName!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (labelIds != null) 'labelIds': labelIds!,
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountType = this.accountType;
+    final automaticLabelIds = this.automaticLabelIds;
+    final displayName = this.displayName;
+    final fullName = this.fullName;
+    final homepageUri = this.homepageUri;
+    final labelIds = this.labelIds;
+    final name = this.name;
+    final parent = this.parent;
+    return {
+      'accountType': ?accountType,
+      'automaticLabelIds': ?automaticLabelIds,
+      'displayName': ?displayName,
+      'fullName': ?fullName,
+      'homepageUri': ?homepageUri,
+      'labelIds': ?labelIds,
+      'name': ?name,
+      'parent': ?parent,
+    };
+  }
 }
 
 /// Label assigned by CSS domain or CSS group to one of its sub-accounts.
@@ -876,14 +885,22 @@ class AccountLabel {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labelId != null) 'labelId': labelId!,
-    if (labelType != null) 'labelType': labelType!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final description = this.description;
+    final displayName = this.displayName;
+    final labelId = this.labelId;
+    final labelType = this.labelType;
+    final name = this.name;
+    return {
+      'accountId': ?accountId,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labelId': ?labelId,
+      'labelType': ?labelType,
+      'name': ?name,
+    };
+  }
 }
 
 /// Attributes for CSS Product.
@@ -1139,21 +1156,19 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
     : this(
-        additionalImageLinks:
-            (json_['additionalImageLinks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        additionalImageLinks: (json_['additionalImageLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         adult: json_['adult'] as core.bool?,
         ageGroup: json_['ageGroup'] as core.String?,
         brand: json_['brand'] as core.String?,
-        certifications:
-            (json_['certifications'] as core.List?)
-                ?.map(
-                  (value) => Certification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        certifications: (json_['certifications'] as core.List?)
+            ?.map(
+              (value) => Certification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         color: json_['color'] as core.String?,
         cppAdsRedirect: json_['cppAdsRedirect'] as core.String?,
         cppLink: json_['cppLink'] as core.String?,
@@ -1164,181 +1179,210 @@ class Attributes {
         customLabel3: json_['customLabel3'] as core.String?,
         customLabel4: json_['customLabel4'] as core.String?,
         description: json_['description'] as core.String?,
-        excludedDestinations:
-            (json_['excludedDestinations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        excludedDestinations: (json_['excludedDestinations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         expirationDate: json_['expirationDate'] as core.String?,
         gender: json_['gender'] as core.String?,
         googleProductCategory: json_['googleProductCategory'] as core.String?,
         gtin: json_['gtin'] as core.String?,
         headlineOfferCondition: json_['headlineOfferCondition'] as core.String?,
-        headlineOfferInstallment:
-            json_.containsKey('headlineOfferInstallment')
-                ? HeadlineOfferInstallment.fromJson(
-                  json_['headlineOfferInstallment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        headlineOfferInstallment: json_.containsKey('headlineOfferInstallment')
+            ? HeadlineOfferInstallment.fromJson(
+                json_['headlineOfferInstallment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         headlineOfferLink: json_['headlineOfferLink'] as core.String?,
         headlineOfferMobileLink:
             json_['headlineOfferMobileLink'] as core.String?,
-        headlineOfferPrice:
-            json_.containsKey('headlineOfferPrice')
-                ? Price.fromJson(
-                  json_['headlineOfferPrice']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        headlineOfferPrice: json_.containsKey('headlineOfferPrice')
+            ? Price.fromJson(
+                json_['headlineOfferPrice']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         headlineOfferShippingPrice:
             json_.containsKey('headlineOfferShippingPrice')
-                ? Price.fromJson(
-                  json_['headlineOfferShippingPrice']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Price.fromJson(
+                json_['headlineOfferShippingPrice']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         headlineOfferSubscriptionCost:
             json_.containsKey('headlineOfferSubscriptionCost')
-                ? HeadlineOfferSubscriptionCost.fromJson(
-                  json_['headlineOfferSubscriptionCost']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        highPrice:
-            json_.containsKey('highPrice')
-                ? Price.fromJson(
-                  json_['highPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? HeadlineOfferSubscriptionCost.fromJson(
+                json_['headlineOfferSubscriptionCost']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        highPrice: json_.containsKey('highPrice')
+            ? Price.fromJson(
+                json_['highPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageLink: json_['imageLink'] as core.String?,
-        includedDestinations:
-            (json_['includedDestinations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        includedDestinations: (json_['includedDestinations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         isBundle: json_['isBundle'] as core.bool?,
         itemGroupId: json_['itemGroupId'] as core.String?,
-        lowPrice:
-            json_.containsKey('lowPrice')
-                ? Price.fromJson(
-                  json_['lowPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lowPrice: json_.containsKey('lowPrice')
+            ? Price.fromJson(
+                json_['lowPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         material: json_['material'] as core.String?,
         mpn: json_['mpn'] as core.String?,
         multipack: json_['multipack'] as core.String?,
         numberOfOffers: json_['numberOfOffers'] as core.String?,
         pattern: json_['pattern'] as core.String?,
         pause: json_['pause'] as core.String?,
-        productDetails:
-            (json_['productDetails'] as core.List?)
-                ?.map(
-                  (value) => ProductDetail.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        productHeight:
-            json_.containsKey('productHeight')
-                ? ProductDimension.fromJson(
-                  json_['productHeight'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productHighlights:
-            (json_['productHighlights'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        productLength:
-            json_.containsKey('productLength')
-                ? ProductDimension.fromJson(
-                  json_['productLength'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productTypes:
-            (json_['productTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        productWeight:
-            json_.containsKey('productWeight')
-                ? ProductWeight.fromJson(
-                  json_['productWeight'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        productWidth:
-            json_.containsKey('productWidth')
-                ? ProductDimension.fromJson(
-                  json_['productWidth'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        productDetails: (json_['productDetails'] as core.List?)
+            ?.map(
+              (value) => ProductDetail.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        productHeight: json_.containsKey('productHeight')
+            ? ProductDimension.fromJson(
+                json_['productHeight'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productHighlights: (json_['productHighlights'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        productLength: json_.containsKey('productLength')
+            ? ProductDimension.fromJson(
+                json_['productLength'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productTypes: (json_['productTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        productWeight: json_.containsKey('productWeight')
+            ? ProductWeight.fromJson(
+                json_['productWeight'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productWidth: json_.containsKey('productWidth')
+            ? ProductDimension.fromJson(
+                json_['productWidth'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         size: json_['size'] as core.String?,
         sizeSystem: json_['sizeSystem'] as core.String?,
-        sizeTypes:
-            (json_['sizeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sizeTypes: (json_['sizeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalImageLinks != null)
-      'additionalImageLinks': additionalImageLinks!,
-    if (adult != null) 'adult': adult!,
-    if (ageGroup != null) 'ageGroup': ageGroup!,
-    if (brand != null) 'brand': brand!,
-    if (certifications != null) 'certifications': certifications!,
-    if (color != null) 'color': color!,
-    if (cppAdsRedirect != null) 'cppAdsRedirect': cppAdsRedirect!,
-    if (cppLink != null) 'cppLink': cppLink!,
-    if (cppMobileLink != null) 'cppMobileLink': cppMobileLink!,
-    if (customLabel0 != null) 'customLabel0': customLabel0!,
-    if (customLabel1 != null) 'customLabel1': customLabel1!,
-    if (customLabel2 != null) 'customLabel2': customLabel2!,
-    if (customLabel3 != null) 'customLabel3': customLabel3!,
-    if (customLabel4 != null) 'customLabel4': customLabel4!,
-    if (description != null) 'description': description!,
-    if (excludedDestinations != null)
-      'excludedDestinations': excludedDestinations!,
-    if (expirationDate != null) 'expirationDate': expirationDate!,
-    if (gender != null) 'gender': gender!,
-    if (googleProductCategory != null)
-      'googleProductCategory': googleProductCategory!,
-    if (gtin != null) 'gtin': gtin!,
-    if (headlineOfferCondition != null)
-      'headlineOfferCondition': headlineOfferCondition!,
-    if (headlineOfferInstallment != null)
-      'headlineOfferInstallment': headlineOfferInstallment!,
-    if (headlineOfferLink != null) 'headlineOfferLink': headlineOfferLink!,
-    if (headlineOfferMobileLink != null)
-      'headlineOfferMobileLink': headlineOfferMobileLink!,
-    if (headlineOfferPrice != null) 'headlineOfferPrice': headlineOfferPrice!,
-    if (headlineOfferShippingPrice != null)
-      'headlineOfferShippingPrice': headlineOfferShippingPrice!,
-    if (headlineOfferSubscriptionCost != null)
-      'headlineOfferSubscriptionCost': headlineOfferSubscriptionCost!,
-    if (highPrice != null) 'highPrice': highPrice!,
-    if (imageLink != null) 'imageLink': imageLink!,
-    if (includedDestinations != null)
-      'includedDestinations': includedDestinations!,
-    if (isBundle != null) 'isBundle': isBundle!,
-    if (itemGroupId != null) 'itemGroupId': itemGroupId!,
-    if (lowPrice != null) 'lowPrice': lowPrice!,
-    if (material != null) 'material': material!,
-    if (mpn != null) 'mpn': mpn!,
-    if (multipack != null) 'multipack': multipack!,
-    if (numberOfOffers != null) 'numberOfOffers': numberOfOffers!,
-    if (pattern != null) 'pattern': pattern!,
-    if (pause != null) 'pause': pause!,
-    if (productDetails != null) 'productDetails': productDetails!,
-    if (productHeight != null) 'productHeight': productHeight!,
-    if (productHighlights != null) 'productHighlights': productHighlights!,
-    if (productLength != null) 'productLength': productLength!,
-    if (productTypes != null) 'productTypes': productTypes!,
-    if (productWeight != null) 'productWeight': productWeight!,
-    if (productWidth != null) 'productWidth': productWidth!,
-    if (size != null) 'size': size!,
-    if (sizeSystem != null) 'sizeSystem': sizeSystem!,
-    if (sizeTypes != null) 'sizeTypes': sizeTypes!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalImageLinks = this.additionalImageLinks;
+    final adult = this.adult;
+    final ageGroup = this.ageGroup;
+    final brand = this.brand;
+    final certifications = this.certifications;
+    final color = this.color;
+    final cppAdsRedirect = this.cppAdsRedirect;
+    final cppLink = this.cppLink;
+    final cppMobileLink = this.cppMobileLink;
+    final customLabel0 = this.customLabel0;
+    final customLabel1 = this.customLabel1;
+    final customLabel2 = this.customLabel2;
+    final customLabel3 = this.customLabel3;
+    final customLabel4 = this.customLabel4;
+    final description = this.description;
+    final excludedDestinations = this.excludedDestinations;
+    final expirationDate = this.expirationDate;
+    final gender = this.gender;
+    final googleProductCategory = this.googleProductCategory;
+    final gtin = this.gtin;
+    final headlineOfferCondition = this.headlineOfferCondition;
+    final headlineOfferInstallment = this.headlineOfferInstallment;
+    final headlineOfferLink = this.headlineOfferLink;
+    final headlineOfferMobileLink = this.headlineOfferMobileLink;
+    final headlineOfferPrice = this.headlineOfferPrice;
+    final headlineOfferShippingPrice = this.headlineOfferShippingPrice;
+    final headlineOfferSubscriptionCost = this.headlineOfferSubscriptionCost;
+    final highPrice = this.highPrice;
+    final imageLink = this.imageLink;
+    final includedDestinations = this.includedDestinations;
+    final isBundle = this.isBundle;
+    final itemGroupId = this.itemGroupId;
+    final lowPrice = this.lowPrice;
+    final material = this.material;
+    final mpn = this.mpn;
+    final multipack = this.multipack;
+    final numberOfOffers = this.numberOfOffers;
+    final pattern = this.pattern;
+    final pause = this.pause;
+    final productDetails = this.productDetails;
+    final productHeight = this.productHeight;
+    final productHighlights = this.productHighlights;
+    final productLength = this.productLength;
+    final productTypes = this.productTypes;
+    final productWeight = this.productWeight;
+    final productWidth = this.productWidth;
+    final size = this.size;
+    final sizeSystem = this.sizeSystem;
+    final sizeTypes = this.sizeTypes;
+    final title = this.title;
+    return {
+      'additionalImageLinks': ?additionalImageLinks,
+      'adult': ?adult,
+      'ageGroup': ?ageGroup,
+      'brand': ?brand,
+      'certifications': ?certifications,
+      'color': ?color,
+      'cppAdsRedirect': ?cppAdsRedirect,
+      'cppLink': ?cppLink,
+      'cppMobileLink': ?cppMobileLink,
+      'customLabel0': ?customLabel0,
+      'customLabel1': ?customLabel1,
+      'customLabel2': ?customLabel2,
+      'customLabel3': ?customLabel3,
+      'customLabel4': ?customLabel4,
+      'description': ?description,
+      'excludedDestinations': ?excludedDestinations,
+      'expirationDate': ?expirationDate,
+      'gender': ?gender,
+      'googleProductCategory': ?googleProductCategory,
+      'gtin': ?gtin,
+      'headlineOfferCondition': ?headlineOfferCondition,
+      'headlineOfferInstallment': ?headlineOfferInstallment,
+      'headlineOfferLink': ?headlineOfferLink,
+      'headlineOfferMobileLink': ?headlineOfferMobileLink,
+      'headlineOfferPrice': ?headlineOfferPrice,
+      'headlineOfferShippingPrice': ?headlineOfferShippingPrice,
+      'headlineOfferSubscriptionCost': ?headlineOfferSubscriptionCost,
+      'highPrice': ?highPrice,
+      'imageLink': ?imageLink,
+      'includedDestinations': ?includedDestinations,
+      'isBundle': ?isBundle,
+      'itemGroupId': ?itemGroupId,
+      'lowPrice': ?lowPrice,
+      'material': ?material,
+      'mpn': ?mpn,
+      'multipack': ?multipack,
+      'numberOfOffers': ?numberOfOffers,
+      'pattern': ?pattern,
+      'pause': ?pause,
+      'productDetails': ?productDetails,
+      'productHeight': ?productHeight,
+      'productHighlights': ?productHighlights,
+      'productLength': ?productLength,
+      'productTypes': ?productTypes,
+      'productWeight': ?productWeight,
+      'productWidth': ?productWidth,
+      'size': ?size,
+      'sizeSystem': ?sizeSystem,
+      'sizeTypes': ?sizeTypes,
+      'title': ?title,
+    };
+  }
 }
 
 /// The certification for the product.
@@ -1376,11 +1420,12 @@ class Certification {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authority != null) 'authority': authority!,
-    if (code != null) 'code': code!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authority = this.authority;
+    final code = this.code;
+    final name = this.name;
+    return {'authority': ?authority, 'code': ?code, 'name': ?name};
+  }
 }
 
 /// The processed CSS Product.
@@ -1439,42 +1484,48 @@ class CssProduct {
 
   CssProduct.fromJson(core.Map json_)
     : this(
-        attributes:
-            json_.containsKey('attributes')
-                ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes: json_.containsKey('attributes')
+            ? Attributes.fromJson(
+                json_['attributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contentLanguage: json_['contentLanguage'] as core.String?,
-        cssProductStatus:
-            json_.containsKey('cssProductStatus')
-                ? CssProductStatus.fromJson(
-                  json_['cssProductStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customAttributes:
-            (json_['customAttributes'] as core.List?)
-                ?.map(
-                  (value) => CustomAttribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cssProductStatus: json_.containsKey('cssProductStatus')
+            ? CssProductStatus.fromJson(
+                json_['cssProductStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customAttributes: (json_['customAttributes'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         feedLabel: json_['feedLabel'] as core.String?,
         name: json_['name'] as core.String?,
         rawProvidedId: json_['rawProvidedId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (cssProductStatus != null) 'cssProductStatus': cssProductStatus!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (name != null) 'name': name!,
-    if (rawProvidedId != null) 'rawProvidedId': rawProvidedId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final contentLanguage = this.contentLanguage;
+    final cssProductStatus = this.cssProductStatus;
+    final customAttributes = this.customAttributes;
+    final feedLabel = this.feedLabel;
+    final name = this.name;
+    final rawProvidedId = this.rawProvidedId;
+    return {
+      'attributes': ?attributes,
+      'contentLanguage': ?contentLanguage,
+      'cssProductStatus': ?cssProductStatus,
+      'customAttributes': ?customAttributes,
+      'feedLabel': ?feedLabel,
+      'name': ?name,
+      'rawProvidedId': ?rawProvidedId,
+    };
+  }
 }
 
 /// This resource represents input data you submit for a CSS Product, not the
@@ -1566,21 +1617,19 @@ class CssProductInput {
 
   CssProductInput.fromJson(core.Map json_)
     : this(
-        attributes:
-            json_.containsKey('attributes')
-                ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes: json_.containsKey('attributes')
+            ? Attributes.fromJson(
+                json_['attributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contentLanguage: json_['contentLanguage'] as core.String?,
-        customAttributes:
-            (json_['customAttributes'] as core.List?)
-                ?.map(
-                  (value) => CustomAttribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customAttributes: (json_['customAttributes'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         feedLabel: json_['feedLabel'] as core.String?,
         finalName: json_['finalName'] as core.String?,
         freshnessTime: json_['freshnessTime'] as core.String?,
@@ -1588,16 +1637,26 @@ class CssProductInput {
         rawProvidedId: json_['rawProvidedId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (feedLabel != null) 'feedLabel': feedLabel!,
-    if (finalName != null) 'finalName': finalName!,
-    if (freshnessTime != null) 'freshnessTime': freshnessTime!,
-    if (name != null) 'name': name!,
-    if (rawProvidedId != null) 'rawProvidedId': rawProvidedId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final contentLanguage = this.contentLanguage;
+    final customAttributes = this.customAttributes;
+    final feedLabel = this.feedLabel;
+    final finalName = this.finalName;
+    final freshnessTime = this.freshnessTime;
+    final name = this.name;
+    final rawProvidedId = this.rawProvidedId;
+    return {
+      'attributes': ?attributes,
+      'contentLanguage': ?contentLanguage,
+      'customAttributes': ?customAttributes,
+      'feedLabel': ?feedLabel,
+      'finalName': ?finalName,
+      'freshnessTime': ?freshnessTime,
+      'name': ?name,
+      'rawProvidedId': ?rawProvidedId,
+    };
+  }
 }
 
 /// The status of the Css Product, data validation issues, that is, information
@@ -1632,35 +1691,38 @@ class CssProductStatus {
   CssProductStatus.fromJson(core.Map json_)
     : this(
         creationDate: json_['creationDate'] as core.String?,
-        destinationStatuses:
-            (json_['destinationStatuses'] as core.List?)
-                ?.map(
-                  (value) => DestinationStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        destinationStatuses: (json_['destinationStatuses'] as core.List?)
+            ?.map(
+              (value) => DestinationStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         googleExpirationDate: json_['googleExpirationDate'] as core.String?,
-        itemLevelIssues:
-            (json_['itemLevelIssues'] as core.List?)
-                ?.map(
-                  (value) => ItemLevelIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
+            ?.map(
+              (value) => ItemLevelIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         lastUpdateDate: json_['lastUpdateDate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationDate != null) 'creationDate': creationDate!,
-    if (destinationStatuses != null)
-      'destinationStatuses': destinationStatuses!,
-    if (googleExpirationDate != null)
-      'googleExpirationDate': googleExpirationDate!,
-    if (itemLevelIssues != null) 'itemLevelIssues': itemLevelIssues!,
-    if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationDate = this.creationDate;
+    final destinationStatuses = this.destinationStatuses;
+    final googleExpirationDate = this.googleExpirationDate;
+    final itemLevelIssues = this.itemLevelIssues;
+    final lastUpdateDate = this.lastUpdateDate;
+    return {
+      'creationDate': ?creationDate,
+      'destinationStatuses': ?destinationStatuses,
+      'googleExpirationDate': ?googleExpirationDate,
+      'itemLevelIssues': ?itemLevelIssues,
+      'lastUpdateDate': ?lastUpdateDate,
+    };
+  }
 }
 
 /// A message that represents custom attributes.
@@ -1684,23 +1746,23 @@ class CustomAttribute {
 
   CustomAttribute.fromJson(core.Map json_)
     : this(
-        groupValues:
-            (json_['groupValues'] as core.List?)
-                ?.map(
-                  (value) => CustomAttribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        groupValues: (json_['groupValues'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupValues != null) 'groupValues': groupValues!,
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupValues = this.groupValues;
+    final name = this.name;
+    final value = this.value;
+    return {'groupValues': ?groupValues, 'name': ?name, 'value': ?value};
+  }
 }
 
 /// The destination status of the product status.
@@ -1729,28 +1791,30 @@ class DestinationStatus {
 
   DestinationStatus.fromJson(core.Map json_)
     : this(
-        approvedCountries:
-            (json_['approvedCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        approvedCountries: (json_['approvedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         destination: json_['destination'] as core.String?,
-        disapprovedCountries:
-            (json_['disapprovedCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        pendingCountries:
-            (json_['pendingCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        disapprovedCountries: (json_['disapprovedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        pendingCountries: (json_['pendingCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvedCountries != null) 'approvedCountries': approvedCountries!,
-    if (destination != null) 'destination': destination!,
-    if (disapprovedCountries != null)
-      'disapprovedCountries': disapprovedCountries!,
-    if (pendingCountries != null) 'pendingCountries': pendingCountries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvedCountries = this.approvedCountries;
+    final destination = this.destination;
+    final disapprovedCountries = this.disapprovedCountries;
+    final pendingCountries = this.pendingCountries;
+    return {
+      'approvedCountries': ?approvedCountries,
+      'destination': ?destination,
+      'disapprovedCountries': ?disapprovedCountries,
+      'pendingCountries': ?pendingCountries,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1776,26 +1840,25 @@ class HeadlineOfferInstallment {
 
   HeadlineOfferInstallment.fromJson(core.Map json_)
     : this(
-        amount:
-            json_.containsKey('amount')
-                ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        downpayment:
-            json_.containsKey('downpayment')
-                ? Price.fromJson(
-                  json_['downpayment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        amount: json_.containsKey('amount')
+            ? Price.fromJson(
+                json_['amount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        downpayment: json_.containsKey('downpayment')
+            ? Price.fromJson(
+                json_['downpayment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         months: json_['months'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amount != null) 'amount': amount!,
-    if (downpayment != null) 'downpayment': downpayment!,
-    if (months != null) 'months': months!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final downpayment = this.downpayment;
+    final months = this.months;
+    return {'amount': ?amount, 'downpayment': ?downpayment, 'months': ?months};
+  }
 }
 
 /// The SubscriptionCost of the product.
@@ -1820,21 +1883,25 @@ class HeadlineOfferSubscriptionCost {
 
   HeadlineOfferSubscriptionCost.fromJson(core.Map json_)
     : this(
-        amount:
-            json_.containsKey('amount')
-                ? Price.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        amount: json_.containsKey('amount')
+            ? Price.fromJson(
+                json_['amount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         period: json_['period'] as core.String?,
         periodLength: json_['periodLength'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amount != null) 'amount': amount!,
-    if (period != null) 'period': period!,
-    if (periodLength != null) 'periodLength': periodLength!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final period = this.period;
+    final periodLength = this.periodLength;
+    return {
+      'amount': ?amount,
+      'period': ?period,
+      'periodLength': ?periodLength,
+    };
+  }
 }
 
 /// The ItemLevelIssue of the product status.
@@ -1881,10 +1948,9 @@ class ItemLevelIssue {
 
   ItemLevelIssue.fromJson(core.Map json_)
     : this(
-        applicableCountries:
-            (json_['applicableCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        applicableCountries: (json_['applicableCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         attribute: json_['attribute'] as core.String?,
         code: json_['code'] as core.String?,
         description: json_['description'] as core.String?,
@@ -1895,18 +1961,28 @@ class ItemLevelIssue {
         servability: json_['servability'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicableCountries != null)
-      'applicableCountries': applicableCountries!,
-    if (attribute != null) 'attribute': attribute!,
-    if (code != null) 'code': code!,
-    if (description != null) 'description': description!,
-    if (destination != null) 'destination': destination!,
-    if (detail != null) 'detail': detail!,
-    if (documentation != null) 'documentation': documentation!,
-    if (resolution != null) 'resolution': resolution!,
-    if (servability != null) 'servability': servability!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicableCountries = this.applicableCountries;
+    final attribute = this.attribute;
+    final code = this.code;
+    final description = this.description;
+    final destination = this.destination;
+    final detail = this.detail;
+    final documentation = this.documentation;
+    final resolution = this.resolution;
+    final servability = this.servability;
+    return {
+      'applicableCountries': ?applicableCountries,
+      'attribute': ?attribute,
+      'code': ?code,
+      'description': ?description,
+      'destination': ?destination,
+      'detail': ?detail,
+      'documentation': ?documentation,
+      'resolution': ?resolution,
+      'servability': ?servability,
+    };
+  }
 }
 
 /// Response message for the `ListAccountLabels` method.
@@ -1923,21 +1999,21 @@ class ListAccountLabelsResponse {
 
   ListAccountLabelsResponse.fromJson(core.Map json_)
     : this(
-        accountLabels:
-            (json_['accountLabels'] as core.List?)
-                ?.map(
-                  (value) => AccountLabel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accountLabels: (json_['accountLabels'] as core.List?)
+            ?.map(
+              (value) => AccountLabel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountLabels != null) 'accountLabels': accountLabels!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountLabels = this.accountLabels;
+    final nextPageToken = this.nextPageToken;
+    return {'accountLabels': ?accountLabels, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the `ListChildAccounts` method.
@@ -1954,21 +2030,21 @@ class ListChildAccountsResponse {
 
   ListChildAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListCssProducts method.
@@ -1988,21 +2064,21 @@ class ListCssProductsResponse {
 
   ListCssProductsResponse.fromJson(core.Map json_)
     : this(
-        cssProducts:
-            (json_['cssProducts'] as core.List?)
-                ?.map(
-                  (value) => CssProduct.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cssProducts: (json_['cssProducts'] as core.List?)
+            ?.map(
+              (value) => CssProduct.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cssProducts != null) 'cssProducts': cssProducts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cssProducts = this.cssProducts;
+    final nextPageToken = this.nextPageToken;
+    return {'cssProducts': ?cssProducts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListMethodGroups method.
@@ -2023,20 +2099,20 @@ class ListQuotaGroupsResponse {
   ListQuotaGroupsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        quotaGroups:
-            (json_['quotaGroups'] as core.List?)
-                ?.map(
-                  (value) => QuotaGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        quotaGroups: (json_['quotaGroups'] as core.List?)
+            ?.map(
+              (value) => QuotaGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (quotaGroups != null) 'quotaGroups': quotaGroups!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final quotaGroups = this.quotaGroups;
+    return {'nextPageToken': ?nextPageToken, 'quotaGroups': ?quotaGroups};
+  }
 }
 
 /// The method details per method in the CSS API.
@@ -2073,12 +2149,18 @@ class MethodDetails {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (method != null) 'method': method!,
-    if (path != null) 'path': path!,
-    if (subapi != null) 'subapi': subapi!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final method = this.method;
+    final path = this.path;
+    final subapi = this.subapi;
+    final version = this.version;
+    return {
+      'method': ?method,
+      'path': ?path,
+      'subapi': ?subapi,
+      'version': ?version,
+    };
+  }
 }
 
 /// The price represented as a number and currency.
@@ -2140,27 +2222,33 @@ class QuotaGroup {
 
   QuotaGroup.fromJson(core.Map json_)
     : this(
-        methodDetails:
-            (json_['methodDetails'] as core.List?)
-                ?.map(
-                  (value) => MethodDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        methodDetails: (json_['methodDetails'] as core.List?)
+            ?.map(
+              (value) => MethodDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         quotaLimit: json_['quotaLimit'] as core.String?,
         quotaMinuteLimit: json_['quotaMinuteLimit'] as core.String?,
         quotaUsage: json_['quotaUsage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (methodDetails != null) 'methodDetails': methodDetails!,
-    if (name != null) 'name': name!,
-    if (quotaLimit != null) 'quotaLimit': quotaLimit!,
-    if (quotaMinuteLimit != null) 'quotaMinuteLimit': quotaMinuteLimit!,
-    if (quotaUsage != null) 'quotaUsage': quotaUsage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final methodDetails = this.methodDetails;
+    final name = this.name;
+    final quotaLimit = this.quotaLimit;
+    final quotaMinuteLimit = this.quotaMinuteLimit;
+    final quotaUsage = this.quotaUsage;
+    return {
+      'methodDetails': ?methodDetails,
+      'name': ?name,
+      'quotaLimit': ?quotaLimit,
+      'quotaMinuteLimit': ?quotaMinuteLimit,
+      'quotaUsage': ?quotaUsage,
+    };
+  }
 }
 
 /// The request message for the `UpdateLabels` method.
@@ -2182,15 +2270,15 @@ class UpdateAccountLabelsRequest {
 
   UpdateAccountLabelsRequest.fromJson(core.Map json_)
     : this(
-        labelIds:
-            (json_['labelIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        labelIds: (json_['labelIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         parent: json_['parent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labelIds != null) 'labelIds': labelIds!,
-    if (parent != null) 'parent': parent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelIds = this.labelIds;
+    final parent = this.parent;
+    return {'labelIds': ?labelIds, 'parent': ?parent};
+  }
 }

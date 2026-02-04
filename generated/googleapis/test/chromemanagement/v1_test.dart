@@ -5317,10 +5317,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountActiveDevicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountActiveDevicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountActiveDevicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountActiveDevicesResponse(od);
       });
     },
@@ -5332,10 +5332,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountChromeAppRequestsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeAppRequestsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeAppRequestsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeAppRequestsResponse(od);
       });
     },
@@ -5348,10 +5348,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse(
           od,
         );
@@ -5365,10 +5365,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountChromeCrashEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeCrashEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeCrashEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeCrashEventsResponse(od);
       });
     },
@@ -5381,10 +5381,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount(
           od,
         );
@@ -5399,10 +5399,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse(
           od,
         );
@@ -5417,10 +5417,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse(
           od,
         );
@@ -5435,10 +5435,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse(
           od,
         );
@@ -5452,10 +5452,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountChromeVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountChromeVersionsResponse(od);
       });
     },
@@ -5468,10 +5468,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountDevicesPerBootTypeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountDevicesPerBootTypeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountDevicesPerBootTypeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountDevicesPerBootTypeResponse(od);
       });
     },
@@ -5484,10 +5484,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountDevicesPerReleaseChannelResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountDevicesPerReleaseChannelResponse(od);
       });
     },
@@ -5499,10 +5499,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountInstalledAppsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountInstalledAppsResponse(od);
       });
     },
@@ -5515,10 +5515,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1CountPrintJobsByPrinterResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountPrintJobsByPrinterResponse(od);
       });
     },
@@ -5530,10 +5530,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1CountPrintJobsByUserResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1CountPrintJobsByUserResponse(od);
       });
     },
@@ -5611,10 +5611,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1DeviceHardwareCountReport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1DeviceHardwareCountReport(od);
       });
     },
@@ -5627,10 +5627,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1DeviceRequestingExtensionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1DeviceRequestingExtensionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1DeviceRequestingExtensionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1DeviceRequestingExtensionDetails(od);
       });
     },
@@ -5675,10 +5675,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1EnumeratePrintJobsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1EnumeratePrintJobsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1EnumeratePrintJobsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1EnumeratePrintJobsResponse(od);
       });
     },
@@ -5691,10 +5691,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1FetchDevicesRequestingExtensionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1FetchDevicesRequestingExtensionResponse(
           od,
         );
@@ -5709,10 +5709,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1FetchUsersRequestingExtensionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1FetchUsersRequestingExtensionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1FetchUsersRequestingExtensionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1FetchUsersRequestingExtensionResponse(od);
       });
     },
@@ -5725,10 +5725,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1FindInstalledAppDevicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(od);
       });
     },
@@ -5823,10 +5823,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1ListTelemetryDevicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1ListTelemetryDevicesResponse(od);
       });
     },
@@ -5838,10 +5838,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1ListTelemetryEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1ListTelemetryEventsResponse(od);
       });
     },
@@ -5854,10 +5854,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1ListTelemetryNotificationConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1ListTelemetryNotificationConfigsResponse(
           od,
         );
@@ -5871,10 +5871,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1ListTelemetryUsersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1ListTelemetryUsersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1ListTelemetryUsersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1ListTelemetryUsersResponse(od);
       });
     },
@@ -5933,10 +5933,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1NetworkDiagnosticsReport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1NetworkDiagnosticsReport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1NetworkDiagnosticsReport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1NetworkDiagnosticsReport(od);
       });
     },
@@ -6097,10 +6097,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryAppInstallEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryAppInstallEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryAppInstallEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryAppInstallEvent(od);
       });
     },
@@ -6126,10 +6126,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryAppUninstallEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryAppUninstallEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryAppUninstallEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryAppUninstallEvent(od);
       });
     },
@@ -6142,10 +6142,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent(od);
       });
     },
@@ -6191,10 +6191,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1TelemetryEventNotificationFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryEventNotificationFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryEventNotificationFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryEventNotificationFilter(od);
       });
     },
@@ -6206,10 +6206,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryExternalDisplayData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryExternalDisplayData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryExternalDisplayData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryExternalDisplayData(od);
       });
     },
@@ -6221,10 +6221,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryExternalDisplayEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryExternalDisplayEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryExternalDisplayEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryExternalDisplayEvent(od);
       });
     },
@@ -6237,10 +6237,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent(od);
       });
     },
@@ -6253,10 +6253,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent(
           od,
         );
@@ -6271,10 +6271,10 @@ void main() {
         final o =
             buildGoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent(od);
       });
     },
@@ -6286,10 +6286,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryNotificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryNotificationConfig(od);
       });
     },
@@ -6301,10 +6301,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryNotificationFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryNotificationFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryNotificationFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryNotificationFilter(od);
       });
     },
@@ -6330,10 +6330,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TelemetryUsbPeripheralsEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TelemetryUsbPeripheralsEvent(od);
       });
     },
@@ -6389,10 +6389,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1TotalMemoryEncryptionInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1TotalMemoryEncryptionInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1TotalMemoryEncryptionInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1TotalMemoryEncryptionInfo(od);
       });
     },
@@ -6448,10 +6448,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementV1UserRequestingExtensionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementV1UserRequestingExtensionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementV1UserRequestingExtensionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementV1UserRequestingExtensionDetails(od);
       });
     },
@@ -6463,10 +6463,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1AttestationCredential();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1AttestationCredential.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1AttestationCredential.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1AttestationCredential(od);
       });
     },
@@ -6479,10 +6479,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1CertificateProvisioningProcess();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1CertificateProvisioningProcess.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1CertificateProvisioningProcess.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1CertificateProvisioningProcess(od);
       });
     },
@@ -6494,10 +6494,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1ChromeBrowserProfile();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ChromeBrowserProfile.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ChromeBrowserProfile.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ChromeBrowserProfile(od);
       });
     },
@@ -6510,10 +6510,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ChromeBrowserProfileCommand();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ChromeBrowserProfileCommand(od);
       });
     },
@@ -6526,10 +6526,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult(
           od,
         );
@@ -6557,10 +6557,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1ChromeOsUserSession();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ChromeOsUserSession.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ChromeOsUserSession.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ChromeOsUserSession(od);
       });
     },
@@ -6573,10 +6573,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest(
           od,
         );
@@ -6591,10 +6591,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse(
           od,
         );
@@ -6619,10 +6619,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1GenericCaConnection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1GenericCaConnection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1GenericCaConnection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1GenericCaConnection(od);
       });
     },
@@ -6649,10 +6649,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse(
           od,
         );
@@ -6667,10 +6667,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse(
           od,
         );
@@ -6685,10 +6685,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest(
           od,
         );
@@ -6703,10 +6703,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse(
           od,
         );
@@ -6735,10 +6735,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData(
           od,
         );
@@ -6753,10 +6753,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ReportingDataExtensionData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ReportingDataExtensionData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ReportingDataExtensionData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ReportingDataExtensionData(od);
       });
     },
@@ -6769,10 +6769,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData(
           od,
         );
@@ -6787,10 +6787,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1ReportingDataPolicyData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ReportingDataPolicyData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ReportingDataPolicyData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ReportingDataPolicyData(od);
       });
     },
@@ -6802,10 +6802,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1ScepCaConnection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ScepCaConnection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ScepCaConnection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ScepCaConnection(od);
       });
     },
@@ -6828,10 +6828,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1SetFailureRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1SetFailureRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1SetFailureRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1SetFailureRequest(od);
       });
     },
@@ -6843,10 +6843,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1SetFailureResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1SetFailureResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1SetFailureResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1SetFailureResponse(od);
       });
     },
@@ -6886,10 +6886,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleChromeManagementVersionsV1ThirdPartyProfileUser();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1ThirdPartyProfileUser.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1ThirdPartyProfileUser.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1ThirdPartyProfileUser(od);
       });
     },
@@ -6902,10 +6902,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1UploadCertificateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1UploadCertificateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1UploadCertificateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1UploadCertificateRequest(od);
       });
     },
@@ -6918,10 +6918,10 @@ void main() {
         final o =
             buildGoogleChromeManagementVersionsV1UploadCertificateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleChromeManagementVersionsV1UploadCertificateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleChromeManagementVersionsV1UploadCertificateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleChromeManagementVersionsV1UploadCertificateResponse(od);
       });
     },
@@ -7429,20 +7429,19 @@ void main() {
   unittest.group('resource-CustomersCertificateProvisioningProcessesResource', () {
     unittest.test('method--claim', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(
-            mock,
-          ).customers.certificateProvisioningProcesses;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.certificateProvisioningProcesses;
       final arg_request =
           buildGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest(
             obj,
           );
@@ -7504,10 +7503,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(
-            mock,
-          ).customers.certificateProvisioningProcesses;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.certificateProvisioningProcesses;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7565,20 +7563,19 @@ void main() {
 
     unittest.test('method--setFailure', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(
-            mock,
-          ).customers.certificateProvisioningProcesses;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.certificateProvisioningProcesses;
       final arg_request =
           buildGoogleChromeManagementVersionsV1SetFailureRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1SetFailureRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1SetFailureRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1SetFailureRequest(obj);
 
           final path = req.url.path;
@@ -7637,20 +7634,19 @@ void main() {
 
     unittest.test('method--signData', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(
-            mock,
-          ).customers.certificateProvisioningProcesses;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.certificateProvisioningProcesses;
       final arg_request =
           buildGoogleChromeManagementVersionsV1SignDataRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1SignDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1SignDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1SignDataRequest(obj);
 
           final path = req.url.path;
@@ -7707,20 +7703,19 @@ void main() {
 
     unittest.test('method--uploadCertificate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(
-            mock,
-          ).customers.certificateProvisioningProcesses;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.certificateProvisioningProcesses;
       final arg_request =
           buildGoogleChromeManagementVersionsV1UploadCertificateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1UploadCertificateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1UploadCertificateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1UploadCertificateRequest(obj);
 
           final path = req.url.path;
@@ -7784,10 +7779,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ChromeManagementApi(
-              mock,
-            ).customers.certificateProvisioningProcesses.operations;
+        final res = api.ChromeManagementApi(
+          mock,
+        ).customers.certificateProvisioningProcesses.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8049,10 +8043,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1ChromeBrowserProfileCommand(obj);
 
           final path = req.url.path;
@@ -9633,18 +9627,19 @@ void main() {
   unittest.group('resource-CustomersTelemetryNotificationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(mock).customers.telemetry.notificationConfigs;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.telemetry.notificationConfigs;
       final arg_request =
           buildGoogleChromeManagementV1TelemetryNotificationConfig();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementV1TelemetryNotificationConfig(obj);
 
           final path = req.url.path;
@@ -9703,8 +9698,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(mock).customers.telemetry.notificationConfigs;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.telemetry.notificationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9757,8 +9753,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(mock).customers.telemetry.notificationConfigs;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.telemetry.notificationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9985,18 +9982,19 @@ void main() {
   unittest.group('resource-CustomersThirdPartyProfileUsersResource', () {
     unittest.test('method--move', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ChromeManagementApi(mock).customers.thirdPartyProfileUsers;
+      final res = api.ChromeManagementApi(
+        mock,
+      ).customers.thirdPartyProfileUsers;
       final arg_request =
           buildGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest(
             obj,
           );

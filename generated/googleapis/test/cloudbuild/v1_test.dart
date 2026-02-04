@@ -3257,10 +3257,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildBatchCreateBitbucketServerConnectedRepositoriesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBatchCreateBitbucketServerConnectedRepositoriesRequest(od);
       });
     },
@@ -5440,8 +5440,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBitbucketServerConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_request = buildBitbucketServerConfig();
       final arg_parent = 'foo';
       final arg_bitbucketServerConfigId = 'foo';
@@ -5510,8 +5511,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5564,8 +5566,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5618,8 +5621,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5691,8 +5695,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_request = buildBitbucketServerConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5761,18 +5766,19 @@ void main() {
 
     unittest.test('method--removeBitbucketServerConnectedRepository', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.bitbucketServerConfigs;
       final arg_request =
           buildRemoveBitbucketServerConnectedRepositoryRequest();
       final arg_config = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .RemoveBitbucketServerConnectedRepositoryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.RemoveBitbucketServerConnectedRepositoryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkRemoveBitbucketServerConnectedRepositoryRequest(obj);
 
           final path = req.url.path;
@@ -5831,20 +5837,19 @@ void main() {
     () {
       unittest.test('method--batchCreate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudBuildApi(
-              mock,
-            ).projects.locations.bitbucketServerConfigs.connectedRepositories;
+        final res = api.CloudBuildApi(
+          mock,
+        ).projects.locations.bitbucketServerConfigs.connectedRepositories;
         final arg_request =
             buildBatchCreateBitbucketServerConnectedRepositoriesRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkBatchCreateBitbucketServerConnectedRepositoriesRequest(obj);
 
             final path = req.url.path;
@@ -5904,10 +5909,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudBuildApi(
-              mock,
-            ).projects.locations.bitbucketServerConfigs.repos;
+        final res = api.CloudBuildApi(
+          mock,
+        ).projects.locations.bitbucketServerConfigs.repos;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6766,20 +6770,19 @@ void main() {
     () {
       unittest.test('method--batchCreate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudBuildApi(
-              mock,
-            ).projects.locations.gitLabConfigs.connectedRepositories;
+        final res = api.CloudBuildApi(
+          mock,
+        ).projects.locations.gitLabConfigs.connectedRepositories;
         final arg_request =
             buildBatchCreateGitLabConnectedRepositoriesRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .BatchCreateGitLabConnectedRepositoriesRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.BatchCreateGitLabConnectedRepositoriesRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkBatchCreateGitLabConnectedRepositoriesRequest(obj);
 
             final path = req.url.path;
@@ -6837,8 +6840,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGitLabConfigsReposResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.gitLabConfigs.repos;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.gitLabConfigs.repos;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6912,8 +6916,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGithubEnterpriseConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.githubEnterpriseConfigs;
       final arg_request = buildGitHubEnterpriseConfig();
       final arg_parent = 'foo';
       final arg_gheConfigId = 'foo';
@@ -6988,8 +6993,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.githubEnterpriseConfigs;
       final arg_name = 'foo';
       final arg_configId = 'foo';
       final arg_projectId = 'foo';
@@ -7057,8 +7063,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.githubEnterpriseConfigs;
       final arg_name = 'foo';
       final arg_configId = 'foo';
       final arg_projectId = 'foo';
@@ -7126,8 +7133,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.githubEnterpriseConfigs;
       final arg_parent = 'foo';
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
@@ -7193,8 +7201,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
+      final res = api.CloudBuildApi(
+        mock,
+      ).projects.locations.githubEnterpriseConfigs;
       final arg_request = buildGitHubEnterpriseConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

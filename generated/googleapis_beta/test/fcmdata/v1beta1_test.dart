@@ -316,10 +316,10 @@ void main() {
         final o =
             buildGoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents(od);
       });
     },
@@ -332,10 +332,10 @@ void main() {
         final o =
             buildGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse(od);
       });
     },
@@ -347,10 +347,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseFcmDataV1beta1MessageInsightPercents();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseFcmDataV1beta1MessageInsightPercents(od);
       });
     },
@@ -362,10 +362,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseFcmDataV1beta1MessageOutcomePercents();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(od);
       });
     },
@@ -378,10 +378,10 @@ void main() {
         final o =
             buildGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents(od);
       });
     },

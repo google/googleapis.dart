@@ -142,7 +142,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'accounts/v1/accounts:createAndConfigure';
@@ -192,8 +192,8 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -229,7 +229,7 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -284,10 +284,10 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'accounts/v1/accounts';
@@ -343,9 +343,9 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -396,8 +396,8 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -441,7 +441,7 @@ class AccountsAutofeedSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -486,8 +486,8 @@ class AccountsAutofeedSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -533,7 +533,7 @@ class AccountsAutomaticImprovementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -583,8 +583,8 @@ class AccountsAutomaticImprovementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -631,7 +631,7 @@ class AccountsBusinessIdentityResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -681,8 +681,8 @@ class AccountsBusinessIdentityResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -729,7 +729,7 @@ class AccountsBusinessInfoResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -778,8 +778,8 @@ class AccountsBusinessInfoResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -819,7 +819,7 @@ class AccountsDeveloperRegistrationResource {
   async.Future<GetAccountForGcpRegistrationResponse>
   getAccountForGcpRegistration({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'accounts/v1/accounts:getAccountForGcpRegistration';
@@ -856,7 +856,7 @@ class AccountsDeveloperRegistrationResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -903,7 +903,7 @@ class AccountsDeveloperRegistrationResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':registerGcp';
@@ -950,7 +950,7 @@ class AccountsDeveloperRegistrationResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1001,7 +1001,7 @@ class AccountsEmailPreferencesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1056,8 +1056,8 @@ class AccountsEmailPreferencesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1111,7 +1111,7 @@ class AccountsGbpAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1166,9 +1166,9 @@ class AccountsGbpAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1228,7 +1228,7 @@ class AccountsHomepageResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':claim';
@@ -1265,7 +1265,7 @@ class AccountsHomepageResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1307,7 +1307,7 @@ class AccountsHomepageResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':unclaim';
@@ -1354,8 +1354,8 @@ class AccountsHomepageResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1427,11 +1427,11 @@ class AccountsIssuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (timeZone != null) 'timeZone': [timeZone],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'timeZone': ?timeZone == null ? null : [timeZone],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/issues';
@@ -1483,7 +1483,7 @@ class AccountsOmnichannelSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1525,7 +1525,7 @@ class AccountsOmnichannelSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1576,9 +1576,9 @@ class AccountsOmnichannelSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1629,8 +1629,8 @@ class AccountsOmnichannelSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1675,7 +1675,7 @@ class AccountsOmnichannelSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1738,9 +1738,9 @@ class AccountsOmnichannelSettingsLfpProvidersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1785,7 +1785,7 @@ class AccountsOmnichannelSettingsLfpProvidersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1836,7 +1836,7 @@ class AccountsOnlineReturnPoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1875,7 +1875,7 @@ class AccountsOnlineReturnPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1911,7 +1911,7 @@ class AccountsOnlineReturnPoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -1965,9 +1965,9 @@ class AccountsOnlineReturnPoliciesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2023,7 +2023,7 @@ class AccountsProgramsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':disable';
@@ -2066,7 +2066,7 @@ class AccountsProgramsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':enable';
@@ -2101,7 +2101,7 @@ class AccountsProgramsResource {
   /// this method will complete with the same error.
   async.Future<Program> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2146,9 +2146,9 @@ class AccountsProgramsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/programs';
@@ -2197,7 +2197,7 @@ class AccountsProgramsCheckoutSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2238,7 +2238,7 @@ class AccountsProgramsCheckoutSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2278,7 +2278,7 @@ class AccountsProgramsCheckoutSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2326,8 +2326,8 @@ class AccountsProgramsCheckoutSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2378,7 +2378,7 @@ class AccountsRegionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2426,7 +2426,7 @@ class AccountsRegionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2472,7 +2472,7 @@ class AccountsRegionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2524,8 +2524,8 @@ class AccountsRegionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (regionId != null) 'regionId': [regionId],
-      if ($fields != null) 'fields': [$fields],
+      'regionId': ?regionId == null ? null : [regionId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/regions';
@@ -2561,7 +2561,7 @@ class AccountsRegionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2594,7 +2594,7 @@ class AccountsRegionsResource {
   /// this method will complete with the same error.
   async.Future<Region> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2642,9 +2642,9 @@ class AccountsRegionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/regions';
@@ -2692,8 +2692,8 @@ class AccountsRegionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2738,7 +2738,7 @@ class AccountsRelationshipsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2784,9 +2784,9 @@ class AccountsRelationshipsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2837,8 +2837,8 @@ class AccountsRelationshipsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2887,7 +2887,7 @@ class AccountsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -2926,7 +2926,7 @@ class AccountsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -2974,9 +2974,9 @@ class AccountsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/services';
@@ -3018,7 +3018,7 @@ class AccountsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3063,7 +3063,7 @@ class AccountsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':reject';
@@ -3107,7 +3107,7 @@ class AccountsShippingSettingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3154,7 +3154,7 @@ class AccountsShippingSettingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3205,7 +3205,7 @@ class AccountsTermsOfServiceAgreementStatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3247,7 +3247,7 @@ class AccountsTermsOfServiceAgreementStatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3306,8 +3306,8 @@ class AccountsUsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (userId != null) 'userId': [userId],
-      if ($fields != null) 'fields': [$fields],
+      'userId': ?userId == null ? null : [userId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/users';
@@ -3347,7 +3347,7 @@ class AccountsUsersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3382,7 +3382,7 @@ class AccountsUsersResource {
   /// this method will complete with the same error.
   async.Future<User> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3430,9 +3430,9 @@ class AccountsUsersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$parent') + '/users';
@@ -3482,8 +3482,8 @@ class AccountsUsersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3531,7 +3531,7 @@ class AccountsUsersMeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3588,9 +3588,9 @@ class TermsOfServiceResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (account != null) 'account': [account],
-      if (regionCode != null) 'regionCode': [regionCode],
-      if ($fields != null) 'fields': [$fields],
+      'account': ?account == null ? null : [account],
+      'regionCode': ?regionCode == null ? null : [regionCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name') + ':accept';
@@ -3628,7 +3628,7 @@ class TermsOfServiceResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
@@ -3674,9 +3674,9 @@ class TermsOfServiceResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (kind != null) 'kind': [kind],
-      if (regionCode != null) 'regionCode': [regionCode],
-      if ($fields != null) 'fields': [$fields],
+      'kind': ?kind == null ? null : [kind],
+      'regionCode': ?regionCode == null ? null : [regionCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'accounts/v1/termsOfService:retrieveLatest';
@@ -3721,10 +3721,11 @@ class About {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final uri = this.uri;
+    return {'state': ?state, 'uri': ?uri};
+  }
 }
 
 /// Response message for the `AcceptTermsOfService` method.
@@ -3738,17 +3739,17 @@ class AcceptTermsOfServiceResponse {
     : this(
         termsOfServiceAgreementState:
             json_.containsKey('termsOfServiceAgreementState')
-                ? TermsOfServiceAgreementState.fromJson(
-                  json_['termsOfServiceAgreementState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? TermsOfServiceAgreementState.fromJson(
+                json_['termsOfServiceAgreementState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (termsOfServiceAgreementState != null)
-      'termsOfServiceAgreementState': termsOfServiceAgreementState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final termsOfServiceAgreementState = this.termsOfServiceAgreementState;
+    return {'termsOfServiceAgreementState': ?termsOfServiceAgreementState};
+  }
 }
 
 /// Describes the
@@ -3782,19 +3783,23 @@ class Accepted {
     : this(
         acceptedBy: json_['acceptedBy'] as core.String?,
         termsOfService: json_['termsOfService'] as core.String?,
-        validUntil:
-            json_.containsKey('validUntil')
-                ? Date.fromJson(
-                  json_['validUntil'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        validUntil: json_.containsKey('validUntil')
+            ? Date.fromJson(
+                json_['validUntil'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceptedBy != null) 'acceptedBy': acceptedBy!,
-    if (termsOfService != null) 'termsOfService': termsOfService!,
-    if (validUntil != null) 'validUntil': validUntil!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptedBy = this.acceptedBy;
+    final termsOfService = this.termsOfService;
+    final validUntil = this.validUntil;
+    return {
+      'acceptedBy': ?acceptedBy,
+      'termsOfService': ?termsOfService,
+      'validUntil': ?validUntil,
+    };
+  }
 }
 
 /// The `Account` message represents a business's account within Shopping Ads.
@@ -3872,23 +3877,31 @@ class Account {
         languageCode: json_['languageCode'] as core.String?,
         name: json_['name'] as core.String?,
         testAccount: json_['testAccount'] as core.bool?,
-        timeZone:
-            json_.containsKey('timeZone')
-                ? TimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeZone: json_.containsKey('timeZone')
+            ? TimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (accountName != null) 'accountName': accountName!,
-    if (adultContent != null) 'adultContent': adultContent!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (testAccount != null) 'testAccount': testAccount!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final accountName = this.accountName;
+    final adultContent = this.adultContent;
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final testAccount = this.testAccount;
+    final timeZone = this.timeZone;
+    return {
+      'accountId': ?accountId,
+      'accountName': ?accountName,
+      'adultContent': ?adultContent,
+      'languageCode': ?languageCode,
+      'name': ?name,
+      'testAccount': ?testAccount,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// `AccountAggregation` payload.
@@ -3941,28 +3954,34 @@ class AccountIssue {
     : this(
         detail: json_['detail'] as core.String?,
         documentationUri: json_['documentationUri'] as core.String?,
-        impactedDestinations:
-            (json_['impactedDestinations'] as core.List?)
-                ?.map(
-                  (value) => ImpactedDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        impactedDestinations: (json_['impactedDestinations'] as core.List?)
+            ?.map(
+              (value) => ImpactedDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         severity: json_['severity'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detail != null) 'detail': detail!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (impactedDestinations != null)
-      'impactedDestinations': impactedDestinations!,
-    if (name != null) 'name': name!,
-    if (severity != null) 'severity': severity!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detail = this.detail;
+    final documentationUri = this.documentationUri;
+    final impactedDestinations = this.impactedDestinations;
+    final name = this.name;
+    final severity = this.severity;
+    final title = this.title;
+    return {
+      'detail': ?detail,
+      'documentationUri': ?documentationUri,
+      'impactedDestinations': ?impactedDestinations,
+      'name': ?name,
+      'severity': ?severity,
+      'title': ?title,
+    };
+  }
 }
 
 /// `AccountManagement` payload.
@@ -4026,13 +4045,18 @@ class AccountRelationship {
         providerDisplayName: json_['providerDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountIdAlias != null) 'accountIdAlias': accountIdAlias!,
-    if (name != null) 'name': name!,
-    if (provider != null) 'provider': provider!,
-    if (providerDisplayName != null)
-      'providerDisplayName': providerDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountIdAlias = this.accountIdAlias;
+    final name = this.name;
+    final provider = this.provider;
+    final providerDisplayName = this.providerDisplayName;
+    return {
+      'accountIdAlias': ?accountIdAlias,
+      'name': ?name,
+      'provider': ?provider,
+      'providerDisplayName': ?providerDisplayName,
+    };
+  }
 }
 
 /// The `AccountService` message represents a specific service that a provider
@@ -4163,78 +4187,82 @@ class AccountService {
 
   AccountService.fromJson(core.Map json_)
     : this(
-        accountAggregation:
-            json_.containsKey('accountAggregation')
-                ? AccountAggregation.fromJson(
-                  json_['accountAggregation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        accountManagement:
-            json_.containsKey('accountManagement')
-                ? AccountManagement.fromJson(
-                  json_['accountManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        campaignsManagement:
-            json_.containsKey('campaignsManagement')
-                ? CampaignsManagement.fromJson(
-                  json_['campaignsManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        comparisonShopping:
-            json_.containsKey('comparisonShopping')
-                ? ComparisonShopping.fromJson(
-                  json_['comparisonShopping']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accountAggregation: json_.containsKey('accountAggregation')
+            ? AccountAggregation.fromJson(
+                json_['accountAggregation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        accountManagement: json_.containsKey('accountManagement')
+            ? AccountManagement.fromJson(
+                json_['accountManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        campaignsManagement: json_.containsKey('campaignsManagement')
+            ? CampaignsManagement.fromJson(
+                json_['campaignsManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        comparisonShopping: json_.containsKey('comparisonShopping')
+            ? ComparisonShopping.fromJson(
+                json_['comparisonShopping']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         externalAccountId: json_['externalAccountId'] as core.String?,
-        handshake:
-            json_.containsKey('handshake')
-                ? Handshake.fromJson(
-                  json_['handshake'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localListingManagement:
-            json_.containsKey('localListingManagement')
-                ? LocalListingManagement.fromJson(
-                  json_['localListingManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        handshake: json_.containsKey('handshake')
+            ? Handshake.fromJson(
+                json_['handshake'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localListingManagement: json_.containsKey('localListingManagement')
+            ? LocalListingManagement.fromJson(
+                json_['localListingManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mutability: json_['mutability'] as core.String?,
         name: json_['name'] as core.String?,
-        productsManagement:
-            json_.containsKey('productsManagement')
-                ? ProductsManagement.fromJson(
-                  json_['productsManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        productsManagement: json_.containsKey('productsManagement')
+            ? ProductsManagement.fromJson(
+                json_['productsManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         provider: json_['provider'] as core.String?,
         providerDisplayName: json_['providerDisplayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountAggregation != null) 'accountAggregation': accountAggregation!,
-    if (accountManagement != null) 'accountManagement': accountManagement!,
-    if (campaignsManagement != null)
-      'campaignsManagement': campaignsManagement!,
-    if (comparisonShopping != null) 'comparisonShopping': comparisonShopping!,
-    if (externalAccountId != null) 'externalAccountId': externalAccountId!,
-    if (handshake != null) 'handshake': handshake!,
-    if (localListingManagement != null)
-      'localListingManagement': localListingManagement!,
-    if (mutability != null) 'mutability': mutability!,
-    if (name != null) 'name': name!,
-    if (productsManagement != null) 'productsManagement': productsManagement!,
-    if (provider != null) 'provider': provider!,
-    if (providerDisplayName != null)
-      'providerDisplayName': providerDisplayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountAggregation = this.accountAggregation;
+    final accountManagement = this.accountManagement;
+    final campaignsManagement = this.campaignsManagement;
+    final comparisonShopping = this.comparisonShopping;
+    final externalAccountId = this.externalAccountId;
+    final handshake = this.handshake;
+    final localListingManagement = this.localListingManagement;
+    final mutability = this.mutability;
+    final name = this.name;
+    final productsManagement = this.productsManagement;
+    final provider = this.provider;
+    final providerDisplayName = this.providerDisplayName;
+    return {
+      'accountAggregation': ?accountAggregation,
+      'accountManagement': ?accountManagement,
+      'campaignsManagement': ?campaignsManagement,
+      'comparisonShopping': ?comparisonShopping,
+      'externalAccountId': ?externalAccountId,
+      'handshake': ?handshake,
+      'localListingManagement': ?localListingManagement,
+      'mutability': ?mutability,
+      'name': ?name,
+      'productsManagement': ?productsManagement,
+      'provider': ?provider,
+      'providerDisplayName': ?providerDisplayName,
+    };
+  }
 }
 
 /// Additional instructions to add account services during creation of the
@@ -4304,55 +4332,58 @@ class AddAccountService {
 
   AddAccountService.fromJson(core.Map json_)
     : this(
-        accountAggregation:
-            json_.containsKey('accountAggregation')
-                ? AccountAggregation.fromJson(
-                  json_['accountAggregation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        accountManagement:
-            json_.containsKey('accountManagement')
-                ? AccountManagement.fromJson(
-                  json_['accountManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        campaignsManagement:
-            json_.containsKey('campaignsManagement')
-                ? CampaignsManagement.fromJson(
-                  json_['campaignsManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        comparisonShopping:
-            json_.containsKey('comparisonShopping')
-                ? ComparisonShopping.fromJson(
-                  json_['comparisonShopping']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accountAggregation: json_.containsKey('accountAggregation')
+            ? AccountAggregation.fromJson(
+                json_['accountAggregation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        accountManagement: json_.containsKey('accountManagement')
+            ? AccountManagement.fromJson(
+                json_['accountManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        campaignsManagement: json_.containsKey('campaignsManagement')
+            ? CampaignsManagement.fromJson(
+                json_['campaignsManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        comparisonShopping: json_.containsKey('comparisonShopping')
+            ? ComparisonShopping.fromJson(
+                json_['comparisonShopping']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         externalAccountId: json_['externalAccountId'] as core.String?,
-        productsManagement:
-            json_.containsKey('productsManagement')
-                ? ProductsManagement.fromJson(
-                  json_['productsManagement']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        productsManagement: json_.containsKey('productsManagement')
+            ? ProductsManagement.fromJson(
+                json_['productsManagement']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         provider: json_['provider'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountAggregation != null) 'accountAggregation': accountAggregation!,
-    if (accountManagement != null) 'accountManagement': accountManagement!,
-    if (campaignsManagement != null)
-      'campaignsManagement': campaignsManagement!,
-    if (comparisonShopping != null) 'comparisonShopping': comparisonShopping!,
-    if (externalAccountId != null) 'externalAccountId': externalAccountId!,
-    if (productsManagement != null) 'productsManagement': productsManagement!,
-    if (provider != null) 'provider': provider!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountAggregation = this.accountAggregation;
+    final accountManagement = this.accountManagement;
+    final campaignsManagement = this.campaignsManagement;
+    final comparisonShopping = this.comparisonShopping;
+    final externalAccountId = this.externalAccountId;
+    final productsManagement = this.productsManagement;
+    final provider = this.provider;
+    return {
+      'accountAggregation': ?accountAggregation,
+      'accountManagement': ?accountManagement,
+      'campaignsManagement': ?campaignsManagement,
+      'comparisonShopping': ?comparisonShopping,
+      'externalAccountId': ?externalAccountId,
+      'productsManagement': ?productsManagement,
+      'provider': ?provider,
+    };
+  }
 }
 
 /// Instruction for adding a user to the account during creation.
@@ -4379,28 +4410,30 @@ class AddUser {
 
   AddUser.fromJson(core.Map json_)
     : this(
-        user:
-            json_.containsKey('user')
-                ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        user: json_.containsKey('user')
+            ? User.fromJson(
+                json_['user'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userId: json_['userId'] as core.String?,
-        verificationMailSettings:
-            json_.containsKey('verificationMailSettings')
-                ? VerificationMailSettings.fromJson(
-                  json_['verificationMailSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        verificationMailSettings: json_.containsKey('verificationMailSettings')
+            ? VerificationMailSettings.fromJson(
+                json_['verificationMailSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (user != null) 'user': user!,
-    if (userId != null) 'userId': userId!,
-    if (verificationMailSettings != null)
-      'verificationMailSettings': verificationMailSettings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final user = this.user;
+    final userId = this.userId;
+    final verificationMailSettings = this.verificationMailSettings;
+    return {
+      'user': ?user,
+      'userId': ?userId,
+      'verificationMailSettings': ?verificationMailSettings,
+    };
+  }
 }
 
 /// Shipping address of the warehouse.
@@ -4454,13 +4487,20 @@ class Address {
         streetAddress: json_['streetAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
-    if (city != null) 'city': city!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (streetAddress != null) 'streetAddress': streetAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final administrativeArea = this.administrativeArea;
+    final city = this.city;
+    final postalCode = this.postalCode;
+    final regionCode = this.regionCode;
+    final streetAddress = this.streetAddress;
+    return {
+      'administrativeArea': ?administrativeArea,
+      'city': ?city,
+      'postalCode': ?postalCode,
+      'regionCode': ?regionCode,
+      'streetAddress': ?streetAddress,
+    };
+  }
 }
 
 /// Request to approve an account service.
@@ -4503,11 +4543,16 @@ class AutofeedSettings {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eligible != null) 'eligible': eligible!,
-    if (enableProducts != null) 'enableProducts': enableProducts!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final eligible = this.eligible;
+    final enableProducts = this.enableProducts;
+    final name = this.name;
+    return {
+      'eligible': ?eligible,
+      'enableProducts': ?enableProducts,
+      'name': ?name,
+    };
+  }
 }
 
 /// This improvement will attempt to automatically correct submitted images if
@@ -4546,22 +4591,26 @@ class AutomaticImageImprovements {
     : this(
         accountImageImprovementsSettings:
             json_.containsKey('accountImageImprovementsSettings')
-                ? ImageImprovementsAccountLevelSettings.fromJson(
-                  json_['accountImageImprovementsSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ImageImprovementsAccountLevelSettings.fromJson(
+                json_['accountImageImprovementsSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         effectiveAllowAutomaticImageImprovements:
             json_['effectiveAllowAutomaticImageImprovements'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountImageImprovementsSettings != null)
-      'accountImageImprovementsSettings': accountImageImprovementsSettings!,
-    if (effectiveAllowAutomaticImageImprovements != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountImageImprovementsSettings =
+        this.accountImageImprovementsSettings;
+    final effectiveAllowAutomaticImageImprovements =
+        this.effectiveAllowAutomaticImageImprovements;
+    return {
+      'accountImageImprovementsSettings': ?accountImageImprovementsSettings,
       'effectiveAllowAutomaticImageImprovements':
-          effectiveAllowAutomaticImageImprovements!,
-  };
+          ?effectiveAllowAutomaticImageImprovements,
+    };
+  }
 }
 
 /// Collection of information related to the
@@ -4619,36 +4668,38 @@ class AutomaticImprovements {
 
   AutomaticImprovements.fromJson(core.Map json_)
     : this(
-        imageImprovements:
-            json_.containsKey('imageImprovements')
-                ? AutomaticImageImprovements.fromJson(
-                  json_['imageImprovements']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        itemUpdates:
-            json_.containsKey('itemUpdates')
-                ? AutomaticItemUpdates.fromJson(
-                  json_['itemUpdates'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageImprovements: json_.containsKey('imageImprovements')
+            ? AutomaticImageImprovements.fromJson(
+                json_['imageImprovements']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        itemUpdates: json_.containsKey('itemUpdates')
+            ? AutomaticItemUpdates.fromJson(
+                json_['itemUpdates'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        shippingImprovements:
-            json_.containsKey('shippingImprovements')
-                ? AutomaticShippingImprovements.fromJson(
-                  json_['shippingImprovements']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        shippingImprovements: json_.containsKey('shippingImprovements')
+            ? AutomaticShippingImprovements.fromJson(
+                json_['shippingImprovements']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageImprovements != null) 'imageImprovements': imageImprovements!,
-    if (itemUpdates != null) 'itemUpdates': itemUpdates!,
-    if (name != null) 'name': name!,
-    if (shippingImprovements != null)
-      'shippingImprovements': shippingImprovements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageImprovements = this.imageImprovements;
+    final itemUpdates = this.itemUpdates;
+    final name = this.name;
+    final shippingImprovements = this.shippingImprovements;
+    return {
+      'imageImprovements': ?imageImprovements,
+      'itemUpdates': ?itemUpdates,
+      'name': ?name,
+      'shippingImprovements': ?shippingImprovements,
+    };
+  }
 }
 
 /// Turning on
@@ -4717,11 +4768,11 @@ class AutomaticItemUpdates {
     : this(
         accountItemUpdatesSettings:
             json_.containsKey('accountItemUpdatesSettings')
-                ? ItemUpdatesAccountLevelSettings.fromJson(
-                  json_['accountItemUpdatesSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ItemUpdatesAccountLevelSettings.fromJson(
+                json_['accountItemUpdatesSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         effectiveAllowAvailabilityUpdates:
             json_['effectiveAllowAvailabilityUpdates'] as core.bool?,
         effectiveAllowConditionUpdates:
@@ -4732,19 +4783,23 @@ class AutomaticItemUpdates {
             json_['effectiveAllowStrictAvailabilityUpdates'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountItemUpdatesSettings != null)
-      'accountItemUpdatesSettings': accountItemUpdatesSettings!,
-    if (effectiveAllowAvailabilityUpdates != null)
-      'effectiveAllowAvailabilityUpdates': effectiveAllowAvailabilityUpdates!,
-    if (effectiveAllowConditionUpdates != null)
-      'effectiveAllowConditionUpdates': effectiveAllowConditionUpdates!,
-    if (effectiveAllowPriceUpdates != null)
-      'effectiveAllowPriceUpdates': effectiveAllowPriceUpdates!,
-    if (effectiveAllowStrictAvailabilityUpdates != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountItemUpdatesSettings = this.accountItemUpdatesSettings;
+    final effectiveAllowAvailabilityUpdates =
+        this.effectiveAllowAvailabilityUpdates;
+    final effectiveAllowConditionUpdates = this.effectiveAllowConditionUpdates;
+    final effectiveAllowPriceUpdates = this.effectiveAllowPriceUpdates;
+    final effectiveAllowStrictAvailabilityUpdates =
+        this.effectiveAllowStrictAvailabilityUpdates;
+    return {
+      'accountItemUpdatesSettings': ?accountItemUpdatesSettings,
+      'effectiveAllowAvailabilityUpdates': ?effectiveAllowAvailabilityUpdates,
+      'effectiveAllowConditionUpdates': ?effectiveAllowConditionUpdates,
+      'effectiveAllowPriceUpdates': ?effectiveAllowPriceUpdates,
       'effectiveAllowStrictAvailabilityUpdates':
-          effectiveAllowStrictAvailabilityUpdates!,
-  };
+          ?effectiveAllowStrictAvailabilityUpdates,
+    };
+  }
 }
 
 /// Not available for
@@ -4773,19 +4828,19 @@ class BatchCreateRegionsRequest {
 
   BatchCreateRegionsRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => CreateRegionRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => CreateRegionRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 /// Response message for the `BatchCreateRegions` method.
@@ -4797,19 +4852,18 @@ class BatchCreateRegionsResponse {
 
   BatchCreateRegionsResponse.fromJson(core.Map json_)
     : this(
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map(
-                  (value) => Region.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Region.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regions = this.regions;
+    return {'regions': ?regions};
+  }
 }
 
 /// Request message for the `BatchDeleteRegions` method.
@@ -4825,19 +4879,19 @@ class BatchDeleteRegionsRequest {
 
   BatchDeleteRegionsRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => DeleteRegionRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => DeleteRegionRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 /// Request message for the `BatchUpdateRegions` method.
@@ -4853,19 +4907,19 @@ class BatchUpdateRegionsRequest {
 
   BatchUpdateRegionsRequest.fromJson(core.Map json_)
     : this(
-        requests:
-            (json_['requests'] as core.List?)
-                ?.map(
-                  (value) => UpdateRegionRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => UpdateRegionRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requests != null) 'requests': requests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
 }
 
 /// Response message for the `BatchUpdateRegions` method.
@@ -4877,19 +4931,18 @@ class BatchUpdateRegionsResponse {
 
   BatchUpdateRegionsResponse.fromJson(core.Map json_)
     : this(
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map(
-                  (value) => Region.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Region.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regions = this.regions;
+    return {'regions': ?regions};
+  }
 }
 
 /// Business days of the warehouse.
@@ -4905,15 +4958,15 @@ class BusinessDayConfig {
 
   BusinessDayConfig.fromJson(core.Map json_)
     : this(
-        businessDays:
-            (json_['businessDays'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        businessDays: (json_['businessDays'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (businessDays != null) 'businessDays': businessDays!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessDays = this.businessDays;
+    return {'businessDays': ?businessDays};
+  }
 }
 
 /// Collection of information related to the
@@ -4993,49 +5046,53 @@ class BusinessIdentity {
 
   BusinessIdentity.fromJson(core.Map json_)
     : this(
-        blackOwned:
-            json_.containsKey('blackOwned')
-                ? IdentityAttribute.fromJson(
-                  json_['blackOwned'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        latinoOwned:
-            json_.containsKey('latinoOwned')
-                ? IdentityAttribute.fromJson(
-                  json_['latinoOwned'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blackOwned: json_.containsKey('blackOwned')
+            ? IdentityAttribute.fromJson(
+                json_['blackOwned'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        latinoOwned: json_.containsKey('latinoOwned')
+            ? IdentityAttribute.fromJson(
+                json_['latinoOwned'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         promotionsConsent: json_['promotionsConsent'] as core.String?,
-        smallBusiness:
-            json_.containsKey('smallBusiness')
-                ? IdentityAttribute.fromJson(
-                  json_['smallBusiness'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        veteranOwned:
-            json_.containsKey('veteranOwned')
-                ? IdentityAttribute.fromJson(
-                  json_['veteranOwned'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        womenOwned:
-            json_.containsKey('womenOwned')
-                ? IdentityAttribute.fromJson(
-                  json_['womenOwned'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        smallBusiness: json_.containsKey('smallBusiness')
+            ? IdentityAttribute.fromJson(
+                json_['smallBusiness'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        veteranOwned: json_.containsKey('veteranOwned')
+            ? IdentityAttribute.fromJson(
+                json_['veteranOwned'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        womenOwned: json_.containsKey('womenOwned')
+            ? IdentityAttribute.fromJson(
+                json_['womenOwned'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blackOwned != null) 'blackOwned': blackOwned!,
-    if (latinoOwned != null) 'latinoOwned': latinoOwned!,
-    if (name != null) 'name': name!,
-    if (promotionsConsent != null) 'promotionsConsent': promotionsConsent!,
-    if (smallBusiness != null) 'smallBusiness': smallBusiness!,
-    if (veteranOwned != null) 'veteranOwned': veteranOwned!,
-    if (womenOwned != null) 'womenOwned': womenOwned!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blackOwned = this.blackOwned;
+    final latinoOwned = this.latinoOwned;
+    final name = this.name;
+    final promotionsConsent = this.promotionsConsent;
+    final smallBusiness = this.smallBusiness;
+    final veteranOwned = this.veteranOwned;
+    final womenOwned = this.womenOwned;
+    return {
+      'blackOwned': ?blackOwned,
+      'latinoOwned': ?latinoOwned,
+      'name': ?name,
+      'promotionsConsent': ?promotionsConsent,
+      'smallBusiness': ?smallBusiness,
+      'veteranOwned': ?veteranOwned,
+      'womenOwned': ?womenOwned,
+    };
+  }
 }
 
 /// The `BusinessInfo` message contains essential information about a business.
@@ -5095,41 +5152,44 @@ class BusinessInfo {
 
   BusinessInfo.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customerService:
-            json_.containsKey('customerService')
-                ? CustomerService.fromJson(
-                  json_['customerService']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? PostalAddress.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customerService: json_.containsKey('customerService')
+            ? CustomerService.fromJson(
+                json_['customerService'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         koreanBusinessRegistrationNumber:
             json_['koreanBusinessRegistrationNumber'] as core.String?,
         name: json_['name'] as core.String?,
-        phone:
-            json_.containsKey('phone')
-                ? PhoneNumber.fromJson(
-                  json_['phone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        phone: json_.containsKey('phone')
+            ? PhoneNumber.fromJson(
+                json_['phone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         phoneVerificationState: json_['phoneVerificationState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (customerService != null) 'customerService': customerService!,
-    if (koreanBusinessRegistrationNumber != null)
-      'koreanBusinessRegistrationNumber': koreanBusinessRegistrationNumber!,
-    if (name != null) 'name': name!,
-    if (phone != null) 'phone': phone!,
-    if (phoneVerificationState != null)
-      'phoneVerificationState': phoneVerificationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final customerService = this.customerService;
+    final koreanBusinessRegistrationNumber =
+        this.koreanBusinessRegistrationNumber;
+    final name = this.name;
+    final phone = this.phone;
+    final phoneVerificationState = this.phoneVerificationState;
+    return {
+      'address': ?address,
+      'customerService': ?customerService,
+      'koreanBusinessRegistrationNumber': ?koreanBusinessRegistrationNumber,
+      'name': ?name,
+      'phone': ?phone,
+      'phoneVerificationState': ?phoneVerificationState,
+    };
+  }
 }
 
 /// `CampaignManagement` payload.
@@ -5193,27 +5253,32 @@ class CarrierRate {
     : this(
         carrier: json_['carrier'] as core.String?,
         carrierService: json_['carrierService'] as core.String?,
-        flatAdjustment:
-            json_.containsKey('flatAdjustment')
-                ? Price.fromJson(
-                  json_['flatAdjustment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        flatAdjustment: json_.containsKey('flatAdjustment')
+            ? Price.fromJson(
+                json_['flatAdjustment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         originPostalCode: json_['originPostalCode'] as core.String?,
         percentageAdjustment: json_['percentageAdjustment'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carrier != null) 'carrier': carrier!,
-    if (carrierService != null) 'carrierService': carrierService!,
-    if (flatAdjustment != null) 'flatAdjustment': flatAdjustment!,
-    if (name != null) 'name': name!,
-    if (originPostalCode != null) 'originPostalCode': originPostalCode!,
-    if (percentageAdjustment != null)
-      'percentageAdjustment': percentageAdjustment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final carrier = this.carrier;
+    final carrierService = this.carrierService;
+    final flatAdjustment = this.flatAdjustment;
+    final name = this.name;
+    final originPostalCode = this.originPostalCode;
+    final percentageAdjustment = this.percentageAdjustment;
+    return {
+      'carrier': ?carrier,
+      'carrierService': ?carrierService,
+      'flatAdjustment': ?flatAdjustment,
+      'name': ?name,
+      'originPostalCode': ?originPostalCode,
+      'percentageAdjustment': ?percentageAdjustment,
+    };
+  }
 }
 
 /// [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for
@@ -5329,42 +5394,45 @@ class CheckoutSettings {
         effectiveEnrollmentState:
             json_['effectiveEnrollmentState'] as core.String?,
         effectiveReviewState: json_['effectiveReviewState'] as core.String?,
-        effectiveUriSettings:
-            json_.containsKey('effectiveUriSettings')
-                ? UriSettings.fromJson(
-                  json_['effectiveUriSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        eligibleDestinations:
-            (json_['eligibleDestinations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        effectiveUriSettings: json_.containsKey('effectiveUriSettings')
+            ? UriSettings.fromJson(
+                json_['effectiveUriSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eligibleDestinations: (json_['eligibleDestinations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         enrollmentState: json_['enrollmentState'] as core.String?,
         name: json_['name'] as core.String?,
         reviewState: json_['reviewState'] as core.String?,
-        uriSettings:
-            json_.containsKey('uriSettings')
-                ? UriSettings.fromJson(
-                  json_['uriSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        uriSettings: json_.containsKey('uriSettings')
+            ? UriSettings.fromJson(
+                json_['uriSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveEnrollmentState != null)
-      'effectiveEnrollmentState': effectiveEnrollmentState!,
-    if (effectiveReviewState != null)
-      'effectiveReviewState': effectiveReviewState!,
-    if (effectiveUriSettings != null)
-      'effectiveUriSettings': effectiveUriSettings!,
-    if (eligibleDestinations != null)
-      'eligibleDestinations': eligibleDestinations!,
-    if (enrollmentState != null) 'enrollmentState': enrollmentState!,
-    if (name != null) 'name': name!,
-    if (reviewState != null) 'reviewState': reviewState!,
-    if (uriSettings != null) 'uriSettings': uriSettings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveEnrollmentState = this.effectiveEnrollmentState;
+    final effectiveReviewState = this.effectiveReviewState;
+    final effectiveUriSettings = this.effectiveUriSettings;
+    final eligibleDestinations = this.eligibleDestinations;
+    final enrollmentState = this.enrollmentState;
+    final name = this.name;
+    final reviewState = this.reviewState;
+    final uriSettings = this.uriSettings;
+    return {
+      'effectiveEnrollmentState': ?effectiveEnrollmentState,
+      'effectiveReviewState': ?effectiveReviewState,
+      'effectiveUriSettings': ?effectiveUriSettings,
+      'eligibleDestinations': ?eligibleDestinations,
+      'enrollmentState': ?enrollmentState,
+      'name': ?name,
+      'reviewState': ?reviewState,
+      'uriSettings': ?uriSettings,
+    };
+  }
 }
 
 /// Request message for the `ClaimHomepage` method.
@@ -5381,9 +5449,10 @@ class ClaimHomepageRequest {
   ClaimHomepageRequest.fromJson(core.Map json_)
     : this(overwrite: json_['overwrite'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (overwrite != null) 'overwrite': overwrite!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final overwrite = this.overwrite;
+    return {'overwrite': ?overwrite};
+  }
 }
 
 /// `ComparisonShopping` payload.
@@ -5431,44 +5500,46 @@ class CreateAndConfigureAccountRequest {
 
   CreateAndConfigureAccountRequest.fromJson(core.Map json_)
     : this(
-        account:
-            json_.containsKey('account')
-                ? Account.fromJson(
-                  json_['account'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        service:
-            (json_['service'] as core.List?)
-                ?.map(
-                  (value) => AddAccountService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        setAlias:
-            (json_['setAlias'] as core.List?)
-                ?.map(
-                  (value) => SetAliasForRelationship.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        user:
-            (json_['user'] as core.List?)
-                ?.map(
-                  (value) => AddUser.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        account: json_.containsKey('account')
+            ? Account.fromJson(
+                json_['account'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        service: (json_['service'] as core.List?)
+            ?.map(
+              (value) => AddAccountService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        setAlias: (json_['setAlias'] as core.List?)
+            ?.map(
+              (value) => SetAliasForRelationship.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        user: (json_['user'] as core.List?)
+            ?.map(
+              (value) => AddUser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (account != null) 'account': account!,
-    if (service != null) 'service': service!,
-    if (setAlias != null) 'setAlias': setAlias!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final service = this.service;
+    final setAlias = this.setAlias;
+    final user = this.user;
+    return {
+      'account': ?account,
+      'service': ?service,
+      'setAlias': ?setAlias,
+      'user': ?user,
+    };
+  }
 }
 
 /// Request message for the `CreateRegion` method.
@@ -5496,20 +5567,20 @@ class CreateRegionRequest {
   CreateRegionRequest.fromJson(core.Map json_)
     : this(
         parent: json_['parent'] as core.String?,
-        region:
-            json_.containsKey('region')
-                ? Region.fromJson(
-                  json_['region'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        region: json_.containsKey('region')
+            ? Region.fromJson(
+                json_['region'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionId: json_['regionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parent != null) 'parent': parent!,
-    if (region != null) 'region': region!,
-    if (regionId != null) 'regionId': regionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
+    final region = this.region;
+    final regionId = this.regionId;
+    return {'parent': ?parent, 'region': ?region, 'regionId': ?regionId};
+  }
 }
 
 /// Customer service information.
@@ -5534,20 +5605,20 @@ class CustomerService {
   CustomerService.fromJson(core.Map json_)
     : this(
         email: json_['email'] as core.String?,
-        phone:
-            json_.containsKey('phone')
-                ? PhoneNumber.fromJson(
-                  json_['phone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        phone: json_.containsKey('phone')
+            ? PhoneNumber.fromJson(
+                json_['phone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (phone != null) 'phone': phone!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final phone = this.phone;
+    final uri = this.uri;
+    return {'email': ?email, 'phone': ?phone, 'uri': ?uri};
+  }
 }
 
 /// Configs related to local delivery ends for the day.
@@ -5579,24 +5650,25 @@ class CutoffConfig {
 
   CutoffConfig.fromJson(core.Map json_)
     : this(
-        localCutoffTime:
-            json_.containsKey('localCutoffTime')
-                ? LocalCutoffTime.fromJson(
-                  json_['localCutoffTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localCutoffTime: json_.containsKey('localCutoffTime')
+            ? LocalCutoffTime.fromJson(
+                json_['localCutoffTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         noDeliveryPostCutoff: json_['noDeliveryPostCutoff'] as core.bool?,
         storeCloseOffsetHours: json_['storeCloseOffsetHours'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (localCutoffTime != null) 'localCutoffTime': localCutoffTime!,
-    if (noDeliveryPostCutoff != null)
-      'noDeliveryPostCutoff': noDeliveryPostCutoff!,
-    if (storeCloseOffsetHours != null)
-      'storeCloseOffsetHours': storeCloseOffsetHours!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final localCutoffTime = this.localCutoffTime;
+    final noDeliveryPostCutoff = this.noDeliveryPostCutoff;
+    final storeCloseOffsetHours = this.storeCloseOffsetHours;
+    return {
+      'localCutoffTime': ?localCutoffTime,
+      'noDeliveryPostCutoff': ?noDeliveryPostCutoff,
+      'storeCloseOffsetHours': ?storeCloseOffsetHours,
+    };
+  }
 }
 
 /// Business days cutoff time definition.
@@ -5628,11 +5700,12 @@ class CutoffTime {
         timeZone: json_['timeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hour != null) 'hour': hour!,
-    if (minute != null) 'minute': minute!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hour = this.hour;
+    final minute = this.minute;
+    final timeZone = this.timeZone;
+    return {'hour': ?hour, 'minute': ?minute, 'timeZone': ?timeZone};
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -5661,9 +5734,10 @@ class DeleteRegionRequest {
   DeleteRegionRequest.fromJson(core.Map json_)
     : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// Time spent in various aspects from order to the delivery of the product.
@@ -5739,37 +5813,34 @@ class DeliveryTime {
 
   DeliveryTime.fromJson(core.Map json_)
     : this(
-        cutoffTime:
-            json_.containsKey('cutoffTime')
-                ? CutoffTime.fromJson(
-                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cutoffTime: json_.containsKey('cutoffTime')
+            ? CutoffTime.fromJson(
+                json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         handlingBusinessDayConfig:
             json_.containsKey('handlingBusinessDayConfig')
-                ? BusinessDayConfig.fromJson(
-                  json_['handlingBusinessDayConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BusinessDayConfig.fromJson(
+                json_['handlingBusinessDayConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxHandlingDays: json_['maxHandlingDays'] as core.int?,
         maxTransitDays: json_['maxTransitDays'] as core.int?,
         minHandlingDays: json_['minHandlingDays'] as core.int?,
         minTransitDays: json_['minTransitDays'] as core.int?,
-        transitBusinessDayConfig:
-            json_.containsKey('transitBusinessDayConfig')
-                ? BusinessDayConfig.fromJson(
-                  json_['transitBusinessDayConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        transitTimeTable:
-            json_.containsKey('transitTimeTable')
-                ? TransitTable.fromJson(
-                  json_['transitTimeTable']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        transitBusinessDayConfig: json_.containsKey('transitBusinessDayConfig')
+            ? BusinessDayConfig.fromJson(
+                json_['transitBusinessDayConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transitTimeTable: json_.containsKey('transitTimeTable')
+            ? TransitTable.fromJson(
+                json_['transitTimeTable']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         warehouseBasedDeliveryTimes:
             (json_['warehouseBasedDeliveryTimes'] as core.List?)
                 ?.map(
@@ -5780,20 +5851,28 @@ class DeliveryTime {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cutoffTime != null) 'cutoffTime': cutoffTime!,
-    if (handlingBusinessDayConfig != null)
-      'handlingBusinessDayConfig': handlingBusinessDayConfig!,
-    if (maxHandlingDays != null) 'maxHandlingDays': maxHandlingDays!,
-    if (maxTransitDays != null) 'maxTransitDays': maxTransitDays!,
-    if (minHandlingDays != null) 'minHandlingDays': minHandlingDays!,
-    if (minTransitDays != null) 'minTransitDays': minTransitDays!,
-    if (transitBusinessDayConfig != null)
-      'transitBusinessDayConfig': transitBusinessDayConfig!,
-    if (transitTimeTable != null) 'transitTimeTable': transitTimeTable!,
-    if (warehouseBasedDeliveryTimes != null)
-      'warehouseBasedDeliveryTimes': warehouseBasedDeliveryTimes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cutoffTime = this.cutoffTime;
+    final handlingBusinessDayConfig = this.handlingBusinessDayConfig;
+    final maxHandlingDays = this.maxHandlingDays;
+    final maxTransitDays = this.maxTransitDays;
+    final minHandlingDays = this.minHandlingDays;
+    final minTransitDays = this.minTransitDays;
+    final transitBusinessDayConfig = this.transitBusinessDayConfig;
+    final transitTimeTable = this.transitTimeTable;
+    final warehouseBasedDeliveryTimes = this.warehouseBasedDeliveryTimes;
+    return {
+      'cutoffTime': ?cutoffTime,
+      'handlingBusinessDayConfig': ?handlingBusinessDayConfig,
+      'maxHandlingDays': ?maxHandlingDays,
+      'maxTransitDays': ?maxTransitDays,
+      'minHandlingDays': ?minHandlingDays,
+      'minTransitDays': ?minTransitDays,
+      'transitBusinessDayConfig': ?transitBusinessDayConfig,
+      'transitTimeTable': ?transitTimeTable,
+      'warehouseBasedDeliveryTimes': ?warehouseBasedDeliveryTimes,
+    };
+  }
 }
 
 /// Represents a developer registration owned by a Merchant account.
@@ -5814,17 +5893,17 @@ class DeveloperRegistration {
 
   DeveloperRegistration.fromJson(core.Map json_)
     : this(
-        gcpIds:
-            (json_['gcpIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        gcpIds: (json_['gcpIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcpIds != null) 'gcpIds': gcpIds!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcpIds = this.gcpIds;
+    final name = this.name;
+    return {'gcpIds': ?gcpIds, 'name': ?name};
+  }
 }
 
 /// Request message for the DisableProgram method.
@@ -5853,10 +5932,11 @@ class Distance {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
 }
 
 /// The categories of notifications the user opted into / opted out of.
@@ -5890,10 +5970,11 @@ class EmailPreferences {
         newsAndTips: json_['newsAndTips'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (newsAndTips != null) 'newsAndTips': newsAndTips!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final newsAndTips = this.newsAndTips;
+    return {'name': ?name, 'newsAndTips': ?newsAndTips};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5921,21 +6002,21 @@ class FindLfpProvidersResponse {
 
   FindLfpProvidersResponse.fromJson(core.Map json_)
     : this(
-        lfpProviders:
-            (json_['lfpProviders'] as core.List?)
-                ?.map(
-                  (value) => LfpProvider.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        lfpProviders: (json_['lfpProviders'] as core.List?)
+            ?.map(
+              (value) => LfpProvider.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lfpProviders != null) 'lfpProviders': lfpProviders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lfpProviders = this.lfpProviders;
+    final nextPageToken = this.nextPageToken;
+    return {'lfpProviders': ?lfpProviders, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Collection of information related to a Google Business Profile (GBP)
@@ -5983,13 +6064,20 @@ class GbpAccount {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gbpAccountId != null) 'gbpAccountId': gbpAccountId!,
-    if (gbpAccountName != null) 'gbpAccountName': gbpAccountName!,
-    if (listingCount != null) 'listingCount': listingCount!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gbpAccountId = this.gbpAccountId;
+    final gbpAccountName = this.gbpAccountName;
+    final listingCount = this.listingCount;
+    final name = this.name;
+    final type = this.type;
+    return {
+      'gbpAccountId': ?gbpAccountId,
+      'gbpAccountName': ?gbpAccountName,
+      'listingCount': ?listingCount,
+      'name': ?name,
+      'type': ?type,
+    };
+  }
 }
 
 /// A list of geotargets that defines the region area.
@@ -6006,16 +6094,15 @@ class GeoTargetArea {
 
   GeoTargetArea.fromJson(core.Map json_)
     : this(
-        geotargetCriteriaIds:
-            (json_['geotargetCriteriaIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        geotargetCriteriaIds: (json_['geotargetCriteriaIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (geotargetCriteriaIds != null)
-      'geotargetCriteriaIds': geotargetCriteriaIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final geotargetCriteriaIds = this.geotargetCriteriaIds;
+    return {'geotargetCriteriaIds': ?geotargetCriteriaIds};
+  }
 }
 
 /// Response message for the GetAccountForGcpRegistration method.
@@ -6028,9 +6115,10 @@ class GetAccountForGcpRegistrationResponse {
   GetAccountForGcpRegistrationResponse.fromJson(core.Map json_)
     : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// The current status of establishing of the service.
@@ -6066,10 +6154,11 @@ class Handshake {
         approvalState: json_['approvalState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actor != null) 'actor': actor!,
-    if (approvalState != null) 'approvalState': approvalState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actor = this.actor;
+    final approvalState = this.approvalState;
+    return {'actor': ?actor, 'approvalState': ?approvalState};
+  }
 }
 
 /// A non-empty list of row or column headers for a table.
@@ -6138,48 +6227,47 @@ class Headers {
 
   Headers.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LocationIdSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        numberOfItems:
-            (json_['numberOfItems'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        postalCodeGroupNames:
-            (json_['postalCodeGroupNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        prices:
-            (json_['prices'] as core.List?)
-                ?.map(
-                  (value) => Price.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        weights:
-            (json_['weights'] as core.List?)
-                ?.map(
-                  (value) => Weight.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LocationIdSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        numberOfItems: (json_['numberOfItems'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        postalCodeGroupNames: (json_['postalCodeGroupNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        prices: (json_['prices'] as core.List?)
+            ?.map(
+              (value) =>
+                  Price.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        weights: (json_['weights'] as core.List?)
+            ?.map(
+              (value) =>
+                  Weight.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (numberOfItems != null) 'numberOfItems': numberOfItems!,
-    if (postalCodeGroupNames != null)
-      'postalCodeGroupNames': postalCodeGroupNames!,
-    if (prices != null) 'prices': prices!,
-    if (weights != null) 'weights': weights!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final numberOfItems = this.numberOfItems;
+    final postalCodeGroupNames = this.postalCodeGroupNames;
+    final prices = this.prices;
+    final weights = this.weights;
+    return {
+      'locations': ?locations,
+      'numberOfItems': ?numberOfItems,
+      'postalCodeGroupNames': ?postalCodeGroupNames,
+      'prices': ?prices,
+      'weights': ?weights,
+    };
+  }
 }
 
 /// The `Homepage` message represents a business's store homepage within the
@@ -6218,11 +6306,12 @@ class Homepage {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (claimed != null) 'claimed': claimed!,
-    if (name != null) 'name': name!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final claimed = this.claimed;
+    final name = this.name;
+    final uri = this.uri;
+    return {'claimed': ?claimed, 'name': ?name, 'uri': ?uri};
+  }
 }
 
 /// All information related to an identity attribute.
@@ -6244,10 +6333,10 @@ class IdentityAttribute {
   IdentityAttribute.fromJson(core.Map json_)
     : this(identityDeclaration: json_['identityDeclaration'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (identityDeclaration != null)
-      'identityDeclaration': identityDeclaration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final identityDeclaration = this.identityDeclaration;
+    return {'identityDeclaration': ?identityDeclaration};
+  }
 }
 
 /// Settings for the Automatic Image Improvements.
@@ -6276,10 +6365,11 @@ class Impact {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regionCode = this.regionCode;
+    final severity = this.severity;
+    return {'regionCode': ?regionCode, 'severity': ?severity};
+  }
 }
 
 /// The impact of the issue on a destination.
@@ -6331,21 +6421,20 @@ class ImpactedDestination {
 
   ImpactedDestination.fromJson(core.Map json_)
     : this(
-        impacts:
-            (json_['impacts'] as core.List?)
-                ?.map(
-                  (value) => Impact.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        impacts: (json_['impacts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Impact.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         reportingContext: json_['reportingContext'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (impacts != null) 'impacts': impacts!,
-    if (reportingContext != null) 'reportingContext': reportingContext!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final impacts = this.impacts;
+    final reportingContext = this.reportingContext;
+    return {'impacts': ?impacts, 'reportingContext': ?reportingContext};
+  }
 }
 
 /// Collection of information related to InStock.
@@ -6381,10 +6470,11 @@ class InStock {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final uri = this.uri;
+    return {'state': ?state, 'uri': ?uri};
+  }
 }
 
 /// Collection of information related to
@@ -6444,12 +6534,18 @@ class InventoryVerification {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contact != null) 'contact': contact!,
-    if (contactEmail != null) 'contactEmail': contactEmail!,
-    if (contactState != null) 'contactState': contactState!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contact = this.contact;
+    final contactEmail = this.contactEmail;
+    final contactState = this.contactState;
+    final state = this.state;
+    return {
+      'contact': ?contact,
+      'contactEmail': ?contactEmail,
+      'contactState': ?contactState,
+      'state': ?state,
+    };
+  }
 }
 
 /// Settings for the Automatic Item Updates.
@@ -6498,15 +6594,18 @@ class ItemUpdatesAccountLevelSettings {
             json_['allowStrictAvailabilityUpdates'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowAvailabilityUpdates != null)
-      'allowAvailabilityUpdates': allowAvailabilityUpdates!,
-    if (allowConditionUpdates != null)
-      'allowConditionUpdates': allowConditionUpdates!,
-    if (allowPriceUpdates != null) 'allowPriceUpdates': allowPriceUpdates!,
-    if (allowStrictAvailabilityUpdates != null)
-      'allowStrictAvailabilityUpdates': allowStrictAvailabilityUpdates!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAvailabilityUpdates = this.allowAvailabilityUpdates;
+    final allowConditionUpdates = this.allowConditionUpdates;
+    final allowPriceUpdates = this.allowPriceUpdates;
+    final allowStrictAvailabilityUpdates = this.allowStrictAvailabilityUpdates;
+    return {
+      'allowAvailabilityUpdates': ?allowAvailabilityUpdates,
+      'allowConditionUpdates': ?allowConditionUpdates,
+      'allowPriceUpdates': ?allowPriceUpdates,
+      'allowStrictAvailabilityUpdates': ?allowStrictAvailabilityUpdates,
+    };
+  }
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -6552,11 +6651,16 @@ class LfpLink {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalAccountId != null) 'externalAccountId': externalAccountId!,
-    if (lfpProvider != null) 'lfpProvider': lfpProvider!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalAccountId = this.externalAccountId;
+    final lfpProvider = this.lfpProvider;
+    final state = this.state;
+    return {
+      'externalAccountId': ?externalAccountId,
+      'lfpProvider': ?lfpProvider,
+      'state': ?state,
+    };
+  }
 }
 
 /// Collection of information related to a Local Feed Partnership (LFP)
@@ -6585,11 +6689,16 @@ class LfpProvider {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final name = this.name;
+    final regionCode = this.regionCode;
+    return {
+      'displayName': ?displayName,
+      'name': ?name,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// Request message for the LinkGbpAccount method.
@@ -6604,9 +6713,10 @@ class LinkGbpAccountRequest {
   LinkGbpAccountRequest.fromJson(core.Map json_)
     : this(gbpEmail: json_['gbpEmail'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gbpEmail != null) 'gbpEmail': gbpEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gbpEmail = this.gbpEmail;
+    return {'gbpEmail': ?gbpEmail};
+  }
 }
 
 /// Response message for the LinkGbpAccount method.
@@ -6618,17 +6728,17 @@ class LinkGbpAccountResponse {
 
   LinkGbpAccountResponse.fromJson(core.Map json_)
     : this(
-        response:
-            json_.containsKey('response')
-                ? Empty.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        response: json_.containsKey('response')
+            ? Empty.fromJson(
+                json_['response'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final response = this.response;
+    return {'response': ?response};
+  }
 }
 
 /// Request message for the LinkLfpProvider method.
@@ -6644,9 +6754,10 @@ class LinkLfpProviderRequest {
   LinkLfpProviderRequest.fromJson(core.Map json_)
     : this(externalAccountId: json_['externalAccountId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalAccountId != null) 'externalAccountId': externalAccountId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalAccountId = this.externalAccountId;
+    return {'externalAccountId': ?externalAccountId};
+  }
 }
 
 /// Response message for the LinkLfpProvider method.
@@ -6658,17 +6769,17 @@ class LinkLfpProviderResponse {
 
   LinkLfpProviderResponse.fromJson(core.Map json_)
     : this(
-        response:
-            json_.containsKey('response')
-                ? Empty.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        response: json_.containsKey('response')
+            ? Empty.fromJson(
+                json_['response'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final response = this.response;
+    return {'response': ?response};
+  }
 }
 
 /// Response message for the `ListAccountIssues` method.
@@ -6685,21 +6796,21 @@ class ListAccountIssuesResponse {
 
   ListAccountIssuesResponse.fromJson(core.Map json_)
     : this(
-        accountIssues:
-            (json_['accountIssues'] as core.List?)
-                ?.map(
-                  (value) => AccountIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accountIssues: (json_['accountIssues'] as core.List?)
+            ?.map(
+              (value) => AccountIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountIssues != null) 'accountIssues': accountIssues!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountIssues = this.accountIssues;
+    final nextPageToken = this.nextPageToken;
+    return {'accountIssues': ?accountIssues, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response after trying to list account relationships.
@@ -6720,22 +6831,24 @@ class ListAccountRelationshipsResponse {
 
   ListAccountRelationshipsResponse.fromJson(core.Map json_)
     : this(
-        accountRelationships:
-            (json_['accountRelationships'] as core.List?)
-                ?.map(
-                  (value) => AccountRelationship.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accountRelationships: (json_['accountRelationships'] as core.List?)
+            ?.map(
+              (value) => AccountRelationship.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountRelationships != null)
-      'accountRelationships': accountRelationships!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountRelationships = this.accountRelationships;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'accountRelationships': ?accountRelationships,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response after trying to list account services.
@@ -6753,21 +6866,24 @@ class ListAccountServicesResponse {
 
   ListAccountServicesResponse.fromJson(core.Map json_)
     : this(
-        accountServices:
-            (json_['accountServices'] as core.List?)
-                ?.map(
-                  (value) => AccountService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accountServices: (json_['accountServices'] as core.List?)
+            ?.map(
+              (value) => AccountService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountServices != null) 'accountServices': accountServices!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountServices = this.accountServices;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'accountServices': ?accountServices,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for the `accounts.list` method.
@@ -6784,21 +6900,21 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListGbpAccounts method.
@@ -6815,21 +6931,21 @@ class ListGbpAccountsResponse {
 
   ListGbpAccountsResponse.fromJson(core.Map json_)
     : this(
-        gbpAccounts:
-            (json_['gbpAccounts'] as core.List?)
-                ?.map(
-                  (value) => GbpAccount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        gbpAccounts: (json_['gbpAccounts'] as core.List?)
+            ?.map(
+              (value) => GbpAccount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gbpAccounts != null) 'gbpAccounts': gbpAccounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gbpAccounts = this.gbpAccounts;
+    final nextPageToken = this.nextPageToken;
+    return {'gbpAccounts': ?gbpAccounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the ListOmnichannelSettings method.
@@ -6850,21 +6966,23 @@ class ListOmnichannelSettingsResponse {
   ListOmnichannelSettingsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        omnichannelSettings:
-            (json_['omnichannelSettings'] as core.List?)
-                ?.map(
-                  (value) => OmnichannelSetting.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        omnichannelSettings: (json_['omnichannelSettings'] as core.List?)
+            ?.map(
+              (value) => OmnichannelSetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (omnichannelSettings != null)
-      'omnichannelSettings': omnichannelSettings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final omnichannelSettings = this.omnichannelSettings;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'omnichannelSettings': ?omnichannelSettings,
+    };
+  }
 }
 
 /// Response message for the `ListOnlineReturnPolicies` method.
@@ -6885,21 +7003,23 @@ class ListOnlineReturnPoliciesResponse {
   ListOnlineReturnPoliciesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        onlineReturnPolicies:
-            (json_['onlineReturnPolicies'] as core.List?)
-                ?.map(
-                  (value) => OnlineReturnPolicy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        onlineReturnPolicies: (json_['onlineReturnPolicies'] as core.List?)
+            ?.map(
+              (value) => OnlineReturnPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (onlineReturnPolicies != null)
-      'onlineReturnPolicies': onlineReturnPolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final onlineReturnPolicies = this.onlineReturnPolicies;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'onlineReturnPolicies': ?onlineReturnPolicies,
+    };
+  }
 }
 
 /// Response message for the ListPrograms method.
@@ -6917,20 +7037,20 @@ class ListProgramsResponse {
   ListProgramsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        programs:
-            (json_['programs'] as core.List?)
-                ?.map(
-                  (value) => Program.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        programs: (json_['programs'] as core.List?)
+            ?.map(
+              (value) => Program.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (programs != null) 'programs': programs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final programs = this.programs;
+    return {'nextPageToken': ?nextPageToken, 'programs': ?programs};
+  }
 }
 
 /// Response message for the `ListRegions` method.
@@ -6948,20 +7068,19 @@ class ListRegionsResponse {
   ListRegionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map(
-                  (value) => Region.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Region.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final regions = this.regions;
+    return {'nextPageToken': ?nextPageToken, 'regions': ?regions};
+  }
 }
 
 /// Response message for the `ListSubAccounts` method.
@@ -6978,21 +7097,21 @@ class ListSubAccountsResponse {
 
   ListSubAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for the `ListUsers` method.
@@ -7010,20 +7129,19 @@ class ListUsersResponse {
   ListUsersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        users:
-            (json_['users'] as core.List?)
-                ?.map(
-                  (value) => User.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (users != null) 'users': users!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final users = this.users;
+    return {'nextPageToken': ?nextPageToken, 'users': ?users};
+  }
 }
 
 /// Time that local delivery ends for the day.
@@ -7048,15 +7166,15 @@ class LocationIdSet {
 
   LocationIdSet.fromJson(core.Map json_)
     : this(
-        locationIds:
-            (json_['locationIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        locationIds: (json_['locationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationIds != null) 'locationIds': locationIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationIds = this.locationIds;
+    return {'locationIds': ?locationIds};
+  }
 }
 
 /// [Loyalty program](https://support.google.com/merchants/answer/12922446)
@@ -7078,22 +7196,24 @@ class LoyaltyProgram {
 
   LoyaltyProgram.fromJson(core.Map json_)
     : this(
-        loyaltyProgramTiers:
-            (json_['loyaltyProgramTiers'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyProgramTiers.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        loyaltyProgramTiers: (json_['loyaltyProgramTiers'] as core.List?)
+            ?.map(
+              (value) => LoyaltyProgramTiers.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         programLabel: json_['programLabel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (loyaltyProgramTiers != null)
-      'loyaltyProgramTiers': loyaltyProgramTiers!,
-    if (programLabel != null) 'programLabel': programLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final loyaltyProgramTiers = this.loyaltyProgramTiers;
+    final programLabel = this.programLabel;
+    return {
+      'loyaltyProgramTiers': ?loyaltyProgramTiers,
+      'programLabel': ?programLabel,
+    };
+  }
 }
 
 /// Subset of a business's loyalty program.
@@ -7111,9 +7231,10 @@ class LoyaltyProgramTiers {
   LoyaltyProgramTiers.fromJson(core.Map json_)
     : this(tierLabel: json_['tierLabel'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tierLabel != null) 'tierLabel': tierLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tierLabel = this.tierLabel;
+    return {'tierLabel': ?tierLabel};
+  }
 }
 
 /// Table of per store minimum order values for the pickup fulfillment type.
@@ -7132,20 +7253,19 @@ class MinimumOrderValueTable {
 
   MinimumOrderValueTable.fromJson(core.Map json_)
     : this(
-        storeCodeSetWithMovs:
-            (json_['storeCodeSetWithMovs'] as core.List?)
-                ?.map(
-                  (value) => StoreCodeSetWithMov.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        storeCodeSetWithMovs: (json_['storeCodeSetWithMovs'] as core.List?)
+            ?.map(
+              (value) => StoreCodeSetWithMov.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storeCodeSetWithMovs != null)
-      'storeCodeSetWithMovs': storeCodeSetWithMovs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storeCodeSetWithMovs = this.storeCodeSetWithMovs;
+    return {'storeCodeSetWithMovs': ?storeCodeSetWithMovs};
+  }
 }
 
 /// Collection of information related to the omnichannel settings of a merchant.
@@ -7223,60 +7343,64 @@ class OmnichannelSetting {
 
   OmnichannelSetting.fromJson(core.Map json_)
     : this(
-        about:
-            json_.containsKey('about')
-                ? About.fromJson(
-                  json_['about'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inStock:
-            json_.containsKey('inStock')
-                ? InStock.fromJson(
-                  json_['inStock'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inventoryVerification:
-            json_.containsKey('inventoryVerification')
-                ? InventoryVerification.fromJson(
-                  json_['inventoryVerification']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lfpLink:
-            json_.containsKey('lfpLink')
-                ? LfpLink.fromJson(
-                  json_['lfpLink'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        about: json_.containsKey('about')
+            ? About.fromJson(
+                json_['about'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inStock: json_.containsKey('inStock')
+            ? InStock.fromJson(
+                json_['inStock'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inventoryVerification: json_.containsKey('inventoryVerification')
+            ? InventoryVerification.fromJson(
+                json_['inventoryVerification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lfpLink: json_.containsKey('lfpLink')
+            ? LfpLink.fromJson(
+                json_['lfpLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lsfType: json_['lsfType'] as core.String?,
         name: json_['name'] as core.String?,
-        odo:
-            json_.containsKey('odo')
-                ? OnDisplayToOrder.fromJson(
-                  json_['odo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pickup:
-            json_.containsKey('pickup')
-                ? Pickup.fromJson(
-                  json_['pickup'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        odo: json_.containsKey('odo')
+            ? OnDisplayToOrder.fromJson(
+                json_['odo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pickup: json_.containsKey('pickup')
+            ? Pickup.fromJson(
+                json_['pickup'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (about != null) 'about': about!,
-    if (inStock != null) 'inStock': inStock!,
-    if (inventoryVerification != null)
-      'inventoryVerification': inventoryVerification!,
-    if (lfpLink != null) 'lfpLink': lfpLink!,
-    if (lsfType != null) 'lsfType': lsfType!,
-    if (name != null) 'name': name!,
-    if (odo != null) 'odo': odo!,
-    if (pickup != null) 'pickup': pickup!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final about = this.about;
+    final inStock = this.inStock;
+    final inventoryVerification = this.inventoryVerification;
+    final lfpLink = this.lfpLink;
+    final lsfType = this.lsfType;
+    final name = this.name;
+    final odo = this.odo;
+    final pickup = this.pickup;
+    final regionCode = this.regionCode;
+    return {
+      'about': ?about,
+      'inStock': ?inStock,
+      'inventoryVerification': ?inventoryVerification,
+      'lfpLink': ?lfpLink,
+      'lsfType': ?lsfType,
+      'name': ?name,
+      'odo': ?odo,
+      'pickup': ?pickup,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// Collection of information related to the on display to order
@@ -7308,10 +7432,11 @@ class OnDisplayToOrder {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final uri = this.uri;
+    return {'state': ?state, 'uri': ?uri};
+  }
 }
 
 /// [Online return policy](https://support.google.com/merchants/answer/10220642)
@@ -7450,71 +7575,80 @@ class OnlineReturnPolicy {
     : this(
         acceptDefectiveOnly: json_['acceptDefectiveOnly'] as core.bool?,
         acceptExchange: json_['acceptExchange'] as core.bool?,
-        countries:
-            (json_['countries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        itemConditions:
-            (json_['itemConditions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        countries: (json_['countries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        itemConditions: (json_['itemConditions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         label: json_['label'] as core.String?,
         name: json_['name'] as core.String?,
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         processRefundDays: json_['processRefundDays'] as core.int?,
-        restockingFee:
-            json_.containsKey('restockingFee')
-                ? RestockingFee.fromJson(
-                  json_['restockingFee'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        restockingFee: json_.containsKey('restockingFee')
+            ? RestockingFee.fromJson(
+                json_['restockingFee'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         returnLabelSource: json_['returnLabelSource'] as core.String?,
-        returnMethods:
-            (json_['returnMethods'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        returnMethods: (json_['returnMethods'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         returnPolicyId: json_['returnPolicyId'] as core.String?,
         returnPolicyUri: json_['returnPolicyUri'] as core.String?,
-        returnShippingFee:
-            json_.containsKey('returnShippingFee')
-                ? ReturnShippingFee.fromJson(
-                  json_['returnShippingFee']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seasonalOverrides:
-            (json_['seasonalOverrides'] as core.List?)
-                ?.map(
-                  (value) => SeasonalOverride.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        returnShippingFee: json_.containsKey('returnShippingFee')
+            ? ReturnShippingFee.fromJson(
+                json_['returnShippingFee']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seasonalOverrides: (json_['seasonalOverrides'] as core.List?)
+            ?.map(
+              (value) => SeasonalOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceptDefectiveOnly != null)
-      'acceptDefectiveOnly': acceptDefectiveOnly!,
-    if (acceptExchange != null) 'acceptExchange': acceptExchange!,
-    if (countries != null) 'countries': countries!,
-    if (itemConditions != null) 'itemConditions': itemConditions!,
-    if (label != null) 'label': label!,
-    if (name != null) 'name': name!,
-    if (policy != null) 'policy': policy!,
-    if (processRefundDays != null) 'processRefundDays': processRefundDays!,
-    if (restockingFee != null) 'restockingFee': restockingFee!,
-    if (returnLabelSource != null) 'returnLabelSource': returnLabelSource!,
-    if (returnMethods != null) 'returnMethods': returnMethods!,
-    if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
-    if (returnPolicyUri != null) 'returnPolicyUri': returnPolicyUri!,
-    if (returnShippingFee != null) 'returnShippingFee': returnShippingFee!,
-    if (seasonalOverrides != null) 'seasonalOverrides': seasonalOverrides!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptDefectiveOnly = this.acceptDefectiveOnly;
+    final acceptExchange = this.acceptExchange;
+    final countries = this.countries;
+    final itemConditions = this.itemConditions;
+    final label = this.label;
+    final name = this.name;
+    final policy = this.policy;
+    final processRefundDays = this.processRefundDays;
+    final restockingFee = this.restockingFee;
+    final returnLabelSource = this.returnLabelSource;
+    final returnMethods = this.returnMethods;
+    final returnPolicyId = this.returnPolicyId;
+    final returnPolicyUri = this.returnPolicyUri;
+    final returnShippingFee = this.returnShippingFee;
+    final seasonalOverrides = this.seasonalOverrides;
+    return {
+      'acceptDefectiveOnly': ?acceptDefectiveOnly,
+      'acceptExchange': ?acceptExchange,
+      'countries': ?countries,
+      'itemConditions': ?itemConditions,
+      'label': ?label,
+      'name': ?name,
+      'policy': ?policy,
+      'processRefundDays': ?processRefundDays,
+      'restockingFee': ?restockingFee,
+      'returnLabelSource': ?returnLabelSource,
+      'returnMethods': ?returnMethods,
+      'returnPolicyId': ?returnPolicyId,
+      'returnPolicyUri': ?returnPolicyUri,
+      'returnShippingFee': ?returnShippingFee,
+      'seasonalOverrides': ?seasonalOverrides,
+    };
+  }
 }
 
 /// An object representing a phone number, suitable as an API wire format.
@@ -7569,19 +7703,23 @@ class PhoneNumber {
     : this(
         e164Number: json_['e164Number'] as core.String?,
         extension: json_['extension'] as core.String?,
-        shortCode:
-            json_.containsKey('shortCode')
-                ? ShortCode.fromJson(
-                  json_['shortCode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        shortCode: json_.containsKey('shortCode')
+            ? ShortCode.fromJson(
+                json_['shortCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (e164Number != null) 'e164Number': e164Number!,
-    if (extension != null) 'extension': extension!,
-    if (shortCode != null) 'shortCode': shortCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final e164Number = this.e164Number;
+    final extension = this.extension;
+    final shortCode = this.shortCode;
+    return {
+      'e164Number': ?e164Number,
+      'extension': ?extension,
+      'shortCode': ?shortCode,
+    };
+  }
 }
 
 /// Collection of information related to Pickup.
@@ -7615,10 +7753,11 @@ class Pickup {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final uri = this.uri;
+    return {'state': ?state, 'uri': ?uri};
+  }
 }
 
 /// The available policies.
@@ -7646,10 +7785,11 @@ class Policy {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (days != null) 'days': days!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final days = this.days;
+    final type = this.type;
+    return {'days': ?days, 'type': ?type};
+  }
 }
 
 /// Represents a postal address, such as for postal delivery or payments
@@ -7687,21 +7827,21 @@ class PostalCodeArea {
 
   PostalCodeArea.fromJson(core.Map json_)
     : this(
-        postalCodes:
-            (json_['postalCodes'] as core.List?)
-                ?.map(
-                  (value) => PostalCodeRange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        postalCodes: (json_['postalCodes'] as core.List?)
+            ?.map(
+              (value) => PostalCodeRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (postalCodes != null) 'postalCodes': postalCodes!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final postalCodes = this.postalCodes;
+    final regionCode = this.regionCode;
+    return {'postalCodes': ?postalCodes, 'regionCode': ?regionCode};
+  }
 }
 
 /// A range of postal codes that defines the region area.
@@ -7735,10 +7875,11 @@ class PostalCodeRange {
         end: json_['end'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (begin != null) 'begin': begin!,
-    if (end != null) 'end': end!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final begin = this.begin;
+    final end = this.end;
+    return {'begin': ?begin, 'end': ?end};
+  }
 }
 
 /// The price represented as a number and currency.
@@ -7806,30 +7947,35 @@ class Program {
 
   Program.fromJson(core.Map json_)
     : this(
-        activeRegionCodes:
-            (json_['activeRegionCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        activeRegionCodes: (json_['activeRegionCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         documentationUri: json_['documentationUri'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
-        unmetRequirements:
-            (json_['unmetRequirements'] as core.List?)
-                ?.map(
-                  (value) => Requirement.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unmetRequirements: (json_['unmetRequirements'] as core.List?)
+            ?.map(
+              (value) => Requirement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeRegionCodes != null) 'activeRegionCodes': activeRegionCodes!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (unmetRequirements != null) 'unmetRequirements': unmetRequirements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeRegionCodes = this.activeRegionCodes;
+    final documentationUri = this.documentationUri;
+    final name = this.name;
+    final state = this.state;
+    final unmetRequirements = this.unmetRequirements;
+    return {
+      'activeRegionCodes': ?activeRegionCodes,
+      'documentationUri': ?documentationUri,
+      'name': ?name,
+      'state': ?state,
+      'unmetRequirements': ?unmetRequirements,
+    };
+  }
 }
 
 /// Request to propose an account service.
@@ -7852,20 +7998,19 @@ class ProposeAccountServiceRequest {
 
   ProposeAccountServiceRequest.fromJson(core.Map json_)
     : this(
-        accountService:
-            json_.containsKey('accountService')
-                ? AccountService.fromJson(
-                  json_['accountService']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accountService: json_.containsKey('accountService')
+            ? AccountService.fromJson(
+                json_['accountService'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         provider: json_['provider'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountService != null) 'accountService': accountService!,
-    if (provider != null) 'provider': provider!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountService = this.accountService;
+    final provider = this.provider;
+    return {'accountService': ?accountService, 'provider': ?provider};
+  }
 }
 
 /// A radius area that defines the region area.
@@ -7901,23 +8046,28 @@ class RadiusArea {
 
   RadiusArea.fromJson(core.Map json_)
     : this(
-        latLng:
-            json_.containsKey('latLng')
-                ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latLng: json_.containsKey('latLng')
+            ? LatLng.fromJson(
+                json_['latLng'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         radius: (json_['radius'] as core.num?)?.toDouble(),
         radiusUnits: json_['radiusUnits'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latLng != null) 'latLng': latLng!,
-    if (radius != null) 'radius': radius!,
-    if (radiusUnits != null) 'radiusUnits': radiusUnits!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latLng = this.latLng;
+    final radius = this.radius;
+    final radiusUnits = this.radiusUnits;
+    final regionCode = this.regionCode;
+    return {
+      'latLng': ?latLng,
+      'radius': ?radius,
+      'radiusUnits': ?radiusUnits,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// Shipping rate group definitions.
@@ -7982,46 +8132,48 @@ class RateGroup {
             (json_['applicableShippingLabels'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        carrierRates:
-            (json_['carrierRates'] as core.List?)
-                ?.map(
-                  (value) => CarrierRate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        mainTable:
-            json_.containsKey('mainTable')
-                ? Table.fromJson(
-                  json_['mainTable'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        carrierRates: (json_['carrierRates'] as core.List?)
+            ?.map(
+              (value) => CarrierRate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        mainTable: json_.containsKey('mainTable')
+            ? Table.fromJson(
+                json_['mainTable'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        singleValue:
-            json_.containsKey('singleValue')
-                ? Value.fromJson(
-                  json_['singleValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        subtables:
-            (json_['subtables'] as core.List?)
-                ?.map(
-                  (value) => Table.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        singleValue: json_.containsKey('singleValue')
+            ? Value.fromJson(
+                json_['singleValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        subtables: (json_['subtables'] as core.List?)
+            ?.map(
+              (value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicableShippingLabels != null)
-      'applicableShippingLabels': applicableShippingLabels!,
-    if (carrierRates != null) 'carrierRates': carrierRates!,
-    if (mainTable != null) 'mainTable': mainTable!,
-    if (name != null) 'name': name!,
-    if (singleValue != null) 'singleValue': singleValue!,
-    if (subtables != null) 'subtables': subtables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicableShippingLabels = this.applicableShippingLabels;
+    final carrierRates = this.carrierRates;
+    final mainTable = this.mainTable;
+    final name = this.name;
+    final singleValue = this.singleValue;
+    final subtables = this.subtables;
+    return {
+      'applicableShippingLabels': ?applicableShippingLabels,
+      'carrierRates': ?carrierRates,
+      'mainTable': ?mainTable,
+      'name': ?name,
+      'singleValue': ?singleValue,
+      'subtables': ?subtables,
+    };
+  }
 }
 
 /// Represents a geographic region that you can use as a target with both the
@@ -8083,41 +8235,45 @@ class Region {
   Region.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        geotargetArea:
-            json_.containsKey('geotargetArea')
-                ? GeoTargetArea.fromJson(
-                  json_['geotargetArea'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        geotargetArea: json_.containsKey('geotargetArea')
+            ? GeoTargetArea.fromJson(
+                json_['geotargetArea'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        postalCodeArea:
-            json_.containsKey('postalCodeArea')
-                ? PostalCodeArea.fromJson(
-                  json_['postalCodeArea']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        radiusArea:
-            json_.containsKey('radiusArea')
-                ? RadiusArea.fromJson(
-                  json_['radiusArea'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        postalCodeArea: json_.containsKey('postalCodeArea')
+            ? PostalCodeArea.fromJson(
+                json_['postalCodeArea'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        radiusArea: json_.containsKey('radiusArea')
+            ? RadiusArea.fromJson(
+                json_['radiusArea'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regionalInventoryEligible:
             json_['regionalInventoryEligible'] as core.bool?,
         shippingEligible: json_['shippingEligible'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (geotargetArea != null) 'geotargetArea': geotargetArea!,
-    if (name != null) 'name': name!,
-    if (postalCodeArea != null) 'postalCodeArea': postalCodeArea!,
-    if (radiusArea != null) 'radiusArea': radiusArea!,
-    if (regionalInventoryEligible != null)
-      'regionalInventoryEligible': regionalInventoryEligible!,
-    if (shippingEligible != null) 'shippingEligible': shippingEligible!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final geotargetArea = this.geotargetArea;
+    final name = this.name;
+    final postalCodeArea = this.postalCodeArea;
+    final radiusArea = this.radiusArea;
+    final regionalInventoryEligible = this.regionalInventoryEligible;
+    final shippingEligible = this.shippingEligible;
+    return {
+      'displayName': ?displayName,
+      'geotargetArea': ?geotargetArea,
+      'name': ?name,
+      'postalCodeArea': ?postalCodeArea,
+      'radiusArea': ?radiusArea,
+      'regionalInventoryEligible': ?regionalInventoryEligible,
+      'shippingEligible': ?shippingEligible,
+    };
+  }
 }
 
 /// Request message for the RegisterGCP method.
@@ -8142,9 +8298,10 @@ class RegisterGcpRequest {
   RegisterGcpRequest.fromJson(core.Map json_)
     : this(developerEmail: json_['developerEmail'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (developerEmail != null) 'developerEmail': developerEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final developerEmail = this.developerEmail;
+    return {'developerEmail': ?developerEmail};
+  }
 }
 
 /// Request to reject an account service.
@@ -8162,18 +8319,18 @@ class RequestInventoryVerificationResponse {
 
   RequestInventoryVerificationResponse.fromJson(core.Map json_)
     : this(
-        omnichannelSetting:
-            json_.containsKey('omnichannelSetting')
-                ? OmnichannelSetting.fromJson(
-                  json_['omnichannelSetting']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        omnichannelSetting: json_.containsKey('omnichannelSetting')
+            ? OmnichannelSetting.fromJson(
+                json_['omnichannelSetting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (omnichannelSetting != null) 'omnichannelSetting': omnichannelSetting!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final omnichannelSetting = this.omnichannelSetting;
+    return {'omnichannelSetting': ?omnichannelSetting};
+  }
 }
 
 /// Describes the terms of service which are required to be accepted.
@@ -8199,10 +8356,11 @@ class Required {
         tosFileUri: json_['tosFileUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (termsOfService != null) 'termsOfService': termsOfService!,
-    if (tosFileUri != null) 'tosFileUri': tosFileUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final termsOfService = this.termsOfService;
+    final tosFileUri = this.tosFileUri;
+    return {'termsOfService': ?termsOfService, 'tosFileUri': ?tosFileUri};
+  }
 }
 
 /// Defines a requirement specified for participation in the program.
@@ -8230,20 +8388,23 @@ class Requirement {
 
   Requirement.fromJson(core.Map json_)
     : this(
-        affectedRegionCodes:
-            (json_['affectedRegionCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        affectedRegionCodes: (json_['affectedRegionCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         documentationUri: json_['documentationUri'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (affectedRegionCodes != null)
-      'affectedRegionCodes': affectedRegionCodes!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final affectedRegionCodes = this.affectedRegionCodes;
+    final documentationUri = this.documentationUri;
+    final title = this.title;
+    return {
+      'affectedRegionCodes': ?affectedRegionCodes,
+      'documentationUri': ?documentationUri,
+      'title': ?title,
+    };
+  }
 }
 
 /// The restocking fee.
@@ -8262,19 +8423,19 @@ class RestockingFee {
 
   RestockingFee.fromJson(core.Map json_)
     : this(
-        fixedFee:
-            json_.containsKey('fixedFee')
-                ? Price.fromJson(
-                  json_['fixedFee'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fixedFee: json_.containsKey('fixedFee')
+            ? Price.fromJson(
+                json_['fixedFee'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         microPercent: json_['microPercent'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fixedFee != null) 'fixedFee': fixedFee!,
-    if (microPercent != null) 'microPercent': microPercent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fixedFee = this.fixedFee;
+    final microPercent = this.microPercent;
+    return {'fixedFee': ?fixedFee, 'microPercent': ?microPercent};
+  }
 }
 
 /// The return shipping fee.
@@ -8302,19 +8463,19 @@ class ReturnShippingFee {
 
   ReturnShippingFee.fromJson(core.Map json_)
     : this(
-        fixedFee:
-            json_.containsKey('fixedFee')
-                ? Price.fromJson(
-                  json_['fixedFee'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fixedFee: json_.containsKey('fixedFee')
+            ? Price.fromJson(
+                json_['fixedFee'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fixedFee != null) 'fixedFee': fixedFee!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fixedFee = this.fixedFee;
+    final type = this.type;
+    return {'fixedFee': ?fixedFee, 'type': ?type};
+  }
 }
 
 /// Include a list of cells.
@@ -8331,19 +8492,18 @@ class Row {
 
   Row.fromJson(core.Map json_)
     : this(
-        cells:
-            (json_['cells'] as core.List?)
-                ?.map(
-                  (value) => Value.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cells: (json_['cells'] as core.List?)
+            ?.map(
+              (value) =>
+                  Value.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cells != null) 'cells': cells!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    return {'cells': ?cells};
+  }
 }
 
 class SeasonalOverride {
@@ -8381,36 +8541,39 @@ class SeasonalOverride {
 
   SeasonalOverride.fromJson(core.Map json_)
     : this(
-        endDate:
-            json_.containsKey('endDate')
-                ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endDate: json_.containsKey('endDate')
+            ? Date.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         label: json_['label'] as core.String?,
         returnDays: json_['returnDays'] as core.int?,
-        returnUntilDate:
-            json_.containsKey('returnUntilDate')
-                ? Date.fromJson(
-                  json_['returnUntilDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startDate:
-            json_.containsKey('startDate')
-                ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        returnUntilDate: json_.containsKey('returnUntilDate')
+            ? Date.fromJson(
+                json_['returnUntilDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startDate: json_.containsKey('startDate')
+            ? Date.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endDate != null) 'endDate': endDate!,
-    if (label != null) 'label': label!,
-    if (returnDays != null) 'returnDays': returnDays!,
-    if (returnUntilDate != null) 'returnUntilDate': returnUntilDate!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endDate = this.endDate;
+    final label = this.label;
+    final returnDays = this.returnDays;
+    final returnUntilDate = this.returnUntilDate;
+    final startDate = this.startDate;
+    return {
+      'endDate': ?endDate,
+      'label': ?label,
+      'returnDays': ?returnDays,
+      'returnUntilDate': ?returnUntilDate,
+      'startDate': ?startDate,
+    };
+  }
 }
 
 /// Shipping service.
@@ -8511,70 +8674,75 @@ class Service {
     : this(
         active: json_['active'] as core.bool?,
         currencyCode: json_['currencyCode'] as core.String?,
-        deliveryCountries:
-            (json_['deliveryCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        deliveryTime:
-            json_.containsKey('deliveryTime')
-                ? DeliveryTime.fromJson(
-                  json_['deliveryTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loyaltyPrograms:
-            (json_['loyaltyPrograms'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyProgram.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        minimumOrderValue:
-            json_.containsKey('minimumOrderValue')
-                ? Price.fromJson(
-                  json_['minimumOrderValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        minimumOrderValueTable:
-            json_.containsKey('minimumOrderValueTable')
-                ? MinimumOrderValueTable.fromJson(
-                  json_['minimumOrderValueTable']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rateGroups:
-            (json_['rateGroups'] as core.List?)
-                ?.map(
-                  (value) => RateGroup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deliveryCountries: (json_['deliveryCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deliveryTime: json_.containsKey('deliveryTime')
+            ? DeliveryTime.fromJson(
+                json_['deliveryTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loyaltyPrograms: (json_['loyaltyPrograms'] as core.List?)
+            ?.map(
+              (value) => LoyaltyProgram.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        minimumOrderValue: json_.containsKey('minimumOrderValue')
+            ? Price.fromJson(
+                json_['minimumOrderValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minimumOrderValueTable: json_.containsKey('minimumOrderValueTable')
+            ? MinimumOrderValueTable.fromJson(
+                json_['minimumOrderValueTable']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rateGroups: (json_['rateGroups'] as core.List?)
+            ?.map(
+              (value) => RateGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceName: json_['serviceName'] as core.String?,
         shipmentType: json_['shipmentType'] as core.String?,
-        storeConfig:
-            json_.containsKey('storeConfig')
-                ? StoreConfig.fromJson(
-                  json_['storeConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storeConfig: json_.containsKey('storeConfig')
+            ? StoreConfig.fromJson(
+                json_['storeConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (active != null) 'active': active!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (deliveryCountries != null) 'deliveryCountries': deliveryCountries!,
-    if (deliveryTime != null) 'deliveryTime': deliveryTime!,
-    if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
-    if (minimumOrderValue != null) 'minimumOrderValue': minimumOrderValue!,
-    if (minimumOrderValueTable != null)
-      'minimumOrderValueTable': minimumOrderValueTable!,
-    if (rateGroups != null) 'rateGroups': rateGroups!,
-    if (serviceName != null) 'serviceName': serviceName!,
-    if (shipmentType != null) 'shipmentType': shipmentType!,
-    if (storeConfig != null) 'storeConfig': storeConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final active = this.active;
+    final currencyCode = this.currencyCode;
+    final deliveryCountries = this.deliveryCountries;
+    final deliveryTime = this.deliveryTime;
+    final loyaltyPrograms = this.loyaltyPrograms;
+    final minimumOrderValue = this.minimumOrderValue;
+    final minimumOrderValueTable = this.minimumOrderValueTable;
+    final rateGroups = this.rateGroups;
+    final serviceName = this.serviceName;
+    final shipmentType = this.shipmentType;
+    final storeConfig = this.storeConfig;
+    return {
+      'active': ?active,
+      'currencyCode': ?currencyCode,
+      'deliveryCountries': ?deliveryCountries,
+      'deliveryTime': ?deliveryTime,
+      'loyaltyPrograms': ?loyaltyPrograms,
+      'minimumOrderValue': ?minimumOrderValue,
+      'minimumOrderValueTable': ?minimumOrderValueTable,
+      'rateGroups': ?rateGroups,
+      'serviceName': ?serviceName,
+      'shipmentType': ?shipmentType,
+      'storeConfig': ?storeConfig,
+    };
+  }
 }
 
 /// Set an alias for a relationship between a provider and the account to be
@@ -8605,10 +8773,11 @@ class SetAliasForRelationship {
         provider: json_['provider'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountIdAlias != null) 'accountIdAlias': accountIdAlias!,
-    if (provider != null) 'provider': provider!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountIdAlias = this.accountIdAlias;
+    final provider = this.provider;
+    return {'accountIdAlias': ?accountIdAlias, 'provider': ?provider};
+  }
 }
 
 /// The Merchant Center account's
@@ -8657,30 +8826,34 @@ class ShippingSettings {
     : this(
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => Service.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        warehouses:
-            (json_['warehouses'] as core.List?)
-                ?.map(
-                  (value) => Warehouse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => Service.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warehouses: (json_['warehouses'] as core.List?)
+            ?.map(
+              (value) => Warehouse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (services != null) 'services': services!,
-    if (warehouses != null) 'warehouses': warehouses!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final services = this.services;
+    final warehouses = this.warehouses;
+    return {
+      'etag': ?etag,
+      'name': ?name,
+      'services': ?services,
+      'warehouses': ?warehouses,
+    };
+  }
 }
 
 /// An object representing a short code, which is a phone number that is
@@ -8718,10 +8891,11 @@ class ShortCode {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (number != null) 'number': number!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final number = this.number;
+    final regionCode = this.regionCode;
+    return {'number': ?number, 'regionCode': ?regionCode};
+  }
 }
 
 /// A list of store code sets sharing the same minimum order value.
@@ -8743,22 +8917,21 @@ class StoreCodeSetWithMov {
 
   StoreCodeSetWithMov.fromJson(core.Map json_)
     : this(
-        storeCodes:
-            (json_['storeCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        value:
-            json_.containsKey('value')
-                ? Price.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storeCodes: (json_['storeCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        value: json_.containsKey('value')
+            ? Price.fromJson(
+                json_['value'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storeCodes != null) 'storeCodes': storeCodes!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storeCodes = this.storeCodes;
+    final value = this.value;
+    return {'storeCodes': ?storeCodes, 'value': ?value};
+  }
 }
 
 /// A list of stores your products are delivered from.
@@ -8799,31 +8972,34 @@ class StoreConfig {
 
   StoreConfig.fromJson(core.Map json_)
     : this(
-        cutoffConfig:
-            json_.containsKey('cutoffConfig')
-                ? CutoffConfig.fromJson(
-                  json_['cutoffConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceRadius:
-            json_.containsKey('serviceRadius')
-                ? Distance.fromJson(
-                  json_['serviceRadius'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storeCodes:
-            (json_['storeCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        cutoffConfig: json_.containsKey('cutoffConfig')
+            ? CutoffConfig.fromJson(
+                json_['cutoffConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceRadius: json_.containsKey('serviceRadius')
+            ? Distance.fromJson(
+                json_['serviceRadius'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storeCodes: (json_['storeCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         storeServiceType: json_['storeServiceType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cutoffConfig != null) 'cutoffConfig': cutoffConfig!,
-    if (serviceRadius != null) 'serviceRadius': serviceRadius!,
-    if (storeCodes != null) 'storeCodes': storeCodes!,
-    if (storeServiceType != null) 'storeServiceType': storeServiceType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cutoffConfig = this.cutoffConfig;
+    final serviceRadius = this.serviceRadius;
+    final storeCodes = this.storeCodes;
+    final storeServiceType = this.storeServiceType;
+    return {
+      'cutoffConfig': ?cutoffConfig,
+      'serviceRadius': ?serviceRadius,
+      'storeCodes': ?storeCodes,
+      'storeServiceType': ?storeServiceType,
+    };
+  }
 }
 
 /// A table defining the rate group, when `single_value` is not expressive
@@ -8855,35 +9031,37 @@ class Table {
 
   Table.fromJson(core.Map json_)
     : this(
-        columnHeaders:
-            json_.containsKey('columnHeaders')
-                ? Headers.fromJson(
-                  json_['columnHeaders'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        columnHeaders: json_.containsKey('columnHeaders')
+            ? Headers.fromJson(
+                json_['columnHeaders'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        rowHeaders:
-            json_.containsKey('rowHeaders')
-                ? Headers.fromJson(
-                  json_['rowHeaders'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map(
-                  (value) => Row.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rowHeaders: json_.containsKey('rowHeaders')
+            ? Headers.fromJson(
+                json_['rowHeaders'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnHeaders != null) 'columnHeaders': columnHeaders!,
-    if (name != null) 'name': name!,
-    if (rowHeaders != null) 'rowHeaders': rowHeaders!,
-    if (rows != null) 'rows': rows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnHeaders = this.columnHeaders;
+    final name = this.name;
+    final rowHeaders = this.rowHeaders;
+    final rows = this.rows;
+    return {
+      'columnHeaders': ?columnHeaders,
+      'name': ?name,
+      'rowHeaders': ?rowHeaders,
+      'rows': ?rows,
+    };
+  }
 }
 
 /// The `TermsOfService` message represents a specific version of the terms of
@@ -8945,13 +9123,20 @@ class TermsOfService {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (external_ != null) 'external': external_!,
-    if (fileUri != null) 'fileUri': fileUri!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final external_ = this.external_;
+    final fileUri = this.fileUri;
+    final kind = this.kind;
+    final name = this.name;
+    final regionCode = this.regionCode;
+    return {
+      'external': ?external_,
+      'fileUri': ?fileUri,
+      'kind': ?kind,
+      'name': ?name,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// This resource represents the agreement state for a given account and terms
@@ -9016,30 +9201,35 @@ class TermsOfServiceAgreementState {
 
   TermsOfServiceAgreementState.fromJson(core.Map json_)
     : this(
-        accepted:
-            json_.containsKey('accepted')
-                ? Accepted.fromJson(
-                  json_['accepted'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accepted: json_.containsKey('accepted')
+            ? Accepted.fromJson(
+                json_['accepted'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
-        required:
-            json_.containsKey('required')
-                ? Required.fromJson(
-                  json_['required'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        required: json_.containsKey('required')
+            ? Required.fromJson(
+                json_['required'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         termsOfServiceKind: json_['termsOfServiceKind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accepted != null) 'accepted': accepted!,
-    if (name != null) 'name': name!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (required != null) 'required': required!,
-    if (termsOfServiceKind != null) 'termsOfServiceKind': termsOfServiceKind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accepted = this.accepted;
+    final name = this.name;
+    final regionCode = this.regionCode;
+    final required = this.required;
+    final termsOfServiceKind = this.termsOfServiceKind;
+    return {
+      'accepted': ?accepted,
+      'name': ?name,
+      'regionCode': ?regionCode,
+      'required': ?required,
+      'termsOfServiceKind': ?termsOfServiceKind,
+    };
+  }
 }
 
 /// Represents a time zone from the
@@ -9084,30 +9274,31 @@ class TransitTable {
 
   TransitTable.fromJson(core.Map json_)
     : this(
-        postalCodeGroupNames:
-            (json_['postalCodeGroupNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map(
-                  (value) => TransitTimeRow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transitTimeLabels:
-            (json_['transitTimeLabels'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        postalCodeGroupNames: (json_['postalCodeGroupNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) => TransitTimeRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transitTimeLabels: (json_['transitTimeLabels'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (postalCodeGroupNames != null)
-      'postalCodeGroupNames': postalCodeGroupNames!,
-    if (rows != null) 'rows': rows!,
-    if (transitTimeLabels != null) 'transitTimeLabels': transitTimeLabels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final postalCodeGroupNames = this.postalCodeGroupNames;
+    final rows = this.rows;
+    final transitTimeLabels = this.transitTimeLabels;
+    return {
+      'postalCodeGroupNames': ?postalCodeGroupNames,
+      'rows': ?rows,
+      'transitTimeLabels': ?transitTimeLabels,
+    };
+  }
 }
 
 /// If there's only one dimension set of `postal_code_group_names` or
@@ -9126,19 +9317,19 @@ class TransitTimeRow {
 
   TransitTimeRow.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map(
-                  (value) => TransitTimeValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) => TransitTimeValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Transit time range (min-max) in business days.
@@ -9159,10 +9350,14 @@ class TransitTimeValue {
         minTransitDays: json_['minTransitDays'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxTransitDays != null) 'maxTransitDays': maxTransitDays!,
-    if (minTransitDays != null) 'minTransitDays': minTransitDays!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxTransitDays = this.maxTransitDays;
+    final minTransitDays = this.minTransitDays;
+    return {
+      'maxTransitDays': ?maxTransitDays,
+      'minTransitDays': ?minTransitDays,
+    };
+  }
 }
 
 /// Request message for the `UnclaimHomepage` method.
@@ -9189,19 +9384,19 @@ class UpdateRegionRequest {
 
   UpdateRegionRequest.fromJson(core.Map json_)
     : this(
-        region:
-            json_.containsKey('region')
-                ? Region.fromJson(
-                  json_['region'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        region: json_.containsKey('region')
+            ? Region.fromJson(
+                json_['region'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (region != null) 'region': region!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final region = this.region;
+    final updateMask = this.updateMask;
+    return {'region': ?region, 'updateMask': ?updateMask};
+  }
 }
 
 /// URL settings for cart or checkout URL.
@@ -9229,11 +9424,14 @@ class UriSettings {
         checkoutUriTemplate: json_['checkoutUriTemplate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cartUriTemplate != null) 'cartUriTemplate': cartUriTemplate!,
-    if (checkoutUriTemplate != null)
-      'checkoutUriTemplate': checkoutUriTemplate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cartUriTemplate = this.cartUriTemplate;
+    final checkoutUriTemplate = this.checkoutUriTemplate;
+    return {
+      'cartUriTemplate': ?cartUriTemplate,
+      'checkoutUriTemplate': ?checkoutUriTemplate,
+    };
+  }
 }
 
 /// The `User` resource represents a user associated with a Merchant Center
@@ -9271,19 +9469,19 @@ class User {
 
   User.fromJson(core.Map json_)
     : this(
-        accessRights:
-            (json_['accessRights'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        accessRights: (json_['accessRights'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessRights != null) 'accessRights': accessRights!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessRights = this.accessRights;
+    final name = this.name;
+    final state = this.state;
+    return {'accessRights': ?accessRights, 'name': ?name, 'state': ?state};
+  }
 }
 
 /// The single value of a rate group or the value of a rate group table's cell.
@@ -9330,24 +9528,30 @@ class Value {
   Value.fromJson(core.Map json_)
     : this(
         carrierRate: json_['carrierRate'] as core.String?,
-        flatRate:
-            json_.containsKey('flatRate')
-                ? Price.fromJson(
-                  json_['flatRate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        flatRate: json_.containsKey('flatRate')
+            ? Price.fromJson(
+                json_['flatRate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         noShipping: json_['noShipping'] as core.bool?,
         pricePercentage: json_['pricePercentage'] as core.String?,
         subtable: json_['subtable'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carrierRate != null) 'carrierRate': carrierRate!,
-    if (flatRate != null) 'flatRate': flatRate!,
-    if (noShipping != null) 'noShipping': noShipping!,
-    if (pricePercentage != null) 'pricePercentage': pricePercentage!,
-    if (subtable != null) 'subtable': subtable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final carrierRate = this.carrierRate;
+    final flatRate = this.flatRate;
+    final noShipping = this.noShipping;
+    final pricePercentage = this.pricePercentage;
+    final subtable = this.subtable;
+    return {
+      'carrierRate': ?carrierRate,
+      'flatRate': ?flatRate,
+      'noShipping': ?noShipping,
+      'pricePercentage': ?pricePercentage,
+      'subtable': ?subtable,
+    };
+  }
 }
 
 /// Settings related to the verification email that is sent after adding a user.
@@ -9372,10 +9576,10 @@ class VerificationMailSettings {
   VerificationMailSettings.fromJson(core.Map json_)
     : this(verificationMailMode: json_['verificationMailMode'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (verificationMailMode != null)
-      'verificationMailMode': verificationMailMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final verificationMailMode = this.verificationMailMode;
+    return {'verificationMailMode': ?verificationMailMode};
+  }
 }
 
 /// Request message for the `VerifySelf` method.
@@ -9427,37 +9631,40 @@ class Warehouse {
 
   Warehouse.fromJson(core.Map json_)
     : this(
-        businessDayConfig:
-            json_.containsKey('businessDayConfig')
-                ? BusinessDayConfig.fromJson(
-                  json_['businessDayConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cutoffTime:
-            json_.containsKey('cutoffTime')
-                ? WarehouseCutoffTime.fromJson(
-                  json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        businessDayConfig: json_.containsKey('businessDayConfig')
+            ? BusinessDayConfig.fromJson(
+                json_['businessDayConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cutoffTime: json_.containsKey('cutoffTime')
+            ? WarehouseCutoffTime.fromJson(
+                json_['cutoffTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         handlingDays: json_['handlingDays'] as core.String?,
         name: json_['name'] as core.String?,
-        shippingAddress:
-            json_.containsKey('shippingAddress')
-                ? Address.fromJson(
-                  json_['shippingAddress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        shippingAddress: json_.containsKey('shippingAddress')
+            ? Address.fromJson(
+                json_['shippingAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (businessDayConfig != null) 'businessDayConfig': businessDayConfig!,
-    if (cutoffTime != null) 'cutoffTime': cutoffTime!,
-    if (handlingDays != null) 'handlingDays': handlingDays!,
-    if (name != null) 'name': name!,
-    if (shippingAddress != null) 'shippingAddress': shippingAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessDayConfig = this.businessDayConfig;
+    final cutoffTime = this.cutoffTime;
+    final handlingDays = this.handlingDays;
+    final name = this.name;
+    final shippingAddress = this.shippingAddress;
+    return {
+      'businessDayConfig': ?businessDayConfig,
+      'cutoffTime': ?cutoffTime,
+      'handlingDays': ?handlingDays,
+      'name': ?name,
+      'shippingAddress': ?shippingAddress,
+    };
+  }
 }
 
 /// Indicates that the delivery time should be calculated per warehouse
@@ -9500,11 +9707,16 @@ class WarehouseBasedDeliveryTime {
         warehouse: json_['warehouse'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carrier != null) 'carrier': carrier!,
-    if (carrierService != null) 'carrierService': carrierService!,
-    if (warehouse != null) 'warehouse': warehouse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final carrier = this.carrier;
+    final carrierService = this.carrierService;
+    final warehouse = this.warehouse;
+    return {
+      'carrier': ?carrier,
+      'carrierService': ?carrierService,
+      'warehouse': ?warehouse,
+    };
+  }
 }
 
 /// The latest time of day that an order can be accepted and begin processing.
@@ -9536,10 +9748,11 @@ class WarehouseCutoffTime {
         minute: json_['minute'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hour != null) 'hour': hour!,
-    if (minute != null) 'minute': minute!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hour = this.hour;
+    final minute = this.minute;
+    return {'hour': ?hour, 'minute': ?minute};
+  }
 }
 
 /// The weight represented as the value in string and the unit.
@@ -9573,8 +9786,9 @@ class Weight {
         unit: json_['unit'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amountMicros != null) 'amountMicros': amountMicros!,
-    if (unit != null) 'unit': unit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amountMicros = this.amountMicros;
+    final unit = this.unit;
+    return {'amountMicros': ?amountMicros, 'unit': ?unit};
+  }
 }

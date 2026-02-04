@@ -94,8 +94,8 @@ class AgentUsersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$agentUserId');
@@ -141,7 +141,7 @@ class DevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/devices:query';
@@ -191,7 +191,7 @@ class DevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/devices:reportStateAndNotification';
@@ -235,7 +235,7 @@ class DevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/devices:requestSync';
@@ -277,7 +277,7 @@ class DevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/devices:sync';
@@ -304,7 +304,10 @@ class AgentDeviceId {
   AgentDeviceId.fromJson(core.Map json_)
     : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 /// Alternate third-party device ID.
@@ -323,10 +326,11 @@ class AgentOtherDeviceId {
         deviceId: json_['deviceId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentId != null) 'agentId': agentId!,
-    if (deviceId != null) 'deviceId': deviceId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentId = this.agentId;
+    final deviceId = this.deviceId;
+    return {'agentId': ?agentId, 'deviceId': ?deviceId};
+  }
 }
 
 /// Third-party device definition.
@@ -416,62 +420,69 @@ class Device {
 
   Device.fromJson(core.Map json_)
     : this(
-        attributes:
-            json_.containsKey('attributes')
-                ? json_['attributes'] as core.Map<core.String, core.dynamic>
-                : null,
-        customData:
-            json_.containsKey('customData')
-                ? json_['customData'] as core.Map<core.String, core.dynamic>
-                : null,
-        deviceInfo:
-            json_.containsKey('deviceInfo')
-                ? DeviceInfo.fromJson(
-                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes: json_.containsKey('attributes')
+            ? json_['attributes'] as core.Map<core.String, core.dynamic>
+            : null,
+        customData: json_.containsKey('customData')
+            ? json_['customData'] as core.Map<core.String, core.dynamic>
+            : null,
+        deviceInfo: json_.containsKey('deviceInfo')
+            ? DeviceInfo.fromJson(
+                json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        name:
-            json_.containsKey('name')
-                ? DeviceNames.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        name: json_.containsKey('name')
+            ? DeviceNames.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         notificationSupportedByAgent:
             json_['notificationSupportedByAgent'] as core.bool?,
-        otherDeviceIds:
-            (json_['otherDeviceIds'] as core.List?)
-                ?.map(
-                  (value) => AgentOtherDeviceId.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        otherDeviceIds: (json_['otherDeviceIds'] as core.List?)
+            ?.map(
+              (value) => AgentOtherDeviceId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         roomHint: json_['roomHint'] as core.String?,
         structureHint: json_['structureHint'] as core.String?,
-        traits:
-            (json_['traits'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        traits: (json_['traits'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         type: json_['type'] as core.String?,
         willReportState: json_['willReportState'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (customData != null) 'customData': customData!,
-    if (deviceInfo != null) 'deviceInfo': deviceInfo!,
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-    if (notificationSupportedByAgent != null)
-      'notificationSupportedByAgent': notificationSupportedByAgent!,
-    if (otherDeviceIds != null) 'otherDeviceIds': otherDeviceIds!,
-    if (roomHint != null) 'roomHint': roomHint!,
-    if (structureHint != null) 'structureHint': structureHint!,
-    if (traits != null) 'traits': traits!,
-    if (type != null) 'type': type!,
-    if (willReportState != null) 'willReportState': willReportState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final customData = this.customData;
+    final deviceInfo = this.deviceInfo;
+    final id = this.id;
+    final name = this.name;
+    final notificationSupportedByAgent = this.notificationSupportedByAgent;
+    final otherDeviceIds = this.otherDeviceIds;
+    final roomHint = this.roomHint;
+    final structureHint = this.structureHint;
+    final traits = this.traits;
+    final type = this.type;
+    final willReportState = this.willReportState;
+    return {
+      'attributes': ?attributes,
+      'customData': ?customData,
+      'deviceInfo': ?deviceInfo,
+      'id': ?id,
+      'name': ?name,
+      'notificationSupportedByAgent': ?notificationSupportedByAgent,
+      'otherDeviceIds': ?otherDeviceIds,
+      'roomHint': ?roomHint,
+      'structureHint': ?structureHint,
+      'traits': ?traits,
+      'type': ?type,
+      'willReportState': ?willReportState,
+    };
+  }
 }
 
 /// Device information.
@@ -498,12 +509,18 @@ class DeviceInfo {
         swVersion: json_['swVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hwVersion != null) 'hwVersion': hwVersion!,
-    if (manufacturer != null) 'manufacturer': manufacturer!,
-    if (model != null) 'model': model!,
-    if (swVersion != null) 'swVersion': swVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hwVersion = this.hwVersion;
+    final manufacturer = this.manufacturer;
+    final model = this.model;
+    final swVersion = this.swVersion;
+    return {
+      'hwVersion': ?hwVersion,
+      'manufacturer': ?manufacturer,
+      'model': ?model,
+      'swVersion': ?swVersion,
+    };
+  }
 }
 
 /// Identifiers used to describe the device.
@@ -526,22 +543,25 @@ class DeviceNames {
 
   DeviceNames.fromJson(core.Map json_)
     : this(
-        defaultNames:
-            (json_['defaultNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        defaultNames: (json_['defaultNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
-        nicknames:
-            (json_['nicknames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nicknames: (json_['nicknames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultNames != null) 'defaultNames': defaultNames!,
-    if (name != null) 'name': name!,
-    if (nicknames != null) 'nicknames': nicknames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultNames = this.defaultNames;
+    final name = this.name;
+    final nicknames = this.nicknames;
+    return {
+      'defaultNames': ?defaultNames,
+      'name': ?name,
+      'nicknames': ?nicknames,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -574,22 +594,26 @@ class QueryRequest {
   QueryRequest.fromJson(core.Map json_)
     : this(
         agentUserId: json_['agentUserId'] as core.String?,
-        inputs:
-            (json_['inputs'] as core.List?)
-                ?.map(
-                  (value) => QueryRequestInput.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        inputs: (json_['inputs'] as core.List?)
+            ?.map(
+              (value) => QueryRequestInput.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUserId != null) 'agentUserId': agentUserId!,
-    if (inputs != null) 'inputs': inputs!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUserId = this.agentUserId;
+    final inputs = this.inputs;
+    final requestId = this.requestId;
+    return {
+      'agentUserId': ?agentUserId,
+      'inputs': ?inputs,
+      'requestId': ?requestId,
+    };
+  }
 }
 
 /// Device ID inputs to QueryRequest.
@@ -601,17 +625,17 @@ class QueryRequestInput {
 
   QueryRequestInput.fromJson(core.Map json_)
     : this(
-        payload:
-            json_.containsKey('payload')
-                ? QueryRequestPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? QueryRequestPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    return {'payload': ?payload};
+  }
 }
 
 /// Payload containing device IDs.
@@ -623,19 +647,19 @@ class QueryRequestPayload {
 
   QueryRequestPayload.fromJson(core.Map json_)
     : this(
-        devices:
-            (json_['devices'] as core.List?)
-                ?.map(
-                  (value) => AgentDeviceId.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        devices: (json_['devices'] as core.List?)
+            ?.map(
+              (value) => AgentDeviceId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (devices != null) 'devices': devices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final devices = this.devices;
+    return {'devices': ?devices};
+  }
 }
 
 /// Response type for the
@@ -661,19 +685,19 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map json_)
     : this(
-        payload:
-            json_.containsKey('payload')
-                ? QueryResponsePayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? QueryResponsePayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payload != null) 'payload': payload!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    final requestId = this.requestId;
+    return {'payload': ?payload, 'requestId': ?requestId};
+  }
 }
 
 /// Payload containing device states information.
@@ -699,9 +723,10 @@ class QueryResponsePayload {
             ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (devices != null) 'devices': devices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final devices = this.devices;
+    return {'devices': ?devices};
+  }
 }
 
 /// The states and notifications specific to a device.
@@ -728,20 +753,19 @@ class ReportStateAndNotificationDevice {
 
   ReportStateAndNotificationDevice.fromJson(core.Map json_)
     : this(
-        notifications:
-            json_.containsKey('notifications')
-                ? json_['notifications'] as core.Map<core.String, core.dynamic>
-                : null,
-        states:
-            json_.containsKey('states')
-                ? json_['states'] as core.Map<core.String, core.dynamic>
-                : null,
+        notifications: json_.containsKey('notifications')
+            ? json_['notifications'] as core.Map<core.String, core.dynamic>
+            : null,
+        states: json_.containsKey('states')
+            ? json_['states'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (notifications != null) 'notifications': notifications!,
-    if (states != null) 'states': states!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final notifications = this.notifications;
+    final states = this.states;
+    return {'notifications': ?notifications, 'states': ?states};
+  }
 }
 
 /// Request type for the
@@ -790,22 +814,28 @@ class ReportStateAndNotificationRequest {
         agentUserId: json_['agentUserId'] as core.String?,
         eventId: json_['eventId'] as core.String?,
         followUpToken: json_['followUpToken'] as core.String?,
-        payload:
-            json_.containsKey('payload')
-                ? StateAndNotificationPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? StateAndNotificationPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUserId != null) 'agentUserId': agentUserId!,
-    if (eventId != null) 'eventId': eventId!,
-    if (followUpToken != null) 'followUpToken': followUpToken!,
-    if (payload != null) 'payload': payload!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUserId = this.agentUserId;
+    final eventId = this.eventId;
+    final followUpToken = this.followUpToken;
+    final payload = this.payload;
+    final requestId = this.requestId;
+    return {
+      'agentUserId': ?agentUserId,
+      'eventId': ?eventId,
+      'followUpToken': ?followUpToken,
+      'payload': ?payload,
+      'requestId': ?requestId,
+    };
+  }
 }
 
 /// Response type for the
@@ -820,9 +850,10 @@ class ReportStateAndNotificationResponse {
   ReportStateAndNotificationResponse.fromJson(core.Map json_)
     : this(requestId: json_['requestId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
 }
 
 /// Request type for the
@@ -851,10 +882,11 @@ class RequestSyncDevicesRequest {
         async: json_['async'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUserId != null) 'agentUserId': agentUserId!,
-    if (async != null) 'async': async!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUserId = this.agentUserId;
+    final async = this.async;
+    return {'agentUserId': ?agentUserId, 'async': ?async};
+  }
 }
 
 /// Response type for the
@@ -874,17 +906,17 @@ class StateAndNotificationPayload {
 
   StateAndNotificationPayload.fromJson(core.Map json_)
     : this(
-        devices:
-            json_.containsKey('devices')
-                ? ReportStateAndNotificationDevice.fromJson(
-                  json_['devices'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        devices: json_.containsKey('devices')
+            ? ReportStateAndNotificationDevice.fromJson(
+                json_['devices'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (devices != null) 'devices': devices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final devices = this.devices;
+    return {'devices': ?devices};
+  }
 }
 
 /// Request type for the
@@ -906,10 +938,11 @@ class SyncRequest {
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUserId != null) 'agentUserId': agentUserId!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUserId = this.agentUserId;
+    final requestId = this.requestId;
+    return {'agentUserId': ?agentUserId, 'requestId': ?requestId};
+  }
 }
 
 /// Response type for the
@@ -939,19 +972,19 @@ class SyncResponse {
 
   SyncResponse.fromJson(core.Map json_)
     : this(
-        payload:
-            json_.containsKey('payload')
-                ? SyncResponsePayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? SyncResponsePayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payload != null) 'payload': payload!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    final requestId = this.requestId;
+    return {'payload': ?payload, 'requestId': ?requestId};
+  }
 }
 
 /// Payload containing device information.
@@ -967,18 +1000,17 @@ class SyncResponsePayload {
   SyncResponsePayload.fromJson(core.Map json_)
     : this(
         agentUserId: json_['agentUserId'] as core.String?,
-        devices:
-            (json_['devices'] as core.List?)
-                ?.map(
-                  (value) => Device.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        devices: (json_['devices'] as core.List?)
+            ?.map(
+              (value) =>
+                  Device.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentUserId != null) 'agentUserId': agentUserId!,
-    if (devices != null) 'devices': devices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentUserId = this.agentUserId;
+    final devices = this.devices;
+    return {'agentUserId': ?agentUserId, 'devices': ?devices};
+  }
 }

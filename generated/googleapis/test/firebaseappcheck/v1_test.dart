@@ -1448,10 +1448,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse(od);
       });
     },
@@ -1464,10 +1464,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse(od);
       });
     },
@@ -1480,10 +1480,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse(od);
       });
     },
@@ -1496,10 +1496,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse(
           od,
         );
@@ -1514,10 +1514,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse(od);
       });
     },
@@ -1530,10 +1530,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse(od);
       });
     },
@@ -1546,10 +1546,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest(od);
       });
     },
@@ -1562,10 +1562,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse(od);
       });
     },
@@ -1577,10 +1577,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1BatchUpdateServicesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchUpdateServicesRequest(od);
       });
     },
@@ -1592,10 +1592,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1BatchUpdateServicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1BatchUpdateServicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1BatchUpdateServicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1BatchUpdateServicesResponse(od);
       });
     },
@@ -1630,10 +1630,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest(od);
       });
     },
@@ -1646,10 +1646,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest(od);
       });
     },
@@ -1662,10 +1662,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse(od);
       });
     },
@@ -1677,10 +1677,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest(od);
       });
     },
@@ -1692,10 +1692,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest(od);
       });
     },
@@ -1708,10 +1708,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest(od);
       });
     },
@@ -1724,10 +1724,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest(od);
       });
     },
@@ -1740,10 +1740,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest(
           od,
         );
@@ -1758,10 +1758,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest(od);
       });
     },
@@ -1773,10 +1773,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest(od);
       });
     },
@@ -1789,10 +1789,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest(od);
       });
     },
@@ -1805,10 +1805,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse(od);
       });
     },
@@ -1821,10 +1821,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest(od);
       });
     },
@@ -1837,10 +1837,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse(od);
       });
     },
@@ -1866,10 +1866,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1ListResourcePoliciesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1ListResourcePoliciesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1ListResourcePoliciesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1ListResourcePoliciesResponse(od);
       });
     },
@@ -1904,10 +1904,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails(od);
       });
     },
@@ -1920,10 +1920,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity(od);
       });
     },
@@ -1936,10 +1936,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity(od);
       });
     },
@@ -1973,10 +1973,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig(od);
       });
     },
@@ -1989,10 +1989,10 @@ void main() {
         final o =
             buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis(od);
       });
     },
@@ -2048,10 +2048,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppcheckV1UpdateResourcePolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppcheckV1UpdateResourcePolicyRequest(od);
       });
     },
@@ -2148,10 +2148,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest(obj);
 
           final path = req.url.path;
@@ -2217,10 +2217,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest(obj);
 
           final path = req.url.path;
@@ -2287,10 +2287,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest(obj);
 
           final path = req.url.path;
@@ -2356,10 +2356,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest(obj);
 
           final path = req.url.path;
@@ -2428,10 +2428,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest(obj);
 
           final path = req.url.path;
@@ -2497,10 +2497,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest(obj);
 
           final path = req.url.path;
@@ -2567,10 +2567,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest(obj);
 
           final path = req.url.path;
@@ -2636,10 +2636,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest(obj);
 
           final path = req.url.path;
@@ -2705,10 +2705,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest(obj);
 
           final path = req.url.path;
@@ -2774,10 +2774,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest(obj);
 
           final path = req.url.path;
@@ -2843,10 +2843,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest(
             obj,
           );
@@ -2914,10 +2914,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest(obj);
 
           final path = req.url.path;
@@ -2983,10 +2983,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest(obj);
 
           final path = req.url.path;
@@ -3052,10 +3052,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest(obj);
 
           final path = req.url.path;
@@ -3122,10 +3122,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest(
             obj,
           );
@@ -3905,8 +3905,9 @@ void main() {
   unittest.group('resource-ProjectsAppsPlayIntegrityConfigResource', () {
     unittest.test('method--batchGet', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.playIntegrityConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.playIntegrityConfig;
       final arg_parent = 'foo';
       final arg_names = buildUnnamed16();
       final arg_$fields = 'foo';
@@ -3970,8 +3971,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.playIntegrityConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.playIntegrityConfig;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4028,8 +4030,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.playIntegrityConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.playIntegrityConfig;
       final arg_request = buildGoogleFirebaseAppcheckV1PlayIntegrityConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4104,8 +4107,9 @@ void main() {
   unittest.group('resource-ProjectsAppsRecaptchaEnterpriseConfigResource', () {
     unittest.test('method--batchGet', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.recaptchaEnterpriseConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.recaptchaEnterpriseConfig;
       final arg_parent = 'foo';
       final arg_names = buildUnnamed17();
       final arg_$fields = 'foo';
@@ -4169,8 +4173,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.recaptchaEnterpriseConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.recaptchaEnterpriseConfig;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4227,8 +4232,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.apps.recaptchaEnterpriseConfig;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.apps.recaptchaEnterpriseConfig;
       final arg_request =
           buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig();
       final arg_name = 'foo';
@@ -4236,10 +4242,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig(obj);
 
           final path = req.url.path;
@@ -4704,10 +4710,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1BatchUpdateServicesRequest(obj);
 
           final path = req.url.path;
@@ -4970,18 +4976,19 @@ void main() {
   unittest.group('resource-ProjectsServicesResourcePoliciesResource', () {
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_request =
           buildGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest(obj);
 
           final path = req.url.path;
@@ -5041,8 +5048,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_request = buildGoogleFirebaseAppcheckV1ResourcePolicy();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5109,8 +5117,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -5169,8 +5178,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5227,8 +5237,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5306,8 +5317,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseappcheckApi(mock).projects.services.resourcePolicies;
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies;
       final arg_request = buildGoogleFirebaseAppcheckV1ResourcePolicy();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

@@ -2987,8 +2987,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupCollectionsBackupsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRedisApi(mock).projects.locations.backupCollections.backups;
+      final res = api.CloudRedisApi(
+        mock,
+      ).projects.locations.backupCollections.backups;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -3050,8 +3051,9 @@ void main() {
 
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRedisApi(mock).projects.locations.backupCollections.backups;
+      final res = api.CloudRedisApi(
+        mock,
+      ).projects.locations.backupCollections.backups;
       final arg_request = buildExportBackupRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3114,8 +3116,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRedisApi(mock).projects.locations.backupCollections.backups;
+      final res = api.CloudRedisApi(
+        mock,
+      ).projects.locations.backupCollections.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3168,8 +3171,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRedisApi(mock).projects.locations.backupCollections.backups;
+      final res = api.CloudRedisApi(
+        mock,
+      ).projects.locations.backupCollections.backups;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

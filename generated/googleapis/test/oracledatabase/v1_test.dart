@@ -4991,10 +4991,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OracleDatabaseApi(
-              mock,
-            ).projects.locations.autonomousDatabaseBackups;
+        final res = api.OracleDatabaseApi(
+          mock,
+        ).projects.locations.autonomousDatabaseBackups;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -5077,10 +5076,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OracleDatabaseApi(
-              mock,
-            ).projects.locations.autonomousDatabaseCharacterSets;
+        final res = api.OracleDatabaseApi(
+          mock,
+        ).projects.locations.autonomousDatabaseCharacterSets;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -5161,8 +5159,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAutonomousDatabasesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildAutonomousDatabase();
       final arg_parent = 'foo';
       final arg_autonomousDatabaseId = 'foo';
@@ -5237,8 +5236,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5300,8 +5300,9 @@ void main() {
 
     unittest.test('method--failover', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildFailoverAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5364,8 +5365,9 @@ void main() {
 
     unittest.test('method--generateWallet', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildGenerateAutonomousDatabaseWalletRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5432,8 +5434,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5486,8 +5489,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5571,8 +5575,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildAutonomousDatabase();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5647,8 +5652,9 @@ void main() {
 
     unittest.test('method--restart', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildRestartAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5711,8 +5717,9 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildRestoreAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5775,8 +5782,9 @@ void main() {
 
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildStartAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5839,8 +5847,9 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildStopAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5903,8 +5912,9 @@ void main() {
 
     unittest.test('method--switchover', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDatabases;
       final arg_request = buildSwitchoverAutonomousDatabaseRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5969,8 +5979,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAutonomousDbVersionsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.autonomousDbVersions;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.autonomousDbVersions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6044,10 +6055,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCloudExadataInfrastructuresResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.cloudExadataInfrastructures;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudExadataInfrastructures;
       final arg_request = buildCloudExadataInfrastructure();
       final arg_parent = 'foo';
       final arg_cloudExadataInfrastructureId = 'foo';
@@ -6122,10 +6132,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.cloudExadataInfrastructures;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudExadataInfrastructures;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
@@ -6193,10 +6202,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.cloudExadataInfrastructures;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudExadataInfrastructures;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6251,10 +6259,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.cloudExadataInfrastructures;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudExadataInfrastructures;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6342,10 +6349,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OracleDatabaseApi(
-              mock,
-            ).projects.locations.cloudExadataInfrastructures.dbServers;
+        final res = api.OracleDatabaseApi(
+          mock,
+        ).projects.locations.cloudExadataInfrastructures.dbServers;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6416,8 +6422,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCloudVmClustersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.cloudVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudVmClusters;
       final arg_request = buildCloudVmCluster();
       final arg_parent = 'foo';
       final arg_cloudVmClusterId = 'foo';
@@ -6492,8 +6499,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.cloudVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudVmClusters;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
@@ -6561,8 +6569,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.cloudVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudVmClusters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6615,8 +6624,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.cloudVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudVmClusters;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6694,10 +6704,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCloudVmClustersDbNodesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.cloudVmClusters.dbNodes;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.cloudVmClusters.dbNodes;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6767,8 +6776,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatabaseCharacterSetsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.databaseCharacterSets;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.databaseCharacterSets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6979,10 +6989,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OracleDatabaseApi(
-              mock,
-            ).projects.locations.dbSystemInitialStorageSizes;
+        final res = api.OracleDatabaseApi(
+          mock,
+        ).projects.locations.dbSystemInitialStorageSizes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -7553,8 +7562,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExadbVmClustersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_request = buildExadbVmCluster();
       final arg_parent = 'foo';
       final arg_exadbVmClusterId = 'foo';
@@ -7629,8 +7639,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -7692,8 +7703,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7746,8 +7758,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7829,8 +7842,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_request = buildExadbVmCluster();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -7905,8 +7919,9 @@ void main() {
 
     unittest.test('method--removeVirtualMachine', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.exadbVmClusters;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters;
       final arg_request = buildRemoveVirtualMachineExadbVmClusterRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7971,10 +7986,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExadbVmClustersDbNodesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.exadbVmClusters.dbNodes;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exadbVmClusters.dbNodes;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8044,10 +8058,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExascaleDbStorageVaultsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.exascaleDbStorageVaults;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exascaleDbStorageVaults;
       final arg_request = buildExascaleDbStorageVault();
       final arg_parent = 'foo';
       final arg_exascaleDbStorageVaultId = 'foo';
@@ -8122,10 +8135,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.exascaleDbStorageVaults;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exascaleDbStorageVaults;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -8187,10 +8199,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.exascaleDbStorageVaults;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exascaleDbStorageVaults;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8243,10 +8254,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.exascaleDbStorageVaults;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.exascaleDbStorageVaults;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8408,10 +8418,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGiVersionsMinorVersionsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(
-            mock,
-          ).projects.locations.giVersions.minorVersions;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.giVersions.minorVersions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -8759,8 +8768,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOdbNetworksOdbSubnetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.odbNetworks.odbSubnets;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.odbNetworks.odbSubnets;
       final arg_request = buildOdbSubnet();
       final arg_parent = 'foo';
       final arg_odbSubnetId = 'foo';
@@ -8835,8 +8845,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.odbNetworks.odbSubnets;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.odbNetworks.odbSubnets;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -8898,8 +8909,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.odbNetworks.odbSubnets;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.odbNetworks.odbSubnets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8952,8 +8964,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.odbNetworks.odbSubnets;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.odbNetworks.odbSubnets;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9286,8 +9299,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPluggableDatabasesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.pluggableDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.pluggableDatabases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9340,8 +9354,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OracleDatabaseApi(mock).projects.locations.pluggableDatabases;
+      final res = api.OracleDatabaseApi(
+        mock,
+      ).projects.locations.pluggableDatabases;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

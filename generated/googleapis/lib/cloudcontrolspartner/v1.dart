@@ -110,7 +110,7 @@ class OrganizationsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -165,8 +165,8 @@ class OrganizationsLocationsCustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (customerId != null) 'customerId': [customerId],
-      if ($fields != null) 'fields': [$fields],
+      'customerId': ?customerId == null ? null : [customerId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
@@ -201,7 +201,7 @@ class OrganizationsLocationsCustomersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -235,7 +235,7 @@ class OrganizationsLocationsCustomersResource {
   /// this method will complete with the same error.
   async.Future<Customer> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -287,11 +287,11 @@ class OrganizationsLocationsCustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
@@ -337,8 +337,8 @@ class OrganizationsLocationsCustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -388,7 +388,7 @@ class OrganizationsLocationsCustomersWorkloadsResource {
   /// this method will complete with the same error.
   async.Future<Workload> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -425,7 +425,7 @@ class OrganizationsLocationsCustomersWorkloadsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -464,7 +464,7 @@ class OrganizationsLocationsCustomersWorkloadsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -518,11 +518,11 @@ class OrganizationsLocationsCustomersWorkloadsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
@@ -592,11 +592,11 @@ class OrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -641,7 +641,7 @@ class OrganizationsLocationsCustomersWorkloadsViolationsResource {
   /// this method will complete with the same error.
   async.Future<Violation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -709,14 +709,15 @@ class OrganizationsLocationsCustomersWorkloadsViolationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
-      if (interval_startTime != null)
-        'interval.startTime': [interval_startTime],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'interval.endTime': ?interval_endTime == null ? null : [interval_endTime],
+      'interval.startTime': ?interval_startTime == null
+          ? null
+          : [interval_startTime],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/violations';
@@ -765,22 +766,25 @@ class AccessApprovalRequest {
         requestTime: json_['requestTime'] as core.String?,
         requestedExpirationTime:
             json_['requestedExpirationTime'] as core.String?,
-        requestedReason:
-            json_.containsKey('requestedReason')
-                ? AccessReason.fromJson(
-                  json_['requestedReason']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestedReason: json_.containsKey('requestedReason')
+            ? AccessReason.fromJson(
+                json_['requestedReason'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (requestTime != null) 'requestTime': requestTime!,
-    if (requestedExpirationTime != null)
-      'requestedExpirationTime': requestedExpirationTime!,
-    if (requestedReason != null) 'requestedReason': requestedReason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final requestTime = this.requestTime;
+    final requestedExpirationTime = this.requestedExpirationTime;
+    final requestedReason = this.requestedReason;
+    return {
+      'name': ?name,
+      'requestTime': ?requestTime,
+      'requestedExpirationTime': ?requestedExpirationTime,
+      'requestedReason': ?requestedReason,
+    };
+  }
 }
 
 /// Reason for the access.
@@ -825,10 +829,11 @@ class AccessReason {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detail != null) 'detail': detail!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detail = this.detail;
+    final type = this.type;
+    return {'detail': ?detail, 'type': ?type};
+  }
 }
 
 /// Information around the error that occurred if the connection state is
@@ -848,10 +853,11 @@ class ConnectionError {
         errorMessage: json_['errorMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorDomain != null) 'errorDomain': errorDomain!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorDomain = this.errorDomain;
+    final errorMessage = this.errorMessage;
+    return {'errorDomain': ?errorDomain, 'errorMessage': ?errorMessage};
+  }
 }
 
 /// Remediation instructions to resolve violation via cloud console
@@ -898,27 +904,32 @@ class Customer {
 
   Customer.fromJson(core.Map json_)
     : this(
-        customerOnboardingState:
-            json_.containsKey('customerOnboardingState')
-                ? CustomerOnboardingState.fromJson(
-                  json_['customerOnboardingState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customerOnboardingState: json_.containsKey('customerOnboardingState')
+            ? CustomerOnboardingState.fromJson(
+                json_['customerOnboardingState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         isOnboarded: json_['isOnboarded'] as core.bool?,
         name: json_['name'] as core.String?,
         organizationDomain: json_['organizationDomain'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerOnboardingState != null)
-      'customerOnboardingState': customerOnboardingState!,
-    if (displayName != null) 'displayName': displayName!,
-    if (isOnboarded != null) 'isOnboarded': isOnboarded!,
-    if (name != null) 'name': name!,
-    if (organizationDomain != null) 'organizationDomain': organizationDomain!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerOnboardingState = this.customerOnboardingState;
+    final displayName = this.displayName;
+    final isOnboarded = this.isOnboarded;
+    final name = this.name;
+    final organizationDomain = this.organizationDomain;
+    return {
+      'customerOnboardingState': ?customerOnboardingState,
+      'displayName': ?displayName,
+      'isOnboarded': ?isOnboarded,
+      'name': ?name,
+      'organizationDomain': ?organizationDomain,
+    };
+  }
 }
 
 /// Container for customer onboarding steps
@@ -930,19 +941,19 @@ class CustomerOnboardingState {
 
   CustomerOnboardingState.fromJson(core.Map json_)
     : this(
-        onboardingSteps:
-            (json_['onboardingSteps'] as core.List?)
-                ?.map(
-                  (value) => CustomerOnboardingStep.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        onboardingSteps: (json_['onboardingSteps'] as core.List?)
+            ?.map(
+              (value) => CustomerOnboardingStep.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (onboardingSteps != null) 'onboardingSteps': onboardingSteps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final onboardingSteps = this.onboardingSteps;
+    return {'onboardingSteps': ?onboardingSteps};
+  }
 }
 
 /// Container for customer onboarding information
@@ -986,12 +997,18 @@ class CustomerOnboardingStep {
         step: json_['step'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionState != null) 'completionState': completionState!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionState = this.completionState;
+    final completionTime = this.completionTime;
+    final startTime = this.startTime;
+    final step = this.step;
+    return {
+      'completionState': ?completionState,
+      'completionTime': ?completionTime,
+      'startTime': ?startTime,
+      'step': ?step,
+    };
+  }
 }
 
 /// Details about the EKM connection
@@ -1022,22 +1039,25 @@ class EkmConnection {
 
   EkmConnection.fromJson(core.Map json_)
     : this(
-        connectionError:
-            json_.containsKey('connectionError')
-                ? ConnectionError.fromJson(
-                  json_['connectionError']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        connectionError: json_.containsKey('connectionError')
+            ? ConnectionError.fromJson(
+                json_['connectionError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         connectionName: json_['connectionName'] as core.String?,
         connectionState: json_['connectionState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionError != null) 'connectionError': connectionError!,
-    if (connectionName != null) 'connectionName': connectionName!,
-    if (connectionState != null) 'connectionState': connectionState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionError = this.connectionError;
+    final connectionName = this.connectionName;
+    final connectionState = this.connectionState;
+    return {
+      'connectionError': ?connectionError,
+      'connectionName': ?connectionName,
+      'connectionState': ?connectionState,
+    };
+  }
 }
 
 /// The EKM connections associated with a workload
@@ -1055,21 +1075,21 @@ class EkmConnections {
 
   EkmConnections.fromJson(core.Map json_)
     : this(
-        ekmConnections:
-            (json_['ekmConnections'] as core.List?)
-                ?.map(
-                  (value) => EkmConnection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ekmConnections: (json_['ekmConnections'] as core.List?)
+            ?.map(
+              (value) => EkmConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ekmConnections != null) 'ekmConnections': ekmConnections!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ekmConnections = this.ekmConnections;
+    final name = this.name;
+    return {'ekmConnections': ?ekmConnections, 'name': ?name};
+  }
 }
 
 /// Holds information needed by Mudbray to use partner EKMs for workloads.
@@ -1095,10 +1115,11 @@ class EkmMetadata {
         ekmSolution: json_['ekmSolution'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ekmEndpointUri != null) 'ekmEndpointUri': ekmEndpointUri!,
-    if (ekmSolution != null) 'ekmSolution': ekmSolution!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ekmEndpointUri = this.ekmEndpointUri;
+    final ekmSolution = this.ekmSolution;
+    return {'ekmEndpointUri': ?ekmEndpointUri, 'ekmSolution': ?ekmSolution};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1124,27 +1145,28 @@ class Instructions {
 
   Instructions.fromJson(core.Map json_)
     : this(
-        consoleInstructions:
-            json_.containsKey('consoleInstructions')
-                ? Console.fromJson(
-                  json_['consoleInstructions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcloudInstructions:
-            json_.containsKey('gcloudInstructions')
-                ? Gcloud.fromJson(
-                  json_['gcloudInstructions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consoleInstructions: json_.containsKey('consoleInstructions')
+            ? Console.fromJson(
+                json_['consoleInstructions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcloudInstructions: json_.containsKey('gcloudInstructions')
+            ? Gcloud.fromJson(
+                json_['gcloudInstructions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consoleInstructions != null)
-      'consoleInstructions': consoleInstructions!,
-    if (gcloudInstructions != null) 'gcloudInstructions': gcloudInstructions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consoleInstructions = this.consoleInstructions;
+    final gcloudInstructions = this.gcloudInstructions;
+    return {
+      'consoleInstructions': ?consoleInstructions,
+      'gcloudInstructions': ?gcloudInstructions,
+    };
+  }
 }
 
 /// Response message for list access requests.
@@ -1168,27 +1190,29 @@ class ListAccessApprovalRequestsResponse {
 
   ListAccessApprovalRequestsResponse.fromJson(core.Map json_)
     : this(
-        accessApprovalRequests:
-            (json_['accessApprovalRequests'] as core.List?)
-                ?.map(
-                  (value) => AccessApprovalRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accessApprovalRequests: (json_['accessApprovalRequests'] as core.List?)
+            ?.map(
+              (value) => AccessApprovalRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessApprovalRequests != null)
-      'accessApprovalRequests': accessApprovalRequests!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessApprovalRequests = this.accessApprovalRequests;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'accessApprovalRequests': ?accessApprovalRequests,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for list customer Customers requests
@@ -1208,26 +1232,29 @@ class ListCustomersResponse {
 
   ListCustomersResponse.fromJson(core.Map json_)
     : this(
-        customers:
-            (json_['customers'] as core.List?)
-                ?.map(
-                  (value) => Customer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customers: (json_['customers'] as core.List?)
+            ?.map(
+              (value) => Customer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customers != null) 'customers': customers!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customers = this.customers;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'customers': ?customers,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for list customer violation requests
@@ -1255,25 +1282,28 @@ class ListViolationsResponse {
   ListViolationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        violations:
-            (json_['violations'] as core.List?)
-                ?.map(
-                  (value) => Violation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        violations: (json_['violations'] as core.List?)
+            ?.map(
+              (value) => Violation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (violations != null) 'violations': violations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final violations = this.violations;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'violations': ?violations,
+    };
+  }
 }
 
 /// Response message for list customer workloads requests.
@@ -1294,25 +1324,28 @@ class ListWorkloadsResponse {
   ListWorkloadsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workloads:
-            (json_['workloads'] as core.List?)
-                ?.map(
-                  (value) => Workload.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workloads: (json_['workloads'] as core.List?)
+            ?.map(
+              (value) => Workload.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workloads != null) 'workloads': workloads!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workloads = this.workloads;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workloads': ?workloads,
+    };
+  }
 }
 
 /// Message describing Partner resource
@@ -1363,41 +1396,45 @@ class Partner {
   Partner.fromJson(core.Map json_)
     : this(
         createTime: json_['createTime'] as core.String?,
-        ekmSolutions:
-            (json_['ekmSolutions'] as core.List?)
-                ?.map(
-                  (value) => EkmMetadata.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ekmSolutions: (json_['ekmSolutions'] as core.List?)
+            ?.map(
+              (value) => EkmMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        operatedCloudRegions:
-            (json_['operatedCloudRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operatedCloudRegions: (json_['operatedCloudRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         partnerProjectId: json_['partnerProjectId'] as core.String?,
-        skus:
-            (json_['skus'] as core.List?)
-                ?.map(
-                  (value) => Sku.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        skus: (json_['skus'] as core.List?)
+            ?.map(
+              (value) =>
+                  Sku.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (ekmSolutions != null) 'ekmSolutions': ekmSolutions!,
-    if (name != null) 'name': name!,
-    if (operatedCloudRegions != null)
-      'operatedCloudRegions': operatedCloudRegions!,
-    if (partnerProjectId != null) 'partnerProjectId': partnerProjectId!,
-    if (skus != null) 'skus': skus!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final ekmSolutions = this.ekmSolutions;
+    final name = this.name;
+    final operatedCloudRegions = this.operatedCloudRegions;
+    final partnerProjectId = this.partnerProjectId;
+    final skus = this.skus;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'ekmSolutions': ?ekmSolutions,
+      'name': ?name,
+      'operatedCloudRegions': ?operatedCloudRegions,
+      'partnerProjectId': ?partnerProjectId,
+      'skus': ?skus,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The permissions granted to the partner for a workload
@@ -1416,16 +1453,16 @@ class PartnerPermissions {
   PartnerPermissions.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        partnerPermissions:
-            (json_['partnerPermissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        partnerPermissions: (json_['partnerPermissions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (partnerPermissions != null) 'partnerPermissions': partnerPermissions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final partnerPermissions = this.partnerPermissions;
+    return {'name': ?name, 'partnerPermissions': ?partnerPermissions};
+  }
 }
 
 /// Represents remediation guidance to resolve compliance violation for
@@ -1461,24 +1498,27 @@ class Remediation {
 
   Remediation.fromJson(core.Map json_)
     : this(
-        compliantValues:
-            (json_['compliantValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        instructions:
-            json_.containsKey('instructions')
-                ? Instructions.fromJson(
-                  json_['instructions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        compliantValues: (json_['compliantValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        instructions: json_.containsKey('instructions')
+            ? Instructions.fromJson(
+                json_['instructions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         remediationType: json_['remediationType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (compliantValues != null) 'compliantValues': compliantValues!,
-    if (instructions != null) 'instructions': instructions!,
-    if (remediationType != null) 'remediationType': remediationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final compliantValues = this.compliantValues;
+    final instructions = this.instructions;
+    final remediationType = this.remediationType;
+    return {
+      'compliantValues': ?compliantValues,
+      'instructions': ?instructions,
+      'remediationType': ?remediationType,
+    };
+  }
 }
 
 /// Represents the SKU a partner owns inside Google Cloud to sell to customers.
@@ -1503,10 +1543,11 @@ class Sku {
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    return {'displayName': ?displayName, 'id': ?id};
+  }
 }
 
 /// Details of resource Violation
@@ -1597,30 +1638,40 @@ class Violation {
         folderId: json_['folderId'] as core.String?,
         name: json_['name'] as core.String?,
         nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
-        remediation:
-            json_.containsKey('remediation')
-                ? Remediation.fromJson(
-                  json_['remediation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        remediation: json_.containsKey('remediation')
+            ? Remediation.fromJson(
+                json_['remediation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resolveTime: json_['resolveTime'] as core.String?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beginTime != null) 'beginTime': beginTime!,
-    if (category != null) 'category': category!,
-    if (description != null) 'description': description!,
-    if (folderId != null) 'folderId': folderId!,
-    if (name != null) 'name': name!,
-    if (nonCompliantOrgPolicy != null)
-      'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
-    if (remediation != null) 'remediation': remediation!,
-    if (resolveTime != null) 'resolveTime': resolveTime!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final beginTime = this.beginTime;
+    final category = this.category;
+    final description = this.description;
+    final folderId = this.folderId;
+    final name = this.name;
+    final nonCompliantOrgPolicy = this.nonCompliantOrgPolicy;
+    final remediation = this.remediation;
+    final resolveTime = this.resolveTime;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'beginTime': ?beginTime,
+      'category': ?category,
+      'description': ?description,
+      'folderId': ?folderId,
+      'name': ?name,
+      'nonCompliantOrgPolicy': ?nonCompliantOrgPolicy,
+      'remediation': ?remediation,
+      'resolveTime': ?resolveTime,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Contains metadata around the
@@ -1701,28 +1752,36 @@ class Workload {
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
         partner: json_['partner'] as core.String?,
-        workloadOnboardingState:
-            json_.containsKey('workloadOnboardingState')
-                ? WorkloadOnboardingState.fromJson(
-                  json_['workloadOnboardingState']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        workloadOnboardingState: json_.containsKey('workloadOnboardingState')
+            ? WorkloadOnboardingState.fromJson(
+                json_['workloadOnboardingState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (folder != null) 'folder': folder!,
-    if (folderId != null) 'folderId': folderId!,
-    if (isOnboarded != null) 'isOnboarded': isOnboarded!,
-    if (keyManagementProjectId != null)
-      'keyManagementProjectId': keyManagementProjectId!,
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (partner != null) 'partner': partner!,
-    if (workloadOnboardingState != null)
-      'workloadOnboardingState': workloadOnboardingState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final folder = this.folder;
+    final folderId = this.folderId;
+    final isOnboarded = this.isOnboarded;
+    final keyManagementProjectId = this.keyManagementProjectId;
+    final location = this.location;
+    final name = this.name;
+    final partner = this.partner;
+    final workloadOnboardingState = this.workloadOnboardingState;
+    return {
+      'createTime': ?createTime,
+      'folder': ?folder,
+      'folderId': ?folderId,
+      'isOnboarded': ?isOnboarded,
+      'keyManagementProjectId': ?keyManagementProjectId,
+      'location': ?location,
+      'name': ?name,
+      'partner': ?partner,
+      'workloadOnboardingState': ?workloadOnboardingState,
+    };
+  }
 }
 
 /// Container for workload onboarding steps.
@@ -1734,19 +1793,19 @@ class WorkloadOnboardingState {
 
   WorkloadOnboardingState.fromJson(core.Map json_)
     : this(
-        onboardingSteps:
-            (json_['onboardingSteps'] as core.List?)
-                ?.map(
-                  (value) => WorkloadOnboardingStep.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        onboardingSteps: (json_['onboardingSteps'] as core.List?)
+            ?.map(
+              (value) => WorkloadOnboardingStep.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (onboardingSteps != null) 'onboardingSteps': onboardingSteps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final onboardingSteps = this.onboardingSteps;
+    return {'onboardingSteps': ?onboardingSteps};
+  }
 }
 
 /// Container for workload onboarding information.
@@ -1790,10 +1849,16 @@ class WorkloadOnboardingStep {
         step: json_['step'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionState != null) 'completionState': completionState!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionState = this.completionState;
+    final completionTime = this.completionTime;
+    final startTime = this.startTime;
+    final step = this.step;
+    return {
+      'completionState': ?completionState,
+      'completionTime': ?completionTime,
+      'startTime': ?startTime,
+      'step': ?step,
+    };
+  }
 }

@@ -120,17 +120,20 @@ class ForecastResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (days != null) 'days': ['${days}'],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (location_latitude != null)
-        'location.latitude': ['${location_latitude}'],
-      if (location_longitude != null)
-        'location.longitude': ['${location_longitude}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (plantsDescription != null)
-        'plantsDescription': ['${plantsDescription}'],
-      if ($fields != null) 'fields': [$fields],
+      'days': ?days == null ? null : ['${days}'],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'location.latitude': ?location_latitude == null
+          ? null
+          : ['${location_latitude}'],
+      'location.longitude': ?location_longitude == null
+          ? null
+          : ['${location_longitude}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'plantsDescription': ?plantsDescription == null
+          ? null
+          : ['${plantsDescription}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/forecast:lookup';
@@ -203,7 +206,7 @@ class MapTypesHeatmapTilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -305,35 +308,37 @@ class DayInfo {
 
   DayInfo.fromJson(core.Map json_)
     : this(
-        date:
-            json_.containsKey('date')
-                ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        plantInfo:
-            (json_['plantInfo'] as core.List?)
-                ?.map(
-                  (value) => PlantInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        pollenTypeInfo:
-            (json_['pollenTypeInfo'] as core.List?)
-                ?.map(
-                  (value) => PollenTypeInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plantInfo: (json_['plantInfo'] as core.List?)
+            ?.map(
+              (value) => PlantInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pollenTypeInfo: (json_['pollenTypeInfo'] as core.List?)
+            ?.map(
+              (value) => PollenTypeInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (date != null) 'date': date!,
-    if (plantInfo != null) 'plantInfo': plantInfo!,
-    if (pollenTypeInfo != null) 'pollenTypeInfo': pollenTypeInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final date = this.date;
+    final plantInfo = this.plantInfo;
+    final pollenTypeInfo = this.pollenTypeInfo;
+    return {
+      'date': ?date,
+      'plantInfo': ?plantInfo,
+      'pollenTypeInfo': ?pollenTypeInfo,
+    };
+  }
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -403,25 +408,32 @@ class IndexInfo {
     : this(
         category: json_['category'] as core.String?,
         code: json_['code'] as core.String?,
-        color:
-            json_.containsKey('color')
-                ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        color: json_.containsKey('color')
+            ? Color.fromJson(
+                json_['color'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         indexDescription: json_['indexDescription'] as core.String?,
         value: json_['value'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (code != null) 'code': code!,
-    if (color != null) 'color': color!,
-    if (displayName != null) 'displayName': displayName!,
-    if (indexDescription != null) 'indexDescription': indexDescription!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final code = this.code;
+    final color = this.color;
+    final displayName = this.displayName;
+    final indexDescription = this.indexDescription;
+    final value = this.value;
+    return {
+      'category': ?category,
+      'code': ?code,
+      'color': ?color,
+      'displayName': ?displayName,
+      'indexDescription': ?indexDescription,
+      'value': ?value,
+    };
+  }
 }
 
 class LookupForecastResponse {
@@ -447,23 +459,27 @@ class LookupForecastResponse {
 
   LookupForecastResponse.fromJson(core.Map json_)
     : this(
-        dailyInfo:
-            (json_['dailyInfo'] as core.List?)
-                ?.map(
-                  (value) => DayInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dailyInfo: (json_['dailyInfo'] as core.List?)
+            ?.map(
+              (value) => DayInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dailyInfo != null) 'dailyInfo': dailyInfo!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dailyInfo = this.dailyInfo;
+    final nextPageToken = this.nextPageToken;
+    final regionCode = this.regionCode;
+    return {
+      'dailyInfo': ?dailyInfo,
+      'nextPageToken': ?nextPageToken,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// Contains general information about plants, including details on their
@@ -532,16 +548,26 @@ class PlantDescription {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crossReaction != null) 'crossReaction': crossReaction!,
-    if (family != null) 'family': family!,
-    if (picture != null) 'picture': picture!,
-    if (pictureCloseup != null) 'pictureCloseup': pictureCloseup!,
-    if (season != null) 'season': season!,
-    if (specialColors != null) 'specialColors': specialColors!,
-    if (specialShapes != null) 'specialShapes': specialShapes!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crossReaction = this.crossReaction;
+    final family = this.family;
+    final picture = this.picture;
+    final pictureCloseup = this.pictureCloseup;
+    final season = this.season;
+    final specialColors = this.specialColors;
+    final specialShapes = this.specialShapes;
+    final type = this.type;
+    return {
+      'crossReaction': ?crossReaction,
+      'family': ?family,
+      'picture': ?picture,
+      'pictureCloseup': ?pictureCloseup,
+      'season': ?season,
+      'specialColors': ?specialColors,
+      'specialShapes': ?specialShapes,
+      'type': ?type,
+    };
+  }
 }
 
 /// This object contains the daily information on specific plant.
@@ -602,28 +628,33 @@ class PlantInfo {
         code: json_['code'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         inSeason: json_['inSeason'] as core.bool?,
-        indexInfo:
-            json_.containsKey('indexInfo')
-                ? IndexInfo.fromJson(
-                  json_['indexInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        plantDescription:
-            json_.containsKey('plantDescription')
-                ? PlantDescription.fromJson(
-                  json_['plantDescription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        indexInfo: json_.containsKey('indexInfo')
+            ? IndexInfo.fromJson(
+                json_['indexInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plantDescription: json_.containsKey('plantDescription')
+            ? PlantDescription.fromJson(
+                json_['plantDescription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (displayName != null) 'displayName': displayName!,
-    if (inSeason != null) 'inSeason': inSeason!,
-    if (indexInfo != null) 'indexInfo': indexInfo!,
-    if (plantDescription != null) 'plantDescription': plantDescription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final displayName = this.displayName;
+    final inSeason = this.inSeason;
+    final indexInfo = this.indexInfo;
+    final plantDescription = this.plantDescription;
+    return {
+      'code': ?code,
+      'displayName': ?displayName,
+      'inSeason': ?inSeason,
+      'indexInfo': ?indexInfo,
+      'plantDescription': ?plantDescription,
+    };
+  }
 }
 
 /// This object contains the pollen type index and health recommendation
@@ -666,25 +697,29 @@ class PollenTypeInfo {
     : this(
         code: json_['code'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        healthRecommendations:
-            (json_['healthRecommendations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        healthRecommendations: (json_['healthRecommendations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         inSeason: json_['inSeason'] as core.bool?,
-        indexInfo:
-            json_.containsKey('indexInfo')
-                ? IndexInfo.fromJson(
-                  json_['indexInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        indexInfo: json_.containsKey('indexInfo')
+            ? IndexInfo.fromJson(
+                json_['indexInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (displayName != null) 'displayName': displayName!,
-    if (healthRecommendations != null)
-      'healthRecommendations': healthRecommendations!,
-    if (inSeason != null) 'inSeason': inSeason!,
-    if (indexInfo != null) 'indexInfo': indexInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final displayName = this.displayName;
+    final healthRecommendations = this.healthRecommendations;
+    final inSeason = this.inSeason;
+    final indexInfo = this.indexInfo;
+    return {
+      'code': ?code,
+      'displayName': ?displayName,
+      'healthRecommendations': ?healthRecommendations,
+      'inSeason': ?inSeason,
+      'indexInfo': ?indexInfo,
+    };
+  }
 }

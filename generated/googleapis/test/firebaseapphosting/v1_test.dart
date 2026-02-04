@@ -2437,8 +2437,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackendsBuildsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.builds;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.builds;
       final arg_request = buildBuild();
       final arg_parent = 'foo';
       final arg_buildId = 'foo';
@@ -2519,8 +2520,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.builds;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.builds;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -2591,8 +2593,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.builds;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.builds;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2645,8 +2648,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.builds;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.builds;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2734,8 +2738,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackendsDomainsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.domains;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.domains;
       final arg_request = buildDomain();
       final arg_parent = 'foo';
       final arg_domainId = 'foo';
@@ -2816,8 +2821,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.domains;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.domains;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -2888,8 +2894,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.domains;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.domains;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2942,8 +2949,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.domains;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.domains;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3029,8 +3037,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.domains;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.domains;
       final arg_request = buildDomain();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3119,8 +3128,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackendsRolloutsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.rollouts;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.rollouts;
       final arg_request = buildRollout();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -3201,8 +3211,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.rollouts;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.rollouts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3255,8 +3266,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.rollouts;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.rollouts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3344,8 +3356,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackendsTrafficResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.traffic;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.traffic;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3398,8 +3411,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppHostingApi(mock).projects.locations.backends.traffic;
+      final res = api.FirebaseAppHostingApi(
+        mock,
+      ).projects.locations.backends.traffic;
       final arg_request = buildTraffic();
       final arg_name = 'foo';
       final arg_requestId = 'foo';

@@ -74,7 +74,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<void> failing({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'failing';
@@ -101,7 +101,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> hello({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'hello';
@@ -138,7 +138,7 @@ class ToyApi {
       request.map((value) => ToyRequestFactory.toJson(value)).toList(),
     );
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloListOfClass';
@@ -186,7 +186,7 @@ class ToyApi {
           .toList(),
     );
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloListOfListOfClass';
@@ -227,7 +227,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloMap';
@@ -265,7 +265,7 @@ class ToyApi {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -307,7 +307,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(ToyAgeRequestFactory.toJson(request));
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'helloPost/' + commons.escapeVariable('$name');
@@ -349,8 +349,8 @@ class ToyApi {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'foo': [foo],
-      if (age != null) 'age': ['${age}'],
-      if ($fields != null) 'fields': [$fields],
+      'age': ?age == null ? null : ['${age}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'helloQuery/' + commons.escapeVariable('$name');
@@ -385,7 +385,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloNestedListList';
@@ -398,10 +398,9 @@ class ToyApi {
     );
     return (response_ as core.List)
         .map(
-          (value) =>
-              (value as core.List)
-                  .map((value) => value as core.String)
-                  .toList(),
+          (value) => (value as core.List)
+              .map((value) => value as core.String)
+              .toList(),
         )
         .toList();
   }
@@ -428,7 +427,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloNestedListMapList';
@@ -467,7 +466,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyMapResponse> helloNestedMap({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloNestedMap';
@@ -506,7 +505,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloNestedMapListMap';
@@ -553,7 +552,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloNestedMapMap';
@@ -594,7 +593,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(ToyRequestFactory.toJson(request));
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloPost';
@@ -624,7 +623,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloReturnNull({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloReturnNull';
@@ -653,7 +652,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloVoid({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'helloVoid';
@@ -680,7 +679,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<void> noop({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'noop';
@@ -713,7 +712,7 @@ class ToyApi {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'reverseList';
@@ -769,7 +768,7 @@ class ComputeResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/media/' + core.Uri.encodeFull('$resourceName');
@@ -823,8 +822,8 @@ class ComputeResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
-      if (dimensions != null) 'dimensions': dimensions,
-      if ($fields != null) 'fields': [$fields],
+      'dimensions': ?dimensions,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'files/' + commons.escapeVariable('$fileId') + '/export';
@@ -865,7 +864,7 @@ class ComputeResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -914,7 +913,7 @@ class StorageResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -944,11 +943,8 @@ class NestedResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.nestedResult != null) {
-      json_['nestedResult'] = message.nestedResult!;
-    }
-    return json_;
+    final nestedResult = message.nestedResult;
+    return {"'nestedResult'": ?nestedResult};
   }
 }
 
@@ -962,11 +958,8 @@ class ToyAgeRequestFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.age != null) {
-      json_['age'] = message.age!;
-    }
-    return json_;
+    final age = message.age;
+    return {"'age'": ?age};
   }
 }
 
@@ -985,18 +978,18 @@ class ToyMapResponseFactory {
           );
     }
     if (json_.containsKey('msgValue')) {
-      message.msgValue =
-          (json_['msgValue'] as core.List)
-              .map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList();
+      message.msgValue = (json_['msgValue'] as core.List)
+          .map((value) => value as core.Map<core.String, core.dynamic>)
+          .toList();
     }
     if (json_.containsKey('nullValue')) {
       message.nullValue = json_['nullValue'] as core.String;
     }
     if (json_.containsKey('properties')) {
-      message.properties = (json_['properties']
-              as core.Map<core.String, core.dynamic>)
-          .map((key, value) => core.MapEntry(key, value as core.String));
+      message.properties =
+          (json_['properties'] as core.Map<core.String, core.dynamic>).map(
+            (key, value) => core.MapEntry(key, value as core.String),
+          );
     }
     if (json_.containsKey('result')) {
       message.result = json_['result'] as core.String;
@@ -1008,28 +1001,22 @@ class ToyMapResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.mapResult != null) {
-      json_['mapResult'] = message.mapResult!.map(
+    final mapResult = message.mapResult;
+    final msgValue = message.msgValue;
+    final nullValue = message.nullValue;
+    final properties = message.properties;
+    final result = message.result;
+    final v = message.v;
+    return {
+      "'mapResult'": ?mapResult?.map(
         (key, item) => core.MapEntry(key, NestedResponseFactory.toJson(item)),
-      );
-    }
-    if (message.msgValue != null) {
-      json_['msgValue'] = message.msgValue!;
-    }
-    if (message.nullValue != null) {
-      json_['nullValue'] = message.nullValue!;
-    }
-    if (message.properties != null) {
-      json_['properties'] = message.properties!;
-    }
-    if (message.result != null) {
-      json_['result'] = message.result!;
-    }
-    if (message.v != null) {
-      json_['v'] = message.v!;
-    }
-    return json_;
+      ),
+      "'msgValue'": ?msgValue,
+      "'nullValue'": ?nullValue,
+      "'properties'": ?properties,
+      "'result'": ?result,
+      "'v'": ?v,
+    };
   }
 }
 
@@ -1046,14 +1033,9 @@ class ToyRequestFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.age != null) {
-      json_['age'] = message.age!;
-    }
-    if (message.name != null) {
-      json_['name'] = message.name!;
-    }
-    return json_;
+    final age = message.age;
+    final name = message.name;
+    return {"'age'": ?age, "'name'": ?name};
   }
 }
 
@@ -1069,11 +1051,8 @@ class ToyResourceResponseFactory {
   static core.Map<core.String, core.dynamic> toJson(
     ToyResourceResponse message,
   ) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.result != null) {
-      json_['result'] = message.result!;
-    }
-    return json_;
+    final result = message.result;
+    return {"'result'": ?result};
   }
 }
 
@@ -1087,10 +1066,7 @@ class ToyResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
-    final json_ = <core.String, core.dynamic>{};
-    if (message.result != null) {
-      json_['result'] = message.result!;
-    }
-    return json_;
+    final result = message.result;
+    return {"'result'": ?result};
   }
 }

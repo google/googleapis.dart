@@ -172,10 +172,9 @@ class ApisFilesGenerator {
         if (key == 'dependencies') {
           // patch up dependencies.
           var localValue = pubspec![key] as Map?;
-          localValue =
-              localValue != null
-                  ? value = Map<dynamic, dynamic>.from(localValue)
-                  : {};
+          localValue = localValue != null
+              ? value = Map<dynamic, dynamic>.from(localValue)
+              : {};
           localValue.addAll(_computeNewDependencies(localValue));
           value = localValue;
         } else {

@@ -101,7 +101,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -140,7 +140,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -195,11 +195,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
@@ -250,8 +250,8 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -314,7 +314,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/queues';
@@ -364,7 +364,7 @@ class ProjectsLocationsQueuesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -398,7 +398,7 @@ class ProjectsLocationsQueuesResource {
   /// this method will complete with the same error.
   async.Future<Queue> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -446,7 +446,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -507,10 +507,10 @@ class ProjectsLocationsQueuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/queues';
@@ -576,8 +576,8 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -623,7 +623,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':pause';
@@ -669,7 +669,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':purge';
@@ -718,7 +718,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':resume';
@@ -768,7 +768,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -817,7 +817,7 @@ class ProjectsLocationsQueuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -882,7 +882,7 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -935,7 +935,7 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
@@ -973,7 +973,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1034,8 +1034,8 @@ class ProjectsLocationsQueuesTasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (responseView != null) 'responseView': [responseView],
-      if ($fields != null) 'fields': [$fields],
+      'responseView': ?responseView == null ? null : [responseView],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1110,10 +1110,10 @@ class ProjectsLocationsQueuesTasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (responseView != null) 'responseView': [responseView],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'responseView': ?responseView == null ? null : [responseView],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
@@ -1167,7 +1167,7 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':run';
@@ -1305,13 +1305,12 @@ class AppEngineHttpRequest {
 
   AppEngineHttpRequest.fromJson(core.Map json_)
     : this(
-        appEngineRouting:
-            json_.containsKey('appEngineRouting')
-                ? AppEngineRouting.fromJson(
-                  json_['appEngineRouting']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appEngineRouting: json_.containsKey('appEngineRouting')
+            ? AppEngineRouting.fromJson(
+                json_['appEngineRouting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         body: json_['body'] as core.String?,
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -1319,13 +1318,20 @@ class AppEngineHttpRequest {
         relativeUri: json_['relativeUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineRouting != null) 'appEngineRouting': appEngineRouting!,
-    if (body != null) 'body': body!,
-    if (headers != null) 'headers': headers!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (relativeUri != null) 'relativeUri': relativeUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appEngineRouting = this.appEngineRouting;
+    final body = this.body;
+    final headers = this.headers;
+    final httpMethod = this.httpMethod;
+    final relativeUri = this.relativeUri;
+    return {
+      'appEngineRouting': ?appEngineRouting,
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod,
+      'relativeUri': ?relativeUri,
+    };
+  }
 }
 
 /// App Engine Routing.
@@ -1397,12 +1403,18 @@ class AppEngineRouting {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (instance != null) 'instance': instance!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final instance = this.instance;
+    final service = this.service;
+    final version = this.version;
+    return {
+      'host': ?host,
+      'instance': ?instance,
+      'service': ?service,
+      'version': ?version,
+    };
+  }
 }
 
 /// The status of a task attempt.
@@ -1446,23 +1458,27 @@ class Attempt {
   Attempt.fromJson(core.Map json_)
     : this(
         dispatchTime: json_['dispatchTime'] as core.String?,
-        responseStatus:
-            json_.containsKey('responseStatus')
-                ? Status.fromJson(
-                  json_['responseStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        responseStatus: json_.containsKey('responseStatus')
+            ? Status.fromJson(
+                json_['responseStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         responseTime: json_['responseTime'] as core.String?,
         scheduleTime: json_['scheduleTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dispatchTime != null) 'dispatchTime': dispatchTime!,
-    if (responseStatus != null) 'responseStatus': responseStatus!,
-    if (responseTime != null) 'responseTime': responseTime!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dispatchTime = this.dispatchTime;
+    final responseStatus = this.responseStatus;
+    final responseTime = this.responseTime;
+    final scheduleTime = this.scheduleTime;
+    return {
+      'dispatchTime': ?dispatchTime,
+      'responseStatus': ?responseStatus,
+      'responseTime': ?responseTime,
+      'scheduleTime': ?scheduleTime,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1549,24 +1565,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Request message for BufferTask.
@@ -1583,17 +1598,17 @@ class BufferTaskRequest {
 
   BufferTaskRequest.fromJson(core.Map json_)
     : this(
-        body:
-            json_.containsKey('body')
-                ? HttpBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        body: json_.containsKey('body')
+            ? HttpBody.fromJson(
+                json_['body'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    return {'body': ?body};
+  }
 }
 
 /// Response message for BufferTask.
@@ -1605,17 +1620,17 @@ class BufferTaskResponse {
 
   BufferTaskResponse.fromJson(core.Map json_)
     : this(
-        task:
-            json_.containsKey('task')
-                ? Task.fromJson(
-                  json_['task'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (task != null) 'task': task!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final task = this.task;
+    return {'task': ?task};
+  }
 }
 
 /// Describes the customer-managed encryption key (CMEK) configuration
@@ -1643,10 +1658,11 @@ class CmekConfig {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final name = this.name;
+    return {'kmsKey': ?kmsKey, 'name': ?name};
+  }
 }
 
 /// Request message for CreateTask.
@@ -1702,18 +1718,18 @@ class CreateTaskRequest {
   CreateTaskRequest.fromJson(core.Map json_)
     : this(
         responseView: json_['responseView'] as core.String?,
-        task:
-            json_.containsKey('task')
-                ? Task.fromJson(
-                  json_['task'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (responseView != null) 'responseView': responseView!,
-    if (task != null) 'task': task!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final responseView = this.responseView;
+    final task = this.task;
+    return {'responseView': ?responseView, 'task': ?task};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1754,17 +1770,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1788,10 +1804,11 @@ class Header {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
 }
 
 /// Wraps the Header object.
@@ -1808,17 +1825,17 @@ class HeaderOverride {
 
   HeaderOverride.fromJson(core.Map json_)
     : this(
-        header:
-            json_.containsKey('header')
-                ? Header.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        header: json_.containsKey('header')
+            ? Header.fromJson(
+                json_['header'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (header != null) 'header': header!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final header = this.header;
+    return {'header': ?header};
+  }
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -1954,29 +1971,35 @@ class HttpRequest {
         headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         httpMethod: json_['httpMethod'] as core.String?,
-        oauthToken:
-            json_.containsKey('oauthToken')
-                ? OAuthToken.fromJson(
-                  json_['oauthToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oidcToken:
-            json_.containsKey('oidcToken')
-                ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        oauthToken: json_.containsKey('oauthToken')
+            ? OAuthToken.fromJson(
+                json_['oauthToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oidcToken: json_.containsKey('oidcToken')
+            ? OidcToken.fromJson(
+                json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (headers != null) 'headers': headers!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (oauthToken != null) 'oauthToken': oauthToken!,
-    if (oidcToken != null) 'oidcToken': oidcToken!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final headers = this.headers;
+    final httpMethod = this.httpMethod;
+    final oauthToken = this.oauthToken;
+    final oidcToken = this.oidcToken;
+    final url = this.url;
+    return {
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod,
+      'oauthToken': ?oauthToken,
+      'oidcToken': ?oidcToken,
+      'url': ?url,
+    };
+  }
 }
 
 /// HTTP target.
@@ -2061,42 +2084,45 @@ class HttpTarget {
 
   HttpTarget.fromJson(core.Map json_)
     : this(
-        headerOverrides:
-            (json_['headerOverrides'] as core.List?)
-                ?.map(
-                  (value) => HeaderOverride.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        headerOverrides: (json_['headerOverrides'] as core.List?)
+            ?.map(
+              (value) => HeaderOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         httpMethod: json_['httpMethod'] as core.String?,
-        oauthToken:
-            json_.containsKey('oauthToken')
-                ? OAuthToken.fromJson(
-                  json_['oauthToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oidcToken:
-            json_.containsKey('oidcToken')
-                ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        uriOverride:
-            json_.containsKey('uriOverride')
-                ? UriOverride.fromJson(
-                  json_['uriOverride'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        oauthToken: json_.containsKey('oauthToken')
+            ? OAuthToken.fromJson(
+                json_['oauthToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oidcToken: json_.containsKey('oidcToken')
+            ? OidcToken.fromJson(
+                json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uriOverride: json_.containsKey('uriOverride')
+            ? UriOverride.fromJson(
+                json_['uriOverride'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headerOverrides != null) 'headerOverrides': headerOverrides!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (oauthToken != null) 'oauthToken': oauthToken!,
-    if (oidcToken != null) 'oidcToken': oidcToken!,
-    if (uriOverride != null) 'uriOverride': uriOverride!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final headerOverrides = this.headerOverrides;
+    final httpMethod = this.httpMethod;
+    final oauthToken = this.oauthToken;
+    final oidcToken = this.oidcToken;
+    final uriOverride = this.uriOverride;
+    return {
+      'headerOverrides': ?headerOverrides,
+      'httpMethod': ?httpMethod,
+      'oauthToken': ?oauthToken,
+      'oidcToken': ?oidcToken,
+      'uriOverride': ?uriOverride,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2111,21 +2137,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListQueues.
@@ -2145,20 +2171,19 @@ class ListQueuesResponse {
   ListQueuesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        queues:
-            (json_['queues'] as core.List?)
-                ?.map(
-                  (value) => Queue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        queues: (json_['queues'] as core.List?)
+            ?.map(
+              (value) =>
+                  Queue.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (queues != null) 'queues': queues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final queues = this.queues;
+    return {'nextPageToken': ?nextPageToken, 'queues': ?queues};
+  }
 }
 
 /// Response message for listing tasks using ListTasks.
@@ -2177,20 +2202,19 @@ class ListTasksResponse {
   ListTasksResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tasks:
-            (json_['tasks'] as core.List?)
-                ?.map(
-                  (value) => Task.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tasks != null) 'tasks': tasks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tasks = this.tasks;
+    return {'nextPageToken': ?nextPageToken, 'tasks': ?tasks};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2224,11 +2248,11 @@ class OAuthToken {
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final scope = this.scope;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    return {'scope': ?scope, 'serviceAccountEmail': ?serviceAccountEmail};
+  }
 }
 
 /// Contains information needed for generating an
@@ -2258,11 +2282,11 @@ class OidcToken {
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    return {'audience': ?audience, 'serviceAccountEmail': ?serviceAccountEmail};
+  }
 }
 
 /// PathOverride.
@@ -2279,9 +2303,10 @@ class PathOverride {
   PathOverride.fromJson(core.Map json_)
     : this(path: json_['path'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    return {'path': ?path};
+  }
 }
 
 /// Request message for PauseQueue.
@@ -2376,23 +2401,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Request message for PurgeQueue.
@@ -2412,9 +2437,10 @@ class QueryOverride {
   QueryOverride.fromJson(core.Map json_)
     : this(queryParams: json_['queryParams'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryParams != null) 'queryParams': queryParams!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final queryParams = this.queryParams;
+    return {'queryParams': ?queryParams};
+  }
 }
 
 /// A queue is a container of related tasks.
@@ -2533,55 +2559,58 @@ class Queue {
 
   Queue.fromJson(core.Map json_)
     : this(
-        appEngineRoutingOverride:
-            json_.containsKey('appEngineRoutingOverride')
-                ? AppEngineRouting.fromJson(
-                  json_['appEngineRoutingOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        httpTarget:
-            json_.containsKey('httpTarget')
-                ? HttpTarget.fromJson(
-                  json_['httpTarget'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appEngineRoutingOverride: json_.containsKey('appEngineRoutingOverride')
+            ? AppEngineRouting.fromJson(
+                json_['appEngineRoutingOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        httpTarget: json_.containsKey('httpTarget')
+            ? HttpTarget.fromJson(
+                json_['httpTarget'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         purgeTime: json_['purgeTime'] as core.String?,
-        rateLimits:
-            json_.containsKey('rateLimits')
-                ? RateLimits.fromJson(
-                  json_['rateLimits'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        retryConfig:
-            json_.containsKey('retryConfig')
-                ? RetryConfig.fromJson(
-                  json_['retryConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stackdriverLoggingConfig:
-            json_.containsKey('stackdriverLoggingConfig')
-                ? StackdriverLoggingConfig.fromJson(
-                  json_['stackdriverLoggingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rateLimits: json_.containsKey('rateLimits')
+            ? RateLimits.fromJson(
+                json_['rateLimits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retryConfig: json_.containsKey('retryConfig')
+            ? RetryConfig.fromJson(
+                json_['retryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stackdriverLoggingConfig: json_.containsKey('stackdriverLoggingConfig')
+            ? StackdriverLoggingConfig.fromJson(
+                json_['stackdriverLoggingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineRoutingOverride != null)
-      'appEngineRoutingOverride': appEngineRoutingOverride!,
-    if (httpTarget != null) 'httpTarget': httpTarget!,
-    if (name != null) 'name': name!,
-    if (purgeTime != null) 'purgeTime': purgeTime!,
-    if (rateLimits != null) 'rateLimits': rateLimits!,
-    if (retryConfig != null) 'retryConfig': retryConfig!,
-    if (stackdriverLoggingConfig != null)
-      'stackdriverLoggingConfig': stackdriverLoggingConfig!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appEngineRoutingOverride = this.appEngineRoutingOverride;
+    final httpTarget = this.httpTarget;
+    final name = this.name;
+    final purgeTime = this.purgeTime;
+    final rateLimits = this.rateLimits;
+    final retryConfig = this.retryConfig;
+    final stackdriverLoggingConfig = this.stackdriverLoggingConfig;
+    final state = this.state;
+    return {
+      'appEngineRoutingOverride': ?appEngineRoutingOverride,
+      'httpTarget': ?httpTarget,
+      'name': ?name,
+      'purgeTime': ?purgeTime,
+      'rateLimits': ?rateLimits,
+      'retryConfig': ?retryConfig,
+      'stackdriverLoggingConfig': ?stackdriverLoggingConfig,
+      'state': ?state,
+    };
+  }
 }
 
 /// Rate limits.
@@ -2644,17 +2673,20 @@ class RateLimits {
     : this(
         maxBurstSize: json_['maxBurstSize'] as core.int?,
         maxConcurrentDispatches: json_['maxConcurrentDispatches'] as core.int?,
-        maxDispatchesPerSecond:
-            (json_['maxDispatchesPerSecond'] as core.num?)?.toDouble(),
+        maxDispatchesPerSecond: (json_['maxDispatchesPerSecond'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxBurstSize != null) 'maxBurstSize': maxBurstSize!,
-    if (maxConcurrentDispatches != null)
-      'maxConcurrentDispatches': maxConcurrentDispatches!,
-    if (maxDispatchesPerSecond != null)
-      'maxDispatchesPerSecond': maxDispatchesPerSecond!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxBurstSize = this.maxBurstSize;
+    final maxConcurrentDispatches = this.maxConcurrentDispatches;
+    final maxDispatchesPerSecond = this.maxDispatchesPerSecond;
+    return {
+      'maxBurstSize': ?maxBurstSize,
+      'maxConcurrentDispatches': ?maxConcurrentDispatches,
+      'maxDispatchesPerSecond': ?maxDispatchesPerSecond,
+    };
+  }
 }
 
 /// Request message for ResumeQueue.
@@ -2756,13 +2788,20 @@ class RetryConfig {
         minBackoff: json_['minBackoff'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxAttempts != null) 'maxAttempts': maxAttempts!,
-    if (maxBackoff != null) 'maxBackoff': maxBackoff!,
-    if (maxDoublings != null) 'maxDoublings': maxDoublings!,
-    if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
-    if (minBackoff != null) 'minBackoff': minBackoff!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxAttempts = this.maxAttempts;
+    final maxBackoff = this.maxBackoff;
+    final maxDoublings = this.maxDoublings;
+    final maxRetryDuration = this.maxRetryDuration;
+    final minBackoff = this.minBackoff;
+    return {
+      'maxAttempts': ?maxAttempts,
+      'maxBackoff': ?maxBackoff,
+      'maxDoublings': ?maxDoublings,
+      'maxRetryDuration': ?maxRetryDuration,
+      'minBackoff': ?minBackoff,
+    };
+  }
 }
 
 /// Request message for forcing a task to run now using RunTask.
@@ -2792,9 +2831,10 @@ class RunTaskRequest {
   RunTaskRequest.fromJson(core.Map json_)
     : this(responseView: json_['responseView'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (responseView != null) 'responseView': responseView!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final responseView = this.responseView;
+    return {'responseView': ?responseView};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2810,17 +2850,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// Configuration options for writing logs to
@@ -2838,9 +2878,10 @@ class StackdriverLoggingConfig {
   StackdriverLoggingConfig.fromJson(core.Map json_)
     : this(samplingRatio: (json_['samplingRatio'] as core.num?)?.toDouble());
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (samplingRatio != null) 'samplingRatio': samplingRatio!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final samplingRatio = this.samplingRatio;
+    return {'samplingRatio': ?samplingRatio};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2980,54 +3021,62 @@ class Task {
 
   Task.fromJson(core.Map json_)
     : this(
-        appEngineHttpRequest:
-            json_.containsKey('appEngineHttpRequest')
-                ? AppEngineHttpRequest.fromJson(
-                  json_['appEngineHttpRequest']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appEngineHttpRequest: json_.containsKey('appEngineHttpRequest')
+            ? AppEngineHttpRequest.fromJson(
+                json_['appEngineHttpRequest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         dispatchCount: json_['dispatchCount'] as core.int?,
         dispatchDeadline: json_['dispatchDeadline'] as core.String?,
-        firstAttempt:
-            json_.containsKey('firstAttempt')
-                ? Attempt.fromJson(
-                  json_['firstAttempt'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        httpRequest:
-            json_.containsKey('httpRequest')
-                ? HttpRequest.fromJson(
-                  json_['httpRequest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lastAttempt:
-            json_.containsKey('lastAttempt')
-                ? Attempt.fromJson(
-                  json_['lastAttempt'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        firstAttempt: json_.containsKey('firstAttempt')
+            ? Attempt.fromJson(
+                json_['firstAttempt'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        httpRequest: json_.containsKey('httpRequest')
+            ? HttpRequest.fromJson(
+                json_['httpRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastAttempt: json_.containsKey('lastAttempt')
+            ? Attempt.fromJson(
+                json_['lastAttempt'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         responseCount: json_['responseCount'] as core.int?,
         scheduleTime: json_['scheduleTime'] as core.String?,
         view: json_['view'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineHttpRequest != null)
-      'appEngineHttpRequest': appEngineHttpRequest!,
-    if (createTime != null) 'createTime': createTime!,
-    if (dispatchCount != null) 'dispatchCount': dispatchCount!,
-    if (dispatchDeadline != null) 'dispatchDeadline': dispatchDeadline!,
-    if (firstAttempt != null) 'firstAttempt': firstAttempt!,
-    if (httpRequest != null) 'httpRequest': httpRequest!,
-    if (lastAttempt != null) 'lastAttempt': lastAttempt!,
-    if (name != null) 'name': name!,
-    if (responseCount != null) 'responseCount': responseCount!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-    if (view != null) 'view': view!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appEngineHttpRequest = this.appEngineHttpRequest;
+    final createTime = this.createTime;
+    final dispatchCount = this.dispatchCount;
+    final dispatchDeadline = this.dispatchDeadline;
+    final firstAttempt = this.firstAttempt;
+    final httpRequest = this.httpRequest;
+    final lastAttempt = this.lastAttempt;
+    final name = this.name;
+    final responseCount = this.responseCount;
+    final scheduleTime = this.scheduleTime;
+    final view = this.view;
+    return {
+      'appEngineHttpRequest': ?appEngineHttpRequest,
+      'createTime': ?createTime,
+      'dispatchCount': ?dispatchCount,
+      'dispatchDeadline': ?dispatchDeadline,
+      'firstAttempt': ?firstAttempt,
+      'httpRequest': ?httpRequest,
+      'lastAttempt': ?lastAttempt,
+      'name': ?name,
+      'responseCount': ?responseCount,
+      'scheduleTime': ?scheduleTime,
+      'view': ?view,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3108,30 +3157,35 @@ class UriOverride {
   UriOverride.fromJson(core.Map json_)
     : this(
         host: json_['host'] as core.String?,
-        pathOverride:
-            json_.containsKey('pathOverride')
-                ? PathOverride.fromJson(
-                  json_['pathOverride'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pathOverride: json_.containsKey('pathOverride')
+            ? PathOverride.fromJson(
+                json_['pathOverride'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         port: json_['port'] as core.String?,
-        queryOverride:
-            json_.containsKey('queryOverride')
-                ? QueryOverride.fromJson(
-                  json_['queryOverride'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        queryOverride: json_.containsKey('queryOverride')
+            ? QueryOverride.fromJson(
+                json_['queryOverride'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scheme: json_['scheme'] as core.String?,
         uriOverrideEnforceMode: json_['uriOverrideEnforceMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (pathOverride != null) 'pathOverride': pathOverride!,
-    if (port != null) 'port': port!,
-    if (queryOverride != null) 'queryOverride': queryOverride!,
-    if (scheme != null) 'scheme': scheme!,
-    if (uriOverrideEnforceMode != null)
-      'uriOverrideEnforceMode': uriOverrideEnforceMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final pathOverride = this.pathOverride;
+    final port = this.port;
+    final queryOverride = this.queryOverride;
+    final scheme = this.scheme;
+    final uriOverrideEnforceMode = this.uriOverrideEnforceMode;
+    return {
+      'host': ?host,
+      'pathOverride': ?pathOverride,
+      'port': ?port,
+      'queryOverride': ?queryOverride,
+      'scheme': ?scheme,
+      'uriOverrideEnforceMode': ?uriOverrideEnforceMode,
+    };
+  }
 }

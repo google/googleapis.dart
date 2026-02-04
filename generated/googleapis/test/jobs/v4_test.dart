@@ -2548,8 +2548,9 @@ void main() {
   unittest.group('resource-ProjectsTenantsClientEventsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudTalentSolutionApi(mock).projects.tenants.clientEvents;
+      final res = api.CloudTalentSolutionApi(
+        mock,
+      ).projects.tenants.clientEvents;
       final arg_request = buildClientEvent();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';

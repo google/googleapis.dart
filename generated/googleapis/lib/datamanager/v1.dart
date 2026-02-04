@@ -93,7 +93,7 @@ class AudienceMembersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/audienceMembers:ingest';
@@ -131,7 +131,7 @@ class AudienceMembersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/audienceMembers:remove';
@@ -175,7 +175,7 @@ class EventsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/events:ingest';
@@ -219,8 +219,8 @@ class RequestStatusResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/requestStatus:retrieve';
@@ -279,25 +279,30 @@ class AdIdentifiers {
     : this(
         gbraid: json_['gbraid'] as core.String?,
         gclid: json_['gclid'] as core.String?,
-        landingPageDeviceInfo:
-            json_.containsKey('landingPageDeviceInfo')
-                ? DeviceInfo.fromJson(
-                  json_['landingPageDeviceInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        landingPageDeviceInfo: json_.containsKey('landingPageDeviceInfo')
+            ? DeviceInfo.fromJson(
+                json_['landingPageDeviceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sessionAttributes: json_['sessionAttributes'] as core.String?,
         wbraid: json_['wbraid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gbraid != null) 'gbraid': gbraid!,
-    if (gclid != null) 'gclid': gclid!,
-    if (landingPageDeviceInfo != null)
-      'landingPageDeviceInfo': landingPageDeviceInfo!,
-    if (sessionAttributes != null) 'sessionAttributes': sessionAttributes!,
-    if (wbraid != null) 'wbraid': wbraid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gbraid = this.gbraid;
+    final gclid = this.gclid;
+    final landingPageDeviceInfo = this.landingPageDeviceInfo;
+    final sessionAttributes = this.sessionAttributes;
+    final wbraid = this.wbraid;
+    return {
+      'gbraid': ?gbraid,
+      'gclid': ?gclid,
+      'landingPageDeviceInfo': ?landingPageDeviceInfo,
+      'sessionAttributes': ?sessionAttributes,
+      'wbraid': ?wbraid,
+    };
+  }
 }
 
 /// Address information for the user.
@@ -339,12 +344,18 @@ class AddressInfo {
         regionCode: json_['regionCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (familyName != null) 'familyName': familyName!,
-    if (givenName != null) 'givenName': givenName!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (regionCode != null) 'regionCode': regionCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final familyName = this.familyName;
+    final givenName = this.givenName;
+    final postalCode = this.postalCode;
+    final regionCode = this.regionCode;
+    return {
+      'familyName': ?familyName,
+      'givenName': ?givenName,
+      'postalCode': ?postalCode,
+      'regionCode': ?regionCode,
+    };
+  }
 }
 
 /// The audience member to be operated on.
@@ -379,44 +390,45 @@ class AudienceMember {
 
   AudienceMember.fromJson(core.Map json_)
     : this(
-        consent:
-            json_.containsKey('consent')
-                ? Consent.fromJson(
-                  json_['consent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destinationReferences:
-            (json_['destinationReferences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        mobileData:
-            json_.containsKey('mobileData')
-                ? MobileData.fromJson(
-                  json_['mobileData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pairData:
-            json_.containsKey('pairData')
-                ? PairData.fromJson(
-                  json_['pairData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userData:
-            json_.containsKey('userData')
-                ? UserData.fromJson(
-                  json_['userData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consent: json_.containsKey('consent')
+            ? Consent.fromJson(
+                json_['consent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        destinationReferences: (json_['destinationReferences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        mobileData: json_.containsKey('mobileData')
+            ? MobileData.fromJson(
+                json_['mobileData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pairData: json_.containsKey('pairData')
+            ? PairData.fromJson(
+                json_['pairData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userData: json_.containsKey('userData')
+            ? UserData.fromJson(
+                json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consent != null) 'consent': consent!,
-    if (destinationReferences != null)
-      'destinationReferences': destinationReferences!,
-    if (mobileData != null) 'mobileData': mobileData!,
-    if (pairData != null) 'pairData': pairData!,
-    if (userData != null) 'userData': userData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consent = this.consent;
+    final destinationReferences = this.destinationReferences;
+    final mobileData = this.mobileData;
+    final pairData = this.pairData;
+    final userData = this.userData;
+    return {
+      'consent': ?consent,
+      'destinationReferences': ?destinationReferences,
+      'mobileData': ?mobileData,
+      'pairData': ?pairData,
+      'userData': ?userData,
+    };
+  }
 }
 
 /// A data encryption key wrapped by an AWS KMS key.
@@ -467,12 +479,18 @@ class AwsWrappedKeyInfo {
         roleArn: json_['roleArn'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptedDek != null) 'encryptedDek': encryptedDek!,
-    if (kekUri != null) 'kekUri': kekUri!,
-    if (keyType != null) 'keyType': keyType!,
-    if (roleArn != null) 'roleArn': roleArn!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptedDek = this.encryptedDek;
+    final kekUri = this.kekUri;
+    final keyType = this.keyType;
+    final roleArn = this.roleArn;
+    return {
+      'encryptedDek': ?encryptedDek,
+      'kekUri': ?kekUri,
+      'keyType': ?keyType,
+      'roleArn': ?roleArn,
+    };
+  }
 }
 
 /// The cart data associated with the event.
@@ -513,31 +531,34 @@ class CartData {
 
   CartData.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Item.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Item.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         merchantFeedLabel: json_['merchantFeedLabel'] as core.String?,
         merchantFeedLanguageCode:
             json_['merchantFeedLanguageCode'] as core.String?,
         merchantId: json_['merchantId'] as core.String?,
-        transactionDiscount:
-            (json_['transactionDiscount'] as core.num?)?.toDouble(),
+        transactionDiscount: (json_['transactionDiscount'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (merchantFeedLabel != null) 'merchantFeedLabel': merchantFeedLabel!,
-    if (merchantFeedLanguageCode != null)
-      'merchantFeedLanguageCode': merchantFeedLanguageCode!,
-    if (merchantId != null) 'merchantId': merchantId!,
-    if (transactionDiscount != null)
-      'transactionDiscount': transactionDiscount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final merchantFeedLabel = this.merchantFeedLabel;
+    final merchantFeedLanguageCode = this.merchantFeedLanguageCode;
+    final merchantId = this.merchantId;
+    final transactionDiscount = this.transactionDiscount;
+    return {
+      'items': ?items,
+      'merchantFeedLabel': ?merchantFeedLabel,
+      'merchantFeedLanguageCode': ?merchantFeedLanguageCode,
+      'merchantId': ?merchantId,
+      'transactionDiscount': ?transactionDiscount,
+    };
+  }
 }
 
 /// \[Digital Markets Act (DMA)\](//digital-markets-act.ec.europa.eu/index_en)
@@ -569,10 +590,11 @@ class Consent {
         adUserData: json_['adUserData'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adPersonalization != null) 'adPersonalization': adPersonalization!,
-    if (adUserData != null) 'adUserData': adUserData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adPersonalization = this.adPersonalization;
+    final adUserData = this.adUserData;
+    return {'adPersonalization': ?adPersonalization, 'adUserData': ?adUserData};
+  }
 }
 
 /// Custom variable for ads conversions.
@@ -602,20 +624,23 @@ class CustomVariable {
 
   CustomVariable.fromJson(core.Map json_)
     : this(
-        destinationReferences:
-            (json_['destinationReferences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        destinationReferences: (json_['destinationReferences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         value: json_['value'] as core.String?,
         variable: json_['variable'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationReferences != null)
-      'destinationReferences': destinationReferences!,
-    if (value != null) 'value': value!,
-    if (variable != null) 'variable': variable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationReferences = this.destinationReferences;
+    final value = this.value;
+    final variable = this.variable;
+    return {
+      'destinationReferences': ?destinationReferences,
+      'value': ?value,
+      'variable': ?variable,
+    };
+  }
 }
 
 /// The Google product you're sending data to.
@@ -673,37 +698,40 @@ class Destination {
 
   Destination.fromJson(core.Map json_)
     : this(
-        linkedAccount:
-            json_.containsKey('linkedAccount')
-                ? ProductAccount.fromJson(
-                  json_['linkedAccount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loginAccount:
-            json_.containsKey('loginAccount')
-                ? ProductAccount.fromJson(
-                  json_['loginAccount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        operatingAccount:
-            json_.containsKey('operatingAccount')
-                ? ProductAccount.fromJson(
-                  json_['operatingAccount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linkedAccount: json_.containsKey('linkedAccount')
+            ? ProductAccount.fromJson(
+                json_['linkedAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loginAccount: json_.containsKey('loginAccount')
+            ? ProductAccount.fromJson(
+                json_['loginAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        operatingAccount: json_.containsKey('operatingAccount')
+            ? ProductAccount.fromJson(
+                json_['operatingAccount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         productDestinationId: json_['productDestinationId'] as core.String?,
         reference: json_['reference'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (linkedAccount != null) 'linkedAccount': linkedAccount!,
-    if (loginAccount != null) 'loginAccount': loginAccount!,
-    if (operatingAccount != null) 'operatingAccount': operatingAccount!,
-    if (productDestinationId != null)
-      'productDestinationId': productDestinationId!,
-    if (reference != null) 'reference': reference!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final linkedAccount = this.linkedAccount;
+    final loginAccount = this.loginAccount;
+    final operatingAccount = this.operatingAccount;
+    final productDestinationId = this.productDestinationId;
+    final reference = this.reference;
+    return {
+      'linkedAccount': ?linkedAccount,
+      'loginAccount': ?loginAccount,
+      'operatingAccount': ?operatingAccount,
+      'productDestinationId': ?productDestinationId,
+      'reference': ?reference,
+    };
+  }
 }
 
 /// Information about the device being used (if any) when the event happened.
@@ -736,10 +764,11 @@ class DeviceInfo {
         userAgent: json_['userAgent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (userAgent != null) 'userAgent': userAgent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final userAgent = this.userAgent;
+    return {'ipAddress': ?ipAddress, 'userAgent': ?userAgent};
+  }
 }
 
 /// Encryption information for the data being ingested.
@@ -754,26 +783,28 @@ class EncryptionInfo {
 
   EncryptionInfo.fromJson(core.Map json_)
     : this(
-        awsWrappedKeyInfo:
-            json_.containsKey('awsWrappedKeyInfo')
-                ? AwsWrappedKeyInfo.fromJson(
-                  json_['awsWrappedKeyInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcpWrappedKeyInfo:
-            json_.containsKey('gcpWrappedKeyInfo')
-                ? GcpWrappedKeyInfo.fromJson(
-                  json_['gcpWrappedKeyInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        awsWrappedKeyInfo: json_.containsKey('awsWrappedKeyInfo')
+            ? AwsWrappedKeyInfo.fromJson(
+                json_['awsWrappedKeyInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcpWrappedKeyInfo: json_.containsKey('gcpWrappedKeyInfo')
+            ? GcpWrappedKeyInfo.fromJson(
+                json_['gcpWrappedKeyInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (awsWrappedKeyInfo != null) 'awsWrappedKeyInfo': awsWrappedKeyInfo!,
-    if (gcpWrappedKeyInfo != null) 'gcpWrappedKeyInfo': gcpWrappedKeyInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final awsWrappedKeyInfo = this.awsWrappedKeyInfo;
+    final gcpWrappedKeyInfo = this.gcpWrappedKeyInfo;
+    return {
+      'awsWrappedKeyInfo': ?awsWrappedKeyInfo,
+      'gcpWrappedKeyInfo': ?gcpWrappedKeyInfo,
+    };
+  }
 }
 
 /// The error count for a given error reason.
@@ -849,10 +880,11 @@ class ErrorCount {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    final recordCount = this.recordCount;
+    return {'reason': ?reason, 'recordCount': ?recordCount};
+  }
 }
 
 /// Error counts for each type of error.
@@ -866,19 +898,19 @@ class ErrorInfo {
 
   ErrorInfo.fromJson(core.Map json_)
     : this(
-        errorCounts:
-            (json_['errorCounts'] as core.List?)
-                ?.map(
-                  (value) => ErrorCount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errorCounts: (json_['errorCounts'] as core.List?)
+            ?.map(
+              (value) => ErrorCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCounts != null) 'errorCounts': errorCounts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCounts = this.errorCounts;
+    return {'errorCounts': ?errorCounts};
+  }
 }
 
 /// An event representing a user interaction with an advertiser's website or
@@ -1029,12 +1061,11 @@ class Event {
 
   Event.fromJson(core.Map json_)
     : this(
-        adIdentifiers:
-            json_.containsKey('adIdentifiers')
-                ? AdIdentifiers.fromJson(
-                  json_['adIdentifiers'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        adIdentifiers: json_.containsKey('adIdentifiers')
+            ? AdIdentifiers.fromJson(
+                json_['adIdentifiers'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         additionalEventParameters:
             (json_['additionalEventParameters'] as core.List?)
                 ?.map(
@@ -1043,93 +1074,101 @@ class Event {
                   ),
                 )
                 .toList(),
-        cartData:
-            json_.containsKey('cartData')
-                ? CartData.fromJson(
-                  json_['cartData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cartData: json_.containsKey('cartData')
+            ? CartData.fromJson(
+                json_['cartData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         clientId: json_['clientId'] as core.String?,
-        consent:
-            json_.containsKey('consent')
-                ? Consent.fromJson(
-                  json_['consent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consent: json_.containsKey('consent')
+            ? Consent.fromJson(
+                json_['consent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         conversionValue: (json_['conversionValue'] as core.num?)?.toDouble(),
         currency: json_['currency'] as core.String?,
-        customVariables:
-            (json_['customVariables'] as core.List?)
-                ?.map(
-                  (value) => CustomVariable.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        destinationReferences:
-            (json_['destinationReferences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        eventDeviceInfo:
-            json_.containsKey('eventDeviceInfo')
-                ? DeviceInfo.fromJson(
-                  json_['eventDeviceInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customVariables: (json_['customVariables'] as core.List?)
+            ?.map(
+              (value) => CustomVariable.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        destinationReferences: (json_['destinationReferences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        eventDeviceInfo: json_.containsKey('eventDeviceInfo')
+            ? DeviceInfo.fromJson(
+                json_['eventDeviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         eventName: json_['eventName'] as core.String?,
         eventSource: json_['eventSource'] as core.String?,
         eventTimestamp: json_['eventTimestamp'] as core.String?,
-        experimentalFields:
-            (json_['experimentalFields'] as core.List?)
-                ?.map(
-                  (value) => ExperimentalField.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        experimentalFields: (json_['experimentalFields'] as core.List?)
+            ?.map(
+              (value) => ExperimentalField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
         transactionId: json_['transactionId'] as core.String?,
-        userData:
-            json_.containsKey('userData')
-                ? UserData.fromJson(
-                  json_['userData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userData: json_.containsKey('userData')
+            ? UserData.fromJson(
+                json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userId: json_['userId'] as core.String?,
-        userProperties:
-            json_.containsKey('userProperties')
-                ? UserProperties.fromJson(
-                  json_['userProperties']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userProperties: json_.containsKey('userProperties')
+            ? UserProperties.fromJson(
+                json_['userProperties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adIdentifiers != null) 'adIdentifiers': adIdentifiers!,
-    if (additionalEventParameters != null)
-      'additionalEventParameters': additionalEventParameters!,
-    if (cartData != null) 'cartData': cartData!,
-    if (clientId != null) 'clientId': clientId!,
-    if (consent != null) 'consent': consent!,
-    if (conversionValue != null) 'conversionValue': conversionValue!,
-    if (currency != null) 'currency': currency!,
-    if (customVariables != null) 'customVariables': customVariables!,
-    if (destinationReferences != null)
-      'destinationReferences': destinationReferences!,
-    if (eventDeviceInfo != null) 'eventDeviceInfo': eventDeviceInfo!,
-    if (eventName != null) 'eventName': eventName!,
-    if (eventSource != null) 'eventSource': eventSource!,
-    if (eventTimestamp != null) 'eventTimestamp': eventTimestamp!,
-    if (experimentalFields != null) 'experimentalFields': experimentalFields!,
-    if (lastUpdatedTimestamp != null)
-      'lastUpdatedTimestamp': lastUpdatedTimestamp!,
-    if (transactionId != null) 'transactionId': transactionId!,
-    if (userData != null) 'userData': userData!,
-    if (userId != null) 'userId': userId!,
-    if (userProperties != null) 'userProperties': userProperties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adIdentifiers = this.adIdentifiers;
+    final additionalEventParameters = this.additionalEventParameters;
+    final cartData = this.cartData;
+    final clientId = this.clientId;
+    final consent = this.consent;
+    final conversionValue = this.conversionValue;
+    final currency = this.currency;
+    final customVariables = this.customVariables;
+    final destinationReferences = this.destinationReferences;
+    final eventDeviceInfo = this.eventDeviceInfo;
+    final eventName = this.eventName;
+    final eventSource = this.eventSource;
+    final eventTimestamp = this.eventTimestamp;
+    final experimentalFields = this.experimentalFields;
+    final lastUpdatedTimestamp = this.lastUpdatedTimestamp;
+    final transactionId = this.transactionId;
+    final userData = this.userData;
+    final userId = this.userId;
+    final userProperties = this.userProperties;
+    return {
+      'adIdentifiers': ?adIdentifiers,
+      'additionalEventParameters': ?additionalEventParameters,
+      'cartData': ?cartData,
+      'clientId': ?clientId,
+      'consent': ?consent,
+      'conversionValue': ?conversionValue,
+      'currency': ?currency,
+      'customVariables': ?customVariables,
+      'destinationReferences': ?destinationReferences,
+      'eventDeviceInfo': ?eventDeviceInfo,
+      'eventName': ?eventName,
+      'eventSource': ?eventSource,
+      'eventTimestamp': ?eventTimestamp,
+      'experimentalFields': ?experimentalFields,
+      'lastUpdatedTimestamp': ?lastUpdatedTimestamp,
+      'transactionId': ?transactionId,
+      'userData': ?userData,
+      'userId': ?userId,
+      'userProperties': ?userProperties,
+    };
+  }
 }
 
 /// Event parameter for GA4 events.
@@ -1155,10 +1194,11 @@ class ExperimentalField {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (field != null) 'field': field!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final field = this.field;
+    final value = this.value;
+    return {'field': ?field, 'value': ?value};
+  }
 }
 
 /// Information about the Google Cloud Platform wrapped key.
@@ -1209,12 +1249,18 @@ class GcpWrappedKeyInfo {
         wipProvider: json_['wipProvider'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptedDek != null) 'encryptedDek': encryptedDek!,
-    if (kekUri != null) 'kekUri': kekUri!,
-    if (keyType != null) 'keyType': keyType!,
-    if (wipProvider != null) 'wipProvider': wipProvider!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptedDek = this.encryptedDek;
+    final kekUri = this.kekUri;
+    final keyType = this.keyType;
+    final wipProvider = this.wipProvider;
+    return {
+      'encryptedDek': ?encryptedDek,
+      'kekUri': ?kekUri,
+      'keyType': ?keyType,
+      'wipProvider': ?wipProvider,
+    };
+  }
 }
 
 /// Request to upload audience members to the provided destinations.
@@ -1291,55 +1337,57 @@ class IngestAudienceMembersRequest {
 
   IngestAudienceMembersRequest.fromJson(core.Map json_)
     : this(
-        audienceMembers:
-            (json_['audienceMembers'] as core.List?)
-                ?.map(
-                  (value) => AudienceMember.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        consent:
-            json_.containsKey('consent')
-                ? Consent.fromJson(
-                  json_['consent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destinations:
-            (json_['destinations'] as core.List?)
-                ?.map(
-                  (value) => Destination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        audienceMembers: (json_['audienceMembers'] as core.List?)
+            ?.map(
+              (value) => AudienceMember.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        consent: json_.containsKey('consent')
+            ? Consent.fromJson(
+                json_['consent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encoding: json_['encoding'] as core.String?,
-        encryptionInfo:
-            json_.containsKey('encryptionInfo')
-                ? EncryptionInfo.fromJson(
-                  json_['encryptionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        termsOfService:
-            json_.containsKey('termsOfService')
-                ? TermsOfService.fromJson(
-                  json_['termsOfService']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        termsOfService: json_.containsKey('termsOfService')
+            ? TermsOfService.fromJson(
+                json_['termsOfService'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audienceMembers != null) 'audienceMembers': audienceMembers!,
-    if (consent != null) 'consent': consent!,
-    if (destinations != null) 'destinations': destinations!,
-    if (encoding != null) 'encoding': encoding!,
-    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-    if (termsOfService != null) 'termsOfService': termsOfService!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audienceMembers = this.audienceMembers;
+    final consent = this.consent;
+    final destinations = this.destinations;
+    final encoding = this.encoding;
+    final encryptionInfo = this.encryptionInfo;
+    final termsOfService = this.termsOfService;
+    final validateOnly = this.validateOnly;
+    return {
+      'audienceMembers': ?audienceMembers,
+      'consent': ?consent,
+      'destinations': ?destinations,
+      'encoding': ?encoding,
+      'encryptionInfo': ?encryptionInfo,
+      'termsOfService': ?termsOfService,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Response from the IngestAudienceMembersRequest.
@@ -1366,35 +1414,35 @@ class IngestAudienceMembersStatus {
     : this(
         mobileDataIngestionStatus:
             json_.containsKey('mobileDataIngestionStatus')
-                ? IngestMobileDataStatus.fromJson(
-                  json_['mobileDataIngestionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pairDataIngestionStatus:
-            json_.containsKey('pairDataIngestionStatus')
-                ? IngestPairDataStatus.fromJson(
-                  json_['pairDataIngestionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userDataIngestionStatus:
-            json_.containsKey('userDataIngestionStatus')
-                ? IngestUserDataStatus.fromJson(
-                  json_['userDataIngestionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? IngestMobileDataStatus.fromJson(
+                json_['mobileDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pairDataIngestionStatus: json_.containsKey('pairDataIngestionStatus')
+            ? IngestPairDataStatus.fromJson(
+                json_['pairDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userDataIngestionStatus: json_.containsKey('userDataIngestionStatus')
+            ? IngestUserDataStatus.fromJson(
+                json_['userDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileDataIngestionStatus != null)
-      'mobileDataIngestionStatus': mobileDataIngestionStatus!,
-    if (pairDataIngestionStatus != null)
-      'pairDataIngestionStatus': pairDataIngestionStatus!,
-    if (userDataIngestionStatus != null)
-      'userDataIngestionStatus': userDataIngestionStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileDataIngestionStatus = this.mobileDataIngestionStatus;
+    final pairDataIngestionStatus = this.pairDataIngestionStatus;
+    final userDataIngestionStatus = this.userDataIngestionStatus;
+    return {
+      'mobileDataIngestionStatus': ?mobileDataIngestionStatus,
+      'pairDataIngestionStatus': ?pairDataIngestionStatus,
+      'userDataIngestionStatus': ?userDataIngestionStatus,
+    };
+  }
 }
 
 /// Request to upload audience members to the provided destinations.
@@ -1465,47 +1513,49 @@ class IngestEventsRequest {
 
   IngestEventsRequest.fromJson(core.Map json_)
     : this(
-        consent:
-            json_.containsKey('consent')
-                ? Consent.fromJson(
-                  json_['consent'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destinations:
-            (json_['destinations'] as core.List?)
-                ?.map(
-                  (value) => Destination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        consent: json_.containsKey('consent')
+            ? Consent.fromJson(
+                json_['consent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encoding: json_['encoding'] as core.String?,
-        encryptionInfo:
-            json_.containsKey('encryptionInfo')
-                ? EncryptionInfo.fromJson(
-                  json_['encryptionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        events:
-            (json_['events'] as core.List?)
-                ?.map(
-                  (value) => Event.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        events: (json_['events'] as core.List?)
+            ?.map(
+              (value) =>
+                  Event.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consent != null) 'consent': consent!,
-    if (destinations != null) 'destinations': destinations!,
-    if (encoding != null) 'encoding': encoding!,
-    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-    if (events != null) 'events': events!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consent = this.consent;
+    final destinations = this.destinations;
+    final encoding = this.encoding;
+    final encryptionInfo = this.encryptionInfo;
+    final events = this.events;
+    final validateOnly = this.validateOnly;
+    return {
+      'consent': ?consent,
+      'destinations': ?destinations,
+      'encoding': ?encoding,
+      'encryptionInfo': ?encryptionInfo,
+      'events': ?events,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Response from the IngestEventsRequest.
@@ -1524,9 +1574,10 @@ class IngestEventsStatus {
   IngestEventsStatus.fromJson(core.Map json_)
     : this(recordCount: json_['recordCount'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordCount = this.recordCount;
+    return {'recordCount': ?recordCount};
+  }
 }
 
 /// The status of the mobile data ingestion to the destination containing stats
@@ -1554,10 +1605,11 @@ class IngestMobileDataStatus {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileIdCount != null) 'mobileIdCount': mobileIdCount!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileIdCount = this.mobileIdCount;
+    final recordCount = this.recordCount;
+    return {'mobileIdCount': ?mobileIdCount, 'recordCount': ?recordCount};
+  }
 }
 
 /// The status of the pair data ingestion to the destination containing stats
@@ -1585,10 +1637,11 @@ class IngestPairDataStatus {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pairIdCount != null) 'pairIdCount': pairIdCount!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pairIdCount = this.pairIdCount;
+    final recordCount = this.recordCount;
+    return {'pairIdCount': ?pairIdCount, 'recordCount': ?recordCount};
+  }
 }
 
 /// The status of the user data ingestion to the destination containing stats
@@ -1645,13 +1698,16 @@ class IngestUserDataStatus {
         userIdentifierCount: json_['userIdentifierCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recordCount != null) 'recordCount': recordCount!,
-    if (uploadMatchRateRange != null)
-      'uploadMatchRateRange': uploadMatchRateRange!,
-    if (userIdentifierCount != null)
-      'userIdentifierCount': userIdentifierCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordCount = this.recordCount;
+    final uploadMatchRateRange = this.uploadMatchRateRange;
+    final userIdentifierCount = this.userIdentifierCount;
+    return {
+      'recordCount': ?recordCount,
+      'uploadMatchRateRange': ?uploadMatchRateRange,
+      'userIdentifierCount': ?userIdentifierCount,
+    };
+  }
 }
 
 /// Represents an item in the cart associated with the event.
@@ -1709,14 +1765,20 @@ class Item {
         unitPrice: (json_['unitPrice'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalItemParameters != null)
-      'additionalItemParameters': additionalItemParameters!,
-    if (itemId != null) 'itemId': itemId!,
-    if (merchantProductId != null) 'merchantProductId': merchantProductId!,
-    if (quantity != null) 'quantity': quantity!,
-    if (unitPrice != null) 'unitPrice': unitPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalItemParameters = this.additionalItemParameters;
+    final itemId = this.itemId;
+    final merchantProductId = this.merchantProductId;
+    final quantity = this.quantity;
+    final unitPrice = this.unitPrice;
+    return {
+      'additionalItemParameters': ?additionalItemParameters,
+      'itemId': ?itemId,
+      'merchantProductId': ?merchantProductId,
+      'quantity': ?quantity,
+      'unitPrice': ?unitPrice,
+    };
+  }
 }
 
 /// A bucket of any
@@ -1740,15 +1802,15 @@ class MobileData {
 
   MobileData.fromJson(core.Map json_)
     : this(
-        mobileIds:
-            (json_['mobileIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        mobileIds: (json_['mobileIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileIds != null) 'mobileIds': mobileIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileIds = this.mobileIds;
+    return {'mobileIds': ?mobileIds};
+  }
 }
 
 /// \[PAIR\](//support.google.com/admanager/answer/15067908) IDs for the
@@ -1769,15 +1831,15 @@ class PairData {
 
   PairData.fromJson(core.Map json_)
     : this(
-        pairIds:
-            (json_['pairIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        pairIds: (json_['pairIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pairIds != null) 'pairIds': pairIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pairIds = this.pairIds;
+    return {'pairIds': ?pairIds};
+  }
 }
 
 /// Represents a specific account.
@@ -1827,11 +1889,16 @@ class ProductAccount {
         product: json_['product'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (accountType != null) 'accountType': accountType!,
-    if (product != null) 'product': product!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final accountType = this.accountType;
+    final product = this.product;
+    return {
+      'accountId': ?accountId,
+      'accountType': ?accountType,
+      'product': ?product,
+    };
+  }
 }
 
 /// Request to remove users from an audience in the provided destinations.
@@ -1888,40 +1955,43 @@ class RemoveAudienceMembersRequest {
 
   RemoveAudienceMembersRequest.fromJson(core.Map json_)
     : this(
-        audienceMembers:
-            (json_['audienceMembers'] as core.List?)
-                ?.map(
-                  (value) => AudienceMember.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        destinations:
-            (json_['destinations'] as core.List?)
-                ?.map(
-                  (value) => Destination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        audienceMembers: (json_['audienceMembers'] as core.List?)
+            ?.map(
+              (value) => AudienceMember.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encoding: json_['encoding'] as core.String?,
-        encryptionInfo:
-            json_.containsKey('encryptionInfo')
-                ? EncryptionInfo.fromJson(
-                  json_['encryptionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audienceMembers != null) 'audienceMembers': audienceMembers!,
-    if (destinations != null) 'destinations': destinations!,
-    if (encoding != null) 'encoding': encoding!,
-    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audienceMembers = this.audienceMembers;
+    final destinations = this.destinations;
+    final encoding = this.encoding;
+    final encryptionInfo = this.encryptionInfo;
+    final validateOnly = this.validateOnly;
+    return {
+      'audienceMembers': ?audienceMembers,
+      'destinations': ?destinations,
+      'encoding': ?encoding,
+      'encryptionInfo': ?encryptionInfo,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Response from the RemoveAudienceMembersRequest.
@@ -1946,37 +2016,36 @@ class RemoveAudienceMembersStatus {
 
   RemoveAudienceMembersStatus.fromJson(core.Map json_)
     : this(
-        mobileDataRemovalStatus:
-            json_.containsKey('mobileDataRemovalStatus')
-                ? RemoveMobileDataStatus.fromJson(
-                  json_['mobileDataRemovalStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pairDataRemovalStatus:
-            json_.containsKey('pairDataRemovalStatus')
-                ? RemovePairDataStatus.fromJson(
-                  json_['pairDataRemovalStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userDataRemovalStatus:
-            json_.containsKey('userDataRemovalStatus')
-                ? RemoveUserDataStatus.fromJson(
-                  json_['userDataRemovalStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mobileDataRemovalStatus: json_.containsKey('mobileDataRemovalStatus')
+            ? RemoveMobileDataStatus.fromJson(
+                json_['mobileDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pairDataRemovalStatus: json_.containsKey('pairDataRemovalStatus')
+            ? RemovePairDataStatus.fromJson(
+                json_['pairDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userDataRemovalStatus: json_.containsKey('userDataRemovalStatus')
+            ? RemoveUserDataStatus.fromJson(
+                json_['userDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileDataRemovalStatus != null)
-      'mobileDataRemovalStatus': mobileDataRemovalStatus!,
-    if (pairDataRemovalStatus != null)
-      'pairDataRemovalStatus': pairDataRemovalStatus!,
-    if (userDataRemovalStatus != null)
-      'userDataRemovalStatus': userDataRemovalStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileDataRemovalStatus = this.mobileDataRemovalStatus;
+    final pairDataRemovalStatus = this.pairDataRemovalStatus;
+    final userDataRemovalStatus = this.userDataRemovalStatus;
+    return {
+      'mobileDataRemovalStatus': ?mobileDataRemovalStatus,
+      'pairDataRemovalStatus': ?pairDataRemovalStatus,
+      'userDataRemovalStatus': ?userDataRemovalStatus,
+    };
+  }
 }
 
 /// The status of the mobile data removal from the destination.
@@ -2001,10 +2070,11 @@ class RemoveMobileDataStatus {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mobileIdCount != null) 'mobileIdCount': mobileIdCount!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileIdCount = this.mobileIdCount;
+    final recordCount = this.recordCount;
+    return {'mobileIdCount': ?mobileIdCount, 'recordCount': ?recordCount};
+  }
 }
 
 /// The status of the pair data removal from the destination.
@@ -2029,10 +2099,11 @@ class RemovePairDataStatus {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pairIdCount != null) 'pairIdCount': pairIdCount!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pairIdCount = this.pairIdCount;
+    final recordCount = this.recordCount;
+    return {'pairIdCount': ?pairIdCount, 'recordCount': ?recordCount};
+  }
 }
 
 /// The status of the user data removal from the destination.
@@ -2057,11 +2128,14 @@ class RemoveUserDataStatus {
         userIdentifierCount: json_['userIdentifierCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recordCount != null) 'recordCount': recordCount!,
-    if (userIdentifierCount != null)
-      'userIdentifierCount': userIdentifierCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordCount = this.recordCount;
+    final userIdentifierCount = this.userIdentifierCount;
+    return {
+      'recordCount': ?recordCount,
+      'userIdentifierCount': ?userIdentifierCount,
+    };
+  }
 }
 
 /// A request status per destination.
@@ -2109,58 +2183,60 @@ class RequestStatusPerDestination {
     : this(
         audienceMembersIngestionStatus:
             json_.containsKey('audienceMembersIngestionStatus')
-                ? IngestAudienceMembersStatus.fromJson(
-                  json_['audienceMembersIngestionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? IngestAudienceMembersStatus.fromJson(
+                json_['audienceMembersIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         audienceMembersRemovalStatus:
             json_.containsKey('audienceMembersRemovalStatus')
-                ? RemoveAudienceMembersStatus.fromJson(
-                  json_['audienceMembersRemovalStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        destination:
-            json_.containsKey('destination')
-                ? Destination.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        errorInfo:
-            json_.containsKey('errorInfo')
-                ? ErrorInfo.fromJson(
-                  json_['errorInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        eventsIngestionStatus:
-            json_.containsKey('eventsIngestionStatus')
-                ? IngestEventsStatus.fromJson(
-                  json_['eventsIngestionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RemoveAudienceMembersStatus.fromJson(
+                json_['audienceMembersRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        destination: json_.containsKey('destination')
+            ? Destination.fromJson(
+                json_['destination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errorInfo: json_.containsKey('errorInfo')
+            ? ErrorInfo.fromJson(
+                json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eventsIngestionStatus: json_.containsKey('eventsIngestionStatus')
+            ? IngestEventsStatus.fromJson(
+                json_['eventsIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestStatus: json_['requestStatus'] as core.String?,
-        warningInfo:
-            json_.containsKey('warningInfo')
-                ? WarningInfo.fromJson(
-                  json_['warningInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        warningInfo: json_.containsKey('warningInfo')
+            ? WarningInfo.fromJson(
+                json_['warningInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audienceMembersIngestionStatus != null)
-      'audienceMembersIngestionStatus': audienceMembersIngestionStatus!,
-    if (audienceMembersRemovalStatus != null)
-      'audienceMembersRemovalStatus': audienceMembersRemovalStatus!,
-    if (destination != null) 'destination': destination!,
-    if (errorInfo != null) 'errorInfo': errorInfo!,
-    if (eventsIngestionStatus != null)
-      'eventsIngestionStatus': eventsIngestionStatus!,
-    if (requestStatus != null) 'requestStatus': requestStatus!,
-    if (warningInfo != null) 'warningInfo': warningInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audienceMembersIngestionStatus = this.audienceMembersIngestionStatus;
+    final audienceMembersRemovalStatus = this.audienceMembersRemovalStatus;
+    final destination = this.destination;
+    final errorInfo = this.errorInfo;
+    final eventsIngestionStatus = this.eventsIngestionStatus;
+    final requestStatus = this.requestStatus;
+    final warningInfo = this.warningInfo;
+    return {
+      'audienceMembersIngestionStatus': ?audienceMembersIngestionStatus,
+      'audienceMembersRemovalStatus': ?audienceMembersRemovalStatus,
+      'destination': ?destination,
+      'errorInfo': ?errorInfo,
+      'eventsIngestionStatus': ?eventsIngestionStatus,
+      'requestStatus': ?requestStatus,
+      'warningInfo': ?warningInfo,
+    };
+  }
 }
 
 /// Response from the RetrieveRequestStatusRequest.
@@ -2185,10 +2261,10 @@ class RetrieveRequestStatusResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestStatusPerDestination != null)
-      'requestStatusPerDestination': requestStatusPerDestination!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestStatusPerDestination = this.requestStatusPerDestination;
+    return {'requestStatusPerDestination': ?requestStatusPerDestination};
+  }
 }
 
 /// The terms of service that the user has accepted/rejected.
@@ -2216,10 +2292,13 @@ class TermsOfService {
             json_['customerMatchTermsOfServiceStatus'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerMatchTermsOfServiceStatus != null)
-      'customerMatchTermsOfServiceStatus': customerMatchTermsOfServiceStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerMatchTermsOfServiceStatus =
+        this.customerMatchTermsOfServiceStatus;
+    return {
+      'customerMatchTermsOfServiceStatus': ?customerMatchTermsOfServiceStatus,
+    };
+  }
 }
 
 /// Data that identifies the user.
@@ -2240,19 +2319,19 @@ class UserData {
 
   UserData.fromJson(core.Map json_)
     : this(
-        userIdentifiers:
-            (json_['userIdentifiers'] as core.List?)
-                ?.map(
-                  (value) => UserIdentifier.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        userIdentifiers: (json_['userIdentifiers'] as core.List?)
+            ?.map(
+              (value) => UserIdentifier.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (userIdentifiers != null) 'userIdentifiers': userIdentifiers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final userIdentifiers = this.userIdentifiers;
+    return {'userIdentifiers': ?userIdentifiers};
+  }
 }
 
 /// A single identifier for the user.
@@ -2273,21 +2352,25 @@ class UserIdentifier {
 
   UserIdentifier.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? AddressInfo.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? AddressInfo.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         emailAddress: json_['emailAddress'] as core.String?,
         phoneNumber: json_['phoneNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (emailAddress != null) 'emailAddress': emailAddress!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final emailAddress = this.emailAddress;
+    final phoneNumber = this.phoneNumber;
+    return {
+      'address': ?address,
+      'emailAddress': ?emailAddress,
+      'phoneNumber': ?phoneNumber,
+    };
+  }
 }
 
 /// Advertiser-assessed information about the user at the time that the event
@@ -2344,13 +2427,16 @@ class UserProperties {
         customerValueBucket: json_['customerValueBucket'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalUserProperties != null)
-      'additionalUserProperties': additionalUserProperties!,
-    if (customerType != null) 'customerType': customerType!,
-    if (customerValueBucket != null)
-      'customerValueBucket': customerValueBucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalUserProperties = this.additionalUserProperties;
+    final customerType = this.customerType;
+    final customerValueBucket = this.customerValueBucket;
+    return {
+      'additionalUserProperties': ?additionalUserProperties,
+      'customerType': ?customerType,
+      'customerValueBucket': ?customerValueBucket,
+    };
+  }
 }
 
 /// A bucket of any additional
@@ -2375,10 +2461,11 @@ class UserProperty {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (propertyName != null) 'propertyName': propertyName!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final propertyName = this.propertyName;
+    final value = this.value;
+    return {'propertyName': ?propertyName, 'value': ?value};
+  }
 }
 
 /// The warning count for a given warning reason.
@@ -2417,10 +2504,11 @@ class WarningCount {
         recordCount: json_['recordCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-    if (recordCount != null) 'recordCount': recordCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    final recordCount = this.recordCount;
+    return {'reason': ?reason, 'recordCount': ?recordCount};
+  }
 }
 
 /// Warning counts for each type of warning.
@@ -2432,17 +2520,17 @@ class WarningInfo {
 
   WarningInfo.fromJson(core.Map json_)
     : this(
-        warningCounts:
-            (json_['warningCounts'] as core.List?)
-                ?.map(
-                  (value) => WarningCount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        warningCounts: (json_['warningCounts'] as core.List?)
+            ?.map(
+              (value) => WarningCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (warningCounts != null) 'warningCounts': warningCounts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final warningCounts = this.warningCounts;
+    return {'warningCounts': ?warningCounts};
+  }
 }

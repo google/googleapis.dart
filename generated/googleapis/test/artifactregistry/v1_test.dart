@@ -2764,10 +2764,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository(
           od,
         );
@@ -2782,10 +2782,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
           od,
         );
@@ -2800,10 +2800,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository(
           od,
         );
@@ -2818,10 +2818,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository(
           od,
         );
@@ -2836,10 +2836,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository(
           od,
         );
@@ -2854,10 +2854,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository(
           od,
         );
@@ -2872,10 +2872,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository(
           od,
         );
@@ -2890,10 +2890,10 @@ void main() {
         final o =
             buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
           od,
         );
@@ -4602,10 +4602,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesAptArtifactsResource', () {
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.aptArtifacts;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.aptArtifacts;
       final arg_request = buildImportAptArtifactsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4671,10 +4670,9 @@ void main() {
       // TODO: Implement tests for media download;
 
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.aptArtifacts;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.aptArtifacts;
       final arg_request = buildUploadAptArtifactRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4743,10 +4741,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesAttachmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.attachments;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.attachments;
       final arg_request = buildAttachment();
       final arg_parent = 'foo';
       final arg_attachmentId = 'foo';
@@ -4815,10 +4812,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.attachments;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.attachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4871,10 +4867,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.attachments;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.attachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4927,10 +4922,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.attachments;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.attachments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -5006,10 +5000,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesDockerImagesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.dockerImages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.dockerImages;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5062,10 +5055,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.dockerImages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.dockerImages;
       final arg_parent = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -5141,8 +5133,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesFilesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5198,8 +5191,9 @@ void main() {
       // TODO: Implement tests for media download;
 
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5252,8 +5246,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5310,8 +5305,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5391,8 +5387,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_request = buildGoogleDevtoolsArtifactregistryV1File();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5468,8 +5465,9 @@ void main() {
       // TODO: Implement tests for media download;
 
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.files;
       final arg_request = buildUploadFileRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5539,10 +5537,9 @@ void main() {
         // TODO: Implement tests for media download;
 
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.genericArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.genericArtifacts;
         final arg_request = buildUploadGenericArtifactRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -5615,10 +5612,9 @@ void main() {
       // TODO: Implement tests for media download;
 
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.goModules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.goModules;
       final arg_request = buildUploadGoModuleRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5687,10 +5683,9 @@ void main() {
     () {
       unittest.test('method--import', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.googetArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.googetArtifacts;
         final arg_request = buildImportGoogetArtifactsRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -5756,10 +5751,9 @@ void main() {
         // TODO: Implement tests for media download;
 
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.googetArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.googetArtifacts;
         final arg_request = buildUploadGoogetArtifactRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -5834,10 +5828,9 @@ void main() {
         // TODO: Implement tests for media download;
 
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.kfpArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.kfpArtifacts;
         final arg_request = buildUploadKfpArtifactRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -5909,10 +5902,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.mavenArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.mavenArtifacts;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5965,10 +5957,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.mavenArtifacts;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.mavenArtifacts;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6041,10 +6032,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesNpmPackagesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.npmPackages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.npmPackages;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6097,10 +6087,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.npmPackages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.npmPackages;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6170,10 +6159,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesPackagesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6226,10 +6214,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6282,10 +6269,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6365,10 +6351,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages;
       final arg_request = buildPackage();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6439,10 +6424,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesPackagesTagsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.tags;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.tags;
       final arg_request = buildTag();
       final arg_parent = 'foo';
       final arg_tagId = 'foo';
@@ -6508,10 +6492,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.tags;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.tags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6564,10 +6547,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.tags;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.tags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6620,10 +6602,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.tags;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.tags;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6697,10 +6678,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.tags;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.tags;
       final arg_request = buildTag();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6771,10 +6751,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesPackagesVersionsResource', () {
     unittest.test('method--batchDelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.versions;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.versions;
       final arg_request = buildBatchDeleteVersionsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6837,10 +6816,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.versions;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.versions;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -6902,10 +6880,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.versions;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.versions;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -6964,10 +6941,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.versions;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.versions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7050,10 +7026,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.packages.versions;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.packages.versions;
       final arg_request = buildVersion();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7126,10 +7101,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.pythonPackages;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.pythonPackages;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -7182,10 +7156,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ArtifactRegistryApi(
-              mock,
-            ).projects.locations.repositories.pythonPackages;
+        final res = api.ArtifactRegistryApi(
+          mock,
+        ).projects.locations.repositories.pythonPackages;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -7258,8 +7231,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.rules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.rules;
       final arg_request = buildGoogleDevtoolsArtifactregistryV1Rule();
       final arg_parent = 'foo';
       final arg_ruleId = 'foo';
@@ -7332,8 +7306,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.rules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.rules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7386,8 +7361,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.rules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.rules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7444,8 +7420,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.rules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.rules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7513,8 +7490,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(mock).projects.locations.repositories.rules;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.rules;
       final arg_request = buildGoogleDevtoolsArtifactregistryV1Rule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7589,10 +7567,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesYumArtifactsResource', () {
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.yumArtifacts;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.yumArtifacts;
       final arg_request = buildImportYumArtifactsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7658,10 +7635,9 @@ void main() {
       // TODO: Implement tests for media download;
 
       final mock = HttpServerMock();
-      final res =
-          api.ArtifactRegistryApi(
-            mock,
-          ).projects.locations.repositories.yumArtifacts;
+      final res = api.ArtifactRegistryApi(
+        mock,
+      ).projects.locations.repositories.yumArtifacts;
       final arg_request = buildUploadYumArtifactRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';

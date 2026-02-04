@@ -100,7 +100,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -153,11 +153,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -202,7 +202,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -248,10 +248,10 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -314,7 +314,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -360,7 +360,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -404,7 +404,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -459,7 +459,7 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -513,7 +513,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':export';
@@ -551,7 +551,7 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -608,9 +608,10 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -660,7 +661,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -714,7 +715,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -773,10 +774,10 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/registrations';
@@ -829,8 +830,8 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -881,7 +882,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -929,7 +930,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$registration') + ':renewDomain';
@@ -979,7 +980,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1030,7 +1031,7 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1083,9 +1084,9 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1136,7 +1137,7 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1194,9 +1195,9 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1244,8 +1245,8 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (domainName != null) 'domainName': [domainName],
-      if ($fields != null) 'fields': [$fields],
+      'domainName': ?domainName == null ? null : [domainName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1300,8 +1301,8 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (domainName != null) 'domainName': [domainName],
-      if ($fields != null) 'fields': [$fields],
+      'domainName': ?domainName == null ? null : [domainName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1349,8 +1350,8 @@ class ProjectsLocationsRegistrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1401,7 +1402,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1450,7 +1451,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1515,7 +1516,7 @@ class ProjectsLocationsRegistrationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1562,21 +1563,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1599,9 +1600,10 @@ class AuthorizationCode {
   AuthorizationCode.fromJson(core.Map json_)
     : this(code: json_['code'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    return {'code': ?code};
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1688,24 +1690,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Request for the `ConfigureContactSettings` method.
@@ -1740,27 +1741,30 @@ class ConfigureContactSettingsRequest {
 
   ConfigureContactSettingsRequest.fromJson(core.Map json_)
     : this(
-        contactNotices:
-            (json_['contactNotices'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        contactSettings:
-            json_.containsKey('contactSettings')
-                ? ContactSettings.fromJson(
-                  json_['contactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contactNotices: (json_['contactNotices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        contactSettings: json_.containsKey('contactSettings')
+            ? ContactSettings.fromJson(
+                json_['contactSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contactNotices != null) 'contactNotices': contactNotices!,
-    if (contactSettings != null) 'contactSettings': contactSettings!,
-    if (updateMask != null) 'updateMask': updateMask!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactNotices = this.contactNotices;
+    final contactSettings = this.contactSettings;
+    final updateMask = this.updateMask;
+    final validateOnly = this.validateOnly;
+    return {
+      'contactNotices': ?contactNotices,
+      'contactSettings': ?contactSettings,
+      'updateMask': ?updateMask,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Request for the `ConfigureDnsSettings` method.
@@ -1792,21 +1796,25 @@ class ConfigureDnsSettingsRequest {
 
   ConfigureDnsSettingsRequest.fromJson(core.Map json_)
     : this(
-        dnsSettings:
-            json_.containsKey('dnsSettings')
-                ? DnsSettings.fromJson(
-                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dnsSettings: json_.containsKey('dnsSettings')
+            ? DnsSettings.fromJson(
+                json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsSettings != null) 'dnsSettings': dnsSettings!,
-    if (updateMask != null) 'updateMask': updateMask!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsSettings = this.dnsSettings;
+    final updateMask = this.updateMask;
+    final validateOnly = this.validateOnly;
+    return {
+      'dnsSettings': ?dnsSettings,
+      'updateMask': ?updateMask,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Request for the `ConfigureManagementSettings` method.
@@ -1830,20 +1838,23 @@ class ConfigureManagementSettingsRequest {
 
   ConfigureManagementSettingsRequest.fromJson(core.Map json_)
     : this(
-        managementSettings:
-            json_.containsKey('managementSettings')
-                ? ManagementSettings.fromJson(
-                  json_['managementSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        managementSettings: json_.containsKey('managementSettings')
+            ? ManagementSettings.fromJson(
+                json_['managementSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (managementSettings != null) 'managementSettings': managementSettings!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final managementSettings = this.managementSettings;
+    final updateMask = this.updateMask;
+    return {
+      'managementSettings': ?managementSettings,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 /// Details required for a contact associated with a `Registration`.
@@ -1877,20 +1888,25 @@ class Contact {
         email: json_['email'] as core.String?,
         faxNumber: json_['faxNumber'] as core.String?,
         phoneNumber: json_['phoneNumber'] as core.String?,
-        postalAddress:
-            json_.containsKey('postalAddress')
-                ? PostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        postalAddress: json_.containsKey('postalAddress')
+            ? PostalAddress.fromJson(
+                json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (faxNumber != null) 'faxNumber': faxNumber!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (postalAddress != null) 'postalAddress': postalAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final faxNumber = this.faxNumber;
+    final phoneNumber = this.phoneNumber;
+    final postalAddress = this.postalAddress;
+    return {
+      'email': ?email,
+      'faxNumber': ?faxNumber,
+      'phoneNumber': ?phoneNumber,
+      'postalAddress': ?postalAddress,
+    };
+  }
 }
 
 /// Defines the contact information associated with a `Registration`.
@@ -1952,35 +1968,38 @@ class ContactSettings {
 
   ContactSettings.fromJson(core.Map json_)
     : this(
-        adminContact:
-            json_.containsKey('adminContact')
-                ? Contact.fromJson(
-                  json_['adminContact'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        adminContact: json_.containsKey('adminContact')
+            ? Contact.fromJson(
+                json_['adminContact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         privacy: json_['privacy'] as core.String?,
-        registrantContact:
-            json_.containsKey('registrantContact')
-                ? Contact.fromJson(
-                  json_['registrantContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        technicalContact:
-            json_.containsKey('technicalContact')
-                ? Contact.fromJson(
-                  json_['technicalContact']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        registrantContact: json_.containsKey('registrantContact')
+            ? Contact.fromJson(
+                json_['registrantContact']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        technicalContact: json_.containsKey('technicalContact')
+            ? Contact.fromJson(
+                json_['technicalContact']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminContact != null) 'adminContact': adminContact!,
-    if (privacy != null) 'privacy': privacy!,
-    if (registrantContact != null) 'registrantContact': registrantContact!,
-    if (technicalContact != null) 'technicalContact': technicalContact!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminContact = this.adminContact;
+    final privacy = this.privacy;
+    final registrantContact = this.registrantContact;
+    final technicalContact = this.technicalContact;
+    return {
+      'adminContact': ?adminContact,
+      'privacy': ?privacy,
+      'registrantContact': ?registrantContact,
+      'technicalContact': ?technicalContact,
+    };
+  }
 }
 
 /// Configuration for an arbitrary DNS provider.
@@ -2003,24 +2022,23 @@ class CustomDns {
 
   CustomDns.fromJson(core.Map json_)
     : this(
-        dsRecords:
-            (json_['dsRecords'] as core.List?)
-                ?.map(
-                  (value) => DsRecord.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        nameServers:
-            (json_['nameServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dsRecords: (json_['dsRecords'] as core.List?)
+            ?.map(
+              (value) => DsRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nameServers: (json_['nameServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dsRecords != null) 'dsRecords': dsRecords!,
-    if (nameServers != null) 'nameServers': nameServers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dsRecords = this.dsRecords;
+    final nameServers = this.nameServers;
+    return {'dsRecords': ?dsRecords, 'nameServers': ?nameServers};
+  }
 }
 
 /// Defines the DNS configuration of a `Registration`, including name servers,
@@ -2067,39 +2085,42 @@ class DnsSettings {
 
   DnsSettings.fromJson(core.Map json_)
     : this(
-        customDns:
-            json_.containsKey('customDns')
-                ? CustomDns.fromJson(
-                  json_['customDns'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        glueRecords:
-            (json_['glueRecords'] as core.List?)
-                ?.map(
-                  (value) => GlueRecord.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        googleDomainsDns:
-            json_.containsKey('googleDomainsDns')
-                ? GoogleDomainsDns.fromJson(
-                  json_['googleDomainsDns']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customDns: json_.containsKey('customDns')
+            ? CustomDns.fromJson(
+                json_['customDns'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        glueRecords: (json_['glueRecords'] as core.List?)
+            ?.map(
+              (value) => GlueRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        googleDomainsDns: json_.containsKey('googleDomainsDns')
+            ? GoogleDomainsDns.fromJson(
+                json_['googleDomainsDns']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         googleDomainsRedirectsDataAvailable:
             json_['googleDomainsRedirectsDataAvailable'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customDns != null) 'customDns': customDns!,
-    if (glueRecords != null) 'glueRecords': glueRecords!,
-    if (googleDomainsDns != null) 'googleDomainsDns': googleDomainsDns!,
-    if (googleDomainsRedirectsDataAvailable != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final customDns = this.customDns;
+    final glueRecords = this.glueRecords;
+    final googleDomainsDns = this.googleDomainsDns;
+    final googleDomainsRedirectsDataAvailable =
+        this.googleDomainsRedirectsDataAvailable;
+    return {
+      'customDns': ?customDns,
+      'glueRecords': ?glueRecords,
+      'googleDomainsDns': ?googleDomainsDns,
       'googleDomainsRedirectsDataAvailable':
-          googleDomainsRedirectsDataAvailable!,
-  };
+          ?googleDomainsRedirectsDataAvailable,
+    };
+  }
 }
 
 /// A domain that the calling user manages in Google Domains.
@@ -2139,19 +2160,23 @@ class Domain {
     : this(
         domainName: json_['domainName'] as core.String?,
         resourceState: json_['resourceState'] as core.String?,
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainName != null) 'domainName': domainName!,
-    if (resourceState != null) 'resourceState': resourceState!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainName = this.domainName;
+    final resourceState = this.resourceState;
+    final yearlyPrice = this.yearlyPrice;
+    return {
+      'domainName': ?domainName,
+      'resourceState': ?resourceState,
+      'yearlyPrice': ?yearlyPrice,
+    };
+  }
 }
 
 /// Domain forwarding configuration.
@@ -2205,14 +2230,22 @@ class DomainForwarding {
         targetUri: json_['targetUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pathForwarding != null) 'pathForwarding': pathForwarding!,
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-    if (redirectType != null) 'redirectType': redirectType!,
-    if (sslEnabled != null) 'sslEnabled': sslEnabled!,
-    if (subdomain != null) 'subdomain': subdomain!,
-    if (targetUri != null) 'targetUri': targetUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pathForwarding = this.pathForwarding;
+    final pemCertificate = this.pemCertificate;
+    final redirectType = this.redirectType;
+    final sslEnabled = this.sslEnabled;
+    final subdomain = this.subdomain;
+    final targetUri = this.targetUri;
+    return {
+      'pathForwarding': ?pathForwarding,
+      'pemCertificate': ?pemCertificate,
+      'redirectType': ?redirectType,
+      'sslEnabled': ?sslEnabled,
+      'subdomain': ?subdomain,
+      'targetUri': ?targetUri,
+    };
+  }
 }
 
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC
@@ -2273,12 +2306,18 @@ class DsRecord {
         keyTag: json_['keyTag'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (digest != null) 'digest': digest!,
-    if (digestType != null) 'digestType': digestType!,
-    if (keyTag != null) 'keyTag': keyTag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final digest = this.digest;
+    final digestType = this.digestType;
+    final keyTag = this.keyTag;
+    return {
+      'algorithm': ?algorithm,
+      'digest': ?digest,
+      'digestType': ?digestType,
+      'keyTag': ?keyTag,
+    };
+  }
 }
 
 /// Email forwarding configuration.
@@ -2301,10 +2340,11 @@ class EmailForwarding {
         targetEmailAddress: json_['targetEmailAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (targetEmailAddress != null) 'targetEmailAddress': targetEmailAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final targetEmailAddress = this.targetEmailAddress;
+    return {'alias': ?alias, 'targetEmailAddress': ?targetEmailAddress};
+  }
 }
 
 /// Deprecated: For more information, see
@@ -2357,20 +2397,20 @@ class GeoPolicy {
   GeoPolicy.fromJson(core.Map json_)
     : this(
         enableFencing: json_['enableFencing'] as core.bool?,
-        item:
-            (json_['item'] as core.List?)
-                ?.map(
-                  (value) => GeoPolicyItem.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        item: (json_['item'] as core.List?)
+            ?.map(
+              (value) => GeoPolicyItem.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableFencing != null) 'enableFencing': enableFencing!,
-    if (item != null) 'item': item!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableFencing = this.enableFencing;
+    final item = this.item;
+    return {'enableFencing': ?enableFencing, 'item': ?item};
+  }
 }
 
 /// ResourceRecordSet data for one geo location.
@@ -2403,31 +2443,33 @@ class GeoPolicyItem {
 
   GeoPolicyItem.fromJson(core.Map json_)
     : this(
-        healthCheckedTargets:
-            json_.containsKey('healthCheckedTargets')
-                ? HealthCheckTargets.fromJson(
-                  json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        healthCheckedTargets: json_.containsKey('healthCheckedTargets')
+            ? HealthCheckTargets.fromJson(
+                json_['healthCheckedTargets']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
-        rrdata:
-            (json_['rrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        signatureRrdata:
-            (json_['signatureRrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        rrdata: (json_['rrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        signatureRrdata: (json_['signatureRrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (healthCheckedTargets != null)
-      'healthCheckedTargets': healthCheckedTargets!,
-    if (location != null) 'location': location!,
-    if (rrdata != null) 'rrdata': rrdata!,
-    if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthCheckedTargets = this.healthCheckedTargets;
+    final location = this.location;
+    final rrdata = this.rrdata;
+    final signatureRrdata = this.signatureRrdata;
+    return {
+      'healthCheckedTargets': ?healthCheckedTargets,
+      'location': ?location,
+      'rrdata': ?rrdata,
+      'signatureRrdata': ?signatureRrdata,
+    };
+  }
 }
 
 /// Defines a host on your domain that is a DNS name server for your domain
@@ -2461,21 +2503,24 @@ class GlueRecord {
   GlueRecord.fromJson(core.Map json_)
     : this(
         hostName: json_['hostName'] as core.String?,
-        ipv4Addresses:
-            (json_['ipv4Addresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ipv6Addresses:
-            (json_['ipv6Addresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        ipv4Addresses: (json_['ipv4Addresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ipv6Addresses: (json_['ipv6Addresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostName != null) 'hostName': hostName!,
-    if (ipv4Addresses != null) 'ipv4Addresses': ipv4Addresses!,
-    if (ipv6Addresses != null) 'ipv6Addresses': ipv6Addresses!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostName = this.hostName;
+    final ipv4Addresses = this.ipv4Addresses;
+    final ipv6Addresses = this.ipv6Addresses;
+    return {
+      'hostName': ?hostName,
+      'ipv4Addresses': ?ipv4Addresses,
+      'ipv6Addresses': ?ipv6Addresses,
+    };
+  }
 }
 
 /// Deprecated: For more information, see
@@ -2522,26 +2567,29 @@ class GoogleDomainsDns {
 
   GoogleDomainsDns.fromJson(core.Map json_)
     : this(
-        dsRecords:
-            (json_['dsRecords'] as core.List?)
-                ?.map(
-                  (value) => DsRecord.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dsRecords: (json_['dsRecords'] as core.List?)
+            ?.map(
+              (value) => DsRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         dsState: json_['dsState'] as core.String?,
-        nameServers:
-            (json_['nameServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nameServers: (json_['nameServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dsRecords != null) 'dsRecords': dsRecords!,
-    if (dsState != null) 'dsState': dsState!,
-    if (nameServers != null) 'nameServers': nameServers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dsRecords = this.dsRecords;
+    final dsState = this.dsState;
+    final nameServers = this.nameServers;
+    return {
+      'dsRecords': ?dsRecords,
+      'dsState': ?dsState,
+      'nameServers': ?nameServers,
+    };
+  }
 }
 
 /// HealthCheckTargets describes endpoints to health-check when responding to
@@ -2563,25 +2611,26 @@ class HealthCheckTargets {
 
   HealthCheckTargets.fromJson(core.Map json_)
     : this(
-        externalEndpoints:
-            (json_['externalEndpoints'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        internalLoadBalancer:
-            (json_['internalLoadBalancer'] as core.List?)
-                ?.map(
-                  (value) => LoadBalancerTarget.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        externalEndpoints: (json_['externalEndpoints'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        internalLoadBalancer: (json_['internalLoadBalancer'] as core.List?)
+            ?.map(
+              (value) => LoadBalancerTarget.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
-    if (internalLoadBalancer != null)
-      'internalLoadBalancer': internalLoadBalancer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalEndpoints = this.externalEndpoints;
+    final internalLoadBalancer = this.internalLoadBalancer;
+    return {
+      'externalEndpoints': ?externalEndpoints,
+      'internalLoadBalancer': ?internalLoadBalancer,
+    };
+  }
 }
 
 /// Deprecated: For more information, see
@@ -2609,10 +2658,11 @@ class ImportDomainRequest {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainName != null) 'domainName': domainName!,
-    if (labels != null) 'labels': labels!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainName = this.domainName;
+    final labels = this.labels;
+    return {'domainName': ?domainName, 'labels': ?labels};
+  }
 }
 
 /// Request for the `InitiatePushTransfer` method.
@@ -2629,9 +2679,10 @@ class InitiatePushTransferRequest {
   InitiatePushTransferRequest.fromJson(core.Map json_)
     : this(tag: json_['tag'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tag = this.tag;
+    return {'tag': ?tag};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2646,21 +2697,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2676,20 +2727,20 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    return {'nextPageToken': ?nextPageToken, 'operations': ?operations};
+  }
 }
 
 /// Response for the `ListRegistrations` method.
@@ -2708,20 +2759,20 @@ class ListRegistrationsResponse {
   ListRegistrationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        registrations:
-            (json_['registrations'] as core.List?)
-                ?.map(
-                  (value) => Registration.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        registrations: (json_['registrations'] as core.List?)
+            ?.map(
+              (value) => Registration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (registrations != null) 'registrations': registrations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final registrations = this.registrations;
+    return {'nextPageToken': ?nextPageToken, 'registrations': ?registrations};
+  }
 }
 
 /// The configuration for an individual load balancer to health check.
@@ -2791,15 +2842,24 @@ class LoadBalancerTarget {
         region: json_['region'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (ipProtocol != null) 'ipProtocol': ipProtocol!,
-    if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-    if (port != null) 'port': port!,
-    if (project != null) 'project': project!,
-    if (region != null) 'region': region!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final ipProtocol = this.ipProtocol;
+    final loadBalancerType = this.loadBalancerType;
+    final networkUrl = this.networkUrl;
+    final port = this.port;
+    final project = this.project;
+    final region = this.region;
+    return {
+      'ipAddress': ?ipAddress,
+      'ipProtocol': ?ipProtocol,
+      'loadBalancerType': ?loadBalancerType,
+      'networkUrl': ?networkUrl,
+      'port': ?port,
+      'project': ?project,
+      'region': ?region,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2896,14 +2956,18 @@ class ManagementSettings {
         transferLockState: json_['transferLockState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveTransferLockState != null)
-      'effectiveTransferLockState': effectiveTransferLockState!,
-    if (preferredRenewalMethod != null)
-      'preferredRenewalMethod': preferredRenewalMethod!,
-    if (renewalMethod != null) 'renewalMethod': renewalMethod!,
-    if (transferLockState != null) 'transferLockState': transferLockState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveTransferLockState = this.effectiveTransferLockState;
+    final preferredRenewalMethod = this.preferredRenewalMethod;
+    final renewalMethod = this.renewalMethod;
+    final transferLockState = this.transferLockState;
+    return {
+      'effectiveTransferLockState': ?effectiveTransferLockState,
+      'preferredRenewalMethod': ?preferredRenewalMethod,
+      'renewalMethod': ?renewalMethod,
+      'transferLockState': ?transferLockState,
+    };
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -2957,30 +3021,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3075,32 +3143,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Represents a postal address, such as for postal delivery or payments
@@ -3149,28 +3221,30 @@ class PrimaryBackupPolicy {
 
   PrimaryBackupPolicy.fromJson(core.Map json_)
     : this(
-        backupGeoTargets:
-            json_.containsKey('backupGeoTargets')
-                ? GeoPolicy.fromJson(
-                  json_['backupGeoTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        primaryTargets:
-            json_.containsKey('primaryTargets')
-                ? HealthCheckTargets.fromJson(
-                  json_['primaryTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backupGeoTargets: json_.containsKey('backupGeoTargets')
+            ? GeoPolicy.fromJson(
+                json_['backupGeoTargets']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        primaryTargets: json_.containsKey('primaryTargets')
+            ? HealthCheckTargets.fromJson(
+                json_['primaryTargets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         trickleTraffic: (json_['trickleTraffic'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupGeoTargets != null) 'backupGeoTargets': backupGeoTargets!,
-    if (primaryTargets != null) 'primaryTargets': primaryTargets!,
-    if (trickleTraffic != null) 'trickleTraffic': trickleTraffic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupGeoTargets = this.backupGeoTargets;
+    final primaryTargets = this.primaryTargets;
+    final trickleTraffic = this.trickleTraffic;
+    return {
+      'backupGeoTargets': ?backupGeoTargets,
+      'primaryTargets': ?primaryTargets,
+      'trickleTraffic': ?trickleTraffic,
+    };
+  }
 }
 
 /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned
@@ -3208,47 +3282,50 @@ class RRSetRoutingPolicy {
 
   RRSetRoutingPolicy.fromJson(core.Map json_)
     : this(
-        geo:
-            json_.containsKey('geo')
-                ? GeoPolicy.fromJson(
-                  json_['geo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        geoPolicy:
-            json_.containsKey('geoPolicy')
-                ? GeoPolicy.fromJson(
-                  json_['geoPolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        geo: json_.containsKey('geo')
+            ? GeoPolicy.fromJson(
+                json_['geo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        geoPolicy: json_.containsKey('geoPolicy')
+            ? GeoPolicy.fromJson(
+                json_['geoPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         healthCheck: json_['healthCheck'] as core.String?,
-        primaryBackup:
-            json_.containsKey('primaryBackup')
-                ? PrimaryBackupPolicy.fromJson(
-                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wrr:
-            json_.containsKey('wrr')
-                ? WrrPolicy.fromJson(
-                  json_['wrr'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wrrPolicy:
-            json_.containsKey('wrrPolicy')
-                ? WrrPolicy.fromJson(
-                  json_['wrrPolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        primaryBackup: json_.containsKey('primaryBackup')
+            ? PrimaryBackupPolicy.fromJson(
+                json_['primaryBackup'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wrr: json_.containsKey('wrr')
+            ? WrrPolicy.fromJson(
+                json_['wrr'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wrrPolicy: json_.containsKey('wrrPolicy')
+            ? WrrPolicy.fromJson(
+                json_['wrrPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (geo != null) 'geo': geo!,
-    if (geoPolicy != null) 'geoPolicy': geoPolicy!,
-    if (healthCheck != null) 'healthCheck': healthCheck!,
-    if (primaryBackup != null) 'primaryBackup': primaryBackup!,
-    if (wrr != null) 'wrr': wrr!,
-    if (wrrPolicy != null) 'wrrPolicy': wrrPolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final geo = this.geo;
+    final geoPolicy = this.geoPolicy;
+    final healthCheck = this.healthCheck;
+    final primaryBackup = this.primaryBackup;
+    final wrr = this.wrr;
+    final wrrPolicy = this.wrrPolicy;
+    return {
+      'geo': ?geo,
+      'geoPolicy': ?geoPolicy,
+      'healthCheck': ?healthCheck,
+      'primaryBackup': ?primaryBackup,
+      'wrr': ?wrr,
+      'wrrPolicy': ?wrrPolicy,
+    };
+  }
 }
 
 /// Request for the `RegisterDomain` method.
@@ -3295,36 +3372,39 @@ class RegisterDomainRequest {
 
   RegisterDomainRequest.fromJson(core.Map json_)
     : this(
-        contactNotices:
-            (json_['contactNotices'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        domainNotices:
-            (json_['domainNotices'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        registration:
-            json_.containsKey('registration')
-                ? Registration.fromJson(
-                  json_['registration'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contactNotices: (json_['contactNotices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        domainNotices: (json_['domainNotices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        registration: json_.containsKey('registration')
+            ? Registration.fromJson(
+                json_['registration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contactNotices != null) 'contactNotices': contactNotices!,
-    if (domainNotices != null) 'domainNotices': domainNotices!,
-    if (registration != null) 'registration': registration!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactNotices = this.contactNotices;
+    final domainNotices = this.domainNotices;
+    final registration = this.registration;
+    final validateOnly = this.validateOnly;
+    final yearlyPrice = this.yearlyPrice;
+    return {
+      'contactNotices': ?contactNotices,
+      'domainNotices': ?domainNotices,
+      'registration': ?registration,
+      'validateOnly': ?validateOnly,
+      'yearlyPrice': ?yearlyPrice,
+    };
+  }
 }
 
 /// Parameters required to register a new domain.
@@ -3371,29 +3451,33 @@ class RegisterParameters {
     : this(
         availability: json_['availability'] as core.String?,
         domainName: json_['domainName'] as core.String?,
-        domainNotices:
-            (json_['domainNotices'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        supportedPrivacy:
-            (json_['supportedPrivacy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        domainNotices: (json_['domainNotices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        supportedPrivacy: (json_['supportedPrivacy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availability != null) 'availability': availability!,
-    if (domainName != null) 'domainName': domainName!,
-    if (domainNotices != null) 'domainNotices': domainNotices!,
-    if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final availability = this.availability;
+    final domainName = this.domainName;
+    final domainNotices = this.domainNotices;
+    final supportedPrivacy = this.supportedPrivacy;
+    final yearlyPrice = this.yearlyPrice;
+    return {
+      'availability': ?availability,
+      'domainName': ?domainName,
+      'domainNotices': ?domainNotices,
+      'supportedPrivacy': ?supportedPrivacy,
+      'yearlyPrice': ?yearlyPrice,
+    };
+  }
 }
 
 /// The `Registration` resource facilitates managing and configuring domain name
@@ -3591,77 +3675,83 @@ class Registration {
 
   Registration.fromJson(core.Map json_)
     : this(
-        contactSettings:
-            json_.containsKey('contactSettings')
-                ? ContactSettings.fromJson(
-                  json_['contactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contactSettings: json_.containsKey('contactSettings')
+            ? ContactSettings.fromJson(
+                json_['contactSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        dnsSettings:
-            json_.containsKey('dnsSettings')
-                ? DnsSettings.fromJson(
-                  json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dnsSettings: json_.containsKey('dnsSettings')
+            ? DnsSettings.fromJson(
+                json_['dnsSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domainName: json_['domainName'] as core.String?,
-        domainProperties:
-            (json_['domainProperties'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        domainProperties: (json_['domainProperties'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         expireTime: json_['expireTime'] as core.String?,
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        issues: (json_['issues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        managementSettings:
-            json_.containsKey('managementSettings')
-                ? ManagementSettings.fromJson(
-                  json_['managementSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        managementSettings: json_.containsKey('managementSettings')
+            ? ManagementSettings.fromJson(
+                json_['managementSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        pendingContactSettings:
-            json_.containsKey('pendingContactSettings')
-                ? ContactSettings.fromJson(
-                  json_['pendingContactSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pendingContactSettings: json_.containsKey('pendingContactSettings')
+            ? ContactSettings.fromJson(
+                json_['pendingContactSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         registerFailureReason: json_['registerFailureReason'] as core.String?,
         state: json_['state'] as core.String?,
-        supportedPrivacy:
-            (json_['supportedPrivacy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        supportedPrivacy: (json_['supportedPrivacy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         transferFailureReason: json_['transferFailureReason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contactSettings != null) 'contactSettings': contactSettings!,
-    if (createTime != null) 'createTime': createTime!,
-    if (dnsSettings != null) 'dnsSettings': dnsSettings!,
-    if (domainName != null) 'domainName': domainName!,
-    if (domainProperties != null) 'domainProperties': domainProperties!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (issues != null) 'issues': issues!,
-    if (labels != null) 'labels': labels!,
-    if (managementSettings != null) 'managementSettings': managementSettings!,
-    if (name != null) 'name': name!,
-    if (pendingContactSettings != null)
-      'pendingContactSettings': pendingContactSettings!,
-    if (registerFailureReason != null)
-      'registerFailureReason': registerFailureReason!,
-    if (state != null) 'state': state!,
-    if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
-    if (transferFailureReason != null)
-      'transferFailureReason': transferFailureReason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactSettings = this.contactSettings;
+    final createTime = this.createTime;
+    final dnsSettings = this.dnsSettings;
+    final domainName = this.domainName;
+    final domainProperties = this.domainProperties;
+    final expireTime = this.expireTime;
+    final issues = this.issues;
+    final labels = this.labels;
+    final managementSettings = this.managementSettings;
+    final name = this.name;
+    final pendingContactSettings = this.pendingContactSettings;
+    final registerFailureReason = this.registerFailureReason;
+    final state = this.state;
+    final supportedPrivacy = this.supportedPrivacy;
+    final transferFailureReason = this.transferFailureReason;
+    return {
+      'contactSettings': ?contactSettings,
+      'createTime': ?createTime,
+      'dnsSettings': ?dnsSettings,
+      'domainName': ?domainName,
+      'domainProperties': ?domainProperties,
+      'expireTime': ?expireTime,
+      'issues': ?issues,
+      'labels': ?labels,
+      'managementSettings': ?managementSettings,
+      'name': ?name,
+      'pendingContactSettings': ?pendingContactSettings,
+      'registerFailureReason': ?registerFailureReason,
+      'state': ?state,
+      'supportedPrivacy': ?supportedPrivacy,
+      'transferFailureReason': ?transferFailureReason,
+    };
+  }
 }
 
 /// Request for the `RenewDomain` method.
@@ -3689,18 +3779,18 @@ class RenewDomainRequest {
   RenewDomainRequest.fromJson(core.Map json_)
     : this(
         validateOnly: json_['validateOnly'] as core.bool?,
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final validateOnly = this.validateOnly;
+    final yearlyPrice = this.yearlyPrice;
+    return {'validateOnly': ?validateOnly, 'yearlyPrice': ?yearlyPrice};
+  }
 }
 
 /// Request for the `ResetAuthorizationCode` method.
@@ -3746,32 +3836,37 @@ class ResourceRecordSet {
   ResourceRecordSet.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        routingPolicy:
-            json_.containsKey('routingPolicy')
-                ? RRSetRoutingPolicy.fromJson(
-                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rrdata:
-            (json_['rrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        signatureRrdata:
-            (json_['signatureRrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        routingPolicy: json_.containsKey('routingPolicy')
+            ? RRSetRoutingPolicy.fromJson(
+                json_['routingPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rrdata: (json_['rrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        signatureRrdata: (json_['signatureRrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         ttl: json_['ttl'] as core.int?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (routingPolicy != null) 'routingPolicy': routingPolicy!,
-    if (rrdata != null) 'rrdata': rrdata!,
-    if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
-    if (ttl != null) 'ttl': ttl!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final routingPolicy = this.routingPolicy;
+    final rrdata = this.rrdata;
+    final signatureRrdata = this.signatureRrdata;
+    final ttl = this.ttl;
+    final type = this.type;
+    return {
+      'name': ?name,
+      'routingPolicy': ?routingPolicy,
+      'rrdata': ?rrdata,
+      'signatureRrdata': ?signatureRrdata,
+      'ttl': ?ttl,
+      'type': ?type,
+    };
+  }
 }
 
 /// Response for the `RetrieveGoogleDomainsDnsRecords` method.
@@ -3790,20 +3885,20 @@ class RetrieveGoogleDomainsDnsRecordsResponse {
   RetrieveGoogleDomainsDnsRecordsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        rrset:
-            (json_['rrset'] as core.List?)
-                ?.map(
-                  (value) => ResourceRecordSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rrset: (json_['rrset'] as core.List?)
+            ?.map(
+              (value) => ResourceRecordSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (rrset != null) 'rrset': rrset!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final rrset = this.rrset;
+    return {'nextPageToken': ?nextPageToken, 'rrset': ?rrset};
+  }
 }
 
 /// Response for the `RetrieveGoogleDomainsForwardingConfig` method.
@@ -3827,28 +3922,30 @@ class RetrieveGoogleDomainsForwardingConfigResponse {
 
   RetrieveGoogleDomainsForwardingConfigResponse.fromJson(core.Map json_)
     : this(
-        domainForwardings:
-            (json_['domainForwardings'] as core.List?)
-                ?.map(
-                  (value) => DomainForwarding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        emailForwardings:
-            (json_['emailForwardings'] as core.List?)
-                ?.map(
-                  (value) => EmailForwarding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domainForwardings: (json_['domainForwardings'] as core.List?)
+            ?.map(
+              (value) => DomainForwarding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        emailForwardings: (json_['emailForwardings'] as core.List?)
+            ?.map(
+              (value) => EmailForwarding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainForwardings != null) 'domainForwardings': domainForwardings!,
-    if (emailForwardings != null) 'emailForwardings': emailForwardings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainForwardings = this.domainForwardings;
+    final emailForwardings = this.emailForwardings;
+    return {
+      'domainForwardings': ?domainForwardings,
+      'emailForwardings': ?emailForwardings,
+    };
+  }
 }
 
 /// Deprecated: For more information, see
@@ -3869,21 +3966,20 @@ class RetrieveImportableDomainsResponse {
 
   RetrieveImportableDomainsResponse.fromJson(core.Map json_)
     : this(
-        domains:
-            (json_['domains'] as core.List?)
-                ?.map(
-                  (value) => Domain.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domains: (json_['domains'] as core.List?)
+            ?.map(
+              (value) =>
+                  Domain.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domains != null) 'domains': domains!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domains = this.domains;
+    final nextPageToken = this.nextPageToken;
+    return {'domains': ?domains, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for the `RetrieveRegisterParameters` method.
@@ -3895,18 +3991,18 @@ class RetrieveRegisterParametersResponse {
 
   RetrieveRegisterParametersResponse.fromJson(core.Map json_)
     : this(
-        registerParameters:
-            json_.containsKey('registerParameters')
-                ? RegisterParameters.fromJson(
-                  json_['registerParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        registerParameters: json_.containsKey('registerParameters')
+            ? RegisterParameters.fromJson(
+                json_['registerParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (registerParameters != null) 'registerParameters': registerParameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final registerParameters = this.registerParameters;
+    return {'registerParameters': ?registerParameters};
+  }
 }
 
 /// Deprecated: For more information, see
@@ -3921,18 +4017,18 @@ class RetrieveTransferParametersResponse {
 
   RetrieveTransferParametersResponse.fromJson(core.Map json_)
     : this(
-        transferParameters:
-            json_.containsKey('transferParameters')
-                ? TransferParameters.fromJson(
-                  json_['transferParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        transferParameters: json_.containsKey('transferParameters')
+            ? TransferParameters.fromJson(
+                json_['transferParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (transferParameters != null) 'transferParameters': transferParameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final transferParameters = this.transferParameters;
+    return {'transferParameters': ?transferParameters};
+  }
 }
 
 /// Response for the `SearchDomains` method.
@@ -3944,19 +4040,19 @@ class SearchDomainsResponse {
 
   SearchDomainsResponse.fromJson(core.Map json_)
     : this(
-        registerParameters:
-            (json_['registerParameters'] as core.List?)
-                ?.map(
-                  (value) => RegisterParameters.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        registerParameters: (json_['registerParameters'] as core.List?)
+            ?.map(
+              (value) => RegisterParameters.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (registerParameters != null) 'registerParameters': registerParameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final registerParameters = this.registerParameters;
+    return {'registerParameters': ?registerParameters};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3978,19 +4074,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4056,39 +4152,42 @@ class TransferDomainRequest {
 
   TransferDomainRequest.fromJson(core.Map json_)
     : this(
-        authorizationCode:
-            json_.containsKey('authorizationCode')
-                ? AuthorizationCode.fromJson(
-                  json_['authorizationCode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        contactNotices:
-            (json_['contactNotices'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        registration:
-            json_.containsKey('registration')
-                ? Registration.fromJson(
-                  json_['registration'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authorizationCode: json_.containsKey('authorizationCode')
+            ? AuthorizationCode.fromJson(
+                json_['authorizationCode']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contactNotices: (json_['contactNotices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        registration: json_.containsKey('registration')
+            ? Registration.fromJson(
+                json_['registration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorizationCode != null) 'authorizationCode': authorizationCode!,
-    if (contactNotices != null) 'contactNotices': contactNotices!,
-    if (registration != null) 'registration': registration!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationCode = this.authorizationCode;
+    final contactNotices = this.contactNotices;
+    final registration = this.registration;
+    final validateOnly = this.validateOnly;
+    final yearlyPrice = this.yearlyPrice;
+    return {
+      'authorizationCode': ?authorizationCode,
+      'contactNotices': ?contactNotices,
+      'registration': ?registration,
+      'validateOnly': ?validateOnly,
+      'yearlyPrice': ?yearlyPrice,
+    };
+  }
 }
 
 /// Deprecated: For more information, see
@@ -4143,33 +4242,38 @@ class TransferParameters {
         currentRegistrar: json_['currentRegistrar'] as core.String?,
         currentRegistrarUri: json_['currentRegistrarUri'] as core.String?,
         domainName: json_['domainName'] as core.String?,
-        nameServers:
-            (json_['nameServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        supportedPrivacy:
-            (json_['supportedPrivacy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nameServers: (json_['nameServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        supportedPrivacy: (json_['supportedPrivacy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         transferLockState: json_['transferLockState'] as core.String?,
-        yearlyPrice:
-            json_.containsKey('yearlyPrice')
-                ? Money.fromJson(
-                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        yearlyPrice: json_.containsKey('yearlyPrice')
+            ? Money.fromJson(
+                json_['yearlyPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentRegistrar != null) 'currentRegistrar': currentRegistrar!,
-    if (currentRegistrarUri != null)
-      'currentRegistrarUri': currentRegistrarUri!,
-    if (domainName != null) 'domainName': domainName!,
-    if (nameServers != null) 'nameServers': nameServers!,
-    if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
-    if (transferLockState != null) 'transferLockState': transferLockState!,
-    if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentRegistrar = this.currentRegistrar;
+    final currentRegistrarUri = this.currentRegistrarUri;
+    final domainName = this.domainName;
+    final nameServers = this.nameServers;
+    final supportedPrivacy = this.supportedPrivacy;
+    final transferLockState = this.transferLockState;
+    final yearlyPrice = this.yearlyPrice;
+    return {
+      'currentRegistrar': ?currentRegistrar,
+      'currentRegistrarUri': ?currentRegistrarUri,
+      'domainName': ?domainName,
+      'nameServers': ?nameServers,
+      'supportedPrivacy': ?supportedPrivacy,
+      'transferLockState': ?transferLockState,
+      'yearlyPrice': ?yearlyPrice,
+    };
+  }
 }
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin
@@ -4181,19 +4285,19 @@ class WrrPolicy {
 
   WrrPolicy.fromJson(core.Map json_)
     : this(
-        item:
-            (json_['item'] as core.List?)
-                ?.map(
-                  (value) => WrrPolicyItem.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        item: (json_['item'] as core.List?)
+            ?.map(
+              (value) => WrrPolicyItem.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (item != null) 'item': item!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final item = this.item;
+    return {'item': ?item};
+  }
 }
 
 /// A routing block which contains the routing information for one WRR item.
@@ -4230,29 +4334,31 @@ class WrrPolicyItem {
 
   WrrPolicyItem.fromJson(core.Map json_)
     : this(
-        healthCheckedTargets:
-            json_.containsKey('healthCheckedTargets')
-                ? HealthCheckTargets.fromJson(
-                  json_['healthCheckedTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rrdata:
-            (json_['rrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        signatureRrdata:
-            (json_['signatureRrdata'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        healthCheckedTargets: json_.containsKey('healthCheckedTargets')
+            ? HealthCheckTargets.fromJson(
+                json_['healthCheckedTargets']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rrdata: (json_['rrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        signatureRrdata: (json_['signatureRrdata'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         weight: (json_['weight'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (healthCheckedTargets != null)
-      'healthCheckedTargets': healthCheckedTargets!,
-    if (rrdata != null) 'rrdata': rrdata!,
-    if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
-    if (weight != null) 'weight': weight!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthCheckedTargets = this.healthCheckedTargets;
+    final rrdata = this.rrdata;
+    final signatureRrdata = this.signatureRrdata;
+    final weight = this.weight;
+    return {
+      'healthCheckedTargets': ?healthCheckedTargets,
+      'rrdata': ?rrdata,
+      'signatureRrdata': ?signatureRrdata,
+      'weight': ?weight,
+    };
+  }
 }

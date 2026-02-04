@@ -2713,10 +2713,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesRequestLocationBias();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesRequestLocationBias(od);
       });
     },
@@ -2729,10 +2729,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction(od);
       });
     },
@@ -2755,10 +2755,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestion(od);
       });
     },
@@ -2771,10 +2771,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText(
           od,
         );
@@ -2789,10 +2789,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction(
           od,
         );
@@ -2807,10 +2807,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction(
           od,
         );
@@ -2825,10 +2825,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange(
           od,
         );
@@ -2843,10 +2843,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat(
           od,
         );
@@ -2893,10 +2893,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsPlacesV1ContextualContentJustification();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1ContextualContentJustification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1ContextualContentJustification.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1ContextualContentJustification(od);
       });
     },
@@ -2909,10 +2909,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification(
           od,
         );
@@ -2927,10 +2927,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1ContextualContentJustificationReviewJustification();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1ContextualContentJustificationReviewJustification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1ContextualContentJustificationReviewJustification.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1ContextualContentJustificationReviewJustification(
           od,
         );
@@ -2945,10 +2945,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText(
           od,
         );
@@ -2963,10 +2963,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange(
           od,
         );
@@ -2991,10 +2991,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsPlacesV1EVChargeOptionsConnectorAggregation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1EVChargeOptionsConnectorAggregation(od);
       });
     },
@@ -3382,10 +3382,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1SearchNearbyRequestLocationRestriction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1SearchNearbyRequestLocationRestriction(od);
       });
     },
@@ -3444,10 +3444,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleMapsPlacesV1SearchTextRequestLocationRestriction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1SearchTextRequestLocationRestriction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1SearchTextRequestLocationRestriction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1SearchTextRequestLocationRestriction(od);
       });
     },
@@ -3460,10 +3460,10 @@ void main() {
         final o =
             buildGoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters(od);
       });
     },

@@ -107,7 +107,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -155,10 +155,10 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -228,7 +228,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':attachTrust';
@@ -270,7 +270,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -323,8 +323,8 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (domainName != null) 'domainName': [domainName],
-      if ($fields != null) 'fields': [$fields],
+      'domainName': ?domainName == null ? null : [domainName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/domains';
@@ -362,7 +362,7 @@ class ProjectsLocationsGlobalDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -404,7 +404,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':detachTrust';
@@ -446,7 +446,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':disableMigration';
@@ -488,7 +488,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':domainJoinMachine';
@@ -532,7 +532,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':enableMigration';
@@ -574,7 +574,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':extendSchema';
@@ -609,7 +609,7 @@ class ProjectsLocationsGlobalDomainsResource {
   /// this method will complete with the same error.
   async.Future<Domain> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -664,9 +664,10 @@ class ProjectsLocationsGlobalDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -703,7 +704,7 @@ class ProjectsLocationsGlobalDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/ldapssettings';
@@ -761,11 +762,11 @@ class ProjectsLocationsGlobalDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/domains';
@@ -814,8 +815,8 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -858,7 +859,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reconfigureTrust';
@@ -900,7 +901,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resetAdminPassword';
@@ -944,7 +945,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
@@ -991,7 +992,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1040,7 +1041,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1090,8 +1091,8 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/ldapssettings';
@@ -1135,7 +1136,7 @@ class ProjectsLocationsGlobalDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':validateTrust';
@@ -1191,8 +1192,8 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (backupId != null) 'backupId': [backupId],
-      if ($fields != null) 'fields': [$fields],
+      'backupId': ?backupId == null ? null : [backupId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
@@ -1230,7 +1231,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1264,7 +1265,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   /// this method will complete with the same error.
   async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1319,9 +1320,10 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1376,11 +1378,11 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
@@ -1428,8 +1430,8 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1476,7 +1478,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1525,7 +1527,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1574,7 +1576,7 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1632,11 +1634,11 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sqlIntegrations';
@@ -1694,7 +1696,7 @@ class ProjectsLocationsGlobalOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1732,7 +1734,7 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1768,7 +1770,7 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1814,10 +1816,10 @@ class ProjectsLocationsGlobalOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1871,8 +1873,8 @@ class ProjectsLocationsGlobalPeeringsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (peeringId != null) 'peeringId': [peeringId],
-      if ($fields != null) 'fields': [$fields],
+      'peeringId': ?peeringId == null ? null : [peeringId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/peerings';
@@ -1910,7 +1912,7 @@ class ProjectsLocationsGlobalPeeringsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1944,7 +1946,7 @@ class ProjectsLocationsGlobalPeeringsResource {
   /// this method will complete with the same error.
   async.Future<Peering> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1999,9 +2001,10 @@ class ProjectsLocationsGlobalPeeringsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2057,11 +2060,11 @@ class ProjectsLocationsGlobalPeeringsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/peerings';
@@ -2110,8 +2113,8 @@ class ProjectsLocationsGlobalPeeringsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2158,7 +2161,7 @@ class ProjectsLocationsGlobalPeeringsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2207,7 +2210,7 @@ class ProjectsLocationsGlobalPeeringsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2236,17 +2239,17 @@ class AttachTrustRequest {
 
   AttachTrustRequest.fromJson(core.Map json_)
     : this(
-        trust:
-            json_.containsKey('trust')
-                ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        trust: json_.containsKey('trust')
+            ? Trust.fromJson(
+                json_['trust'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trust != null) 'trust': trust!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final trust = this.trust;
+    return {'trust': ?trust};
+  }
 }
 
 /// Represents a Managed Microsoft Identities backup.
@@ -2321,15 +2324,24 @@ class Backup {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (statusMessage != null) 'statusMessage': statusMessage!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final labels = this.labels;
+    final name = this.name;
+    final state = this.state;
+    final statusMessage = this.statusMessage;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'statusMessage': ?statusMessage,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2416,24 +2428,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2467,29 +2478,33 @@ class Certificate {
   Certificate.fromJson(core.Map json_)
     : this(
         expireTime: json_['expireTime'] as core.String?,
-        issuingCertificate:
-            json_.containsKey('issuingCertificate')
-                ? Certificate.fromJson(
-                  json_['issuingCertificate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        issuingCertificate: json_.containsKey('issuingCertificate')
+            ? Certificate.fromJson(
+                json_['issuingCertificate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         subject: json_['subject'] as core.String?,
-        subjectAlternativeName:
-            (json_['subjectAlternativeName'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        subjectAlternativeName: (json_['subjectAlternativeName'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         thumbprint: json_['thumbprint'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (issuingCertificate != null) 'issuingCertificate': issuingCertificate!,
-    if (subject != null) 'subject': subject!,
-    if (subjectAlternativeName != null)
-      'subjectAlternativeName': subjectAlternativeName!,
-    if (thumbprint != null) 'thumbprint': thumbprint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    final issuingCertificate = this.issuingCertificate;
+    final subject = this.subject;
+    final subjectAlternativeName = this.subjectAlternativeName;
+    final thumbprint = this.thumbprint;
+    return {
+      'expireTime': ?expireTime,
+      'issuingCertificate': ?issuingCertificate,
+      'subject': ?subject,
+      'subjectAlternativeName': ?subjectAlternativeName,
+      'thumbprint': ?thumbprint,
+    };
+  }
 }
 
 /// CheckMigrationPermissionRequest is the request message for
@@ -2514,21 +2529,21 @@ class CheckMigrationPermissionResponse {
 
   CheckMigrationPermissionResponse.fromJson(core.Map json_)
     : this(
-        onpremDomains:
-            (json_['onpremDomains'] as core.List?)
-                ?.map(
-                  (value) => OnPremDomainSIDDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        onpremDomains: (json_['onpremDomains'] as core.List?)
+            ?.map(
+              (value) => OnPremDomainSIDDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (onpremDomains != null) 'onpremDomains': onpremDomains!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final onpremDomains = this.onpremDomains;
+    final state = this.state;
+    return {'onpremDomains': ?onpremDomains, 'state': ?state};
+  }
 }
 
 /// Request message for DetachTrust
@@ -2542,17 +2557,17 @@ class DetachTrustRequest {
 
   DetachTrustRequest.fromJson(core.Map json_)
     : this(
-        trust:
-            json_.containsKey('trust')
-                ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        trust: json_.containsKey('trust')
+            ? Trust.fromJson(
+                json_['trust'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trust != null) 'trust': trust!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final trust = this.trust;
+    return {'trust': ?trust};
+  }
 }
 
 /// DisableMigrationRequest is the request message for DisableMigration method.
@@ -2686,49 +2701,60 @@ class Domain {
     : this(
         admin: json_['admin'] as core.String?,
         auditLogsEnabled: json_['auditLogsEnabled'] as core.bool?,
-        authorizedNetworks:
-            (json_['authorizedNetworks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        authorizedNetworks: (json_['authorizedNetworks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         fqdn: json_['fqdn'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
         reservedIpRange: json_['reservedIpRange'] as core.String?,
         state: json_['state'] as core.String?,
         statusMessage: json_['statusMessage'] as core.String?,
-        trusts:
-            (json_['trusts'] as core.List?)
-                ?.map(
-                  (value) => Trust.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        trusts: (json_['trusts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Trust.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (admin != null) 'admin': admin!,
-    if (auditLogsEnabled != null) 'auditLogsEnabled': auditLogsEnabled!,
-    if (authorizedNetworks != null) 'authorizedNetworks': authorizedNetworks!,
-    if (createTime != null) 'createTime': createTime!,
-    if (fqdn != null) 'fqdn': fqdn!,
-    if (labels != null) 'labels': labels!,
-    if (locations != null) 'locations': locations!,
-    if (name != null) 'name': name!,
-    if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
-    if (state != null) 'state': state!,
-    if (statusMessage != null) 'statusMessage': statusMessage!,
-    if (trusts != null) 'trusts': trusts!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final admin = this.admin;
+    final auditLogsEnabled = this.auditLogsEnabled;
+    final authorizedNetworks = this.authorizedNetworks;
+    final createTime = this.createTime;
+    final fqdn = this.fqdn;
+    final labels = this.labels;
+    final locations = this.locations;
+    final name = this.name;
+    final reservedIpRange = this.reservedIpRange;
+    final state = this.state;
+    final statusMessage = this.statusMessage;
+    final trusts = this.trusts;
+    final updateTime = this.updateTime;
+    return {
+      'admin': ?admin,
+      'auditLogsEnabled': ?auditLogsEnabled,
+      'authorizedNetworks': ?authorizedNetworks,
+      'createTime': ?createTime,
+      'fqdn': ?fqdn,
+      'labels': ?labels,
+      'locations': ?locations,
+      'name': ?name,
+      'reservedIpRange': ?reservedIpRange,
+      'state': ?state,
+      'statusMessage': ?statusMessage,
+      'trusts': ?trusts,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// DomainJoinMachineRequest is the request message for DomainJoinMachine method
@@ -2761,11 +2787,12 @@ class DomainJoinMachineRequest {
         vmIdToken: json_['vmIdToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (force != null) 'force': force!,
-    if (ouName != null) 'ouName': ouName!,
-    if (vmIdToken != null) 'vmIdToken': vmIdToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final force = this.force;
+    final ouName = this.ouName;
+    final vmIdToken = this.vmIdToken;
+    return {'force': ?force, 'ouName': ?ouName, 'vmIdToken': ?vmIdToken};
+  }
 }
 
 /// DomainJoinMachineResponse is the response message for DomainJoinMachine
@@ -2779,9 +2806,10 @@ class DomainJoinMachineResponse {
   DomainJoinMachineResponse.fromJson(core.Map json_)
     : this(domainJoinBlob: json_['domainJoinBlob'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainJoinBlob = this.domainJoinBlob;
+    return {'domainJoinBlob': ?domainJoinBlob};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2803,19 +2831,19 @@ class EnableMigrationRequest {
 
   EnableMigrationRequest.fromJson(core.Map json_)
     : this(
-        migratingDomains:
-            (json_['migratingDomains'] as core.List?)
-                ?.map(
-                  (value) => OnPremDomainDetails.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        migratingDomains: (json_['migratingDomains'] as core.List?)
+            ?.map(
+              (value) => OnPremDomainDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (migratingDomains != null) 'migratingDomains': migratingDomains!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final migratingDomains = this.migratingDomains;
+    return {'migratingDomains': ?migratingDomains};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2871,11 +2899,16 @@ class ExtendSchemaRequest {
         gcsPath: json_['gcsPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (fileContents != null) 'fileContents': fileContents!,
-    if (gcsPath != null) 'gcsPath': gcsPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final fileContents = this.fileContents;
+    final gcsPath = this.gcsPath;
+    return {
+      'description': ?description,
+      'fileContents': ?fileContents,
+      'gcsPath': ?gcsPath,
+    };
+  }
 }
 
 /// LDAPSSettings represents the ldaps settings for domain resource.
@@ -2959,12 +2992,11 @@ class LDAPSSettings {
 
   LDAPSSettings.fromJson(core.Map json_)
     : this(
-        certificate:
-            json_.containsKey('certificate')
-                ? Certificate.fromJson(
-                  json_['certificate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        certificate: json_.containsKey('certificate')
+            ? Certificate.fromJson(
+                json_['certificate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         certificatePassword: json_['certificatePassword'] as core.String?,
         certificatePfx: json_['certificatePfx'] as core.String?,
         name: json_['name'] as core.String?,
@@ -2972,15 +3004,22 @@ class LDAPSSettings {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificate != null) 'certificate': certificate!,
-    if (certificatePassword != null)
-      'certificatePassword': certificatePassword!,
-    if (certificatePfx != null) 'certificatePfx': certificatePfx!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificate = this.certificate;
+    final certificatePassword = this.certificatePassword;
+    final certificatePfx = this.certificatePfx;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'certificate': ?certificate,
+      'certificatePassword': ?certificatePassword,
+      'certificatePfx': ?certificatePfx,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// ListBackupsResponse is the response message for ListBackups method.
@@ -2999,26 +3038,28 @@ class ListBackupsResponse {
 
   ListBackupsResponse.fromJson(core.Map json_)
     : this(
-        backups:
-            (json_['backups'] as core.List?)
-                ?.map(
-                  (value) => Backup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        backups: (json_['backups'] as core.List?)
+            ?.map(
+              (value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backups != null) 'backups': backups!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backups = this.backups;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'backups': ?backups,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for ListDomains
@@ -3037,26 +3078,28 @@ class ListDomainsResponse {
 
   ListDomainsResponse.fromJson(core.Map json_)
     : this(
-        domains:
-            (json_['domains'] as core.List?)
-                ?.map(
-                  (value) => Domain.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        domains: (json_['domains'] as core.List?)
+            ?.map(
+              (value) =>
+                  Domain.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domains != null) 'domains': domains!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domains = this.domains;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'domains': ?domains,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -3071,21 +3114,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -3101,20 +3144,20 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    return {'nextPageToken': ?nextPageToken, 'operations': ?operations};
+  }
 }
 
 /// ListPeeringsResponse is the response message for ListPeerings method.
@@ -3134,25 +3177,28 @@ class ListPeeringsResponse {
   ListPeeringsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        peerings:
-            (json_['peerings'] as core.List?)
-                ?.map(
-                  (value) => Peering.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        peerings: (json_['peerings'] as core.List?)
+            ?.map(
+              (value) => Peering.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (peerings != null) 'peerings': peerings!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final peerings = this.peerings;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'peerings': ?peerings,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
@@ -3177,25 +3223,28 @@ class ListSqlIntegrationsResponse {
   ListSqlIntegrationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        sqlIntegrations:
-            (json_['sqlIntegrations'] as core.List?)
-                ?.map(
-                  (value) => SqlIntegration.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sqlIntegrations: (json_['sqlIntegrations'] as core.List?)
+            ?.map(
+              (value) => SqlIntegration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sqlIntegrations != null) 'sqlIntegrations': sqlIntegrations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sqlIntegrations = this.sqlIntegrations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sqlIntegrations': ?sqlIntegrations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3222,11 +3271,14 @@ class OnPremDomainDetails {
         domainName: json_['domainName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableSidFiltering != null)
-      'disableSidFiltering': disableSidFiltering!,
-    if (domainName != null) 'domainName': domainName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableSidFiltering = this.disableSidFiltering;
+    final domainName = this.domainName;
+    return {
+      'disableSidFiltering': ?disableSidFiltering,
+      'domainName': ?domainName,
+    };
+  }
 }
 
 /// OnPremDomainDetails is the message which contains details of on-prem domain
@@ -3251,10 +3303,11 @@ class OnPremDomainSIDDetails {
         sidFilteringState: json_['sidFilteringState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final sidFilteringState = this.sidFilteringState;
+    return {'name': ?name, 'sidFilteringState': ?sidFilteringState};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3305,30 +3358,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Represents a Managed Service for Microsoft Active Directory Peering.
@@ -3415,16 +3472,26 @@ class Peering {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
-    if (createTime != null) 'createTime': createTime!,
-    if (domainResource != null) 'domainResource': domainResource!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (statusMessage != null) 'statusMessage': statusMessage!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizedNetwork = this.authorizedNetwork;
+    final createTime = this.createTime;
+    final domainResource = this.domainResource;
+    final labels = this.labels;
+    final name = this.name;
+    final state = this.state;
+    final statusMessage = this.statusMessage;
+    final updateTime = this.updateTime;
+    return {
+      'authorizedNetwork': ?authorizedNetwork,
+      'createTime': ?createTime,
+      'domainResource': ?domainResource,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'statusMessage': ?statusMessage,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3516,23 +3583,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Request message for ReconfigureTrust
@@ -3553,18 +3620,20 @@ class ReconfigureTrustRequest {
 
   ReconfigureTrustRequest.fromJson(core.Map json_)
     : this(
-        targetDnsIpAddresses:
-            (json_['targetDnsIpAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        targetDnsIpAddresses: (json_['targetDnsIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetDomainName: json_['targetDomainName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetDnsIpAddresses != null)
-      'targetDnsIpAddresses': targetDnsIpAddresses!,
-    if (targetDomainName != null) 'targetDomainName': targetDomainName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetDnsIpAddresses = this.targetDnsIpAddresses;
+    final targetDomainName = this.targetDomainName;
+    return {
+      'targetDnsIpAddresses': ?targetDnsIpAddresses,
+      'targetDomainName': ?targetDomainName,
+    };
+  }
 }
 
 /// Request message for ResetAdminPassword
@@ -3582,9 +3651,10 @@ class ResetAdminPasswordResponse {
   ResetAdminPasswordResponse.fromJson(core.Map json_)
     : this(password: json_['password'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final password = this.password;
+    return {'password': ?password};
+  }
 }
 
 /// RestoreDomainRequest is the request received by RestoreDomain rpc
@@ -3599,9 +3669,10 @@ class RestoreDomainRequest {
   RestoreDomainRequest.fromJson(core.Map json_)
     : this(backupId: json_['backupId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupId != null) 'backupId': backupId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupId = this.backupId;
+    return {'backupId': ?backupId};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3617,17 +3688,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// Represents the SQL instance integrated with Managed AD.
@@ -3676,13 +3747,20 @@ class SqlIntegration {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (sqlInstance != null) 'sqlInstance': sqlInstance!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final name = this.name;
+    final sqlInstance = this.sqlInstance;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'name': ?name,
+      'sqlInstance': ?sqlInstance,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3807,10 +3885,9 @@ class Trust {
         selectiveAuthentication: json_['selectiveAuthentication'] as core.bool?,
         state: json_['state'] as core.String?,
         stateDescription: json_['stateDescription'] as core.String?,
-        targetDnsIpAddresses:
-            (json_['targetDnsIpAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        targetDnsIpAddresses: (json_['targetDnsIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetDomainName: json_['targetDomainName'] as core.String?,
         trustDirection: json_['trustDirection'] as core.String?,
         trustHandshakeSecret: json_['trustHandshakeSecret'] as core.String?,
@@ -3818,23 +3895,32 @@ class Trust {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (lastTrustHeartbeatTime != null)
-      'lastTrustHeartbeatTime': lastTrustHeartbeatTime!,
-    if (selectiveAuthentication != null)
-      'selectiveAuthentication': selectiveAuthentication!,
-    if (state != null) 'state': state!,
-    if (stateDescription != null) 'stateDescription': stateDescription!,
-    if (targetDnsIpAddresses != null)
-      'targetDnsIpAddresses': targetDnsIpAddresses!,
-    if (targetDomainName != null) 'targetDomainName': targetDomainName!,
-    if (trustDirection != null) 'trustDirection': trustDirection!,
-    if (trustHandshakeSecret != null)
-      'trustHandshakeSecret': trustHandshakeSecret!,
-    if (trustType != null) 'trustType': trustType!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final lastTrustHeartbeatTime = this.lastTrustHeartbeatTime;
+    final selectiveAuthentication = this.selectiveAuthentication;
+    final state = this.state;
+    final stateDescription = this.stateDescription;
+    final targetDnsIpAddresses = this.targetDnsIpAddresses;
+    final targetDomainName = this.targetDomainName;
+    final trustDirection = this.trustDirection;
+    final trustHandshakeSecret = this.trustHandshakeSecret;
+    final trustType = this.trustType;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'lastTrustHeartbeatTime': ?lastTrustHeartbeatTime,
+      'selectiveAuthentication': ?selectiveAuthentication,
+      'state': ?state,
+      'stateDescription': ?stateDescription,
+      'targetDnsIpAddresses': ?targetDnsIpAddresses,
+      'targetDomainName': ?targetDomainName,
+      'trustDirection': ?trustDirection,
+      'trustHandshakeSecret': ?trustHandshakeSecret,
+      'trustType': ?trustType,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Request message for ValidateTrust
@@ -3848,15 +3934,15 @@ class ValidateTrustRequest {
 
   ValidateTrustRequest.fromJson(core.Map json_)
     : this(
-        trust:
-            json_.containsKey('trust')
-                ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        trust: json_.containsKey('trust')
+            ? Trust.fromJson(
+                json_['trust'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trust != null) 'trust': trust!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final trust = this.trust;
+    return {'trust': ?trust};
+  }
 }

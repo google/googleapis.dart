@@ -88,8 +88,8 @@ class UrlNotificationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (url != null) 'url': [url],
-      if ($fields != null) 'fields': [$fields],
+      'url': ?url == null ? null : [url],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/urlNotifications/metadata';
@@ -126,7 +126,7 @@ class UrlNotificationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/urlNotifications:publish';
@@ -152,19 +152,18 @@ class PublishUrlNotificationResponse {
 
   PublishUrlNotificationResponse.fromJson(core.Map json_)
     : this(
-        urlNotificationMetadata:
-            json_.containsKey('urlNotificationMetadata')
-                ? UrlNotificationMetadata.fromJson(
-                  json_['urlNotificationMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        urlNotificationMetadata: json_.containsKey('urlNotificationMetadata')
+            ? UrlNotificationMetadata.fromJson(
+                json_['urlNotificationMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (urlNotificationMetadata != null)
-      'urlNotificationMetadata': urlNotificationMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final urlNotificationMetadata = this.urlNotificationMetadata;
+    return {'urlNotificationMetadata': ?urlNotificationMetadata};
+  }
 }
 
 /// `UrlNotification` is the resource used in all Indexing API calls.
@@ -198,11 +197,12 @@ class UrlNotification {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (notifyTime != null) 'notifyTime': notifyTime!,
-    if (type != null) 'type': type!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final notifyTime = this.notifyTime;
+    final type = this.type;
+    final url = this.url;
+    return {'notifyTime': ?notifyTime, 'type': ?type, 'url': ?url};
+  }
 }
 
 /// Summary of the most recent Indexing API notifications successfully received,
@@ -221,24 +221,27 @@ class UrlNotificationMetadata {
 
   UrlNotificationMetadata.fromJson(core.Map json_)
     : this(
-        latestRemove:
-            json_.containsKey('latestRemove')
-                ? UrlNotification.fromJson(
-                  json_['latestRemove'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        latestUpdate:
-            json_.containsKey('latestUpdate')
-                ? UrlNotification.fromJson(
-                  json_['latestUpdate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latestRemove: json_.containsKey('latestRemove')
+            ? UrlNotification.fromJson(
+                json_['latestRemove'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        latestUpdate: json_.containsKey('latestUpdate')
+            ? UrlNotification.fromJson(
+                json_['latestUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latestRemove != null) 'latestRemove': latestRemove!,
-    if (latestUpdate != null) 'latestUpdate': latestUpdate!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latestRemove = this.latestRemove;
+    final latestUpdate = this.latestUpdate;
+    final url = this.url;
+    return {
+      'latestRemove': ?latestRemove,
+      'latestUpdate': ?latestUpdate,
+      'url': ?url,
+    };
+  }
 }

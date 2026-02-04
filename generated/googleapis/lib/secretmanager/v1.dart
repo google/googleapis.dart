@@ -107,7 +107,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -166,11 +166,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -221,7 +221,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -258,7 +258,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -294,7 +294,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -349,12 +349,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -409,7 +410,7 @@ class ProjectsLocationsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addVersion';
@@ -459,8 +460,8 @@ class ProjectsLocationsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (secretId != null) 'secretId': [secretId],
-      if ($fields != null) 'fields': [$fields],
+      'secretId': ?secretId == null ? null : [secretId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
@@ -503,8 +504,8 @@ class ProjectsLocationsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -539,7 +540,7 @@ class ProjectsLocationsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Secret> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -593,9 +594,10 @@ class ProjectsLocationsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -647,10 +649,10 @@ class ProjectsLocationsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
@@ -696,8 +698,8 @@ class ProjectsLocationsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -744,7 +746,7 @@ class ProjectsLocationsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -793,7 +795,7 @@ class ProjectsLocationsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -847,7 +849,7 @@ class ProjectsLocationsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':access';
@@ -894,7 +896,7 @@ class ProjectsLocationsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
@@ -941,7 +943,7 @@ class ProjectsLocationsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
@@ -988,7 +990,7 @@ class ProjectsLocationsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
@@ -1034,7 +1036,7 @@ class ProjectsLocationsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1092,10 +1094,10 @@ class ProjectsLocationsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -1148,7 +1150,7 @@ class ProjectsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addVersion';
@@ -1198,8 +1200,8 @@ class ProjectsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (secretId != null) 'secretId': [secretId],
-      if ($fields != null) 'fields': [$fields],
+      'secretId': ?secretId == null ? null : [secretId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
@@ -1241,8 +1243,8 @@ class ProjectsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1276,7 +1278,7 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Secret> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1329,9 +1331,10 @@ class ProjectsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1383,10 +1386,10 @@ class ProjectsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
@@ -1431,8 +1434,8 @@ class ProjectsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1478,7 +1481,7 @@ class ProjectsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1526,7 +1529,7 @@ class ProjectsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1580,7 +1583,7 @@ class ProjectsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':access';
@@ -1627,7 +1630,7 @@ class ProjectsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
@@ -1674,7 +1677,7 @@ class ProjectsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
@@ -1721,7 +1724,7 @@ class ProjectsSecretsVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
@@ -1767,7 +1770,7 @@ class ProjectsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1824,10 +1827,10 @@ class ProjectsSecretsVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -1858,18 +1861,18 @@ class AccessSecretVersionResponse {
   AccessSecretVersionResponse.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        payload:
-            json_.containsKey('payload')
-                ? SecretPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? SecretPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final payload = this.payload;
+    return {'name': ?name, 'payload': ?payload};
+  }
 }
 
 /// Request message for SecretManagerService.AddSecretVersion.
@@ -1883,17 +1886,17 @@ class AddSecretVersionRequest {
 
   AddSecretVersionRequest.fromJson(core.Map json_)
     : this(
-        payload:
-            json_.containsKey('payload')
-                ? SecretPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        payload: json_.containsKey('payload')
+            ? SecretPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payload != null) 'payload': payload!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    return {'payload': ?payload};
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1927,21 +1930,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1971,17 +1974,17 @@ class Automatic {
     : this(
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryption.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryption.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerManagedEncryption = this.customerManagedEncryption;
+    return {'customerManagedEncryption': ?customerManagedEncryption};
+  }
 }
 
 /// The replication status of a SecretVersion using automatic replication.
@@ -2001,17 +2004,17 @@ class AutomaticStatus {
     : this(
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryptionStatus.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryptionStatus.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerManagedEncryption = this.customerManagedEncryption;
+    return {'customerManagedEncryption': ?customerManagedEncryption};
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2098,24 +2101,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Configuration for encrypting secret payloads using customer-managed
@@ -2138,9 +2140,10 @@ class CustomerManagedEncryption {
   CustomerManagedEncryption.fromJson(core.Map json_)
     : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
+  }
 }
 
 /// Describes the status of customer-managed encryption.
@@ -2157,9 +2160,10 @@ class CustomerManagedEncryptionStatus {
   CustomerManagedEncryptionStatus.fromJson(core.Map json_)
     : this(kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyVersionName = this.kmsKeyVersionName;
+    return {'kmsKeyVersionName': ?kmsKeyVersionName};
+  }
 }
 
 /// Request message for SecretManagerService.DestroySecretVersion.
@@ -2211,21 +2215,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2253,25 +2257,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for SecretManagerService.ListSecretVersions.
@@ -2300,21 +2307,25 @@ class ListSecretVersionsResponse {
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => SecretVersion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => SecretVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    final versions = this.versions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+      'versions': ?versions,
+    };
+  }
 }
 
 /// Response message for SecretManagerService.ListSecrets.
@@ -2337,22 +2348,25 @@ class ListSecretsResponse {
   ListSecretsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        secrets:
-            (json_['secrets'] as core.List?)
-                ?.map(
-                  (value) => Secret.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        secrets: (json_['secrets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Secret.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (secrets != null) 'secrets': secrets!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final secrets = this.secrets;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'secrets': ?secrets,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2406,30 +2420,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2524,32 +2542,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Represents a Replica for this Secret.
@@ -2575,19 +2597,22 @@ class Replica {
     : this(
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryption.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryption.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-    if (location != null) 'location': location!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerManagedEncryption = this.customerManagedEncryption;
+    final location = this.location;
+    return {
+      'customerManagedEncryption': ?customerManagedEncryption,
+      'location': ?location,
+    };
+  }
 }
 
 /// Describes the status of a user-managed replica for the SecretVersion.
@@ -2612,19 +2637,22 @@ class ReplicaStatus {
     : this(
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryptionStatus.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryptionStatus.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-    if (location != null) 'location': location!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerManagedEncryption = this.customerManagedEncryption;
+    final location = this.location;
+    return {
+      'customerManagedEncryption': ?customerManagedEncryption,
+      'location': ?location,
+    };
+  }
 }
 
 /// A policy that defines the replication and encryption configuration of data.
@@ -2639,24 +2667,23 @@ class Replication {
 
   Replication.fromJson(core.Map json_)
     : this(
-        automatic:
-            json_.containsKey('automatic')
-                ? Automatic.fromJson(
-                  json_['automatic'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userManaged:
-            json_.containsKey('userManaged')
-                ? UserManaged.fromJson(
-                  json_['userManaged'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        automatic: json_.containsKey('automatic')
+            ? Automatic.fromJson(
+                json_['automatic'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userManaged: json_.containsKey('userManaged')
+            ? UserManaged.fromJson(
+                json_['userManaged'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (automatic != null) 'automatic': automatic!,
-    if (userManaged != null) 'userManaged': userManaged!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final automatic = this.automatic;
+    final userManaged = this.userManaged;
+    return {'automatic': ?automatic, 'userManaged': ?userManaged};
+  }
 }
 
 /// The replication status of a SecretVersion.
@@ -2677,24 +2704,23 @@ class ReplicationStatus {
 
   ReplicationStatus.fromJson(core.Map json_)
     : this(
-        automatic:
-            json_.containsKey('automatic')
-                ? AutomaticStatus.fromJson(
-                  json_['automatic'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        userManaged:
-            json_.containsKey('userManaged')
-                ? UserManagedStatus.fromJson(
-                  json_['userManaged'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        automatic: json_.containsKey('automatic')
+            ? AutomaticStatus.fromJson(
+                json_['automatic'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userManaged: json_.containsKey('userManaged')
+            ? UserManagedStatus.fromJson(
+                json_['userManaged'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (automatic != null) 'automatic': automatic!,
-    if (userManaged != null) 'userManaged': userManaged!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final automatic = this.automatic;
+    final userManaged = this.userManaged;
+    return {'automatic': ?automatic, 'userManaged': ?userManaged};
+  }
 }
 
 /// The rotation time and period for a Secret.
@@ -2729,10 +2755,14 @@ class Rotation {
         rotationPeriod: json_['rotationPeriod'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextRotationTime = this.nextRotationTime;
+    final rotationPeriod = this.rotationPeriod;
+    return {
+      'nextRotationTime': ?nextRotationTime,
+      'rotationPeriod': ?rotationPeriod,
+    };
+  }
 }
 
 /// A Secret is a logical secret whose value and versions can be accessed.
@@ -2875,70 +2905,82 @@ class Secret {
 
   Secret.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryption.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryption.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        replication:
-            json_.containsKey('replication')
-                ? Replication.fromJson(
-                  json_['replication'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotation:
-            json_.containsKey('rotation')
-                ? Rotation.fromJson(
-                  json_['rotation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        replication: json_.containsKey('replication')
+            ? Replication.fromJson(
+                json_['replication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotation: json_.containsKey('rotation')
+            ? Rotation.fromJson(
+                json_['rotation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        topics:
-            (json_['topics'] as core.List?)
-                ?.map(
-                  (value) => Topic.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        topics: (json_['topics'] as core.List?)
+            ?.map(
+              (value) =>
+                  Topic.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         ttl: json_['ttl'] as core.String?,
-        versionAliases: (json_['versionAliases']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        versionAliases:
+            (json_['versionAliases'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         versionDestroyTtl: json_['versionDestroyTtl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (replication != null) 'replication': replication!,
-    if (rotation != null) 'rotation': rotation!,
-    if (tags != null) 'tags': tags!,
-    if (topics != null) 'topics': topics!,
-    if (ttl != null) 'ttl': ttl!,
-    if (versionAliases != null) 'versionAliases': versionAliases!,
-    if (versionDestroyTtl != null) 'versionDestroyTtl': versionDestroyTtl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final customerManagedEncryption = this.customerManagedEncryption;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final labels = this.labels;
+    final name = this.name;
+    final replication = this.replication;
+    final rotation = this.rotation;
+    final tags = this.tags;
+    final topics = this.topics;
+    final ttl = this.ttl;
+    final versionAliases = this.versionAliases;
+    final versionDestroyTtl = this.versionDestroyTtl;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'customerManagedEncryption': ?customerManagedEncryption,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'labels': ?labels,
+      'name': ?name,
+      'replication': ?replication,
+      'rotation': ?rotation,
+      'tags': ?tags,
+      'topics': ?topics,
+      'ttl': ?ttl,
+      'versionAliases': ?versionAliases,
+      'versionDestroyTtl': ?versionDestroyTtl,
+    };
+  }
 }
 
 /// A secret payload resource in the Secret Manager API.
@@ -2981,10 +3023,11 @@ class SecretPayload {
         dataCrc32c: json_['dataCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final dataCrc32c = this.dataCrc32c;
+    return {'data': ?data, 'dataCrc32c': ?dataCrc32c};
+  }
 }
 
 /// A secret version resource in the Secret Manager API.
@@ -3073,39 +3116,46 @@ class SecretVersion {
         createTime: json_['createTime'] as core.String?,
         customerManagedEncryption:
             json_.containsKey('customerManagedEncryption')
-                ? CustomerManagedEncryptionStatus.fromJson(
-                  json_['customerManagedEncryption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CustomerManagedEncryptionStatus.fromJson(
+                json_['customerManagedEncryption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         destroyTime: json_['destroyTime'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        replicationStatus:
-            json_.containsKey('replicationStatus')
-                ? ReplicationStatus.fromJson(
-                  json_['replicationStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        replicationStatus: json_.containsKey('replicationStatus')
+            ? ReplicationStatus.fromJson(
+                json_['replicationStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scheduledDestroyTime: json_['scheduledDestroyTime'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientSpecifiedPayloadChecksum != null)
-      'clientSpecifiedPayloadChecksum': clientSpecifiedPayloadChecksum!,
-    if (createTime != null) 'createTime': createTime!,
-    if (customerManagedEncryption != null)
-      'customerManagedEncryption': customerManagedEncryption!,
-    if (destroyTime != null) 'destroyTime': destroyTime!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (replicationStatus != null) 'replicationStatus': replicationStatus!,
-    if (scheduledDestroyTime != null)
-      'scheduledDestroyTime': scheduledDestroyTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientSpecifiedPayloadChecksum = this.clientSpecifiedPayloadChecksum;
+    final createTime = this.createTime;
+    final customerManagedEncryption = this.customerManagedEncryption;
+    final destroyTime = this.destroyTime;
+    final etag = this.etag;
+    final name = this.name;
+    final replicationStatus = this.replicationStatus;
+    final scheduledDestroyTime = this.scheduledDestroyTime;
+    final state = this.state;
+    return {
+      'clientSpecifiedPayloadChecksum': ?clientSpecifiedPayloadChecksum,
+      'createTime': ?createTime,
+      'customerManagedEncryption': ?customerManagedEncryption,
+      'destroyTime': ?destroyTime,
+      'etag': ?etag,
+      'name': ?name,
+      'replicationStatus': ?replicationStatus,
+      'scheduledDestroyTime': ?scheduledDestroyTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3127,19 +3177,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3173,9 +3223,10 @@ class Topic {
 
   Topic.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// A replication policy that replicates the Secret payload into the locations
@@ -3192,19 +3243,19 @@ class UserManaged {
 
   UserManaged.fromJson(core.Map json_)
     : this(
-        replicas:
-            (json_['replicas'] as core.List?)
-                ?.map(
-                  (value) => Replica.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        replicas: (json_['replicas'] as core.List?)
+            ?.map(
+              (value) => Replica.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (replicas != null) 'replicas': replicas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final replicas = this.replicas;
+    return {'replicas': ?replicas};
+  }
 }
 
 /// The replication status of a SecretVersion using user-managed replication.
@@ -3220,17 +3271,17 @@ class UserManagedStatus {
 
   UserManagedStatus.fromJson(core.Map json_)
     : this(
-        replicas:
-            (json_['replicas'] as core.List?)
-                ?.map(
-                  (value) => ReplicaStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        replicas: (json_['replicas'] as core.List?)
+            ?.map(
+              (value) => ReplicaStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (replicas != null) 'replicas': replicas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final replicas = this.replicas;
+    return {'replicas': ?replicas};
+  }
 }

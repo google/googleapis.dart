@@ -3197,10 +3197,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildConfigManagementHierarchyControllerDeploymentState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ConfigManagementHierarchyControllerDeploymentState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ConfigManagementHierarchyControllerDeploymentState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkConfigManagementHierarchyControllerDeploymentState(od);
       });
     },
@@ -3740,10 +3740,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildPolicyControllerPolicyControllerDeploymentConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .PolicyControllerPolicyControllerDeploymentConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkPolicyControllerPolicyControllerDeploymentConfig(od);
       });
     },

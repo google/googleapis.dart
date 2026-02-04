@@ -109,7 +109,7 @@ class ConferenceRecordsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -162,10 +162,10 @@ class ConferenceRecordsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/conferenceRecords';
@@ -214,7 +214,7 @@ class ConferenceRecordsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -272,10 +272,10 @@ class ConferenceRecordsParticipantsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
@@ -321,7 +321,7 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -381,10 +381,10 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -426,7 +426,7 @@ class ConferenceRecordsRecordingsResource {
   /// this method will complete with the same error.
   async.Future<Recording> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -472,9 +472,9 @@ class ConferenceRecordsRecordingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recordings';
@@ -518,7 +518,7 @@ class ConferenceRecordsTranscriptsResource {
   /// this method will complete with the same error.
   async.Future<Transcript> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -566,9 +566,9 @@ class ConferenceRecordsTranscriptsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/transcripts';
@@ -618,7 +618,7 @@ class ConferenceRecordsTranscriptsEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -671,9 +671,9 @@ class ConferenceRecordsTranscriptsEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entries';
@@ -713,7 +713,7 @@ class SpacesResource {
   async.Future<Space> create(Space request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/spaces';
@@ -760,7 +760,7 @@ class SpacesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':endActiveConference';
@@ -808,7 +808,7 @@ class SpacesResource {
   /// this method will complete with the same error.
   async.Future<Space> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -861,8 +861,8 @@ class SpacesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -893,9 +893,10 @@ class ActiveConference {
   ActiveConference.fromJson(core.Map json_)
     : this(conferenceRecord: json_['conferenceRecord'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conferenceRecord != null) 'conferenceRecord': conferenceRecord!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conferenceRecord = this.conferenceRecord;
+    return {'conferenceRecord': ?conferenceRecord};
+  }
 }
 
 /// User who joins anonymously (meaning not signed into a Google Account).
@@ -910,9 +911,10 @@ class AnonymousUser {
   AnonymousUser.fromJson(core.Map json_)
     : this(displayName: json_['displayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
 }
 
 /// Configuration related to meeting artifacts potentially generated by this
@@ -935,35 +937,35 @@ class ArtifactConfig {
 
   ArtifactConfig.fromJson(core.Map json_)
     : this(
-        recordingConfig:
-            json_.containsKey('recordingConfig')
-                ? RecordingConfig.fromJson(
-                  json_['recordingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        smartNotesConfig:
-            json_.containsKey('smartNotesConfig')
-                ? SmartNotesConfig.fromJson(
-                  json_['smartNotesConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        transcriptionConfig:
-            json_.containsKey('transcriptionConfig')
-                ? TranscriptionConfig.fromJson(
-                  json_['transcriptionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        recordingConfig: json_.containsKey('recordingConfig')
+            ? RecordingConfig.fromJson(
+                json_['recordingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        smartNotesConfig: json_.containsKey('smartNotesConfig')
+            ? SmartNotesConfig.fromJson(
+                json_['smartNotesConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transcriptionConfig: json_.containsKey('transcriptionConfig')
+            ? TranscriptionConfig.fromJson(
+                json_['transcriptionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recordingConfig != null) 'recordingConfig': recordingConfig!,
-    if (smartNotesConfig != null) 'smartNotesConfig': smartNotesConfig!,
-    if (transcriptionConfig != null)
-      'transcriptionConfig': transcriptionConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordingConfig = this.recordingConfig;
+    final smartNotesConfig = this.smartNotesConfig;
+    final transcriptionConfig = this.transcriptionConfig;
+    return {
+      'recordingConfig': ?recordingConfig,
+      'smartNotesConfig': ?smartNotesConfig,
+      'transcriptionConfig': ?transcriptionConfig,
+    };
+  }
 }
 
 /// Single instance of a meeting held in a space.
@@ -1019,13 +1021,20 @@ class ConferenceRecord {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (space != null) 'space': space!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final space = this.space;
+    final startTime = this.startTime;
+    return {
+      'endTime': ?endTime,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'space': ?space,
+      'startTime': ?startTime,
+    };
+  }
 }
 
 /// Google Docs location where the transcript file is saved.
@@ -1056,10 +1065,11 @@ class DocsDestination {
         exportUri: json_['exportUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (document != null) 'document': document!,
-    if (exportUri != null) 'exportUri': exportUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final document = this.document;
+    final exportUri = this.exportUri;
+    return {'document': ?document, 'exportUri': ?exportUri};
+  }
 }
 
 /// Export location where a recording file is saved in Google Drive.
@@ -1089,10 +1099,11 @@ class DriveDestination {
         file: json_['file'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportUri != null) 'exportUri': exportUri!,
-    if (file != null) 'file': file!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportUri = this.exportUri;
+    final file = this.file;
+    return {'exportUri': ?exportUri, 'file': ?file};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1121,21 +1132,24 @@ class ListConferenceRecordsResponse {
 
   ListConferenceRecordsResponse.fromJson(core.Map json_)
     : this(
-        conferenceRecords:
-            (json_['conferenceRecords'] as core.List?)
-                ?.map(
-                  (value) => ConferenceRecord.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conferenceRecords: (json_['conferenceRecords'] as core.List?)
+            ?.map(
+              (value) => ConferenceRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conferenceRecords != null) 'conferenceRecords': conferenceRecords!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conferenceRecords = this.conferenceRecords;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conferenceRecords': ?conferenceRecords,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response of ListParticipants method.
@@ -1157,21 +1171,23 @@ class ListParticipantSessionsResponse {
   ListParticipantSessionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        participantSessions:
-            (json_['participantSessions'] as core.List?)
-                ?.map(
-                  (value) => ParticipantSession.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        participantSessions: (json_['participantSessions'] as core.List?)
+            ?.map(
+              (value) => ParticipantSession.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (participantSessions != null)
-      'participantSessions': participantSessions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final participantSessions = this.participantSessions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'participantSessions': ?participantSessions,
+    };
+  }
 }
 
 /// Response of ListParticipants method.
@@ -1202,22 +1218,26 @@ class ListParticipantsResponse {
   ListParticipantsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        participants:
-            (json_['participants'] as core.List?)
-                ?.map(
-                  (value) => Participant.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        participants: (json_['participants'] as core.List?)
+            ?.map(
+              (value) => Participant.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (participants != null) 'participants': participants!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final participants = this.participants;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'participants': ?participants,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response for ListRecordings method.
@@ -1236,20 +1256,20 @@ class ListRecordingsResponse {
   ListRecordingsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        recordings:
-            (json_['recordings'] as core.List?)
-                ?.map(
-                  (value) => Recording.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        recordings: (json_['recordings'] as core.List?)
+            ?.map(
+              (value) => Recording.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (recordings != null) 'recordings': recordings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final recordings = this.recordings;
+    return {'nextPageToken': ?nextPageToken, 'recordings': ?recordings};
+  }
 }
 
 /// Response for ListTranscriptEntries method.
@@ -1268,20 +1288,23 @@ class ListTranscriptEntriesResponse {
   ListTranscriptEntriesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        transcriptEntries:
-            (json_['transcriptEntries'] as core.List?)
-                ?.map(
-                  (value) => TranscriptEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        transcriptEntries: (json_['transcriptEntries'] as core.List?)
+            ?.map(
+              (value) => TranscriptEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (transcriptEntries != null) 'transcriptEntries': transcriptEntries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final transcriptEntries = this.transcriptEntries;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'transcriptEntries': ?transcriptEntries,
+    };
+  }
 }
 
 /// Response for ListTranscripts method.
@@ -1300,20 +1323,20 @@ class ListTranscriptsResponse {
   ListTranscriptsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        transcripts:
-            (json_['transcripts'] as core.List?)
-                ?.map(
-                  (value) => Transcript.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        transcripts: (json_['transcripts'] as core.List?)
+            ?.map(
+              (value) => Transcript.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (transcripts != null) 'transcripts': transcripts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final transcripts = this.transcripts;
+    return {'nextPageToken': ?nextPageToken, 'transcripts': ?transcripts};
+  }
 }
 
 /// Defines restrictions for features when the meeting is moderated.
@@ -1366,14 +1389,18 @@ class ModerationRestrictions {
         reactionRestriction: json_['reactionRestriction'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chatRestriction != null) 'chatRestriction': chatRestriction!,
-    if (defaultJoinAsViewerType != null)
-      'defaultJoinAsViewerType': defaultJoinAsViewerType!,
-    if (presentRestriction != null) 'presentRestriction': presentRestriction!,
-    if (reactionRestriction != null)
-      'reactionRestriction': reactionRestriction!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chatRestriction = this.chatRestriction;
+    final defaultJoinAsViewerType = this.defaultJoinAsViewerType;
+    final presentRestriction = this.presentRestriction;
+    final reactionRestriction = this.reactionRestriction;
+    return {
+      'chatRestriction': ?chatRestriction,
+      'defaultJoinAsViewerType': ?defaultJoinAsViewerType,
+      'presentRestriction': ?presentRestriction,
+      'reactionRestriction': ?reactionRestriction,
+    };
+  }
 }
 
 /// User who attended or is attending a conference.
@@ -1417,37 +1444,42 @@ class Participant {
 
   Participant.fromJson(core.Map json_)
     : this(
-        anonymousUser:
-            json_.containsKey('anonymousUser')
-                ? AnonymousUser.fromJson(
-                  json_['anonymousUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        anonymousUser: json_.containsKey('anonymousUser')
+            ? AnonymousUser.fromJson(
+                json_['anonymousUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         earliestStartTime: json_['earliestStartTime'] as core.String?,
         latestEndTime: json_['latestEndTime'] as core.String?,
         name: json_['name'] as core.String?,
-        phoneUser:
-            json_.containsKey('phoneUser')
-                ? PhoneUser.fromJson(
-                  json_['phoneUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        signedinUser:
-            json_.containsKey('signedinUser')
-                ? SignedinUser.fromJson(
-                  json_['signedinUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        phoneUser: json_.containsKey('phoneUser')
+            ? PhoneUser.fromJson(
+                json_['phoneUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signedinUser: json_.containsKey('signedinUser')
+            ? SignedinUser.fromJson(
+                json_['signedinUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (anonymousUser != null) 'anonymousUser': anonymousUser!,
-    if (earliestStartTime != null) 'earliestStartTime': earliestStartTime!,
-    if (latestEndTime != null) 'latestEndTime': latestEndTime!,
-    if (name != null) 'name': name!,
-    if (phoneUser != null) 'phoneUser': phoneUser!,
-    if (signedinUser != null) 'signedinUser': signedinUser!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final anonymousUser = this.anonymousUser;
+    final earliestStartTime = this.earliestStartTime;
+    final latestEndTime = this.latestEndTime;
+    final name = this.name;
+    final phoneUser = this.phoneUser;
+    final signedinUser = this.signedinUser;
+    return {
+      'anonymousUser': ?anonymousUser,
+      'earliestStartTime': ?earliestStartTime,
+      'latestEndTime': ?latestEndTime,
+      'name': ?name,
+      'phoneUser': ?phoneUser,
+      'signedinUser': ?signedinUser,
+    };
+  }
 }
 
 /// Refers to each unique join or leave session when a user joins a conference
@@ -1484,11 +1516,12 @@ class ParticipantSession {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (name != null) 'name': name!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    return {'endTime': ?endTime, 'name': ?name, 'startTime': ?startTime};
+  }
 }
 
 /// User dialing in from a phone where the user's identity is unknown because
@@ -1504,9 +1537,10 @@ class PhoneUser {
   PhoneUser.fromJson(core.Map json_)
     : this(displayName: json_['displayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
 }
 
 /// Metadata about a recording created during a conference.
@@ -1559,26 +1593,32 @@ class Recording {
 
   Recording.fromJson(core.Map json_)
     : this(
-        driveDestination:
-            json_.containsKey('driveDestination')
-                ? DriveDestination.fromJson(
-                  json_['driveDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        driveDestination: json_.containsKey('driveDestination')
+            ? DriveDestination.fromJson(
+                json_['driveDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endTime: json_['endTime'] as core.String?,
         name: json_['name'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (driveDestination != null) 'driveDestination': driveDestination!,
-    if (endTime != null) 'endTime': endTime!,
-    if (name != null) 'name': name!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final driveDestination = this.driveDestination;
+    final endTime = this.endTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'driveDestination': ?driveDestination,
+      'endTime': ?endTime,
+      'name': ?name,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Configuration related to recording in a meeting space.
@@ -1600,10 +1640,10 @@ class RecordingConfig {
             json_['autoRecordingGeneration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoRecordingGeneration != null)
-      'autoRecordingGeneration': autoRecordingGeneration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoRecordingGeneration = this.autoRecordingGeneration;
+    return {'autoRecordingGeneration': ?autoRecordingGeneration};
+  }
 }
 
 /// A signed-in user can be: a) An individual joining from a personal computer,
@@ -1634,10 +1674,11 @@ class SignedinUser {
         user: json_['user'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final user = this.user;
+    return {'displayName': ?displayName, 'user': ?user};
+  }
 }
 
 /// Configuration related to smart notes in a meeting space.
@@ -1663,10 +1704,10 @@ class SmartNotesConfig {
             json_['autoSmartNotesGeneration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoSmartNotesGeneration != null)
-      'autoSmartNotesGeneration': autoSmartNotesGeneration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoSmartNotesGeneration = this.autoSmartNotesGeneration;
+    return {'autoSmartNotesGeneration': ?autoSmartNotesGeneration};
+  }
 }
 
 /// Virtual place where conferences are held.
@@ -1716,31 +1757,36 @@ class Space {
 
   Space.fromJson(core.Map json_)
     : this(
-        activeConference:
-            json_.containsKey('activeConference')
-                ? ActiveConference.fromJson(
-                  json_['activeConference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        config:
-            json_.containsKey('config')
-                ? SpaceConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        activeConference: json_.containsKey('activeConference')
+            ? ActiveConference.fromJson(
+                json_['activeConference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        config: json_.containsKey('config')
+            ? SpaceConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         meetingCode: json_['meetingCode'] as core.String?,
         meetingUri: json_['meetingUri'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeConference != null) 'activeConference': activeConference!,
-    if (config != null) 'config': config!,
-    if (meetingCode != null) 'meetingCode': meetingCode!,
-    if (meetingUri != null) 'meetingUri': meetingUri!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeConference = this.activeConference;
+    final config = this.config;
+    final meetingCode = this.meetingCode;
+    final meetingUri = this.meetingUri;
+    final name = this.name;
+    return {
+      'activeConference': ?activeConference,
+      'config': ?config,
+      'meetingCode': ?meetingCode,
+      'meetingUri': ?meetingUri,
+      'name': ?name,
+    };
+  }
 }
 
 /// The configuration pertaining to a meeting space.
@@ -1817,36 +1863,39 @@ class SpaceConfig {
   SpaceConfig.fromJson(core.Map json_)
     : this(
         accessType: json_['accessType'] as core.String?,
-        artifactConfig:
-            json_.containsKey('artifactConfig')
-                ? ArtifactConfig.fromJson(
-                  json_['artifactConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        artifactConfig: json_.containsKey('artifactConfig')
+            ? ArtifactConfig.fromJson(
+                json_['artifactConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attendanceReportGenerationType:
             json_['attendanceReportGenerationType'] as core.String?,
         entryPointAccess: json_['entryPointAccess'] as core.String?,
         moderation: json_['moderation'] as core.String?,
-        moderationRestrictions:
-            json_.containsKey('moderationRestrictions')
-                ? ModerationRestrictions.fromJson(
-                  json_['moderationRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        moderationRestrictions: json_.containsKey('moderationRestrictions')
+            ? ModerationRestrictions.fromJson(
+                json_['moderationRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessType != null) 'accessType': accessType!,
-    if (artifactConfig != null) 'artifactConfig': artifactConfig!,
-    if (attendanceReportGenerationType != null)
-      'attendanceReportGenerationType': attendanceReportGenerationType!,
-    if (entryPointAccess != null) 'entryPointAccess': entryPointAccess!,
-    if (moderation != null) 'moderation': moderation!,
-    if (moderationRestrictions != null)
-      'moderationRestrictions': moderationRestrictions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessType = this.accessType;
+    final artifactConfig = this.artifactConfig;
+    final attendanceReportGenerationType = this.attendanceReportGenerationType;
+    final entryPointAccess = this.entryPointAccess;
+    final moderation = this.moderation;
+    final moderationRestrictions = this.moderationRestrictions;
+    return {
+      'accessType': ?accessType,
+      'artifactConfig': ?artifactConfig,
+      'attendanceReportGenerationType': ?attendanceReportGenerationType,
+      'entryPointAccess': ?entryPointAccess,
+      'moderation': ?moderation,
+      'moderationRestrictions': ?moderationRestrictions,
+    };
+  }
 }
 
 /// Metadata for a transcript generated from a conference.
@@ -1899,26 +1948,31 @@ class Transcript {
 
   Transcript.fromJson(core.Map json_)
     : this(
-        docsDestination:
-            json_.containsKey('docsDestination')
-                ? DocsDestination.fromJson(
-                  json_['docsDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        docsDestination: json_.containsKey('docsDestination')
+            ? DocsDestination.fromJson(
+                json_['docsDestination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endTime: json_['endTime'] as core.String?,
         name: json_['name'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (docsDestination != null) 'docsDestination': docsDestination!,
-    if (endTime != null) 'endTime': endTime!,
-    if (name != null) 'name': name!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final docsDestination = this.docsDestination;
+    final endTime = this.endTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'docsDestination': ?docsDestination,
+      'endTime': ?endTime,
+      'name': ?name,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Single entry for one user’s speech during a transcript session.
@@ -1979,14 +2033,22 @@ class TranscriptEntry {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (participant != null) 'participant': participant!,
-    if (startTime != null) 'startTime': startTime!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final participant = this.participant;
+    final startTime = this.startTime;
+    final text = this.text;
+    return {
+      'endTime': ?endTime,
+      'languageCode': ?languageCode,
+      'name': ?name,
+      'participant': ?participant,
+      'startTime': ?startTime,
+      'text': ?text,
+    };
+  }
 }
 
 /// Configuration related to transcription in a meeting space.
@@ -2008,8 +2070,8 @@ class TranscriptionConfig {
             json_['autoTranscriptionGeneration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoTranscriptionGeneration != null)
-      'autoTranscriptionGeneration': autoTranscriptionGeneration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoTranscriptionGeneration = this.autoTranscriptionGeneration;
+    return {'autoTranscriptionGeneration': ?autoTranscriptionGeneration};
+  }
 }

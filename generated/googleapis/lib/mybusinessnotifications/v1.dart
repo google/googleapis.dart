@@ -88,7 +88,7 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -140,8 +140,8 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -192,16 +192,20 @@ class NotificationSetting {
   NotificationSetting.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        notificationTypes:
-            (json_['notificationTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        notificationTypes: (json_['notificationTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         pubsubTopic: json_['pubsubTopic'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (notificationTypes != null) 'notificationTypes': notificationTypes!,
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final notificationTypes = this.notificationTypes;
+    final pubsubTopic = this.pubsubTopic;
+    return {
+      'name': ?name,
+      'notificationTypes': ?notificationTypes,
+      'pubsubTopic': ?pubsubTopic,
+    };
+  }
 }

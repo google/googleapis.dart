@@ -115,7 +115,7 @@ class AccountsNotificationsubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -155,7 +155,7 @@ class AccountsNotificationsubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'notifications/v1/' + core.Uri.encodeFull('$name');
@@ -191,7 +191,7 @@ class AccountsNotificationsubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'notifications/v1/' + core.Uri.encodeFull('$name');
@@ -239,9 +239,9 @@ class AccountsNotificationsubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -293,8 +293,8 @@ class AccountsNotificationsubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'notifications/v1/' + core.Uri.encodeFull('$name');
@@ -347,11 +347,14 @@ class ListNotificationSubscriptionsResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (notificationSubscriptions != null)
-      'notificationSubscriptions': notificationSubscriptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final notificationSubscriptions = this.notificationSubscriptions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'notificationSubscriptions': ?notificationSubscriptions,
+    };
+  }
 }
 
 /// Represents a notification subscription owned by a Merchant account.
@@ -409,11 +412,18 @@ class NotificationSubscription {
         targetAccount: json_['targetAccount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allManagedAccounts != null) 'allManagedAccounts': allManagedAccounts!,
-    if (callBackUri != null) 'callBackUri': callBackUri!,
-    if (name != null) 'name': name!,
-    if (registeredEvent != null) 'registeredEvent': registeredEvent!,
-    if (targetAccount != null) 'targetAccount': targetAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allManagedAccounts = this.allManagedAccounts;
+    final callBackUri = this.callBackUri;
+    final name = this.name;
+    final registeredEvent = this.registeredEvent;
+    final targetAccount = this.targetAccount;
+    return {
+      'allManagedAccounts': ?allManagedAccounts,
+      'callBackUri': ?callBackUri,
+      'name': ?name,
+      'registeredEvent': ?registeredEvent,
+      'targetAccount': ?targetAccount,
+    };
+  }
 }

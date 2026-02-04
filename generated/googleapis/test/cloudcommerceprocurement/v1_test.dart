@@ -675,10 +675,9 @@ void main() {
   unittest.group('resource-ProvidersAccountsResource', () {
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.accounts;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.accounts;
       final arg_request = buildApproveAccountRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -741,10 +740,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.accounts;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.accounts;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -803,10 +801,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.accounts;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.accounts;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -874,10 +871,9 @@ void main() {
 
     unittest.test('method--reject', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.accounts;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.accounts;
       final arg_request = buildRejectAccountRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -940,10 +936,9 @@ void main() {
 
     unittest.test('method--reset', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.accounts;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.accounts;
       final arg_request = buildResetAccountRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1008,10 +1003,9 @@ void main() {
   unittest.group('resource-ProvidersEntitlementsResource', () {
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildApproveEntitlementRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1074,10 +1068,9 @@ void main() {
 
     unittest.test('method--approvePlanChange', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildApproveEntitlementPlanChangeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1140,10 +1133,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1196,10 +1188,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -1273,10 +1264,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildEntitlement();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1345,10 +1335,9 @@ void main() {
 
     unittest.test('method--reject', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildRejectEntitlementRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1411,10 +1400,9 @@ void main() {
 
     unittest.test('method--rejectPlanChange', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildRejectEntitlementPlanChangeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1477,10 +1465,9 @@ void main() {
 
     unittest.test('method--suspend', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudCommercePartnerProcurementServiceApi(
-            mock,
-          ).providers.entitlements;
+      final res = api.CloudCommercePartnerProcurementServiceApi(
+        mock,
+      ).providers.entitlements;
       final arg_request = buildSuspendEntitlementRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

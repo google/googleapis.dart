@@ -143,7 +143,7 @@ class EventticketclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -187,7 +187,7 @@ class EventticketclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -226,7 +226,7 @@ class EventticketclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/eventTicketClass';
@@ -275,10 +275,10 @@ class EventticketclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/eventTicketClass';
@@ -324,7 +324,7 @@ class EventticketclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -371,7 +371,7 @@ class EventticketclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -425,7 +425,7 @@ class EventticketobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -469,7 +469,7 @@ class EventticketobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -508,7 +508,7 @@ class EventticketobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/eventTicketObject';
@@ -557,10 +557,10 @@ class EventticketobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/eventTicketObject';
@@ -605,7 +605,7 @@ class EventticketobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -655,7 +655,7 @@ class EventticketobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -702,7 +702,7 @@ class EventticketobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -755,7 +755,7 @@ class FlightclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -799,7 +799,7 @@ class FlightclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -837,7 +837,7 @@ class FlightclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/flightClass';
@@ -886,10 +886,10 @@ class FlightclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/flightClass';
@@ -935,7 +935,7 @@ class FlightclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -981,7 +981,7 @@ class FlightclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1033,7 +1033,7 @@ class FlightobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1077,7 +1077,7 @@ class FlightobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1116,7 +1116,7 @@ class FlightobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/flightObject';
@@ -1165,10 +1165,10 @@ class FlightobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/flightObject';
@@ -1214,7 +1214,7 @@ class FlightobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1261,7 +1261,7 @@ class FlightobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1314,7 +1314,7 @@ class GenericclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1358,7 +1358,7 @@ class GenericclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1397,7 +1397,7 @@ class GenericclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/genericClass';
@@ -1446,10 +1446,10 @@ class GenericclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/genericClass';
@@ -1495,7 +1495,7 @@ class GenericclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1542,7 +1542,7 @@ class GenericclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1595,7 +1595,7 @@ class GenericobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1639,7 +1639,7 @@ class GenericobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1678,7 +1678,7 @@ class GenericobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/genericObject';
@@ -1727,10 +1727,10 @@ class GenericobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/genericObject';
@@ -1776,7 +1776,7 @@ class GenericobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1823,7 +1823,7 @@ class GenericobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1876,7 +1876,7 @@ class GiftcardclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1920,7 +1920,7 @@ class GiftcardclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1959,7 +1959,7 @@ class GiftcardclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/giftCardClass';
@@ -2008,10 +2008,10 @@ class GiftcardclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/giftCardClass';
@@ -2057,7 +2057,7 @@ class GiftcardclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2104,7 +2104,7 @@ class GiftcardclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2157,7 +2157,7 @@ class GiftcardobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2201,7 +2201,7 @@ class GiftcardobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2240,7 +2240,7 @@ class GiftcardobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/giftCardObject';
@@ -2289,10 +2289,10 @@ class GiftcardobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/giftCardObject';
@@ -2338,7 +2338,7 @@ class GiftcardobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2385,7 +2385,7 @@ class GiftcardobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2430,7 +2430,7 @@ class IssuerResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2463,7 +2463,7 @@ class IssuerResource {
   async.Future<Issuer> insert(Issuer request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/issuer';
@@ -2493,7 +2493,7 @@ class IssuerResource {
   /// this method will complete with the same error.
   async.Future<IssuerListResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/issuer';
@@ -2535,7 +2535,7 @@ class IssuerResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2575,7 +2575,7 @@ class IssuerResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2618,7 +2618,7 @@ class JwtResource_1 {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/jwt';
@@ -2669,7 +2669,7 @@ class LoyaltyclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2713,7 +2713,7 @@ class LoyaltyclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2752,7 +2752,7 @@ class LoyaltyclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/loyaltyClass';
@@ -2801,10 +2801,10 @@ class LoyaltyclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/loyaltyClass';
@@ -2850,7 +2850,7 @@ class LoyaltyclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2897,7 +2897,7 @@ class LoyaltyclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2950,7 +2950,7 @@ class LoyaltyobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2994,7 +2994,7 @@ class LoyaltyobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3033,7 +3033,7 @@ class LoyaltyobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/loyaltyObject';
@@ -3082,10 +3082,10 @@ class LoyaltyobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/loyaltyObject';
@@ -3129,7 +3129,7 @@ class LoyaltyobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3179,7 +3179,7 @@ class LoyaltyobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3226,7 +3226,7 @@ class LoyaltyobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3285,7 +3285,7 @@ class MediaResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3343,7 +3343,7 @@ class MediaResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -3407,7 +3407,7 @@ class OfferclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3451,7 +3451,7 @@ class OfferclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3489,7 +3489,7 @@ class OfferclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/offerClass';
@@ -3538,10 +3538,10 @@ class OfferclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/offerClass';
@@ -3587,7 +3587,7 @@ class OfferclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3633,7 +3633,7 @@ class OfferclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3685,7 +3685,7 @@ class OfferobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3729,7 +3729,7 @@ class OfferobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3767,7 +3767,7 @@ class OfferobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/offerObject';
@@ -3816,10 +3816,10 @@ class OfferobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/offerObject';
@@ -3865,7 +3865,7 @@ class OfferobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3911,7 +3911,7 @@ class OfferobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3956,7 +3956,7 @@ class PermissionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3998,7 +3998,7 @@ class PermissionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4043,7 +4043,7 @@ class SmarttapResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/smartTap';
@@ -4092,7 +4092,7 @@ class TransitclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4136,7 +4136,7 @@ class TransitclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4175,7 +4175,7 @@ class TransitclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/transitClass';
@@ -4224,10 +4224,10 @@ class TransitclassResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (issuerId != null) 'issuerId': [issuerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'issuerId': ?issuerId == null ? null : [issuerId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/transitClass';
@@ -4273,7 +4273,7 @@ class TransitclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4320,7 +4320,7 @@ class TransitclassResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4373,7 +4373,7 @@ class TransitobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4417,7 +4417,7 @@ class TransitobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4456,7 +4456,7 @@ class TransitobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/transitObject';
@@ -4505,10 +4505,10 @@ class TransitobjectResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (classId != null) 'classId': [classId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (token != null) 'token': [token],
-      if ($fields != null) 'fields': [$fields],
+      'classId': ?classId == null ? null : [classId],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'token': ?token == null ? null : [token],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/transitObject';
@@ -4554,7 +4554,7 @@ class TransitobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4601,7 +4601,7 @@ class TransitobjectResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4668,7 +4668,7 @@ class WalletobjectsV1PrivateContentResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'walletobjects/v1/privateContent/setPassUpdateNotice';
@@ -4708,10 +4708,14 @@ class ActivationOptions {
         allowReactivation: json_['allowReactivation'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activationUrl != null) 'activationUrl': activationUrl!,
-    if (allowReactivation != null) 'allowReactivation': allowReactivation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activationUrl = this.activationUrl;
+    final allowReactivation = this.allowReactivation;
+    return {
+      'activationUrl': ?activationUrl,
+      'allowReactivation': ?allowReactivation,
+    };
+  }
 }
 
 /// The activation status of the object.
@@ -4732,9 +4736,10 @@ class ActivationStatus {
   ActivationStatus.fromJson(core.Map json_)
     : this(state: json_['state'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    return {'state': ?state};
+  }
 }
 
 /// Resource used when the AddMessage endpoints are called.
@@ -4745,17 +4750,17 @@ class AddMessageRequest {
 
   AddMessageRequest.fromJson(core.Map json_)
     : this(
-        message:
-            json_.containsKey('message')
-                ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    return {'message': ?message};
+  }
 }
 
 class AirportInfo {
@@ -4804,26 +4809,31 @@ class AirportInfo {
   AirportInfo.fromJson(core.Map json_)
     : this(
         airportIataCode: json_['airportIataCode'] as core.String?,
-        airportNameOverride:
-            json_.containsKey('airportNameOverride')
-                ? LocalizedString.fromJson(
-                  json_['airportNameOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        airportNameOverride: json_.containsKey('airportNameOverride')
+            ? LocalizedString.fromJson(
+                json_['airportNameOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gate: json_['gate'] as core.String?,
         kind: json_['kind'] as core.String?,
         terminal: json_['terminal'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airportIataCode != null) 'airportIataCode': airportIataCode!,
-    if (airportNameOverride != null)
-      'airportNameOverride': airportNameOverride!,
-    if (gate != null) 'gate': gate!,
-    if (kind != null) 'kind': kind!,
-    if (terminal != null) 'terminal': terminal!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airportIataCode = this.airportIataCode;
+    final airportNameOverride = this.airportNameOverride;
+    final gate = this.gate;
+    final kind = this.kind;
+    final terminal = this.terminal;
+    return {
+      'airportIataCode': ?airportIataCode,
+      'airportNameOverride': ?airportNameOverride,
+      'gate': ?gate,
+      'kind': ?kind,
+      'terminal': ?terminal,
+    };
+  }
 }
 
 class AppLinkData {
@@ -4855,41 +4865,41 @@ class AppLinkData {
 
   AppLinkData.fromJson(core.Map json_)
     : this(
-        androidAppLinkInfo:
-            json_.containsKey('androidAppLinkInfo')
-                ? AppLinkDataAppLinkInfo.fromJson(
-                  json_['androidAppLinkInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        displayText:
-            json_.containsKey('displayText')
-                ? LocalizedString.fromJson(
-                  json_['displayText'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        iosAppLinkInfo:
-            json_.containsKey('iosAppLinkInfo')
-                ? AppLinkDataAppLinkInfo.fromJson(
-                  json_['iosAppLinkInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        webAppLinkInfo:
-            json_.containsKey('webAppLinkInfo')
-                ? AppLinkDataAppLinkInfo.fromJson(
-                  json_['webAppLinkInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        androidAppLinkInfo: json_.containsKey('androidAppLinkInfo')
+            ? AppLinkDataAppLinkInfo.fromJson(
+                json_['androidAppLinkInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        displayText: json_.containsKey('displayText')
+            ? LocalizedString.fromJson(
+                json_['displayText'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        iosAppLinkInfo: json_.containsKey('iosAppLinkInfo')
+            ? AppLinkDataAppLinkInfo.fromJson(
+                json_['iosAppLinkInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webAppLinkInfo: json_.containsKey('webAppLinkInfo')
+            ? AppLinkDataAppLinkInfo.fromJson(
+                json_['webAppLinkInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidAppLinkInfo != null) 'androidAppLinkInfo': androidAppLinkInfo!,
-    if (displayText != null) 'displayText': displayText!,
-    if (iosAppLinkInfo != null) 'iosAppLinkInfo': iosAppLinkInfo!,
-    if (webAppLinkInfo != null) 'webAppLinkInfo': webAppLinkInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidAppLinkInfo = this.androidAppLinkInfo;
+    final displayText = this.displayText;
+    final iosAppLinkInfo = this.iosAppLinkInfo;
+    final webAppLinkInfo = this.webAppLinkInfo;
+    return {
+      'androidAppLinkInfo': ?androidAppLinkInfo,
+      'displayText': ?displayText,
+      'iosAppLinkInfo': ?iosAppLinkInfo,
+      'webAppLinkInfo': ?webAppLinkInfo,
+    };
+  }
 }
 
 class AppLinkDataAppLinkInfo {
@@ -4931,38 +4941,40 @@ class AppLinkDataAppLinkInfo {
 
   AppLinkDataAppLinkInfo.fromJson(core.Map json_)
     : this(
-        appLogoImage:
-            json_.containsKey('appLogoImage')
-                ? Image.fromJson(
-                  json_['appLogoImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        appTarget:
-            json_.containsKey('appTarget')
-                ? AppLinkDataAppLinkInfoAppTarget.fromJson(
-                  json_['appTarget'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        description:
-            json_.containsKey('description')
-                ? LocalizedString.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        title:
-            json_.containsKey('title')
-                ? LocalizedString.fromJson(
-                  json_['title'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLogoImage: json_.containsKey('appLogoImage')
+            ? Image.fromJson(
+                json_['appLogoImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        appTarget: json_.containsKey('appTarget')
+            ? AppLinkDataAppLinkInfoAppTarget.fromJson(
+                json_['appTarget'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_.containsKey('description')
+            ? LocalizedString.fromJson(
+                json_['description'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        title: json_.containsKey('title')
+            ? LocalizedString.fromJson(
+                json_['title'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLogoImage != null) 'appLogoImage': appLogoImage!,
-    if (appTarget != null) 'appTarget': appTarget!,
-    if (description != null) 'description': description!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLogoImage = this.appLogoImage;
+    final appTarget = this.appTarget;
+    final description = this.description;
+    final title = this.title;
+    return {
+      'appLogoImage': ?appLogoImage,
+      'appTarget': ?appTarget,
+      'description': ?description,
+      'title': ?title,
+    };
+  }
 }
 
 class AppLinkDataAppLinkInfoAppTarget {
@@ -4982,18 +4994,18 @@ class AppLinkDataAppLinkInfoAppTarget {
   AppLinkDataAppLinkInfoAppTarget.fromJson(core.Map json_)
     : this(
         packageName: json_['packageName'] as core.String?,
-        targetUri:
-            json_.containsKey('targetUri')
-                ? Uri.fromJson(
-                  json_['targetUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        targetUri: json_.containsKey('targetUri')
+            ? Uri.fromJson(
+                json_['targetUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (packageName != null) 'packageName': packageName!,
-    if (targetUri != null) 'targetUri': targetUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final packageName = this.packageName;
+    final targetUri = this.targetUri;
+    return {'packageName': ?packageName, 'targetUri': ?targetUri};
+  }
 }
 
 class AuthenticationKey {
@@ -5015,10 +5027,11 @@ class AuthenticationKey {
         publicKeyPem: json_['publicKeyPem'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final publicKeyPem = this.publicKeyPem;
+    return {'id': ?id, 'publicKeyPem': ?publicKeyPem};
+  }
 }
 
 class Barcode {
@@ -5118,24 +5131,31 @@ class Barcode {
         alternateText: json_['alternateText'] as core.String?,
         kind: json_['kind'] as core.String?,
         renderEncoding: json_['renderEncoding'] as core.String?,
-        showCodeText:
-            json_.containsKey('showCodeText')
-                ? LocalizedString.fromJson(
-                  json_['showCodeText'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        showCodeText: json_.containsKey('showCodeText')
+            ? LocalizedString.fromJson(
+                json_['showCodeText'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternateText != null) 'alternateText': alternateText!,
-    if (kind != null) 'kind': kind!,
-    if (renderEncoding != null) 'renderEncoding': renderEncoding!,
-    if (showCodeText != null) 'showCodeText': showCodeText!,
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternateText = this.alternateText;
+    final kind = this.kind;
+    final renderEncoding = this.renderEncoding;
+    final showCodeText = this.showCodeText;
+    final type = this.type;
+    final value = this.value;
+    return {
+      'alternateText': ?alternateText,
+      'kind': ?kind,
+      'renderEncoding': ?renderEncoding,
+      'showCodeText': ?showCodeText,
+      'type': ?type,
+      'value': ?value,
+    };
+  }
 }
 
 class BarcodeSectionDetail {
@@ -5146,17 +5166,17 @@ class BarcodeSectionDetail {
 
   BarcodeSectionDetail.fromJson(core.Map json_)
     : this(
-        fieldSelector:
-            json_.containsKey('fieldSelector')
-                ? FieldSelector.fromJson(
-                  json_['fieldSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fieldSelector: json_.containsKey('fieldSelector')
+            ? FieldSelector.fromJson(
+                json_['fieldSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldSelector != null) 'fieldSelector': fieldSelector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldSelector = this.fieldSelector;
+    return {'fieldSelector': ?fieldSelector};
+  }
 }
 
 /// Information to read/write to blobstore2.
@@ -5244,38 +5264,45 @@ class BoardingAndSeatingInfo {
         boardingDoor: json_['boardingDoor'] as core.String?,
         boardingGroup: json_['boardingGroup'] as core.String?,
         boardingPosition: json_['boardingPosition'] as core.String?,
-        boardingPrivilegeImage:
-            json_.containsKey('boardingPrivilegeImage')
-                ? Image.fromJson(
-                  json_['boardingPrivilegeImage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boardingPrivilegeImage: json_.containsKey('boardingPrivilegeImage')
+            ? Image.fromJson(
+                json_['boardingPrivilegeImage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        seatAssignment:
-            json_.containsKey('seatAssignment')
-                ? LocalizedString.fromJson(
-                  json_['seatAssignment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        seatAssignment: json_.containsKey('seatAssignment')
+            ? LocalizedString.fromJson(
+                json_['seatAssignment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         seatClass: json_['seatClass'] as core.String?,
         seatNumber: json_['seatNumber'] as core.String?,
         sequenceNumber: json_['sequenceNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boardingDoor != null) 'boardingDoor': boardingDoor!,
-    if (boardingGroup != null) 'boardingGroup': boardingGroup!,
-    if (boardingPosition != null) 'boardingPosition': boardingPosition!,
-    if (boardingPrivilegeImage != null)
-      'boardingPrivilegeImage': boardingPrivilegeImage!,
-    if (kind != null) 'kind': kind!,
-    if (seatAssignment != null) 'seatAssignment': seatAssignment!,
-    if (seatClass != null) 'seatClass': seatClass!,
-    if (seatNumber != null) 'seatNumber': seatNumber!,
-    if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boardingDoor = this.boardingDoor;
+    final boardingGroup = this.boardingGroup;
+    final boardingPosition = this.boardingPosition;
+    final boardingPrivilegeImage = this.boardingPrivilegeImage;
+    final kind = this.kind;
+    final seatAssignment = this.seatAssignment;
+    final seatClass = this.seatClass;
+    final seatNumber = this.seatNumber;
+    final sequenceNumber = this.sequenceNumber;
+    return {
+      'boardingDoor': ?boardingDoor,
+      'boardingGroup': ?boardingGroup,
+      'boardingPosition': ?boardingPosition,
+      'boardingPrivilegeImage': ?boardingPrivilegeImage,
+      'kind': ?kind,
+      'seatAssignment': ?seatAssignment,
+      'seatClass': ?seatClass,
+      'seatNumber': ?seatNumber,
+      'sequenceNumber': ?sequenceNumber,
+    };
+  }
 }
 
 class BoardingAndSeatingPolicy {
@@ -5330,11 +5357,16 @@ class BoardingAndSeatingPolicy {
         seatClassPolicy: json_['seatClassPolicy'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boardingPolicy != null) 'boardingPolicy': boardingPolicy!,
-    if (kind != null) 'kind': kind!,
-    if (seatClassPolicy != null) 'seatClassPolicy': seatClassPolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boardingPolicy = this.boardingPolicy;
+    final kind = this.kind;
+    final seatClassPolicy = this.seatClassPolicy;
+    return {
+      'boardingPolicy': ?boardingPolicy,
+      'kind': ?kind,
+      'seatClassPolicy': ?seatClassPolicy,
+    };
+  }
 }
 
 class CallbackOptions {
@@ -5361,10 +5393,11 @@ class CallbackOptions {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (updateRequestUrl != null) 'updateRequestUrl': updateRequestUrl!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final updateRequestUrl = this.updateRequestUrl;
+    final url = this.url;
+    return {'updateRequestUrl': ?updateRequestUrl, 'url': ?url};
+  }
 }
 
 class CardBarcodeSectionDetails {
@@ -5391,34 +5424,34 @@ class CardBarcodeSectionDetails {
 
   CardBarcodeSectionDetails.fromJson(core.Map json_)
     : this(
-        firstBottomDetail:
-            json_.containsKey('firstBottomDetail')
-                ? BarcodeSectionDetail.fromJson(
-                  json_['firstBottomDetail']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        firstTopDetail:
-            json_.containsKey('firstTopDetail')
-                ? BarcodeSectionDetail.fromJson(
-                  json_['firstTopDetail']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        secondTopDetail:
-            json_.containsKey('secondTopDetail')
-                ? BarcodeSectionDetail.fromJson(
-                  json_['secondTopDetail']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        firstBottomDetail: json_.containsKey('firstBottomDetail')
+            ? BarcodeSectionDetail.fromJson(
+                json_['firstBottomDetail']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        firstTopDetail: json_.containsKey('firstTopDetail')
+            ? BarcodeSectionDetail.fromJson(
+                json_['firstTopDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secondTopDetail: json_.containsKey('secondTopDetail')
+            ? BarcodeSectionDetail.fromJson(
+                json_['secondTopDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (firstBottomDetail != null) 'firstBottomDetail': firstBottomDetail!,
-    if (firstTopDetail != null) 'firstTopDetail': firstTopDetail!,
-    if (secondTopDetail != null) 'secondTopDetail': secondTopDetail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final firstBottomDetail = this.firstBottomDetail;
+    final firstTopDetail = this.firstTopDetail;
+    final secondTopDetail = this.secondTopDetail;
+    return {
+      'firstBottomDetail': ?firstBottomDetail,
+      'firstTopDetail': ?firstTopDetail,
+      'secondTopDetail': ?secondTopDetail,
+    };
+  }
 }
 
 class CardRowOneItem {
@@ -5431,17 +5464,17 @@ class CardRowOneItem {
 
   CardRowOneItem.fromJson(core.Map json_)
     : this(
-        item:
-            json_.containsKey('item')
-                ? TemplateItem.fromJson(
-                  json_['item'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        item: json_.containsKey('item')
+            ? TemplateItem.fromJson(
+                json_['item'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (item != null) 'item': item!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final item = this.item;
+    return {'item': ?item};
+  }
 }
 
 class CardRowTemplateInfo {
@@ -5464,31 +5497,33 @@ class CardRowTemplateInfo {
 
   CardRowTemplateInfo.fromJson(core.Map json_)
     : this(
-        oneItem:
-            json_.containsKey('oneItem')
-                ? CardRowOneItem.fromJson(
-                  json_['oneItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        threeItems:
-            json_.containsKey('threeItems')
-                ? CardRowThreeItems.fromJson(
-                  json_['threeItems'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        twoItems:
-            json_.containsKey('twoItems')
-                ? CardRowTwoItems.fromJson(
-                  json_['twoItems'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        oneItem: json_.containsKey('oneItem')
+            ? CardRowOneItem.fromJson(
+                json_['oneItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        threeItems: json_.containsKey('threeItems')
+            ? CardRowThreeItems.fromJson(
+                json_['threeItems'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        twoItems: json_.containsKey('twoItems')
+            ? CardRowTwoItems.fromJson(
+                json_['twoItems'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (oneItem != null) 'oneItem': oneItem!,
-    if (threeItems != null) 'threeItems': threeItems!,
-    if (twoItems != null) 'twoItems': twoItems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final oneItem = this.oneItem;
+    final threeItems = this.threeItems;
+    final twoItems = this.twoItems;
+    return {
+      'oneItem': ?oneItem,
+      'threeItems': ?threeItems,
+      'twoItems': ?twoItems,
+    };
+  }
 }
 
 class CardRowThreeItems {
@@ -5511,31 +5546,33 @@ class CardRowThreeItems {
 
   CardRowThreeItems.fromJson(core.Map json_)
     : this(
-        endItem:
-            json_.containsKey('endItem')
-                ? TemplateItem.fromJson(
-                  json_['endItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        middleItem:
-            json_.containsKey('middleItem')
-                ? TemplateItem.fromJson(
-                  json_['middleItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startItem:
-            json_.containsKey('startItem')
-                ? TemplateItem.fromJson(
-                  json_['startItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endItem: json_.containsKey('endItem')
+            ? TemplateItem.fromJson(
+                json_['endItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        middleItem: json_.containsKey('middleItem')
+            ? TemplateItem.fromJson(
+                json_['middleItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startItem: json_.containsKey('startItem')
+            ? TemplateItem.fromJson(
+                json_['startItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endItem != null) 'endItem': endItem!,
-    if (middleItem != null) 'middleItem': middleItem!,
-    if (startItem != null) 'startItem': startItem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endItem = this.endItem;
+    final middleItem = this.middleItem;
+    final startItem = this.startItem;
+    return {
+      'endItem': ?endItem,
+      'middleItem': ?middleItem,
+      'startItem': ?startItem,
+    };
+  }
 }
 
 class CardRowTwoItems {
@@ -5553,24 +5590,23 @@ class CardRowTwoItems {
 
   CardRowTwoItems.fromJson(core.Map json_)
     : this(
-        endItem:
-            json_.containsKey('endItem')
-                ? TemplateItem.fromJson(
-                  json_['endItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startItem:
-            json_.containsKey('startItem')
-                ? TemplateItem.fromJson(
-                  json_['startItem'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endItem: json_.containsKey('endItem')
+            ? TemplateItem.fromJson(
+                json_['endItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startItem: json_.containsKey('startItem')
+            ? TemplateItem.fromJson(
+                json_['startItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endItem != null) 'endItem': endItem!,
-    if (startItem != null) 'startItem': startItem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endItem = this.endItem;
+    final startItem = this.startItem;
+    return {'endItem': ?endItem, 'startItem': ?startItem};
+  }
 }
 
 class CardTemplateOverride {
@@ -5583,20 +5619,19 @@ class CardTemplateOverride {
 
   CardTemplateOverride.fromJson(core.Map json_)
     : this(
-        cardRowTemplateInfos:
-            (json_['cardRowTemplateInfos'] as core.List?)
-                ?.map(
-                  (value) => CardRowTemplateInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cardRowTemplateInfos: (json_['cardRowTemplateInfos'] as core.List?)
+            ?.map(
+              (value) => CardRowTemplateInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cardRowTemplateInfos != null)
-      'cardRowTemplateInfos': cardRowTemplateInfos!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardRowTemplateInfos = this.cardRowTemplateInfos;
+    return {'cardRowTemplateInfos': ?cardRowTemplateInfos};
+  }
 }
 
 class ClassTemplateInfo {
@@ -5623,44 +5658,43 @@ class ClassTemplateInfo {
     : this(
         cardBarcodeSectionDetails:
             json_.containsKey('cardBarcodeSectionDetails')
-                ? CardBarcodeSectionDetails.fromJson(
-                  json_['cardBarcodeSectionDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cardTemplateOverride:
-            json_.containsKey('cardTemplateOverride')
-                ? CardTemplateOverride.fromJson(
-                  json_['cardTemplateOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        detailsTemplateOverride:
-            json_.containsKey('detailsTemplateOverride')
-                ? DetailsTemplateOverride.fromJson(
-                  json_['detailsTemplateOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        listTemplateOverride:
-            json_.containsKey('listTemplateOverride')
-                ? ListTemplateOverride.fromJson(
-                  json_['listTemplateOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CardBarcodeSectionDetails.fromJson(
+                json_['cardBarcodeSectionDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cardTemplateOverride: json_.containsKey('cardTemplateOverride')
+            ? CardTemplateOverride.fromJson(
+                json_['cardTemplateOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        detailsTemplateOverride: json_.containsKey('detailsTemplateOverride')
+            ? DetailsTemplateOverride.fromJson(
+                json_['detailsTemplateOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        listTemplateOverride: json_.containsKey('listTemplateOverride')
+            ? ListTemplateOverride.fromJson(
+                json_['listTemplateOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cardBarcodeSectionDetails != null)
-      'cardBarcodeSectionDetails': cardBarcodeSectionDetails!,
-    if (cardTemplateOverride != null)
-      'cardTemplateOverride': cardTemplateOverride!,
-    if (detailsTemplateOverride != null)
-      'detailsTemplateOverride': detailsTemplateOverride!,
-    if (listTemplateOverride != null)
-      'listTemplateOverride': listTemplateOverride!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardBarcodeSectionDetails = this.cardBarcodeSectionDetails;
+    final cardTemplateOverride = this.cardTemplateOverride;
+    final detailsTemplateOverride = this.detailsTemplateOverride;
+    final listTemplateOverride = this.listTemplateOverride;
+    return {
+      'cardBarcodeSectionDetails': ?cardBarcodeSectionDetails,
+      'cardTemplateOverride': ?cardTemplateOverride,
+      'detailsTemplateOverride': ?detailsTemplateOverride,
+      'listTemplateOverride': ?listTemplateOverride,
+    };
+  }
 }
 
 /// A sequence of media data references representing composite data.
@@ -5782,43 +5816,52 @@ class CompositeMedia {
   CompositeMedia.fromJson(core.Map json_)
     : this(
         blobRef: json_['blobRef'] as core.String?,
-        blobstore2Info:
-            json_.containsKey('blobstore2Info')
-                ? Blobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blobstore2Info: json_.containsKey('blobstore2Info')
+            ? Blobstore2Info.fromJson(
+                json_['blobstore2Info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
         crc32cHash: json_['crc32cHash'] as core.int?,
         inline: json_['inline'] as core.String?,
         length: json_['length'] as core.String?,
         md5Hash: json_['md5Hash'] as core.String?,
-        objectId:
-            json_.containsKey('objectId')
-                ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectId: json_.containsKey('objectId')
+            ? ObjectId.fromJson(
+                json_['objectId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         path: json_['path'] as core.String?,
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobRef != null) 'blobRef': blobRef!,
-    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-    if (cosmoBinaryReference != null)
-      'cosmoBinaryReference': cosmoBinaryReference!,
-    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-    if (inline != null) 'inline': inline!,
-    if (length != null) 'length': length!,
-    if (md5Hash != null) 'md5Hash': md5Hash!,
-    if (objectId != null) 'objectId': objectId!,
-    if (path != null) 'path': path!,
-    if (referenceType != null) 'referenceType': referenceType!,
-    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blobRef = this.blobRef;
+    final blobstore2Info = this.blobstore2Info;
+    final cosmoBinaryReference = this.cosmoBinaryReference;
+    final crc32cHash = this.crc32cHash;
+    final inline = this.inline;
+    final length = this.length;
+    final md5Hash = this.md5Hash;
+    final objectId = this.objectId;
+    final path = this.path;
+    final referenceType = this.referenceType;
+    final sha1Hash = this.sha1Hash;
+    return {
+      'blobRef': ?blobRef,
+      'blobstore2Info': ?blobstore2Info,
+      'cosmoBinaryReference': ?cosmoBinaryReference,
+      'crc32cHash': ?crc32cHash,
+      'inline': ?inline,
+      'length': ?length,
+      'md5Hash': ?md5Hash,
+      'objectId': ?objectId,
+      'path': ?path,
+      'referenceType': ?referenceType,
+      'sha1Hash': ?sha1Hash,
+    };
+  }
 }
 
 /// Detailed Content-Type information from Scotty.
@@ -5861,9 +5904,10 @@ class DateTime {
 
   DateTime.fromJson(core.Map json_) : this(date: json_['date'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (date != null) 'date': date!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final date = this.date;
+    return {'date': ?date};
+  }
 }
 
 class DetailsItemInfo {
@@ -5874,17 +5918,17 @@ class DetailsItemInfo {
 
   DetailsItemInfo.fromJson(core.Map json_)
     : this(
-        item:
-            json_.containsKey('item')
-                ? TemplateItem.fromJson(
-                  json_['item'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        item: json_.containsKey('item')
+            ? TemplateItem.fromJson(
+                json_['item'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (item != null) 'item': item!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final item = this.item;
+    return {'item': ?item};
+  }
 }
 
 class DetailsTemplateOverride {
@@ -5895,19 +5939,19 @@ class DetailsTemplateOverride {
 
   DetailsTemplateOverride.fromJson(core.Map json_)
     : this(
-        detailsItemInfos:
-            (json_['detailsItemInfos'] as core.List?)
-                ?.map(
-                  (value) => DetailsItemInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        detailsItemInfos: (json_['detailsItemInfos'] as core.List?)
+            ?.map(
+              (value) => DetailsItemInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detailsItemInfos != null) 'detailsItemInfos': detailsItemInfos!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detailsItemInfos = this.detailsItemInfos;
+    return {'detailsItemInfos': ?detailsItemInfos};
+  }
 }
 
 /// Device context associated with the object.
@@ -5926,9 +5970,10 @@ class DeviceContext {
   DeviceContext.fromJson(core.Map json_)
     : this(deviceToken: json_['deviceToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceToken != null) 'deviceToken': deviceToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceToken = this.deviceToken;
+    return {'deviceToken': ?deviceToken};
+  }
 }
 
 /// Backend response for a Diff get checksums response.
@@ -5970,32 +6015,36 @@ class DiffChecksumsResponse {
 
   DiffChecksumsResponse.fromJson(core.Map json_)
     : this(
-        checksumsLocation:
-            json_.containsKey('checksumsLocation')
-                ? CompositeMedia.fromJson(
-                  json_['checksumsLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checksumsLocation: json_.containsKey('checksumsLocation')
+            ? CompositeMedia.fromJson(
+                json_['checksumsLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
-        objectLocation:
-            json_.containsKey('objectLocation')
-                ? CompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectLocation: json_.containsKey('objectLocation')
+            ? CompositeMedia.fromJson(
+                json_['objectLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         objectSizeBytes: json_['objectSizeBytes'] as core.String?,
         objectVersion: json_['objectVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
-    if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
-    if (objectLocation != null) 'objectLocation': objectLocation!,
-    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checksumsLocation = this.checksumsLocation;
+    final chunkSizeBytes = this.chunkSizeBytes;
+    final objectLocation = this.objectLocation;
+    final objectSizeBytes = this.objectSizeBytes;
+    final objectVersion = this.objectVersion;
+    return {
+      'checksumsLocation': ?checksumsLocation,
+      'chunkSizeBytes': ?chunkSizeBytes,
+      'objectLocation': ?objectLocation,
+      'objectSizeBytes': ?objectSizeBytes,
+      'objectVersion': ?objectVersion,
+    };
+  }
 }
 
 /// Backend response for a Diff download response.
@@ -6010,18 +6059,17 @@ class DiffDownloadResponse {
 
   DiffDownloadResponse.fromJson(core.Map json_)
     : this(
-        objectLocation:
-            json_.containsKey('objectLocation')
-                ? CompositeMedia.fromJson(
-                  json_['objectLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectLocation: json_.containsKey('objectLocation')
+            ? CompositeMedia.fromJson(
+                json_['objectLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (objectLocation != null) 'objectLocation': objectLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectLocation = this.objectLocation;
+    return {'objectLocation': ?objectLocation};
+  }
 }
 
 /// A Diff upload request.
@@ -6052,26 +6100,29 @@ class DiffUploadRequest {
 
   DiffUploadRequest.fromJson(core.Map json_)
     : this(
-        checksumsInfo:
-            json_.containsKey('checksumsInfo')
-                ? CompositeMedia.fromJson(
-                  json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        objectInfo:
-            json_.containsKey('objectInfo')
-                ? CompositeMedia.fromJson(
-                  json_['objectInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checksumsInfo: json_.containsKey('checksumsInfo')
+            ? CompositeMedia.fromJson(
+                json_['checksumsInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        objectInfo: json_.containsKey('objectInfo')
+            ? CompositeMedia.fromJson(
+                json_['objectInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         objectVersion: json_['objectVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
-    if (objectInfo != null) 'objectInfo': objectInfo!,
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checksumsInfo = this.checksumsInfo;
+    final objectInfo = this.objectInfo;
+    final objectVersion = this.objectVersion;
+    return {
+      'checksumsInfo': ?checksumsInfo,
+      'objectInfo': ?objectInfo,
+      'objectVersion': ?objectVersion,
+    };
+  }
 }
 
 /// Backend response for a Diff upload request.
@@ -6096,19 +6147,18 @@ class DiffUploadResponse {
   DiffUploadResponse.fromJson(core.Map json_)
     : this(
         objectVersion: json_['objectVersion'] as core.String?,
-        originalObject:
-            json_.containsKey('originalObject')
-                ? CompositeMedia.fromJson(
-                  json_['originalObject']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        originalObject: json_.containsKey('originalObject')
+            ? CompositeMedia.fromJson(
+                json_['originalObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-    if (originalObject != null) 'originalObject': originalObject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectVersion = this.objectVersion;
+    final originalObject = this.originalObject;
+    return {'objectVersion': ?objectVersion, 'originalObject': ?originalObject};
+  }
 }
 
 /// Backend response for a Diff get version response.
@@ -6155,28 +6205,31 @@ class DiscoverableProgram {
 
   DiscoverableProgram.fromJson(core.Map json_)
     : this(
-        merchantSigninInfo:
-            json_.containsKey('merchantSigninInfo')
-                ? DiscoverableProgramMerchantSigninInfo.fromJson(
-                  json_['merchantSigninInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantSignupInfo:
-            json_.containsKey('merchantSignupInfo')
-                ? DiscoverableProgramMerchantSignupInfo.fromJson(
-                  json_['merchantSignupInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        merchantSigninInfo: json_.containsKey('merchantSigninInfo')
+            ? DiscoverableProgramMerchantSigninInfo.fromJson(
+                json_['merchantSigninInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantSignupInfo: json_.containsKey('merchantSignupInfo')
+            ? DiscoverableProgramMerchantSignupInfo.fromJson(
+                json_['merchantSignupInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (merchantSigninInfo != null) 'merchantSigninInfo': merchantSigninInfo!,
-    if (merchantSignupInfo != null) 'merchantSignupInfo': merchantSignupInfo!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final merchantSigninInfo = this.merchantSigninInfo;
+    final merchantSignupInfo = this.merchantSignupInfo;
+    final state = this.state;
+    return {
+      'merchantSigninInfo': ?merchantSigninInfo,
+      'merchantSignupInfo': ?merchantSignupInfo,
+      'state': ?state,
+    };
+  }
 }
 
 /// Information about the merchant hosted signin flow for a program.
@@ -6188,17 +6241,17 @@ class DiscoverableProgramMerchantSigninInfo {
 
   DiscoverableProgramMerchantSigninInfo.fromJson(core.Map json_)
     : this(
-        signinWebsite:
-            json_.containsKey('signinWebsite')
-                ? Uri.fromJson(
-                  json_['signinWebsite'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signinWebsite: json_.containsKey('signinWebsite')
+            ? Uri.fromJson(
+                json_['signinWebsite'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (signinWebsite != null) 'signinWebsite': signinWebsite!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final signinWebsite = this.signinWebsite;
+    return {'signinWebsite': ?signinWebsite};
+  }
 }
 
 /// Information about the merchant hosted signup flow for a program.
@@ -6219,22 +6272,24 @@ class DiscoverableProgramMerchantSignupInfo {
 
   DiscoverableProgramMerchantSignupInfo.fromJson(core.Map json_)
     : this(
-        signupSharedDatas:
-            (json_['signupSharedDatas'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        signupWebsite:
-            json_.containsKey('signupWebsite')
-                ? Uri.fromJson(
-                  json_['signupWebsite'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signupSharedDatas: (json_['signupSharedDatas'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        signupWebsite: json_.containsKey('signupWebsite')
+            ? Uri.fromJson(
+                json_['signupWebsite'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (signupSharedDatas != null) 'signupSharedDatas': signupSharedDatas!,
-    if (signupWebsite != null) 'signupWebsite': signupWebsite!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final signupSharedDatas = this.signupSharedDatas;
+    final signupWebsite = this.signupWebsite;
+    return {
+      'signupSharedDatas': ?signupSharedDatas,
+      'signupWebsite': ?signupWebsite,
+    };
+  }
 }
 
 /// Parameters specific to media downloads.
@@ -6357,13 +6412,12 @@ class EventDateTime {
 
   EventDateTime.fromJson(core.Map json_)
     : this(
-        customDoorsOpenLabel:
-            json_.containsKey('customDoorsOpenLabel')
-                ? LocalizedString.fromJson(
-                  json_['customDoorsOpenLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customDoorsOpenLabel: json_.containsKey('customDoorsOpenLabel')
+            ? LocalizedString.fromJson(
+                json_['customDoorsOpenLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         doorsOpen: json_['doorsOpen'] as core.String?,
         doorsOpenLabel: json_['doorsOpenLabel'] as core.String?,
         end: json_['end'] as core.String?,
@@ -6371,15 +6425,22 @@ class EventDateTime {
         start: json_['start'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customDoorsOpenLabel != null)
-      'customDoorsOpenLabel': customDoorsOpenLabel!,
-    if (doorsOpen != null) 'doorsOpen': doorsOpen!,
-    if (doorsOpenLabel != null) 'doorsOpenLabel': doorsOpenLabel!,
-    if (end != null) 'end': end!,
-    if (kind != null) 'kind': kind!,
-    if (start != null) 'start': start!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customDoorsOpenLabel = this.customDoorsOpenLabel;
+    final doorsOpen = this.doorsOpen;
+    final doorsOpenLabel = this.doorsOpenLabel;
+    final end = this.end;
+    final kind = this.kind;
+    final start = this.start;
+    return {
+      'customDoorsOpenLabel': ?customDoorsOpenLabel,
+      'doorsOpen': ?doorsOpen,
+      'doorsOpenLabel': ?doorsOpenLabel,
+      'end': ?end,
+      'kind': ?kind,
+      'start': ?start,
+    };
+  }
 }
 
 class EventReservationInfo {
@@ -6405,10 +6466,11 @@ class EventReservationInfo {
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confirmationCode != null) 'confirmationCode': confirmationCode!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confirmationCode = this.confirmationCode;
+    final kind = this.kind;
+    return {'confirmationCode': ?confirmationCode, 'kind': ?kind};
+  }
 }
 
 class EventSeat {
@@ -6449,40 +6511,43 @@ class EventSeat {
 
   EventSeat.fromJson(core.Map json_)
     : this(
-        gate:
-            json_.containsKey('gate')
-                ? LocalizedString.fromJson(
-                  json_['gate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gate: json_.containsKey('gate')
+            ? LocalizedString.fromJson(
+                json_['gate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        row:
-            json_.containsKey('row')
-                ? LocalizedString.fromJson(
-                  json_['row'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seat:
-            json_.containsKey('seat')
-                ? LocalizedString.fromJson(
-                  json_['seat'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        section:
-            json_.containsKey('section')
-                ? LocalizedString.fromJson(
-                  json_['section'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        row: json_.containsKey('row')
+            ? LocalizedString.fromJson(
+                json_['row'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seat: json_.containsKey('seat')
+            ? LocalizedString.fromJson(
+                json_['seat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        section: json_.containsKey('section')
+            ? LocalizedString.fromJson(
+                json_['section'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gate != null) 'gate': gate!,
-    if (kind != null) 'kind': kind!,
-    if (row != null) 'row': row!,
-    if (seat != null) 'seat': seat!,
-    if (section != null) 'section': section!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gate = this.gate;
+    final kind = this.kind;
+    final row = this.row;
+    final seat = this.seat;
+    final section = this.section;
+    return {
+      'gate': ?gate,
+      'kind': ?kind,
+      'row': ?row,
+      'seat': ?seat,
+      'section': ?section,
+    };
+  }
 }
 
 class EventTicketClass {
@@ -6960,278 +7025,287 @@ class EventTicketClass {
     : this(
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         confirmationCodeLabel: json_['confirmationCodeLabel'] as core.String?,
         countryCode: json_['countryCode'] as core.String?,
         customConfirmationCodeLabel:
             json_.containsKey('customConfirmationCodeLabel')
-                ? LocalizedString.fromJson(
-                  json_['customConfirmationCodeLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customGateLabel:
-            json_.containsKey('customGateLabel')
-                ? LocalizedString.fromJson(
-                  json_['customGateLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customRowLabel:
-            json_.containsKey('customRowLabel')
-                ? LocalizedString.fromJson(
-                  json_['customRowLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customSeatLabel:
-            json_.containsKey('customSeatLabel')
-                ? LocalizedString.fromJson(
-                  json_['customSeatLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customSectionLabel:
-            json_.containsKey('customSectionLabel')
-                ? LocalizedString.fromJson(
-                  json_['customSectionLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dateTime:
-            json_.containsKey('dateTime')
-                ? EventDateTime.fromJson(
-                  json_['dateTime'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customConfirmationCodeLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customGateLabel: json_.containsKey('customGateLabel')
+            ? LocalizedString.fromJson(
+                json_['customGateLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customRowLabel: json_.containsKey('customRowLabel')
+            ? LocalizedString.fromJson(
+                json_['customRowLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customSeatLabel: json_.containsKey('customSeatLabel')
+            ? LocalizedString.fromJson(
+                json_['customSeatLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customSectionLabel: json_.containsKey('customSectionLabel')
+            ? LocalizedString.fromJson(
+                json_['customSectionLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dateTime: json_.containsKey('dateTime')
+            ? EventDateTime.fromJson(
+                json_['dateTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
         eventId: json_['eventId'] as core.String?,
-        eventName:
-            json_.containsKey('eventName')
-                ? LocalizedString.fromJson(
-                  json_['eventName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        finePrint:
-            json_.containsKey('finePrint')
-                ? LocalizedString.fromJson(
-                  json_['finePrint'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        eventName: json_.containsKey('eventName')
+            ? LocalizedString.fromJson(
+                json_['eventName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        finePrint: json_.containsKey('finePrint')
+            ? LocalizedString.fromJson(
+                json_['finePrint'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gateLabel: json_['gateLabel'] as core.String?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         kind: json_['kind'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        logo:
-            json_.containsKey('logo')
-                ? Image.fromJson(
-                  json_['logo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        logo: json_.containsKey('logo')
+            ? Image.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
         rowLabel: json_['rowLabel'] as core.String?,
         seatLabel: json_['seatLabel'] as core.String?,
         sectionLabel: json_['sectionLabel'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        venue:
-            json_.containsKey('venue')
-                ? EventVenue.fromJson(
-                  json_['venue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        venue: json_.containsKey('venue')
+            ? EventVenue.fromJson(
+                json_['venue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        wideLogo:
-            json_.containsKey('wideLogo')
-                ? Image.fromJson(
-                  json_['wideLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wideLogo: json_.containsKey('wideLogo')
+            ? Image.fromJson(
+                json_['wideLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (confirmationCodeLabel != null)
-      'confirmationCodeLabel': confirmationCodeLabel!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (customConfirmationCodeLabel != null)
-      'customConfirmationCodeLabel': customConfirmationCodeLabel!,
-    if (customGateLabel != null) 'customGateLabel': customGateLabel!,
-    if (customRowLabel != null) 'customRowLabel': customRowLabel!,
-    if (customSeatLabel != null) 'customSeatLabel': customSeatLabel!,
-    if (customSectionLabel != null) 'customSectionLabel': customSectionLabel!,
-    if (dateTime != null) 'dateTime': dateTime!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (eventId != null) 'eventId': eventId!,
-    if (eventName != null) 'eventName': eventName!,
-    if (finePrint != null) 'finePrint': finePrint!,
-    if (gateLabel != null) 'gateLabel': gateLabel!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (kind != null) 'kind': kind!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (locations != null) 'locations': locations!,
-    if (logo != null) 'logo': logo!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final confirmationCodeLabel = this.confirmationCodeLabel;
+    final countryCode = this.countryCode;
+    final customConfirmationCodeLabel = this.customConfirmationCodeLabel;
+    final customGateLabel = this.customGateLabel;
+    final customRowLabel = this.customRowLabel;
+    final customSeatLabel = this.customSeatLabel;
+    final customSectionLabel = this.customSectionLabel;
+    final dateTime = this.dateTime;
+    final enableSmartTap = this.enableSmartTap;
+    final eventId = this.eventId;
+    final eventName = this.eventName;
+    final finePrint = this.finePrint;
+    final gateLabel = this.gateLabel;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final kind = this.kind;
+    final linksModuleData = this.linksModuleData;
+    final localizedIssuerName = this.localizedIssuerName;
+    final locations = this.locations;
+    final logo = this.logo;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final rowLabel = this.rowLabel;
+    final seatLabel = this.seatLabel;
+    final sectionLabel = this.sectionLabel;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final venue = this.venue;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final wideLogo = this.wideLogo;
+    final wordMark = this.wordMark;
+    return {
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'confirmationCodeLabel': ?confirmationCodeLabel,
+      'countryCode': ?countryCode,
+      'customConfirmationCodeLabel': ?customConfirmationCodeLabel,
+      'customGateLabel': ?customGateLabel,
+      'customRowLabel': ?customRowLabel,
+      'customSeatLabel': ?customSeatLabel,
+      'customSectionLabel': ?customSectionLabel,
+      'dateTime': ?dateTime,
+      'enableSmartTap': ?enableSmartTap,
+      'eventId': ?eventId,
+      'eventName': ?eventName,
+      'finePrint': ?finePrint,
+      'gateLabel': ?gateLabel,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'kind': ?kind,
+      'linksModuleData': ?linksModuleData,
+      'localizedIssuerName': ?localizedIssuerName,
+      'locations': ?locations,
+      'logo': ?logo,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (rowLabel != null) 'rowLabel': rowLabel!,
-    if (seatLabel != null) 'seatLabel': seatLabel!,
-    if (sectionLabel != null) 'sectionLabel': sectionLabel!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (venue != null) 'venue': venue!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (wideLogo != null) 'wideLogo': wideLogo!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'rowLabel': ?rowLabel,
+      'seatLabel': ?seatLabel,
+      'sectionLabel': ?sectionLabel,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'venue': ?venue,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'wideLogo': ?wideLogo,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class EventTicketClassAddMessageResponse {
@@ -7242,17 +7316,17 @@ class EventTicketClassAddMessageResponse {
 
   EventTicketClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? EventTicketClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? EventTicketClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class EventTicketClassListResponse {
@@ -7266,26 +7340,25 @@ class EventTicketClassListResponse {
 
   EventTicketClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => EventTicketClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => EventTicketClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class EventTicketObject {
@@ -7579,218 +7652,224 @@ class EventTicketObject {
 
   EventTicketObject.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? EventTicketClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? EventTicketClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
-        faceValue:
-            json_.containsKey('faceValue')
-                ? Money.fromJson(
-                  json_['faceValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        faceValue: json_.containsKey('faceValue')
+            ? Money.fromJson(
+                json_['faceValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linkedOfferIds:
-            (json_['linkedOfferIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linkedOfferIds: (json_['linkedOfferIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        reservationInfo:
-            json_.containsKey('reservationInfo')
-                ? EventReservationInfo.fromJson(
-                  json_['reservationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seatInfo:
-            json_.containsKey('seatInfo')
-                ? EventSeat.fromJson(
-                  json_['seatInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reservationInfo: json_.containsKey('reservationInfo')
+            ? EventReservationInfo.fromJson(
+                json_['reservationInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seatInfo: json_.containsKey('seatInfo')
+            ? EventSeat.fromJson(
+                json_['seatInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         ticketHolderName: json_['ticketHolderName'] as core.String?,
         ticketNumber: json_['ticketNumber'] as core.String?,
-        ticketType:
-            json_.containsKey('ticketType')
-                ? LocalizedString.fromJson(
-                  json_['ticketType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ticketType: json_.containsKey('ticketType')
+            ? LocalizedString.fromJson(
+                json_['ticketType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (faceValue != null) 'faceValue': faceValue!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (kind != null) 'kind': kind!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linkedOfferIds != null) 'linkedOfferIds': linkedOfferIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (reservationInfo != null) 'reservationInfo': reservationInfo!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (seatInfo != null) 'seatInfo': seatInfo!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (ticketHolderName != null) 'ticketHolderName': ticketHolderName!,
-    if (ticketNumber != null) 'ticketNumber': ticketNumber!,
-    if (ticketType != null) 'ticketType': ticketType!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final faceValue = this.faceValue;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final kind = this.kind;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linkedOfferIds = this.linkedOfferIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final reservationInfo = this.reservationInfo;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final seatInfo = this.seatInfo;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final ticketHolderName = this.ticketHolderName;
+    final ticketNumber = this.ticketNumber;
+    final ticketType = this.ticketType;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'faceValue': ?faceValue,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'kind': ?kind,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linkedOfferIds': ?linkedOfferIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'reservationInfo': ?reservationInfo,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'seatInfo': ?seatInfo,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'ticketHolderName': ?ticketHolderName,
+      'ticketNumber': ?ticketNumber,
+      'ticketType': ?ticketType,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class EventTicketObjectAddMessageResponse {
@@ -7801,17 +7880,17 @@ class EventTicketObjectAddMessageResponse {
 
   EventTicketObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? EventTicketObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? EventTicketObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class EventTicketObjectListResponse {
@@ -7825,26 +7904,25 @@ class EventTicketObjectListResponse {
 
   EventTicketObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => EventTicketObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => EventTicketObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class EventVenue {
@@ -7872,26 +7950,25 @@ class EventVenue {
 
   EventVenue.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? LocalizedString.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? LocalizedString.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        name:
-            json_.containsKey('name')
-                ? LocalizedString.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        name: json_.containsKey('name')
+            ? LocalizedString.fromJson(
+                json_['name'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final kind = this.kind;
+    final name = this.name;
+    return {'address': ?address, 'kind': ?kind, 'name': ?name};
+  }
 }
 
 /// Indicates that the issuer would like Google Wallet to send expiry
@@ -7905,9 +7982,10 @@ class ExpiryNotification {
   ExpiryNotification.fromJson(core.Map json_)
     : this(enableNotification: json_['enableNotification'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableNotification != null) 'enableNotification': enableNotification!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableNotification = this.enableNotification;
+    return {'enableNotification': ?enableNotification};
+  }
 }
 
 /// Reference definition to use with field overrides.
@@ -7949,10 +8027,11 @@ class FieldReference {
         fieldPath: json_['fieldPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateFormat != null) 'dateFormat': dateFormat!,
-    if (fieldPath != null) 'fieldPath': fieldPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateFormat = this.dateFormat;
+    final fieldPath = this.fieldPath;
+    return {'dateFormat': ?dateFormat, 'fieldPath': ?fieldPath};
+  }
 }
 
 /// Custom field selector to use with field overrides.
@@ -7965,19 +8044,19 @@ class FieldSelector {
 
   FieldSelector.fromJson(core.Map json_)
     : this(
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map(
-                  (value) => FieldReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => FieldReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fields != null) 'fields': fields!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    return {'fields': ?fields};
+  }
 }
 
 class FirstRowOption {
@@ -8001,19 +8080,19 @@ class FirstRowOption {
 
   FirstRowOption.fromJson(core.Map json_)
     : this(
-        fieldOption:
-            json_.containsKey('fieldOption')
-                ? FieldSelector.fromJson(
-                  json_['fieldOption'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fieldOption: json_.containsKey('fieldOption')
+            ? FieldSelector.fromJson(
+                json_['fieldOption'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transitOption: json_['transitOption'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldOption != null) 'fieldOption': fieldOption!,
-    if (transitOption != null) 'transitOption': transitOption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldOption = this.fieldOption;
+    final transitOption = this.transitOption;
+    return {'fieldOption': ?fieldOption, 'transitOption': ?transitOption};
+  }
 }
 
 class FlightCarrier {
@@ -8073,47 +8152,50 @@ class FlightCarrier {
 
   FlightCarrier.fromJson(core.Map json_)
     : this(
-        airlineAllianceLogo:
-            json_.containsKey('airlineAllianceLogo')
-                ? Image.fromJson(
-                  json_['airlineAllianceLogo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        airlineLogo:
-            json_.containsKey('airlineLogo')
-                ? Image.fromJson(
-                  json_['airlineLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        airlineName:
-            json_.containsKey('airlineName')
-                ? LocalizedString.fromJson(
-                  json_['airlineName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        airlineAllianceLogo: json_.containsKey('airlineAllianceLogo')
+            ? Image.fromJson(
+                json_['airlineAllianceLogo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        airlineLogo: json_.containsKey('airlineLogo')
+            ? Image.fromJson(
+                json_['airlineLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        airlineName: json_.containsKey('airlineName')
+            ? LocalizedString.fromJson(
+                json_['airlineName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         carrierIataCode: json_['carrierIataCode'] as core.String?,
         carrierIcaoCode: json_['carrierIcaoCode'] as core.String?,
         kind: json_['kind'] as core.String?,
-        wideAirlineLogo:
-            json_.containsKey('wideAirlineLogo')
-                ? Image.fromJson(
-                  json_['wideAirlineLogo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wideAirlineLogo: json_.containsKey('wideAirlineLogo')
+            ? Image.fromJson(
+                json_['wideAirlineLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airlineAllianceLogo != null)
-      'airlineAllianceLogo': airlineAllianceLogo!,
-    if (airlineLogo != null) 'airlineLogo': airlineLogo!,
-    if (airlineName != null) 'airlineName': airlineName!,
-    if (carrierIataCode != null) 'carrierIataCode': carrierIataCode!,
-    if (carrierIcaoCode != null) 'carrierIcaoCode': carrierIcaoCode!,
-    if (kind != null) 'kind': kind!,
-    if (wideAirlineLogo != null) 'wideAirlineLogo': wideAirlineLogo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airlineAllianceLogo = this.airlineAllianceLogo;
+    final airlineLogo = this.airlineLogo;
+    final airlineName = this.airlineName;
+    final carrierIataCode = this.carrierIataCode;
+    final carrierIcaoCode = this.carrierIcaoCode;
+    final kind = this.kind;
+    final wideAirlineLogo = this.wideAirlineLogo;
+    return {
+      'airlineAllianceLogo': ?airlineAllianceLogo,
+      'airlineLogo': ?airlineLogo,
+      'airlineName': ?airlineName,
+      'carrierIataCode': ?carrierIataCode,
+      'carrierIcaoCode': ?carrierIcaoCode,
+      'kind': ?kind,
+      'wideAirlineLogo': ?wideAirlineLogo,
+    };
+  }
 }
 
 class FlightClass {
@@ -8540,87 +8622,73 @@ class FlightClass {
     : this(
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        boardingAndSeatingPolicy:
-            json_.containsKey('boardingAndSeatingPolicy')
-                ? BoardingAndSeatingPolicy.fromJson(
-                  json_['boardingAndSeatingPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        boardingAndSeatingPolicy: json_.containsKey('boardingAndSeatingPolicy')
+            ? BoardingAndSeatingPolicy.fromJson(
+                json_['boardingAndSeatingPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         countryCode: json_['countryCode'] as core.String?,
-        destination:
-            json_.containsKey('destination')
-                ? AirportInfo.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destination: json_.containsKey('destination')
+            ? AirportInfo.fromJson(
+                json_['destination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
-        flightHeader:
-            json_.containsKey('flightHeader')
-                ? FlightHeader.fromJson(
-                  json_['flightHeader'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        flightHeader: json_.containsKey('flightHeader')
+            ? FlightHeader.fromJson(
+                json_['flightHeader'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         flightStatus: json_['flightStatus'] as core.String?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         kind: json_['kind'] as core.String?,
         languageOverride: json_['languageOverride'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localBoardingDateTime: json_['localBoardingDateTime'] as core.String?,
         localEstimatedOrActualArrivalDateTime:
             json_['localEstimatedOrActualArrivalDateTime'] as core.String?,
@@ -8632,149 +8700,174 @@ class FlightClass {
             json_['localScheduledArrivalDateTime'] as core.String?,
         localScheduledDepartureDateTime:
             json_['localScheduledDepartureDateTime'] as core.String?,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
-        origin:
-            json_.containsKey('origin')
-                ? AirportInfo.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        origin: json_.containsKey('origin')
+            ? AirportInfo.fromJson(
+                json_['origin'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (boardingAndSeatingPolicy != null)
-      'boardingAndSeatingPolicy': boardingAndSeatingPolicy!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (destination != null) 'destination': destination!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (flightHeader != null) 'flightHeader': flightHeader!,
-    if (flightStatus != null) 'flightStatus': flightStatus!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (kind != null) 'kind': kind!,
-    if (languageOverride != null) 'languageOverride': languageOverride!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localBoardingDateTime != null)
-      'localBoardingDateTime': localBoardingDateTime!,
-    if (localEstimatedOrActualArrivalDateTime != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final boardingAndSeatingPolicy = this.boardingAndSeatingPolicy;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final countryCode = this.countryCode;
+    final destination = this.destination;
+    final enableSmartTap = this.enableSmartTap;
+    final flightHeader = this.flightHeader;
+    final flightStatus = this.flightStatus;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final kind = this.kind;
+    final languageOverride = this.languageOverride;
+    final linksModuleData = this.linksModuleData;
+    final localBoardingDateTime = this.localBoardingDateTime;
+    final localEstimatedOrActualArrivalDateTime =
+        this.localEstimatedOrActualArrivalDateTime;
+    final localEstimatedOrActualDepartureDateTime =
+        this.localEstimatedOrActualDepartureDateTime;
+    final localGateClosingDateTime = this.localGateClosingDateTime;
+    final localScheduledArrivalDateTime = this.localScheduledArrivalDateTime;
+    final localScheduledDepartureDateTime =
+        this.localScheduledDepartureDateTime;
+    final localizedIssuerName = this.localizedIssuerName;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final origin = this.origin;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final wordMark = this.wordMark;
+    return {
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'boardingAndSeatingPolicy': ?boardingAndSeatingPolicy,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'countryCode': ?countryCode,
+      'destination': ?destination,
+      'enableSmartTap': ?enableSmartTap,
+      'flightHeader': ?flightHeader,
+      'flightStatus': ?flightStatus,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'kind': ?kind,
+      'languageOverride': ?languageOverride,
+      'linksModuleData': ?linksModuleData,
+      'localBoardingDateTime': ?localBoardingDateTime,
       'localEstimatedOrActualArrivalDateTime':
-          localEstimatedOrActualArrivalDateTime!,
-    if (localEstimatedOrActualDepartureDateTime != null)
+          ?localEstimatedOrActualArrivalDateTime,
       'localEstimatedOrActualDepartureDateTime':
-          localEstimatedOrActualDepartureDateTime!,
-    if (localGateClosingDateTime != null)
-      'localGateClosingDateTime': localGateClosingDateTime!,
-    if (localScheduledArrivalDateTime != null)
-      'localScheduledArrivalDateTime': localScheduledArrivalDateTime!,
-    if (localScheduledDepartureDateTime != null)
-      'localScheduledDepartureDateTime': localScheduledDepartureDateTime!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+          ?localEstimatedOrActualDepartureDateTime,
+      'localGateClosingDateTime': ?localGateClosingDateTime,
+      'localScheduledArrivalDateTime': ?localScheduledArrivalDateTime,
+      'localScheduledDepartureDateTime': ?localScheduledDepartureDateTime,
+      'localizedIssuerName': ?localizedIssuerName,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (origin != null) 'origin': origin!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'origin': ?origin,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class FlightClassAddMessageResponse {
@@ -8785,17 +8878,17 @@ class FlightClassAddMessageResponse {
 
   FlightClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? FlightClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? FlightClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class FlightClassListResponse {
@@ -8809,26 +8902,25 @@ class FlightClassListResponse {
 
   FlightClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => FlightClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => FlightClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class FlightHeader {
@@ -8877,36 +8969,40 @@ class FlightHeader {
 
   FlightHeader.fromJson(core.Map json_)
     : this(
-        carrier:
-            json_.containsKey('carrier')
-                ? FlightCarrier.fromJson(
-                  json_['carrier'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        carrier: json_.containsKey('carrier')
+            ? FlightCarrier.fromJson(
+                json_['carrier'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         flightNumber: json_['flightNumber'] as core.String?,
         flightNumberDisplayOverride:
             json_['flightNumberDisplayOverride'] as core.String?,
         kind: json_['kind'] as core.String?,
-        operatingCarrier:
-            json_.containsKey('operatingCarrier')
-                ? FlightCarrier.fromJson(
-                  json_['operatingCarrier']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        operatingCarrier: json_.containsKey('operatingCarrier')
+            ? FlightCarrier.fromJson(
+                json_['operatingCarrier']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         operatingFlightNumber: json_['operatingFlightNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carrier != null) 'carrier': carrier!,
-    if (flightNumber != null) 'flightNumber': flightNumber!,
-    if (flightNumberDisplayOverride != null)
-      'flightNumberDisplayOverride': flightNumberDisplayOverride!,
-    if (kind != null) 'kind': kind!,
-    if (operatingCarrier != null) 'operatingCarrier': operatingCarrier!,
-    if (operatingFlightNumber != null)
-      'operatingFlightNumber': operatingFlightNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final carrier = this.carrier;
+    final flightNumber = this.flightNumber;
+    final flightNumberDisplayOverride = this.flightNumberDisplayOverride;
+    final kind = this.kind;
+    final operatingCarrier = this.operatingCarrier;
+    final operatingFlightNumber = this.operatingFlightNumber;
+    return {
+      'carrier': ?carrier,
+      'flightNumber': ?flightNumber,
+      'flightNumberDisplayOverride': ?flightNumberDisplayOverride,
+      'kind': ?kind,
+      'operatingCarrier': ?operatingCarrier,
+      'operatingFlightNumber': ?operatingFlightNumber,
+    };
+  }
 }
 
 class FlightObject {
@@ -9179,208 +9275,211 @@ class FlightObject {
 
   FlightObject.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        boardingAndSeatingInfo:
-            json_.containsKey('boardingAndSeatingInfo')
-                ? BoardingAndSeatingInfo.fromJson(
-                  json_['boardingAndSeatingInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        boardingAndSeatingInfo: json_.containsKey('boardingAndSeatingInfo')
+            ? BoardingAndSeatingInfo.fromJson(
+                json_['boardingAndSeatingInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? FlightClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? FlightClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         passengerName: json_['passengerName'] as core.String?,
-        reservationInfo:
-            json_.containsKey('reservationInfo')
-                ? ReservationInfo.fromJson(
-                  json_['reservationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        securityProgramLogo:
-            json_.containsKey('securityProgramLogo')
-                ? Image.fromJson(
-                  json_['securityProgramLogo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reservationInfo: json_.containsKey('reservationInfo')
+            ? ReservationInfo.fromJson(
+                json_['reservationInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        securityProgramLogo: json_.containsKey('securityProgramLogo')
+            ? Image.fromJson(
+                json_['securityProgramLogo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (boardingAndSeatingInfo != null)
-      'boardingAndSeatingInfo': boardingAndSeatingInfo!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (kind != null) 'kind': kind!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (passengerName != null) 'passengerName': passengerName!,
-    if (reservationInfo != null) 'reservationInfo': reservationInfo!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (securityProgramLogo != null)
-      'securityProgramLogo': securityProgramLogo!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final boardingAndSeatingInfo = this.boardingAndSeatingInfo;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final kind = this.kind;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final passengerName = this.passengerName;
+    final reservationInfo = this.reservationInfo;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final securityProgramLogo = this.securityProgramLogo;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'boardingAndSeatingInfo': ?boardingAndSeatingInfo,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'kind': ?kind,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'passengerName': ?passengerName,
+      'reservationInfo': ?reservationInfo,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'securityProgramLogo': ?securityProgramLogo,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class FlightObjectAddMessageResponse {
@@ -9391,17 +9490,17 @@ class FlightObjectAddMessageResponse {
 
   FlightObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? FlightObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? FlightObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class FlightObjectListResponse {
@@ -9415,26 +9514,25 @@ class FlightObjectListResponse {
 
   FlightObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => FlightObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => FlightObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class FrequentFlyerInfo {
@@ -9465,23 +9563,25 @@ class FrequentFlyerInfo {
   FrequentFlyerInfo.fromJson(core.Map json_)
     : this(
         frequentFlyerNumber: json_['frequentFlyerNumber'] as core.String?,
-        frequentFlyerProgramName:
-            json_.containsKey('frequentFlyerProgramName')
-                ? LocalizedString.fromJson(
-                  json_['frequentFlyerProgramName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequentFlyerProgramName: json_.containsKey('frequentFlyerProgramName')
+            ? LocalizedString.fromJson(
+                json_['frequentFlyerProgramName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (frequentFlyerNumber != null)
-      'frequentFlyerNumber': frequentFlyerNumber!,
-    if (frequentFlyerProgramName != null)
-      'frequentFlyerProgramName': frequentFlyerProgramName!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final frequentFlyerNumber = this.frequentFlyerNumber;
+    final frequentFlyerProgramName = this.frequentFlyerProgramName;
+    final kind = this.kind;
+    return {
+      'frequentFlyerNumber': ?frequentFlyerNumber,
+      'frequentFlyerProgramName': ?frequentFlyerProgramName,
+      'kind': ?kind,
+    };
+  }
 }
 
 /// Generic Class
@@ -9627,112 +9727,114 @@ class GenericClass {
 
   GenericClass.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final enableSmartTap = this.enableSmartTap;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final linksModuleData = this.linksModuleData;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final redemptionIssuers = this.redemptionIssuers;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    return {
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'enableSmartTap': ?enableSmartTap,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'linksModuleData': ?linksModuleData,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'redemptionIssuers': ?redemptionIssuers,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+    };
+  }
 }
 
 /// Response to adding a new issuer message to the class.
@@ -9746,17 +9848,17 @@ class GenericClassAddMessageResponse {
 
   GenericClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? GenericClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? GenericClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 /// List response which contains the list of all generic classes for a given
@@ -9772,26 +9874,25 @@ class GenericClassListResponse {
 
   GenericClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => GenericClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => GenericClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 /// Generic Object
@@ -10043,187 +10144,191 @@ class GenericObject {
 
   GenericObject.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cardTitle:
-            json_.containsKey('cardTitle')
-                ? LocalizedString.fromJson(
-                  json_['cardTitle'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cardTitle: json_.containsKey('cardTitle')
+            ? LocalizedString.fromJson(
+                json_['cardTitle'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
         genericType: json_['genericType'] as core.String?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasUsers: json_['hasUsers'] as core.bool?,
-        header:
-            json_.containsKey('header')
-                ? LocalizedString.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        header: json_.containsKey('header')
+            ? LocalizedString.fromJson(
+                json_['header'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        logo:
-            json_.containsKey('logo')
-                ? Image.fromJson(
-                  json_['logo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        notifications:
-            json_.containsKey('notifications')
-                ? Notifications.fromJson(
-                  json_['notifications'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        logo: json_.containsKey('logo')
+            ? Image.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        notifications: json_.containsKey('notifications')
+            ? Notifications.fromJson(
+                json_['notifications'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        subheader:
-            json_.containsKey('subheader')
-                ? LocalizedString.fromJson(
-                  json_['subheader'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        wideLogo:
-            json_.containsKey('wideLogo')
-                ? Image.fromJson(
-                  json_['wideLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        subheader: json_.containsKey('subheader')
+            ? LocalizedString.fromJson(
+                json_['subheader'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        wideLogo: json_.containsKey('wideLogo')
+            ? Image.fromJson(
+                json_['wideLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (cardTitle != null) 'cardTitle': cardTitle!,
-    if (classId != null) 'classId': classId!,
-    if (genericType != null) 'genericType': genericType!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (header != null) 'header': header!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (logo != null) 'logo': logo!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifications != null) 'notifications': notifications!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (subheader != null) 'subheader': subheader!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (wideLogo != null) 'wideLogo': wideLogo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final cardTitle = this.cardTitle;
+    final classId = this.classId;
+    final genericType = this.genericType;
+    final groupingInfo = this.groupingInfo;
+    final hasUsers = this.hasUsers;
+    final header = this.header;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linksModuleData = this.linksModuleData;
+    final logo = this.logo;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifications = this.notifications;
+    final passConstraints = this.passConstraints;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final subheader = this.subheader;
+    final textModulesData = this.textModulesData;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final wideLogo = this.wideLogo;
+    return {
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'cardTitle': ?cardTitle,
+      'classId': ?classId,
+      'genericType': ?genericType,
+      'groupingInfo': ?groupingInfo,
+      'hasUsers': ?hasUsers,
+      'header': ?header,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linksModuleData': ?linksModuleData,
+      'logo': ?logo,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifications': ?notifications,
+      'passConstraints': ?passConstraints,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'subheader': ?subheader,
+      'textModulesData': ?textModulesData,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'wideLogo': ?wideLogo,
+    };
+  }
 }
 
 /// Response to adding a new issuer message to the object.
@@ -10237,17 +10342,17 @@ class GenericObjectAddMessageResponse {
 
   GenericObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? GenericObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? GenericObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 /// List response which contains the list of all generic objects for a given
@@ -10263,26 +10368,25 @@ class GenericObjectListResponse {
 
   GenericObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => GenericObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => GenericObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class GiftCardClass {
@@ -10630,242 +10734,250 @@ class GiftCardClass {
         allowBarcodeRedemption: json_['allowBarcodeRedemption'] as core.bool?,
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cardNumberLabel: json_['cardNumberLabel'] as core.String?,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         countryCode: json_['countryCode'] as core.String?,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
         eventNumberLabel: json_['eventNumberLabel'] as core.String?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         kind: json_['kind'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedCardNumberLabel:
-            json_.containsKey('localizedCardNumberLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedCardNumberLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedCardNumberLabel: json_.containsKey('localizedCardNumberLabel')
+            ? LocalizedString.fromJson(
+                json_['localizedCardNumberLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localizedEventNumberLabel:
             json_.containsKey('localizedEventNumberLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedEventNumberLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedMerchantName:
-            json_.containsKey('localizedMerchantName')
-                ? LocalizedString.fromJson(
-                  json_['localizedMerchantName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedPinLabel:
-            json_.containsKey('localizedPinLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedPinLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+            ? LocalizedString.fromJson(
+                json_['localizedEventNumberLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedMerchantName: json_.containsKey('localizedMerchantName')
+            ? LocalizedString.fromJson(
+                json_['localizedMerchantName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedPinLabel: json_.containsKey('localizedPinLabel')
+            ? LocalizedString.fromJson(
+                json_['localizedPinLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         merchantName: json_['merchantName'] as core.String?,
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
         pinLabel: json_['pinLabel'] as core.String?,
-        programLogo:
-            json_.containsKey('programLogo')
-                ? Image.fromJson(
-                  json_['programLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        programLogo: json_.containsKey('programLogo')
+            ? Image.fromJson(
+                json_['programLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        wideProgramLogo:
-            json_.containsKey('wideProgramLogo')
-                ? Image.fromJson(
-                  json_['wideProgramLogo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wideProgramLogo: json_.containsKey('wideProgramLogo')
+            ? Image.fromJson(
+                json_['wideProgramLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowBarcodeRedemption != null)
-      'allowBarcodeRedemption': allowBarcodeRedemption!,
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (cardNumberLabel != null) 'cardNumberLabel': cardNumberLabel!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (eventNumberLabel != null) 'eventNumberLabel': eventNumberLabel!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (kind != null) 'kind': kind!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localizedCardNumberLabel != null)
-      'localizedCardNumberLabel': localizedCardNumberLabel!,
-    if (localizedEventNumberLabel != null)
-      'localizedEventNumberLabel': localizedEventNumberLabel!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (localizedMerchantName != null)
-      'localizedMerchantName': localizedMerchantName!,
-    if (localizedPinLabel != null) 'localizedPinLabel': localizedPinLabel!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (merchantName != null) 'merchantName': merchantName!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowBarcodeRedemption = this.allowBarcodeRedemption;
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final cardNumberLabel = this.cardNumberLabel;
+    final classTemplateInfo = this.classTemplateInfo;
+    final countryCode = this.countryCode;
+    final enableSmartTap = this.enableSmartTap;
+    final eventNumberLabel = this.eventNumberLabel;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final kind = this.kind;
+    final linksModuleData = this.linksModuleData;
+    final localizedCardNumberLabel = this.localizedCardNumberLabel;
+    final localizedEventNumberLabel = this.localizedEventNumberLabel;
+    final localizedIssuerName = this.localizedIssuerName;
+    final localizedMerchantName = this.localizedMerchantName;
+    final localizedPinLabel = this.localizedPinLabel;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final merchantName = this.merchantName;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final pinLabel = this.pinLabel;
+    final programLogo = this.programLogo;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final wideProgramLogo = this.wideProgramLogo;
+    final wordMark = this.wordMark;
+    return {
+      'allowBarcodeRedemption': ?allowBarcodeRedemption,
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'cardNumberLabel': ?cardNumberLabel,
+      'classTemplateInfo': ?classTemplateInfo,
+      'countryCode': ?countryCode,
+      'enableSmartTap': ?enableSmartTap,
+      'eventNumberLabel': ?eventNumberLabel,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'kind': ?kind,
+      'linksModuleData': ?linksModuleData,
+      'localizedCardNumberLabel': ?localizedCardNumberLabel,
+      'localizedEventNumberLabel': ?localizedEventNumberLabel,
+      'localizedIssuerName': ?localizedIssuerName,
+      'localizedMerchantName': ?localizedMerchantName,
+      'localizedPinLabel': ?localizedPinLabel,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'merchantName': ?merchantName,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (pinLabel != null) 'pinLabel': pinLabel!,
-    if (programLogo != null) 'programLogo': programLogo!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (wideProgramLogo != null) 'wideProgramLogo': wideProgramLogo!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'pinLabel': ?pinLabel,
+      'programLogo': ?programLogo,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'wideProgramLogo': ?wideProgramLogo,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class GiftCardClassAddMessageResponse {
@@ -10876,17 +10988,17 @@ class GiftCardClassAddMessageResponse {
 
   GiftCardClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? GiftCardClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? GiftCardClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class GiftCardClassListResponse {
@@ -10900,26 +11012,25 @@ class GiftCardClassListResponse {
 
   GiftCardClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => GiftCardClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => GiftCardClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class GiftCardObject {
@@ -11185,199 +11296,206 @@ class GiftCardObject {
 
   GiftCardObject.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        balance:
-            json_.containsKey('balance')
-                ? Money.fromJson(
-                  json_['balance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        balanceUpdateTime:
-            json_.containsKey('balanceUpdateTime')
-                ? DateTime.fromJson(
-                  json_['balanceUpdateTime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        balance: json_.containsKey('balance')
+            ? Money.fromJson(
+                json_['balance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        balanceUpdateTime: json_.containsKey('balanceUpdateTime')
+            ? DateTime.fromJson(
+                json_['balanceUpdateTime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cardNumber: json_['cardNumber'] as core.String?,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? GiftCardClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? GiftCardClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
         eventNumber: json_['eventNumber'] as core.String?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pin: json_['pin'] as core.String?,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (balance != null) 'balance': balance!,
-    if (balanceUpdateTime != null) 'balanceUpdateTime': balanceUpdateTime!,
-    if (barcode != null) 'barcode': barcode!,
-    if (cardNumber != null) 'cardNumber': cardNumber!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (eventNumber != null) 'eventNumber': eventNumber!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (kind != null) 'kind': kind!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (pin != null) 'pin': pin!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final balance = this.balance;
+    final balanceUpdateTime = this.balanceUpdateTime;
+    final barcode = this.barcode;
+    final cardNumber = this.cardNumber;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final eventNumber = this.eventNumber;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final kind = this.kind;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final pin = this.pin;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'appLinkData': ?appLinkData,
+      'balance': ?balance,
+      'balanceUpdateTime': ?balanceUpdateTime,
+      'barcode': ?barcode,
+      'cardNumber': ?cardNumber,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'eventNumber': ?eventNumber,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'kind': ?kind,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'pin': ?pin,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class GiftCardObjectAddMessageResponse {
@@ -11388,17 +11506,17 @@ class GiftCardObjectAddMessageResponse {
 
   GiftCardObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? GiftCardObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? GiftCardObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class GiftCardObjectListResponse {
@@ -11412,26 +11530,25 @@ class GiftCardObjectListResponse {
 
   GiftCardObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => GiftCardObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => GiftCardObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class GroupingInfo {
@@ -11457,10 +11574,11 @@ class GroupingInfo {
         sortIndex: json_['sortIndex'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupingId != null) 'groupingId': groupingId!,
-    if (sortIndex != null) 'sortIndex': sortIndex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupingId = this.groupingId;
+    final sortIndex = this.sortIndex;
+    return {'groupingId': ?groupingId, 'sortIndex': ?sortIndex};
+  }
 }
 
 /// Wrapping type for Google hosted images.
@@ -11497,29 +11615,33 @@ class Image {
 
   Image.fromJson(core.Map json_)
     : this(
-        contentDescription:
-            json_.containsKey('contentDescription')
-                ? LocalizedString.fromJson(
-                  json_['contentDescription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contentDescription: json_.containsKey('contentDescription')
+            ? LocalizedString.fromJson(
+                json_['contentDescription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
         privateImageId: json_['privateImageId'] as core.String?,
-        sourceUri:
-            json_.containsKey('sourceUri')
-                ? ImageUri.fromJson(
-                  json_['sourceUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sourceUri: json_.containsKey('sourceUri')
+            ? ImageUri.fromJson(
+                json_['sourceUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentDescription != null) 'contentDescription': contentDescription!,
-    if (kind != null) 'kind': kind!,
-    if (privateImageId != null) 'privateImageId': privateImageId!,
-    if (sourceUri != null) 'sourceUri': sourceUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentDescription = this.contentDescription;
+    final kind = this.kind;
+    final privateImageId = this.privateImageId;
+    final sourceUri = this.sourceUri;
+    return {
+      'contentDescription': ?contentDescription,
+      'kind': ?kind,
+      'privateImageId': ?privateImageId,
+      'sourceUri': ?sourceUri,
+    };
+  }
 }
 
 class ImageModuleData {
@@ -11536,18 +11658,18 @@ class ImageModuleData {
   ImageModuleData.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
-        mainImage:
-            json_.containsKey('mainImage')
-                ? Image.fromJson(
-                  json_['mainImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mainImage: json_.containsKey('mainImage')
+            ? Image.fromJson(
+                json_['mainImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (mainImage != null) 'mainImage': mainImage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final mainImage = this.mainImage;
+    return {'id': ?id, 'mainImage': ?mainImage};
+  }
 }
 
 class ImageUri {
@@ -11575,22 +11697,25 @@ class ImageUri {
   ImageUri.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
-        localizedDescription:
-            json_.containsKey('localizedDescription')
-                ? LocalizedString.fromJson(
-                  json_['localizedDescription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedDescription: json_.containsKey('localizedDescription')
+            ? LocalizedString.fromJson(
+                json_['localizedDescription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (localizedDescription != null)
-      'localizedDescription': localizedDescription!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final localizedDescription = this.localizedDescription;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'localizedDescription': ?localizedDescription,
+      'uri': ?uri,
+    };
+  }
 }
 
 class InfoModuleData {
@@ -11607,21 +11732,24 @@ class InfoModuleData {
 
   InfoModuleData.fromJson(core.Map json_)
     : this(
-        labelValueRows:
-            (json_['labelValueRows'] as core.List?)
-                ?.map(
-                  (value) => LabelValueRow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labelValueRows: (json_['labelValueRows'] as core.List?)
+            ?.map(
+              (value) => LabelValueRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         showLastUpdateTime: json_['showLastUpdateTime'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labelValueRows != null) 'labelValueRows': labelValueRows!,
-    if (showLastUpdateTime != null) 'showLastUpdateTime': showLastUpdateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelValueRows = this.labelValueRows;
+    final showLastUpdateTime = this.showLastUpdateTime;
+    return {
+      'labelValueRows': ?labelValueRows,
+      'showLastUpdateTime': ?showLastUpdateTime,
+    };
+  }
 }
 
 class Issuer {
@@ -11658,40 +11786,43 @@ class Issuer {
 
   Issuer.fromJson(core.Map json_)
     : this(
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        contactInfo:
-            json_.containsKey('contactInfo')
-                ? IssuerContactInfo.fromJson(
-                  json_['contactInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contactInfo: json_.containsKey('contactInfo')
+            ? IssuerContactInfo.fromJson(
+                json_['contactInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         homepageUrl: json_['homepageUrl'] as core.String?,
         issuerId: json_['issuerId'] as core.String?,
         name: json_['name'] as core.String?,
-        smartTapMerchantData:
-            json_.containsKey('smartTapMerchantData')
-                ? SmartTapMerchantData.fromJson(
-                  json_['smartTapMerchantData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        smartTapMerchantData: json_.containsKey('smartTapMerchantData')
+            ? SmartTapMerchantData.fromJson(
+                json_['smartTapMerchantData']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (contactInfo != null) 'contactInfo': contactInfo!,
-    if (homepageUrl != null) 'homepageUrl': homepageUrl!,
-    if (issuerId != null) 'issuerId': issuerId!,
-    if (name != null) 'name': name!,
-    if (smartTapMerchantData != null)
-      'smartTapMerchantData': smartTapMerchantData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final callbackOptions = this.callbackOptions;
+    final contactInfo = this.contactInfo;
+    final homepageUrl = this.homepageUrl;
+    final issuerId = this.issuerId;
+    final name = this.name;
+    final smartTapMerchantData = this.smartTapMerchantData;
+    return {
+      'callbackOptions': ?callbackOptions,
+      'contactInfo': ?contactInfo,
+      'homepageUrl': ?homepageUrl,
+      'issuerId': ?issuerId,
+      'name': ?name,
+      'smartTapMerchantData': ?smartTapMerchantData,
+    };
+  }
 }
 
 class IssuerContactInfo {
@@ -11711,21 +11842,26 @@ class IssuerContactInfo {
 
   IssuerContactInfo.fromJson(core.Map json_)
     : this(
-        alertsEmails:
-            (json_['alertsEmails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        alertsEmails: (json_['alertsEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         email: json_['email'] as core.String?,
         name: json_['name'] as core.String?,
         phone: json_['phone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alertsEmails != null) 'alertsEmails': alertsEmails!,
-    if (email != null) 'email': email!,
-    if (name != null) 'name': name!,
-    if (phone != null) 'phone': phone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertsEmails = this.alertsEmails;
+    final email = this.email;
+    final name = this.name;
+    final phone = this.phone;
+    return {
+      'alertsEmails': ?alertsEmails,
+      'email': ?email,
+      'name': ?name,
+      'phone': ?phone,
+    };
+  }
 }
 
 class IssuerListResponse {
@@ -11736,19 +11872,18 @@ class IssuerListResponse {
 
   IssuerListResponse.fromJson(core.Map json_)
     : this(
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => Issuer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) =>
+                  Issuer.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resources = this.resources;
+    return {'resources': ?resources};
+  }
 }
 
 class IssuerToUserInfo {
@@ -11773,22 +11908,27 @@ class IssuerToUserInfo {
   IssuerToUserInfo.fromJson(core.Map json_)
     : this(
         action: json_['action'] as core.String?,
-        signUpInfo:
-            json_.containsKey('signUpInfo')
-                ? SignUpInfo.fromJson(
-                  json_['signUpInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        signUpInfo: json_.containsKey('signUpInfo')
+            ? SignUpInfo.fromJson(
+                json_['signUpInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (signUpInfo != null) 'signUpInfo': signUpInfo!,
-    if (url != null) 'url': url!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final signUpInfo = this.signUpInfo;
+    final url = this.url;
+    final value = this.value;
+    return {
+      'action': ?action,
+      'signUpInfo': ?signUpInfo,
+      'url': ?url,
+      'value': ?value,
+    };
+  }
 }
 
 class JwtInsertResponse {
@@ -11808,19 +11948,19 @@ class JwtInsertResponse {
 
   JwtInsertResponse.fromJson(core.Map json_)
     : this(
-        resources:
-            json_.containsKey('resources')
-                ? Resources.fromJson(
-                  json_['resources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resources: json_.containsKey('resources')
+            ? Resources.fromJson(
+                json_['resources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         saveUri: json_['saveUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resources != null) 'resources': resources!,
-    if (saveUri != null) 'saveUri': saveUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resources = this.resources;
+    final saveUri = this.saveUri;
+    return {'resources': ?resources, 'saveUri': ?saveUri};
+  }
 }
 
 class JwtResource {
@@ -11833,9 +11973,10 @@ class JwtResource {
   JwtResource.fromJson(core.Map json_)
     : this(jwt: json_['jwt'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jwt != null) 'jwt': jwt!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jwt = this.jwt;
+    return {'jwt': ?jwt};
+  }
 }
 
 /// A pair of text strings to be displayed in the details view.
@@ -11877,29 +12018,31 @@ class LabelValue {
   LabelValue.fromJson(core.Map json_)
     : this(
         label: json_['label'] as core.String?,
-        localizedLabel:
-            json_.containsKey('localizedLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedValue:
-            json_.containsKey('localizedValue')
-                ? LocalizedString.fromJson(
-                  json_['localizedValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedLabel: json_.containsKey('localizedLabel')
+            ? LocalizedString.fromJson(
+                json_['localizedLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedValue: json_.containsKey('localizedValue')
+            ? LocalizedString.fromJson(
+                json_['localizedValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (localizedLabel != null) 'localizedLabel': localizedLabel!,
-    if (localizedValue != null) 'localizedValue': localizedValue!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final label = this.label;
+    final localizedLabel = this.localizedLabel;
+    final localizedValue = this.localizedValue;
+    final value = this.value;
+    return {
+      'label': ?label,
+      'localizedLabel': ?localizedLabel,
+      'localizedValue': ?localizedValue,
+      'value': ?value,
+    };
+  }
 }
 
 class LabelValueRow {
@@ -11913,19 +12056,19 @@ class LabelValueRow {
 
   LabelValueRow.fromJson(core.Map json_)
     : this(
-        columns:
-            (json_['columns'] as core.List?)
-                ?.map(
-                  (value) => LabelValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        columns: (json_['columns'] as core.List?)
+            ?.map(
+              (value) => LabelValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columns != null) 'columns': columns!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columns = this.columns;
+    return {'columns': ?columns};
+  }
 }
 
 class LatLongPoint {
@@ -11958,11 +12101,12 @@ class LatLongPoint {
         longitude: (json_['longitude'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final latitude = this.latitude;
+    final longitude = this.longitude;
+    return {'kind': ?kind, 'latitude': ?latitude, 'longitude': ?longitude};
+  }
 }
 
 class LinksModuleData {
@@ -11973,19 +12117,18 @@ class LinksModuleData {
 
   LinksModuleData.fromJson(core.Map json_)
     : this(
-        uris:
-            (json_['uris'] as core.List?)
-                ?.map(
-                  (value) => Uri.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        uris: (json_['uris'] as core.List?)
+            ?.map(
+              (value) =>
+                  Uri.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uris != null) 'uris': uris!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final uris = this.uris;
+    return {'uris': ?uris};
+  }
 }
 
 class ListTemplateOverride {
@@ -12020,34 +12163,33 @@ class ListTemplateOverride {
 
   ListTemplateOverride.fromJson(core.Map json_)
     : this(
-        firstRowOption:
-            json_.containsKey('firstRowOption')
-                ? FirstRowOption.fromJson(
-                  json_['firstRowOption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        secondRowOption:
-            json_.containsKey('secondRowOption')
-                ? FieldSelector.fromJson(
-                  json_['secondRowOption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        thirdRowOption:
-            json_.containsKey('thirdRowOption')
-                ? FieldSelector.fromJson(
-                  json_['thirdRowOption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        firstRowOption: json_.containsKey('firstRowOption')
+            ? FirstRowOption.fromJson(
+                json_['firstRowOption'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secondRowOption: json_.containsKey('secondRowOption')
+            ? FieldSelector.fromJson(
+                json_['secondRowOption'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thirdRowOption: json_.containsKey('thirdRowOption')
+            ? FieldSelector.fromJson(
+                json_['thirdRowOption'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (firstRowOption != null) 'firstRowOption': firstRowOption!,
-    if (secondRowOption != null) 'secondRowOption': secondRowOption!,
-    if (thirdRowOption != null) 'thirdRowOption': thirdRowOption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final firstRowOption = this.firstRowOption;
+    final secondRowOption = this.secondRowOption;
+    final thirdRowOption = this.thirdRowOption;
+    return {
+      'firstRowOption': ?firstRowOption,
+      'secondRowOption': ?secondRowOption,
+      'thirdRowOption': ?thirdRowOption,
+    };
+  }
 }
 
 class LocalizedString {
@@ -12070,28 +12212,31 @@ class LocalizedString {
 
   LocalizedString.fromJson(core.Map json_)
     : this(
-        defaultValue:
-            json_.containsKey('defaultValue')
-                ? TranslatedString.fromJson(
-                  json_['defaultValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        defaultValue: json_.containsKey('defaultValue')
+            ? TranslatedString.fromJson(
+                json_['defaultValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        translatedValues:
-            (json_['translatedValues'] as core.List?)
-                ?.map(
-                  (value) => TranslatedString.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        translatedValues: (json_['translatedValues'] as core.List?)
+            ?.map(
+              (value) => TranslatedString.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (kind != null) 'kind': kind!,
-    if (translatedValues != null) 'translatedValues': translatedValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultValue = this.defaultValue;
+    final kind = this.kind;
+    final translatedValues = this.translatedValues;
+    return {
+      'defaultValue': ?defaultValue,
+      'kind': ?kind,
+      'translatedValues': ?translatedValues,
+    };
+  }
 }
 
 class LoyaltyClass {
@@ -12483,284 +12628,292 @@ class LoyaltyClass {
         accountNameLabel: json_['accountNameLabel'] as core.String?,
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         countryCode: json_['countryCode'] as core.String?,
-        discoverableProgram:
-            json_.containsKey('discoverableProgram')
-                ? DiscoverableProgram.fromJson(
-                  json_['discoverableProgram']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        discoverableProgram: json_.containsKey('discoverableProgram')
+            ? DiscoverableProgram.fromJson(
+                json_['discoverableProgram']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         kind: json_['kind'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedAccountIdLabel:
-            json_.containsKey('localizedAccountIdLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedAccountIdLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedAccountIdLabel: json_.containsKey('localizedAccountIdLabel')
+            ? LocalizedString.fromJson(
+                json_['localizedAccountIdLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localizedAccountNameLabel:
             json_.containsKey('localizedAccountNameLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedAccountNameLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedProgramName:
-            json_.containsKey('localizedProgramName')
-                ? LocalizedString.fromJson(
-                  json_['localizedProgramName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedRewardsTier:
-            json_.containsKey('localizedRewardsTier')
-                ? LocalizedString.fromJson(
-                  json_['localizedRewardsTier']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['localizedAccountNameLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedProgramName: json_.containsKey('localizedProgramName')
+            ? LocalizedString.fromJson(
+                json_['localizedProgramName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedRewardsTier: json_.containsKey('localizedRewardsTier')
+            ? LocalizedString.fromJson(
+                json_['localizedRewardsTier']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localizedRewardsTierLabel:
             json_.containsKey('localizedRewardsTierLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedRewardsTierLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['localizedRewardsTierLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localizedSecondaryRewardsTier:
             json_.containsKey('localizedSecondaryRewardsTier')
-                ? LocalizedString.fromJson(
-                  json_['localizedSecondaryRewardsTier']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['localizedSecondaryRewardsTier']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localizedSecondaryRewardsTierLabel:
             json_.containsKey('localizedSecondaryRewardsTierLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedSecondaryRewardsTierLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+            ? LocalizedString.fromJson(
+                json_['localizedSecondaryRewardsTierLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
-        programLogo:
-            json_.containsKey('programLogo')
-                ? Image.fromJson(
-                  json_['programLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        programLogo: json_.containsKey('programLogo')
+            ? Image.fromJson(
+                json_['programLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         programName: json_['programName'] as core.String?,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
         rewardsTier: json_['rewardsTier'] as core.String?,
         rewardsTierLabel: json_['rewardsTierLabel'] as core.String?,
         secondaryRewardsTier: json_['secondaryRewardsTier'] as core.String?,
         secondaryRewardsTierLabel:
             json_['secondaryRewardsTierLabel'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        wideProgramLogo:
-            json_.containsKey('wideProgramLogo')
-                ? Image.fromJson(
-                  json_['wideProgramLogo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wideProgramLogo: json_.containsKey('wideProgramLogo')
+            ? Image.fromJson(
+                json_['wideProgramLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountIdLabel != null) 'accountIdLabel': accountIdLabel!,
-    if (accountNameLabel != null) 'accountNameLabel': accountNameLabel!,
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (discoverableProgram != null)
-      'discoverableProgram': discoverableProgram!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (kind != null) 'kind': kind!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localizedAccountIdLabel != null)
-      'localizedAccountIdLabel': localizedAccountIdLabel!,
-    if (localizedAccountNameLabel != null)
-      'localizedAccountNameLabel': localizedAccountNameLabel!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (localizedProgramName != null)
-      'localizedProgramName': localizedProgramName!,
-    if (localizedRewardsTier != null)
-      'localizedRewardsTier': localizedRewardsTier!,
-    if (localizedRewardsTierLabel != null)
-      'localizedRewardsTierLabel': localizedRewardsTierLabel!,
-    if (localizedSecondaryRewardsTier != null)
-      'localizedSecondaryRewardsTier': localizedSecondaryRewardsTier!,
-    if (localizedSecondaryRewardsTierLabel != null)
-      'localizedSecondaryRewardsTierLabel': localizedSecondaryRewardsTierLabel!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountIdLabel = this.accountIdLabel;
+    final accountNameLabel = this.accountNameLabel;
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final countryCode = this.countryCode;
+    final discoverableProgram = this.discoverableProgram;
+    final enableSmartTap = this.enableSmartTap;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final kind = this.kind;
+    final linksModuleData = this.linksModuleData;
+    final localizedAccountIdLabel = this.localizedAccountIdLabel;
+    final localizedAccountNameLabel = this.localizedAccountNameLabel;
+    final localizedIssuerName = this.localizedIssuerName;
+    final localizedProgramName = this.localizedProgramName;
+    final localizedRewardsTier = this.localizedRewardsTier;
+    final localizedRewardsTierLabel = this.localizedRewardsTierLabel;
+    final localizedSecondaryRewardsTier = this.localizedSecondaryRewardsTier;
+    final localizedSecondaryRewardsTierLabel =
+        this.localizedSecondaryRewardsTierLabel;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final programLogo = this.programLogo;
+    final programName = this.programName;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final rewardsTier = this.rewardsTier;
+    final rewardsTierLabel = this.rewardsTierLabel;
+    final secondaryRewardsTier = this.secondaryRewardsTier;
+    final secondaryRewardsTierLabel = this.secondaryRewardsTierLabel;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final wideProgramLogo = this.wideProgramLogo;
+    final wordMark = this.wordMark;
+    return {
+      'accountIdLabel': ?accountIdLabel,
+      'accountNameLabel': ?accountNameLabel,
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'countryCode': ?countryCode,
+      'discoverableProgram': ?discoverableProgram,
+      'enableSmartTap': ?enableSmartTap,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'kind': ?kind,
+      'linksModuleData': ?linksModuleData,
+      'localizedAccountIdLabel': ?localizedAccountIdLabel,
+      'localizedAccountNameLabel': ?localizedAccountNameLabel,
+      'localizedIssuerName': ?localizedIssuerName,
+      'localizedProgramName': ?localizedProgramName,
+      'localizedRewardsTier': ?localizedRewardsTier,
+      'localizedRewardsTierLabel': ?localizedRewardsTierLabel,
+      'localizedSecondaryRewardsTier': ?localizedSecondaryRewardsTier,
+      'localizedSecondaryRewardsTierLabel': ?localizedSecondaryRewardsTierLabel,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (programLogo != null) 'programLogo': programLogo!,
-    if (programName != null) 'programName': programName!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (rewardsTier != null) 'rewardsTier': rewardsTier!,
-    if (rewardsTierLabel != null) 'rewardsTierLabel': rewardsTierLabel!,
-    if (secondaryRewardsTier != null)
-      'secondaryRewardsTier': secondaryRewardsTier!,
-    if (secondaryRewardsTierLabel != null)
-      'secondaryRewardsTierLabel': secondaryRewardsTierLabel!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (wideProgramLogo != null) 'wideProgramLogo': wideProgramLogo!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'programLogo': ?programLogo,
+      'programName': ?programName,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'rewardsTier': ?rewardsTier,
+      'rewardsTierLabel': ?rewardsTierLabel,
+      'secondaryRewardsTier': ?secondaryRewardsTier,
+      'secondaryRewardsTierLabel': ?secondaryRewardsTierLabel,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'wideProgramLogo': ?wideProgramLogo,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class LoyaltyClassAddMessageResponse {
@@ -12771,17 +12924,17 @@ class LoyaltyClassAddMessageResponse {
 
   LoyaltyClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? LoyaltyClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? LoyaltyClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class LoyaltyClassListResponse {
@@ -12795,26 +12948,25 @@ class LoyaltyClassListResponse {
 
   LoyaltyClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => LoyaltyClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class LoyaltyObject {
@@ -13089,201 +13241,206 @@ class LoyaltyObject {
     : this(
         accountId: json_['accountId'] as core.String?,
         accountName: json_['accountName'] as core.String?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? LoyaltyClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? LoyaltyClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linkedOfferIds:
-            (json_['linkedOfferIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        loyaltyPoints:
-            json_.containsKey('loyaltyPoints')
-                ? LoyaltyPoints.fromJson(
-                  json_['loyaltyPoints'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linkedOfferIds: (json_['linkedOfferIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        loyaltyPoints: json_.containsKey('loyaltyPoints')
+            ? LoyaltyPoints.fromJson(
+                json_['loyaltyPoints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        secondaryLoyaltyPoints:
-            json_.containsKey('secondaryLoyaltyPoints')
-                ? LoyaltyPoints.fromJson(
-                  json_['secondaryLoyaltyPoints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secondaryLoyaltyPoints: json_.containsKey('secondaryLoyaltyPoints')
+            ? LoyaltyPoints.fromJson(
+                json_['secondaryLoyaltyPoints']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (accountName != null) 'accountName': accountName!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (kind != null) 'kind': kind!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linkedOfferIds != null) 'linkedOfferIds': linkedOfferIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (secondaryLoyaltyPoints != null)
-      'secondaryLoyaltyPoints': secondaryLoyaltyPoints!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final accountName = this.accountName;
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final kind = this.kind;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linkedOfferIds = this.linkedOfferIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final loyaltyPoints = this.loyaltyPoints;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final secondaryLoyaltyPoints = this.secondaryLoyaltyPoints;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'accountId': ?accountId,
+      'accountName': ?accountName,
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'kind': ?kind,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linkedOfferIds': ?linkedOfferIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'loyaltyPoints': ?loyaltyPoints,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'secondaryLoyaltyPoints': ?secondaryLoyaltyPoints,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class LoyaltyObjectAddMessageResponse {
@@ -13294,17 +13451,17 @@ class LoyaltyObjectAddMessageResponse {
 
   LoyaltyObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? LoyaltyObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? LoyaltyObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class LoyaltyObjectListResponse {
@@ -13318,26 +13475,25 @@ class LoyaltyObjectListResponse {
 
   LoyaltyObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => LoyaltyObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class LoyaltyPoints {
@@ -13361,27 +13517,29 @@ class LoyaltyPoints {
 
   LoyaltyPoints.fromJson(core.Map json_)
     : this(
-        balance:
-            json_.containsKey('balance')
-                ? LoyaltyPointsBalance.fromJson(
-                  json_['balance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        balance: json_.containsKey('balance')
+            ? LoyaltyPointsBalance.fromJson(
+                json_['balance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         label: json_['label'] as core.String?,
-        localizedLabel:
-            json_.containsKey('localizedLabel')
-                ? LocalizedString.fromJson(
-                  json_['localizedLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedLabel: json_.containsKey('localizedLabel')
+            ? LocalizedString.fromJson(
+                json_['localizedLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (balance != null) 'balance': balance!,
-    if (label != null) 'label': label!,
-    if (localizedLabel != null) 'localizedLabel': localizedLabel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final balance = this.balance;
+    final label = this.label;
+    final localizedLabel = this.localizedLabel;
+    return {
+      'balance': ?balance,
+      'label': ?label,
+      'localizedLabel': ?localizedLabel,
+    };
+  }
 }
 
 class LoyaltyPointsBalance {
@@ -13415,21 +13573,21 @@ class LoyaltyPointsBalance {
     : this(
         double: (json_['double'] as core.num?)?.toDouble(),
         int: json_['int'] as core.int?,
-        money:
-            json_.containsKey('money')
-                ? Money.fromJson(
-                  json_['money'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        money: json_.containsKey('money')
+            ? Money.fromJson(
+                json_['money'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         string: json_['string'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (double != null) 'double': double!,
-    if (int != null) 'int': int!,
-    if (money != null) 'money': money!,
-    if (string != null) 'string': string!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final double = this.double;
+    final int = this.int;
+    final money = this.money;
+    final string = this.string;
+    return {'double': ?double, 'int': ?int, 'money': ?money, 'string': ?string};
+  }
 }
 
 /// A reference to data stored on the filesystem, on GFS or in blobstore.
@@ -13713,73 +13871,62 @@ class Media {
         algorithm: json_['algorithm'] as core.String?,
         bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
         blobRef: json_['blobRef'] as core.String?,
-        blobstore2Info:
-            json_.containsKey('blobstore2Info')
-                ? Blobstore2Info.fromJson(
-                  json_['blobstore2Info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        compositeMedia:
-            (json_['compositeMedia'] as core.List?)
-                ?.map(
-                  (value) => CompositeMedia.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        blobstore2Info: json_.containsKey('blobstore2Info')
+            ? Blobstore2Info.fromJson(
+                json_['blobstore2Info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        compositeMedia: (json_['compositeMedia'] as core.List?)
+            ?.map(
+              (value) => CompositeMedia.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         contentType: json_['contentType'] as core.String?,
-        contentTypeInfo:
-            json_.containsKey('contentTypeInfo')
-                ? ContentTypeInfo.fromJson(
-                  json_['contentTypeInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contentTypeInfo: json_.containsKey('contentTypeInfo')
+            ? ContentTypeInfo.fromJson(
+                json_['contentTypeInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
         crc32cHash: json_['crc32cHash'] as core.int?,
-        diffChecksumsResponse:
-            json_.containsKey('diffChecksumsResponse')
-                ? DiffChecksumsResponse.fromJson(
-                  json_['diffChecksumsResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffDownloadResponse:
-            json_.containsKey('diffDownloadResponse')
-                ? DiffDownloadResponse.fromJson(
-                  json_['diffDownloadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffUploadRequest:
-            json_.containsKey('diffUploadRequest')
-                ? DiffUploadRequest.fromJson(
-                  json_['diffUploadRequest']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffUploadResponse:
-            json_.containsKey('diffUploadResponse')
-                ? DiffUploadResponse.fromJson(
-                  json_['diffUploadResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        diffVersionResponse:
-            json_.containsKey('diffVersionResponse')
-                ? DiffVersionResponse.fromJson(
-                  json_['diffVersionResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        downloadParameters:
-            json_.containsKey('downloadParameters')
-                ? DownloadParameters.fromJson(
-                  json_['downloadParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
+            ? DiffChecksumsResponse.fromJson(
+                json_['diffChecksumsResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffDownloadResponse: json_.containsKey('diffDownloadResponse')
+            ? DiffDownloadResponse.fromJson(
+                json_['diffDownloadResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffUploadRequest: json_.containsKey('diffUploadRequest')
+            ? DiffUploadRequest.fromJson(
+                json_['diffUploadRequest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffUploadResponse: json_.containsKey('diffUploadResponse')
+            ? DiffUploadResponse.fromJson(
+                json_['diffUploadResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diffVersionResponse: json_.containsKey('diffVersionResponse')
+            ? DiffVersionResponse.fromJson(
+                json_['diffVersionResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        downloadParameters: json_.containsKey('downloadParameters')
+            ? DownloadParameters.fromJson(
+                json_['downloadParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         filename: json_['filename'] as core.String?,
         hash: json_['hash'] as core.String?,
         hashVerified: json_['hashVerified'] as core.bool?,
@@ -13788,12 +13935,11 @@ class Media {
         length: json_['length'] as core.String?,
         md5Hash: json_['md5Hash'] as core.String?,
         mediaId: json_['mediaId'] as core.String?,
-        objectId:
-            json_.containsKey('objectId')
-                ? ObjectId.fromJson(
-                  json_['objectId'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        objectId: json_.containsKey('objectId')
+            ? ObjectId.fromJson(
+                json_['objectId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         path: json_['path'] as core.String?,
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
@@ -13802,42 +13948,70 @@ class Media {
         token: json_['token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
-    if (blobRef != null) 'blobRef': blobRef!,
-    if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
-    if (compositeMedia != null) 'compositeMedia': compositeMedia!,
-    if (contentType != null) 'contentType': contentType!,
-    if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
-    if (cosmoBinaryReference != null)
-      'cosmoBinaryReference': cosmoBinaryReference!,
-    if (crc32cHash != null) 'crc32cHash': crc32cHash!,
-    if (diffChecksumsResponse != null)
-      'diffChecksumsResponse': diffChecksumsResponse!,
-    if (diffDownloadResponse != null)
-      'diffDownloadResponse': diffDownloadResponse!,
-    if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
-    if (diffUploadResponse != null) 'diffUploadResponse': diffUploadResponse!,
-    if (diffVersionResponse != null)
-      'diffVersionResponse': diffVersionResponse!,
-    if (downloadParameters != null) 'downloadParameters': downloadParameters!,
-    if (filename != null) 'filename': filename!,
-    if (hash != null) 'hash': hash!,
-    if (hashVerified != null) 'hashVerified': hashVerified!,
-    if (inline != null) 'inline': inline!,
-    if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
-    if (length != null) 'length': length!,
-    if (md5Hash != null) 'md5Hash': md5Hash!,
-    if (mediaId != null) 'mediaId': mediaId!,
-    if (objectId != null) 'objectId': objectId!,
-    if (path != null) 'path': path!,
-    if (referenceType != null) 'referenceType': referenceType!,
-    if (sha1Hash != null) 'sha1Hash': sha1Hash!,
-    if (sha256Hash != null) 'sha256Hash': sha256Hash!,
-    if (timestamp != null) 'timestamp': timestamp!,
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final bigstoreObjectRef = this.bigstoreObjectRef;
+    final blobRef = this.blobRef;
+    final blobstore2Info = this.blobstore2Info;
+    final compositeMedia = this.compositeMedia;
+    final contentType = this.contentType;
+    final contentTypeInfo = this.contentTypeInfo;
+    final cosmoBinaryReference = this.cosmoBinaryReference;
+    final crc32cHash = this.crc32cHash;
+    final diffChecksumsResponse = this.diffChecksumsResponse;
+    final diffDownloadResponse = this.diffDownloadResponse;
+    final diffUploadRequest = this.diffUploadRequest;
+    final diffUploadResponse = this.diffUploadResponse;
+    final diffVersionResponse = this.diffVersionResponse;
+    final downloadParameters = this.downloadParameters;
+    final filename = this.filename;
+    final hash = this.hash;
+    final hashVerified = this.hashVerified;
+    final inline = this.inline;
+    final isPotentialRetry = this.isPotentialRetry;
+    final length = this.length;
+    final md5Hash = this.md5Hash;
+    final mediaId = this.mediaId;
+    final objectId = this.objectId;
+    final path = this.path;
+    final referenceType = this.referenceType;
+    final sha1Hash = this.sha1Hash;
+    final sha256Hash = this.sha256Hash;
+    final timestamp = this.timestamp;
+    final token = this.token;
+    return {
+      'algorithm': ?algorithm,
+      'bigstoreObjectRef': ?bigstoreObjectRef,
+      'blobRef': ?blobRef,
+      'blobstore2Info': ?blobstore2Info,
+      'compositeMedia': ?compositeMedia,
+      'contentType': ?contentType,
+      'contentTypeInfo': ?contentTypeInfo,
+      'cosmoBinaryReference': ?cosmoBinaryReference,
+      'crc32cHash': ?crc32cHash,
+      'diffChecksumsResponse': ?diffChecksumsResponse,
+      'diffDownloadResponse': ?diffDownloadResponse,
+      'diffUploadRequest': ?diffUploadRequest,
+      'diffUploadResponse': ?diffUploadResponse,
+      'diffVersionResponse': ?diffVersionResponse,
+      'downloadParameters': ?downloadParameters,
+      'filename': ?filename,
+      'hash': ?hash,
+      'hashVerified': ?hashVerified,
+      'inline': ?inline,
+      'isPotentialRetry': ?isPotentialRetry,
+      'length': ?length,
+      'md5Hash': ?md5Hash,
+      'mediaId': ?mediaId,
+      'objectId': ?objectId,
+      'path': ?path,
+      'referenceType': ?referenceType,
+      'sha1Hash': ?sha1Hash,
+      'sha256Hash': ?sha256Hash,
+      'timestamp': ?timestamp,
+      'token': ?token,
+    };
+  }
 }
 
 /// Extra information added to operations that support Scotty media requests.
@@ -13962,20 +14136,31 @@ class MediaRequestInfo {
         totalBytesIsEstimated: json_['totalBytesIsEstimated'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentBytes != null) 'currentBytes': currentBytes!,
-    if (customData != null) 'customData': customData!,
-    if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
-    if (finalStatus != null) 'finalStatus': finalStatus!,
-    if (notificationType != null) 'notificationType': notificationType!,
-    if (physicalHeaders != null) 'physicalHeaders': physicalHeaders!,
-    if (requestId != null) 'requestId': requestId!,
-    if (requestReceivedParamsServingInfo != null)
-      'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
-    if (totalBytes != null) 'totalBytes': totalBytes!,
-    if (totalBytesIsEstimated != null)
-      'totalBytesIsEstimated': totalBytesIsEstimated!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentBytes = this.currentBytes;
+    final customData = this.customData;
+    final diffObjectVersion = this.diffObjectVersion;
+    final finalStatus = this.finalStatus;
+    final notificationType = this.notificationType;
+    final physicalHeaders = this.physicalHeaders;
+    final requestId = this.requestId;
+    final requestReceivedParamsServingInfo =
+        this.requestReceivedParamsServingInfo;
+    final totalBytes = this.totalBytes;
+    final totalBytesIsEstimated = this.totalBytesIsEstimated;
+    return {
+      'currentBytes': ?currentBytes,
+      'customData': ?customData,
+      'diffObjectVersion': ?diffObjectVersion,
+      'finalStatus': ?finalStatus,
+      'notificationType': ?notificationType,
+      'physicalHeaders': ?physicalHeaders,
+      'requestId': ?requestId,
+      'requestReceivedParamsServingInfo': ?requestReceivedParamsServingInfo,
+      'totalBytes': ?totalBytes,
+      'totalBytesIsEstimated': ?totalBytesIsEstimated,
+    };
+  }
 }
 
 /// Locations of interest for this class or object.
@@ -14005,10 +14190,11 @@ class MerchantLocation {
         longitude: (json_['longitude'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final latitude = this.latitude;
+    final longitude = this.longitude;
+    return {'latitude': ?latitude, 'longitude': ?longitude};
+  }
 }
 
 /// A message that will be displayed with a Valuable
@@ -14076,42 +14262,47 @@ class Message {
   Message.fromJson(core.Map json_)
     : this(
         body: json_['body'] as core.String?,
-        displayInterval:
-            json_.containsKey('displayInterval')
-                ? TimeInterval.fromJson(
-                  json_['displayInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        displayInterval: json_.containsKey('displayInterval')
+            ? TimeInterval.fromJson(
+                json_['displayInterval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         header: json_['header'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        localizedBody:
-            json_.containsKey('localizedBody')
-                ? LocalizedString.fromJson(
-                  json_['localizedBody'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedHeader:
-            json_.containsKey('localizedHeader')
-                ? LocalizedString.fromJson(
-                  json_['localizedHeader']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedBody: json_.containsKey('localizedBody')
+            ? LocalizedString.fromJson(
+                json_['localizedBody'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedHeader: json_.containsKey('localizedHeader')
+            ? LocalizedString.fromJson(
+                json_['localizedHeader'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         messageType: json_['messageType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (displayInterval != null) 'displayInterval': displayInterval!,
-    if (header != null) 'header': header!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (localizedBody != null) 'localizedBody': localizedBody!,
-    if (localizedHeader != null) 'localizedHeader': localizedHeader!,
-    if (messageType != null) 'messageType': messageType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final displayInterval = this.displayInterval;
+    final header = this.header;
+    final id = this.id;
+    final kind = this.kind;
+    final localizedBody = this.localizedBody;
+    final localizedHeader = this.localizedHeader;
+    final messageType = this.messageType;
+    return {
+      'body': ?body,
+      'displayInterval': ?displayInterval,
+      'header': ?header,
+      'id': ?id,
+      'kind': ?kind,
+      'localizedBody': ?localizedBody,
+      'localizedHeader': ?localizedHeader,
+      'messageType': ?messageType,
+    };
+  }
 }
 
 class ModifyLinkedOfferObjects {
@@ -14138,12 +14329,14 @@ class ModifyLinkedOfferObjects {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addLinkedOfferObjectIds != null)
-      'addLinkedOfferObjectIds': addLinkedOfferObjectIds!,
-    if (removeLinkedOfferObjectIds != null)
-      'removeLinkedOfferObjectIds': removeLinkedOfferObjectIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addLinkedOfferObjectIds = this.addLinkedOfferObjectIds;
+    final removeLinkedOfferObjectIds = this.removeLinkedOfferObjectIds;
+    return {
+      'addLinkedOfferObjectIds': ?addLinkedOfferObjectIds,
+      'removeLinkedOfferObjectIds': ?removeLinkedOfferObjectIds,
+    };
+  }
 }
 
 class ModifyLinkedOfferObjectsRequest {
@@ -14154,19 +14347,18 @@ class ModifyLinkedOfferObjectsRequest {
 
   ModifyLinkedOfferObjectsRequest.fromJson(core.Map json_)
     : this(
-        linkedOfferObjectIds:
-            json_.containsKey('linkedOfferObjectIds')
-                ? ModifyLinkedOfferObjects.fromJson(
-                  json_['linkedOfferObjectIds']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linkedOfferObjectIds: json_.containsKey('linkedOfferObjectIds')
+            ? ModifyLinkedOfferObjects.fromJson(
+                json_['linkedOfferObjectIds']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (linkedOfferObjectIds != null)
-      'linkedOfferObjectIds': linkedOfferObjectIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final linkedOfferObjectIds = this.linkedOfferObjectIds;
+    return {'linkedOfferObjectIds': ?linkedOfferObjectIds};
+  }
 }
 
 /// Constraints that all must be met for the module to be shown.
@@ -14182,18 +14374,17 @@ class ModuleViewConstraints {
 
   ModuleViewConstraints.fromJson(core.Map json_)
     : this(
-        displayInterval:
-            json_.containsKey('displayInterval')
-                ? TimeInterval.fromJson(
-                  json_['displayInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        displayInterval: json_.containsKey('displayInterval')
+            ? TimeInterval.fromJson(
+                json_['displayInterval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayInterval != null) 'displayInterval': displayInterval!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayInterval = this.displayInterval;
+    return {'displayInterval': ?displayInterval};
+  }
 }
 
 class Money {
@@ -14222,11 +14413,12 @@ class Money {
         micros: json_['micros'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (kind != null) 'kind': kind!,
-    if (micros != null) 'micros': micros!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final kind = this.kind;
+    final micros = this.micros;
+    return {'currencyCode': ?currencyCode, 'kind': ?kind, 'micros': ?micros};
+  }
 }
 
 /// Indicates if the object needs to have notification enabled.
@@ -14248,27 +14440,28 @@ class Notifications {
 
   Notifications.fromJson(core.Map json_)
     : this(
-        expiryNotification:
-            json_.containsKey('expiryNotification')
-                ? ExpiryNotification.fromJson(
-                  json_['expiryNotification']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        upcomingNotification:
-            json_.containsKey('upcomingNotification')
-                ? UpcomingNotification.fromJson(
-                  json_['upcomingNotification']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        expiryNotification: json_.containsKey('expiryNotification')
+            ? ExpiryNotification.fromJson(
+                json_['expiryNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        upcomingNotification: json_.containsKey('upcomingNotification')
+            ? UpcomingNotification.fromJson(
+                json_['upcomingNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expiryNotification != null) 'expiryNotification': expiryNotification!,
-    if (upcomingNotification != null)
-      'upcomingNotification': upcomingNotification!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expiryNotification = this.expiryNotification;
+    final upcomingNotification = this.upcomingNotification;
+    return {
+      'expiryNotification': ?expiryNotification,
+      'upcomingNotification': ?upcomingNotification,
+    };
+  }
 }
 
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
@@ -14657,257 +14850,267 @@ class OfferClass {
     : this(
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         countryCode: json_['countryCode'] as core.String?,
         details: json_['details'] as core.String?,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
         finePrint: json_['finePrint'] as core.String?,
-        helpUri:
-            json_.containsKey('helpUri')
-                ? Uri.fromJson(
-                  json_['helpUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        helpUri: json_.containsKey('helpUri')
+            ? Uri.fromJson(
+                json_['helpUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         kind: json_['kind'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedDetails:
-            json_.containsKey('localizedDetails')
-                ? LocalizedString.fromJson(
-                  json_['localizedDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedFinePrint:
-            json_.containsKey('localizedFinePrint')
-                ? LocalizedString.fromJson(
-                  json_['localizedFinePrint']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedProvider:
-            json_.containsKey('localizedProvider')
-                ? LocalizedString.fromJson(
-                  json_['localizedProvider']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedShortTitle:
-            json_.containsKey('localizedShortTitle')
-                ? LocalizedString.fromJson(
-                  json_['localizedShortTitle']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedTitle:
-            json_.containsKey('localizedTitle')
-                ? LocalizedString.fromJson(
-                  json_['localizedTitle']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedDetails: json_.containsKey('localizedDetails')
+            ? LocalizedString.fromJson(
+                json_['localizedDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedFinePrint: json_.containsKey('localizedFinePrint')
+            ? LocalizedString.fromJson(
+                json_['localizedFinePrint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedProvider: json_.containsKey('localizedProvider')
+            ? LocalizedString.fromJson(
+                json_['localizedProvider']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedShortTitle: json_.containsKey('localizedShortTitle')
+            ? LocalizedString.fromJson(
+                json_['localizedShortTitle']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedTitle: json_.containsKey('localizedTitle')
+            ? LocalizedString.fromJson(
+                json_['localizedTitle'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
         provider: json_['provider'] as core.String?,
         redemptionChannel: json_['redemptionChannel'] as core.String?,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         shortTitle: json_['shortTitle'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         title: json_['title'] as core.String?,
-        titleImage:
-            json_.containsKey('titleImage')
-                ? Image.fromJson(
-                  json_['titleImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        titleImage: json_.containsKey('titleImage')
+            ? Image.fromJson(
+                json_['titleImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        wideTitleImage:
-            json_.containsKey('wideTitleImage')
-                ? Image.fromJson(
-                  json_['wideTitleImage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        wideTitleImage: json_.containsKey('wideTitleImage')
+            ? Image.fromJson(
+                json_['wideTitleImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (details != null) 'details': details!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (finePrint != null) 'finePrint': finePrint!,
-    if (helpUri != null) 'helpUri': helpUri!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (kind != null) 'kind': kind!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localizedDetails != null) 'localizedDetails': localizedDetails!,
-    if (localizedFinePrint != null) 'localizedFinePrint': localizedFinePrint!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (localizedProvider != null) 'localizedProvider': localizedProvider!,
-    if (localizedShortTitle != null)
-      'localizedShortTitle': localizedShortTitle!,
-    if (localizedTitle != null) 'localizedTitle': localizedTitle!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final countryCode = this.countryCode;
+    final details = this.details;
+    final enableSmartTap = this.enableSmartTap;
+    final finePrint = this.finePrint;
+    final helpUri = this.helpUri;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final kind = this.kind;
+    final linksModuleData = this.linksModuleData;
+    final localizedDetails = this.localizedDetails;
+    final localizedFinePrint = this.localizedFinePrint;
+    final localizedIssuerName = this.localizedIssuerName;
+    final localizedProvider = this.localizedProvider;
+    final localizedShortTitle = this.localizedShortTitle;
+    final localizedTitle = this.localizedTitle;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final provider = this.provider;
+    final redemptionChannel = this.redemptionChannel;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final securityAnimation = this.securityAnimation;
+    final shortTitle = this.shortTitle;
+    final textModulesData = this.textModulesData;
+    final title = this.title;
+    final titleImage = this.titleImage;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final wideTitleImage = this.wideTitleImage;
+    final wordMark = this.wordMark;
+    return {
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'countryCode': ?countryCode,
+      'details': ?details,
+      'enableSmartTap': ?enableSmartTap,
+      'finePrint': ?finePrint,
+      'helpUri': ?helpUri,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'kind': ?kind,
+      'linksModuleData': ?linksModuleData,
+      'localizedDetails': ?localizedDetails,
+      'localizedFinePrint': ?localizedFinePrint,
+      'localizedIssuerName': ?localizedIssuerName,
+      'localizedProvider': ?localizedProvider,
+      'localizedShortTitle': ?localizedShortTitle,
+      'localizedTitle': ?localizedTitle,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (provider != null) 'provider': provider!,
-    if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (shortTitle != null) 'shortTitle': shortTitle!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (title != null) 'title': title!,
-    if (titleImage != null) 'titleImage': titleImage!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (wideTitleImage != null) 'wideTitleImage': wideTitleImage!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'provider': ?provider,
+      'redemptionChannel': ?redemptionChannel,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'securityAnimation': ?securityAnimation,
+      'shortTitle': ?shortTitle,
+      'textModulesData': ?textModulesData,
+      'title': ?title,
+      'titleImage': ?titleImage,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'wideTitleImage': ?wideTitleImage,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class OfferClassAddMessageResponse {
@@ -14918,17 +15121,17 @@ class OfferClassAddMessageResponse {
 
   OfferClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? OfferClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? OfferClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class OfferClassListResponse {
@@ -14942,26 +15145,25 @@ class OfferClassListResponse {
 
   OfferClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => OfferClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => OfferClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class OfferObject {
@@ -15199,178 +15401,182 @@ class OfferObject {
 
   OfferObject.fromJson(core.Map json_)
     : this(
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? OfferClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? OfferClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (kind != null) 'kind': kind!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final kind = this.kind;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'kind': ?kind,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class OfferObjectAddMessageResponse {
@@ -15381,17 +15587,17 @@ class OfferObjectAddMessageResponse {
 
   OfferObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? OfferObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? OfferObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class OfferObjectListResponse {
@@ -15405,26 +15611,25 @@ class OfferObjectListResponse {
 
   OfferObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => OfferObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => OfferObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class Pagination {
@@ -15451,11 +15656,16 @@ class Pagination {
         resultsPerPage: json_['resultsPerPage'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (resultsPerPage != null) 'resultsPerPage': resultsPerPage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final resultsPerPage = this.resultsPerPage;
+    return {
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'resultsPerPage': ?resultsPerPage,
+    };
+  }
 }
 
 /// Container for any constraints that may be placed on passes.
@@ -15478,18 +15688,20 @@ class PassConstraints {
 
   PassConstraints.fromJson(core.Map json_)
     : this(
-        nfcConstraint:
-            (json_['nfcConstraint'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nfcConstraint: (json_['nfcConstraint'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         screenshotEligibility: json_['screenshotEligibility'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nfcConstraint != null) 'nfcConstraint': nfcConstraint!,
-    if (screenshotEligibility != null)
-      'screenshotEligibility': screenshotEligibility!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nfcConstraint = this.nfcConstraint;
+    final screenshotEligibility = this.screenshotEligibility;
+    return {
+      'nfcConstraint': ?nfcConstraint,
+      'screenshotEligibility': ?screenshotEligibility,
+    };
+  }
 }
 
 class Permission {
@@ -15516,10 +15728,11 @@ class Permission {
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emailAddress != null) 'emailAddress': emailAddress!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emailAddress = this.emailAddress;
+    final role = this.role;
+    return {'emailAddress': ?emailAddress, 'role': ?role};
+  }
 }
 
 class Permissions {
@@ -15534,20 +15747,20 @@ class Permissions {
   Permissions.fromJson(core.Map json_)
     : this(
         issuerId: json_['issuerId'] as core.String?,
-        permissions:
-            (json_['permissions'] as core.List?)
-                ?.map(
-                  (value) => Permission.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        permissions: (json_['permissions'] as core.List?)
+            ?.map(
+              (value) => Permission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issuerId != null) 'issuerId': issuerId!,
-    if (permissions != null) 'permissions': permissions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issuerId = this.issuerId;
+    final permissions = this.permissions;
+    return {'issuerId': ?issuerId, 'permissions': ?permissions};
+  }
 }
 
 class PurchaseDetails {
@@ -15599,22 +15812,27 @@ class PurchaseDetails {
         confirmationCode: json_['confirmationCode'] as core.String?,
         purchaseDateTime: json_['purchaseDateTime'] as core.String?,
         purchaseReceiptNumber: json_['purchaseReceiptNumber'] as core.String?,
-        ticketCost:
-            json_.containsKey('ticketCost')
-                ? TicketCost.fromJson(
-                  json_['ticketCost'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ticketCost: json_.containsKey('ticketCost')
+            ? TicketCost.fromJson(
+                json_['ticketCost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (confirmationCode != null) 'confirmationCode': confirmationCode!,
-    if (purchaseDateTime != null) 'purchaseDateTime': purchaseDateTime!,
-    if (purchaseReceiptNumber != null)
-      'purchaseReceiptNumber': purchaseReceiptNumber!,
-    if (ticketCost != null) 'ticketCost': ticketCost!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final confirmationCode = this.confirmationCode;
+    final purchaseDateTime = this.purchaseDateTime;
+    final purchaseReceiptNumber = this.purchaseReceiptNumber;
+    final ticketCost = this.ticketCost;
+    return {
+      'accountId': ?accountId,
+      'confirmationCode': ?confirmationCode,
+      'purchaseDateTime': ?purchaseDateTime,
+      'purchaseReceiptNumber': ?purchaseReceiptNumber,
+      'ticketCost': ?ticketCost,
+    };
+  }
 }
 
 class ReservationInfo {
@@ -15649,22 +15867,27 @@ class ReservationInfo {
     : this(
         confirmationCode: json_['confirmationCode'] as core.String?,
         eticketNumber: json_['eticketNumber'] as core.String?,
-        frequentFlyerInfo:
-            json_.containsKey('frequentFlyerInfo')
-                ? FrequentFlyerInfo.fromJson(
-                  json_['frequentFlyerInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequentFlyerInfo: json_.containsKey('frequentFlyerInfo')
+            ? FrequentFlyerInfo.fromJson(
+                json_['frequentFlyerInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confirmationCode != null) 'confirmationCode': confirmationCode!,
-    if (eticketNumber != null) 'eticketNumber': eticketNumber!,
-    if (frequentFlyerInfo != null) 'frequentFlyerInfo': frequentFlyerInfo!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confirmationCode = this.confirmationCode;
+    final eticketNumber = this.eticketNumber;
+    final frequentFlyerInfo = this.frequentFlyerInfo;
+    final kind = this.kind;
+    return {
+      'confirmationCode': ?confirmationCode,
+      'eticketNumber': ?eticketNumber,
+      'frequentFlyerInfo': ?frequentFlyerInfo,
+      'kind': ?kind,
+    };
+  }
 }
 
 class Resources {
@@ -15729,136 +15952,138 @@ class Resources {
 
   Resources.fromJson(core.Map json_)
     : this(
-        eventTicketClasses:
-            (json_['eventTicketClasses'] as core.List?)
-                ?.map(
-                  (value) => EventTicketClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        eventTicketObjects:
-            (json_['eventTicketObjects'] as core.List?)
-                ?.map(
-                  (value) => EventTicketObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        flightClasses:
-            (json_['flightClasses'] as core.List?)
-                ?.map(
-                  (value) => FlightClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        flightObjects:
-            (json_['flightObjects'] as core.List?)
-                ?.map(
-                  (value) => FlightObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        genericClasses:
-            (json_['genericClasses'] as core.List?)
-                ?.map(
-                  (value) => GenericClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        genericObjects:
-            (json_['genericObjects'] as core.List?)
-                ?.map(
-                  (value) => GenericObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        giftCardClasses:
-            (json_['giftCardClasses'] as core.List?)
-                ?.map(
-                  (value) => GiftCardClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        giftCardObjects:
-            (json_['giftCardObjects'] as core.List?)
-                ?.map(
-                  (value) => GiftCardObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        loyaltyClasses:
-            (json_['loyaltyClasses'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        loyaltyObjects:
-            (json_['loyaltyObjects'] as core.List?)
-                ?.map(
-                  (value) => LoyaltyObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        offerClasses:
-            (json_['offerClasses'] as core.List?)
-                ?.map(
-                  (value) => OfferClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        offerObjects:
-            (json_['offerObjects'] as core.List?)
-                ?.map(
-                  (value) => OfferObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transitClasses:
-            (json_['transitClasses'] as core.List?)
-                ?.map(
-                  (value) => TransitClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transitObjects:
-            (json_['transitObjects'] as core.List?)
-                ?.map(
-                  (value) => TransitObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        eventTicketClasses: (json_['eventTicketClasses'] as core.List?)
+            ?.map(
+              (value) => EventTicketClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        eventTicketObjects: (json_['eventTicketObjects'] as core.List?)
+            ?.map(
+              (value) => EventTicketObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        flightClasses: (json_['flightClasses'] as core.List?)
+            ?.map(
+              (value) => FlightClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        flightObjects: (json_['flightObjects'] as core.List?)
+            ?.map(
+              (value) => FlightObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        genericClasses: (json_['genericClasses'] as core.List?)
+            ?.map(
+              (value) => GenericClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        genericObjects: (json_['genericObjects'] as core.List?)
+            ?.map(
+              (value) => GenericObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        giftCardClasses: (json_['giftCardClasses'] as core.List?)
+            ?.map(
+              (value) => GiftCardClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        giftCardObjects: (json_['giftCardObjects'] as core.List?)
+            ?.map(
+              (value) => GiftCardObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        loyaltyClasses: (json_['loyaltyClasses'] as core.List?)
+            ?.map(
+              (value) => LoyaltyClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        loyaltyObjects: (json_['loyaltyObjects'] as core.List?)
+            ?.map(
+              (value) => LoyaltyObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        offerClasses: (json_['offerClasses'] as core.List?)
+            ?.map(
+              (value) => OfferClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        offerObjects: (json_['offerObjects'] as core.List?)
+            ?.map(
+              (value) => OfferObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transitClasses: (json_['transitClasses'] as core.List?)
+            ?.map(
+              (value) => TransitClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transitObjects: (json_['transitObjects'] as core.List?)
+            ?.map(
+              (value) => TransitObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eventTicketClasses != null) 'eventTicketClasses': eventTicketClasses!,
-    if (eventTicketObjects != null) 'eventTicketObjects': eventTicketObjects!,
-    if (flightClasses != null) 'flightClasses': flightClasses!,
-    if (flightObjects != null) 'flightObjects': flightObjects!,
-    if (genericClasses != null) 'genericClasses': genericClasses!,
-    if (genericObjects != null) 'genericObjects': genericObjects!,
-    if (giftCardClasses != null) 'giftCardClasses': giftCardClasses!,
-    if (giftCardObjects != null) 'giftCardObjects': giftCardObjects!,
-    if (loyaltyClasses != null) 'loyaltyClasses': loyaltyClasses!,
-    if (loyaltyObjects != null) 'loyaltyObjects': loyaltyObjects!,
-    if (offerClasses != null) 'offerClasses': offerClasses!,
-    if (offerObjects != null) 'offerObjects': offerObjects!,
-    if (transitClasses != null) 'transitClasses': transitClasses!,
-    if (transitObjects != null) 'transitObjects': transitObjects!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventTicketClasses = this.eventTicketClasses;
+    final eventTicketObjects = this.eventTicketObjects;
+    final flightClasses = this.flightClasses;
+    final flightObjects = this.flightObjects;
+    final genericClasses = this.genericClasses;
+    final genericObjects = this.genericObjects;
+    final giftCardClasses = this.giftCardClasses;
+    final giftCardObjects = this.giftCardObjects;
+    final loyaltyClasses = this.loyaltyClasses;
+    final loyaltyObjects = this.loyaltyObjects;
+    final offerClasses = this.offerClasses;
+    final offerObjects = this.offerObjects;
+    final transitClasses = this.transitClasses;
+    final transitObjects = this.transitObjects;
+    return {
+      'eventTicketClasses': ?eventTicketClasses,
+      'eventTicketObjects': ?eventTicketObjects,
+      'flightClasses': ?flightClasses,
+      'flightObjects': ?flightObjects,
+      'genericClasses': ?genericClasses,
+      'genericObjects': ?genericObjects,
+      'giftCardClasses': ?giftCardClasses,
+      'giftCardObjects': ?giftCardObjects,
+      'loyaltyClasses': ?loyaltyClasses,
+      'loyaltyObjects': ?loyaltyObjects,
+      'offerClasses': ?offerClasses,
+      'offerObjects': ?offerObjects,
+      'transitClasses': ?transitClasses,
+      'transitObjects': ?transitObjects,
+    };
+  }
 }
 
 class Review {
@@ -15869,9 +16094,10 @@ class Review {
   Review.fromJson(core.Map json_)
     : this(comments: json_['comments'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (comments != null) 'comments': comments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final comments = this.comments;
+    return {'comments': ?comments};
+  }
 }
 
 class RotatingBarcode {
@@ -15982,38 +16208,44 @@ class RotatingBarcode {
         alternateText: json_['alternateText'] as core.String?,
         initialRotatingBarcodeValues:
             json_.containsKey('initialRotatingBarcodeValues')
-                ? RotatingBarcodeValues.fromJson(
-                  json_['initialRotatingBarcodeValues']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RotatingBarcodeValues.fromJson(
+                json_['initialRotatingBarcodeValues']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         renderEncoding: json_['renderEncoding'] as core.String?,
-        showCodeText:
-            json_.containsKey('showCodeText')
-                ? LocalizedString.fromJson(
-                  json_['showCodeText'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        totpDetails:
-            json_.containsKey('totpDetails')
-                ? RotatingBarcodeTotpDetails.fromJson(
-                  json_['totpDetails'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        showCodeText: json_.containsKey('showCodeText')
+            ? LocalizedString.fromJson(
+                json_['showCodeText'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        totpDetails: json_.containsKey('totpDetails')
+            ? RotatingBarcodeTotpDetails.fromJson(
+                json_['totpDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         valuePattern: json_['valuePattern'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternateText != null) 'alternateText': alternateText!,
-    if (initialRotatingBarcodeValues != null)
-      'initialRotatingBarcodeValues': initialRotatingBarcodeValues!,
-    if (renderEncoding != null) 'renderEncoding': renderEncoding!,
-    if (showCodeText != null) 'showCodeText': showCodeText!,
-    if (totpDetails != null) 'totpDetails': totpDetails!,
-    if (type != null) 'type': type!,
-    if (valuePattern != null) 'valuePattern': valuePattern!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternateText = this.alternateText;
+    final initialRotatingBarcodeValues = this.initialRotatingBarcodeValues;
+    final renderEncoding = this.renderEncoding;
+    final showCodeText = this.showCodeText;
+    final totpDetails = this.totpDetails;
+    final type = this.type;
+    final valuePattern = this.valuePattern;
+    return {
+      'alternateText': ?alternateText,
+      'initialRotatingBarcodeValues': ?initialRotatingBarcodeValues,
+      'renderEncoding': ?renderEncoding,
+      'showCodeText': ?showCodeText,
+      'totpDetails': ?totpDetails,
+      'type': ?type,
+      'valuePattern': ?valuePattern,
+    };
+  }
 }
 
 /// Configuration for the time-based OTP substitutions.
@@ -16043,22 +16275,26 @@ class RotatingBarcodeTotpDetails {
   RotatingBarcodeTotpDetails.fromJson(core.Map json_)
     : this(
         algorithm: json_['algorithm'] as core.String?,
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map(
-                  (value) => RotatingBarcodeTotpDetailsTotpParameters.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        parameters: (json_['parameters'] as core.List?)
+            ?.map(
+              (value) => RotatingBarcodeTotpDetailsTotpParameters.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         periodMillis: json_['periodMillis'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (parameters != null) 'parameters': parameters!,
-    if (periodMillis != null) 'periodMillis': periodMillis!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final parameters = this.parameters;
+    final periodMillis = this.periodMillis;
+    return {
+      'algorithm': ?algorithm,
+      'parameters': ?parameters,
+      'periodMillis': ?periodMillis,
+    };
+  }
 }
 
 /// Configuration for the key and value length.
@@ -16080,10 +16316,11 @@ class RotatingBarcodeTotpDetailsTotpParameters {
         valueLength: json_['valueLength'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (valueLength != null) 'valueLength': valueLength!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final valueLength = this.valueLength;
+    return {'key': ?key, 'valueLength': ?valueLength};
+  }
 }
 
 /// A payload containing many barcode values and start date/time.
@@ -16124,17 +16361,21 @@ class RotatingBarcodeValues {
     : this(
         periodMillis: json_['periodMillis'] as core.String?,
         startDateTime: json_['startDateTime'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (periodMillis != null) 'periodMillis': periodMillis!,
-    if (startDateTime != null) 'startDateTime': startDateTime!,
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final periodMillis = this.periodMillis;
+    final startDateTime = this.startDateTime;
+    final values = this.values;
+    return {
+      'periodMillis': ?periodMillis,
+      'startDateTime': ?startDateTime,
+      'values': ?values,
+    };
+  }
 }
 
 /// Defines restrictions on the object that will be verified during save.
@@ -16167,10 +16408,10 @@ class SaveRestrictions {
         restrictToEmailSha256: json_['restrictToEmailSha256'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (restrictToEmailSha256 != null)
-      'restrictToEmailSha256': restrictToEmailSha256!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final restrictToEmailSha256 = this.restrictToEmailSha256;
+    return {'restrictToEmailSha256': ?restrictToEmailSha256};
+  }
 }
 
 class SecurityAnimation {
@@ -16186,9 +16427,10 @@ class SecurityAnimation {
   SecurityAnimation.fromJson(core.Map json_)
     : this(animationType: json_['animationType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (animationType != null) 'animationType': animationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final animationType = this.animationType;
+    return {'animationType': ?animationType};
+  }
 }
 
 /// Request to send a private pass update notice information to Google, so that
@@ -16235,12 +16477,16 @@ class SetPassUpdateNoticeRequest {
             json_['updatedPassJwtSignature'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalPassId != null) 'externalPassId': externalPassId!,
-    if (updateUri != null) 'updateUri': updateUri!,
-    if (updatedPassJwtSignature != null)
-      'updatedPassJwtSignature': updatedPassJwtSignature!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalPassId = this.externalPassId;
+    final updateUri = this.updateUri;
+    final updatedPassJwtSignature = this.updatedPassJwtSignature;
+    return {
+      'externalPassId': ?externalPassId,
+      'updateUri': ?updateUri,
+      'updatedPassJwtSignature': ?updatedPassJwtSignature,
+    };
+  }
 }
 
 /// A response to a request to notify Google of an awaiting update to a private
@@ -16256,9 +16502,10 @@ class SignUpInfo {
   SignUpInfo.fromJson(core.Map json_)
     : this(classId: json_['classId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (classId != null) 'classId': classId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final classId = this.classId;
+    return {'classId': ?classId};
+  }
 }
 
 class SmartTap {
@@ -16289,24 +16536,29 @@ class SmartTap {
   SmartTap.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
-        infos:
-            (json_['infos'] as core.List?)
-                ?.map(
-                  (value) => IssuerToUserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        infos: (json_['infos'] as core.List?)
+            ?.map(
+              (value) => IssuerToUserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         merchantId: json_['merchantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (infos != null) 'infos': infos!,
-    if (kind != null) 'kind': kind!,
-    if (merchantId != null) 'merchantId': merchantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final infos = this.infos;
+    final kind = this.kind;
+    final merchantId = this.merchantId;
+    return {
+      'id': ?id,
+      'infos': ?infos,
+      'kind': ?kind,
+      'merchantId': ?merchantId,
+    };
+  }
 }
 
 class SmartTapMerchantData {
@@ -16324,21 +16576,24 @@ class SmartTapMerchantData {
 
   SmartTapMerchantData.fromJson(core.Map json_)
     : this(
-        authenticationKeys:
-            (json_['authenticationKeys'] as core.List?)
-                ?.map(
-                  (value) => AuthenticationKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        authenticationKeys: (json_['authenticationKeys'] as core.List?)
+            ?.map(
+              (value) => AuthenticationKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         smartTapMerchantId: json_['smartTapMerchantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authenticationKeys != null) 'authenticationKeys': authenticationKeys!,
-    if (smartTapMerchantId != null) 'smartTapMerchantId': smartTapMerchantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationKeys = this.authenticationKeys;
+    final smartTapMerchantId = this.smartTapMerchantId;
+    return {
+      'authenticationKeys': ?authenticationKeys,
+      'smartTapMerchantId': ?smartTapMerchantId,
+    };
+  }
 }
 
 class TemplateItem {
@@ -16371,26 +16626,29 @@ class TemplateItem {
 
   TemplateItem.fromJson(core.Map json_)
     : this(
-        firstValue:
-            json_.containsKey('firstValue')
-                ? FieldSelector.fromJson(
-                  json_['firstValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        firstValue: json_.containsKey('firstValue')
+            ? FieldSelector.fromJson(
+                json_['firstValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         predefinedItem: json_['predefinedItem'] as core.String?,
-        secondValue:
-            json_.containsKey('secondValue')
-                ? FieldSelector.fromJson(
-                  json_['secondValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        secondValue: json_.containsKey('secondValue')
+            ? FieldSelector.fromJson(
+                json_['secondValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (firstValue != null) 'firstValue': firstValue!,
-    if (predefinedItem != null) 'predefinedItem': predefinedItem!,
-    if (secondValue != null) 'secondValue': secondValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final firstValue = this.firstValue;
+    final predefinedItem = this.predefinedItem;
+    final secondValue = this.secondValue;
+    return {
+      'firstValue': ?firstValue,
+      'predefinedItem': ?predefinedItem,
+      'secondValue': ?secondValue,
+    };
+  }
 }
 
 /// Data for Text module.
@@ -16444,28 +16702,32 @@ class TextModuleData {
         body: json_['body'] as core.String?,
         header: json_['header'] as core.String?,
         id: json_['id'] as core.String?,
-        localizedBody:
-            json_.containsKey('localizedBody')
-                ? LocalizedString.fromJson(
-                  json_['localizedBody'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedHeader:
-            json_.containsKey('localizedHeader')
-                ? LocalizedString.fromJson(
-                  json_['localizedHeader']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedBody: json_.containsKey('localizedBody')
+            ? LocalizedString.fromJson(
+                json_['localizedBody'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedHeader: json_.containsKey('localizedHeader')
+            ? LocalizedString.fromJson(
+                json_['localizedHeader'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (header != null) 'header': header!,
-    if (id != null) 'id': id!,
-    if (localizedBody != null) 'localizedBody': localizedBody!,
-    if (localizedHeader != null) 'localizedHeader': localizedHeader!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final header = this.header;
+    final id = this.id;
+    final localizedBody = this.localizedBody;
+    final localizedHeader = this.localizedHeader;
+    return {
+      'body': ?body,
+      'header': ?header,
+      'id': ?id,
+      'localizedBody': ?localizedBody,
+      'localizedHeader': ?localizedHeader,
+    };
+  }
 }
 
 class TicketCost {
@@ -16482,32 +16744,33 @@ class TicketCost {
 
   TicketCost.fromJson(core.Map json_)
     : this(
-        discountMessage:
-            json_.containsKey('discountMessage')
-                ? LocalizedString.fromJson(
-                  json_['discountMessage']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        faceValue:
-            json_.containsKey('faceValue')
-                ? Money.fromJson(
-                  json_['faceValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        purchasePrice:
-            json_.containsKey('purchasePrice')
-                ? Money.fromJson(
-                  json_['purchasePrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        discountMessage: json_.containsKey('discountMessage')
+            ? LocalizedString.fromJson(
+                json_['discountMessage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        faceValue: json_.containsKey('faceValue')
+            ? Money.fromJson(
+                json_['faceValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        purchasePrice: json_.containsKey('purchasePrice')
+            ? Money.fromJson(
+                json_['purchasePrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (discountMessage != null) 'discountMessage': discountMessage!,
-    if (faceValue != null) 'faceValue': faceValue!,
-    if (purchasePrice != null) 'purchasePrice': purchasePrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final discountMessage = this.discountMessage;
+    final faceValue = this.faceValue;
+    final purchasePrice = this.purchasePrice;
+    return {
+      'discountMessage': ?discountMessage,
+      'faceValue': ?faceValue,
+      'purchasePrice': ?purchasePrice,
+    };
+  }
 }
 
 class TicketLeg {
@@ -16630,78 +16893,83 @@ class TicketLeg {
         arrivalDateTime: json_['arrivalDateTime'] as core.String?,
         carriage: json_['carriage'] as core.String?,
         departureDateTime: json_['departureDateTime'] as core.String?,
-        destinationName:
-            json_.containsKey('destinationName')
-                ? LocalizedString.fromJson(
-                  json_['destinationName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destinationName: json_.containsKey('destinationName')
+            ? LocalizedString.fromJson(
+                json_['destinationName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         destinationStationCode: json_['destinationStationCode'] as core.String?,
-        fareName:
-            json_.containsKey('fareName')
-                ? LocalizedString.fromJson(
-                  json_['fareName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        originName:
-            json_.containsKey('originName')
-                ? LocalizedString.fromJson(
-                  json_['originName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fareName: json_.containsKey('fareName')
+            ? LocalizedString.fromJson(
+                json_['fareName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        originName: json_.containsKey('originName')
+            ? LocalizedString.fromJson(
+                json_['originName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         originStationCode: json_['originStationCode'] as core.String?,
         platform: json_['platform'] as core.String?,
-        ticketSeat:
-            json_.containsKey('ticketSeat')
-                ? TicketSeat.fromJson(
-                  json_['ticketSeat'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ticketSeats:
-            (json_['ticketSeats'] as core.List?)
-                ?.map(
-                  (value) => TicketSeat.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transitOperatorName:
-            json_.containsKey('transitOperatorName')
-                ? LocalizedString.fromJson(
-                  json_['transitOperatorName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        transitTerminusName:
-            json_.containsKey('transitTerminusName')
-                ? LocalizedString.fromJson(
-                  json_['transitTerminusName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ticketSeat: json_.containsKey('ticketSeat')
+            ? TicketSeat.fromJson(
+                json_['ticketSeat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ticketSeats: (json_['ticketSeats'] as core.List?)
+            ?.map(
+              (value) => TicketSeat.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transitOperatorName: json_.containsKey('transitOperatorName')
+            ? LocalizedString.fromJson(
+                json_['transitOperatorName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transitTerminusName: json_.containsKey('transitTerminusName')
+            ? LocalizedString.fromJson(
+                json_['transitTerminusName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (arrivalDateTime != null) 'arrivalDateTime': arrivalDateTime!,
-    if (carriage != null) 'carriage': carriage!,
-    if (departureDateTime != null) 'departureDateTime': departureDateTime!,
-    if (destinationName != null) 'destinationName': destinationName!,
-    if (destinationStationCode != null)
-      'destinationStationCode': destinationStationCode!,
-    if (fareName != null) 'fareName': fareName!,
-    if (originName != null) 'originName': originName!,
-    if (originStationCode != null) 'originStationCode': originStationCode!,
-    if (platform != null) 'platform': platform!,
-    if (ticketSeat != null) 'ticketSeat': ticketSeat!,
-    if (ticketSeats != null) 'ticketSeats': ticketSeats!,
-    if (transitOperatorName != null)
-      'transitOperatorName': transitOperatorName!,
-    if (transitTerminusName != null)
-      'transitTerminusName': transitTerminusName!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final arrivalDateTime = this.arrivalDateTime;
+    final carriage = this.carriage;
+    final departureDateTime = this.departureDateTime;
+    final destinationName = this.destinationName;
+    final destinationStationCode = this.destinationStationCode;
+    final fareName = this.fareName;
+    final originName = this.originName;
+    final originStationCode = this.originStationCode;
+    final platform = this.platform;
+    final ticketSeat = this.ticketSeat;
+    final ticketSeats = this.ticketSeats;
+    final transitOperatorName = this.transitOperatorName;
+    final transitTerminusName = this.transitTerminusName;
+    final zone = this.zone;
+    return {
+      'arrivalDateTime': ?arrivalDateTime,
+      'carriage': ?carriage,
+      'departureDateTime': ?departureDateTime,
+      'destinationName': ?destinationName,
+      'destinationStationCode': ?destinationStationCode,
+      'fareName': ?fareName,
+      'originName': ?originName,
+      'originStationCode': ?originStationCode,
+      'platform': ?platform,
+      'ticketSeat': ?ticketSeat,
+      'ticketSeats': ?ticketSeats,
+      'transitOperatorName': ?transitOperatorName,
+      'transitTerminusName': ?transitTerminusName,
+      'zone': ?zone,
+    };
+  }
 }
 
 class TicketRestrictions {
@@ -16728,43 +16996,44 @@ class TicketRestrictions {
 
   TicketRestrictions.fromJson(core.Map json_)
     : this(
-        otherRestrictions:
-            json_.containsKey('otherRestrictions')
-                ? LocalizedString.fromJson(
-                  json_['otherRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        routeRestrictions:
-            json_.containsKey('routeRestrictions')
-                ? LocalizedString.fromJson(
-                  json_['routeRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        routeRestrictionsDetails:
-            json_.containsKey('routeRestrictionsDetails')
-                ? LocalizedString.fromJson(
-                  json_['routeRestrictionsDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timeRestrictions:
-            json_.containsKey('timeRestrictions')
-                ? LocalizedString.fromJson(
-                  json_['timeRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        otherRestrictions: json_.containsKey('otherRestrictions')
+            ? LocalizedString.fromJson(
+                json_['otherRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        routeRestrictions: json_.containsKey('routeRestrictions')
+            ? LocalizedString.fromJson(
+                json_['routeRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        routeRestrictionsDetails: json_.containsKey('routeRestrictionsDetails')
+            ? LocalizedString.fromJson(
+                json_['routeRestrictionsDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timeRestrictions: json_.containsKey('timeRestrictions')
+            ? LocalizedString.fromJson(
+                json_['timeRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (otherRestrictions != null) 'otherRestrictions': otherRestrictions!,
-    if (routeRestrictions != null) 'routeRestrictions': routeRestrictions!,
-    if (routeRestrictionsDetails != null)
-      'routeRestrictionsDetails': routeRestrictionsDetails!,
-    if (timeRestrictions != null) 'timeRestrictions': timeRestrictions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final otherRestrictions = this.otherRestrictions;
+    final routeRestrictions = this.routeRestrictions;
+    final routeRestrictionsDetails = this.routeRestrictionsDetails;
+    final timeRestrictions = this.timeRestrictions;
+    return {
+      'otherRestrictions': ?otherRestrictions,
+      'routeRestrictions': ?routeRestrictions,
+      'routeRestrictionsDetails': ?routeRestrictionsDetails,
+      'timeRestrictions': ?timeRestrictions,
+    };
+  }
 }
 
 class TicketSeat {
@@ -16812,31 +17081,34 @@ class TicketSeat {
   TicketSeat.fromJson(core.Map json_)
     : this(
         coach: json_['coach'] as core.String?,
-        customFareClass:
-            json_.containsKey('customFareClass')
-                ? LocalizedString.fromJson(
-                  json_['customFareClass']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customFareClass: json_.containsKey('customFareClass')
+            ? LocalizedString.fromJson(
+                json_['customFareClass'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fareClass: json_['fareClass'] as core.String?,
         seat: json_['seat'] as core.String?,
-        seatAssignment:
-            json_.containsKey('seatAssignment')
-                ? LocalizedString.fromJson(
-                  json_['seatAssignment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        seatAssignment: json_.containsKey('seatAssignment')
+            ? LocalizedString.fromJson(
+                json_['seatAssignment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (coach != null) 'coach': coach!,
-    if (customFareClass != null) 'customFareClass': customFareClass!,
-    if (fareClass != null) 'fareClass': fareClass!,
-    if (seat != null) 'seat': seat!,
-    if (seatAssignment != null) 'seatAssignment': seatAssignment!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final coach = this.coach;
+    final customFareClass = this.customFareClass;
+    final fareClass = this.fareClass;
+    final seat = this.seat;
+    final seatAssignment = this.seatAssignment;
+    return {
+      'coach': ?coach,
+      'customFareClass': ?customFareClass,
+      'fareClass': ?fareClass,
+      'seat': ?seat,
+      'seatAssignment': ?seatAssignment,
+    };
+  }
 }
 
 class TimeInterval {
@@ -16864,26 +17136,25 @@ class TimeInterval {
 
   TimeInterval.fromJson(core.Map json_)
     : this(
-        end:
-            json_.containsKey('end')
-                ? DateTime.fromJson(
-                  json_['end'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        end: json_.containsKey('end')
+            ? DateTime.fromJson(
+                json_['end'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        start:
-            json_.containsKey('start')
-                ? DateTime.fromJson(
-                  json_['start'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        start: json_.containsKey('start')
+            ? DateTime.fromJson(
+                json_['start'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (end != null) 'end': end!,
-    if (kind != null) 'kind': kind!,
-    if (start != null) 'start': start!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final end = this.end;
+    final kind = this.kind;
+    final start = this.start;
+    return {'end': ?end, 'kind': ?kind, 'start': ?start};
+  }
 }
 
 class TransitClass {
@@ -17315,397 +17586,398 @@ class TransitClass {
 
   TransitClass.fromJson(core.Map json_)
     : this(
-        activationOptions:
-            json_.containsKey('activationOptions')
-                ? ActivationOptions.fromJson(
-                  json_['activationOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        activationOptions: json_.containsKey('activationOptions')
+            ? ActivationOptions.fromJson(
+                json_['activationOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         allowMultipleUsersPerObject:
             json_['allowMultipleUsersPerObject'] as core.bool?,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        callbackOptions:
-            json_.containsKey('callbackOptions')
-                ? CallbackOptions.fromJson(
-                  json_['callbackOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        classTemplateInfo:
-            json_.containsKey('classTemplateInfo')
-                ? ClassTemplateInfo.fromJson(
-                  json_['classTemplateInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        callbackOptions: json_.containsKey('callbackOptions')
+            ? CallbackOptions.fromJson(
+                json_['callbackOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        classTemplateInfo: json_.containsKey('classTemplateInfo')
+            ? ClassTemplateInfo.fromJson(
+                json_['classTemplateInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         countryCode: json_['countryCode'] as core.String?,
-        customCarriageLabel:
-            json_.containsKey('customCarriageLabel')
-                ? LocalizedString.fromJson(
-                  json_['customCarriageLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customCoachLabel:
-            json_.containsKey('customCoachLabel')
-                ? LocalizedString.fromJson(
-                  json_['customCoachLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customCarriageLabel: json_.containsKey('customCarriageLabel')
+            ? LocalizedString.fromJson(
+                json_['customCarriageLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customCoachLabel: json_.containsKey('customCoachLabel')
+            ? LocalizedString.fromJson(
+                json_['customCoachLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customConcessionCategoryLabel:
             json_.containsKey('customConcessionCategoryLabel')
-                ? LocalizedString.fromJson(
-                  json_['customConcessionCategoryLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customConcessionCategoryLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customConfirmationCodeLabel:
             json_.containsKey('customConfirmationCodeLabel')
-                ? LocalizedString.fromJson(
-                  json_['customConfirmationCodeLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customConfirmationCodeLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customDiscountMessageLabel:
             json_.containsKey('customDiscountMessageLabel')
-                ? LocalizedString.fromJson(
-                  json_['customDiscountMessageLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customFareClassLabel:
-            json_.containsKey('customFareClassLabel')
-                ? LocalizedString.fromJson(
-                  json_['customFareClassLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customFareNameLabel:
-            json_.containsKey('customFareNameLabel')
-                ? LocalizedString.fromJson(
-                  json_['customFareNameLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customDiscountMessageLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customFareClassLabel: json_.containsKey('customFareClassLabel')
+            ? LocalizedString.fromJson(
+                json_['customFareClassLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customFareNameLabel: json_.containsKey('customFareNameLabel')
+            ? LocalizedString.fromJson(
+                json_['customFareNameLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customOtherRestrictionsLabel:
             json_.containsKey('customOtherRestrictionsLabel')
-                ? LocalizedString.fromJson(
-                  json_['customOtherRestrictionsLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customPlatformLabel:
-            json_.containsKey('customPlatformLabel')
-                ? LocalizedString.fromJson(
-                  json_['customPlatformLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customOtherRestrictionsLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customPlatformLabel: json_.containsKey('customPlatformLabel')
+            ? LocalizedString.fromJson(
+                json_['customPlatformLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customPurchaseFaceValueLabel:
             json_.containsKey('customPurchaseFaceValueLabel')
-                ? LocalizedString.fromJson(
-                  json_['customPurchaseFaceValueLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customPurchasePriceLabel:
-            json_.containsKey('customPurchasePriceLabel')
-                ? LocalizedString.fromJson(
-                  json_['customPurchasePriceLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customPurchaseFaceValueLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customPurchasePriceLabel: json_.containsKey('customPurchasePriceLabel')
+            ? LocalizedString.fromJson(
+                json_['customPurchasePriceLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customPurchaseReceiptNumberLabel:
             json_.containsKey('customPurchaseReceiptNumberLabel')
-                ? LocalizedString.fromJson(
-                  json_['customPurchaseReceiptNumberLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customPurchaseReceiptNumberLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customRouteRestrictionsDetailsLabel:
             json_.containsKey('customRouteRestrictionsDetailsLabel')
-                ? LocalizedString.fromJson(
-                  json_['customRouteRestrictionsDetailsLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customRouteRestrictionsDetailsLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customRouteRestrictionsLabel:
             json_.containsKey('customRouteRestrictionsLabel')
-                ? LocalizedString.fromJson(
-                  json_['customRouteRestrictionsLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customSeatLabel:
-            json_.containsKey('customSeatLabel')
-                ? LocalizedString.fromJson(
-                  json_['customSeatLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customTicketNumberLabel:
-            json_.containsKey('customTicketNumberLabel')
-                ? LocalizedString.fromJson(
-                  json_['customTicketNumberLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customRouteRestrictionsLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customSeatLabel: json_.containsKey('customSeatLabel')
+            ? LocalizedString.fromJson(
+                json_['customSeatLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customTicketNumberLabel: json_.containsKey('customTicketNumberLabel')
+            ? LocalizedString.fromJson(
+                json_['customTicketNumberLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customTimeRestrictionsLabel:
             json_.containsKey('customTimeRestrictionsLabel')
-                ? LocalizedString.fromJson(
-                  json_['customTimeRestrictionsLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customTimeRestrictionsLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customTransitTerminusNameLabel:
             json_.containsKey('customTransitTerminusNameLabel')
-                ? LocalizedString.fromJson(
-                  json_['customTransitTerminusNameLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customZoneLabel:
-            json_.containsKey('customZoneLabel')
-                ? LocalizedString.fromJson(
-                  json_['customZoneLabel']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? LocalizedString.fromJson(
+                json_['customTransitTerminusNameLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customZoneLabel: json_.containsKey('customZoneLabel')
+            ? LocalizedString.fromJson(
+                json_['customZoneLabel'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSingleLegItinerary:
             json_['enableSingleLegItinerary'] as core.bool?,
         enableSmartTap: json_['enableSmartTap'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
-        homepageUri:
-            json_.containsKey('homepageUri')
-                ? Uri.fromJson(
-                  json_['homepageUri'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        homepageUri: json_.containsKey('homepageUri')
+            ? Uri.fromJson(
+                json_['homepageUri'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         issuerName: json_['issuerName'] as core.String?,
         languageOverride: json_['languageOverride'] as core.String?,
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizedIssuerName:
-            json_.containsKey('localizedIssuerName')
-                ? LocalizedString.fromJson(
-                  json_['localizedIssuerName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        logo:
-            json_.containsKey('logo')
-                ? Image.fromJson(
-                  json_['logo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedIssuerName: json_.containsKey('localizedIssuerName')
+            ? LocalizedString.fromJson(
+                json_['localizedIssuerName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        logo: json_.containsKey('logo')
+            ? Image.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         multipleDevicesAndHoldersAllowedStatus:
             json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
         notifyPreference: json_['notifyPreference'] as core.String?,
-        redemptionIssuers:
-            (json_['redemptionIssuers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        review:
-            json_.containsKey('review')
-                ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        review: json_.containsKey('review')
+            ? Review.fromJson(
+                json_['review'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewStatus: json_['reviewStatus'] as core.String?,
-        securityAnimation:
-            json_.containsKey('securityAnimation')
-                ? SecurityAnimation.fromJson(
-                  json_['securityAnimation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transitOperatorName:
-            json_.containsKey('transitOperatorName')
-                ? LocalizedString.fromJson(
-                  json_['transitOperatorName']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        securityAnimation: json_.containsKey('securityAnimation')
+            ? SecurityAnimation.fromJson(
+                json_['securityAnimation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transitOperatorName: json_.containsKey('transitOperatorName')
+            ? LocalizedString.fromJson(
+                json_['transitOperatorName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transitType: json_['transitType'] as core.String?,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
         viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
-        watermark:
-            json_.containsKey('watermark')
-                ? Image.fromJson(
-                  json_['watermark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wideLogo:
-            json_.containsKey('wideLogo')
-                ? Image.fromJson(
-                  json_['wideLogo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        wordMark:
-            json_.containsKey('wordMark')
-                ? Image.fromJson(
-                  json_['wordMark'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        watermark: json_.containsKey('watermark')
+            ? Image.fromJson(
+                json_['watermark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wideLogo: json_.containsKey('wideLogo')
+            ? Image.fromJson(
+                json_['wideLogo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordMark: json_.containsKey('wordMark')
+            ? Image.fromJson(
+                json_['wordMark'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activationOptions != null) 'activationOptions': activationOptions!,
-    if (allowMultipleUsersPerObject != null)
-      'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (callbackOptions != null) 'callbackOptions': callbackOptions!,
-    if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
-    if (countryCode != null) 'countryCode': countryCode!,
-    if (customCarriageLabel != null)
-      'customCarriageLabel': customCarriageLabel!,
-    if (customCoachLabel != null) 'customCoachLabel': customCoachLabel!,
-    if (customConcessionCategoryLabel != null)
-      'customConcessionCategoryLabel': customConcessionCategoryLabel!,
-    if (customConfirmationCodeLabel != null)
-      'customConfirmationCodeLabel': customConfirmationCodeLabel!,
-    if (customDiscountMessageLabel != null)
-      'customDiscountMessageLabel': customDiscountMessageLabel!,
-    if (customFareClassLabel != null)
-      'customFareClassLabel': customFareClassLabel!,
-    if (customFareNameLabel != null)
-      'customFareNameLabel': customFareNameLabel!,
-    if (customOtherRestrictionsLabel != null)
-      'customOtherRestrictionsLabel': customOtherRestrictionsLabel!,
-    if (customPlatformLabel != null)
-      'customPlatformLabel': customPlatformLabel!,
-    if (customPurchaseFaceValueLabel != null)
-      'customPurchaseFaceValueLabel': customPurchaseFaceValueLabel!,
-    if (customPurchasePriceLabel != null)
-      'customPurchasePriceLabel': customPurchasePriceLabel!,
-    if (customPurchaseReceiptNumberLabel != null)
-      'customPurchaseReceiptNumberLabel': customPurchaseReceiptNumberLabel!,
-    if (customRouteRestrictionsDetailsLabel != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final activationOptions = this.activationOptions;
+    final allowMultipleUsersPerObject = this.allowMultipleUsersPerObject;
+    final appLinkData = this.appLinkData;
+    final callbackOptions = this.callbackOptions;
+    final classTemplateInfo = this.classTemplateInfo;
+    final countryCode = this.countryCode;
+    final customCarriageLabel = this.customCarriageLabel;
+    final customCoachLabel = this.customCoachLabel;
+    final customConcessionCategoryLabel = this.customConcessionCategoryLabel;
+    final customConfirmationCodeLabel = this.customConfirmationCodeLabel;
+    final customDiscountMessageLabel = this.customDiscountMessageLabel;
+    final customFareClassLabel = this.customFareClassLabel;
+    final customFareNameLabel = this.customFareNameLabel;
+    final customOtherRestrictionsLabel = this.customOtherRestrictionsLabel;
+    final customPlatformLabel = this.customPlatformLabel;
+    final customPurchaseFaceValueLabel = this.customPurchaseFaceValueLabel;
+    final customPurchasePriceLabel = this.customPurchasePriceLabel;
+    final customPurchaseReceiptNumberLabel =
+        this.customPurchaseReceiptNumberLabel;
+    final customRouteRestrictionsDetailsLabel =
+        this.customRouteRestrictionsDetailsLabel;
+    final customRouteRestrictionsLabel = this.customRouteRestrictionsLabel;
+    final customSeatLabel = this.customSeatLabel;
+    final customTicketNumberLabel = this.customTicketNumberLabel;
+    final customTimeRestrictionsLabel = this.customTimeRestrictionsLabel;
+    final customTransitTerminusNameLabel = this.customTransitTerminusNameLabel;
+    final customZoneLabel = this.customZoneLabel;
+    final enableSingleLegItinerary = this.enableSingleLegItinerary;
+    final enableSmartTap = this.enableSmartTap;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final homepageUri = this.homepageUri;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final issuerName = this.issuerName;
+    final languageOverride = this.languageOverride;
+    final linksModuleData = this.linksModuleData;
+    final localizedIssuerName = this.localizedIssuerName;
+    final locations = this.locations;
+    final logo = this.logo;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final multipleDevicesAndHoldersAllowedStatus =
+        this.multipleDevicesAndHoldersAllowedStatus;
+    final notifyPreference = this.notifyPreference;
+    final redemptionIssuers = this.redemptionIssuers;
+    final review = this.review;
+    final reviewStatus = this.reviewStatus;
+    final securityAnimation = this.securityAnimation;
+    final textModulesData = this.textModulesData;
+    final transitOperatorName = this.transitOperatorName;
+    final transitType = this.transitType;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    final viewUnlockRequirement = this.viewUnlockRequirement;
+    final watermark = this.watermark;
+    final wideLogo = this.wideLogo;
+    final wordMark = this.wordMark;
+    return {
+      'activationOptions': ?activationOptions,
+      'allowMultipleUsersPerObject': ?allowMultipleUsersPerObject,
+      'appLinkData': ?appLinkData,
+      'callbackOptions': ?callbackOptions,
+      'classTemplateInfo': ?classTemplateInfo,
+      'countryCode': ?countryCode,
+      'customCarriageLabel': ?customCarriageLabel,
+      'customCoachLabel': ?customCoachLabel,
+      'customConcessionCategoryLabel': ?customConcessionCategoryLabel,
+      'customConfirmationCodeLabel': ?customConfirmationCodeLabel,
+      'customDiscountMessageLabel': ?customDiscountMessageLabel,
+      'customFareClassLabel': ?customFareClassLabel,
+      'customFareNameLabel': ?customFareNameLabel,
+      'customOtherRestrictionsLabel': ?customOtherRestrictionsLabel,
+      'customPlatformLabel': ?customPlatformLabel,
+      'customPurchaseFaceValueLabel': ?customPurchaseFaceValueLabel,
+      'customPurchasePriceLabel': ?customPurchasePriceLabel,
+      'customPurchaseReceiptNumberLabel': ?customPurchaseReceiptNumberLabel,
       'customRouteRestrictionsDetailsLabel':
-          customRouteRestrictionsDetailsLabel!,
-    if (customRouteRestrictionsLabel != null)
-      'customRouteRestrictionsLabel': customRouteRestrictionsLabel!,
-    if (customSeatLabel != null) 'customSeatLabel': customSeatLabel!,
-    if (customTicketNumberLabel != null)
-      'customTicketNumberLabel': customTicketNumberLabel!,
-    if (customTimeRestrictionsLabel != null)
-      'customTimeRestrictionsLabel': customTimeRestrictionsLabel!,
-    if (customTransitTerminusNameLabel != null)
-      'customTransitTerminusNameLabel': customTransitTerminusNameLabel!,
-    if (customZoneLabel != null) 'customZoneLabel': customZoneLabel!,
-    if (enableSingleLegItinerary != null)
-      'enableSingleLegItinerary': enableSingleLegItinerary!,
-    if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (homepageUri != null) 'homepageUri': homepageUri!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (issuerName != null) 'issuerName': issuerName!,
-    if (languageOverride != null) 'languageOverride': languageOverride!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (localizedIssuerName != null)
-      'localizedIssuerName': localizedIssuerName!,
-    if (locations != null) 'locations': locations!,
-    if (logo != null) 'logo': logo!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (multipleDevicesAndHoldersAllowedStatus != null)
+          ?customRouteRestrictionsDetailsLabel,
+      'customRouteRestrictionsLabel': ?customRouteRestrictionsLabel,
+      'customSeatLabel': ?customSeatLabel,
+      'customTicketNumberLabel': ?customTicketNumberLabel,
+      'customTimeRestrictionsLabel': ?customTimeRestrictionsLabel,
+      'customTransitTerminusNameLabel': ?customTransitTerminusNameLabel,
+      'customZoneLabel': ?customZoneLabel,
+      'enableSingleLegItinerary': ?enableSingleLegItinerary,
+      'enableSmartTap': ?enableSmartTap,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'homepageUri': ?homepageUri,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'issuerName': ?issuerName,
+      'languageOverride': ?languageOverride,
+      'linksModuleData': ?linksModuleData,
+      'localizedIssuerName': ?localizedIssuerName,
+      'locations': ?locations,
+      'logo': ?logo,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
       'multipleDevicesAndHoldersAllowedStatus':
-          multipleDevicesAndHoldersAllowedStatus!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
-    if (review != null) 'review': review!,
-    if (reviewStatus != null) 'reviewStatus': reviewStatus!,
-    if (securityAnimation != null) 'securityAnimation': securityAnimation!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (transitOperatorName != null)
-      'transitOperatorName': transitOperatorName!,
-    if (transitType != null) 'transitType': transitType!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-    if (viewUnlockRequirement != null)
-      'viewUnlockRequirement': viewUnlockRequirement!,
-    if (watermark != null) 'watermark': watermark!,
-    if (wideLogo != null) 'wideLogo': wideLogo!,
-    if (wordMark != null) 'wordMark': wordMark!,
-  };
+          ?multipleDevicesAndHoldersAllowedStatus,
+      'notifyPreference': ?notifyPreference,
+      'redemptionIssuers': ?redemptionIssuers,
+      'review': ?review,
+      'reviewStatus': ?reviewStatus,
+      'securityAnimation': ?securityAnimation,
+      'textModulesData': ?textModulesData,
+      'transitOperatorName': ?transitOperatorName,
+      'transitType': ?transitType,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+      'viewUnlockRequirement': ?viewUnlockRequirement,
+      'watermark': ?watermark,
+      'wideLogo': ?wideLogo,
+      'wordMark': ?wordMark,
+    };
+  }
 }
 
 class TransitClassAddMessageResponse {
@@ -17716,17 +17988,17 @@ class TransitClassAddMessageResponse {
 
   TransitClassAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? TransitClass.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? TransitClass.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class TransitClassListResponse {
@@ -17740,26 +18012,25 @@ class TransitClassListResponse {
 
   TransitClassListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => TransitClass.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => TransitClass.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 class TransitObject {
@@ -18125,256 +18396,265 @@ class TransitObject {
 
   TransitObject.fromJson(core.Map json_)
     : this(
-        activationStatus:
-            json_.containsKey('activationStatus')
-                ? ActivationStatus.fromJson(
-                  json_['activationStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        appLinkData:
-            json_.containsKey('appLinkData')
-                ? AppLinkData.fromJson(
-                  json_['appLinkData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        barcode:
-            json_.containsKey('barcode')
-                ? Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        activationStatus: json_.containsKey('activationStatus')
+            ? ActivationStatus.fromJson(
+                json_['activationStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        appLinkData: json_.containsKey('appLinkData')
+            ? AppLinkData.fromJson(
+                json_['appLinkData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        barcode: json_.containsKey('barcode')
+            ? Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         classId: json_['classId'] as core.String?,
-        classReference:
-            json_.containsKey('classReference')
-                ? TransitClass.fromJson(
-                  json_['classReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        classReference: json_.containsKey('classReference')
+            ? TransitClass.fromJson(
+                json_['classReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         concessionCategory: json_['concessionCategory'] as core.String?,
-        customConcessionCategory:
-            json_.containsKey('customConcessionCategory')
-                ? LocalizedString.fromJson(
-                  json_['customConcessionCategory']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customTicketStatus:
-            json_.containsKey('customTicketStatus')
-                ? LocalizedString.fromJson(
-                  json_['customTicketStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deviceContext:
-            json_.containsKey('deviceContext')
-                ? DeviceContext.fromJson(
-                  json_['deviceContext'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customConcessionCategory: json_.containsKey('customConcessionCategory')
+            ? LocalizedString.fromJson(
+                json_['customConcessionCategory']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customTicketStatus: json_.containsKey('customTicketStatus')
+            ? LocalizedString.fromJson(
+                json_['customTicketStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceContext: json_.containsKey('deviceContext')
+            ? DeviceContext.fromJson(
+                json_['deviceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disableExpirationNotification:
             json_['disableExpirationNotification'] as core.bool?,
-        groupingInfo:
-            json_.containsKey('groupingInfo')
-                ? GroupingInfo.fromJson(
-                  json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        groupingInfo: json_.containsKey('groupingInfo')
+            ? GroupingInfo.fromJson(
+                json_['groupingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasLinkedDevice: json_['hasLinkedDevice'] as core.bool?,
         hasUsers: json_['hasUsers'] as core.bool?,
-        heroImage:
-            json_.containsKey('heroImage')
-                ? Image.fromJson(
-                  json_['heroImage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        heroImage: json_.containsKey('heroImage')
+            ? Image.fromJson(
+                json_['heroImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hexBackgroundColor: json_['hexBackgroundColor'] as core.String?,
         id: json_['id'] as core.String?,
-        imageModulesData:
-            (json_['imageModulesData'] as core.List?)
-                ?.map(
-                  (value) => ImageModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        infoModuleData:
-            json_.containsKey('infoModuleData')
-                ? InfoModuleData.fromJson(
-                  json_['infoModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        linkedObjectIds:
-            (json_['linkedObjectIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        linksModuleData:
-            json_.containsKey('linksModuleData')
-                ? LinksModuleData.fromJson(
-                  json_['linksModuleData']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => LatLongPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        merchantLocations:
-            (json_['merchantLocations'] as core.List?)
-                ?.map(
-                  (value) => MerchantLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imageModulesData: (json_['imageModulesData'] as core.List?)
+            ?.map(
+              (value) => ImageModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        infoModuleData: json_.containsKey('infoModuleData')
+            ? InfoModuleData.fromJson(
+                json_['infoModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        linksModuleData: json_.containsKey('linksModuleData')
+            ? LinksModuleData.fromJson(
+                json_['linksModuleData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => LatLongPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        merchantLocations: (json_['merchantLocations'] as core.List?)
+            ?.map(
+              (value) => MerchantLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifyPreference: json_['notifyPreference'] as core.String?,
-        passConstraints:
-            json_.containsKey('passConstraints')
-                ? PassConstraints.fromJson(
-                  json_['passConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        passConstraints: json_.containsKey('passConstraints')
+            ? PassConstraints.fromJson(
+                json_['passConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         passengerNames: json_['passengerNames'] as core.String?,
         passengerType: json_['passengerType'] as core.String?,
-        purchaseDetails:
-            json_.containsKey('purchaseDetails')
-                ? PurchaseDetails.fromJson(
-                  json_['purchaseDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rotatingBarcode:
-            json_.containsKey('rotatingBarcode')
-                ? RotatingBarcode.fromJson(
-                  json_['rotatingBarcode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        saveRestrictions:
-            json_.containsKey('saveRestrictions')
-                ? SaveRestrictions.fromJson(
-                  json_['saveRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        purchaseDetails: json_.containsKey('purchaseDetails')
+            ? PurchaseDetails.fromJson(
+                json_['purchaseDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rotatingBarcode: json_.containsKey('rotatingBarcode')
+            ? RotatingBarcode.fromJson(
+                json_['rotatingBarcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        saveRestrictions: json_.containsKey('saveRestrictions')
+            ? SaveRestrictions.fromJson(
+                json_['saveRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         smartTapRedemptionValue:
             json_['smartTapRedemptionValue'] as core.String?,
         state: json_['state'] as core.String?,
-        textModulesData:
-            (json_['textModulesData'] as core.List?)
-                ?.map(
-                  (value) => TextModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        ticketLeg:
-            json_.containsKey('ticketLeg')
-                ? TicketLeg.fromJson(
-                  json_['ticketLeg'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ticketLegs:
-            (json_['ticketLegs'] as core.List?)
-                ?.map(
-                  (value) => TicketLeg.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textModulesData: (json_['textModulesData'] as core.List?)
+            ?.map(
+              (value) => TextModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        ticketLeg: json_.containsKey('ticketLeg')
+            ? TicketLeg.fromJson(
+                json_['ticketLeg'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ticketLegs: (json_['ticketLegs'] as core.List?)
+            ?.map(
+              (value) => TicketLeg.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         ticketNumber: json_['ticketNumber'] as core.String?,
-        ticketRestrictions:
-            json_.containsKey('ticketRestrictions')
-                ? TicketRestrictions.fromJson(
-                  json_['ticketRestrictions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ticketRestrictions: json_.containsKey('ticketRestrictions')
+            ? TicketRestrictions.fromJson(
+                json_['ticketRestrictions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ticketStatus: json_['ticketStatus'] as core.String?,
         tripId: json_['tripId'] as core.String?,
         tripType: json_['tripType'] as core.String?,
-        validTimeInterval:
-            json_.containsKey('validTimeInterval')
-                ? TimeInterval.fromJson(
-                  json_['validTimeInterval']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueAddedModuleData:
-            (json_['valueAddedModuleData'] as core.List?)
-                ?.map(
-                  (value) => ValueAddedModuleData.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        validTimeInterval: json_.containsKey('validTimeInterval')
+            ? TimeInterval.fromJson(
+                json_['validTimeInterval']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+            ?.map(
+              (value) => ValueAddedModuleData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activationStatus != null) 'activationStatus': activationStatus!,
-    if (appLinkData != null) 'appLinkData': appLinkData!,
-    if (barcode != null) 'barcode': barcode!,
-    if (classId != null) 'classId': classId!,
-    if (classReference != null) 'classReference': classReference!,
-    if (concessionCategory != null) 'concessionCategory': concessionCategory!,
-    if (customConcessionCategory != null)
-      'customConcessionCategory': customConcessionCategory!,
-    if (customTicketStatus != null) 'customTicketStatus': customTicketStatus!,
-    if (deviceContext != null) 'deviceContext': deviceContext!,
-    if (disableExpirationNotification != null)
-      'disableExpirationNotification': disableExpirationNotification!,
-    if (groupingInfo != null) 'groupingInfo': groupingInfo!,
-    if (hasLinkedDevice != null) 'hasLinkedDevice': hasLinkedDevice!,
-    if (hasUsers != null) 'hasUsers': hasUsers!,
-    if (heroImage != null) 'heroImage': heroImage!,
-    if (hexBackgroundColor != null) 'hexBackgroundColor': hexBackgroundColor!,
-    if (id != null) 'id': id!,
-    if (imageModulesData != null) 'imageModulesData': imageModulesData!,
-    if (infoModuleData != null) 'infoModuleData': infoModuleData!,
-    if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
-    if (linksModuleData != null) 'linksModuleData': linksModuleData!,
-    if (locations != null) 'locations': locations!,
-    if (merchantLocations != null) 'merchantLocations': merchantLocations!,
-    if (messages != null) 'messages': messages!,
-    if (notifyPreference != null) 'notifyPreference': notifyPreference!,
-    if (passConstraints != null) 'passConstraints': passConstraints!,
-    if (passengerNames != null) 'passengerNames': passengerNames!,
-    if (passengerType != null) 'passengerType': passengerType!,
-    if (purchaseDetails != null) 'purchaseDetails': purchaseDetails!,
-    if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
-    if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
-    if (smartTapRedemptionValue != null)
-      'smartTapRedemptionValue': smartTapRedemptionValue!,
-    if (state != null) 'state': state!,
-    if (textModulesData != null) 'textModulesData': textModulesData!,
-    if (ticketLeg != null) 'ticketLeg': ticketLeg!,
-    if (ticketLegs != null) 'ticketLegs': ticketLegs!,
-    if (ticketNumber != null) 'ticketNumber': ticketNumber!,
-    if (ticketRestrictions != null) 'ticketRestrictions': ticketRestrictions!,
-    if (ticketStatus != null) 'ticketStatus': ticketStatus!,
-    if (tripId != null) 'tripId': tripId!,
-    if (tripType != null) 'tripType': tripType!,
-    if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
-    if (valueAddedModuleData != null)
-      'valueAddedModuleData': valueAddedModuleData!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activationStatus = this.activationStatus;
+    final appLinkData = this.appLinkData;
+    final barcode = this.barcode;
+    final classId = this.classId;
+    final classReference = this.classReference;
+    final concessionCategory = this.concessionCategory;
+    final customConcessionCategory = this.customConcessionCategory;
+    final customTicketStatus = this.customTicketStatus;
+    final deviceContext = this.deviceContext;
+    final disableExpirationNotification = this.disableExpirationNotification;
+    final groupingInfo = this.groupingInfo;
+    final hasLinkedDevice = this.hasLinkedDevice;
+    final hasUsers = this.hasUsers;
+    final heroImage = this.heroImage;
+    final hexBackgroundColor = this.hexBackgroundColor;
+    final id = this.id;
+    final imageModulesData = this.imageModulesData;
+    final infoModuleData = this.infoModuleData;
+    final linkedObjectIds = this.linkedObjectIds;
+    final linksModuleData = this.linksModuleData;
+    final locations = this.locations;
+    final merchantLocations = this.merchantLocations;
+    final messages = this.messages;
+    final notifyPreference = this.notifyPreference;
+    final passConstraints = this.passConstraints;
+    final passengerNames = this.passengerNames;
+    final passengerType = this.passengerType;
+    final purchaseDetails = this.purchaseDetails;
+    final rotatingBarcode = this.rotatingBarcode;
+    final saveRestrictions = this.saveRestrictions;
+    final smartTapRedemptionValue = this.smartTapRedemptionValue;
+    final state = this.state;
+    final textModulesData = this.textModulesData;
+    final ticketLeg = this.ticketLeg;
+    final ticketLegs = this.ticketLegs;
+    final ticketNumber = this.ticketNumber;
+    final ticketRestrictions = this.ticketRestrictions;
+    final ticketStatus = this.ticketStatus;
+    final tripId = this.tripId;
+    final tripType = this.tripType;
+    final validTimeInterval = this.validTimeInterval;
+    final valueAddedModuleData = this.valueAddedModuleData;
+    final version = this.version;
+    return {
+      'activationStatus': ?activationStatus,
+      'appLinkData': ?appLinkData,
+      'barcode': ?barcode,
+      'classId': ?classId,
+      'classReference': ?classReference,
+      'concessionCategory': ?concessionCategory,
+      'customConcessionCategory': ?customConcessionCategory,
+      'customTicketStatus': ?customTicketStatus,
+      'deviceContext': ?deviceContext,
+      'disableExpirationNotification': ?disableExpirationNotification,
+      'groupingInfo': ?groupingInfo,
+      'hasLinkedDevice': ?hasLinkedDevice,
+      'hasUsers': ?hasUsers,
+      'heroImage': ?heroImage,
+      'hexBackgroundColor': ?hexBackgroundColor,
+      'id': ?id,
+      'imageModulesData': ?imageModulesData,
+      'infoModuleData': ?infoModuleData,
+      'linkedObjectIds': ?linkedObjectIds,
+      'linksModuleData': ?linksModuleData,
+      'locations': ?locations,
+      'merchantLocations': ?merchantLocations,
+      'messages': ?messages,
+      'notifyPreference': ?notifyPreference,
+      'passConstraints': ?passConstraints,
+      'passengerNames': ?passengerNames,
+      'passengerType': ?passengerType,
+      'purchaseDetails': ?purchaseDetails,
+      'rotatingBarcode': ?rotatingBarcode,
+      'saveRestrictions': ?saveRestrictions,
+      'smartTapRedemptionValue': ?smartTapRedemptionValue,
+      'state': ?state,
+      'textModulesData': ?textModulesData,
+      'ticketLeg': ?ticketLeg,
+      'ticketLegs': ?ticketLegs,
+      'ticketNumber': ?ticketNumber,
+      'ticketRestrictions': ?ticketRestrictions,
+      'ticketStatus': ?ticketStatus,
+      'tripId': ?tripId,
+      'tripType': ?tripType,
+      'validTimeInterval': ?validTimeInterval,
+      'valueAddedModuleData': ?valueAddedModuleData,
+      'version': ?version,
+    };
+  }
 }
 
 class TransitObjectAddMessageResponse {
@@ -18385,17 +18665,17 @@ class TransitObjectAddMessageResponse {
 
   TransitObjectAddMessageResponse.fromJson(core.Map json_)
     : this(
-        resource:
-            json_.containsKey('resource')
-                ? TransitObject.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? TransitObject.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resource = this.resource;
+    return {'resource': ?resource};
+  }
 }
 
 class TransitObjectListResponse {
@@ -18409,26 +18689,25 @@ class TransitObjectListResponse {
 
   TransitObjectListResponse.fromJson(core.Map json_)
     : this(
-        pagination:
-            json_.containsKey('pagination')
-                ? Pagination.fromJson(
-                  json_['pagination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => TransitObject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pagination: json_.containsKey('pagination')
+            ? Pagination.fromJson(
+                json_['pagination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => TransitObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagination != null) 'pagination': pagination!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pagination = this.pagination;
+    final resources = this.resources;
+    return {'pagination': ?pagination, 'resources': ?resources};
+  }
 }
 
 /// Request to upload rotating barcode values.
@@ -18446,25 +18725,24 @@ class TransitObjectUploadRotatingBarcodeValuesRequest {
 
   TransitObjectUploadRotatingBarcodeValuesRequest.fromJson(core.Map json_)
     : this(
-        blob:
-            json_.containsKey('blob')
-                ? Media.fromJson(
-                  json_['blob'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        mediaRequestInfo:
-            json_.containsKey('mediaRequestInfo')
-                ? MediaRequestInfo.fromJson(
-                  json_['mediaRequestInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blob: json_.containsKey('blob')
+            ? Media.fromJson(
+                json_['blob'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mediaRequestInfo: json_.containsKey('mediaRequestInfo')
+            ? MediaRequestInfo.fromJson(
+                json_['mediaRequestInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blob != null) 'blob': blob!,
-    if (mediaRequestInfo != null) 'mediaRequestInfo': mediaRequestInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blob = this.blob;
+    final mediaRequestInfo = this.mediaRequestInfo;
+    return {'blob': ?blob, 'mediaRequestInfo': ?mediaRequestInfo};
+  }
 }
 
 /// Response for uploading rotating barcode values.
@@ -18496,11 +18774,12 @@ class TranslatedString {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (language != null) 'language': language!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final language = this.language;
+    final value = this.value;
+    return {'kind': ?kind, 'language': ?language, 'value': ?value};
+  }
 }
 
 /// Indicates that the issuer would like Google Wallet to send an upcoming card
@@ -18514,9 +18793,10 @@ class UpcomingNotification {
   UpcomingNotification.fromJson(core.Map json_)
     : this(enableNotification: json_['enableNotification'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableNotification != null) 'enableNotification': enableNotification!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableNotification = this.enableNotification;
+    return {'enableNotification': ?enableNotification};
+  }
 }
 
 class Uri {
@@ -18566,24 +18846,29 @@ class Uri {
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        localizedDescription:
-            json_.containsKey('localizedDescription')
-                ? LocalizedString.fromJson(
-                  json_['localizedDescription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        localizedDescription: json_.containsKey('localizedDescription')
+            ? LocalizedString.fromJson(
+                json_['localizedDescription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (localizedDescription != null)
-      'localizedDescription': localizedDescription!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final id = this.id;
+    final kind = this.kind;
+    final localizedDescription = this.localizedDescription;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'id': ?id,
+      'kind': ?kind,
+      'localizedDescription': ?localizedDescription,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Data for Value Added module.
@@ -18632,41 +18917,44 @@ class ValueAddedModuleData {
 
   ValueAddedModuleData.fromJson(core.Map json_)
     : this(
-        body:
-            json_.containsKey('body')
-                ? LocalizedString.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        header:
-            json_.containsKey('header')
-                ? LocalizedString.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        image:
-            json_.containsKey('image')
-                ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        body: json_.containsKey('body')
+            ? LocalizedString.fromJson(
+                json_['body'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        header: json_.containsKey('header')
+            ? LocalizedString.fromJson(
+                json_['header'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? Image.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sortIndex: json_['sortIndex'] as core.int?,
         uri: json_['uri'] as core.String?,
-        viewConstraints:
-            json_.containsKey('viewConstraints')
-                ? ModuleViewConstraints.fromJson(
-                  json_['viewConstraints']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        viewConstraints: json_.containsKey('viewConstraints')
+            ? ModuleViewConstraints.fromJson(
+                json_['viewConstraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (header != null) 'header': header!,
-    if (image != null) 'image': image!,
-    if (sortIndex != null) 'sortIndex': sortIndex!,
-    if (uri != null) 'uri': uri!,
-    if (viewConstraints != null) 'viewConstraints': viewConstraints!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final header = this.header;
+    final image = this.image;
+    final sortIndex = this.sortIndex;
+    final uri = this.uri;
+    final viewConstraints = this.viewConstraints;
+    return {
+      'body': ?body,
+      'header': ?header,
+      'image': ?image,
+      'sortIndex': ?sortIndex,
+      'uri': ?uri,
+      'viewConstraints': ?viewConstraints,
+    };
+  }
 }

@@ -11856,10 +11856,10 @@ void main() {
         final o =
             buildFreeListingsProgramStatusReviewIneligibilityReasonDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .FreeListingsProgramStatusReviewIneligibilityReasonDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.FreeListingsProgramStatusReviewIneligibilityReasonDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkFreeListingsProgramStatusReviewIneligibilityReasonDetails(od);
       });
     },
@@ -12270,10 +12270,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildLiasettingsSetInventoryVerificationContactResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .LiasettingsSetInventoryVerificationContactResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.LiasettingsSetInventoryVerificationContactResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkLiasettingsSetInventoryVerificationContactResponse(od);
       });
     },
@@ -13843,10 +13843,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildShippingsettingsGetSupportedPickupServicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkShippingsettingsGetSupportedPickupServicesResponse(od);
       });
     },
@@ -13892,10 +13892,10 @@ void main() {
         final o =
             buildShoppingAdsProgramStatusReviewIneligibilityReasonDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ShoppingAdsProgramStatusReviewIneligibilityReasonDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ShoppingAdsProgramStatusReviewIneligibilityReasonDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkShoppingAdsProgramStatusReviewIneligibilityReasonDetails(od);
       });
     },
@@ -17630,8 +17630,9 @@ void main() {
   unittest.group('resource-FreelistingsprogramCheckoutsettingsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final res = api.ShoppingContentApi(
+        mock,
+      ).freelistingsprogram.checkoutsettings;
       final arg_merchantId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17677,8 +17678,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final res = api.ShoppingContentApi(
+        mock,
+      ).freelistingsprogram.checkoutsettings;
       final arg_merchantId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17725,8 +17727,9 @@ void main() {
 
     unittest.test('method--insert', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final res = api.ShoppingContentApi(
+        mock,
+      ).freelistingsprogram.checkoutsettings;
       final arg_request = buildInsertCheckoutSettingsRequest();
       final arg_merchantId = 'foo';
       final arg_$fields = 'foo';

@@ -108,7 +108,7 @@ class PhotoResource {
   async.Future<Photo> create(Photo request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photo';
@@ -148,7 +148,7 @@ class PhotoResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/photo/' + commons.escapeVariable('$photoId');
@@ -204,9 +204,9 @@ class PhotoResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/photo/' + commons.escapeVariable('$photoId');
@@ -253,7 +253,7 @@ class PhotoResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photo:startUpload';
@@ -315,8 +315,8 @@ class PhotoResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/photo/' + commons.escapeVariable('$id');
@@ -374,8 +374,8 @@ class PhotoSequenceResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (inputType != null) 'inputType': [inputType],
-      if ($fields != null) 'fields': [$fields],
+      'inputType': ?inputType == null ? null : [inputType],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photoSequence';
@@ -416,7 +416,7 @@ class PhotoSequenceResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/photoSequence/' + commons.escapeVariable('$sequenceId');
@@ -476,9 +476,9 @@ class PhotoSequenceResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/photoSequence/' + commons.escapeVariable('$sequenceId');
@@ -517,7 +517,7 @@ class PhotoSequenceResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photoSequence:startUpload';
@@ -578,10 +578,10 @@ class PhotoSequencesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photoSequences';
@@ -631,7 +631,7 @@ class PhotosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photos:batchDelete';
@@ -691,10 +691,10 @@ class PhotosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (photoIds != null) 'photoIds': photoIds,
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'photoIds': ?photoIds,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photos:batchGet';
@@ -744,7 +744,7 @@ class PhotosResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photos:batchUpdate';
@@ -814,12 +814,12 @@ class PhotosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/photos';
@@ -849,15 +849,15 @@ class BatchDeletePhotosRequest {
 
   BatchDeletePhotosRequest.fromJson(core.Map json_)
     : this(
-        photoIds:
-            (json_['photoIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        photoIds: (json_['photoIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (photoIds != null) 'photoIds': photoIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final photoIds = this.photoIds;
+    return {'photoIds': ?photoIds};
+  }
 }
 
 /// Response to batch delete of one or more Photos.
@@ -870,19 +870,18 @@ class BatchDeletePhotosResponse {
 
   BatchDeletePhotosResponse.fromJson(core.Map json_)
     : this(
-        status:
-            (json_['status'] as core.List?)
-                ?.map(
-                  (value) => Status.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        status: (json_['status'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    return {'status': ?status};
+  }
 }
 
 /// Response to batch get of Photos.
@@ -895,19 +894,19 @@ class BatchGetPhotosResponse {
 
   BatchGetPhotosResponse.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => PhotoResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => PhotoResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
 }
 
 /// Request to update the metadata of photos.
@@ -923,20 +922,19 @@ class BatchUpdatePhotosRequest {
 
   BatchUpdatePhotosRequest.fromJson(core.Map json_)
     : this(
-        updatePhotoRequests:
-            (json_['updatePhotoRequests'] as core.List?)
-                ?.map(
-                  (value) => UpdatePhotoRequest.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        updatePhotoRequests: (json_['updatePhotoRequests'] as core.List?)
+            ?.map(
+              (value) => UpdatePhotoRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (updatePhotoRequests != null)
-      'updatePhotoRequests': updatePhotoRequests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final updatePhotoRequests = this.updatePhotoRequests;
+    return {'updatePhotoRequests': ?updatePhotoRequests};
+  }
 }
 
 /// Response to batch update of metadata of one or more Photos.
@@ -949,19 +947,19 @@ class BatchUpdatePhotosResponse {
 
   BatchUpdatePhotosResponse.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => PhotoResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => PhotoResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
 }
 
 /// A connection is the link from a source photo to a destination photo.
@@ -976,17 +974,17 @@ class Connection {
 
   Connection.fromJson(core.Map json_)
     : this(
-        target:
-            json_.containsKey('target')
-                ? PhotoId.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        target: json_.containsKey('target')
+            ? PhotoId.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (target != null) 'target': target!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final target = this.target;
+    return {'target': ?target};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1016,10 +1014,11 @@ class GpsDataGapFailureDetails {
         gapStartTime: json_['gapStartTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gapDuration != null) 'gapDuration': gapDuration!,
-    if (gapStartTime != null) 'gapStartTime': gapStartTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gapDuration = this.gapDuration;
+    final gapStartTime = this.gapStartTime;
+    return {'gapDuration': ?gapDuration, 'gapStartTime': ?gapStartTime};
+  }
 }
 
 /// IMU data from the device sensors.
@@ -1040,37 +1039,35 @@ class Imu {
 
   Imu.fromJson(core.Map json_)
     : this(
-        accelMpsps:
-            (json_['accelMpsps'] as core.List?)
-                ?.map(
-                  (value) => Measurement3d.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        gyroRps:
-            (json_['gyroRps'] as core.List?)
-                ?.map(
-                  (value) => Measurement3d.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        magUt:
-            (json_['magUt'] as core.List?)
-                ?.map(
-                  (value) => Measurement3d.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accelMpsps: (json_['accelMpsps'] as core.List?)
+            ?.map(
+              (value) => Measurement3d.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        gyroRps: (json_['gyroRps'] as core.List?)
+            ?.map(
+              (value) => Measurement3d.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        magUt: (json_['magUt'] as core.List?)
+            ?.map(
+              (value) => Measurement3d.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accelMpsps != null) 'accelMpsps': accelMpsps!,
-    if (gyroRps != null) 'gyroRps': gyroRps!,
-    if (magUt != null) 'magUt': magUt!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accelMpsps = this.accelMpsps;
+    final gyroRps = this.gyroRps;
+    final magUt = this.magUt;
+    return {'accelMpsps': ?accelMpsps, 'gyroRps': ?gyroRps, 'magUt': ?magUt};
+  }
 }
 
 /// Details related to ProcessingFailureReason#IMU_DATA_GAP.
@@ -1092,10 +1089,11 @@ class ImuDataGapFailureDetails {
         gapStartTime: json_['gapStartTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gapDuration != null) 'gapDuration': gapDuration!,
-    if (gapStartTime != null) 'gapStartTime': gapStartTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gapDuration = this.gapDuration;
+    final gapStartTime = this.gapStartTime;
+    return {'gapDuration': ?gapDuration, 'gapStartTime': ?gapStartTime};
+  }
 }
 
 /// Details related to ProcessingFailureReason#INSUFFICIENT_GPS.
@@ -1108,9 +1106,10 @@ class InsufficientGpsFailureDetails {
   InsufficientGpsFailureDetails.fromJson(core.Map json_)
     : this(gpsPointsFound: json_['gpsPointsFound'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gpsPointsFound != null) 'gpsPointsFound': gpsPointsFound!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gpsPointsFound = this.gpsPointsFound;
+    return {'gpsPointsFound': ?gpsPointsFound};
+  }
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -1132,24 +1131,23 @@ class LatLngBounds {
 
   LatLngBounds.fromJson(core.Map json_)
     : this(
-        northeast:
-            json_.containsKey('northeast')
-                ? LatLng.fromJson(
-                  json_['northeast'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        southwest:
-            json_.containsKey('southwest')
-                ? LatLng.fromJson(
-                  json_['southwest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        northeast: json_.containsKey('northeast')
+            ? LatLng.fromJson(
+                json_['northeast'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        southwest: json_.containsKey('southwest')
+            ? LatLng.fromJson(
+                json_['southwest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (northeast != null) 'northeast': northeast!,
-    if (southwest != null) 'southwest': southwest!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final northeast = this.northeast;
+    final southwest = this.southwest;
+    return {'northeast': ?northeast, 'southwest': ?southwest};
+  }
 }
 
 /// Level information containing level number and its corresponding name.
@@ -1179,10 +1177,11 @@ class Level {
         number: (json_['number'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (number != null) 'number': number!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final number = this.number;
+    return {'name': ?name, 'number': ?number};
+  }
 }
 
 /// Response to list all photo sequences that belong to a user.
@@ -1207,20 +1206,20 @@ class ListPhotoSequencesResponse {
   ListPhotoSequencesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        photoSequences:
-            (json_['photoSequences'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        photoSequences: (json_['photoSequences'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (photoSequences != null) 'photoSequences': photoSequences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final photoSequences = this.photoSequences;
+    return {'nextPageToken': ?nextPageToken, 'photoSequences': ?photoSequences};
+  }
 }
 
 /// Response to list all photos that belong to a user.
@@ -1239,20 +1238,19 @@ class ListPhotosResponse {
   ListPhotosResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        photos:
-            (json_['photos'] as core.List?)
-                ?.map(
-                  (value) => Photo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        photos: (json_['photos'] as core.List?)
+            ?.map(
+              (value) =>
+                  Photo.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (photos != null) 'photos': photos!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final photos = this.photos;
+    return {'nextPageToken': ?nextPageToken, 'photos': ?photos};
+  }
 }
 
 /// A Generic 3d measurement sample.
@@ -1279,12 +1277,13 @@ class Measurement3d {
         z: (json_['z'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captureTime != null) 'captureTime': captureTime!,
-    if (x != null) 'x': x!,
-    if (y != null) 'y': y!,
-    if (z != null) 'z': z!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captureTime = this.captureTime;
+    final x = this.x;
+    final y = this.y;
+    final z = this.z;
+    return {'captureTime': ?captureTime, 'x': ?x, 'y': ?y, 'z': ?z};
+  }
 }
 
 /// Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.
@@ -1316,12 +1315,18 @@ class NoOverlapGpsFailureDetails {
         videoStartTime: json_['videoStartTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gpsEndTime != null) 'gpsEndTime': gpsEndTime!,
-    if (gpsStartTime != null) 'gpsStartTime': gpsStartTime!,
-    if (videoEndTime != null) 'videoEndTime': videoEndTime!,
-    if (videoStartTime != null) 'videoStartTime': videoStartTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gpsEndTime = this.gpsEndTime;
+    final gpsStartTime = this.gpsStartTime;
+    final videoEndTime = this.videoEndTime;
+    final videoStartTime = this.videoStartTime;
+    return {
+      'gpsEndTime': ?gpsEndTime,
+      'gpsStartTime': ?gpsStartTime,
+      'videoEndTime': ?videoEndTime,
+      'videoStartTime': ?videoStartTime,
+    };
+  }
 }
 
 /// Details related to ProcessingFailureReason#NOT_OUTDOORS.
@@ -1337,9 +1342,10 @@ class NotOutdoorsFailureDetails {
   NotOutdoorsFailureDetails.fromJson(core.Map json_)
     : this(startTime: json_['startTime'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final startTime = this.startTime;
+    return {'startTime': ?startTime};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1390,30 +1396,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Photo is used to store 360 photos along with photo metadata.
@@ -1531,65 +1541,73 @@ class Photo {
   Photo.fromJson(core.Map json_)
     : this(
         captureTime: json_['captureTime'] as core.String?,
-        connections:
-            (json_['connections'] as core.List?)
-                ?.map(
-                  (value) => Connection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        connections: (json_['connections'] as core.List?)
+            ?.map(
+              (value) => Connection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         downloadUrl: json_['downloadUrl'] as core.String?,
         mapsPublishStatus: json_['mapsPublishStatus'] as core.String?,
-        photoId:
-            json_.containsKey('photoId')
-                ? PhotoId.fromJson(
-                  json_['photoId'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        places:
-            (json_['places'] as core.List?)
-                ?.map(
-                  (value) => Place.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        pose:
-            json_.containsKey('pose')
-                ? Pose.fromJson(
-                  json_['pose'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        photoId: json_.containsKey('photoId')
+            ? PhotoId.fromJson(
+                json_['photoId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        places: (json_['places'] as core.List?)
+            ?.map(
+              (value) =>
+                  Place.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        pose: json_.containsKey('pose')
+            ? Pose.fromJson(
+                json_['pose'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         shareLink: json_['shareLink'] as core.String?,
         thumbnailUrl: json_['thumbnailUrl'] as core.String?,
         transferStatus: json_['transferStatus'] as core.String?,
-        uploadReference:
-            json_.containsKey('uploadReference')
-                ? UploadRef.fromJson(
-                  json_['uploadReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        uploadReference: json_.containsKey('uploadReference')
+            ? UploadRef.fromJson(
+                json_['uploadReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uploadTime: json_['uploadTime'] as core.String?,
         viewCount: json_['viewCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captureTime != null) 'captureTime': captureTime!,
-    if (connections != null) 'connections': connections!,
-    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-    if (mapsPublishStatus != null) 'mapsPublishStatus': mapsPublishStatus!,
-    if (photoId != null) 'photoId': photoId!,
-    if (places != null) 'places': places!,
-    if (pose != null) 'pose': pose!,
-    if (shareLink != null) 'shareLink': shareLink!,
-    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
-    if (transferStatus != null) 'transferStatus': transferStatus!,
-    if (uploadReference != null) 'uploadReference': uploadReference!,
-    if (uploadTime != null) 'uploadTime': uploadTime!,
-    if (viewCount != null) 'viewCount': viewCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captureTime = this.captureTime;
+    final connections = this.connections;
+    final downloadUrl = this.downloadUrl;
+    final mapsPublishStatus = this.mapsPublishStatus;
+    final photoId = this.photoId;
+    final places = this.places;
+    final pose = this.pose;
+    final shareLink = this.shareLink;
+    final thumbnailUrl = this.thumbnailUrl;
+    final transferStatus = this.transferStatus;
+    final uploadReference = this.uploadReference;
+    final uploadTime = this.uploadTime;
+    final viewCount = this.viewCount;
+    return {
+      'captureTime': ?captureTime,
+      'connections': ?connections,
+      'downloadUrl': ?downloadUrl,
+      'mapsPublishStatus': ?mapsPublishStatus,
+      'photoId': ?photoId,
+      'places': ?places,
+      'pose': ?pose,
+      'shareLink': ?shareLink,
+      'thumbnailUrl': ?thumbnailUrl,
+      'transferStatus': ?transferStatus,
+      'uploadReference': ?uploadReference,
+      'uploadTime': ?uploadTime,
+      'viewCount': ?viewCount,
+    };
+  }
 }
 
 /// Identifier for a Photo.
@@ -1601,7 +1619,10 @@ class PhotoId {
 
   PhotoId.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 /// Response payload for a single Photo in batch operations including
@@ -1618,24 +1639,23 @@ class PhotoResponse {
 
   PhotoResponse.fromJson(core.Map json_)
     : this(
-        photo:
-            json_.containsKey('photo')
-                ? Photo.fromJson(
-                  json_['photo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        status:
-            json_.containsKey('status')
-                ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        photo: json_.containsKey('photo')
+            ? Photo.fromJson(
+                json_['photo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? Status.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (photo != null) 'photo': photo!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final photo = this.photo;
+    final status = this.status;
+    return {'photo': ?photo, 'status': ?status};
+  }
 }
 
 /// A sequence of 360 photos along with metadata.
@@ -1813,76 +1833,79 @@ class PhotoSequence {
     : this(
         captureTimeOverride: json_['captureTimeOverride'] as core.String?,
         distanceMeters: (json_['distanceMeters'] as core.num?)?.toDouble(),
-        failureDetails:
-            json_.containsKey('failureDetails')
-                ? ProcessingFailureDetails.fromJson(
-                  json_['failureDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        failureDetails: json_.containsKey('failureDetails')
+            ? ProcessingFailureDetails.fromJson(
+                json_['failureDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         failureReason: json_['failureReason'] as core.String?,
         filename: json_['filename'] as core.String?,
         gpsSource: json_['gpsSource'] as core.String?,
         id: json_['id'] as core.String?,
-        imu:
-            json_.containsKey('imu')
-                ? Imu.fromJson(
-                  json_['imu'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        photos:
-            (json_['photos'] as core.List?)
-                ?.map(
-                  (value) => Photo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imu: json_.containsKey('imu')
+            ? Imu.fromJson(json_['imu'] as core.Map<core.String, core.dynamic>)
+            : null,
+        photos: (json_['photos'] as core.List?)
+            ?.map(
+              (value) =>
+                  Photo.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         processingState: json_['processingState'] as core.String?,
-        rawGpsTimeline:
-            (json_['rawGpsTimeline'] as core.List?)
-                ?.map(
-                  (value) => Pose.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        sequenceBounds:
-            json_.containsKey('sequenceBounds')
-                ? LatLngBounds.fromJson(
-                  json_['sequenceBounds']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        uploadReference:
-            json_.containsKey('uploadReference')
-                ? UploadRef.fromJson(
-                  json_['uploadReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rawGpsTimeline: (json_['rawGpsTimeline'] as core.List?)
+            ?.map(
+              (value) =>
+                  Pose.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        sequenceBounds: json_.containsKey('sequenceBounds')
+            ? LatLngBounds.fromJson(
+                json_['sequenceBounds'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uploadReference: json_.containsKey('uploadReference')
+            ? UploadRef.fromJson(
+                json_['uploadReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uploadTime: json_['uploadTime'] as core.String?,
         viewCount: json_['viewCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captureTimeOverride != null)
-      'captureTimeOverride': captureTimeOverride!,
-    if (distanceMeters != null) 'distanceMeters': distanceMeters!,
-    if (failureDetails != null) 'failureDetails': failureDetails!,
-    if (failureReason != null) 'failureReason': failureReason!,
-    if (filename != null) 'filename': filename!,
-    if (gpsSource != null) 'gpsSource': gpsSource!,
-    if (id != null) 'id': id!,
-    if (imu != null) 'imu': imu!,
-    if (photos != null) 'photos': photos!,
-    if (processingState != null) 'processingState': processingState!,
-    if (rawGpsTimeline != null) 'rawGpsTimeline': rawGpsTimeline!,
-    if (sequenceBounds != null) 'sequenceBounds': sequenceBounds!,
-    if (uploadReference != null) 'uploadReference': uploadReference!,
-    if (uploadTime != null) 'uploadTime': uploadTime!,
-    if (viewCount != null) 'viewCount': viewCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captureTimeOverride = this.captureTimeOverride;
+    final distanceMeters = this.distanceMeters;
+    final failureDetails = this.failureDetails;
+    final failureReason = this.failureReason;
+    final filename = this.filename;
+    final gpsSource = this.gpsSource;
+    final id = this.id;
+    final imu = this.imu;
+    final photos = this.photos;
+    final processingState = this.processingState;
+    final rawGpsTimeline = this.rawGpsTimeline;
+    final sequenceBounds = this.sequenceBounds;
+    final uploadReference = this.uploadReference;
+    final uploadTime = this.uploadTime;
+    final viewCount = this.viewCount;
+    return {
+      'captureTimeOverride': ?captureTimeOverride,
+      'distanceMeters': ?distanceMeters,
+      'failureDetails': ?failureDetails,
+      'failureReason': ?failureReason,
+      'filename': ?filename,
+      'gpsSource': ?gpsSource,
+      'id': ?id,
+      'imu': ?imu,
+      'photos': ?photos,
+      'processingState': ?processingState,
+      'rawGpsTimeline': ?rawGpsTimeline,
+      'sequenceBounds': ?sequenceBounds,
+      'uploadReference': ?uploadReference,
+      'uploadTime': ?uploadTime,
+      'viewCount': ?viewCount,
+    };
+  }
 }
 
 /// Place metadata for an entity.
@@ -1913,11 +1936,12 @@ class Place {
         placeId: json_['placeId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (placeId != null) 'placeId': placeId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCode = this.languageCode;
+    final name = this.name;
+    final placeId = this.placeId;
+    return {'languageCode': ?languageCode, 'name': ?name, 'placeId': ?placeId};
+  }
 }
 
 /// Raw pose measurement for an entity.
@@ -1990,33 +2014,40 @@ class Pose {
         gpsRecordTimestampUnixEpoch:
             json_['gpsRecordTimestampUnixEpoch'] as core.String?,
         heading: (json_['heading'] as core.num?)?.toDouble(),
-        latLngPair:
-            json_.containsKey('latLngPair')
-                ? LatLng.fromJson(
-                  json_['latLngPair'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        level:
-            json_.containsKey('level')
-                ? Level.fromJson(
-                  json_['level'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latLngPair: json_.containsKey('latLngPair')
+            ? LatLng.fromJson(
+                json_['latLngPair'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        level: json_.containsKey('level')
+            ? Level.fromJson(
+                json_['level'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pitch: (json_['pitch'] as core.num?)?.toDouble(),
         roll: (json_['roll'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
-    if (altitude != null) 'altitude': altitude!,
-    if (gpsRecordTimestampUnixEpoch != null)
-      'gpsRecordTimestampUnixEpoch': gpsRecordTimestampUnixEpoch!,
-    if (heading != null) 'heading': heading!,
-    if (latLngPair != null) 'latLngPair': latLngPair!,
-    if (level != null) 'level': level!,
-    if (pitch != null) 'pitch': pitch!,
-    if (roll != null) 'roll': roll!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accuracyMeters = this.accuracyMeters;
+    final altitude = this.altitude;
+    final gpsRecordTimestampUnixEpoch = this.gpsRecordTimestampUnixEpoch;
+    final heading = this.heading;
+    final latLngPair = this.latLngPair;
+    final level = this.level;
+    final pitch = this.pitch;
+    final roll = this.roll;
+    return {
+      'accuracyMeters': ?accuracyMeters,
+      'altitude': ?altitude,
+      'gpsRecordTimestampUnixEpoch': ?gpsRecordTimestampUnixEpoch,
+      'heading': ?heading,
+      'latLngPair': ?latLngPair,
+      'level': ?level,
+      'pitch': ?pitch,
+      'roll': ?roll,
+    };
+  }
 }
 
 /// Additional details to accompany the ProcessingFailureReason enum.
@@ -2050,52 +2081,52 @@ class ProcessingFailureDetails {
 
   ProcessingFailureDetails.fromJson(core.Map json_)
     : this(
-        gpsDataGapDetails:
-            json_.containsKey('gpsDataGapDetails')
-                ? GpsDataGapFailureDetails.fromJson(
-                  json_['gpsDataGapDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imuDataGapDetails:
-            json_.containsKey('imuDataGapDetails')
-                ? ImuDataGapFailureDetails.fromJson(
-                  json_['imuDataGapDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        insufficientGpsDetails:
-            json_.containsKey('insufficientGpsDetails')
-                ? InsufficientGpsFailureDetails.fromJson(
-                  json_['insufficientGpsDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        noOverlapGpsDetails:
-            json_.containsKey('noOverlapGpsDetails')
-                ? NoOverlapGpsFailureDetails.fromJson(
-                  json_['noOverlapGpsDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        notOutdoorsDetails:
-            json_.containsKey('notOutdoorsDetails')
-                ? NotOutdoorsFailureDetails.fromJson(
-                  json_['notOutdoorsDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gpsDataGapDetails: json_.containsKey('gpsDataGapDetails')
+            ? GpsDataGapFailureDetails.fromJson(
+                json_['gpsDataGapDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imuDataGapDetails: json_.containsKey('imuDataGapDetails')
+            ? ImuDataGapFailureDetails.fromJson(
+                json_['imuDataGapDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        insufficientGpsDetails: json_.containsKey('insufficientGpsDetails')
+            ? InsufficientGpsFailureDetails.fromJson(
+                json_['insufficientGpsDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        noOverlapGpsDetails: json_.containsKey('noOverlapGpsDetails')
+            ? NoOverlapGpsFailureDetails.fromJson(
+                json_['noOverlapGpsDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        notOutdoorsDetails: json_.containsKey('notOutdoorsDetails')
+            ? NotOutdoorsFailureDetails.fromJson(
+                json_['notOutdoorsDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gpsDataGapDetails != null) 'gpsDataGapDetails': gpsDataGapDetails!,
-    if (imuDataGapDetails != null) 'imuDataGapDetails': imuDataGapDetails!,
-    if (insufficientGpsDetails != null)
-      'insufficientGpsDetails': insufficientGpsDetails!,
-    if (noOverlapGpsDetails != null)
-      'noOverlapGpsDetails': noOverlapGpsDetails!,
-    if (notOutdoorsDetails != null) 'notOutdoorsDetails': notOutdoorsDetails!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gpsDataGapDetails = this.gpsDataGapDetails;
+    final imuDataGapDetails = this.imuDataGapDetails;
+    final insufficientGpsDetails = this.insufficientGpsDetails;
+    final noOverlapGpsDetails = this.noOverlapGpsDetails;
+    final notOutdoorsDetails = this.notOutdoorsDetails;
+    return {
+      'gpsDataGapDetails': ?gpsDataGapDetails,
+      'imuDataGapDetails': ?imuDataGapDetails,
+      'insufficientGpsDetails': ?insufficientGpsDetails,
+      'noOverlapGpsDetails': ?noOverlapGpsDetails,
+      'notOutdoorsDetails': ?notOutdoorsDetails,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2136,19 +2167,19 @@ class UpdatePhotoRequest {
 
   UpdatePhotoRequest.fromJson(core.Map json_)
     : this(
-        photo:
-            json_.containsKey('photo')
-                ? Photo.fromJson(
-                  json_['photo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        photo: json_.containsKey('photo')
+            ? Photo.fromJson(
+                json_['photo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (photo != null) 'photo': photo!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final photo = this.photo;
+    final updateMask = this.updateMask;
+    return {'photo': ?photo, 'updateMask': ?updateMask};
+  }
 }
 
 /// Upload reference for media files.
@@ -2164,7 +2195,8 @@ class UploadRef {
   UploadRef.fromJson(core.Map json_)
     : this(uploadUrl: json_['uploadUrl'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uploadUrl != null) 'uploadUrl': uploadUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final uploadUrl = this.uploadUrl;
+    return {'uploadUrl': ?uploadUrl};
+  }
 }

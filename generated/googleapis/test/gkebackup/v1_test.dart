@@ -3839,10 +3839,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.backupChannels.backupPlanBindings;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.backupChannels.backupPlanBindings;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3895,10 +3894,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.backupChannels.backupPlanBindings;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.backupChannels.backupPlanBindings;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -4629,8 +4627,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupPlansBackupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_request = buildBackup();
       final arg_parent = 'foo';
       final arg_backupId = 'foo';
@@ -4701,8 +4700,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_force = true;
@@ -4769,8 +4769,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4823,8 +4824,9 @@ void main() {
 
     unittest.test('method--getBackupIndexDownloadUrl', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_backup = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4884,8 +4886,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4947,8 +4950,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5034,8 +5038,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_request = buildBackup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5106,8 +5111,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5170,8 +5176,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.backupPlans.backups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5238,10 +5245,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBackupPlansBackupsVolumeBackupsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(
-            mock,
-          ).projects.locations.backupPlans.backups.volumeBackups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups.volumeBackups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5294,10 +5300,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(
-            mock,
-          ).projects.locations.backupPlans.backups.volumeBackups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups.volumeBackups;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -5359,10 +5364,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(
-            mock,
-          ).projects.locations.backupPlans.backups.volumeBackups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups.volumeBackups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5442,10 +5446,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(
-            mock,
-          ).projects.locations.backupPlans.backups.volumeBackups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups.volumeBackups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5508,10 +5511,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(
-            mock,
-          ).projects.locations.backupPlans.backups.volumeBackups;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.backupPlans.backups.volumeBackups;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6177,10 +6179,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restoreChannels.restorePlanBindings;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restoreChannels.restorePlanBindings;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6233,10 +6234,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restoreChannels.restorePlanBindings;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restoreChannels.restorePlanBindings;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -6973,8 +6973,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRestorePlansRestoresResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_request = buildRestore();
       final arg_parent = 'foo';
       final arg_restoreId = 'foo';
@@ -7045,8 +7046,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_force = true;
@@ -7113,8 +7115,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7167,8 +7170,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7230,8 +7234,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7311,8 +7316,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_request = buildRestore();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7383,8 +7389,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7447,8 +7454,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BackupForGKEApi(mock).projects.locations.restorePlans.restores;
+      final res = api.BackupForGKEApi(
+        mock,
+      ).projects.locations.restorePlans.restores;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7517,10 +7525,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restorePlans.restores.volumeRestores;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restorePlans.restores.volumeRestores;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -7573,10 +7580,9 @@ void main() {
 
       unittest.test('method--getIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restorePlans.restores.volumeRestores;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restorePlans.restores.volumeRestores;
         final arg_resource = 'foo';
         final arg_options_requestedPolicyVersion = 42;
         final arg_$fields = 'foo';
@@ -7638,10 +7644,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restorePlans.restores.volumeRestores;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restorePlans.restores.volumeRestores;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -7723,10 +7728,9 @@ void main() {
 
       unittest.test('method--setIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restorePlans.restores.volumeRestores;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restorePlans.restores.volumeRestores;
         final arg_request = buildSetIamPolicyRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -7789,10 +7793,9 @@ void main() {
 
       unittest.test('method--testIamPermissions', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BackupForGKEApi(
-              mock,
-            ).projects.locations.restorePlans.restores.volumeRestores;
+        final res = api.BackupForGKEApi(
+          mock,
+        ).projects.locations.restorePlans.restores.volumeRestores;
         final arg_request = buildTestIamPermissionsRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';

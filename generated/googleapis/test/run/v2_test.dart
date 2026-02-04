@@ -6255,8 +6255,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsExecutionsTasksResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRunApi(mock).projects.locations.jobs.executions.tasks;
+      final res = api.CloudRunApi(
+        mock,
+      ).projects.locations.jobs.executions.tasks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6309,8 +6310,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRunApi(mock).projects.locations.jobs.executions.tasks;
+      final res = api.CloudRunApi(
+        mock,
+      ).projects.locations.jobs.executions.tasks;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8023,8 +8025,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkerPoolsRevisionsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRunApi(mock).projects.locations.workerPools.revisions;
+      final res = api.CloudRunApi(
+        mock,
+      ).projects.locations.workerPools.revisions;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_validateOnly = true;
@@ -8091,8 +8094,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRunApi(mock).projects.locations.workerPools.revisions;
+      final res = api.CloudRunApi(
+        mock,
+      ).projects.locations.workerPools.revisions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8145,8 +8149,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudRunApi(mock).projects.locations.workerPools.revisions;
+      final res = api.CloudRunApi(
+        mock,
+      ).projects.locations.workerPools.revisions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

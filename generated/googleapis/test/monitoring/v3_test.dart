@@ -6879,8 +6879,9 @@ void main() {
   unittest.group('resource-ProjectsNotificationChannelDescriptorsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MonitoringApi(mock).projects.notificationChannelDescriptors;
+      final res = api.MonitoringApi(
+        mock,
+      ).projects.notificationChannelDescriptors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6937,8 +6938,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MonitoringApi(mock).projects.notificationChannelDescriptors;
+      final res = api.MonitoringApi(
+        mock,
+      ).projects.notificationChannelDescriptors;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7196,10 +7198,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GetNotificationChannelVerificationCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GetNotificationChannelVerificationCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGetNotificationChannelVerificationCodeRequest(obj);
 
           final path = req.url.path;
@@ -7417,10 +7419,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .SendNotificationChannelVerificationCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.SendNotificationChannelVerificationCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkSendNotificationChannelVerificationCodeRequest(obj);
 
           final path = req.url.path;

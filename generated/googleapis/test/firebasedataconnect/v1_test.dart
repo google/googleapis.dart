@@ -1847,8 +1847,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.operations;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1911,8 +1912,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.operations;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1965,8 +1967,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.operations;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2019,8 +2022,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.operations;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2677,10 +2681,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesConnectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildConnector();
       final arg_parent = 'foo';
       final arg_connectorId = 'foo';
@@ -2761,10 +2764,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -2847,10 +2849,9 @@ void main() {
 
     unittest.test('method--executeMutation', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildExecuteMutationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2913,10 +2914,9 @@ void main() {
 
     unittest.test('method--executeQuery', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildExecuteQueryRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2979,10 +2979,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3035,10 +3034,9 @@ void main() {
 
     unittest.test('method--impersonateMutation', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildImpersonateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3101,10 +3099,9 @@ void main() {
 
     unittest.test('method--impersonateQuery', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildImpersonateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3167,10 +3164,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3250,10 +3246,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(
-            mock,
-          ).projects.locations.services.connectors;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.connectors;
       final arg_request = buildConnector();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3342,8 +3337,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesSchemasResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.services.schemas;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.schemas;
       final arg_request = buildSchema();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -3424,8 +3420,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.services.schemas;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.schemas;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -3508,8 +3505,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.services.schemas;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.schemas;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3562,8 +3560,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.services.schemas;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.schemas;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3643,8 +3642,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseDataConnectApi(mock).projects.locations.services.schemas;
+      final res = api.FirebaseDataConnectApi(
+        mock,
+      ).projects.locations.services.schemas;
       final arg_request = buildSchema();
       final arg_name = 'foo';
       final arg_allowMissing = true;

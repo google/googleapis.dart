@@ -2,8 +2,13 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-final _markdownToEscape =
-    {'[', ']', '<', '>', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
+final _markdownToEscape = {
+  '[',
+  ']',
+  '<',
+  '>',
+  '`',
+}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
 
 String markdownEscape(String input) {
   for (var pattern in _markdownToEscape) {

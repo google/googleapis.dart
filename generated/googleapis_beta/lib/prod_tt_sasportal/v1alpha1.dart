@@ -115,7 +115,7 @@ class CustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -155,9 +155,9 @@ class CustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers';
@@ -191,7 +191,7 @@ class CustomersResource {
   async.Future<SasPortalListGcpProjectDeploymentsResponse>
   listGcpProjectDeployments({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers:listGcpProjectDeployments';
@@ -223,7 +223,7 @@ class CustomersResource {
   async.Future<SasPortalListLegacyOrganizationsResponse>
   listLegacyOrganizations({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers:listLegacyOrganizations';
@@ -264,7 +264,7 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers:migrateOrganization';
@@ -309,8 +309,8 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -350,7 +350,7 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers:provisionDeployment';
@@ -392,7 +392,7 @@ class CustomersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/customers:setupSasAnalytics';
@@ -445,7 +445,7 @@ class CustomersDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -483,7 +483,7 @@ class CustomersDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -520,7 +520,7 @@ class CustomersDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -570,10 +570,10 @@ class CustomersDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -614,7 +614,7 @@ class CustomersDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -659,8 +659,8 @@ class CustomersDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -709,7 +709,7 @@ class CustomersDeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -751,7 +751,7 @@ class CustomersDeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -804,10 +804,10 @@ class CustomersDeploymentsDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -854,7 +854,7 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -896,7 +896,7 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -935,7 +935,7 @@ class CustomersDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -972,7 +972,7 @@ class CustomersDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1023,10 +1023,10 @@ class CustomersDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -1067,7 +1067,7 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -1112,8 +1112,8 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1155,7 +1155,7 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
@@ -1197,7 +1197,7 @@ class CustomersDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
@@ -1253,7 +1253,7 @@ class CustomersNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -1291,7 +1291,7 @@ class CustomersNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1328,7 +1328,7 @@ class CustomersNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1377,10 +1377,10 @@ class CustomersNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -1421,7 +1421,7 @@ class CustomersNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -1466,8 +1466,8 @@ class CustomersNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1517,7 +1517,7 @@ class CustomersNodesDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -1568,10 +1568,10 @@ class CustomersNodesDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -1619,7 +1619,7 @@ class CustomersNodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -1661,7 +1661,7 @@ class CustomersNodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1714,10 +1714,10 @@ class CustomersNodesDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -1766,7 +1766,7 @@ class CustomersNodesNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -1816,10 +1816,10 @@ class CustomersNodesNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -1865,7 +1865,7 @@ class DeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1908,7 +1908,7 @@ class DeploymentsDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1945,7 +1945,7 @@ class DeploymentsDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -1986,7 +1986,7 @@ class DeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -2031,8 +2031,8 @@ class DeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2074,7 +2074,7 @@ class DeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
@@ -2116,7 +2116,7 @@ class DeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
@@ -2160,7 +2160,7 @@ class InstallerResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/installer:generateSecret';
@@ -2198,7 +2198,7 @@ class InstallerResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/installer:validate';
@@ -2247,7 +2247,7 @@ class NodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2293,7 +2293,7 @@ class NodesDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2330,7 +2330,7 @@ class NodesDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2380,10 +2380,10 @@ class NodesDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -2424,7 +2424,7 @@ class NodesDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -2469,8 +2469,8 @@ class NodesDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2519,7 +2519,7 @@ class NodesDeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -2561,7 +2561,7 @@ class NodesDeploymentsDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2614,10 +2614,10 @@ class NodesDeploymentsDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -2664,7 +2664,7 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -2706,7 +2706,7 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2745,7 +2745,7 @@ class NodesDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2782,7 +2782,7 @@ class NodesDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2833,10 +2833,10 @@ class NodesDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -2877,7 +2877,7 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -2922,8 +2922,8 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -2965,7 +2965,7 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
@@ -3007,7 +3007,7 @@ class NodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
@@ -3062,7 +3062,7 @@ class NodesNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -3100,7 +3100,7 @@ class NodesNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -3137,7 +3137,7 @@ class NodesNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -3186,10 +3186,10 @@ class NodesNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -3230,7 +3230,7 @@ class NodesNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
@@ -3275,8 +3275,8 @@ class NodesNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
@@ -3326,7 +3326,7 @@ class NodesNodesDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -3377,10 +3377,10 @@ class NodesNodesDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -3427,7 +3427,7 @@ class NodesNodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -3469,7 +3469,7 @@ class NodesNodesDevicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3522,10 +3522,10 @@ class NodesNodesDevicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
@@ -3573,7 +3573,7 @@ class NodesNodesNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -3623,10 +3623,10 @@ class NodesNodesNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -3672,7 +3672,7 @@ class PoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/policies:get';
@@ -3712,7 +3712,7 @@ class PoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/policies:set';
@@ -3750,7 +3750,7 @@ class PoliciesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1alpha1/policies:test';
@@ -3782,20 +3782,19 @@ class SasPortalChannelWithScore {
 
   SasPortalChannelWithScore.fromJson(core.Map json_)
     : this(
-        frequencyRange:
-            json_.containsKey('frequencyRange')
-                ? SasPortalFrequencyRange.fromJson(
-                  json_['frequencyRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequencyRange: json_.containsKey('frequencyRange')
+            ? SasPortalFrequencyRange.fromJson(
+                json_['frequencyRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         score: (json_['score'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-    if (score != null) 'score': score!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final frequencyRange = this.frequencyRange;
+    final score = this.score;
+    return {'frequencyRange': ?frequencyRange, 'score': ?score};
+  }
 }
 
 /// Request for CreateSignedDevice.
@@ -3881,71 +3880,75 @@ class SasPortalDevice {
 
   SasPortalDevice.fromJson(core.Map json_)
     : this(
-        activeConfig:
-            json_.containsKey('activeConfig')
-                ? SasPortalDeviceConfig.fromJson(
-                  json_['activeConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        currentChannels:
-            (json_['currentChannels'] as core.List?)
-                ?.map(
-                  (value) => SasPortalChannelWithScore.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        deviceMetadata:
-            json_.containsKey('deviceMetadata')
-                ? SasPortalDeviceMetadata.fromJson(
-                  json_['deviceMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        activeConfig: json_.containsKey('activeConfig')
+            ? SasPortalDeviceConfig.fromJson(
+                json_['activeConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        currentChannels: (json_['currentChannels'] as core.List?)
+            ?.map(
+              (value) => SasPortalChannelWithScore.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deviceMetadata: json_.containsKey('deviceMetadata')
+            ? SasPortalDeviceMetadata.fromJson(
+                json_['deviceMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         fccId: json_['fccId'] as core.String?,
-        grantRangeAllowlists:
-            (json_['grantRangeAllowlists'] as core.List?)
-                ?.map(
-                  (value) => SasPortalFrequencyRange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        grants:
-            (json_['grants'] as core.List?)
-                ?.map(
-                  (value) => SasPortalDeviceGrant.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        grantRangeAllowlists: (json_['grantRangeAllowlists'] as core.List?)
+            ?.map(
+              (value) => SasPortalFrequencyRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        grants: (json_['grants'] as core.List?)
+            ?.map(
+              (value) => SasPortalDeviceGrant.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        preloadedConfig:
-            json_.containsKey('preloadedConfig')
-                ? SasPortalDeviceConfig.fromJson(
-                  json_['preloadedConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        preloadedConfig: json_.containsKey('preloadedConfig')
+            ? SasPortalDeviceConfig.fromJson(
+                json_['preloadedConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serialNumber: json_['serialNumber'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeConfig != null) 'activeConfig': activeConfig!,
-    if (currentChannels != null) 'currentChannels': currentChannels!,
-    if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
-    if (displayName != null) 'displayName': displayName!,
-    if (fccId != null) 'fccId': fccId!,
-    if (grantRangeAllowlists != null)
-      'grantRangeAllowlists': grantRangeAllowlists!,
-    if (grants != null) 'grants': grants!,
-    if (name != null) 'name': name!,
-    if (preloadedConfig != null) 'preloadedConfig': preloadedConfig!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeConfig = this.activeConfig;
+    final currentChannels = this.currentChannels;
+    final deviceMetadata = this.deviceMetadata;
+    final displayName = this.displayName;
+    final fccId = this.fccId;
+    final grantRangeAllowlists = this.grantRangeAllowlists;
+    final grants = this.grants;
+    final name = this.name;
+    final preloadedConfig = this.preloadedConfig;
+    final serialNumber = this.serialNumber;
+    final state = this.state;
+    return {
+      'activeConfig': ?activeConfig,
+      'currentChannels': ?currentChannels,
+      'deviceMetadata': ?deviceMetadata,
+      'displayName': ?displayName,
+      'fccId': ?fccId,
+      'grantRangeAllowlists': ?grantRangeAllowlists,
+      'grants': ?grants,
+      'name': ?name,
+      'preloadedConfig': ?preloadedConfig,
+      'serialNumber': ?serialNumber,
+      'state': ?state,
+    };
+  }
 }
 
 /// Information about the device's air interface.
@@ -4010,50 +4013,58 @@ class SasPortalDeviceConfig {
 
   SasPortalDeviceConfig.fromJson(core.Map json_)
     : this(
-        airInterface:
-            json_.containsKey('airInterface')
-                ? SasPortalDeviceAirInterface.fromJson(
-                  json_['airInterface'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        airInterface: json_.containsKey('airInterface')
+            ? SasPortalDeviceAirInterface.fromJson(
+                json_['airInterface'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         callSign: json_['callSign'] as core.String?,
         category: json_['category'] as core.String?,
-        installationParams:
-            json_.containsKey('installationParams')
-                ? SasPortalInstallationParams.fromJson(
-                  json_['installationParams']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        installationParams: json_.containsKey('installationParams')
+            ? SasPortalInstallationParams.fromJson(
+                json_['installationParams']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         isSigned: json_['isSigned'] as core.bool?,
         measurementCapabilities:
             (json_['measurementCapabilities'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        model:
-            json_.containsKey('model')
-                ? SasPortalDeviceModel.fromJson(
-                  json_['model'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        model: json_.containsKey('model')
+            ? SasPortalDeviceModel.fromJson(
+                json_['model'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airInterface != null) 'airInterface': airInterface!,
-    if (callSign != null) 'callSign': callSign!,
-    if (category != null) 'category': category!,
-    if (installationParams != null) 'installationParams': installationParams!,
-    if (isSigned != null) 'isSigned': isSigned!,
-    if (measurementCapabilities != null)
-      'measurementCapabilities': measurementCapabilities!,
-    if (model != null) 'model': model!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airInterface = this.airInterface;
+    final callSign = this.callSign;
+    final category = this.category;
+    final installationParams = this.installationParams;
+    final isSigned = this.isSigned;
+    final measurementCapabilities = this.measurementCapabilities;
+    final model = this.model;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final userId = this.userId;
+    return {
+      'airInterface': ?airInterface,
+      'callSign': ?callSign,
+      'category': ?category,
+      'installationParams': ?installationParams,
+      'isSigned': ?isSigned,
+      'measurementCapabilities': ?measurementCapabilities,
+      'model': ?model,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'userId': ?userId,
+    };
+  }
 }
 
 /// Device grant.
@@ -4122,44 +4133,51 @@ class SasPortalDeviceGrant {
     : this(
         channelType: json_['channelType'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
-        frequencyRange:
-            json_.containsKey('frequencyRange')
-                ? SasPortalFrequencyRange.fromJson(
-                  json_['frequencyRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequencyRange: json_.containsKey('frequencyRange')
+            ? SasPortalFrequencyRange.fromJson(
+                json_['frequencyRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         grantId: json_['grantId'] as core.String?,
         lastHeartbeatTransmitExpireTime:
             json_['lastHeartbeatTransmitExpireTime'] as core.String?,
         maxEirp: (json_['maxEirp'] as core.num?)?.toDouble(),
-        moveList:
-            (json_['moveList'] as core.List?)
-                ?.map(
-                  (value) => SasPortalDpaMoveList.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        moveList: (json_['moveList'] as core.List?)
+            ?.map(
+              (value) => SasPortalDpaMoveList.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         state: json_['state'] as core.String?,
-        suspensionReason:
-            (json_['suspensionReason'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        suspensionReason: (json_['suspensionReason'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (channelType != null) 'channelType': channelType!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-    if (grantId != null) 'grantId': grantId!,
-    if (lastHeartbeatTransmitExpireTime != null)
-      'lastHeartbeatTransmitExpireTime': lastHeartbeatTransmitExpireTime!,
-    if (maxEirp != null) 'maxEirp': maxEirp!,
-    if (moveList != null) 'moveList': moveList!,
-    if (state != null) 'state': state!,
-    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final channelType = this.channelType;
+    final expireTime = this.expireTime;
+    final frequencyRange = this.frequencyRange;
+    final grantId = this.grantId;
+    final lastHeartbeatTransmitExpireTime =
+        this.lastHeartbeatTransmitExpireTime;
+    final maxEirp = this.maxEirp;
+    final moveList = this.moveList;
+    final state = this.state;
+    final suspensionReason = this.suspensionReason;
+    return {
+      'channelType': ?channelType,
+      'expireTime': ?expireTime,
+      'frequencyRange': ?frequencyRange,
+      'grantId': ?grantId,
+      'lastHeartbeatTransmitExpireTime': ?lastHeartbeatTransmitExpireTime,
+      'maxEirp': ?maxEirp,
+      'moveList': ?moveList,
+      'state': ?state,
+      'suspensionReason': ?suspensionReason,
+    };
+  }
 }
 
 /// Device data overridable by both SAS Portal and registration requests.
@@ -4212,23 +4230,27 @@ class SasPortalDeviceMetadata {
         interferenceCoordinationGroup:
             json_['interferenceCoordinationGroup'] as core.String?,
         nrqzValidated: json_['nrqzValidated'] as core.bool?,
-        nrqzValidation:
-            json_.containsKey('nrqzValidation')
-                ? SasPortalNrqzValidation.fromJson(
-                  json_['nrqzValidation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nrqzValidation: json_.containsKey('nrqzValidation')
+            ? SasPortalNrqzValidation.fromJson(
+                json_['nrqzValidation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (antennaModel != null) 'antennaModel': antennaModel!,
-    if (commonChannelGroup != null) 'commonChannelGroup': commonChannelGroup!,
-    if (interferenceCoordinationGroup != null)
-      'interferenceCoordinationGroup': interferenceCoordinationGroup!,
-    if (nrqzValidated != null) 'nrqzValidated': nrqzValidated!,
-    if (nrqzValidation != null) 'nrqzValidation': nrqzValidation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final antennaModel = this.antennaModel;
+    final commonChannelGroup = this.commonChannelGroup;
+    final interferenceCoordinationGroup = this.interferenceCoordinationGroup;
+    final nrqzValidated = this.nrqzValidated;
+    final nrqzValidation = this.nrqzValidation;
+    return {
+      'antennaModel': ?antennaModel,
+      'commonChannelGroup': ?commonChannelGroup,
+      'interferenceCoordinationGroup': ?interferenceCoordinationGroup,
+      'nrqzValidated': ?nrqzValidated,
+      'nrqzValidation': ?nrqzValidation,
+    };
+  }
 }
 
 /// Information about the model of the device.
@@ -4247,19 +4269,18 @@ class SasPortalDpaMoveList {
   SasPortalDpaMoveList.fromJson(core.Map json_)
     : this(
         dpaId: json_['dpaId'] as core.String?,
-        frequencyRange:
-            json_.containsKey('frequencyRange')
-                ? SasPortalFrequencyRange.fromJson(
-                  json_['frequencyRange']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        frequencyRange: json_.containsKey('frequencyRange')
+            ? SasPortalFrequencyRange.fromJson(
+                json_['frequencyRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dpaId != null) 'dpaId': dpaId!,
-    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dpaId = this.dpaId;
+    final frequencyRange = this.frequencyRange;
+    return {'dpaId': ?dpaId, 'frequencyRange': ?frequencyRange};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4287,20 +4308,22 @@ class SasPortalGcpProjectDeployment {
 
   SasPortalGcpProjectDeployment.fromJson(core.Map json_)
     : this(
-        deployment:
-            json_.containsKey('deployment')
-                ? SasPortalDeployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deployment: json_.containsKey('deployment')
+            ? SasPortalDeployment.fromJson(
+                json_['deployment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hasEnabledAnalytics: json_['hasEnabledAnalytics'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployment != null) 'deployment': deployment!,
-    if (hasEnabledAnalytics != null)
-      'hasEnabledAnalytics': hasEnabledAnalytics!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployment = this.deployment;
+    final hasEnabledAnalytics = this.hasEnabledAnalytics;
+    return {
+      'deployment': ?deployment,
+      'hasEnabledAnalytics': ?hasEnabledAnalytics,
+    };
+  }
 }
 
 /// Request for GenerateSecret.
@@ -4330,21 +4353,21 @@ class SasPortalListCustomersResponse {
 
   SasPortalListCustomersResponse.fromJson(core.Map json_)
     : this(
-        customers:
-            (json_['customers'] as core.List?)
-                ?.map(
-                  (value) => SasPortalCustomer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customers: (json_['customers'] as core.List?)
+            ?.map(
+              (value) => SasPortalCustomer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customers != null) 'customers': customers!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customers = this.customers;
+    final nextPageToken = this.nextPageToken;
+    return {'customers': ?customers, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for ListDeployments.
@@ -4362,21 +4385,21 @@ class SasPortalListDeploymentsResponse {
 
   SasPortalListDeploymentsResponse.fromJson(core.Map json_)
     : this(
-        deployments:
-            (json_['deployments'] as core.List?)
-                ?.map(
-                  (value) => SasPortalDeployment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deployments: (json_['deployments'] as core.List?)
+            ?.map(
+              (value) => SasPortalDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployments != null) 'deployments': deployments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployments = this.deployments;
+    final nextPageToken = this.nextPageToken;
+    return {'deployments': ?deployments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for ListDevices.
@@ -4394,21 +4417,21 @@ class SasPortalListDevicesResponse {
 
   SasPortalListDevicesResponse.fromJson(core.Map json_)
     : this(
-        devices:
-            (json_['devices'] as core.List?)
-                ?.map(
-                  (value) => SasPortalDevice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        devices: (json_['devices'] as core.List?)
+            ?.map(
+              (value) => SasPortalDevice.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (devices != null) 'devices': devices!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final devices = this.devices;
+    final nextPageToken = this.nextPageToken;
+    return {'devices': ?devices, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for \[ListGcpProjectDeployments\].
@@ -4422,19 +4445,19 @@ class SasPortalListGcpProjectDeploymentsResponse {
 
   SasPortalListGcpProjectDeploymentsResponse.fromJson(core.Map json_)
     : this(
-        deployments:
-            (json_['deployments'] as core.List?)
-                ?.map(
-                  (value) => SasPortalGcpProjectDeployment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        deployments: (json_['deployments'] as core.List?)
+            ?.map(
+              (value) => SasPortalGcpProjectDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployments != null) 'deployments': deployments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployments = this.deployments;
+    return {'deployments': ?deployments};
+  }
 }
 
 /// Response for \[ListLegacyOrganizations\].
@@ -4450,19 +4473,19 @@ class SasPortalListLegacyOrganizationsResponse {
 
   SasPortalListLegacyOrganizationsResponse.fromJson(core.Map json_)
     : this(
-        organizations:
-            (json_['organizations'] as core.List?)
-                ?.map(
-                  (value) => SasPortalOrganization.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        organizations: (json_['organizations'] as core.List?)
+            ?.map(
+              (value) => SasPortalOrganization.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (organizations != null) 'organizations': organizations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final organizations = this.organizations;
+    return {'organizations': ?organizations};
+  }
 }
 
 /// Response for ListNodes.
@@ -4481,20 +4504,20 @@ class SasPortalListNodesResponse {
   SasPortalListNodesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        nodes:
-            (json_['nodes'] as core.List?)
-                ?.map(
-                  (value) => SasPortalNode.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        nodes: (json_['nodes'] as core.List?)
+            ?.map(
+              (value) => SasPortalNode.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (nodes != null) 'nodes': nodes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final nodes = this.nodes;
+    return {'nextPageToken': ?nextPageToken, 'nodes': ?nodes};
+  }
 }
 
 /// Request for \[MigrateOrganization\].
@@ -4575,30 +4598,34 @@ class SasPortalOperation {
   SasPortalOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? SasPortalStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? SasPortalStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Organization details.
@@ -4633,21 +4660,21 @@ class SasPortalPolicy {
 
   SasPortalPolicy.fromJson(core.Map json_)
     : this(
-        assignments:
-            (json_['assignments'] as core.List?)
-                ?.map(
-                  (value) => SasPortalAssignment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        assignments: (json_['assignments'] as core.List?)
+            ?.map(
+              (value) => SasPortalAssignment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignments != null) 'assignments': assignments!,
-    if (etag != null) 'etag': etag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignments = this.assignments;
+    final etag = this.etag;
+    return {'assignments': ?assignments, 'etag': ?etag};
+  }
 }
 
 /// Request for \[ProvisionDeployment\].
@@ -4693,21 +4720,24 @@ class SasPortalSetPolicyRequest {
   SasPortalSetPolicyRequest.fromJson(core.Map json_)
     : this(
         disableNotification: json_['disableNotification'] as core.bool?,
-        policy:
-            json_.containsKey('policy')
-                ? SasPortalPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? SasPortalPolicy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resource: json_['resource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableNotification != null)
-      'disableNotification': disableNotification!,
-    if (policy != null) 'policy': policy!,
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableNotification = this.disableNotification;
+    final policy = this.policy;
+    final resource = this.resource;
+    return {
+      'disableNotification': ?disableNotification,
+      'policy': ?policy,
+      'resource': ?resource,
+    };
+  }
 }
 
 /// Request for the SetupSasAnalytics rpc.
@@ -4727,17 +4757,17 @@ class SasPortalSignDeviceRequest {
 
   SasPortalSignDeviceRequest.fromJson(core.Map json_)
     : this(
-        device:
-            json_.containsKey('device')
-                ? SasPortalDevice.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        device: json_.containsKey('device')
+            ? SasPortalDevice.fromJson(
+                json_['device'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (device != null) 'device': device!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final device = this.device;
+    return {'device': ?device};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

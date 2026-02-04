@@ -1790,10 +1790,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyDownloadAccountRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyDownloadAccountRequest(od);
       });
     },
@@ -1805,10 +1805,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyEmailLinkSigninRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(od);
       });
     },
@@ -1820,10 +1820,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(od);
       });
     },
@@ -1835,10 +1835,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyGetProjectConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(od);
       });
     },
@@ -1878,10 +1878,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartySendVerificationCodeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(od);
       });
     },
@@ -1894,10 +1894,10 @@ void main() {
         final o =
             buildIdentitytoolkitRelyingpartySendVerificationCodeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(od);
       });
     },
@@ -1909,10 +1909,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartySetAccountInfoRequest(od);
       });
     },
@@ -1924,10 +1924,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartySetProjectConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartySetProjectConfigRequest(od);
       });
     },
@@ -1939,10 +1939,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartySetProjectConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartySetProjectConfigResponse(od);
       });
     },
@@ -2010,10 +2010,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyVerifyAssertionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(od);
       });
     },
@@ -2025,10 +2025,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(od);
       });
     },
@@ -2040,10 +2040,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(od);
       });
     },
@@ -2055,10 +2055,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(od);
       });
     },
@@ -2070,10 +2070,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(od);
       });
     },
@@ -2231,10 +2231,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(obj);
 
           final path = req.url.path;
@@ -2298,10 +2298,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyDeleteAccountRequest(obj);
 
           final path = req.url.path;
@@ -2365,10 +2365,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyDownloadAccountRequest(obj);
 
           final path = req.url.path;
@@ -2432,10 +2432,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(obj);
 
           final path = req.url.path;
@@ -2499,10 +2499,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -2825,10 +2825,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyResetPasswordRequest(obj);
 
           final path = req.url.path;
@@ -2892,10 +2892,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(obj);
 
           final path = req.url.path;
@@ -2963,10 +2963,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartySetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -3030,10 +3030,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartySetProjectConfigRequest(obj);
 
           final path = req.url.path;
@@ -3100,10 +3100,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartySignOutUserRequest(obj);
 
           final path = req.url.path;
@@ -3168,10 +3168,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartySignupNewUserRequest(obj);
 
           final path = req.url.path;
@@ -3235,10 +3235,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyUploadAccountRequest(obj);
 
           final path = req.url.path;
@@ -3302,10 +3302,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(obj);
 
           final path = req.url.path;
@@ -3369,10 +3369,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(obj);
 
           final path = req.url.path;
@@ -3436,10 +3436,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(obj);
 
           final path = req.url.path;
@@ -3503,10 +3503,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(obj);
 
           final path = req.url.path;

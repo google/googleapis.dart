@@ -103,7 +103,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -156,11 +156,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -218,7 +218,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -261,7 +261,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -299,7 +299,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -354,12 +354,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -420,10 +421,11 @@ class ProjectsLocationsWorkstationClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (workstationClusterId != null)
-        'workstationClusterId': [workstationClusterId],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'workstationClusterId': ?workstationClusterId == null
+          ? null
+          : [workstationClusterId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -475,10 +477,10 @@ class ProjectsLocationsWorkstationClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -514,7 +516,7 @@ class ProjectsLocationsWorkstationClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -562,10 +564,10 @@ class ProjectsLocationsWorkstationClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -621,10 +623,10 @@ class ProjectsLocationsWorkstationClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -687,10 +689,11 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (workstationConfigId != null)
-        'workstationConfigId': [workstationConfigId],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'workstationConfigId': ?workstationConfigId == null
+          ? null
+          : [workstationConfigId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workstationConfigs';
@@ -740,10 +743,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -779,7 +782,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -836,9 +839,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -885,10 +889,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workstationConfigs';
@@ -934,9 +938,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -994,10 +998,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1044,7 +1048,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1093,7 +1097,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1152,9 +1156,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (workstationId != null) 'workstationId': [workstationId],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'workstationId': ?workstationId == null ? null : [workstationId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workstations';
@@ -1199,9 +1203,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1246,7 +1250,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1286,7 +1290,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1343,9 +1347,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1392,10 +1397,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workstations';
@@ -1441,9 +1446,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1499,10 +1504,10 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1549,7 +1554,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1590,7 +1595,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
@@ -1631,7 +1636,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
@@ -1680,7 +1685,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1719,10 +1724,11 @@ class Accelerator {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final type = this.type;
+    return {'count': ?count, 'type': ?type};
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1756,21 +1762,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1865,24 +1871,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// A boost configuration is a set of resources that a workstation can use to
@@ -1966,14 +1971,13 @@ class BoostConfig {
 
   BoostConfig.fromJson(core.Map json_)
     : this(
-        accelerators:
-            (json_['accelerators'] as core.List?)
-                ?.map(
-                  (value) => Accelerator.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accelerators: (json_['accelerators'] as core.List?)
+            ?.map(
+              (value) => Accelerator.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
         enableNestedVirtualization:
             json_['enableNestedVirtualization'] as core.bool?,
@@ -1982,15 +1986,22 @@ class BoostConfig {
         poolSize: json_['poolSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accelerators != null) 'accelerators': accelerators!,
-    if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-    if (enableNestedVirtualization != null)
-      'enableNestedVirtualization': enableNestedVirtualization!,
-    if (id != null) 'id': id!,
-    if (machineType != null) 'machineType': machineType!,
-    if (poolSize != null) 'poolSize': poolSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accelerators = this.accelerators;
+    final bootDiskSizeGb = this.bootDiskSizeGb;
+    final enableNestedVirtualization = this.enableNestedVirtualization;
+    final id = this.id;
+    final machineType = this.machineType;
+    final poolSize = this.poolSize;
+    return {
+      'accelerators': ?accelerators,
+      'bootDiskSizeGb': ?bootDiskSizeGb,
+      'enableNestedVirtualization': ?enableNestedVirtualization,
+      'id': ?id,
+      'machineType': ?machineType,
+      'poolSize': ?poolSize,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2050,14 +2061,12 @@ class Container {
 
   Container.fromJson(core.Map json_)
     : this(
-        args:
-            (json_['args'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        command:
-            (json_['command'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         env: (json_['env'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -2066,14 +2075,22 @@ class Container {
         workingDir: json_['workingDir'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (args != null) 'args': args!,
-    if (command != null) 'command': command!,
-    if (env != null) 'env': env!,
-    if (image != null) 'image': image!,
-    if (runAsUser != null) 'runAsUser': runAsUser!,
-    if (workingDir != null) 'workingDir': workingDir!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final command = this.command;
+    final env = this.env;
+    final image = this.image;
+    final runAsUser = this.runAsUser;
+    final workingDir = this.workingDir;
+    return {
+      'args': ?args,
+      'command': ?command,
+      'env': ?env,
+      'image': ?image,
+      'runAsUser': ?runAsUser,
+      'workingDir': ?workingDir,
+    };
+  }
 }
 
 /// A customer-managed encryption key (CMEK) for the Compute Engine resources of
@@ -2111,11 +2128,11 @@ class CustomerEncryptionKey {
         kmsKeyServiceAccount: json_['kmsKeyServiceAccount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (kmsKeyServiceAccount != null)
-      'kmsKeyServiceAccount': kmsKeyServiceAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final kmsKeyServiceAccount = this.kmsKeyServiceAccount;
+    return {'kmsKey': ?kmsKey, 'kmsKeyServiceAccount': ?kmsKeyServiceAccount};
+  }
 }
 
 /// Configuration options for a custom domain.
@@ -2130,9 +2147,10 @@ class DomainConfig {
   DomainConfig.fromJson(core.Map json_)
     : this(domain: json_['domain'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    return {'domain': ?domain};
+  }
 }
 
 /// An ephemeral directory which won't persist across workstation sessions.
@@ -2151,19 +2169,19 @@ class EphemeralDirectory {
 
   EphemeralDirectory.fromJson(core.Map json_)
     : this(
-        gcePd:
-            json_.containsKey('gcePd')
-                ? GcePersistentDisk.fromJson(
-                  json_['gcePd'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcePd: json_.containsKey('gcePd')
+            ? GcePersistentDisk.fromJson(
+                json_['gcePd'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mountPath: json_['mountPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcePd != null) 'gcePd': gcePd!,
-    if (mountPath != null) 'mountPath': mountPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcePd = this.gcePd;
+    final mountPath = this.mountPath;
+    return {'gcePd': ?gcePd, 'mountPath': ?mountPath};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2200,9 +2218,10 @@ class GatewayConfig {
   GatewayConfig.fromJson(core.Map json_)
     : this(http2Enabled: json_['http2Enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (http2Enabled != null) 'http2Enabled': http2Enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final http2Enabled = this.http2Enabled;
+    return {'http2Enabled': ?http2Enabled};
+  }
 }
 
 /// A set of Compute Engine Confidential VM instance options.
@@ -2220,10 +2239,10 @@ class GceConfidentialInstanceConfig {
             json_['enableConfidentialCompute'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableConfidentialCompute != null)
-      'enableConfidentialCompute': enableConfidentialCompute!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableConfidentialCompute = this.enableConfidentialCompute;
+    return {'enableConfidentialCompute': ?enableConfidentialCompute};
+  }
 }
 
 /// A Persistent Directory backed by a Compute Engine
@@ -2288,12 +2307,18 @@ class GceHyperdiskBalancedHighAvailability {
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (archiveTimeout != null) 'archiveTimeout': archiveTimeout!,
-    if (reclaimPolicy != null) 'reclaimPolicy': reclaimPolicy!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveTimeout = this.archiveTimeout;
+    final reclaimPolicy = this.reclaimPolicy;
+    final sizeGb = this.sizeGb;
+    final sourceSnapshot = this.sourceSnapshot;
+    return {
+      'archiveTimeout': ?archiveTimeout,
+      'reclaimPolicy': ?reclaimPolicy,
+      'sizeGb': ?sizeGb,
+      'sourceSnapshot': ?sourceSnapshot,
+    };
+  }
 }
 
 /// A runtime using a Compute Engine instance.
@@ -2482,87 +2507,96 @@ class GceInstance {
 
   GceInstance.fromJson(core.Map json_)
     : this(
-        accelerators:
-            (json_['accelerators'] as core.List?)
-                ?.map(
-                  (value) => Accelerator.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        boostConfigs:
-            (json_['boostConfigs'] as core.List?)
-                ?.map(
-                  (value) => BoostConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accelerators: (json_['accelerators'] as core.List?)
+            ?.map(
+              (value) => Accelerator.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        boostConfigs: (json_['boostConfigs'] as core.List?)
+            ?.map(
+              (value) => BoostConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
         confidentialInstanceConfig:
             json_.containsKey('confidentialInstanceConfig')
-                ? GceConfidentialInstanceConfig.fromJson(
-                  json_['confidentialInstanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GceConfidentialInstanceConfig.fromJson(
+                json_['confidentialInstanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disablePublicIpAddresses:
             json_['disablePublicIpAddresses'] as core.bool?,
         disableSsh: json_['disableSsh'] as core.bool?,
         enableNestedVirtualization:
             json_['enableNestedVirtualization'] as core.bool?,
-        instanceMetadata: (json_['instanceMetadata']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        instanceMetadata:
+            (json_['instanceMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         machineType: json_['machineType'] as core.String?,
         poolSize: json_['poolSize'] as core.int?,
         pooledInstances: json_['pooledInstances'] as core.int?,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        serviceAccountScopes:
-            (json_['serviceAccountScopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        shieldedInstanceConfig:
-            json_.containsKey('shieldedInstanceConfig')
-                ? GceShieldedInstanceConfig.fromJson(
-                  json_['shieldedInstanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceAccountScopes: (json_['serviceAccountScopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
+            ? GceShieldedInstanceConfig.fromJson(
+                json_['shieldedInstanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         startupScriptUri: json_['startupScriptUri'] as core.String?,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         vmTags: (json_['vmTags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accelerators != null) 'accelerators': accelerators!,
-    if (boostConfigs != null) 'boostConfigs': boostConfigs!,
-    if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-    if (confidentialInstanceConfig != null)
-      'confidentialInstanceConfig': confidentialInstanceConfig!,
-    if (disablePublicIpAddresses != null)
-      'disablePublicIpAddresses': disablePublicIpAddresses!,
-    if (disableSsh != null) 'disableSsh': disableSsh!,
-    if (enableNestedVirtualization != null)
-      'enableNestedVirtualization': enableNestedVirtualization!,
-    if (instanceMetadata != null) 'instanceMetadata': instanceMetadata!,
-    if (machineType != null) 'machineType': machineType!,
-    if (poolSize != null) 'poolSize': poolSize!,
-    if (pooledInstances != null) 'pooledInstances': pooledInstances!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (serviceAccountScopes != null)
-      'serviceAccountScopes': serviceAccountScopes!,
-    if (shieldedInstanceConfig != null)
-      'shieldedInstanceConfig': shieldedInstanceConfig!,
-    if (startupScriptUri != null) 'startupScriptUri': startupScriptUri!,
-    if (tags != null) 'tags': tags!,
-    if (vmTags != null) 'vmTags': vmTags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accelerators = this.accelerators;
+    final boostConfigs = this.boostConfigs;
+    final bootDiskSizeGb = this.bootDiskSizeGb;
+    final confidentialInstanceConfig = this.confidentialInstanceConfig;
+    final disablePublicIpAddresses = this.disablePublicIpAddresses;
+    final disableSsh = this.disableSsh;
+    final enableNestedVirtualization = this.enableNestedVirtualization;
+    final instanceMetadata = this.instanceMetadata;
+    final machineType = this.machineType;
+    final poolSize = this.poolSize;
+    final pooledInstances = this.pooledInstances;
+    final serviceAccount = this.serviceAccount;
+    final serviceAccountScopes = this.serviceAccountScopes;
+    final shieldedInstanceConfig = this.shieldedInstanceConfig;
+    final startupScriptUri = this.startupScriptUri;
+    final tags = this.tags;
+    final vmTags = this.vmTags;
+    return {
+      'accelerators': ?accelerators,
+      'boostConfigs': ?boostConfigs,
+      'bootDiskSizeGb': ?bootDiskSizeGb,
+      'confidentialInstanceConfig': ?confidentialInstanceConfig,
+      'disablePublicIpAddresses': ?disablePublicIpAddresses,
+      'disableSsh': ?disableSsh,
+      'enableNestedVirtualization': ?enableNestedVirtualization,
+      'instanceMetadata': ?instanceMetadata,
+      'machineType': ?machineType,
+      'poolSize': ?poolSize,
+      'pooledInstances': ?pooledInstances,
+      'serviceAccount': ?serviceAccount,
+      'serviceAccountScopes': ?serviceAccountScopes,
+      'shieldedInstanceConfig': ?shieldedInstanceConfig,
+      'startupScriptUri': ?startupScriptUri,
+      'tags': ?tags,
+      'vmTags': ?vmTags,
+    };
+  }
 }
 
 /// The Compute Engine instance host.
@@ -2591,11 +2625,12 @@ class GceInstanceHost {
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final name = this.name;
+    final zone = this.zone;
+    return {'id': ?id, 'name': ?name, 'zone': ?zone};
+  }
 }
 
 /// An EphemeralDirectory is backed by a Compute Engine persistent disk.
@@ -2656,12 +2691,18 @@ class GcePersistentDisk {
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskType != null) 'diskType': diskType!,
-    if (readOnly != null) 'readOnly': readOnly!,
-    if (sourceImage != null) 'sourceImage': sourceImage!,
-    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskType = this.diskType;
+    final readOnly = this.readOnly;
+    final sourceImage = this.sourceImage;
+    final sourceSnapshot = this.sourceSnapshot;
+    return {
+      'diskType': ?diskType,
+      'readOnly': ?readOnly,
+      'sourceImage': ?sourceImage,
+      'sourceSnapshot': ?sourceSnapshot,
+    };
+  }
 }
 
 /// A Persistent Directory backed by a Compute Engine regional persistent disk.
@@ -2738,13 +2779,20 @@ class GceRegionalPersistentDisk {
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskType != null) 'diskType': diskType!,
-    if (fsType != null) 'fsType': fsType!,
-    if (reclaimPolicy != null) 'reclaimPolicy': reclaimPolicy!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskType = this.diskType;
+    final fsType = this.fsType;
+    final reclaimPolicy = this.reclaimPolicy;
+    final sizeGb = this.sizeGb;
+    final sourceSnapshot = this.sourceSnapshot;
+    return {
+      'diskType': ?diskType,
+      'fsType': ?fsType,
+      'reclaimPolicy': ?reclaimPolicy,
+      'sizeGb': ?sizeGb,
+      'sourceSnapshot': ?sourceSnapshot,
+    };
+  }
 }
 
 /// A set of Compute Engine Shielded instance options.
@@ -2778,12 +2826,16 @@ class GceShieldedInstanceConfig {
         enableVtpm: json_['enableVtpm'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableIntegrityMonitoring != null)
-      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-    if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableIntegrityMonitoring = this.enableIntegrityMonitoring;
+    final enableSecureBoot = this.enableSecureBoot;
+    final enableVtpm = this.enableVtpm;
+    return {
+      'enableIntegrityMonitoring': ?enableIntegrityMonitoring,
+      'enableSecureBoot': ?enableSecureBoot,
+      'enableVtpm': ?enableVtpm,
+    };
+  }
 }
 
 /// Request message for GenerateAccessToken.
@@ -2820,11 +2872,12 @@ class GenerateAccessTokenRequest {
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (port != null) 'port': port!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    final port = this.port;
+    final ttl = this.ttl;
+    return {'expireTime': ?expireTime, 'port': ?port, 'ttl': ?ttl};
+  }
 }
 
 /// Response message for GenerateAccessToken.
@@ -2847,10 +2900,11 @@ class GenerateAccessTokenResponse {
         expireTime: json_['expireTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (expireTime != null) 'expireTime': expireTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final expireTime = this.expireTime;
+    return {'accessToken': ?accessToken, 'expireTime': ?expireTime};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2870,17 +2924,17 @@ class Host {
 
   Host.fromJson(core.Map json_)
     : this(
-        gceInstance:
-            json_.containsKey('gceInstance')
-                ? GceInstance.fromJson(
-                  json_['gceInstance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gceInstance: json_.containsKey('gceInstance')
+            ? GceInstance.fromJson(
+                json_['gceInstance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gceInstance != null) 'gceInstance': gceInstance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gceInstance = this.gceInstance;
+    return {'gceInstance': ?gceInstance};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2895,21 +2949,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2937,25 +2991,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for ListUsableWorkstationConfigs.
@@ -2979,25 +3036,28 @@ class ListUsableWorkstationConfigsResponse {
   ListUsableWorkstationConfigsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workstationConfigs:
-            (json_['workstationConfigs'] as core.List?)
-                ?.map(
-                  (value) => WorkstationConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workstationConfigs: (json_['workstationConfigs'] as core.List?)
+            ?.map(
+              (value) => WorkstationConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workstationConfigs != null) 'workstationConfigs': workstationConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workstationConfigs = this.workstationConfigs;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workstationConfigs': ?workstationConfigs,
+    };
+  }
 }
 
 /// Response message for ListUsableWorkstations.
@@ -3021,25 +3081,28 @@ class ListUsableWorkstationsResponse {
   ListUsableWorkstationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workstations:
-            (json_['workstations'] as core.List?)
-                ?.map(
-                  (value) => Workstation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workstations: (json_['workstations'] as core.List?)
+            ?.map(
+              (value) => Workstation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workstations != null) 'workstations': workstations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workstations = this.workstations;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workstations': ?workstations,
+    };
+  }
 }
 
 /// Response message for ListWorkstationClusters.
@@ -3063,26 +3126,28 @@ class ListWorkstationClustersResponse {
   ListWorkstationClustersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workstationClusters:
-            (json_['workstationClusters'] as core.List?)
-                ?.map(
-                  (value) => WorkstationCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workstationClusters: (json_['workstationClusters'] as core.List?)
+            ?.map(
+              (value) => WorkstationCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workstationClusters != null)
-      'workstationClusters': workstationClusters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workstationClusters = this.workstationClusters;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workstationClusters': ?workstationClusters,
+    };
+  }
 }
 
 /// Response message for ListWorkstationConfigs.
@@ -3106,25 +3171,28 @@ class ListWorkstationConfigsResponse {
   ListWorkstationConfigsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workstationConfigs:
-            (json_['workstationConfigs'] as core.List?)
-                ?.map(
-                  (value) => WorkstationConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workstationConfigs: (json_['workstationConfigs'] as core.List?)
+            ?.map(
+              (value) => WorkstationConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workstationConfigs != null) 'workstationConfigs': workstationConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workstationConfigs = this.workstationConfigs;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workstationConfigs': ?workstationConfigs,
+    };
+  }
 }
 
 /// Response message for ListWorkstations.
@@ -3152,25 +3220,28 @@ class ListWorkstationsResponse {
   ListWorkstationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        workstations:
-            (json_['workstations'] as core.List?)
-                ?.map(
-                  (value) => Workstation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workstations: (json_['workstations'] as core.List?)
+            ?.map(
+              (value) => Workstation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (workstations != null) 'workstations': workstations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final workstations = this.workstations;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'workstations': ?workstations,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3224,30 +3295,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// A directory to persist across workstation sessions.
@@ -3271,26 +3346,25 @@ class PersistentDirectory {
 
   PersistentDirectory.fromJson(core.Map json_)
     : this(
-        gceHd:
-            json_.containsKey('gceHd')
-                ? GceHyperdiskBalancedHighAvailability.fromJson(
-                  json_['gceHd'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcePd:
-            json_.containsKey('gcePd')
-                ? GceRegionalPersistentDisk.fromJson(
-                  json_['gcePd'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gceHd: json_.containsKey('gceHd')
+            ? GceHyperdiskBalancedHighAvailability.fromJson(
+                json_['gceHd'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcePd: json_.containsKey('gcePd')
+            ? GceRegionalPersistentDisk.fromJson(
+                json_['gcePd'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mountPath: json_['mountPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gceHd != null) 'gceHd': gceHd!,
-    if (gcePd != null) 'gcePd': gcePd!,
-    if (mountPath != null) 'mountPath': mountPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gceHd = this.gceHd;
+    final gcePd = this.gcePd;
+    final mountPath = this.mountPath;
+    return {'gceHd': ?gceHd, 'gcePd': ?gcePd, 'mountPath': ?mountPath};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3385,32 +3459,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// A PortRange defines a range of ports.
@@ -3440,10 +3518,11 @@ class PortRange {
         last: json_['last'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (first != null) 'first': first!,
-    if (last != null) 'last': last!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final first = this.first;
+    final last = this.last;
+    return {'first': ?first, 'last': ?last};
+  }
 }
 
 /// Configuration options for private workstation clusters.
@@ -3491,23 +3570,26 @@ class PrivateClusterConfig {
 
   PrivateClusterConfig.fromJson(core.Map json_)
     : this(
-        allowedProjects:
-            (json_['allowedProjects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allowedProjects: (json_['allowedProjects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         clusterHostname: json_['clusterHostname'] as core.String?,
         enablePrivateEndpoint: json_['enablePrivateEndpoint'] as core.bool?,
         serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedProjects != null) 'allowedProjects': allowedProjects!,
-    if (clusterHostname != null) 'clusterHostname': clusterHostname!,
-    if (enablePrivateEndpoint != null)
-      'enablePrivateEndpoint': enablePrivateEndpoint!,
-    if (serviceAttachmentUri != null)
-      'serviceAttachmentUri': serviceAttachmentUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedProjects = this.allowedProjects;
+    final clusterHostname = this.clusterHostname;
+    final enablePrivateEndpoint = this.enablePrivateEndpoint;
+    final serviceAttachmentUri = this.serviceAttachmentUri;
+    return {
+      'allowedProjects': ?allowedProjects,
+      'clusterHostname': ?clusterHostname,
+      'enablePrivateEndpoint': ?enablePrivateEndpoint,
+      'serviceAttachmentUri': ?serviceAttachmentUri,
+    };
+  }
 }
 
 /// A readiness check to be performed on a workstation.
@@ -3530,10 +3612,11 @@ class ReadinessCheck {
         port: json_['port'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final port = this.port;
+    return {'path': ?path, 'port': ?port};
+  }
 }
 
 /// Runtime host for the workstation.
@@ -3545,18 +3628,17 @@ class RuntimeHost {
 
   RuntimeHost.fromJson(core.Map json_)
     : this(
-        gceInstanceHost:
-            json_.containsKey('gceInstanceHost')
-                ? GceInstanceHost.fromJson(
-                  json_['gceInstanceHost']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gceInstanceHost: json_.containsKey('gceInstanceHost')
+            ? GceInstanceHost.fromJson(
+                json_['gceInstanceHost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gceInstanceHost != null) 'gceInstanceHost': gceInstanceHost!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gceInstanceHost = this.gceInstanceHost;
+    return {'gceInstanceHost': ?gceInstanceHost};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3578,19 +3660,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Request message for StartWorkstation.
@@ -3622,11 +3704,16 @@ class StartWorkstationRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boostConfig != null) 'boostConfig': boostConfig!,
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boostConfig = this.boostConfig;
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {
+      'boostConfig': ?boostConfig,
+      'etag': ?etag,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3660,10 +3747,11 @@ class StopWorkstationRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3808,9 +3896,10 @@ class Workstation {
 
   Workstation.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -3825,12 +3914,11 @@ class Workstation {
         ),
         name: json_['name'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
-        runtimeHost:
-            json_.containsKey('runtimeHost')
-                ? RuntimeHost.fromJson(
-                  json_['runtimeHost'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        runtimeHost: json_.containsKey('runtimeHost')
+            ? RuntimeHost.fromJson(
+                json_['runtimeHost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceWorkstation: json_['sourceWorkstation'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
@@ -3838,25 +3926,44 @@ class Workstation {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (env != null) 'env': env!,
-    if (etag != null) 'etag': etag!,
-    if (host != null) 'host': host!,
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (runtimeHost != null) 'runtimeHost': runtimeHost!,
-    if (sourceWorkstation != null) 'sourceWorkstation': sourceWorkstation!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final env = this.env;
+    final etag = this.etag;
+    final host = this.host;
+    final kmsKey = this.kmsKey;
+    final labels = this.labels;
+    final name = this.name;
+    final reconciling = this.reconciling;
+    final runtimeHost = this.runtimeHost;
+    final sourceWorkstation = this.sourceWorkstation;
+    final startTime = this.startTime;
+    final state = this.state;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'env': ?env,
+      'etag': ?etag,
+      'host': ?host,
+      'kmsKey': ?kmsKey,
+      'labels': ?labels,
+      'name': ?name,
+      'reconciling': ?reconciling,
+      'runtimeHost': ?runtimeHost,
+      'sourceWorkstation': ?sourceWorkstation,
+      'startTime': ?startTime,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A workstation cluster resource in the Cloud Workstations API.
@@ -4004,47 +4111,43 @@ class WorkstationCluster {
 
   WorkstationCluster.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => Status.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         controlPlaneIp: json_['controlPlaneIp'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         degraded: json_['degraded'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        domainConfig:
-            json_.containsKey('domainConfig')
-                ? DomainConfig.fromJson(
-                  json_['domainConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        domainConfig: json_.containsKey('domainConfig')
+            ? DomainConfig.fromJson(
+                json_['domainConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
-        gatewayConfig:
-            json_.containsKey('gatewayConfig')
-                ? GatewayConfig.fromJson(
-                  json_['gatewayConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gatewayConfig: json_.containsKey('gatewayConfig')
+            ? GatewayConfig.fromJson(
+                json_['gatewayConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
-        privateClusterConfig:
-            json_.containsKey('privateClusterConfig')
-                ? PrivateClusterConfig.fromJson(
-                  json_['privateClusterConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        privateClusterConfig: json_.containsKey('privateClusterConfig')
+            ? PrivateClusterConfig.fromJson(
+                json_['privateClusterConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
         subnetwork: json_['subnetwork'] as core.String?,
         tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -4054,28 +4157,48 @@ class WorkstationCluster {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (conditions != null) 'conditions': conditions!,
-    if (controlPlaneIp != null) 'controlPlaneIp': controlPlaneIp!,
-    if (createTime != null) 'createTime': createTime!,
-    if (degraded != null) 'degraded': degraded!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (domainConfig != null) 'domainConfig': domainConfig!,
-    if (etag != null) 'etag': etag!,
-    if (gatewayConfig != null) 'gatewayConfig': gatewayConfig!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (privateClusterConfig != null)
-      'privateClusterConfig': privateClusterConfig!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-    if (tags != null) 'tags': tags!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final conditions = this.conditions;
+    final controlPlaneIp = this.controlPlaneIp;
+    final createTime = this.createTime;
+    final degraded = this.degraded;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final domainConfig = this.domainConfig;
+    final etag = this.etag;
+    final gatewayConfig = this.gatewayConfig;
+    final labels = this.labels;
+    final name = this.name;
+    final network = this.network;
+    final privateClusterConfig = this.privateClusterConfig;
+    final reconciling = this.reconciling;
+    final subnetwork = this.subnetwork;
+    final tags = this.tags;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'conditions': ?conditions,
+      'controlPlaneIp': ?controlPlaneIp,
+      'createTime': ?createTime,
+      'degraded': ?degraded,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'domainConfig': ?domainConfig,
+      'etag': ?etag,
+      'gatewayConfig': ?gatewayConfig,
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'privateClusterConfig': ?privateClusterConfig,
+      'reconciling': ?reconciling,
+      'subnetwork': ?subnetwork,
+      'tags': ?tags,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A workstation configuration resource in the Cloud Workstations API.
@@ -4337,123 +4460,138 @@ class WorkstationConfig {
 
   WorkstationConfig.fromJson(core.Map json_)
     : this(
-        allowedPorts:
-            (json_['allowedPorts'] as core.List?)
-                ?.map(
-                  (value) => PortRange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => Status.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        container:
-            json_.containsKey('container')
-                ? Container.fromJson(
-                  json_['container'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        allowedPorts: (json_['allowedPorts'] as core.List?)
+            ?.map(
+              (value) => PortRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        container: json_.containsKey('container')
+            ? Container.fromJson(
+                json_['container'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         degraded: json_['degraded'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         disableTcpConnections: json_['disableTcpConnections'] as core.bool?,
         displayName: json_['displayName'] as core.String?,
         enableAuditAgent: json_['enableAuditAgent'] as core.bool?,
-        encryptionKey:
-            json_.containsKey('encryptionKey')
-                ? CustomerEncryptionKey.fromJson(
-                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ephemeralDirectories:
-            (json_['ephemeralDirectories'] as core.List?)
-                ?.map(
-                  (value) => EphemeralDirectory.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        encryptionKey: json_.containsKey('encryptionKey')
+            ? CustomerEncryptionKey.fromJson(
+                json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ephemeralDirectories: (json_['ephemeralDirectories'] as core.List?)
+            ?.map(
+              (value) => EphemeralDirectory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         grantWorkstationAdminRoleOnCreate:
             json_['grantWorkstationAdminRoleOnCreate'] as core.bool?,
-        host:
-            json_.containsKey('host')
-                ? Host.fromJson(
-                  json_['host'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        host: json_.containsKey('host')
+            ? Host.fromJson(
+                json_['host'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         idleTimeout: json_['idleTimeout'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         maxUsableWorkstations: json_['maxUsableWorkstations'] as core.int?,
         name: json_['name'] as core.String?,
-        persistentDirectories:
-            (json_['persistentDirectories'] as core.List?)
-                ?.map(
-                  (value) => PersistentDirectory.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        readinessChecks:
-            (json_['readinessChecks'] as core.List?)
-                ?.map(
-                  (value) => ReadinessCheck.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        persistentDirectories: (json_['persistentDirectories'] as core.List?)
+            ?.map(
+              (value) => PersistentDirectory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        readinessChecks: (json_['readinessChecks'] as core.List?)
+            ?.map(
+              (value) => ReadinessCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         reconciling: json_['reconciling'] as core.bool?,
-        replicaZones:
-            (json_['replicaZones'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        replicaZones: (json_['replicaZones'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         runningTimeout: json_['runningTimeout'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedPorts != null) 'allowedPorts': allowedPorts!,
-    if (annotations != null) 'annotations': annotations!,
-    if (conditions != null) 'conditions': conditions!,
-    if (container != null) 'container': container!,
-    if (createTime != null) 'createTime': createTime!,
-    if (degraded != null) 'degraded': degraded!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (disableTcpConnections != null)
-      'disableTcpConnections': disableTcpConnections!,
-    if (displayName != null) 'displayName': displayName!,
-    if (enableAuditAgent != null) 'enableAuditAgent': enableAuditAgent!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (ephemeralDirectories != null)
-      'ephemeralDirectories': ephemeralDirectories!,
-    if (etag != null) 'etag': etag!,
-    if (grantWorkstationAdminRoleOnCreate != null)
-      'grantWorkstationAdminRoleOnCreate': grantWorkstationAdminRoleOnCreate!,
-    if (host != null) 'host': host!,
-    if (idleTimeout != null) 'idleTimeout': idleTimeout!,
-    if (labels != null) 'labels': labels!,
-    if (maxUsableWorkstations != null)
-      'maxUsableWorkstations': maxUsableWorkstations!,
-    if (name != null) 'name': name!,
-    if (persistentDirectories != null)
-      'persistentDirectories': persistentDirectories!,
-    if (readinessChecks != null) 'readinessChecks': readinessChecks!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (replicaZones != null) 'replicaZones': replicaZones!,
-    if (runningTimeout != null) 'runningTimeout': runningTimeout!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedPorts = this.allowedPorts;
+    final annotations = this.annotations;
+    final conditions = this.conditions;
+    final container = this.container;
+    final createTime = this.createTime;
+    final degraded = this.degraded;
+    final deleteTime = this.deleteTime;
+    final disableTcpConnections = this.disableTcpConnections;
+    final displayName = this.displayName;
+    final enableAuditAgent = this.enableAuditAgent;
+    final encryptionKey = this.encryptionKey;
+    final ephemeralDirectories = this.ephemeralDirectories;
+    final etag = this.etag;
+    final grantWorkstationAdminRoleOnCreate =
+        this.grantWorkstationAdminRoleOnCreate;
+    final host = this.host;
+    final idleTimeout = this.idleTimeout;
+    final labels = this.labels;
+    final maxUsableWorkstations = this.maxUsableWorkstations;
+    final name = this.name;
+    final persistentDirectories = this.persistentDirectories;
+    final readinessChecks = this.readinessChecks;
+    final reconciling = this.reconciling;
+    final replicaZones = this.replicaZones;
+    final runningTimeout = this.runningTimeout;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'allowedPorts': ?allowedPorts,
+      'annotations': ?annotations,
+      'conditions': ?conditions,
+      'container': ?container,
+      'createTime': ?createTime,
+      'degraded': ?degraded,
+      'deleteTime': ?deleteTime,
+      'disableTcpConnections': ?disableTcpConnections,
+      'displayName': ?displayName,
+      'enableAuditAgent': ?enableAuditAgent,
+      'encryptionKey': ?encryptionKey,
+      'ephemeralDirectories': ?ephemeralDirectories,
+      'etag': ?etag,
+      'grantWorkstationAdminRoleOnCreate': ?grantWorkstationAdminRoleOnCreate,
+      'host': ?host,
+      'idleTimeout': ?idleTimeout,
+      'labels': ?labels,
+      'maxUsableWorkstations': ?maxUsableWorkstations,
+      'name': ?name,
+      'persistentDirectories': ?persistentDirectories,
+      'readinessChecks': ?readinessChecks,
+      'reconciling': ?reconciling,
+      'replicaZones': ?replicaZones,
+      'runningTimeout': ?runningTimeout,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }

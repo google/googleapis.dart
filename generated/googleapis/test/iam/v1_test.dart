@@ -3252,10 +3252,10 @@ void main() {
         final o =
             buildGoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client(
           od,
         );
@@ -3270,10 +3270,10 @@ void main() {
         final o =
             buildGoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters(
           od,
         );
@@ -3298,10 +3298,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIamAdminV1WorkforcePoolProviderOidcClientSecret();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIamAdminV1WorkforcePoolProviderOidcClientSecret(od);
       });
     },
@@ -3314,10 +3314,10 @@ void main() {
         final o =
             buildGoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue(od);
       });
     },
@@ -3329,10 +3329,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(od);
       });
     },
@@ -3553,10 +3553,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildListWorkloadIdentityPoolManagedIdentitiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListWorkloadIdentityPoolManagedIdentitiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListWorkloadIdentityPoolManagedIdentitiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListWorkloadIdentityPoolManagedIdentitiesResponse(od);
       });
     },
@@ -4069,10 +4069,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildUndeleteWorkloadIdentityPoolManagedIdentityRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .UndeleteWorkloadIdentityPoolManagedIdentityRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.UndeleteWorkloadIdentityPoolManagedIdentityRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkUndeleteWorkloadIdentityPoolManagedIdentityRequest(od);
       });
     },
@@ -5727,8 +5727,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock).locations.workforcePools.providers.keys.operations;
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.keys.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5786,8 +5787,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock).locations.workforcePools.providers.operations;
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5843,8 +5845,9 @@ void main() {
   unittest.group('resource-LocationsWorkforcePoolsProvidersScimTenantsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_request = buildWorkforcePoolProviderScimTenant();
       final arg_parent = 'foo';
       final arg_workforcePoolProviderScimTenantId = 'foo';
@@ -5918,8 +5921,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_name = 'foo';
       final arg_hardDelete = true;
       final arg_$fields = 'foo';
@@ -5985,8 +5989,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6043,8 +6048,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6122,8 +6128,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_request = buildWorkforcePoolProviderScimTenant();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6196,17 +6203,18 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).locations.workforcePools.providers.scimTenants;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants;
       final arg_request = buildUndeleteWorkforcePoolProviderScimTenantRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .UndeleteWorkforcePoolProviderScimTenantRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.UndeleteWorkforcePoolProviderScimTenantRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkUndeleteWorkforcePoolProviderScimTenantRequest(obj);
 
           final path = req.url.path;
@@ -6267,10 +6275,9 @@ void main() {
   unittest.group('resource-LocationsWorkforcePoolsProvidersScimTenantsTokensResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_request = buildWorkforcePoolProviderScimToken();
       final arg_parent = 'foo';
       final arg_workforcePoolProviderScimTokenId = 'foo';
@@ -6343,10 +6350,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6403,10 +6409,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6463,10 +6468,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6544,10 +6548,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_request = buildWorkforcePoolProviderScimToken();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6620,19 +6623,18 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(
-            mock,
-          ).locations.workforcePools.providers.scimTenants.tokens;
+      final res = api.IamApi(
+        mock,
+      ).locations.workforcePools.providers.scimTenants.tokens;
       final arg_request = buildUndeleteWorkforcePoolProviderScimTokenRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .UndeleteWorkforcePoolProviderScimTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.UndeleteWorkforcePoolProviderScimTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkUndeleteWorkforcePoolProviderScimTokenRequest(obj);
 
           final path = req.url.path;
@@ -6813,8 +6815,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock).locations.workforcePools.subjects.operations;
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.subjects.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8586,8 +8589,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkloadIdentityPoolsNamespacesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_request = buildWorkloadIdentityPoolNamespace();
       final arg_parent = 'foo';
       final arg_workloadIdentityPoolNamespaceId = 'foo';
@@ -8656,8 +8660,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8710,8 +8715,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8768,8 +8774,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8847,8 +8854,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_request = buildWorkloadIdentityPoolNamespace();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -8917,8 +8925,9 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.namespaces;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.namespaces;
       final arg_request = buildUndeleteWorkloadIdentityPoolNamespaceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8985,13 +8994,9 @@ void main() {
     () {
       unittest.test('method--addAttestationRule', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request = buildAddAttestationRuleRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -9054,13 +9059,9 @@ void main() {
 
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request = buildWorkloadIdentityPoolManagedIdentity();
         final arg_parent = 'foo';
         final arg_workloadIdentityPoolManagedIdentityId = 'foo';
@@ -9130,13 +9131,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9189,13 +9186,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9252,13 +9245,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -9336,13 +9325,9 @@ void main() {
 
       unittest.test('method--listAttestationRules', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_resource = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -9420,13 +9405,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request = buildWorkloadIdentityPoolManagedIdentity();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -9495,13 +9476,9 @@ void main() {
 
       unittest.test('method--removeAttestationRule', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request = buildRemoveAttestationRuleRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -9564,13 +9541,9 @@ void main() {
 
       unittest.test('method--setAttestationRules', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request = buildSetAttestationRulesRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -9633,23 +9606,19 @@ void main() {
 
       unittest.test('method--undelete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.managedIdentities;
         final arg_request =
             buildUndeleteWorkloadIdentityPoolManagedIdentityRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .UndeleteWorkloadIdentityPoolManagedIdentityRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.UndeleteWorkloadIdentityPoolManagedIdentityRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkUndeleteWorkloadIdentityPoolManagedIdentityRequest(obj);
 
             final path = req.url.path;
@@ -9709,14 +9678,13 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities
-                .operations;
+        final res = api.IamApi(mock)
+            .projects
+            .locations
+            .workloadIdentityPools
+            .namespaces
+            .managedIdentities
+            .operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9774,15 +9742,14 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .namespaces
-                .managedIdentities
-                .workloadSources
-                .operations;
+        final res = api.IamApi(mock)
+            .projects
+            .locations
+            .workloadIdentityPools
+            .namespaces
+            .managedIdentities
+            .workloadSources
+            .operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9840,10 +9807,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.namespaces.operations;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.namespaces.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9901,10 +9867,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.operations;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9960,8 +9925,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkloadIdentityPoolsProvidersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_request = buildWorkloadIdentityPoolProvider();
       final arg_parent = 'foo';
       final arg_workloadIdentityPoolProviderId = 'foo';
@@ -10030,8 +9996,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10084,8 +10051,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10140,8 +10108,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10219,8 +10188,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_request = buildWorkloadIdentityPoolProvider();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10289,8 +10259,9 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
+      final res = api.IamApi(
+        mock,
+      ).projects.locations.workloadIdentityPools.providers;
       final arg_request = buildUndeleteWorkloadIdentityPoolProviderRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10357,10 +10328,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.keys;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys;
         final arg_request = buildWorkloadIdentityPoolProviderKey();
         final arg_parent = 'foo';
         final arg_workloadIdentityPoolProviderKeyId = 'foo';
@@ -10430,10 +10400,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.keys;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10486,10 +10455,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.keys;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10546,10 +10514,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.keys;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -10627,20 +10594,19 @@ void main() {
 
       unittest.test('method--undelete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.keys;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys;
         final arg_request =
             buildUndeleteWorkloadIdentityPoolProviderKeyRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .UndeleteWorkloadIdentityPoolProviderKeyRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.UndeleteWorkloadIdentityPoolProviderKeyRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkUndeleteWorkloadIdentityPoolProviderKeyRequest(obj);
 
             final path = req.url.path;
@@ -10700,14 +10666,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(mock)
-                .projects
-                .locations
-                .workloadIdentityPools
-                .providers
-                .keys
-                .operations;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.keys.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10765,10 +10726,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IamApi(
-              mock,
-            ).projects.locations.workloadIdentityPools.providers.operations;
+        final res = api.IamApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.providers.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(

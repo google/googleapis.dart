@@ -111,7 +111,7 @@ class LocationsPlaceActionLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
@@ -147,7 +147,7 @@ class LocationsPlaceActionLinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -182,7 +182,7 @@ class LocationsPlaceActionLinksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -234,10 +234,10 @@ class LocationsPlaceActionLinksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
@@ -290,8 +290,8 @@ class LocationsPlaceActionLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -357,11 +357,11 @@ class PlaceActionTypeMetadataResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/placeActionTypeMetadata';
@@ -399,20 +399,23 @@ class ListPlaceActionLinksResponse {
   ListPlaceActionLinksResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        placeActionLinks:
-            (json_['placeActionLinks'] as core.List?)
-                ?.map(
-                  (value) => PlaceActionLink.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        placeActionLinks: (json_['placeActionLinks'] as core.List?)
+            ?.map(
+              (value) => PlaceActionLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (placeActionLinks != null) 'placeActionLinks': placeActionLinks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final placeActionLinks = this.placeActionLinks;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'placeActionLinks': ?placeActionLinks,
+    };
+  }
 }
 
 /// Response message for PlaceActions.ListPlaceActionTypeMetadata.
@@ -446,11 +449,14 @@ class ListPlaceActionTypeMetadataResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (placeActionTypeMetadata != null)
-      'placeActionTypeMetadata': placeActionTypeMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final placeActionTypeMetadata = this.placeActionTypeMetadata;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'placeActionTypeMetadata': ?placeActionTypeMetadata,
+    };
+  }
 }
 
 /// Represents a place action link and its attributes.
@@ -553,16 +559,26 @@ class PlaceActionLink {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (isEditable != null) 'isEditable': isEditable!,
-    if (isPreferred != null) 'isPreferred': isPreferred!,
-    if (name != null) 'name': name!,
-    if (placeActionType != null) 'placeActionType': placeActionType!,
-    if (providerType != null) 'providerType': providerType!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final isEditable = this.isEditable;
+    final isPreferred = this.isPreferred;
+    final name = this.name;
+    final placeActionType = this.placeActionType;
+    final providerType = this.providerType;
+    final updateTime = this.updateTime;
+    final uri = this.uri;
+    return {
+      'createTime': ?createTime,
+      'isEditable': ?isEditable,
+      'isPreferred': ?isPreferred,
+      'name': ?name,
+      'placeActionType': ?placeActionType,
+      'providerType': ?providerType,
+      'updateTime': ?updateTime,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Metadata for supported place action types.
@@ -595,8 +611,9 @@ class PlaceActionTypeMetadata {
         placeActionType: json_['placeActionType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (placeActionType != null) 'placeActionType': placeActionType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final placeActionType = this.placeActionType;
+    return {'displayName': ?displayName, 'placeActionType': ?placeActionType};
+  }
 }

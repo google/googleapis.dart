@@ -625,8 +625,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildConnection();
       final arg_parent = 'foo';
       final arg_connectionId = 'foo';
@@ -695,8 +696,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -749,8 +751,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -803,8 +806,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -867,8 +871,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_parent = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -936,8 +941,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildConnection();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1006,8 +1012,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -1070,8 +1077,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -1136,8 +1144,9 @@ void main() {
 
     unittest.test('method--updateCredential', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryConnectionServiceApi(mock).projects.locations.connections;
+      final res = api.BigQueryConnectionServiceApi(
+        mock,
+      ).projects.locations.connections;
       final arg_request = buildConnectionCredential();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

@@ -122,10 +122,10 @@ class AccountsAggregateProductStatusesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -192,9 +192,9 @@ class IssueresolutionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (timeZone != null) 'timeZone': [timeZone],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'timeZone': ?timeZone == null ? null : [timeZone],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -281,9 +281,9 @@ class IssueresolutionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (timeZone != null) 'timeZone': [timeZone],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'timeZone': ?timeZone == null ? null : [timeZone],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -346,8 +346,8 @@ class IssueresolutionResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -418,49 +418,49 @@ class Action {
 
   Action.fromJson(core.Map json_)
     : this(
-        builtinSimpleAction:
-            json_.containsKey('builtinSimpleAction')
-                ? BuiltInSimpleAction.fromJson(
-                  json_['builtinSimpleAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        builtinUserInputAction:
-            json_.containsKey('builtinUserInputAction')
-                ? BuiltInUserInputAction.fromJson(
-                  json_['builtinUserInputAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        builtinSimpleAction: json_.containsKey('builtinSimpleAction')
+            ? BuiltInSimpleAction.fromJson(
+                json_['builtinSimpleAction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        builtinUserInputAction: json_.containsKey('builtinUserInputAction')
+            ? BuiltInUserInputAction.fromJson(
+                json_['builtinUserInputAction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         buttonLabel: json_['buttonLabel'] as core.String?,
-        externalAction:
-            json_.containsKey('externalAction')
-                ? ExternalAction.fromJson(
-                  json_['externalAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        externalAction: json_.containsKey('externalAction')
+            ? ExternalAction.fromJson(
+                json_['externalAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         isAvailable: json_['isAvailable'] as core.bool?,
-        reasons:
-            (json_['reasons'] as core.List?)
-                ?.map(
-                  (value) => Reason.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        reasons: (json_['reasons'] as core.List?)
+            ?.map(
+              (value) =>
+                  Reason.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (builtinSimpleAction != null)
-      'builtinSimpleAction': builtinSimpleAction!,
-    if (builtinUserInputAction != null)
-      'builtinUserInputAction': builtinUserInputAction!,
-    if (buttonLabel != null) 'buttonLabel': buttonLabel!,
-    if (externalAction != null) 'externalAction': externalAction!,
-    if (isAvailable != null) 'isAvailable': isAvailable!,
-    if (reasons != null) 'reasons': reasons!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final builtinSimpleAction = this.builtinSimpleAction;
+    final builtinUserInputAction = this.builtinUserInputAction;
+    final buttonLabel = this.buttonLabel;
+    final externalAction = this.externalAction;
+    final isAvailable = this.isAvailable;
+    final reasons = this.reasons;
+    return {
+      'builtinSimpleAction': ?builtinSimpleAction,
+      'builtinUserInputAction': ?builtinUserInputAction,
+      'buttonLabel': ?buttonLabel,
+      'externalAction': ?externalAction,
+      'isAvailable': ?isAvailable,
+      'reasons': ?reasons,
+    };
+  }
 }
 
 /// Flow that can be selected for an action.
@@ -517,40 +517,46 @@ class ActionFlow {
   ActionFlow.fromJson(core.Map json_)
     : this(
         dialogButtonLabel: json_['dialogButtonLabel'] as core.String?,
-        dialogCallout:
-            json_.containsKey('dialogCallout')
-                ? Callout.fromJson(
-                  json_['dialogCallout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dialogMessage:
-            json_.containsKey('dialogMessage')
-                ? TextWithTooltip.fromJson(
-                  json_['dialogMessage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dialogCallout: json_.containsKey('dialogCallout')
+            ? Callout.fromJson(
+                json_['dialogCallout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dialogMessage: json_.containsKey('dialogMessage')
+            ? TextWithTooltip.fromJson(
+                json_['dialogMessage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dialogTitle: json_['dialogTitle'] as core.String?,
         id: json_['id'] as core.String?,
-        inputs:
-            (json_['inputs'] as core.List?)
-                ?.map(
-                  (value) => InputField.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        inputs: (json_['inputs'] as core.List?)
+            ?.map(
+              (value) => InputField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         label: json_['label'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dialogButtonLabel != null) 'dialogButtonLabel': dialogButtonLabel!,
-    if (dialogCallout != null) 'dialogCallout': dialogCallout!,
-    if (dialogMessage != null) 'dialogMessage': dialogMessage!,
-    if (dialogTitle != null) 'dialogTitle': dialogTitle!,
-    if (id != null) 'id': id!,
-    if (inputs != null) 'inputs': inputs!,
-    if (label != null) 'label': label!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dialogButtonLabel = this.dialogButtonLabel;
+    final dialogCallout = this.dialogCallout;
+    final dialogMessage = this.dialogMessage;
+    final dialogTitle = this.dialogTitle;
+    final id = this.id;
+    final inputs = this.inputs;
+    final label = this.label;
+    return {
+      'dialogButtonLabel': ?dialogButtonLabel,
+      'dialogCallout': ?dialogCallout,
+      'dialogMessage': ?dialogMessage,
+      'dialogTitle': ?dialogTitle,
+      'id': ?id,
+      'inputs': ?inputs,
+      'label': ?label,
+    };
+  }
 }
 
 /// Input provided by the business.
@@ -570,20 +576,20 @@ class ActionInput {
   ActionInput.fromJson(core.Map json_)
     : this(
         actionFlowId: json_['actionFlowId'] as core.String?,
-        inputValues:
-            (json_['inputValues'] as core.List?)
-                ?.map(
-                  (value) => InputValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        inputValues: (json_['inputValues'] as core.List?)
+            ?.map(
+              (value) => InputValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionFlowId != null) 'actionFlowId': actionFlowId!,
-    if (inputValues != null) 'inputValues': inputValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionFlowId = this.actionFlowId;
+    final inputValues = this.inputValues;
+    return {'actionFlowId': ?actionFlowId, 'inputValues': ?inputValues};
+  }
 }
 
 /// Long text from external source.
@@ -660,31 +666,36 @@ class AggregateProductStatus {
   AggregateProductStatus.fromJson(core.Map json_)
     : this(
         country: json_['country'] as core.String?,
-        itemLevelIssues:
-            (json_['itemLevelIssues'] as core.List?)
-                ?.map(
-                  (value) => ItemLevelIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
+            ?.map(
+              (value) => ItemLevelIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         reportingContext: json_['reportingContext'] as core.String?,
-        stats:
-            json_.containsKey('stats')
-                ? Stats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stats: json_.containsKey('stats')
+            ? Stats.fromJson(
+                json_['stats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (country != null) 'country': country!,
-    if (itemLevelIssues != null) 'itemLevelIssues': itemLevelIssues!,
-    if (name != null) 'name': name!,
-    if (reportingContext != null) 'reportingContext': reportingContext!,
-    if (stats != null) 'stats': stats!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final country = this.country;
+    final itemLevelIssues = this.itemLevelIssues;
+    final name = this.name;
+    final reportingContext = this.reportingContext;
+    final stats = this.stats;
+    return {
+      'country': ?country,
+      'itemLevelIssues': ?itemLevelIssues,
+      'name': ?name,
+      'reportingContext': ?reportingContext,
+      'stats': ?stats,
+    };
+  }
 }
 
 /// A detailed impact breakdown for a group of regions where the impact of the
@@ -708,24 +719,22 @@ class Breakdown {
 
   Breakdown.fromJson(core.Map json_)
     : this(
-        details:
-            (json_['details'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map(
-                  (value) => Region.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        details: (json_['details'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Region.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final regions = this.regions;
+    return {'details': ?details, 'regions': ?regions};
+  }
 }
 
 /// Action that is implemented and performed in (your) third-party application.
@@ -785,22 +794,26 @@ class BuiltInSimpleAction {
 
   BuiltInSimpleAction.fromJson(core.Map json_)
     : this(
-        additionalContent:
-            json_.containsKey('additionalContent')
-                ? AdditionalContent.fromJson(
-                  json_['additionalContent']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additionalContent: json_.containsKey('additionalContent')
+            ? AdditionalContent.fromJson(
+                json_['additionalContent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attributeCode: json_['attributeCode'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalContent != null) 'additionalContent': additionalContent!,
-    if (attributeCode != null) 'attributeCode': attributeCode!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalContent = this.additionalContent;
+    final attributeCode = this.attributeCode;
+    final type = this.type;
+    return {
+      'additionalContent': ?additionalContent,
+      'attributeCode': ?attributeCode,
+      'type': ?type,
+    };
+  }
 }
 
 /// Action that is implemented and performed in (your) third-party application.
@@ -830,20 +843,20 @@ class BuiltInUserInputAction {
   BuiltInUserInputAction.fromJson(core.Map json_)
     : this(
         actionContext: json_['actionContext'] as core.String?,
-        flows:
-            (json_['flows'] as core.List?)
-                ?.map(
-                  (value) => ActionFlow.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        flows: (json_['flows'] as core.List?)
+            ?.map(
+              (value) => ActionFlow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionContext != null) 'actionContext': actionContext!,
-    if (flows != null) 'flows': flows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionContext = this.actionContext;
+    final flows = this.flows;
+    return {'actionContext': ?actionContext, 'flows': ?flows};
+  }
 }
 
 /// An important message that should be highlighted.
@@ -873,19 +886,19 @@ class Callout {
 
   Callout.fromJson(core.Map json_)
     : this(
-        fullMessage:
-            json_.containsKey('fullMessage')
-                ? TextWithTooltip.fromJson(
-                  json_['fullMessage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fullMessage: json_.containsKey('fullMessage')
+            ? TextWithTooltip.fromJson(
+                json_['fullMessage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         styleHint: json_['styleHint'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fullMessage != null) 'fullMessage': fullMessage!,
-    if (styleHint != null) 'styleHint': styleHint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullMessage = this.fullMessage;
+    final styleHint = this.styleHint;
+    return {'fullMessage': ?fullMessage, 'styleHint': ?styleHint};
+  }
 }
 
 /// Checkbox input allows the business to provide a boolean value.
@@ -914,9 +927,10 @@ class CheckboxInputValue {
   CheckboxInputValue.fromJson(core.Map json_)
     : this(value: json_['value'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// Choice input allows the business to select one of the offered choices.
@@ -936,19 +950,19 @@ class ChoiceInput {
 
   ChoiceInput.fromJson(core.Map json_)
     : this(
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => ChoiceInputOption.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) => ChoiceInputOption.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// A choice that the business can select.
@@ -970,27 +984,25 @@ class ChoiceInputOption {
 
   ChoiceInputOption.fromJson(core.Map json_)
     : this(
-        additionalInput:
-            json_.containsKey('additionalInput')
-                ? InputField.fromJson(
-                  json_['additionalInput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additionalInput: json_.containsKey('additionalInput')
+            ? InputField.fromJson(
+                json_['additionalInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        label:
-            json_.containsKey('label')
-                ? TextWithTooltip.fromJson(
-                  json_['label'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        label: json_.containsKey('label')
+            ? TextWithTooltip.fromJson(
+                json_['label'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalInput != null) 'additionalInput': additionalInput!,
-    if (id != null) 'id': id!,
-    if (label != null) 'label': label!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalInput = this.additionalInput;
+    final id = this.id;
+    final label = this.label;
+    return {'additionalInput': ?additionalInput, 'id': ?id, 'label': ?label};
+  }
 }
 
 /// Value for choice input field.
@@ -1005,10 +1017,10 @@ class ChoiceInputValue {
   ChoiceInputValue.fromJson(core.Map json_)
     : this(choiceInputOptionId: json_['choiceInputOptionId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (choiceInputOptionId != null)
-      'choiceInputOptionId': choiceInputOptionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final choiceInputOptionId = this.choiceInputOptionId;
+    return {'choiceInputOptionId': ?choiceInputOptionId};
+  }
 }
 
 /// Action that is implemented and performed outside of the third-party
@@ -1048,10 +1060,11 @@ class ExternalAction {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    final uri = this.uri;
+    return {'type': ?type, 'uri': ?uri};
+  }
 }
 
 /// Overall impact of the issue.
@@ -1090,23 +1103,27 @@ class Impact {
 
   Impact.fromJson(core.Map json_)
     : this(
-        breakdowns:
-            (json_['breakdowns'] as core.List?)
-                ?.map(
-                  (value) => Breakdown.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        breakdowns: (json_['breakdowns'] as core.List?)
+            ?.map(
+              (value) => Breakdown.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         message: json_['message'] as core.String?,
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (breakdowns != null) 'breakdowns': breakdowns!,
-    if (message != null) 'message': message!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final breakdowns = this.breakdowns;
+    final message = this.message;
+    final severity = this.severity;
+    return {
+      'breakdowns': ?breakdowns,
+      'message': ?message,
+      'severity': ?severity,
+    };
+  }
 }
 
 /// Input field that needs to be available to the business.
@@ -1159,42 +1176,46 @@ class InputField {
 
   InputField.fromJson(core.Map json_)
     : this(
-        checkboxInput:
-            json_.containsKey('checkboxInput')
-                ? CheckboxInput.fromJson(
-                  json_['checkboxInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        choiceInput:
-            json_.containsKey('choiceInput')
-                ? ChoiceInput.fromJson(
-                  json_['choiceInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checkboxInput: json_.containsKey('checkboxInput')
+            ? CheckboxInput.fromJson(
+                json_['checkboxInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        choiceInput: json_.containsKey('choiceInput')
+            ? ChoiceInput.fromJson(
+                json_['choiceInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        label:
-            json_.containsKey('label')
-                ? TextWithTooltip.fromJson(
-                  json_['label'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        label: json_.containsKey('label')
+            ? TextWithTooltip.fromJson(
+                json_['label'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         required: json_['required'] as core.bool?,
-        textInput:
-            json_.containsKey('textInput')
-                ? TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textInput: json_.containsKey('textInput')
+            ? TextInput.fromJson(
+                json_['textInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkboxInput != null) 'checkboxInput': checkboxInput!,
-    if (choiceInput != null) 'choiceInput': choiceInput!,
-    if (id != null) 'id': id!,
-    if (label != null) 'label': label!,
-    if (required != null) 'required': required!,
-    if (textInput != null) 'textInput': textInput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checkboxInput = this.checkboxInput;
+    final choiceInput = this.choiceInput;
+    final id = this.id;
+    final label = this.label;
+    final required = this.required;
+    final textInput = this.textInput;
+    return {
+      'checkboxInput': ?checkboxInput,
+      'choiceInput': ?choiceInput,
+      'id': ?id,
+      'label': ?label,
+      'required': ?required,
+      'textInput': ?textInput,
+    };
+  }
 }
 
 /// Input provided by the business for input field.
@@ -1222,36 +1243,38 @@ class InputValue {
 
   InputValue.fromJson(core.Map json_)
     : this(
-        checkboxInputValue:
-            json_.containsKey('checkboxInputValue')
-                ? CheckboxInputValue.fromJson(
-                  json_['checkboxInputValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        choiceInputValue:
-            json_.containsKey('choiceInputValue')
-                ? ChoiceInputValue.fromJson(
-                  json_['choiceInputValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        checkboxInputValue: json_.containsKey('checkboxInputValue')
+            ? CheckboxInputValue.fromJson(
+                json_['checkboxInputValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        choiceInputValue: json_.containsKey('choiceInputValue')
+            ? ChoiceInputValue.fromJson(
+                json_['choiceInputValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         inputFieldId: json_['inputFieldId'] as core.String?,
-        textInputValue:
-            json_.containsKey('textInputValue')
-                ? TextInputValue.fromJson(
-                  json_['textInputValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textInputValue: json_.containsKey('textInputValue')
+            ? TextInputValue.fromJson(
+                json_['textInputValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkboxInputValue != null) 'checkboxInputValue': checkboxInputValue!,
-    if (choiceInputValue != null) 'choiceInputValue': choiceInputValue!,
-    if (inputFieldId != null) 'inputFieldId': inputFieldId!,
-    if (textInputValue != null) 'textInputValue': textInputValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final checkboxInputValue = this.checkboxInputValue;
+    final choiceInputValue = this.choiceInputValue;
+    final inputFieldId = this.inputFieldId;
+    final textInputValue = this.textInputValue;
+    return {
+      'checkboxInputValue': ?checkboxInputValue,
+      'choiceInputValue': ?choiceInputValue,
+      'inputFieldId': ?inputFieldId,
+      'textInputValue': ?textInputValue,
+    };
+  }
 }
 
 /// The ItemLevelIssue of the product status.
@@ -1314,16 +1337,26 @@ class ItemLevelIssue {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attribute != null) 'attribute': attribute!,
-    if (code != null) 'code': code!,
-    if (description != null) 'description': description!,
-    if (detail != null) 'detail': detail!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (productCount != null) 'productCount': productCount!,
-    if (resolution != null) 'resolution': resolution!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attribute = this.attribute;
+    final code = this.code;
+    final description = this.description;
+    final detail = this.detail;
+    final documentationUri = this.documentationUri;
+    final productCount = this.productCount;
+    final resolution = this.resolution;
+    final severity = this.severity;
+    return {
+      'attribute': ?attribute,
+      'code': ?code,
+      'description': ?description,
+      'detail': ?detail,
+      'documentationUri': ?documentationUri,
+      'productCount': ?productCount,
+      'resolution': ?resolution,
+      'severity': ?severity,
+    };
+  }
 }
 
 /// Response message for the `ListAggregateProductStatuses` method.
@@ -1354,11 +1387,14 @@ class ListAggregateProductStatusesResponse {
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregateProductStatuses != null)
-      'aggregateProductStatuses': aggregateProductStatuses!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregateProductStatuses = this.aggregateProductStatuses;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'aggregateProductStatuses': ?aggregateProductStatuses,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// A single reason why the action is not available.
@@ -1390,21 +1426,21 @@ class Reason {
 
   Reason.fromJson(core.Map json_)
     : this(
-        action:
-            json_.containsKey('action')
-                ? Action.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        action: json_.containsKey('action')
+            ? Action.fromJson(
+                json_['action'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         detail: json_['detail'] as core.String?,
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (detail != null) 'detail': detail!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final detail = this.detail;
+    final message = this.message;
+    return {'action': ?action, 'detail': ?detail, 'message': ?message};
+  }
 }
 
 /// Region with code and localized name.
@@ -1425,19 +1461,19 @@ class RenderAccountIssuesResponse {
 
   RenderAccountIssuesResponse.fromJson(core.Map json_)
     : this(
-        renderedIssues:
-            (json_['renderedIssues'] as core.List?)
-                ?.map(
-                  (value) => RenderedIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        renderedIssues: (json_['renderedIssues'] as core.List?)
+            ?.map(
+              (value) => RenderedIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (renderedIssues != null) 'renderedIssues': renderedIssues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final renderedIssues = this.renderedIssues;
+    return {'renderedIssues': ?renderedIssues};
+  }
 }
 
 /// The payload for configuring how the content should be rendered.
@@ -1482,11 +1518,14 @@ class RenderIssuesRequestPayload {
         userInputActionOption: json_['userInputActionOption'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentOption != null) 'contentOption': contentOption!,
-    if (userInputActionOption != null)
-      'userInputActionOption': userInputActionOption!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentOption = this.contentOption;
+    final userInputActionOption = this.userInputActionOption;
+    return {
+      'contentOption': ?contentOption,
+      'userInputActionOption': ?userInputActionOption,
+    };
+  }
 }
 
 /// Response containing an issue resolution content and actions for listed
@@ -1504,19 +1543,19 @@ class RenderProductIssuesResponse {
 
   RenderProductIssuesResponse.fromJson(core.Map json_)
     : this(
-        renderedIssues:
-            (json_['renderedIssues'] as core.List?)
-                ?.map(
-                  (value) => RenderedIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        renderedIssues: (json_['renderedIssues'] as core.List?)
+            ?.map(
+              (value) => RenderedIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (renderedIssues != null) 'renderedIssues': renderedIssues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final renderedIssues = this.renderedIssues;
+    return {'renderedIssues': ?renderedIssues};
+  }
 }
 
 /// An issue affecting specific business or their product.
@@ -1633,35 +1672,39 @@ class RenderedIssue {
 
   RenderedIssue.fromJson(core.Map json_)
     : this(
-        actions:
-            (json_['actions'] as core.List?)
-                ?.map(
-                  (value) => Action.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        impact:
-            json_.containsKey('impact')
-                ? Impact.fromJson(
-                  json_['impact'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        impact: json_.containsKey('impact')
+            ? Impact.fromJson(
+                json_['impact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         prerenderedContent: json_['prerenderedContent'] as core.String?,
         prerenderedOutOfCourtDisputeSettlement:
             json_['prerenderedOutOfCourtDisputeSettlement'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actions != null) 'actions': actions!,
-    if (impact != null) 'impact': impact!,
-    if (prerenderedContent != null) 'prerenderedContent': prerenderedContent!,
-    if (prerenderedOutOfCourtDisputeSettlement != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final impact = this.impact;
+    final prerenderedContent = this.prerenderedContent;
+    final prerenderedOutOfCourtDisputeSettlement =
+        this.prerenderedOutOfCourtDisputeSettlement;
+    final title = this.title;
+    return {
+      'actions': ?actions,
+      'impact': ?impact,
+      'prerenderedContent': ?prerenderedContent,
       'prerenderedOutOfCourtDisputeSettlement':
-          prerenderedOutOfCourtDisputeSettlement!,
-    if (title != null) 'title': title!,
-  };
+          ?prerenderedOutOfCourtDisputeSettlement,
+      'title': ?title,
+    };
+  }
 }
 
 /// Products statistics.
@@ -1693,12 +1736,18 @@ class Stats {
         pendingCount: json_['pendingCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (activeCount != null) 'activeCount': activeCount!,
-    if (disapprovedCount != null) 'disapprovedCount': disapprovedCount!,
-    if (expiringCount != null) 'expiringCount': expiringCount!,
-    if (pendingCount != null) 'pendingCount': pendingCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeCount = this.activeCount;
+    final disapprovedCount = this.disapprovedCount;
+    final expiringCount = this.expiringCount;
+    final pendingCount = this.pendingCount;
+    return {
+      'activeCount': ?activeCount,
+      'disapprovedCount': ?disapprovedCount,
+      'expiringCount': ?expiringCount,
+      'pendingCount': ?pendingCount,
+    };
+  }
 }
 
 /// Text input allows the business to provide a text value.
@@ -1737,24 +1786,28 @@ class TextInput {
 
   TextInput.fromJson(core.Map json_)
     : this(
-        additionalInfo:
-            json_.containsKey('additionalInfo')
-                ? TextWithTooltip.fromJson(
-                  json_['additionalInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additionalInfo: json_.containsKey('additionalInfo')
+            ? TextWithTooltip.fromJson(
+                json_['additionalInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ariaLabel: json_['ariaLabel'] as core.String?,
         formatInfo: json_['formatInfo'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalInfo != null) 'additionalInfo': additionalInfo!,
-    if (ariaLabel != null) 'ariaLabel': ariaLabel!,
-    if (formatInfo != null) 'formatInfo': formatInfo!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalInfo = this.additionalInfo;
+    final ariaLabel = this.ariaLabel;
+    final formatInfo = this.formatInfo;
+    final type = this.type;
+    return {
+      'additionalInfo': ?additionalInfo,
+      'ariaLabel': ?ariaLabel,
+      'formatInfo': ?formatInfo,
+      'type': ?type,
+    };
+  }
 }
 
 /// Value for text input field.
@@ -1769,9 +1822,10 @@ class TextInputValue {
   TextInputValue.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// Block of text that may contain a tooltip with more information.
@@ -1797,18 +1851,18 @@ class TriggerActionPayload {
   TriggerActionPayload.fromJson(core.Map json_)
     : this(
         actionContext: json_['actionContext'] as core.String?,
-        actionInput:
-            json_.containsKey('actionInput')
-                ? ActionInput.fromJson(
-                  json_['actionInput'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actionInput: json_.containsKey('actionInput')
+            ? ActionInput.fromJson(
+                json_['actionInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionContext != null) 'actionContext': actionContext!,
-    if (actionInput != null) 'actionInput': actionInput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionContext = this.actionContext;
+    final actionInput = this.actionInput;
+    return {'actionContext': ?actionContext, 'actionInput': ?actionInput};
+  }
 }
 
 /// Response informing about the started action.
@@ -1821,7 +1875,8 @@ class TriggerActionResponse {
   TriggerActionResponse.fromJson(core.Map json_)
     : this(message: json_['message'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    return {'message': ?message};
+  }
 }

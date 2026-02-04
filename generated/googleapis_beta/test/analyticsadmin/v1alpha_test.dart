@@ -5705,10 +5705,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAccessDimensionHeader();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAccessDimensionHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAccessDimensionHeader.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAccessDimensionHeader(od);
       });
     },
@@ -5745,10 +5745,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAccessFilterExpression();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAccessFilterExpression.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAccessFilterExpression.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAccessFilterExpression(od);
       });
     },
@@ -5760,10 +5760,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAccessFilterExpressionList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAccessFilterExpressionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAccessFilterExpressionList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAccessFilterExpressionList(od);
       });
     },
@@ -5851,10 +5851,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy(od);
       });
     },
@@ -5866,10 +5866,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy(od);
       });
     },
@@ -5951,10 +5951,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest(
           od,
         );
@@ -5969,10 +5969,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse(
           od,
         );
@@ -5998,10 +5998,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest(
           od,
         );
@@ -6016,10 +6016,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse(
           od,
         );
@@ -6033,10 +6033,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaArchiveAudienceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaArchiveAudienceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaArchiveAudienceRequest(od);
       });
     },
@@ -6049,10 +6049,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest(od);
       });
     },
@@ -6064,10 +6064,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest(od);
       });
     },
@@ -6105,10 +6105,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter(od);
       });
     },
@@ -6121,10 +6121,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter(
           od,
         );
@@ -6139,10 +6139,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter(
           od,
         );
@@ -6157,10 +6157,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter(
           od,
         );
@@ -6175,10 +6175,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue(
           od,
         );
@@ -6193,10 +6193,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter(
           od,
         );
@@ -6252,10 +6252,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAudienceFilterExpression();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceFilterExpression.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceFilterExpression.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceFilterExpression(od);
       });
     },
@@ -6268,10 +6268,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceFilterExpressionList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceFilterExpressionList(od);
       });
     },
@@ -6283,10 +6283,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaAudienceSequenceFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceSequenceFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceSequenceFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceSequenceFilter(od);
       });
     },
@@ -6299,10 +6299,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep(
           od,
         );
@@ -6331,10 +6331,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest(od);
       });
     },
@@ -6347,10 +6347,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse(od);
       });
     },
@@ -6363,10 +6363,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest(od);
       });
     },
@@ -6379,10 +6379,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse(od);
       });
     },
@@ -6395,10 +6395,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest(od);
       });
     },
@@ -6411,10 +6411,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse(od);
       });
     },
@@ -6449,10 +6449,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest(
           od,
         );
@@ -6481,10 +6481,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
           od,
         );
@@ -6538,10 +6538,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaChannelGroupFilterExpression();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaChannelGroupFilterExpression(od);
       });
     },
@@ -6554,10 +6554,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList(od);
       });
     },
@@ -6570,10 +6570,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter(od);
       });
     },
@@ -6586,10 +6586,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter(od);
       });
     },
@@ -6613,10 +6613,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue(
           od,
         );
@@ -6641,10 +6641,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaCreateAccessBindingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaCreateAccessBindingRequest(od);
       });
     },
@@ -6656,10 +6656,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest(od);
       });
     },
@@ -6672,10 +6672,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse(od);
       });
     },
@@ -6709,10 +6709,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaDataRedactionSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDataRedactionSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDataRedactionSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDataRedactionSettings(od);
       });
     },
@@ -6724,10 +6724,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaDataRetentionSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDataRetentionSettings(od);
       });
     },
@@ -6765,10 +6765,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData(od);
       });
     },
@@ -6780,10 +6780,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData(od);
       });
     },
@@ -6795,10 +6795,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaDataStreamWebStreamData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDataStreamWebStreamData(od);
       });
     },
@@ -6810,10 +6810,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest(od);
       });
     },
@@ -6826,10 +6826,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(od);
       });
     },
@@ -6842,10 +6842,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(
           od,
         );
@@ -6859,10 +6859,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(od);
       });
     },
@@ -6918,10 +6918,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaExpandedDataSetFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaExpandedDataSetFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaExpandedDataSetFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaExpandedDataSetFilter(od);
       });
     },
@@ -6934,10 +6934,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression(od);
       });
     },
@@ -6950,10 +6950,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList(od);
       });
     },
@@ -6966,10 +6966,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter(od);
       });
     },
@@ -6982,10 +6982,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter(od);
       });
     },
@@ -7030,10 +7030,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaGoogleSignalsSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaGoogleSignalsSettings(od);
       });
     },
@@ -7081,10 +7081,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaLinkProposalStatusDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaLinkProposalStatusDetails(od);
       });
     },
@@ -7096,10 +7096,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListAccessBindingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListAccessBindingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListAccessBindingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListAccessBindingsResponse(od);
       });
     },
@@ -7112,10 +7112,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(od);
       });
     },
@@ -7141,10 +7141,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListAdSenseLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListAdSenseLinksResponse(od);
       });
     },
@@ -7156,10 +7156,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListAudiencesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListAudiencesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListAudiencesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListAudiencesResponse(od);
       });
     },
@@ -7171,10 +7171,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListBigQueryLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListBigQueryLinksResponse(od);
       });
     },
@@ -7187,10 +7187,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse(od);
       });
     },
@@ -7202,10 +7202,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListChannelGroupsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListChannelGroupsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListChannelGroupsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListChannelGroupsResponse(od);
       });
     },
@@ -7218,10 +7218,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListConversionEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListConversionEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListConversionEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListConversionEventsResponse(od);
       });
     },
@@ -7234,10 +7234,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse(od);
       });
     },
@@ -7249,10 +7249,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListCustomMetricsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(od);
       });
     },
@@ -7264,10 +7264,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListDataStreamsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListDataStreamsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(od);
       });
     },
@@ -7280,10 +7280,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse(
           od,
         );
@@ -7298,10 +7298,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse(
           od,
         );
@@ -7316,10 +7316,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListEventCreateRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListEventCreateRulesResponse(od);
       });
     },
@@ -7331,10 +7331,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListEventEditRulesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListEventEditRulesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListEventEditRulesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListEventEditRulesResponse(od);
       });
     },
@@ -7347,10 +7347,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse(od);
       });
     },
@@ -7362,10 +7362,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(od);
       });
     },
@@ -7377,10 +7377,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(od);
       });
     },
@@ -7392,10 +7392,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListKeyEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListKeyEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListKeyEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListKeyEventsResponse(od);
       });
     },
@@ -7408,10 +7408,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
           od,
         );
@@ -7425,10 +7425,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaListPropertiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(od);
       });
     },
@@ -7441,10 +7441,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse(
           od,
         );
@@ -7459,10 +7459,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse(
           od,
         );
@@ -7477,10 +7477,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse(
           od,
         );
@@ -7495,10 +7495,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse(od);
       });
     },
@@ -7511,10 +7511,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse(od);
       });
     },
@@ -7527,10 +7527,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse(od);
       });
     },
@@ -7553,10 +7553,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(od);
       });
     },
@@ -7624,10 +7624,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest(od);
       });
     },
@@ -7640,10 +7640,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(od);
       });
     },
@@ -7655,10 +7655,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest(od);
       });
     },
@@ -7671,10 +7671,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse(od);
       });
     },
@@ -7687,10 +7687,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest(od);
       });
     },
@@ -7702,10 +7702,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaReportingDataAnnotation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaReportingDataAnnotation(od);
       });
     },
@@ -7718,10 +7718,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange(od);
       });
     },
@@ -7733,10 +7733,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaReportingIdentitySettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaReportingIdentitySettings(od);
       });
     },
@@ -7748,10 +7748,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaRollupPropertySourceLink();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaRollupPropertySourceLink(od);
       });
     },
@@ -7763,10 +7763,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaRunAccessReportRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaRunAccessReportRequest(od);
       });
     },
@@ -7778,10 +7778,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaRunAccessReportResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaRunAccessReportResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaRunAccessReportResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaRunAccessReportResponse(od);
       });
     },
@@ -7794,10 +7794,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema(od);
       });
     },
@@ -7821,10 +7821,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(od);
       });
     },
@@ -7837,10 +7837,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse(od);
       });
     },
@@ -7852,10 +7852,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest(od);
       });
     },
@@ -7867,10 +7867,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse(od);
       });
     },
@@ -7882,10 +7882,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilter(od);
       });
     },
@@ -7898,10 +7898,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause(od);
       });
     },
@@ -7914,10 +7914,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition(od);
       });
     },
@@ -7930,10 +7930,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter(
           od,
         );
@@ -7948,10 +7948,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression(od);
       });
     },
@@ -7964,10 +7964,10 @@ void main() {
         final o =
             buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList(
           od,
         );
@@ -7981,10 +7981,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaSubpropertySyncConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaSubpropertySyncConfig(od);
       });
     },
@@ -7996,10 +7996,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest(od);
       });
     },
@@ -8425,10 +8425,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest(obj);
 
           final path = req.url.path;
@@ -8493,10 +8493,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaRunAccessReportRequest(obj);
 
           final path = req.url.path;
@@ -8562,10 +8562,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(obj);
 
           final path = req.url.path;
@@ -8634,10 +8634,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -8704,10 +8704,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -8833,10 +8833,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -9221,10 +9221,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest(
             obj,
           );
@@ -9353,10 +9353,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest(obj);
 
           final path = req.url.path;
@@ -9927,10 +9927,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest(obj);
 
           final path = req.url.path;
@@ -9994,10 +9994,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaRunAccessReportRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaRunAccessReportRequest(obj);
 
           final path = req.url.path;
@@ -10063,10 +10063,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest(obj);
 
           final path = req.url.path;
@@ -10132,10 +10132,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaAttributionSettings(obj);
 
           final path = req.url.path;
@@ -10207,10 +10207,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaDataRetentionSettings(obj);
 
           final path = req.url.path;
@@ -10282,10 +10282,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaGoogleSignalsSettings(obj);
 
           final path = req.url.path;
@@ -10358,10 +10358,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -10428,10 +10428,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -10557,10 +10557,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest(obj);
 
           final path = req.url.path;
@@ -11196,10 +11196,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaArchiveAudienceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaArchiveAudienceRequest(obj);
 
           final path = req.url.path;
@@ -11849,8 +11849,9 @@ void main() {
   unittest.group('resource-PropertiesCalculatedMetricsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.calculatedMetrics;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.calculatedMetrics;
       final arg_request = buildGoogleAnalyticsAdminV1alphaCalculatedMetric();
       final arg_parent = 'foo';
       final arg_calculatedMetricId = 'foo';
@@ -11923,8 +11924,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.calculatedMetrics;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.calculatedMetrics;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11977,8 +11979,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.calculatedMetrics;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.calculatedMetrics;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12035,8 +12038,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.calculatedMetrics;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.calculatedMetrics;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12109,8 +12113,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.calculatedMetrics;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.calculatedMetrics;
       final arg_request = buildGoogleAnalyticsAdminV1alphaCalculatedMetric();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -12840,10 +12845,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest(obj);
 
           final path = req.url.path;
@@ -13176,10 +13181,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest(obj);
 
           final path = req.url.path;
@@ -14015,10 +14020,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaDataRedactionSettings.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaDataRedactionSettings.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaDataRedactionSettings(obj);
 
           final path = req.url.path;
@@ -14090,10 +14095,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(obj);
 
           final path = req.url.path;
@@ -14159,10 +14164,9 @@ void main() {
   unittest.group('resource-PropertiesDataStreamsEventCreateRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventCreateRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventCreateRules;
       final arg_request = buildGoogleAnalyticsAdminV1alphaEventCreateRule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14229,10 +14233,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventCreateRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventCreateRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14285,10 +14288,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventCreateRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventCreateRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14345,10 +14347,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventCreateRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventCreateRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14420,10 +14421,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventCreateRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventCreateRules;
       final arg_request = buildGoogleAnalyticsAdminV1alphaEventCreateRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14498,10 +14498,9 @@ void main() {
   unittest.group('resource-PropertiesDataStreamsEventEditRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_request = buildGoogleAnalyticsAdminV1alphaEventEditRule();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14568,10 +14567,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14624,10 +14622,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14684,10 +14681,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14759,10 +14755,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_request = buildGoogleAnalyticsAdminV1alphaEventEditRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14835,20 +14830,19 @@ void main() {
 
     unittest.test('method--reorder', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.eventEditRules;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.eventEditRules;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest(obj);
 
           final path = req.url.path;
@@ -14905,20 +14899,19 @@ void main() {
   unittest.group('resource-PropertiesDataStreamsMeasurementProtocolSecretsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.measurementProtocolSecrets;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.measurementProtocolSecrets;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(obj);
 
           final path = req.url.path;
@@ -14977,10 +14970,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.measurementProtocolSecrets;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.measurementProtocolSecrets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15033,10 +15025,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.measurementProtocolSecrets;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.measurementProtocolSecrets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15093,10 +15084,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.measurementProtocolSecrets;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.measurementProtocolSecrets;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15169,10 +15159,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.measurementProtocolSecrets;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.measurementProtocolSecrets;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
       final arg_name = 'foo';
@@ -15180,10 +15169,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(obj);
 
           final path = req.url.path;
@@ -15249,20 +15238,19 @@ void main() {
   unittest.group('resource-PropertiesDataStreamsSKAdNetworkConversionValueSchemaResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.sKAdNetworkConversionValueSchema;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.sKAdNetworkConversionValueSchema;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema(obj);
 
           final path = req.url.path;
@@ -15322,10 +15310,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.sKAdNetworkConversionValueSchema;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.sKAdNetworkConversionValueSchema;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15378,10 +15365,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.sKAdNetworkConversionValueSchema;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.sKAdNetworkConversionValueSchema;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15439,10 +15425,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.sKAdNetworkConversionValueSchema;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.sKAdNetworkConversionValueSchema;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15515,10 +15500,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.dataStreams.sKAdNetworkConversionValueSchema;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.dataStreams.sKAdNetworkConversionValueSchema;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema();
       final arg_name = 'foo';
@@ -15526,10 +15510,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema(obj);
 
           final path = req.url.path;
@@ -15596,20 +15580,19 @@ void main() {
   unittest.group('resource-PropertiesDisplayVideo360AdvertiserLinkProposalsResource', () {
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest(
             obj,
           );
@@ -15671,20 +15654,19 @@ void main() {
 
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest(
             obj,
           );
@@ -15746,20 +15728,19 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(
             obj,
           );
@@ -15821,10 +15802,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15877,10 +15857,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15938,10 +15917,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinkProposals;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinkProposals;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -16016,20 +15994,19 @@ void main() {
   unittest.group('resource-PropertiesDisplayVideo360AdvertiserLinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinks;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(obj);
 
           final path = req.url.path;
@@ -16089,10 +16066,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16145,10 +16121,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16206,10 +16181,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinks;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -16282,10 +16256,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.displayVideo360AdvertiserLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.displayVideo360AdvertiserLinks;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink();
       final arg_name = 'foo';
@@ -16293,10 +16266,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(obj);
 
           final path = req.url.path;
@@ -17472,18 +17445,19 @@ void main() {
   unittest.group('resource-PropertiesReportingDataAnnotationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.reportingDataAnnotations;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.reportingDataAnnotations;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaReportingDataAnnotation();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaReportingDataAnnotation(obj);
 
           final path = req.url.path;
@@ -17542,8 +17516,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.reportingDataAnnotations;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.reportingDataAnnotations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17596,8 +17571,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.reportingDataAnnotations;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.reportingDataAnnotations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17654,8 +17630,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.reportingDataAnnotations;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.reportingDataAnnotations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -17734,8 +17711,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.reportingDataAnnotations;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.reportingDataAnnotations;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaReportingDataAnnotation();
       final arg_name = 'foo';
@@ -17743,10 +17721,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaReportingDataAnnotation(obj);
 
           final path = req.url.path;
@@ -17812,20 +17790,19 @@ void main() {
   unittest.group('resource-PropertiesRollupPropertySourceLinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.rollupPropertySourceLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.rollupPropertySourceLinks;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaRollupPropertySourceLink();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaRollupPropertySourceLink(obj);
 
           final path = req.url.path;
@@ -17884,10 +17861,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.rollupPropertySourceLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.rollupPropertySourceLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17940,10 +17916,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.rollupPropertySourceLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.rollupPropertySourceLinks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18000,10 +17975,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(
-            mock,
-          ).properties.rollupPropertySourceLinks;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.rollupPropertySourceLinks;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18078,8 +18052,9 @@ void main() {
   unittest.group('resource-PropertiesSearchAds360LinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.searchAds360Links;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.searchAds360Links;
       final arg_request = buildGoogleAnalyticsAdminV1alphaSearchAds360Link();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -18146,8 +18121,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.searchAds360Links;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.searchAds360Links;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18200,8 +18176,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.searchAds360Links;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.searchAds360Links;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18258,8 +18235,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.searchAds360Links;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.searchAds360Links;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18332,8 +18310,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.searchAds360Links;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.searchAds360Links;
       final arg_request = buildGoogleAnalyticsAdminV1alphaSearchAds360Link();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18408,18 +18387,19 @@ void main() {
   unittest.group('resource-PropertiesSubpropertyEventFiltersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertyEventFilters;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertyEventFilters;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilter();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilter(obj);
 
           final path = req.url.path;
@@ -18478,8 +18458,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertyEventFilters;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertyEventFilters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18532,8 +18513,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertyEventFilters;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertyEventFilters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18590,8 +18572,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertyEventFilters;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertyEventFilters;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18664,8 +18647,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertyEventFilters;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertyEventFilters;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaSubpropertyEventFilter();
       final arg_name = 'foo';
@@ -18673,10 +18657,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSubpropertyEventFilter(obj);
 
           final path = req.url.path;
@@ -18742,8 +18726,9 @@ void main() {
   unittest.group('resource-PropertiesSubpropertySyncConfigsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertySyncConfigs;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertySyncConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18800,8 +18785,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertySyncConfigs;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertySyncConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18874,8 +18860,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GoogleAnalyticsAdminApi(mock).properties.subpropertySyncConfigs;
+      final res = api.GoogleAnalyticsAdminApi(
+        mock,
+      ).properties.subpropertySyncConfigs;
       final arg_request =
           buildGoogleAnalyticsAdminV1alphaSubpropertySyncConfig();
       final arg_name = 'foo';
@@ -18883,10 +18870,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAnalyticsAdminV1alphaSubpropertySyncConfig(obj);
 
           final path = req.url.path;

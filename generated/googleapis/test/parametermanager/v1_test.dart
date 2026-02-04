@@ -951,8 +951,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsParametersVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_request = buildParameterVersion();
       final arg_parent = 'foo';
       final arg_parameterVersionId = 'foo';
@@ -1027,8 +1028,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -1090,8 +1092,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -1150,8 +1153,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -1235,8 +1239,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_request = buildParameterVersion();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -1311,8 +1316,9 @@ void main() {
 
     unittest.test('method--render', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ParameterManagerApi(mock).projects.locations.parameters.versions;
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.parameters.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(

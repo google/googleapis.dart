@@ -4793,10 +4793,10 @@ void main() {
         final o =
             buildRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions(
           od,
         );

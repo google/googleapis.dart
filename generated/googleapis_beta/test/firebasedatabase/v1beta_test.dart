@@ -193,8 +193,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_request = buildDatabaseInstance();
       final arg_parent = 'foo';
       final arg_databaseId = 'foo';
@@ -269,8 +270,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -323,8 +325,9 @@ void main() {
 
     unittest.test('method--disable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_request = buildDisableDatabaseInstanceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -387,8 +390,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -441,8 +445,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -520,8 +525,9 @@ void main() {
 
     unittest.test('method--reenable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_request = buildReenableDatabaseInstanceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -584,8 +590,9 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final res = api.FirebaseRealtimeDatabaseApi(
+        mock,
+      ).projects.locations.instances;
       final arg_request = buildUndeleteDatabaseInstanceRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

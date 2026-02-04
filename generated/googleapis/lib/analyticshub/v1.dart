@@ -130,9 +130,9 @@ class OrganizationsLocationsDataExchangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -212,8 +212,8 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (dataExchangeId != null) 'dataExchangeId': [dataExchangeId],
-      if ($fields != null) 'fields': [$fields],
+      'dataExchangeId': ?dataExchangeId == null ? null : [dataExchangeId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataExchanges';
@@ -251,7 +251,7 @@ class ProjectsLocationsDataExchangesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -288,7 +288,7 @@ class ProjectsLocationsDataExchangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -333,7 +333,7 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -378,9 +378,9 @@ class ProjectsLocationsDataExchangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataExchanges';
@@ -432,11 +432,12 @@ class ProjectsLocationsDataExchangesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeletedSubscriptions != null)
-        'includeDeletedSubscriptions': ['${includeDeletedSubscriptions}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeletedSubscriptions': ?includeDeletedSubscriptions == null
+          ? null
+          : ['${includeDeletedSubscriptions}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -485,8 +486,8 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -532,7 +533,7 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -578,7 +579,7 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
@@ -622,7 +623,7 @@ class ProjectsLocationsDataExchangesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -678,8 +679,8 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (listingId != null) 'listingId': [listingId],
-      if ($fields != null) 'fields': [$fields],
+      'listingId': ?listingId == null ? null : [listingId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/listings';
@@ -722,8 +723,10 @@ class ProjectsLocationsDataExchangesListingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (deleteCommercial != null) 'deleteCommercial': ['${deleteCommercial}'],
-      if ($fields != null) 'fields': [$fields],
+      'deleteCommercial': ?deleteCommercial == null
+          ? null
+          : ['${deleteCommercial}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -757,7 +760,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   /// this method will complete with the same error.
   async.Future<Listing> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -800,7 +803,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -846,9 +849,9 @@ class ProjectsLocationsDataExchangesListingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/listings';
@@ -900,11 +903,12 @@ class ProjectsLocationsDataExchangesListingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeDeletedSubscriptions != null)
-        'includeDeletedSubscriptions': ['${includeDeletedSubscriptions}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'includeDeletedSubscriptions': ?includeDeletedSubscriptions == null
+          ? null
+          : ['${includeDeletedSubscriptions}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -953,8 +957,8 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -998,7 +1002,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1044,7 +1048,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
@@ -1090,7 +1094,7 @@ class ProjectsLocationsDataExchangesListingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1143,7 +1147,7 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -1192,8 +1196,8 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (queryTemplateId != null) 'queryTemplateId': [queryTemplateId],
-      if ($fields != null) 'fields': [$fields],
+      'queryTemplateId': ?queryTemplateId == null ? null : [queryTemplateId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/queryTemplates';
@@ -1230,7 +1234,7 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1267,7 +1271,7 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1315,9 +1319,9 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/queryTemplates';
@@ -1365,8 +1369,8 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1410,7 +1414,7 @@ class ProjectsLocationsDataExchangesQueryTemplatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':submit';
@@ -1457,7 +1461,7 @@ class ProjectsLocationsSubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1494,7 +1498,7 @@ class ProjectsLocationsSubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1539,7 +1543,7 @@ class ProjectsLocationsSubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1594,10 +1598,10 @@ class ProjectsLocationsSubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subscriptions';
@@ -1643,7 +1647,7 @@ class ProjectsLocationsSubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':refresh';
@@ -1685,7 +1689,7 @@ class ProjectsLocationsSubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revoke';
@@ -1731,7 +1735,7 @@ class ProjectsLocationsSubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1783,22 +1787,24 @@ class AIInference {
     : this(
         endpoint: json_['endpoint'] as core.String?,
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-        unstructuredInference:
-            json_.containsKey('unstructuredInference')
-                ? UnstructuredInference.fromJson(
-                  json_['unstructuredInference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        unstructuredInference: json_.containsKey('unstructuredInference')
+            ? UnstructuredInference.fromJson(
+                json_['unstructuredInference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpoint != null) 'endpoint': endpoint!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-    if (unstructuredInference != null)
-      'unstructuredInference': unstructuredInference!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpoint = this.endpoint;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    final unstructuredInference = this.unstructuredInference;
+    return {
+      'endpoint': ?endpoint,
+      'serviceAccountEmail': ?serviceAccountEmail,
+      'unstructuredInference': ?unstructuredInference,
+    };
+  }
 }
 
 /// Message for approving a QueryTemplate.
@@ -1835,21 +1841,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1941,15 +1947,22 @@ class BigQueryConfig {
         writeMetadata: json_['writeMetadata'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-    if (table != null) 'table': table!,
-    if (useTableSchema != null) 'useTableSchema': useTableSchema!,
-    if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropUnknownFields = this.dropUnknownFields;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    final table = this.table;
+    final useTableSchema = this.useTableSchema;
+    final useTopicSchema = this.useTopicSchema;
+    final writeMetadata = this.writeMetadata;
+    return {
+      'dropUnknownFields': ?dropUnknownFields,
+      'serviceAccountEmail': ?serviceAccountEmail,
+      'table': ?table,
+      'useTableSchema': ?useTableSchema,
+      'useTopicSchema': ?useTopicSchema,
+      'writeMetadata': ?writeMetadata,
+    };
+  }
 }
 
 /// A reference to a shared dataset.
@@ -2004,43 +2017,45 @@ class BigQueryDatasetSource {
   BigQueryDatasetSource.fromJson(core.Map json_)
     : this(
         dataset: json_['dataset'] as core.String?,
-        effectiveReplicas:
-            (json_['effectiveReplicas'] as core.List?)
-                ?.map(
-                  (value) => Replica.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        replicaLocations:
-            (json_['replicaLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        restrictedExportPolicy:
-            json_.containsKey('restrictedExportPolicy')
-                ? RestrictedExportPolicy.fromJson(
-                  json_['restrictedExportPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        selectedResources:
-            (json_['selectedResources'] as core.List?)
-                ?.map(
-                  (value) => SelectedResource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        effectiveReplicas: (json_['effectiveReplicas'] as core.List?)
+            ?.map(
+              (value) => Replica.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        replicaLocations: (json_['replicaLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        restrictedExportPolicy: json_.containsKey('restrictedExportPolicy')
+            ? RestrictedExportPolicy.fromJson(
+                json_['restrictedExportPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        selectedResources: (json_['selectedResources'] as core.List?)
+            ?.map(
+              (value) => SelectedResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataset != null) 'dataset': dataset!,
-    if (effectiveReplicas != null) 'effectiveReplicas': effectiveReplicas!,
-    if (replicaLocations != null) 'replicaLocations': replicaLocations!,
-    if (restrictedExportPolicy != null)
-      'restrictedExportPolicy': restrictedExportPolicy!,
-    if (selectedResources != null) 'selectedResources': selectedResources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataset = this.dataset;
+    final effectiveReplicas = this.effectiveReplicas;
+    final replicaLocations = this.replicaLocations;
+    final restrictedExportPolicy = this.restrictedExportPolicy;
+    final selectedResources = this.selectedResources;
+    return {
+      'dataset': ?dataset,
+      'effectiveReplicas': ?effectiveReplicas,
+      'replicaLocations': ?replicaLocations,
+      'restrictedExportPolicy': ?restrictedExportPolicy,
+      'selectedResources': ?selectedResources,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2127,24 +2142,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Configuration for a Cloud Storage subscription.
@@ -2249,12 +2263,11 @@ class CloudStorageConfig {
 
   CloudStorageConfig.fromJson(core.Map json_)
     : this(
-        avroConfig:
-            json_.containsKey('avroConfig')
-                ? AvroConfig.fromJson(
-                  json_['avroConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        avroConfig: json_.containsKey('avroConfig')
+            ? AvroConfig.fromJson(
+                json_['avroConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bucket: json_['bucket'] as core.String?,
         filenameDatetimeFormat: json_['filenameDatetimeFormat'] as core.String?,
         filenamePrefix: json_['filenamePrefix'] as core.String?,
@@ -2263,28 +2276,37 @@ class CloudStorageConfig {
         maxDuration: json_['maxDuration'] as core.String?,
         maxMessages: json_['maxMessages'] as core.String?,
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-        textConfig:
-            json_.containsKey('textConfig')
-                ? TextConfig.fromJson(
-                  json_['textConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textConfig: json_.containsKey('textConfig')
+            ? TextConfig.fromJson(
+                json_['textConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (avroConfig != null) 'avroConfig': avroConfig!,
-    if (bucket != null) 'bucket': bucket!,
-    if (filenameDatetimeFormat != null)
-      'filenameDatetimeFormat': filenameDatetimeFormat!,
-    if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
-    if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
-    if (maxBytes != null) 'maxBytes': maxBytes!,
-    if (maxDuration != null) 'maxDuration': maxDuration!,
-    if (maxMessages != null) 'maxMessages': maxMessages!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-    if (textConfig != null) 'textConfig': textConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final avroConfig = this.avroConfig;
+    final bucket = this.bucket;
+    final filenameDatetimeFormat = this.filenameDatetimeFormat;
+    final filenamePrefix = this.filenamePrefix;
+    final filenameSuffix = this.filenameSuffix;
+    final maxBytes = this.maxBytes;
+    final maxDuration = this.maxDuration;
+    final maxMessages = this.maxMessages;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    final textConfig = this.textConfig;
+    return {
+      'avroConfig': ?avroConfig,
+      'bucket': ?bucket,
+      'filenameDatetimeFormat': ?filenameDatetimeFormat,
+      'filenamePrefix': ?filenamePrefix,
+      'filenameSuffix': ?filenameSuffix,
+      'maxBytes': ?maxBytes,
+      'maxDuration': ?maxDuration,
+      'maxMessages': ?maxMessages,
+      'serviceAccountEmail': ?serviceAccountEmail,
+      'textConfig': ?textConfig,
+    };
+  }
 }
 
 /// A data exchange is a container that lets you share data.
@@ -2407,29 +2429,38 @@ class DataExchange {
             json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
         name: json_['name'] as core.String?,
         primaryContact: json_['primaryContact'] as core.String?,
-        sharingEnvironmentConfig:
-            json_.containsKey('sharingEnvironmentConfig')
-                ? SharingEnvironmentConfig.fromJson(
-                  json_['sharingEnvironmentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sharingEnvironmentConfig: json_.containsKey('sharingEnvironmentConfig')
+            ? SharingEnvironmentConfig.fromJson(
+                json_['sharingEnvironmentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (discoveryType != null) 'discoveryType': discoveryType!,
-    if (displayName != null) 'displayName': displayName!,
-    if (documentation != null) 'documentation': documentation!,
-    if (icon != null) 'icon': icon!,
-    if (listingCount != null) 'listingCount': listingCount!,
-    if (logLinkedDatasetQueryUserEmail != null)
-      'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-    if (sharingEnvironmentConfig != null)
-      'sharingEnvironmentConfig': sharingEnvironmentConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final discoveryType = this.discoveryType;
+    final displayName = this.displayName;
+    final documentation = this.documentation;
+    final icon = this.icon;
+    final listingCount = this.listingCount;
+    final logLinkedDatasetQueryUserEmail = this.logLinkedDatasetQueryUserEmail;
+    final name = this.name;
+    final primaryContact = this.primaryContact;
+    final sharingEnvironmentConfig = this.sharingEnvironmentConfig;
+    return {
+      'description': ?description,
+      'discoveryType': ?discoveryType,
+      'displayName': ?displayName,
+      'documentation': ?documentation,
+      'icon': ?icon,
+      'listingCount': ?listingCount,
+      'logLinkedDatasetQueryUserEmail': ?logLinkedDatasetQueryUserEmail,
+      'name': ?name,
+      'primaryContact': ?primaryContact,
+      'sharingEnvironmentConfig': ?sharingEnvironmentConfig,
+    };
+  }
 }
 
 /// Contains details of the data provider.
@@ -2454,10 +2485,11 @@ class DataProvider {
         primaryContact: json_['primaryContact'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final primaryContact = this.primaryContact;
+    return {'name': ?name, 'primaryContact': ?primaryContact};
+  }
 }
 
 /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
@@ -2497,13 +2529,17 @@ class DcrExchangeConfig {
             json_['singleSelectedResourceSharingRestriction'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (singleLinkedDatasetPerCleanroom != null)
-      'singleLinkedDatasetPerCleanroom': singleLinkedDatasetPerCleanroom!,
-    if (singleSelectedResourceSharingRestriction != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final singleLinkedDatasetPerCleanroom =
+        this.singleLinkedDatasetPerCleanroom;
+    final singleSelectedResourceSharingRestriction =
+        this.singleSelectedResourceSharingRestriction;
+    return {
+      'singleLinkedDatasetPerCleanroom': ?singleLinkedDatasetPerCleanroom,
       'singleSelectedResourceSharingRestriction':
-          singleSelectedResourceSharingRestriction!,
-  };
+          ?singleSelectedResourceSharingRestriction,
+    };
+  }
 }
 
 /// Dead lettering is done on a best effort basis.
@@ -2545,11 +2581,14 @@ class DeadLetterPolicy {
         maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
-    if (maxDeliveryAttempts != null)
-      'maxDeliveryAttempts': maxDeliveryAttempts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deadLetterTopic = this.deadLetterTopic;
+    final maxDeliveryAttempts = this.maxDeliveryAttempts;
+    return {
+      'deadLetterTopic': ?deadLetterTopic,
+      'maxDeliveryAttempts': ?maxDeliveryAttempts,
+    };
+  }
 }
 
 /// Default Analytics Hub data exchange, used for secured data sharing.
@@ -2609,33 +2648,39 @@ class DestinationDataset {
 
   DestinationDataset.fromJson(core.Map json_)
     : this(
-        datasetReference:
-            json_.containsKey('datasetReference')
-                ? DestinationDatasetReference.fromJson(
-                  json_['datasetReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        datasetReference: json_.containsKey('datasetReference')
+            ? DestinationDatasetReference.fromJson(
+                json_['datasetReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         friendlyName: json_['friendlyName'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         location: json_['location'] as core.String?,
-        replicaLocations:
-            (json_['replicaLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        replicaLocations: (json_['replicaLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasetReference != null) 'datasetReference': datasetReference!,
-    if (description != null) 'description': description!,
-    if (friendlyName != null) 'friendlyName': friendlyName!,
-    if (labels != null) 'labels': labels!,
-    if (location != null) 'location': location!,
-    if (replicaLocations != null) 'replicaLocations': replicaLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasetReference = this.datasetReference;
+    final description = this.description;
+    final friendlyName = this.friendlyName;
+    final labels = this.labels;
+    final location = this.location;
+    final replicaLocations = this.replicaLocations;
+    return {
+      'datasetReference': ?datasetReference,
+      'description': ?description,
+      'friendlyName': ?friendlyName,
+      'labels': ?labels,
+      'location': ?location,
+      'replicaLocations': ?replicaLocations,
+    };
+  }
 }
 
 class DestinationDatasetReference {
@@ -2660,10 +2705,11 @@ class DestinationDatasetReference {
         projectId: json_['projectId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasetId != null) 'datasetId': datasetId!,
-    if (projectId != null) 'projectId': projectId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasetId = this.datasetId;
+    final projectId = this.projectId;
+    return {'datasetId': ?datasetId, 'projectId': ?projectId};
+  }
 }
 
 /// Defines the destination Pub/Sub subscription.
@@ -2677,18 +2723,18 @@ class DestinationPubSubSubscription {
 
   DestinationPubSubSubscription.fromJson(core.Map json_)
     : this(
-        pubsubSubscription:
-            json_.containsKey('pubsubSubscription')
-                ? GooglePubsubV1Subscription.fromJson(
-                  json_['pubsubSubscription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pubsubSubscription: json_.containsKey('pubsubSubscription')
+            ? GooglePubsubV1Subscription.fromJson(
+                json_['pubsubSubscription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubSubscription != null) 'pubsubSubscription': pubsubSubscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pubsubSubscription = this.pubsubSubscription;
+    return {'pubsubSubscription': ?pubsubSubscription};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2733,17 +2779,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -2765,18 +2811,18 @@ class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo {
   GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
     core.Map json_,
   ) : this(
-        cloudMarketplace:
-            json_.containsKey('cloudMarketplace')
-                ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
-                  json_['cloudMarketplace']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudMarketplace: json_.containsKey('cloudMarketplace')
+            ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+                json_['cloudMarketplace']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudMarketplace != null) 'cloudMarketplace': cloudMarketplace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudMarketplace = this.cloudMarketplace;
+    return {'cloudMarketplace': ?cloudMarketplace};
+  }
 }
 
 /// Specifies the details of the Marketplace Data Product associated with the
@@ -2812,10 +2858,11 @@ class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketpla
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commercialState != null) 'commercialState': commercialState!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commercialState = this.commercialState;
+    final service = this.service;
+    return {'commercialState': ?commercialState, 'service': ?service};
+  }
 }
 
 /// Commercial info metadata for this subscription.
@@ -2833,18 +2880,18 @@ class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo {
   GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
     core.Map json_,
   ) : this(
-        cloudMarketplace:
-            json_.containsKey('cloudMarketplace')
-                ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
-                  json_['cloudMarketplace']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudMarketplace: json_.containsKey('cloudMarketplace')
+            ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo.fromJson(
+                json_['cloudMarketplace']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudMarketplace != null) 'cloudMarketplace': cloudMarketplace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudMarketplace = this.cloudMarketplace;
+    return {'cloudMarketplace': ?cloudMarketplace};
+  }
 }
 
 /// Cloud Marketplace commercial metadata for this subscription.
@@ -2860,9 +2907,10 @@ class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMark
     core.Map json_,
   ) : this(order: json_['order'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (order != null) 'order': order!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final order = this.order;
+    return {'order': ?order};
+  }
 }
 
 /// Defines the destination Pub/Sub subscription.
@@ -3063,94 +3111,101 @@ class GooglePubsubV1Subscription {
   GooglePubsubV1Subscription.fromJson(core.Map json_)
     : this(
         ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
-        bigqueryConfig:
-            json_.containsKey('bigqueryConfig')
-                ? BigQueryConfig.fromJson(
-                  json_['bigqueryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        cloudStorageConfig:
-            json_.containsKey('cloudStorageConfig')
-                ? CloudStorageConfig.fromJson(
-                  json_['cloudStorageConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deadLetterPolicy:
-            json_.containsKey('deadLetterPolicy')
-                ? DeadLetterPolicy.fromJson(
-                  json_['deadLetterPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigqueryConfig: json_.containsKey('bigqueryConfig')
+            ? BigQueryConfig.fromJson(
+                json_['bigqueryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cloudStorageConfig: json_.containsKey('cloudStorageConfig')
+            ? CloudStorageConfig.fromJson(
+                json_['cloudStorageConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deadLetterPolicy: json_.containsKey('deadLetterPolicy')
+            ? DeadLetterPolicy.fromJson(
+                json_['deadLetterPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         detached: json_['detached'] as core.bool?,
         enableExactlyOnceDelivery:
             json_['enableExactlyOnceDelivery'] as core.bool?,
         enableMessageOrdering: json_['enableMessageOrdering'] as core.bool?,
-        expirationPolicy:
-            json_.containsKey('expirationPolicy')
-                ? ExpirationPolicy.fromJson(
-                  json_['expirationPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        expirationPolicy: json_.containsKey('expirationPolicy')
+            ? ExpirationPolicy.fromJson(
+                json_['expirationPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         filter: json_['filter'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         messageRetentionDuration:
             json_['messageRetentionDuration'] as core.String?,
-        messageTransforms:
-            (json_['messageTransforms'] as core.List?)
-                ?.map(
-                  (value) => MessageTransform.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messageTransforms: (json_['messageTransforms'] as core.List?)
+            ?.map(
+              (value) => MessageTransform.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        pushConfig:
-            json_.containsKey('pushConfig')
-                ? PushConfig.fromJson(
-                  json_['pushConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pushConfig: json_.containsKey('pushConfig')
+            ? PushConfig.fromJson(
+                json_['pushConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         retainAckedMessages: json_['retainAckedMessages'] as core.bool?,
-        retryPolicy:
-            json_.containsKey('retryPolicy')
-                ? RetryPolicy.fromJson(
-                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        retryPolicy: json_.containsKey('retryPolicy')
+            ? RetryPolicy.fromJson(
+                json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ackDeadlineSeconds != null) 'ackDeadlineSeconds': ackDeadlineSeconds!,
-    if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
-    if (cloudStorageConfig != null) 'cloudStorageConfig': cloudStorageConfig!,
-    if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
-    if (detached != null) 'detached': detached!,
-    if (enableExactlyOnceDelivery != null)
-      'enableExactlyOnceDelivery': enableExactlyOnceDelivery!,
-    if (enableMessageOrdering != null)
-      'enableMessageOrdering': enableMessageOrdering!,
-    if (expirationPolicy != null) 'expirationPolicy': expirationPolicy!,
-    if (filter != null) 'filter': filter!,
-    if (labels != null) 'labels': labels!,
-    if (messageRetentionDuration != null)
-      'messageRetentionDuration': messageRetentionDuration!,
-    if (messageTransforms != null) 'messageTransforms': messageTransforms!,
-    if (name != null) 'name': name!,
-    if (pushConfig != null) 'pushConfig': pushConfig!,
-    if (retainAckedMessages != null)
-      'retainAckedMessages': retainAckedMessages!,
-    if (retryPolicy != null) 'retryPolicy': retryPolicy!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ackDeadlineSeconds = this.ackDeadlineSeconds;
+    final bigqueryConfig = this.bigqueryConfig;
+    final cloudStorageConfig = this.cloudStorageConfig;
+    final deadLetterPolicy = this.deadLetterPolicy;
+    final detached = this.detached;
+    final enableExactlyOnceDelivery = this.enableExactlyOnceDelivery;
+    final enableMessageOrdering = this.enableMessageOrdering;
+    final expirationPolicy = this.expirationPolicy;
+    final filter = this.filter;
+    final labels = this.labels;
+    final messageRetentionDuration = this.messageRetentionDuration;
+    final messageTransforms = this.messageTransforms;
+    final name = this.name;
+    final pushConfig = this.pushConfig;
+    final retainAckedMessages = this.retainAckedMessages;
+    final retryPolicy = this.retryPolicy;
+    final tags = this.tags;
+    return {
+      'ackDeadlineSeconds': ?ackDeadlineSeconds,
+      'bigqueryConfig': ?bigqueryConfig,
+      'cloudStorageConfig': ?cloudStorageConfig,
+      'deadLetterPolicy': ?deadLetterPolicy,
+      'detached': ?detached,
+      'enableExactlyOnceDelivery': ?enableExactlyOnceDelivery,
+      'enableMessageOrdering': ?enableMessageOrdering,
+      'expirationPolicy': ?expirationPolicy,
+      'filter': ?filter,
+      'labels': ?labels,
+      'messageRetentionDuration': ?messageRetentionDuration,
+      'messageTransforms': ?messageTransforms,
+      'name': ?name,
+      'pushConfig': ?pushConfig,
+      'retainAckedMessages': ?retainAckedMessages,
+      'retryPolicy': ?retryPolicy,
+      'tags': ?tags,
+    };
+  }
 }
 
 /// User-defined JavaScript function that can transform or filter a Pub/Sub
@@ -3186,10 +3241,11 @@ class JavaScriptUDF {
         functionName: json_['functionName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (functionName != null) 'functionName': functionName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final functionName = this.functionName;
+    return {'code': ?code, 'functionName': ?functionName};
+  }
 }
 
 /// Reference to a linked resource tracked by this Subscription.
@@ -3225,12 +3281,16 @@ class LinkedResource {
         listing: json_['listing'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (linkedDataset != null) 'linkedDataset': linkedDataset!,
-    if (linkedPubsubSubscription != null)
-      'linkedPubsubSubscription': linkedPubsubSubscription!,
-    if (listing != null) 'listing': listing!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final linkedDataset = this.linkedDataset;
+    final linkedPubsubSubscription = this.linkedPubsubSubscription;
+    final listing = this.listing;
+    return {
+      'linkedDataset': ?linkedDataset,
+      'linkedPubsubSubscription': ?linkedPubsubSubscription,
+      'listing': ?listing,
+    };
+  }
 }
 
 /// Message for response to the list of data exchanges.
@@ -3245,21 +3305,21 @@ class ListDataExchangesResponse {
 
   ListDataExchangesResponse.fromJson(core.Map json_)
     : this(
-        dataExchanges:
-            (json_['dataExchanges'] as core.List?)
-                ?.map(
-                  (value) => DataExchange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dataExchanges: (json_['dataExchanges'] as core.List?)
+            ?.map(
+              (value) => DataExchange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataExchanges != null) 'dataExchanges': dataExchanges!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataExchanges = this.dataExchanges;
+    final nextPageToken = this.nextPageToken;
+    return {'dataExchanges': ?dataExchanges, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Message for response to the list of Listings.
@@ -3274,21 +3334,21 @@ class ListListingsResponse {
 
   ListListingsResponse.fromJson(core.Map json_)
     : this(
-        listings:
-            (json_['listings'] as core.List?)
-                ?.map(
-                  (value) => Listing.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        listings: (json_['listings'] as core.List?)
+            ?.map(
+              (value) => Listing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (listings != null) 'listings': listings!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final listings = this.listings;
+    final nextPageToken = this.nextPageToken;
+    return {'listings': ?listings, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Message for response to listing data exchanges in an organization and
@@ -3304,21 +3364,21 @@ class ListOrgDataExchangesResponse {
 
   ListOrgDataExchangesResponse.fromJson(core.Map json_)
     : this(
-        dataExchanges:
-            (json_['dataExchanges'] as core.List?)
-                ?.map(
-                  (value) => DataExchange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dataExchanges: (json_['dataExchanges'] as core.List?)
+            ?.map(
+              (value) => DataExchange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataExchanges != null) 'dataExchanges': dataExchanges!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataExchanges = this.dataExchanges;
+    final nextPageToken = this.nextPageToken;
+    return {'dataExchanges': ?dataExchanges, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Message for response to the list of QueryTemplates.
@@ -3334,20 +3394,20 @@ class ListQueryTemplatesResponse {
   ListQueryTemplatesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        queryTemplates:
-            (json_['queryTemplates'] as core.List?)
-                ?.map(
-                  (value) => QueryTemplate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        queryTemplates: (json_['queryTemplates'] as core.List?)
+            ?.map(
+              (value) => QueryTemplate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (queryTemplates != null) 'queryTemplates': queryTemplates!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final queryTemplates = this.queryTemplates;
+    return {'nextPageToken': ?nextPageToken, 'queryTemplates': ?queryTemplates};
+  }
 }
 
 /// Message for response to the listing of shared resource subscriptions.
@@ -3376,11 +3436,14 @@ class ListSharedResourceSubscriptionsResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (sharedResourceSubscriptions != null)
-      'sharedResourceSubscriptions': sharedResourceSubscriptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sharedResourceSubscriptions = this.sharedResourceSubscriptions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sharedResourceSubscriptions': ?sharedResourceSubscriptions,
+    };
+  }
 }
 
 /// Message for response to the listing of subscriptions.
@@ -3396,20 +3459,20 @@ class ListSubscriptionsResponse {
   ListSubscriptionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        subscriptions:
-            (json_['subscriptions'] as core.List?)
-                ?.map(
-                  (value) => Subscription.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        subscriptions: (json_['subscriptions'] as core.List?)
+            ?.map(
+              (value) => Subscription.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (subscriptions != null) 'subscriptions': subscriptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final subscriptions = this.subscriptions;
+    return {'nextPageToken': ?nextPageToken, 'subscriptions': ?subscriptions};
+  }
 }
 
 /// A listing is what gets published into a data exchange that a subscriber can
@@ -3595,30 +3658,24 @@ class Listing {
     : this(
         allowOnlyMetadataSharing:
             json_['allowOnlyMetadataSharing'] as core.bool?,
-        bigqueryDataset:
-            json_.containsKey('bigqueryDataset')
-                ? BigQueryDatasetSource.fromJson(
-                  json_['bigqueryDataset']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        categories:
-            (json_['categories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        commercialInfo:
-            json_.containsKey('commercialInfo')
-                ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
-                  json_['commercialInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataProvider:
-            json_.containsKey('dataProvider')
-                ? DataProvider.fromJson(
-                  json_['dataProvider'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigqueryDataset: json_.containsKey('bigqueryDataset')
+            ? BigQueryDatasetSource.fromJson(
+                json_['bigqueryDataset'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        categories: (json_['categories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        commercialInfo: json_.containsKey('commercialInfo')
+            ? GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.fromJson(
+                json_['commercialInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataProvider: json_.containsKey('dataProvider')
+            ? DataProvider.fromJson(
+                json_['dataProvider'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         discoveryType: json_['discoveryType'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -3628,63 +3685,77 @@ class Listing {
             json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
         name: json_['name'] as core.String?,
         primaryContact: json_['primaryContact'] as core.String?,
-        publisher:
-            json_.containsKey('publisher')
-                ? Publisher.fromJson(
-                  json_['publisher'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pubsubTopic:
-            json_.containsKey('pubsubTopic')
-                ? PubSubTopicSource.fromJson(
-                  json_['pubsubTopic'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        publisher: json_.containsKey('publisher')
+            ? Publisher.fromJson(
+                json_['publisher'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pubsubTopic: json_.containsKey('pubsubTopic')
+            ? PubSubTopicSource.fromJson(
+                json_['pubsubTopic'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestAccess: json_['requestAccess'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
-        restrictedExportConfig:
-            json_.containsKey('restrictedExportConfig')
-                ? RestrictedExportConfig.fromJson(
-                  json_['restrictedExportConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        restrictedExportConfig: json_.containsKey('restrictedExportConfig')
+            ? RestrictedExportConfig.fromJson(
+                json_['restrictedExportConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
-        storedProcedureConfig:
-            json_.containsKey('storedProcedureConfig')
-                ? StoredProcedureConfig.fromJson(
-                  json_['storedProcedureConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storedProcedureConfig: json_.containsKey('storedProcedureConfig')
+            ? StoredProcedureConfig.fromJson(
+                json_['storedProcedureConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowOnlyMetadataSharing != null)
-      'allowOnlyMetadataSharing': allowOnlyMetadataSharing!,
-    if (bigqueryDataset != null) 'bigqueryDataset': bigqueryDataset!,
-    if (categories != null) 'categories': categories!,
-    if (commercialInfo != null) 'commercialInfo': commercialInfo!,
-    if (dataProvider != null) 'dataProvider': dataProvider!,
-    if (description != null) 'description': description!,
-    if (discoveryType != null) 'discoveryType': discoveryType!,
-    if (displayName != null) 'displayName': displayName!,
-    if (documentation != null) 'documentation': documentation!,
-    if (icon != null) 'icon': icon!,
-    if (logLinkedDatasetQueryUserEmail != null)
-      'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-    if (publisher != null) 'publisher': publisher!,
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-    if (requestAccess != null) 'requestAccess': requestAccess!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (restrictedExportConfig != null)
-      'restrictedExportConfig': restrictedExportConfig!,
-    if (state != null) 'state': state!,
-    if (storedProcedureConfig != null)
-      'storedProcedureConfig': storedProcedureConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowOnlyMetadataSharing = this.allowOnlyMetadataSharing;
+    final bigqueryDataset = this.bigqueryDataset;
+    final categories = this.categories;
+    final commercialInfo = this.commercialInfo;
+    final dataProvider = this.dataProvider;
+    final description = this.description;
+    final discoveryType = this.discoveryType;
+    final displayName = this.displayName;
+    final documentation = this.documentation;
+    final icon = this.icon;
+    final logLinkedDatasetQueryUserEmail = this.logLinkedDatasetQueryUserEmail;
+    final name = this.name;
+    final primaryContact = this.primaryContact;
+    final publisher = this.publisher;
+    final pubsubTopic = this.pubsubTopic;
+    final requestAccess = this.requestAccess;
+    final resourceType = this.resourceType;
+    final restrictedExportConfig = this.restrictedExportConfig;
+    final state = this.state;
+    final storedProcedureConfig = this.storedProcedureConfig;
+    return {
+      'allowOnlyMetadataSharing': ?allowOnlyMetadataSharing,
+      'bigqueryDataset': ?bigqueryDataset,
+      'categories': ?categories,
+      'commercialInfo': ?commercialInfo,
+      'dataProvider': ?dataProvider,
+      'description': ?description,
+      'discoveryType': ?discoveryType,
+      'displayName': ?displayName,
+      'documentation': ?documentation,
+      'icon': ?icon,
+      'logLinkedDatasetQueryUserEmail': ?logLinkedDatasetQueryUserEmail,
+      'name': ?name,
+      'primaryContact': ?primaryContact,
+      'publisher': ?publisher,
+      'pubsubTopic': ?pubsubTopic,
+      'requestAccess': ?requestAccess,
+      'resourceType': ?resourceType,
+      'restrictedExportConfig': ?restrictedExportConfig,
+      'state': ?state,
+      'storedProcedureConfig': ?storedProcedureConfig,
+    };
+  }
 }
 
 /// All supported message transforms types.
@@ -3729,28 +3800,32 @@ class MessageTransform {
 
   MessageTransform.fromJson(core.Map json_)
     : this(
-        aiInference:
-            json_.containsKey('aiInference')
-                ? AIInference.fromJson(
-                  json_['aiInference'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        aiInference: json_.containsKey('aiInference')
+            ? AIInference.fromJson(
+                json_['aiInference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disabled: json_['disabled'] as core.bool?,
         enabled: json_['enabled'] as core.bool?,
-        javascriptUdf:
-            json_.containsKey('javascriptUdf')
-                ? JavaScriptUDF.fromJson(
-                  json_['javascriptUdf'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        javascriptUdf: json_.containsKey('javascriptUdf')
+            ? JavaScriptUDF.fromJson(
+                json_['javascriptUdf'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aiInference != null) 'aiInference': aiInference!,
-    if (disabled != null) 'disabled': disabled!,
-    if (enabled != null) 'enabled': enabled!,
-    if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aiInference = this.aiInference;
+    final disabled = this.disabled;
+    final enabled = this.enabled;
+    final javascriptUdf = this.javascriptUdf;
+    return {
+      'aiInference': ?aiInference,
+      'disabled': ?disabled,
+      'enabled': ?enabled,
+      'javascriptUdf': ?javascriptUdf,
+    };
+  }
 }
 
 /// Sets the `data` field as the HTTP body for delivery.
@@ -3808,30 +3883,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3926,32 +4005,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Pub/Sub topic source.
@@ -3976,18 +4059,17 @@ class PubSubTopicSource {
 
   PubSubTopicSource.fromJson(core.Map json_)
     : this(
-        dataAffinityRegions:
-            (json_['dataAffinityRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dataAffinityRegions: (json_['dataAffinityRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         topic: json_['topic'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataAffinityRegions != null)
-      'dataAffinityRegions': dataAffinityRegions!,
-    if (topic != null) 'topic': topic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataAffinityRegions = this.dataAffinityRegions;
+    final topic = this.topic;
+    return {'dataAffinityRegions': ?dataAffinityRegions, 'topic': ?topic};
+  }
 }
 
 /// Contains details of the listing publisher.
@@ -4012,10 +4094,11 @@ class Publisher {
         primaryContact: json_['primaryContact'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final primaryContact = this.primaryContact;
+    return {'name': ?name, 'primaryContact': ?primaryContact};
+  }
 }
 
 /// The payload to the push endpoint is in the form of the JSON representation
@@ -4080,37 +4163,42 @@ class PushConfig {
 
   PushConfig.fromJson(core.Map json_)
     : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        noWrapper:
-            json_.containsKey('noWrapper')
-                ? NoWrapper.fromJson(
-                  json_['noWrapper'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oidcToken:
-            json_.containsKey('oidcToken')
-                ? OidcToken.fromJson(
-                  json_['oidcToken'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pubsubWrapper:
-            json_.containsKey('pubsubWrapper')
-                ? PubsubWrapper.fromJson(
-                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        noWrapper: json_.containsKey('noWrapper')
+            ? NoWrapper.fromJson(
+                json_['noWrapper'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oidcToken: json_.containsKey('oidcToken')
+            ? OidcToken.fromJson(
+                json_['oidcToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pubsubWrapper: json_.containsKey('pubsubWrapper')
+            ? PubsubWrapper.fromJson(
+                json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pushEndpoint: json_['pushEndpoint'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (noWrapper != null) 'noWrapper': noWrapper!,
-    if (oidcToken != null) 'oidcToken': oidcToken!,
-    if (pubsubWrapper != null) 'pubsubWrapper': pubsubWrapper!,
-    if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final noWrapper = this.noWrapper;
+    final oidcToken = this.oidcToken;
+    final pubsubWrapper = this.pubsubWrapper;
+    final pushEndpoint = this.pushEndpoint;
+    return {
+      'attributes': ?attributes,
+      'noWrapper': ?noWrapper,
+      'oidcToken': ?oidcToken,
+      'pubsubWrapper': ?pubsubWrapper,
+      'pushEndpoint': ?pushEndpoint,
+    };
+  }
 }
 
 /// A query template is a container for sharing table-valued functions defined
@@ -4211,28 +4299,39 @@ class QueryTemplate {
         name: json_['name'] as core.String?,
         primaryContact: json_['primaryContact'] as core.String?,
         proposer: json_['proposer'] as core.String?,
-        routine:
-            json_.containsKey('routine')
-                ? Routine.fromJson(
-                  json_['routine'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        routine: json_.containsKey('routine')
+            ? Routine.fromJson(
+                json_['routine'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (documentation != null) 'documentation': documentation!,
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-    if (proposer != null) 'proposer': proposer!,
-    if (routine != null) 'routine': routine!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final documentation = this.documentation;
+    final name = this.name;
+    final primaryContact = this.primaryContact;
+    final proposer = this.proposer;
+    final routine = this.routine;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'documentation': ?documentation,
+      'name': ?name,
+      'primaryContact': ?primaryContact,
+      'proposer': ?proposer,
+      'routine': ?routine,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Message for refreshing a subscription.
@@ -4279,11 +4378,16 @@ class Replica {
         replicaState: json_['replicaState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (location != null) 'location': location!,
-    if (primaryState != null) 'primaryState': primaryState!,
-    if (replicaState != null) 'replicaState': replicaState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    final primaryState = this.primaryState;
+    final replicaState = this.replicaState;
+    return {
+      'location': ?location,
+      'primaryState': ?primaryState,
+      'replicaState': ?replicaState,
+    };
+  }
 }
 
 /// Restricted export config, used to configure restricted export on linked
@@ -4320,13 +4424,16 @@ class RestrictedExportConfig {
         restrictQueryResult: json_['restrictQueryResult'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (restrictDirectTableAccess != null)
-      'restrictDirectTableAccess': restrictDirectTableAccess!,
-    if (restrictQueryResult != null)
-      'restrictQueryResult': restrictQueryResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final restrictDirectTableAccess = this.restrictDirectTableAccess;
+    final restrictQueryResult = this.restrictQueryResult;
+    return {
+      'enabled': ?enabled,
+      'restrictDirectTableAccess': ?restrictDirectTableAccess,
+      'restrictQueryResult': ?restrictQueryResult,
+    };
+  }
 }
 
 /// Restricted export policy used to configure restricted export on linked
@@ -4363,13 +4470,16 @@ class RestrictedExportPolicy {
         restrictQueryResult: json_['restrictQueryResult'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (restrictDirectTableAccess != null)
-      'restrictDirectTableAccess': restrictDirectTableAccess!,
-    if (restrictQueryResult != null)
-      'restrictQueryResult': restrictQueryResult!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final restrictDirectTableAccess = this.restrictDirectTableAccess;
+    final restrictQueryResult = this.restrictQueryResult;
+    return {
+      'enabled': ?enabled,
+      'restrictDirectTableAccess': ?restrictDirectTableAccess,
+      'restrictQueryResult': ?restrictQueryResult,
+    };
+  }
 }
 
 /// A policy that specifies how Pub/Sub retries message delivery.
@@ -4398,9 +4508,10 @@ class RevokeSubscriptionRequest {
   RevokeSubscriptionRequest.fromJson(core.Map json_)
     : this(revokeCommercial: json_['revokeCommercial'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (revokeCommercial != null) 'revokeCommercial': revokeCommercial!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final revokeCommercial = this.revokeCommercial;
+    return {'revokeCommercial': ?revokeCommercial};
+  }
 }
 
 /// Message for response when you revoke a subscription.
@@ -4431,10 +4542,11 @@ class Routine {
         routineType: json_['routineType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (definitionBody != null) 'definitionBody': definitionBody!,
-    if (routineType != null) 'routineType': routineType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final definitionBody = this.definitionBody;
+    final routineType = this.routineType;
+    return {'definitionBody': ?definitionBody, 'routineType': ?routineType};
+  }
 }
 
 /// Resource in this dataset that is selectively shared.
@@ -4461,10 +4573,11 @@ class SelectedResource {
         table: json_['table'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (routine != null) 'routine': routine!,
-    if (table != null) 'table': table!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final routine = this.routine;
+    final table = this.table;
+    return {'routine': ?routine, 'table': ?table};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4486,19 +4599,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Sharing environment is a behavior model for sharing data within a data
@@ -4519,27 +4632,28 @@ class SharingEnvironmentConfig {
 
   SharingEnvironmentConfig.fromJson(core.Map json_)
     : this(
-        dcrExchangeConfig:
-            json_.containsKey('dcrExchangeConfig')
-                ? DcrExchangeConfig.fromJson(
-                  json_['dcrExchangeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        defaultExchangeConfig:
-            json_.containsKey('defaultExchangeConfig')
-                ? DefaultExchangeConfig.fromJson(
-                  json_['defaultExchangeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dcrExchangeConfig: json_.containsKey('dcrExchangeConfig')
+            ? DcrExchangeConfig.fromJson(
+                json_['dcrExchangeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultExchangeConfig: json_.containsKey('defaultExchangeConfig')
+            ? DefaultExchangeConfig.fromJson(
+                json_['defaultExchangeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dcrExchangeConfig != null) 'dcrExchangeConfig': dcrExchangeConfig!,
-    if (defaultExchangeConfig != null)
-      'defaultExchangeConfig': defaultExchangeConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dcrExchangeConfig = this.dcrExchangeConfig;
+    final defaultExchangeConfig = this.defaultExchangeConfig;
+    return {
+      'dcrExchangeConfig': ?dcrExchangeConfig,
+      'defaultExchangeConfig': ?defaultExchangeConfig,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4575,11 +4689,14 @@ class StoredProcedureConfig {
         enabled: json_['enabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedStoredProcedureTypes != null)
-      'allowedStoredProcedureTypes': allowedStoredProcedureTypes!,
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedStoredProcedureTypes = this.allowedStoredProcedureTypes;
+    final enabled = this.enabled;
+    return {
+      'allowedStoredProcedureTypes': ?allowedStoredProcedureTypes,
+      'enabled': ?enabled,
+    };
+  }
 }
 
 /// Message for submitting a QueryTemplate.
@@ -4619,23 +4736,28 @@ class SubscribeDataExchangeRequest {
   SubscribeDataExchangeRequest.fromJson(core.Map json_)
     : this(
         destination: json_['destination'] as core.String?,
-        destinationDataset:
-            json_.containsKey('destinationDataset')
-                ? DestinationDataset.fromJson(
-                  json_['destinationDataset']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destinationDataset: json_.containsKey('destinationDataset')
+            ? DestinationDataset.fromJson(
+                json_['destinationDataset']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         subscriberContact: json_['subscriberContact'] as core.String?,
         subscription: json_['subscription'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destination != null) 'destination': destination!,
-    if (destinationDataset != null) 'destinationDataset': destinationDataset!,
-    if (subscriberContact != null) 'subscriberContact': subscriberContact!,
-    if (subscription != null) 'subscription': subscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destination = this.destination;
+    final destinationDataset = this.destinationDataset;
+    final subscriberContact = this.subscriberContact;
+    final subscription = this.subscription;
+    return {
+      'destination': ?destination,
+      'destinationDataset': ?destinationDataset,
+      'subscriberContact': ?subscriberContact,
+      'subscription': ?subscription,
+    };
+  }
 }
 
 /// Message for subscribing to a listing.
@@ -4657,27 +4779,29 @@ class SubscribeListingRequest {
 
   SubscribeListingRequest.fromJson(core.Map json_)
     : this(
-        destinationDataset:
-            json_.containsKey('destinationDataset')
-                ? DestinationDataset.fromJson(
-                  json_['destinationDataset']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destinationDataset: json_.containsKey('destinationDataset')
+            ? DestinationDataset.fromJson(
+                json_['destinationDataset']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         destinationPubsubSubscription:
             json_.containsKey('destinationPubsubSubscription')
-                ? DestinationPubSubSubscription.fromJson(
-                  json_['destinationPubsubSubscription']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DestinationPubSubSubscription.fromJson(
+                json_['destinationPubsubSubscription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationDataset != null) 'destinationDataset': destinationDataset!,
-    if (destinationPubsubSubscription != null)
-      'destinationPubsubSubscription': destinationPubsubSubscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationDataset = this.destinationDataset;
+    final destinationPubsubSubscription = this.destinationPubsubSubscription;
+    return {
+      'destinationDataset': ?destinationDataset,
+      'destinationPubsubSubscription': ?destinationPubsubSubscription,
+    };
+  }
 }
 
 /// Message for response when you subscribe to a listing.
@@ -4689,17 +4813,17 @@ class SubscribeListingResponse {
 
   SubscribeListingResponse.fromJson(core.Map json_)
     : this(
-        subscription:
-            json_.containsKey('subscription')
-                ? Subscription.fromJson(
-                  json_['subscription'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        subscription: json_.containsKey('subscription')
+            ? Subscription.fromJson(
+                json_['subscription'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (subscription != null) 'subscription': subscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final subscription = this.subscription;
+    return {'subscription': ?subscription};
+  }
 }
 
 /// A subscription represents a subscribers' access to a particular set of
@@ -4832,41 +4956,37 @@ class Subscription {
 
   Subscription.fromJson(core.Map json_)
     : this(
-        commercialInfo:
-            json_.containsKey('commercialInfo')
-                ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
-                  json_['commercialInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        commercialInfo: json_.containsKey('commercialInfo')
+            ? GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo.fromJson(
+                json_['commercialInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         creationTime: json_['creationTime'] as core.String?,
         dataExchange: json_['dataExchange'] as core.String?,
-        destinationDataset:
-            json_.containsKey('destinationDataset')
-                ? DestinationDataset.fromJson(
-                  json_['destinationDataset']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destinationDataset: json_.containsKey('destinationDataset')
+            ? DestinationDataset.fromJson(
+                json_['destinationDataset']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastModifyTime: json_['lastModifyTime'] as core.String?,
-        linkedDatasetMap: (json_['linkedDatasetMap']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                LinkedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              ),
-            ),
-        linkedResources:
-            (json_['linkedResources'] as core.List?)
+        linkedDatasetMap:
+            (json_['linkedDatasetMap'] as core.Map<core.String, core.dynamic>?)
                 ?.map(
-                  (value) => LinkedResource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
+                  (key, value) => core.MapEntry(
+                    key,
+                    LinkedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
                   ),
-                )
-                .toList(),
+                ),
+        linkedResources: (json_['linkedResources'] as core.List?)
+            ?.map(
+              (value) => LinkedResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         listing: json_['listing'] as core.String?,
         logLinkedDatasetQueryUserEmail:
             json_['logLinkedDatasetQueryUserEmail'] as core.bool?,
@@ -4879,25 +4999,40 @@ class Subscription {
         subscriberContact: json_['subscriberContact'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commercialInfo != null) 'commercialInfo': commercialInfo!,
-    if (creationTime != null) 'creationTime': creationTime!,
-    if (dataExchange != null) 'dataExchange': dataExchange!,
-    if (destinationDataset != null) 'destinationDataset': destinationDataset!,
-    if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
-    if (linkedDatasetMap != null) 'linkedDatasetMap': linkedDatasetMap!,
-    if (linkedResources != null) 'linkedResources': linkedResources!,
-    if (listing != null) 'listing': listing!,
-    if (logLinkedDatasetQueryUserEmail != null)
-      'logLinkedDatasetQueryUserEmail': logLinkedDatasetQueryUserEmail!,
-    if (name != null) 'name': name!,
-    if (organizationDisplayName != null)
-      'organizationDisplayName': organizationDisplayName!,
-    if (organizationId != null) 'organizationId': organizationId!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (state != null) 'state': state!,
-    if (subscriberContact != null) 'subscriberContact': subscriberContact!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commercialInfo = this.commercialInfo;
+    final creationTime = this.creationTime;
+    final dataExchange = this.dataExchange;
+    final destinationDataset = this.destinationDataset;
+    final lastModifyTime = this.lastModifyTime;
+    final linkedDatasetMap = this.linkedDatasetMap;
+    final linkedResources = this.linkedResources;
+    final listing = this.listing;
+    final logLinkedDatasetQueryUserEmail = this.logLinkedDatasetQueryUserEmail;
+    final name = this.name;
+    final organizationDisplayName = this.organizationDisplayName;
+    final organizationId = this.organizationId;
+    final resourceType = this.resourceType;
+    final state = this.state;
+    final subscriberContact = this.subscriberContact;
+    return {
+      'commercialInfo': ?commercialInfo,
+      'creationTime': ?creationTime,
+      'dataExchange': ?dataExchange,
+      'destinationDataset': ?destinationDataset,
+      'lastModifyTime': ?lastModifyTime,
+      'linkedDatasetMap': ?linkedDatasetMap,
+      'linkedResources': ?linkedResources,
+      'listing': ?listing,
+      'logLinkedDatasetQueryUserEmail': ?logLinkedDatasetQueryUserEmail,
+      'name': ?name,
+      'organizationDisplayName': ?organizationDisplayName,
+      'organizationId': ?organizationId,
+      'resourceType': ?resourceType,
+      'state': ?state,
+      'subscriberContact': ?subscriberContact,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.

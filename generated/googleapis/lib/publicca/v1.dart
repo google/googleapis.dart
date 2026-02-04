@@ -118,7 +118,7 @@ class ProjectsLocationsExternalAccountKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -180,9 +180,10 @@ class ExternalAccountKey {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (b64MacKey != null) 'b64MacKey': b64MacKey!,
-    if (keyId != null) 'keyId': keyId!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final b64MacKey = this.b64MacKey;
+    final keyId = this.keyId;
+    final name = this.name;
+    return {'b64MacKey': ?b64MacKey, 'keyId': ?keyId, 'name': ?name};
+  }
 }
