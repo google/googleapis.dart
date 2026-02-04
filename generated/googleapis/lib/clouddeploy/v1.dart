@@ -166,9 +166,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3002,6 +3002,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3017,12 +3025,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4301,6 +4312,11 @@ class AutomationRun {
   /// Output only.
   TimedPromoteReleaseOperation? timedPromoteReleaseOperation;
 
+  /// Unique identifier of the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? uid;
+
   /// Time at which the automationRun was updated.
   ///
   /// Output only.
@@ -4330,6 +4346,7 @@ class AutomationRun {
     this.stateDescription,
     this.targetId,
     this.timedPromoteReleaseOperation,
+    this.uid,
     this.updateTime,
     this.waitUntilTime,
   });
@@ -4388,6 +4405,7 @@ class AutomationRun {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         waitUntilTime: json_['waitUntilTime'] as core.String?,
       );
@@ -4413,6 +4431,7 @@ class AutomationRun {
     if (targetId != null) 'targetId': targetId!,
     if (timedPromoteReleaseOperation != null)
       'timedPromoteReleaseOperation': timedPromoteReleaseOperation!,
+    if (uid != null) 'uid': uid!,
     if (updateTime != null) 'updateTime': updateTime!,
     if (waitUntilTime != null) 'waitUntilTime': waitUntilTime!,
   };
@@ -4888,17 +4907,37 @@ class Config {
   /// without specifying a Skaffold version.
   core.String? defaultSkaffoldVersion;
 
+  /// Default tool versions.
+  ///
+  /// These tool versions are assigned when a Release is created without
+  /// specifying tool versions.
+  ///
+  /// Output only.
+  ToolVersions? defaultToolVersions;
+
   /// Name of the configuration.
   core.String? name;
 
   /// All supported versions of Skaffold.
   core.List<SkaffoldVersion>? supportedVersions;
 
-  Config({this.defaultSkaffoldVersion, this.name, this.supportedVersions});
+  Config({
+    this.defaultSkaffoldVersion,
+    this.defaultToolVersions,
+    this.name,
+    this.supportedVersions,
+  });
 
   Config.fromJson(core.Map json_)
     : this(
         defaultSkaffoldVersion: json_['defaultSkaffoldVersion'] as core.String?,
+        defaultToolVersions:
+            json_.containsKey('defaultToolVersions')
+                ? ToolVersions.fromJson(
+                  json_['defaultToolVersions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         supportedVersions:
             (json_['supportedVersions'] as core.List?)
@@ -4913,6 +4952,8 @@ class Config {
   core.Map<core.String, core.dynamic> toJson() => {
     if (defaultSkaffoldVersion != null)
       'defaultSkaffoldVersion': defaultSkaffoldVersion!,
+    if (defaultToolVersions != null)
+      'defaultToolVersions': defaultToolVersions!,
     if (name != null) 'name': name!,
     if (supportedVersions != null) 'supportedVersions': supportedVersions!,
   };
@@ -6869,7 +6910,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -6882,11 +6935,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -8192,6 +8250,14 @@ class Release {
   /// Output only.
   core.List<Target>? targetSnapshots;
 
+  /// The tool versions to use for this release and all subsequent operations
+  /// involving this release.
+  ///
+  /// If unset, tool versions are frozen when the release is created.
+  ///
+  /// Optional.
+  ToolVersions? toolVersions;
+
   /// Unique identifier of the `Release`.
   ///
   /// Output only.
@@ -8219,6 +8285,7 @@ class Release {
     this.targetArtifacts,
     this.targetRenders,
     this.targetSnapshots,
+    this.toolVersions,
     this.uid,
   });
 
@@ -8301,6 +8368,12 @@ class Release {
                   ),
                 )
                 .toList(),
+        toolVersions:
+            json_.containsKey('toolVersions')
+                ? ToolVersions.fromJson(
+                  json_['toolVersions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         uid: json_['uid'] as core.String?,
       );
 
@@ -8328,25 +8401,97 @@ class Release {
     if (targetArtifacts != null) 'targetArtifacts': targetArtifacts!,
     if (targetRenders != null) 'targetRenders': targetRenders!,
     if (targetSnapshots != null) 'targetSnapshots': targetSnapshots!,
+    if (toolVersions != null) 'toolVersions': toolVersions!,
     if (uid != null) 'uid': uid!,
   };
 }
 
 /// ReleaseCondition contains all conditions relevant to a Release.
 class ReleaseCondition {
+  /// Details around the support state of the release's Docker version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? dockerVersionSupportedCondition;
+
+  /// Details around the support state of the release's Helm version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? helmVersionSupportedCondition;
+
+  /// Details around the support state of the release's kpt version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? kptVersionSupportedCondition;
+
+  /// Details around the support state of the release's Kubectl version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? kubectlVersionSupportedCondition;
+
+  /// Details around the support state of the release's Kustomize version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? kustomizeVersionSupportedCondition;
+
   /// Details around the Releases's overall status.
   ReleaseReadyCondition? releaseReadyCondition;
 
   /// Details around the support state of the release's Skaffold version.
   SkaffoldSupportedCondition? skaffoldSupportedCondition;
 
+  /// Details around the support state of the release's Skaffold version.
+  ///
+  /// Output only.
+  ToolVersionSupportedCondition? skaffoldVersionSupportedCondition;
+
   ReleaseCondition({
+    this.dockerVersionSupportedCondition,
+    this.helmVersionSupportedCondition,
+    this.kptVersionSupportedCondition,
+    this.kubectlVersionSupportedCondition,
+    this.kustomizeVersionSupportedCondition,
     this.releaseReadyCondition,
     this.skaffoldSupportedCondition,
+    this.skaffoldVersionSupportedCondition,
   });
 
   ReleaseCondition.fromJson(core.Map json_)
     : this(
+        dockerVersionSupportedCondition:
+            json_.containsKey('dockerVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['dockerVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        helmVersionSupportedCondition:
+            json_.containsKey('helmVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['helmVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kptVersionSupportedCondition:
+            json_.containsKey('kptVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['kptVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kubectlVersionSupportedCondition:
+            json_.containsKey('kubectlVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['kubectlVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kustomizeVersionSupportedCondition:
+            json_.containsKey('kustomizeVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['kustomizeVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         releaseReadyCondition:
             json_.containsKey('releaseReadyCondition')
                 ? ReleaseReadyCondition.fromJson(
@@ -8361,13 +8506,32 @@ class ReleaseCondition {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        skaffoldVersionSupportedCondition:
+            json_.containsKey('skaffoldVersionSupportedCondition')
+                ? ToolVersionSupportedCondition.fromJson(
+                  json_['skaffoldVersionSupportedCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (dockerVersionSupportedCondition != null)
+      'dockerVersionSupportedCondition': dockerVersionSupportedCondition!,
+    if (helmVersionSupportedCondition != null)
+      'helmVersionSupportedCondition': helmVersionSupportedCondition!,
+    if (kptVersionSupportedCondition != null)
+      'kptVersionSupportedCondition': kptVersionSupportedCondition!,
+    if (kubectlVersionSupportedCondition != null)
+      'kubectlVersionSupportedCondition': kubectlVersionSupportedCondition!,
+    if (kustomizeVersionSupportedCondition != null)
+      'kustomizeVersionSupportedCondition': kustomizeVersionSupportedCondition!,
     if (releaseReadyCondition != null)
       'releaseReadyCondition': releaseReadyCondition!,
     if (skaffoldSupportedCondition != null)
       'skaffoldSupportedCondition': skaffoldSupportedCondition!,
+    if (skaffoldVersionSupportedCondition != null)
+      'skaffoldVersionSupportedCondition': skaffoldVersionSupportedCondition!,
   };
 }
 
@@ -10755,6 +10919,128 @@ class TimedPromoteReleaseRule {
     if (id != null) 'id': id!,
     if (schedule != null) 'schedule': schedule!,
     if (timeZone != null) 'timeZone': timeZone!,
+  };
+}
+
+/// ToolVersionSupportedCondition contains information about when support for
+/// the release's version of a tool ends.
+class ToolVersionSupportedCondition {
+  /// The time at which this release's version of the tool will enter
+  /// maintenance mode.
+  ///
+  /// Output only.
+  core.String? maintenanceModeTime;
+
+  /// True if the version of Tool used by this release is supported.
+  ///
+  /// Output only.
+  core.bool? status;
+
+  /// The time at which this release's version of the tool will no longer be
+  /// supported.
+  ///
+  /// Output only.
+  core.String? supportExpirationTime;
+
+  /// The tool support state for this release's version of the tool.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TOOL_VERSION_SUPPORT_STATE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "TOOL_VERSION_SUPPORT_STATE_SUPPORTED" : This tool version is currently
+  /// supported.
+  /// - "TOOL_VERSION_SUPPORT_STATE_MAINTENANCE_MODE" : This tool version is in
+  /// maintenance mode.
+  /// - "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED" : This tool version is no
+  /// longer supported.
+  core.String? toolVersionSupportState;
+
+  ToolVersionSupportedCondition({
+    this.maintenanceModeTime,
+    this.status,
+    this.supportExpirationTime,
+    this.toolVersionSupportState,
+  });
+
+  ToolVersionSupportedCondition.fromJson(core.Map json_)
+    : this(
+        maintenanceModeTime: json_['maintenanceModeTime'] as core.String?,
+        status: json_['status'] as core.bool?,
+        supportExpirationTime: json_['supportExpirationTime'] as core.String?,
+        toolVersionSupportState:
+            json_['toolVersionSupportState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (maintenanceModeTime != null)
+      'maintenanceModeTime': maintenanceModeTime!,
+    if (status != null) 'status': status!,
+    if (supportExpirationTime != null)
+      'supportExpirationTime': supportExpirationTime!,
+    if (toolVersionSupportState != null)
+      'toolVersionSupportState': toolVersionSupportState!,
+  };
+}
+
+/// Details of ToolVersions for the release.
+class ToolVersions {
+  /// The Docker version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? docker;
+
+  /// The Helm version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? helm;
+
+  /// The kpt version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? kpt;
+
+  /// The Kubectl version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? kubectl;
+
+  /// The Kustomize version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? kustomize;
+
+  /// The Skaffold version to use for Cloud Deploy operations.
+  ///
+  /// Optional.
+  core.String? skaffold;
+
+  ToolVersions({
+    this.docker,
+    this.helm,
+    this.kpt,
+    this.kubectl,
+    this.kustomize,
+    this.skaffold,
+  });
+
+  ToolVersions.fromJson(core.Map json_)
+    : this(
+        docker: json_['docker'] as core.String?,
+        helm: json_['helm'] as core.String?,
+        kpt: json_['kpt'] as core.String?,
+        kubectl: json_['kubectl'] as core.String?,
+        kustomize: json_['kustomize'] as core.String?,
+        skaffold: json_['skaffold'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (docker != null) 'docker': docker!,
+    if (helm != null) 'helm': helm!,
+    if (kpt != null) 'kpt': kpt!,
+    if (kubectl != null) 'kubectl': kubectl!,
+    if (kustomize != null) 'kustomize': kustomize!,
+    if (skaffold != null) 'skaffold': skaffold!,
   };
 }
 

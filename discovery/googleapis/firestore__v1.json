@@ -21,13 +21,443 @@
     "endpoints": [
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://firestore.us-east7.rep.googleapis.com/",
-            "location": "us-east7"
+            "endpointUrl": "https://firestore.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://batch-firestore.us-east7.rep.googleapis.com/",
-            "location": "us-east7"
+            "endpointUrl": "https://firestore.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.eu.rep.googleapis.com/",
+            "location": "eu"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us.rep.googleapis.com/",
+            "location": "us"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.eu.rep.googleapis.com/",
+            "location": "eu"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us.rep.googleapis.com/",
+            "location": "us"
         }
     ],
     "icons": {
@@ -40,7 +470,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250908",
+    "revision": "20260116",
     "rootUrl": "https://firestore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Firestore API",
@@ -1018,6 +1448,35 @@
                                         "https://www.googleapis.com/auth/datastore"
                                     ]
                                 },
+                                "executePipeline": {
+                                    "description": "Executes a pipeline query.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:executePipeline",
+                                    "httpMethod": "POST",
+                                    "id": "firestore.projects.databases.documents.executePipeline",
+                                    "parameterOrder": [
+                                        "database"
+                                    ],
+                                    "parameters": {
+                                        "database": {
+                                            "description": "Required. Database identifier, in the form `projects/{project}/databases/{database}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/databases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+database}/documents:executePipeline",
+                                    "request": {
+                                        "$ref": "ExecutePipelineRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ExecutePipelineResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/datastore"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets a single document.",
                                     "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
@@ -1548,6 +2007,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -1804,7 +2268,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2423,6 +2887,59 @@
             "properties": {},
             "type": "object"
         },
+        "ExecutePipelineRequest": {
+            "description": "The request for Firestore.ExecutePipeline.",
+            "id": "ExecutePipelineRequest",
+            "properties": {
+                "newTransaction": {
+                    "$ref": "TransactionOptions",
+                    "description": "Execute the pipeline in a new transaction. The identifier of the newly created transaction will be returned in the first response on the stream. This defaults to a read-only transaction."
+                },
+                "readTime": {
+                    "description": "Execute the pipeline in a snapshot transaction at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "structuredPipeline": {
+                    "$ref": "StructuredPipeline",
+                    "description": "A pipelined operation."
+                },
+                "transaction": {
+                    "description": "Run the query within an already active transaction. The value here is the opaque transaction ID to execute the query in.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExecutePipelineResponse": {
+            "description": "The response for Firestore.Execute.",
+            "id": "ExecutePipelineResponse",
+            "properties": {
+                "executionTime": {
+                    "description": "The time at which the results are valid. This is a (not strictly) monotonically increasing value across multiple responses in the same stream. The API guarantees that all previously returned results are still valid at the latest `execution_time`. This allows the API consumer to treat the query if it ran at the latest `execution_time` returned. If the query returns no results, a response with `execution_time` and no `results` will be sent, and this represents the time at which the operation was run.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "explainStats": {
+                    "$ref": "ExplainStats",
+                    "description": "Query explain stats. This is present on the **last** response if the request configured explain to run in 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response with `explain_stats` and no `results` will still be sent."
+                },
+                "results": {
+                    "description": "An ordered batch of results returned executing a pipeline. The batch size is variable, and can even be zero for when only a partial progress message is returned. The fields present in the returned documents are only those that were explicitly requested in the pipeline, this includes those like `__name__` and `__update_time__`. This is explicitly a divergence from `Firestore.RunQuery` / `Firestore.GetDocument` RPCs which always return such fields even when they are not specified in the `mask`.",
+                    "items": {
+                        "$ref": "Document"
+                    },
+                    "type": "array"
+                },
+                "transaction": {
+                    "description": "Newly created transaction identifier. This field is only specified as part of the first response from the server, alongside the `results` field when the original request specified ExecuteRequest.new_transaction.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExecutionStats": {
             "description": "Execution statistics for the query.",
             "id": "ExecutionStats",
@@ -2496,6 +3013,21 @@
                 "analyze": {
                     "description": "Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ExplainStats": {
+            "description": "Pipeline explain stats. Depending on the explain options in the original request, this can contain the optimized plan and / or execution stats.",
+            "id": "ExplainStats",
+            "properties": {
+                "data": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "The format depends on the `output_format` options in the request. Currently there are two supported options: `TEXT` and `JSON`. Both supply a `google.protobuf.StringValue`.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -2659,6 +3191,31 @@
                 "vectorField": {
                     "$ref": "FieldReference",
                     "description": "Required. An indexed vector field to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned."
+                }
+            },
+            "type": "object"
+        },
+        "Function": {
+            "description": "Represents an unevaluated scalar expression. For example, the expression `like(user_name, \"%alice%\")` is represented as: ``` name: \"like\" args { field_reference: \"user_name\" } args { string_value: \"%alice%\" } ```",
+            "id": "Function",
+            "properties": {
+                "args": {
+                    "description": "Optional. Ordered list of arguments the given function expects.",
+                    "items": {
+                        "$ref": "Value"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Required. The name of the function to evaluate. **Requires:** * must be in snake case (lower case with underscore separator).",
+                    "type": "string"
+                },
+                "options": {
+                    "additionalProperties": {
+                        "$ref": "Value"
+                    },
+                    "description": "Optional. Optional named arguments that certain functions may support.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -3000,7 +3557,7 @@
                     "description": "Optional. Presence indicates CMEK is enabled for this database."
                 },
                 "concurrencyMode": {
-                    "description": "The concurrency control mode to use for this database.",
+                    "description": "The concurrency control mode to use for this database. If unspecified in a CreateDatabase request, this will default based on the database edition: Optimistic for Enterprise and Pessimistic for all other databases.",
                     "enum": [
                         "CONCURRENCY_MODE_UNSPECIFIED",
                         "OPTIMISTIC",
@@ -3009,9 +3566,9 @@
                     ],
                     "enumDescriptions": [
                         "Not used.",
-                        "Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.",
-                        "Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore.",
-                        "Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended."
+                        "Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore Enterprise Edition databases.",
+                        "Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore Standard Edition databases.",
+                        "Use optimistic concurrency control with entity groups by default. This mode is enabled for some databases that were automatically upgraded from Cloud Datastore to Cloud Firestore with Datastore Mode. It is not recommended for any new databases, and not supported for Firestore Native databases."
                     ],
                     "type": "string"
                 },
@@ -3065,6 +3622,20 @@
                     "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
                     "type": "string"
                 },
+                "firestoreDataAccessMode": {
+                    "description": "Optional. The Firestore API data access mode to use for this database. If not set on write: - the default value is DATA_ACCESS_MODE_DISABLED for Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED for Standard Edition.",
+                    "enum": [
+                        "DATA_ACCESS_MODE_UNSPECIFIED",
+                        "DATA_ACCESS_MODE_ENABLED",
+                        "DATA_ACCESS_MODE_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Not Used.",
+                        "Accessing the database through the API is allowed.",
+                        "Accessing the database through the API is disallowed."
+                    ],
+                    "type": "string"
+                },
                 "freeTier": {
                     "description": "Output only. Background: Free tier is the ability of a Firestore database to use a small amount of resources every day without being charged. Once usage exceeds the free tier limit further usage is charged. Whether this database can make use of the free tier. Only one database per project can be eligible for the free tier. The first (or next) database that is created in a project without a free tier database will be marked as eligible for the free tier. Databases that are created while there is a free tier database will not be eligible for the free tier.",
                     "readOnly": true,
@@ -3077,6 +3648,20 @@
                 },
                 "locationId": {
                     "description": "The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.",
+                    "type": "string"
+                },
+                "mongodbCompatibleDataAccessMode": {
+                    "description": "Optional. The MongoDB compatible API data access mode to use for this database. If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for Standard Edition.",
+                    "enum": [
+                        "DATA_ACCESS_MODE_UNSPECIFIED",
+                        "DATA_ACCESS_MODE_ENABLED",
+                        "DATA_ACCESS_MODE_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Not Used.",
+                        "Accessing the database through the API is allowed.",
+                        "Accessing the database through the API is disallowed."
+                    ],
                     "type": "string"
                 },
                 "name": {
@@ -3100,6 +3685,20 @@
                 "previousId": {
                     "description": "Output only. The database resource's prior database ID. This field is only populated for deleted databases.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "realtimeUpdatesMode": {
+                    "description": "Immutable. The default Realtime Updates mode to use for this database.",
+                    "enum": [
+                        "REALTIME_UPDATES_MODE_UNSPECIFIED",
+                        "REALTIME_UPDATES_MODE_ENABLED",
+                        "REALTIME_UPDATES_MODE_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "The Realtime Updates feature is not specified.",
+                        "The Realtime Updates feature is enabled by default. This could potentially degrade write performance for the database.",
+                        "The Realtime Updates feature is disabled by default."
+                    ],
                     "type": "string"
                 },
                 "sourceInfo": {
@@ -3167,7 +3766,7 @@
             "type": "object"
         },
         "GoogleFirestoreAdminV1EncryptionConfig": {
-            "description": "Encryption configuration for a new database being created from another source. The source could be a Backup .",
+            "description": "Encryption configuration for a new database being created from another source. The source could be a Backup or a PitrSnapshot.",
             "id": "GoogleFirestoreAdminV1EncryptionConfig",
             "properties": {
                 "customerManagedEncryption": {
@@ -3262,7 +3861,7 @@
             "id": "GoogleFirestoreAdminV1ExportDocumentsRequest",
             "properties": {
                 "collectionIds": {
-                    "description": "Which collection IDs to export. Unspecified means all collections. Each collection ID in this list must be unique.",
+                    "description": "IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in this list must be unique.",
                     "items": {
                         "type": "string"
                     },
@@ -3465,7 +4064,7 @@
             "id": "GoogleFirestoreAdminV1ImportDocumentsRequest",
             "properties": {
                 "collectionIds": {
-                    "description": "Which collection IDs to import. Unspecified means all collections included in the import. Each collection ID in this list must be unique.",
+                    "description": "IDs of the collection groups to import. Unspecified means all collection groups that were included in the export. Each collection group in this list must be unique.",
                     "items": {
                         "type": "string"
                     },
@@ -3832,7 +4431,15 @@
         "GoogleFirestoreAdminV1LocationMetadata": {
             "description": "The metadata message for google.cloud.location.Location.metadata.",
             "id": "GoogleFirestoreAdminV1LocationMetadata",
-            "properties": {},
+            "properties": {
+                "availableStoragePlacements": {
+                    "description": "The storage placements available in the location. When the location represents a Standard Managed Multi-Region (SMMR) like \"us\", this field lists the available Google-Managed Multi-Regions (GMMRs) within it, such as \"nam5\" or \"eur3\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "GoogleFirestoreAdminV1PitrSnapshot": {
@@ -4182,6 +4789,13 @@
                         "$ref": "GoogleLongrunningOperation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -4484,6 +5098,20 @@
             },
             "type": "object"
         },
+        "Pipeline": {
+            "description": "A Firestore query represented as an ordered list of operations / stages.",
+            "id": "Pipeline",
+            "properties": {
+                "stages": {
+                    "description": "Required. Ordered list of stages to evaluate.",
+                    "items": {
+                        "$ref": "Stage"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "PlanSummary": {
             "description": "Planning phase information for the query.",
             "id": "PlanSummary",
@@ -4706,6 +5334,31 @@
             },
             "type": "array"
         },
+        "Stage": {
+            "description": "A single operation within a pipeline. A stage is made up of a unique name, and a list of arguments. The exact number of arguments & types is dependent on the stage type. To give an example, the stage `filter(state = \"MD\")` would be encoded as: ``` name: \"filter\" args { function_value { name: \"eq\" args { field_reference_value: \"state\" } args { string_value: \"MD\" } } } ``` See public documentation for the full list.",
+            "id": "Stage",
+            "properties": {
+                "args": {
+                    "description": "Optional. Ordered list of arguments the given stage expects.",
+                    "items": {
+                        "$ref": "Value"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Required. The name of the stage to evaluate. **Requires:** * must be in snake case (lower case with underscore separator).",
+                    "type": "string"
+                },
+                "options": {
+                    "additionalProperties": {
+                        "$ref": "Value"
+                    },
+                    "description": "Optional. Optional named arguments that certain functions may support.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Status": {
             "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
             "id": "Status",
@@ -4747,6 +5400,24 @@
                 "structuredQuery": {
                     "$ref": "StructuredQuery",
                     "description": "Nested structured query."
+                }
+            },
+            "type": "object"
+        },
+        "StructuredPipeline": {
+            "description": "A Firestore query represented as an ordered list of operations / stages. This is considered the top-level function which plans and executes a query. It is logically equivalent to `query(stages, options)`, but prevents the client from having to build a function wrapper.",
+            "id": "StructuredPipeline",
+            "properties": {
+                "options": {
+                    "additionalProperties": {
+                        "$ref": "Value"
+                    },
+                    "description": "Optional. Optional query-level arguments. ",
+                    "type": "object"
+                },
+                "pipeline": {
+                    "$ref": "Pipeline",
+                    "description": "Required. The pipeline query to execute."
                 }
             },
             "type": "object"
@@ -4965,6 +5636,14 @@
                     "format": "double",
                     "type": "number"
                 },
+                "fieldReferenceValue": {
+                    "description": "Value which references a field. This is considered relative (vs absolute) since it only refers to a field and not a field within a particular document. **Requires:** * Must follow field reference limitations. * Not allowed to be used when writing documents.",
+                    "type": "string"
+                },
+                "functionValue": {
+                    "$ref": "Function",
+                    "description": "A value that represents an unevaluated expression. **Requires:** * Not allowed to be used when writing documents."
+                },
                 "geoPointValue": {
                     "$ref": "LatLng",
                     "description": "A geo point value representing a point on the surface of Earth."
@@ -4987,6 +5666,10 @@
                         "Null value."
                     ],
                     "type": "string"
+                },
+                "pipelineValue": {
+                    "$ref": "Pipeline",
+                    "description": "A value that represents an unevaluated pipeline. **Requires:** * Not allowed to be used when writing documents."
                 },
                 "referenceValue": {
                     "description": "A reference to a document. For example: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",

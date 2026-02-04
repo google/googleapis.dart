@@ -1518,15 +1518,16 @@ class ResourceRecordSetsResource {
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server decides how many results to return.
   ///
-  /// [name] - Restricts the list to return only records with this fully
-  /// qualified domain name. Mutually exclusive with the {@code filter} field.
+  /// [name] - Specify a fully qualified domain name to view only those records.
+  /// The name parameter is not supported and must be omitted when you use
+  /// filter.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
-  /// [type] - Restricts the list to return only records of this type. If
-  /// present, the "name" parameter must also be present. Mutually exclusive
-  /// with the {@code filter} field.
+  /// [type] - Specify a record type to view only those records. You must also
+  /// specify the name parameter. The type parameter is not supported and must
+  /// be omitted when you use filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

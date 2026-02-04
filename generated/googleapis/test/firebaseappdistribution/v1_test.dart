@@ -33,8 +33,10 @@ api.GdataBlobstore2Info buildGdataBlobstore2Info() {
   if (buildCounterGdataBlobstore2Info < 3) {
     o.blobGeneration = 'foo';
     o.blobId = 'foo';
+    o.downloadExternalReadToken = 'foo';
     o.downloadReadHandle = 'foo';
     o.readToken = 'foo';
+    o.uploadFragmentListCreationInfo = 'foo';
     o.uploadMetadataContainer = 'foo';
   }
   buildCounterGdataBlobstore2Info--;
@@ -46,8 +48,10 @@ void checkGdataBlobstore2Info(api.GdataBlobstore2Info o) {
   if (buildCounterGdataBlobstore2Info < 3) {
     unittest.expect(o.blobGeneration!, unittest.equals('foo'));
     unittest.expect(o.blobId!, unittest.equals('foo'));
+    unittest.expect(o.downloadExternalReadToken!, unittest.equals('foo'));
     unittest.expect(o.downloadReadHandle!, unittest.equals('foo'));
     unittest.expect(o.readToken!, unittest.equals('foo'));
+    unittest.expect(o.uploadFragmentListCreationInfo!, unittest.equals('foo'));
     unittest.expect(o.uploadMetadataContainer!, unittest.equals('foo'));
   }
   buildCounterGdataBlobstore2Info--;

@@ -247,6 +247,14 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -262,12 +270,15 @@ class OrganizationsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1190,6 +1201,12 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -1706,17 +1723,26 @@ class GoogleCloudSecuritypostureV1PolicyRule {
   ///
   /// When set, the google.type.Expr.expression field must contain 1 to 10
   /// subexpressions, joined by the `||` or `&&` operators. Each subexpression
-  /// must use the `resource.matchTag()` or `resource.matchTagId()` Common
-  /// Expression Language (CEL) function. The `resource.matchTag()` function
-  /// takes the following arguments: * `key_name`: the namespaced name of the
-  /// tag key, with the organization ID and a slash (`/`) as a prefix; for
-  /// example, `123456789012/environment` * `value_name`: the short name of the
-  /// tag value For example: `resource.matchTag('123456789012/environment,
-  /// 'prod')` The `resource.matchTagId()` function takes the following
-  /// arguments: * `key_id`: the permanent ID of the tag key; for example,
+  /// must use the `resource.matchTag()`, `resource.matchTagId()`,
+  /// `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression
+  /// Language (CEL) function. The `resource.matchTag()` function takes the
+  /// following arguments: * `key_name`: the namespaced name of the tag key,
+  /// with the organization ID and a slash (`/`) as a prefix; for example,
+  /// `123456789012/environment` * `value_name`: the short name of the tag value
+  /// For example: `resource.matchTag('123456789012/environment, 'prod')` The
+  /// `resource.matchTagId()` function takes the following arguments: *
+  /// `key_id`: the permanent ID of the tag key; for example,
   /// `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value;
   /// for example, `tagValues/567890123456` For example:
   /// `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')`
+  /// The `resource.hasTagKey()` function takes the following argument: *
+  /// `key_name`: the namespaced name of the tag key, with the organization ID
+  /// and a slash (`/`) as a prefix; for example, `123456789012/environment` For
+  /// example: `resource.hasTagKey('123456789012/environment')` The
+  /// `resource.hasTagKeyId()` function takes the following arguments: *
+  /// `key_id`: the permanent ID of the tag key; for example,
+  /// `tagKeys/123456789012` For example:
+  /// `resource.hasTagKeyId('tagKeys/123456789012')`
   Expr? condition;
 
   /// Whether to deny all values for a list constraint.
@@ -1945,7 +1971,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1958,11 +1996,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

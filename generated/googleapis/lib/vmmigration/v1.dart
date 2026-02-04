@@ -135,14 +135,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1056,6 +1062,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1071,12 +1085,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5336,6 +5353,16 @@ class ComputeEngineTargetDefaults {
   /// Optional.
   core.String? serviceAccount;
 
+  /// If specified this will be the storage pool in which the disk is created.
+  ///
+  /// This is the full path of the storage pool resource, for example:
+  /// "projects/my-project/zones/us-central1-a/storagePools/my-storage-pool".
+  /// The storage pool must be in the same project and zone as the target disks.
+  /// The storage pool's type must match the disk type.
+  ///
+  /// Optional.
+  core.String? storagePool;
+
   /// The full path of the resource of type TargetProject which represents the
   /// Compute Engine project in which to create this VM.
   core.String? targetProject;
@@ -5368,6 +5395,7 @@ class ComputeEngineTargetDefaults {
     this.networkTags,
     this.secureBoot,
     this.serviceAccount,
+    this.storagePool,
     this.targetProject,
     this.vmName,
     this.zone,
@@ -5440,6 +5468,7 @@ class ComputeEngineTargetDefaults {
                 .toList(),
         secureBoot: json_['secureBoot'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
         targetProject: json_['targetProject'] as core.String?,
         vmName: json_['vmName'] as core.String?,
         zone: json_['zone'] as core.String?,
@@ -5469,6 +5498,7 @@ class ComputeEngineTargetDefaults {
     if (networkTags != null) 'networkTags': networkTags!,
     if (secureBoot != null) 'secureBoot': secureBoot!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (storagePool != null) 'storagePool': storagePool!,
     if (targetProject != null) 'targetProject': targetProject!,
     if (vmName != null) 'vmName': vmName!,
     if (zone != null) 'zone': zone!,
@@ -5592,6 +5622,17 @@ class ComputeEngineTargetDetails {
   /// The service account to associate the VM with.
   core.String? serviceAccount;
 
+  /// The storage pool used for the VM disks.
+  ///
+  /// If specified this will be the storage pool in which the disk is created.
+  /// This is the full path of the storage pool resource, for example:
+  /// "projects/my-project/zones/us-central1-a/storagePools/my-storage-pool".
+  /// The storage pool must be in the same project and zone as the target disks.
+  /// The storage pool's type must match the disk type.
+  ///
+  /// Optional.
+  core.String? storagePool;
+
   /// The name of the VM to create.
   core.String? vmName;
 
@@ -5621,6 +5662,7 @@ class ComputeEngineTargetDetails {
     this.project,
     this.secureBoot,
     this.serviceAccount,
+    this.storagePool,
     this.vmName,
     this.zone,
   });
@@ -5693,6 +5735,7 @@ class ComputeEngineTargetDetails {
         project: json_['project'] as core.String?,
         secureBoot: json_['secureBoot'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
         vmName: json_['vmName'] as core.String?,
         zone: json_['zone'] as core.String?,
       );
@@ -5722,6 +5765,7 @@ class ComputeEngineTargetDetails {
     if (project != null) 'project': project!,
     if (secureBoot != null) 'secureBoot': secureBoot!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (storagePool != null) 'storagePool': storagePool!,
     if (vmName != null) 'vmName': vmName!,
     if (zone != null) 'zone': zone!,
   };
@@ -6119,8 +6163,34 @@ class CycleStep {
   };
 }
 
-/// Mentions that the image import is not using OS adaptation process.
-typedef DataDiskImageImport = $Empty;
+/// Used when the image import is not using OS adaptation process.
+class DataDiskImageImport {
+  /// A list of guest OS features to apply to the imported image.
+  ///
+  /// These features are flags that are used by Compute Engine to enable certain
+  /// capabilities for virtual machine instances that are created from the
+  /// image. This field does not change the OS of the image; it only marks the
+  /// image with the specified features. The user must ensure that the OS is
+  /// compatible with the features. For a list of available features, see
+  /// https://cloud.google.com/compute/docs/images/create-custom#guest-os-features.
+  ///
+  /// Optional.
+  core.List<core.String>? guestOsFeatures;
+
+  DataDiskImageImport({this.guestOsFeatures});
+
+  DataDiskImageImport.fromJson(core.Map json_)
+    : this(
+        guestOsFeatures:
+            (json_['guestOsFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (guestOsFeatures != null) 'guestOsFeatures': guestOsFeatures!,
+  };
+}
 
 /// DatacenterConnector message describes a connector between the Source and
 /// Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
@@ -7990,7 +8060,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -8003,11 +8085,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

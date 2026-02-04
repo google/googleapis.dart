@@ -131,9 +131,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1553,6 +1553,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1568,12 +1576,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1856,6 +1867,11 @@ class AllowlistedCertificate {
 
 /// State of the latest attempt to authorize a domain for certificate issuance.
 class AuthorizationAttemptInfo {
+  /// The timestamp, when the authorization attempt was made.
+  ///
+  /// Output only.
+  core.String? attemptTime;
+
   /// Human readable explanation for reaching the state.
   ///
   /// Provided to help address the configuration issues. Not guaranteed to be
@@ -1896,26 +1912,88 @@ class AuthorizationAttemptInfo {
   /// fields for more information.
   core.String? state;
 
+  /// Troubleshooting information for the authorization attempt.
+  ///
+  /// This field is only populated if the authorization attempt failed.
+  ///
+  /// Output only.
+  Troubleshooting? troubleshooting;
+
   AuthorizationAttemptInfo({
+    this.attemptTime,
     this.details,
     this.domain,
     this.failureReason,
     this.state,
+    this.troubleshooting,
   });
 
   AuthorizationAttemptInfo.fromJson(core.Map json_)
     : this(
+        attemptTime: json_['attemptTime'] as core.String?,
         details: json_['details'] as core.String?,
         domain: json_['domain'] as core.String?,
         failureReason: json_['failureReason'] as core.String?,
         state: json_['state'] as core.String?,
+        troubleshooting:
+            json_.containsKey('troubleshooting')
+                ? Troubleshooting.fromJson(
+                  json_['troubleshooting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (attemptTime != null) 'attemptTime': attemptTime!,
     if (details != null) 'details': details!,
     if (domain != null) 'domain': domain!,
     if (failureReason != null) 'failureReason': failureReason!,
     if (state != null) 'state': state!,
+    if (troubleshooting != null) 'troubleshooting': troubleshooting!,
+  };
+}
+
+/// CNAME troubleshooting information.
+class CNAME {
+  /// The expected value of the CNAME record for the domain, equals to
+  /// `dns_resource_record.data` in the corresponding `DnsAuthorization`.
+  ///
+  /// Output only.
+  core.String? expectedData;
+
+  /// The name of the CNAME record for the domain, equals to
+  /// `dns_resource_record.name` in the corresponding `DnsAuthorization`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The resolved CNAME chain.
+  ///
+  /// Empty list if the CNAME record for `CNAME.name` is not found. Otherwise
+  /// the first item is the value of the CNAME record for `CNAME.name`. If the
+  /// CNAME chain is longer, the second item is the value of the CNAME record
+  /// for the first item, and so on.
+  ///
+  /// Output only.
+  core.List<core.String>? resolvedData;
+
+  CNAME({this.expectedData, this.name, this.resolvedData});
+
+  CNAME.fromJson(core.Map json_)
+    : this(
+        expectedData: json_['expectedData'] as core.String?,
+        name: json_['name'] as core.String?,
+        resolvedData:
+            (json_['resolvedData'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (expectedData != null) 'expectedData': expectedData!,
+    if (name != null) 'name': name!,
+    if (resolvedData != null) 'resolvedData': resolvedData!,
   };
 }
 
@@ -1946,6 +2024,10 @@ class Certificate {
 
   /// If set, contains configuration and state of a managed certificate.
   ManagedCertificate? managed;
+
+  /// If set, contains configuration and state of a managed identity
+  /// certificate.
+  ManagedIdentityCertificate? managedIdentity;
 
   /// Identifier.
   ///
@@ -2005,6 +2087,7 @@ class Certificate {
     this.expireTime,
     this.labels,
     this.managed,
+    this.managedIdentity,
     this.name,
     this.pemCertificate,
     this.sanDnsnames,
@@ -2026,6 +2109,13 @@ class Certificate {
             json_.containsKey('managed')
                 ? ManagedCertificate.fromJson(
                   json_['managed'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        managedIdentity:
+            json_.containsKey('managedIdentity')
+                ? ManagedIdentityCertificate.fromJson(
+                  json_['managedIdentity']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         name: json_['name'] as core.String?,
@@ -2058,6 +2148,7 @@ class Certificate {
     if (expireTime != null) 'expireTime': expireTime!,
     if (labels != null) 'labels': labels!,
     if (managed != null) 'managed': managed!,
+    if (managedIdentity != null) 'managedIdentity': managedIdentity!,
     if (name != null) 'name': name!,
     if (pemCertificate != null) 'pemCertificate': pemCertificate!,
     if (sanDnsnames != null) 'sanDnsnames': sanDnsnames!,
@@ -2591,6 +2682,52 @@ class GclbTarget {
   };
 }
 
+/// IPs troubleshooting information.
+class IPs {
+  /// The list of IP addresses resolved from the domain's A/AAAA records.
+  ///
+  /// Can contain both ipv4 and ipv6 addresses.
+  ///
+  /// Output only.
+  core.List<core.String>? resolved;
+
+  /// The list of IP addresses, where the certificate is attached and port 443
+  /// is open.
+  ///
+  /// Output only.
+  core.List<core.String>? serving;
+
+  /// The list of IP addresses, where the certificate is attached, but port 443
+  /// is not open.
+  ///
+  /// Output only.
+  core.List<core.String>? servingOnAltPorts;
+
+  IPs({this.resolved, this.serving, this.servingOnAltPorts});
+
+  IPs.fromJson(core.Map json_)
+    : this(
+        resolved:
+            (json_['resolved'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        serving:
+            (json_['serving'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        servingOnAltPorts:
+            (json_['servingOnAltPorts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (resolved != null) 'resolved': resolved!,
+    if (serving != null) 'serving': serving!,
+    if (servingOnAltPorts != null) 'servingOnAltPorts': servingOnAltPorts!,
+  };
+}
+
 /// Defines an intermediate CA.
 class IntermediateCA {
   /// PEM intermediate certificate used for building up paths for validation.
@@ -2901,7 +3038,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2914,11 +3063,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3068,6 +3222,62 @@ class ManagedCertificate {
     if (dnsAuthorizations != null) 'dnsAuthorizations': dnsAuthorizations!,
     if (domains != null) 'domains': domains!,
     if (issuanceConfig != null) 'issuanceConfig': issuanceConfig!,
+    if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
+    if (state != null) 'state': state!,
+  };
+}
+
+/// Configuration and state of a Managed Identity Certificate.
+///
+/// Certificate Manager provisions and renews Managed Identity Certificates
+/// automatically, for as long as it's authorized to do so.
+class ManagedIdentityCertificate {
+  /// SPIFFE ID of the Managed Identity used for this certificate.
+  ///
+  /// Required. Immutable.
+  core.String? identity;
+
+  /// Information about issues with provisioning a managed certificate.
+  ///
+  /// Output only.
+  ProvisioningIssue? provisioningIssue;
+
+  /// State of the managed certificate resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
+  /// - "PROVISIONING" : Certificate Manager attempts to provision or renew the
+  /// certificate. If the process takes longer than expected, consult the
+  /// `provisioning_issue` field.
+  /// - "FAILED" : Multiple certificate provisioning attempts failed and
+  /// Certificate Manager gave up. To try again, delete and create a new managed
+  /// Certificate resource. For details see the `provisioning_issue` field.
+  /// - "ACTIVE" : The certificate management is working, and a certificate has
+  /// been provisioned.
+  core.String? state;
+
+  ManagedIdentityCertificate({
+    this.identity,
+    this.provisioningIssue,
+    this.state,
+  });
+
+  ManagedIdentityCertificate.fromJson(core.Map json_)
+    : this(
+        identity: json_['identity'] as core.String?,
+        provisioningIssue:
+            json_.containsKey('provisioningIssue')
+                ? ProvisioningIssue.fromJson(
+                  json_['provisioningIssue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (identity != null) 'identity': identity!,
     if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
     if (state != null) 'state': state!,
   };
@@ -3226,6 +3436,52 @@ class SelfManagedCertificate {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
+/// Troubleshooting information for the authorization attempt.
+class Troubleshooting {
+  /// CNAME troubleshooting information.
+  ///
+  /// Output only.
+  CNAME? cname;
+
+  /// IPs troubleshooting information.
+  ///
+  /// Output only.
+  IPs? ips;
+
+  /// The list of issues discovered during the authorization attempt.
+  ///
+  /// Output only.
+  core.List<core.String>? issues;
+
+  Troubleshooting({this.cname, this.ips, this.issues});
+
+  Troubleshooting.fromJson(core.Map json_)
+    : this(
+        cname:
+            json_.containsKey('cname')
+                ? CNAME.fromJson(
+                  json_['cname'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ips:
+            json_.containsKey('ips')
+                ? IPs.fromJson(
+                  json_['ips'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cname != null) 'cname': cname!,
+    if (ips != null) 'ips': ips!,
+    if (issues != null) 'issues': issues!,
+  };
+}
+
 /// Defines a trust anchor.
 class TrustAnchor {
   /// PEM root certificate of the PKI used for validation.
@@ -3280,6 +3536,13 @@ class TrustConfig {
   /// `.
   core.String? name;
 
+  /// Defines a mapping from a trust domain to a TrustStore.
+  ///
+  /// This is used for SPIFFE certificate validation.
+  ///
+  /// Optional.
+  core.Map<core.String, TrustStore>? spiffeTrustStores;
+
   /// Set of trust stores to perform validation against.
   ///
   /// This field is supported when TrustConfig is configured with Load
@@ -3301,6 +3564,7 @@ class TrustConfig {
     this.etag,
     this.labels,
     this.name,
+    this.spiffeTrustStores,
     this.trustStores,
     this.updateTime,
   });
@@ -3322,6 +3586,16 @@ class TrustConfig {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        spiffeTrustStores: (json_['spiffeTrustStores']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TrustStore.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
         trustStores:
             (json_['trustStores'] as core.List?)
                 ?.map(
@@ -3341,6 +3615,7 @@ class TrustConfig {
     if (etag != null) 'etag': etag!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
+    if (spiffeTrustStores != null) 'spiffeTrustStores': spiffeTrustStores!,
     if (trustStores != null) 'trustStores': trustStores!,
     if (updateTime != null) 'updateTime': updateTime!,
   };

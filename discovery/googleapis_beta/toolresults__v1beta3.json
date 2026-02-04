@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250204",
+    "revision": "20260108",
     "rootUrl": "https://toolresults.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Tool Results API",
@@ -3676,7 +3676,7 @@
                     ],
                     "type": "string"
                 },
-                "warning": {
+                "warning_migration": {
                     "$ref": "Any",
                     "description": "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"
                 }

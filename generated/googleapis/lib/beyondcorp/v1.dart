@@ -14,10 +14,12 @@
 
 /// BeyondCorp API - v1
 ///
-/// Beyondcorp Enterprise provides identity and context aware access controls
-/// for enterprise resources and enables zero-trust access. Using the Beyondcorp
-/// Enterprise APIs, enterprises can set up multi-cloud and on-prem connectivity
-/// solutions.
+/// Chrome Enterprise Premium is a secure enterprise browsing solution that
+/// provides secure access to applications and resources, and offers integrated
+/// threat and data protection. It adds an extra layer of security to safeguard
+/// your Chrome browser environment, including Data Loss Prevention (DLP),
+/// real-time URL and file scanning, and Context-Aware Access for SaaS and web
+/// apps.
 ///
 /// For more information, see <https://cloud.google.com/>
 ///
@@ -49,11 +51,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Beyondcorp Enterprise provides identity and context aware access controls
-/// for enterprise resources and enables zero-trust access.
+/// Chrome Enterprise Premium is a secure enterprise browsing solution that
+/// provides secure access to applications and resources, and offers integrated
+/// threat and data protection.
 ///
-/// Using the Beyondcorp Enterprise APIs, enterprises can set up multi-cloud and
-/// on-prem connectivity solutions.
+/// It adds an extra layer of security to safeguard your Chrome browser
+/// environment, including Data Loss Prevention (DLP), real-time URL and file
+/// scanning, and Context-Aware Access for SaaS and web apps.
 class BeyondCorpApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -245,6 +249,14 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -260,12 +272,15 @@ class OrganizationsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -351,9 +366,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2033,6 +2048,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2048,12 +2071,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4052,17 +4078,18 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /// Optional.
   core.String? displayName;
 
-  /// Endpoint matchers associated with an application.
+  /// An array of conditions to match the application's network endpoint.
   ///
-  /// A combination of hostname and ports as endpoint matchers is used to match
-  /// the application. Match conditions for OR logic. An array of match
-  /// conditions to allow for multiple matching criteria. The rule is considered
-  /// a match if one of the conditions is met. The conditions should be the
-  /// following combination: (Hostname & Ports) EXAMPLES: Hostname and Ports -
-  /// ("*.example.com", "443"), ("example.com" and "22"), ("example.com" and
-  /// "22,33") etc
+  /// Each element in the array is an EndpointMatcher object, which defines a
+  /// specific combination of a hostname pattern and one or more ports. The
+  /// application is considered matched if at least one of the EndpointMatcher
+  /// conditions in this array is met (the conditions are combined using OR
+  /// logic). Each EndpointMatcher must contain a hostname pattern, such as
+  /// "example.com", and one or more port numbers specified as a string, such as
+  /// "443". Hostname and port number examples: "*.example.com", "443"
+  /// "example.com" and "22" "example.com" and "22,33"
   ///
-  /// Required.
+  /// Optional.
   core.List<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>?
   endpointMatchers;
 
@@ -4256,13 +4283,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
 
 /// Contextual headers configuration.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
-  /// Device info configuration.
+  /// The device information configuration.
   ///
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo?
   deviceInfo;
 
-  /// Group info configuration.
+  /// Group details.
   ///
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo?
@@ -4272,13 +4299,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : The unspecified output type.
   /// - "PROTOBUF" : Protobuf output type.
   /// - "JSON" : JSON output type.
   /// - "NONE" : Explicitly disable header output.
   core.String? outputType;
 
-  /// User info configuration.
+  /// User details.
   ///
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo?
@@ -4323,13 +4350,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   };
 }
 
-/// Delegated device info configuration.
+/// The delegated device information configuration.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo {
-  /// The output type of the delegated device info.
+  /// The output type details for the delegated device.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : The unspecified output type.
   /// - "PROTOBUF" : Protobuf output type.
   /// - "JSON" : JSON output type.
   /// - "NONE" : Explicitly disable header output.
@@ -4348,13 +4375,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInf
   };
 }
 
-/// Delegated group info configuration.
+/// The delegated group configuration details.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo {
-  /// The output type of the delegated group info.
+  /// The output type of the delegated group information.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : The unspecified output type.
   /// - "PROTOBUF" : Protobuf output type.
   /// - "JSON" : JSON output type.
   /// - "NONE" : Explicitly disable header output.
@@ -4373,13 +4400,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo
   };
 }
 
-/// Delegated user info configuration.
+/// The configuration information for the delegated user.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
-  /// The output type of the delegated user info.
+  /// The delegated user's information.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : The unspecified output type.
   /// - "PROTOBUF" : Protobuf output type.
   /// - "JSON" : JSON output type.
   /// - "NONE" : Explicitly disable header output.
@@ -4454,7 +4481,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   /// Required.
   core.String? hostname;
 
-  /// Ports of the application.
+  /// The ports of the application.
   ///
   /// Required.
   core.List<core.int>? ports;
@@ -4637,7 +4664,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders? contextualHeaders;
 
-  /// Gateway identity configuration.
+  /// The security gateway identity configuration.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4648,10 +4675,9 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
 
   /// Custom resource specific headers along with the values.
   ///
-  /// The names should conform to RFC 9110: \> Field names SHOULD constrain
-  /// themselves to alphanumeric characters, "-", and ".", and SHOULD begin with
-  /// a letter. Field values SHOULD contain only ASCII printable characters and
-  /// tab.
+  /// The names should conform to RFC 9110: \>Field names can contain
+  /// alphanumeric characters, hyphens, and periods, can contain only
+  /// ASCII-printable characters and tabs, and must start with a letter.
   ///
   /// Optional.
   core.Map<core.String, core.String>? metadataHeaders;
@@ -4886,7 +4912,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
 
 /// API operation descriptor.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
-  /// Contains uri path fragment where HTTP request is sent.
+  /// Contains the URI path fragment where HTTP request is sent.
   ///
   /// Required.
   core.String? path;
@@ -5275,9 +5301,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -5291,11 +5326,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

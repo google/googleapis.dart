@@ -31,7 +31,9 @@ api.AdvancedVoiceOptions buildAdvancedVoiceOptions() {
   final o = api.AdvancedVoiceOptions();
   buildCounterAdvancedVoiceOptions++;
   if (buildCounterAdvancedVoiceOptions < 3) {
+    o.enableTextnorm = true;
     o.lowLatencyJourneySynthesis = true;
+    o.relaxSafetyFilters = true;
   }
   buildCounterAdvancedVoiceOptions--;
   return o;
@@ -40,7 +42,9 @@ api.AdvancedVoiceOptions buildAdvancedVoiceOptions() {
 void checkAdvancedVoiceOptions(api.AdvancedVoiceOptions o) {
   buildCounterAdvancedVoiceOptions++;
   if (buildCounterAdvancedVoiceOptions < 3) {
+    unittest.expect(o.enableTextnorm!, unittest.isTrue);
     unittest.expect(o.lowLatencyJourneySynthesis!, unittest.isTrue);
+    unittest.expect(o.relaxSafetyFilters!, unittest.isTrue);
   }
   buildCounterAdvancedVoiceOptions--;
 }
@@ -197,6 +201,14 @@ void checkUnnamed2(core.List<api.Operation> o) {
   checkOperation(o[1]);
 }
 
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterListOperationsResponse = 0;
 api.ListOperationsResponse buildListOperationsResponse() {
   final o = api.ListOperationsResponse();
@@ -204,6 +216,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed2();
+    o.unreachable = buildUnnamed3();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -214,13 +227,14 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed2(o.operations!);
+    checkUnnamed3(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Voice> buildUnnamed3() => [buildVoice(), buildVoice()];
+core.List<api.Voice> buildUnnamed4() => [buildVoice(), buildVoice()];
 
-void checkUnnamed3(core.List<api.Voice> o) {
+void checkUnnamed4(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoice(o[0]);
   checkVoice(o[1]);
@@ -231,7 +245,7 @@ api.ListVoicesResponse buildListVoicesResponse() {
   final o = api.ListVoicesResponse();
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    o.voices = buildUnnamed3();
+    o.voices = buildUnnamed4();
   }
   buildCounterListVoicesResponse--;
   return o;
@@ -240,14 +254,14 @@ api.ListVoicesResponse buildListVoicesResponse() {
 void checkListVoicesResponse(api.ListVoicesResponse o) {
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    checkUnnamed3(o.voices!);
+    checkUnnamed4(o.voices!);
   }
   buildCounterListVoicesResponse--;
 }
 
-core.List<api.Turn> buildUnnamed4() => [buildTurn(), buildTurn()];
+core.List<api.Turn> buildUnnamed5() => [buildTurn(), buildTurn()];
 
-void checkUnnamed4(core.List<api.Turn> o) {
+void checkUnnamed5(core.List<api.Turn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTurn(o[0]);
   checkTurn(o[1]);
@@ -258,7 +272,7 @@ api.MultiSpeakerMarkup buildMultiSpeakerMarkup() {
   final o = api.MultiSpeakerMarkup();
   buildCounterMultiSpeakerMarkup++;
   if (buildCounterMultiSpeakerMarkup < 3) {
-    o.turns = buildUnnamed4();
+    o.turns = buildUnnamed5();
   }
   buildCounterMultiSpeakerMarkup--;
   return o;
@@ -267,12 +281,63 @@ api.MultiSpeakerMarkup buildMultiSpeakerMarkup() {
 void checkMultiSpeakerMarkup(api.MultiSpeakerMarkup o) {
   buildCounterMultiSpeakerMarkup++;
   if (buildCounterMultiSpeakerMarkup < 3) {
-    checkUnnamed4(o.turns!);
+    checkUnnamed5(o.turns!);
   }
   buildCounterMultiSpeakerMarkup--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed5() => {
+core.List<api.MultispeakerPrebuiltVoice> buildUnnamed6() => [
+  buildMultispeakerPrebuiltVoice(),
+  buildMultispeakerPrebuiltVoice(),
+];
+
+void checkUnnamed6(core.List<api.MultispeakerPrebuiltVoice> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMultispeakerPrebuiltVoice(o[0]);
+  checkMultispeakerPrebuiltVoice(o[1]);
+}
+
+core.int buildCounterMultiSpeakerVoiceConfig = 0;
+api.MultiSpeakerVoiceConfig buildMultiSpeakerVoiceConfig() {
+  final o = api.MultiSpeakerVoiceConfig();
+  buildCounterMultiSpeakerVoiceConfig++;
+  if (buildCounterMultiSpeakerVoiceConfig < 3) {
+    o.speakerVoiceConfigs = buildUnnamed6();
+  }
+  buildCounterMultiSpeakerVoiceConfig--;
+  return o;
+}
+
+void checkMultiSpeakerVoiceConfig(api.MultiSpeakerVoiceConfig o) {
+  buildCounterMultiSpeakerVoiceConfig++;
+  if (buildCounterMultiSpeakerVoiceConfig < 3) {
+    checkUnnamed6(o.speakerVoiceConfigs!);
+  }
+  buildCounterMultiSpeakerVoiceConfig--;
+}
+
+core.int buildCounterMultispeakerPrebuiltVoice = 0;
+api.MultispeakerPrebuiltVoice buildMultispeakerPrebuiltVoice() {
+  final o = api.MultispeakerPrebuiltVoice();
+  buildCounterMultispeakerPrebuiltVoice++;
+  if (buildCounterMultispeakerPrebuiltVoice < 3) {
+    o.speakerAlias = 'foo';
+    o.speakerId = 'foo';
+  }
+  buildCounterMultispeakerPrebuiltVoice--;
+  return o;
+}
+
+void checkMultispeakerPrebuiltVoice(api.MultispeakerPrebuiltVoice o) {
+  buildCounterMultispeakerPrebuiltVoice++;
+  if (buildCounterMultispeakerPrebuiltVoice < 3) {
+    unittest.expect(o.speakerAlias!, unittest.equals('foo'));
+    unittest.expect(o.speakerId!, unittest.equals('foo'));
+  }
+  buildCounterMultispeakerPrebuiltVoice--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed7() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -285,7 +350,7 @@ core.Map<core.String, core.Object?> buildUnnamed5() => {
   },
 };
 
-void checkUnnamed5(core.Map<core.String, core.Object?> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -299,7 +364,7 @@ void checkUnnamed5(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed6() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -312,7 +377,7 @@ core.Map<core.String, core.Object?> buildUnnamed6() => {
   },
 };
 
-void checkUnnamed6(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -333,9 +398,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed5();
+    o.metadata = buildUnnamed7();
     o.name = 'foo';
-    o.response = buildUnnamed6();
+    o.response = buildUnnamed8();
   }
   buildCounterOperation--;
   return o;
@@ -346,14 +411,14 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed5(o.metadata!);
+    checkUnnamed7(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed6(o.response!);
+    checkUnnamed8(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -366,7 +431,7 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
   },
 };
 
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -380,15 +445,15 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
-  buildUnnamed7(),
-  buildUnnamed7(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed10() => [
+  buildUnnamed9(),
+  buildUnnamed9(),
 ];
 
-void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed10(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7(o[0]);
-  checkUnnamed7(o[1]);
+  checkUnnamed9(o[0]);
+  checkUnnamed9(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -397,7 +462,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8();
+    o.details = buildUnnamed10();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -408,7 +473,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed8(o.details!);
+    checkUnnamed10(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -533,9 +598,9 @@ void checkTurn(api.Turn o) {
   buildCounterTurn--;
 }
 
-core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -546,7 +611,7 @@ api.Voice buildVoice() {
   final o = api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed9();
+    o.languageCodes = buildUnnamed11();
     o.name = 'foo';
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = 'foo';
@@ -558,7 +623,7 @@ api.Voice buildVoice() {
 void checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed9(o.languageCodes!);
+    checkUnnamed11(o.languageCodes!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.naturalSampleRateHertz!, unittest.equals(42));
     unittest.expect(o.ssmlGender!, unittest.equals('foo'));
@@ -593,6 +658,7 @@ api.VoiceSelectionParams buildVoiceSelectionParams() {
     o.customVoice = buildCustomVoiceParams();
     o.languageCode = 'foo';
     o.modelName = 'foo';
+    o.multiSpeakerVoiceConfig = buildMultiSpeakerVoiceConfig();
     o.name = 'foo';
     o.ssmlGender = 'foo';
     o.voiceClone = buildVoiceCloneParams();
@@ -607,6 +673,7 @@ void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
     checkCustomVoiceParams(o.customVoice!);
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.modelName!, unittest.equals('foo'));
+    checkMultiSpeakerVoiceConfig(o.multiSpeakerVoiceConfig!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.ssmlGender!, unittest.equals('foo'));
     checkVoiceCloneParams(o.voiceClone!);
@@ -722,6 +789,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkMultiSpeakerMarkup(od);
+    });
+  });
+
+  unittest.group('obj-schema-MultiSpeakerVoiceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMultiSpeakerVoiceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MultiSpeakerVoiceConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMultiSpeakerVoiceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-MultispeakerPrebuiltVoice', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMultispeakerPrebuiltVoice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MultispeakerPrebuiltVoice.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMultispeakerPrebuiltVoice(od);
     });
   });
 
@@ -1079,6 +1168,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1126,6 +1216,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -1141,6 +1235,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
         $fields: arg_$fields,
       );
       checkListOperationsResponse(response as api.ListOperationsResponse);

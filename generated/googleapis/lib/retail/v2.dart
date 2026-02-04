@@ -2720,6 +2720,14 @@ class ProjectsLocationsCatalogsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2735,12 +2743,15 @@ class ProjectsLocationsCatalogsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3749,6 +3760,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3764,12 +3783,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3846,6 +3868,14 @@ class ProjectsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3861,12 +3891,15 @@ class ProjectsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5810,7 +5843,7 @@ class GoogleCloudRetailV2ConversationalSearchRequestSearchParams {
 
   /// The sort string to specify the sorting of search results.
   ///
-  /// The syntax of the sort string is the same as SearchRequest.sort.
+  /// The syntax of the sort string is the same as SearchRequest.order_by.
   ///
   /// Optional.
   core.String? sortBy;
@@ -5853,7 +5886,7 @@ class GoogleCloudRetailV2ConversationalSearchRequestUserAnswer {
   /// This field specifies the selected answer during the conversational search.
   ///
   /// This should be a subset of
-  /// ConversationalSearchResponse.followup_question.suggested_answers.
+  /// ConversationalSearchResponse.FollowupQuestion.SuggestedAnswer.
   ///
   /// Optional.
   GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer?
@@ -6029,7 +6062,7 @@ class GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResu
   /// answer.
   ///
   /// User should add the suggested addition filters to the previous
-  /// ConversationalSearchRequest.search_params.filter and SearchRequest.filter,
+  /// ConversationalSearchRequest.SearchParams.filter and SearchRequest.filter,
   /// and use the merged filter in the follow up requests.
   GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter?
   additionalFilter;
@@ -6374,6 +6407,9 @@ class GoogleCloudRetailV2ExportAnalyticsMetricsRequest {
   core.String? filter;
 
   /// The output location of the data.
+  ///
+  /// Only `bigquery_destination` is supported, and
+  /// `bigquery_destination.table_type` must be set to `view`.
   ///
   /// Required.
   GoogleCloudRetailV2OutputConfig? outputConfig;
@@ -10351,7 +10387,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// An id corresponding to a place, such as a store id or region id.
   ///
   /// When specified, we use the price from the local inventory with the
-  /// matching product's LocalInventory.place_id for revenue optimization.
+  /// matching product's LocalInventory.place_id for revenue optimization. Note,
+  /// the currency of the local inventory's price must match the currency of the
+  /// product's price.
   ///
   /// Optional.
   core.String? placeId;
@@ -10726,8 +10764,8 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpec {
   /// conversation between client side and server side.
   ///
   /// Use the value from the previous
-  /// ConversationalSearchResult.conversation_id. For the initial request, this
-  /// should be empty.
+  /// SearchResponse.ConversationalSearchResult.conversation_id. For the initial
+  /// request, this should be empty.
   core.String? conversationId;
 
   /// This field specifies whether the customer would like to do conversational
@@ -10783,7 +10821,8 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer {
   /// This field specifies the selected attributes during the conversational
   /// search.
   ///
-  /// This should be a subset of ConversationalSearchResult.suggested_answers.
+  /// This should be a subset of
+  /// SearchResponse.ConversationalSearchResult.suggested_answers.
   GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer?
   selectedAnswer;
 
@@ -12882,9 +12921,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -12898,11 +12946,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

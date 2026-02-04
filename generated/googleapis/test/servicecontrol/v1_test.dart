@@ -966,6 +966,7 @@ api.QuotaInfo buildQuotaInfo() {
   if (buildCounterQuotaInfo < 3) {
     o.limitExceeded = buildUnnamed22();
     o.quotaConsumed = buildUnnamed23();
+    o.quotaExtractionState = 'foo';
     o.quotaMetrics = buildUnnamed24();
   }
   buildCounterQuotaInfo--;
@@ -977,6 +978,7 @@ void checkQuotaInfo(api.QuotaInfo o) {
   if (buildCounterQuotaInfo < 3) {
     checkUnnamed22(o.limitExceeded!);
     checkUnnamed23(o.quotaConsumed!);
+    unittest.expect(o.quotaExtractionState!, unittest.equals('foo'));
     checkUnnamed24(o.quotaMetrics!);
   }
   buildCounterQuotaInfo--;

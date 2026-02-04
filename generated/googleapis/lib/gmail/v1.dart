@@ -1169,7 +1169,8 @@ class UsersMessagesResource {
   ///
   /// This method doesn't perform SPF checks, so it might not work for some spam
   /// messages, such as those attempting to perform domain spoofing. This method
-  /// does not send a message.
+  /// does not send a message. Note that the maximum size of the message is
+  /// 150MB.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4350,6 +4351,73 @@ class BatchModifyMessagesRequest {
   };
 }
 
+/// Field values for a classification label.
+class ClassificationLabelFieldValue {
+  /// The field ID for the Classification Label Value.
+  ///
+  /// Maps to the ID field of the Google Drive `Label.Field` object.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  /// Selection choice ID for the selection option.
+  ///
+  /// Should only be set if the field type is `SELECTION` in the Google Drive
+  /// `Label.Field` object. Maps to the id field of the Google Drive
+  /// `Label.Field.SelectionOptions` resource.
+  core.String? selection;
+
+  ClassificationLabelFieldValue({this.fieldId, this.selection});
+
+  ClassificationLabelFieldValue.fromJson(core.Map json_)
+    : this(
+        fieldId: json_['fieldId'] as core.String?,
+        selection: json_['selection'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (selection != null) 'selection': selection!,
+  };
+}
+
+/// Classification Labels applied to the email message.
+///
+/// Classification Labels are different from Gmail inbox labels. Only used for
+/// Google Workspace accounts.
+/// [Learn more about classification labels](https://support.google.com/a/answer/9292382).
+class ClassificationLabelValue {
+  /// Field values for the given classification label ID.
+  core.List<ClassificationLabelFieldValue>? fields;
+
+  /// The canonical or raw alphanumeric classification label ID.
+  ///
+  /// Maps to the ID field of the Google Drive Label resource.
+  ///
+  /// Required.
+  core.String? labelId;
+
+  ClassificationLabelValue({this.fields, this.labelId});
+
+  ClassificationLabelValue.fromJson(core.Map json_)
+    : this(
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => ClassificationLabelFieldValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labelId: json_['labelId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fields != null) 'fields': fields!,
+    if (labelId != null) 'labelId': labelId!,
+  };
+}
+
 /// The client-side encryption (CSE) configuration for the email address of an
 /// authenticated user.
 ///
@@ -5672,6 +5740,14 @@ class ListThreadsResponse {
 
 /// An email message.
 class Message {
+  /// Classification Label values on the message.
+  ///
+  /// Available Classification Label schemas can be queried using the Google
+  /// Drive Labels API. Each classification label ID must be unique. If
+  /// duplicate IDs are provided, only one will be retained, and the selection
+  /// is arbitrary. Only used for Google Workspace accounts.
+  core.List<ClassificationLabelValue>? classificationLabelValues;
+
   /// The ID of the last history record that modified this message.
   core.String? historyId;
 
@@ -5725,6 +5801,7 @@ class Message {
   core.String? threadId;
 
   Message({
+    this.classificationLabelValues,
     this.historyId,
     this.id,
     this.internalDate,
@@ -5738,6 +5815,14 @@ class Message {
 
   Message.fromJson(core.Map json_)
     : this(
+        classificationLabelValues:
+            (json_['classificationLabelValues'] as core.List?)
+                ?.map(
+                  (value) => ClassificationLabelValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         historyId: json_['historyId'] as core.String?,
         id: json_['id'] as core.String?,
         internalDate: json_['internalDate'] as core.String?,
@@ -5758,6 +5843,8 @@ class Message {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (classificationLabelValues != null)
+      'classificationLabelValues': classificationLabelValues!,
     if (historyId != null) 'historyId': historyId!,
     if (id != null) 'id': id!,
     if (internalDate != null) 'internalDate': internalDate!,

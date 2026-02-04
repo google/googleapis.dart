@@ -1485,6 +1485,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1500,12 +1508,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2112,6 +2123,7 @@ class EnvironmentConfig {
   /// - "ENVIRONMENT_SIZE_SMALL" : The environment size is small.
   /// - "ENVIRONMENT_SIZE_MEDIUM" : The environment size is medium.
   /// - "ENVIRONMENT_SIZE_LARGE" : The environment size is large.
+  /// - "ENVIRONMENT_SIZE_EXTRA_LARGE" : The environment size is extra large.
   core.String? environmentSize;
 
   /// The Kubernetes Engine cluster used to run this environment.
@@ -2731,7 +2743,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2744,11 +2768,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3482,7 +3511,8 @@ class PrivateEnvironmentConfig {
   ///
   /// If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
   /// set to true for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*.
+  /// composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use
+  /// `networking_type` instead.
   ///
   /// Optional.
   core.bool? enablePrivateEnvironment;

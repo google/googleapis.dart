@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250813",
+    "revision": "20260202",
     "rootUrl": "https://gkebackup.googleapis.com/",
     "servicePath": "",
     "title": "Backup for GKE API",
@@ -139,7 +139,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "gkebackup.projects.locations.list",
@@ -562,6 +562,31 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "getTags": {
+                                    "description": "Returns tags directly bound to a GCP resource.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}:getTags",
+                                    "httpMethod": "GET",
+                                    "id": "gkebackup.projects.locations.backupPlans.getTags",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The full resource name of the service resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:getTags",
+                                    "response": {
+                                        "$ref": "GetTagsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists BackupPlans in a given location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backupPlans",
@@ -618,7 +643,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`",
+                                            "description": "Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
                                             "required": true,
@@ -665,6 +690,34 @@
                                     },
                                     "response": {
                                         "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "setTags": {
+                                    "description": "Updates tags directly bound to a GCP resource.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}:setTags",
+                                    "httpMethod": "POST",
+                                    "id": "gkebackup.projects.locations.backupPlans.setTags",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The full resource name of the service resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:setTags",
+                                    "request": {
+                                        "$ref": "SetTagsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "SetTagsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -912,7 +965,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Output only. The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`",
+                                                    "description": "Output only. Identifier. The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+/backups/[^/]+$",
                                                     "required": true,
@@ -1271,6 +1324,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -1658,6 +1716,31 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "getTags": {
+                                    "description": "Returns tags directly bound to a GCP resource.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/restorePlans/{restorePlansId}:getTags",
+                                    "httpMethod": "GET",
+                                    "id": "gkebackup.projects.locations.restorePlans.getTags",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The full resource name of the service resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:getTags",
+                                    "response": {
+                                        "$ref": "GetTagsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists RestorePlans in a given location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/restorePlans",
@@ -1714,7 +1797,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.",
+                                            "description": "Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+$",
                                             "required": true,
@@ -1761,6 +1844,34 @@
                                     },
                                     "response": {
                                         "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "setTags": {
+                                    "description": "Updates tags directly bound to a GCP resource.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/restorePlans/{restorePlansId}:setTags",
+                                    "httpMethod": "POST",
+                                    "id": "gkebackup.projects.locations.restorePlans.setTags",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The full resource name of the service resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:setTags",
+                                    "request": {
+                                        "$ref": "SetTagsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "SetTagsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1978,7 +2089,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Output only. The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`",
+                                                    "description": "Output only. Identifier. The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+/restores/[^/]+$",
                                                     "required": true,
@@ -2280,6 +2391,193 @@
             },
             "type": "object"
         },
+        "BDRBackupPlanJobLog": {
+            "description": "Log entry for BDRBackupPlanJobLog for resources using BackupPlan based protection.",
+            "id": "BDRBackupPlanJobLog",
+            "properties": {
+                "backupPlanName": {
+                    "description": "Canonical resource name for Backup Plan Plan of the job.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "End time of the job.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "The error code. Only populated in error scenarios.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "The user readable error message. Only populated in error scenarios.",
+                    "type": "string"
+                },
+                "errorType": {
+                    "description": "The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios.",
+                    "type": "string"
+                },
+                "jobCategory": {
+                    "description": "The category field displays the category of the job. Can be one of [UPDATE_BACKUP_PLAN].",
+                    "type": "string"
+                },
+                "jobId": {
+                    "description": "The job_id field displays the identifier of the job being reported.",
+                    "type": "string"
+                },
+                "jobStatus": {
+                    "description": "The status field displays the status of the job. Can be one of [RUNNING,SUCCESSFUL, FAILED].",
+                    "type": "string"
+                },
+                "newBackupPlanRevisionId": {
+                    "description": "User friendly revision id e.g. v0, v1 etc.",
+                    "type": "string"
+                },
+                "newBackupPlanRevisionName": {
+                    "description": "Full resource name for new backup plan revision",
+                    "type": "string"
+                },
+                "previousBackupPlanRevisionId": {
+                    "description": "User friendly revision id e.g. v0, v1 etc.",
+                    "type": "string"
+                },
+                "previousBackupPlanRevisionName": {
+                    "description": "Full resource name for previous backup plan revision",
+                    "type": "string"
+                },
+                "previousBackupRules": {
+                    "description": "Previous Backup Plan rules.",
+                    "items": {
+                        "$ref": "BackupRuleDetail"
+                    },
+                    "type": "array"
+                },
+                "resourceType": {
+                    "description": "The resource_type field displays the type of the protected resource.",
+                    "type": "string"
+                },
+                "revisedBackupRules": {
+                    "description": "Revised Backup Plan rules.",
+                    "items": {
+                        "$ref": "BackupRuleDetail"
+                    },
+                    "type": "array"
+                },
+                "startTime": {
+                    "description": "Start time of the job.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "workloadsAffectedCount": {
+                    "description": "The total number of workloads affected by the job.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "BDRBackupRestoreJobLog": {
+            "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 23",
+            "id": "BDRBackupRestoreJobLog",
+            "properties": {
+                "backupConsistencyTime": {
+                    "description": "Backup consistency time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "backupName": {
+                    "description": "Full resource name of the backup created in backup jobs and used in restore jobs.",
+                    "type": "string"
+                },
+                "backupPlanName": {
+                    "description": "Full resource name for Backup Plan of the job. Only populated for Scheduled Backup and Adhoc Backup.",
+                    "type": "string"
+                },
+                "backupRetentionDays": {
+                    "description": "Backup retention in days.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "backupRule": {
+                    "description": "Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup.",
+                    "type": "string"
+                },
+                "backupVaultName": {
+                    "description": "Full resource name backup vault name",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "End time of the job.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "The error code. Only populated in error scenarios.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "The user readable error message. Only populated in error scenarios.",
+                    "type": "string"
+                },
+                "errorType": {
+                    "description": "The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios.",
+                    "type": "string"
+                },
+                "incrementalBackupSizeGib": {
+                    "description": "The amount of incremental backup data copied.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "jobCategory": {
+                    "description": "The category field displays the category of the job.",
+                    "type": "string"
+                },
+                "jobId": {
+                    "description": "The job_id field displays the identifier of the job being logged.",
+                    "type": "string"
+                },
+                "jobStatus": {
+                    "description": "The status field displays the status of the job.",
+                    "type": "string"
+                },
+                "recoveryPointTime": {
+                    "description": "Recovery point time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "The resource_type field displays the type of the protected resource.",
+                    "type": "string"
+                },
+                "restoreResourceLocation": {
+                    "description": "Restore resource location.",
+                    "type": "string"
+                },
+                "restoreResourceName": {
+                    "description": "Full resource name of the restore resource. Only populated in restore jobs.",
+                    "type": "string"
+                },
+                "sourceResourceId": {
+                    "description": "The source resource ID.",
+                    "type": "string"
+                },
+                "sourceResourceLocation": {
+                    "description": "Source resource location.",
+                    "type": "string"
+                },
+                "sourceResourceName": {
+                    "description": "Full resource name of the protected resource.",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Start time of the job.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Backup": {
             "description": "Represents a request to perform a single point-in-time capture of some portion of the state of a GKE cluster, the record of the backup operation itself, and an anchor for the underlying artifacts that comprise the Backup (the config backup and VolumeBackups).",
             "id": "Backup",
@@ -2360,7 +2658,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Output only. The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`",
+                    "description": "Output only. Identifier. The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2657,7 +2955,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`",
+                    "description": "Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2836,6 +3134,37 @@
                         "The BackupPlan is in the process of being deleted."
                     ],
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BackupRuleDetail": {
+            "id": "BackupRuleDetail",
+            "properties": {
+                "backupWindow": {
+                    "description": "Backup Window For Eg. “00:00 to 06:00”",
+                    "type": "string"
+                },
+                "backupWindowTimezone": {
+                    "description": "Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles”",
+                    "type": "string"
+                },
+                "recurrence": {
+                    "description": "Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”.",
+                    "type": "string"
+                },
+                "recurrenceSchedule": {
+                    "description": "Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.”",
+                    "type": "string"
+                },
+                "retentionDays": {
+                    "description": "Backup Retention in Days.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "ruleName": {
+                    "description": "Backup Rule Name.",
                     "type": "string"
                 }
             },
@@ -3023,7 +3352,7 @@
                 },
                 "startTime": {
                     "$ref": "TimeOfDay",
-                    "description": "Required. Specifies the start time of the window using time of the day in UTC."
+                    "description": "Optional. Specifies the start time of the window using time of the day in UTC."
                 }
             },
             "type": "object"
@@ -3083,6 +3412,39 @@
             },
             "type": "object"
         },
+        "GetTagsRequest": {
+            "description": "Request message for GetTags.",
+            "id": "GetTagsRequest",
+            "properties": {
+                "name": {
+                    "description": "Required. The full resource name of the service resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetTagsResponse": {
+            "description": "Response message for GetTags.",
+            "id": "GetTagsResponse",
+            "properties": {
+                "etag": {
+                    "description": "A checksum based on the current bindings. This field is always set in server responses.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The full resource name of the service resource.",
+                    "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as \" : \". For example: \"123/environment\" : \"production\", \"123/costCenter\" : \"marketing\"",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "GoogleLongrunningCancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
             "id": "GoogleLongrunningCancelOperationRequest",
@@ -3101,6 +3463,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "GoogleLongrunningOperation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -3731,7 +4100,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Output only. The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`",
+                    "description": "Output only. Identifier. The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4026,7 +4395,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Output only. The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.",
+                    "description": "Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4214,6 +4583,54 @@
                     "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
                     "format": "google-fieldmask",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SetTagsRequest": {
+            "description": "Request message for SetTags.",
+            "id": "SetTagsRequest",
+            "properties": {
+                "etag": {
+                    "description": "Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not passed, etag check would be skipped.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The full resource name of the service resource.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a `request_id` is provided.",
+                    "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. These bindings will override any bindings previously set and will be effective immediately. Each item in the map must be expressed as \" : \". For example: \"123/environment\" : \"production\", \"123/costCenter\" : \"marketing\"",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SetTagsResponse": {
+            "description": "Response message for SetTags.",
+            "id": "SetTagsResponse",
+            "properties": {
+                "etag": {
+                    "description": "A checksum based on the current bindings. This field is always set in server responses.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The full resource name of the service resource.",
+                    "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as \" : \". For example: \"123/environment\" : \"production\", \"123/costCenter\" : \"marketing\"",
+                    "type": "object"
                 }
             },
             "type": "object"

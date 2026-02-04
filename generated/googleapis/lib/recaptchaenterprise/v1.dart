@@ -1287,7 +1287,11 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
 
   /// Android package names of apps allowed to use the key.
   ///
-  /// Example: 'com.companyname.appname'
+  /// Example: 'com.companyname.appname' Each key supports a maximum of 250
+  /// package names. To use a key on more apps, set `allow_all_package_names` to
+  /// true. When this is set, you are responsible for validating the package
+  /// name by checking the `token_properties.android_package_name` field in each
+  /// assessment response against your list of allowed package names.
   ///
   /// Optional.
   core.List<core.String>? allowedPackageNames;
@@ -1693,8 +1697,6 @@ class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
   ///
   /// This can be the link to the client module's project. Examples include: -
   /// "github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" -
-  /// "cloud.google.com/recaptcha/docs/implement-waf-akamai" -
-  /// "cloud.google.com/recaptcha/docs/implement-waf-cloudflare" -
   /// "wordpress.org/plugins/recaptcha-something"
   ///
   /// Optional.
@@ -1975,7 +1977,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? userIpAddress;
 
-  /// Flag for running WAF token assessment.
+  /// Flag for running Web Application Firewall (WAF) token assessment.
   ///
   /// If enabled, the token must be specified, and have been created by a
   /// WAF-enabled key.
@@ -2654,9 +2656,13 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Optional.
   core.bool? allowAllBundleIds;
 
-  /// iOS bundle ids of apps allowed to use the key.
+  /// iOS bundle IDs of apps allowed to use the key.
   ///
-  /// Example: 'com.companyname.productname.appname'
+  /// Example: 'com.companyname.productname.appname' Each key supports a maximum
+  /// of 250 bundle IDs. To use a key on more apps, set `allow_all_bundle_ids`
+  /// to true. When this is set, you are responsible for validating the bundle
+  /// id by checking the `token_properties.ios_bundle_id` field in each
+  /// assessment response against your list of allowed bundle IDs.
   ///
   /// Optional.
   core.List<core.String>? allowedBundleIds;
@@ -2777,7 +2783,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1TestingOptions? testingOptions;
 
-  /// Settings for WAF
+  /// Settings for Web Application Firewall (WAF).
   ///
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1WafSettings? wafSettings;
@@ -3114,7 +3120,7 @@ class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
   ///
   /// A reCAPTCHA Enterprise key or migrated key behaves differently than a
   /// reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
-  /// https://cloud.google.com/recaptcha/quotas#quota_limit). To avoid any
+  /// https://docs.cloud.google.com/recaptcha/quotas#quota_limit). To avoid any
   /// disruption of your usage, we check that a billing account is present. If
   /// your usage of reCAPTCHA is under the free quota, you can safely skip the
   /// billing check and proceed with the migration. See
@@ -3450,7 +3456,7 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
-  /// Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys
+  /// Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3818,6 +3824,12 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// - "MISSING" : The user verification token was not present.
   /// - "BROWSER_ERROR" : A retriable error (such as network failure) occurred
   /// on the browser. Could easily be simulated by an attacker.
+  /// - "UNEXPECTED_ACTION" : The action provided at token generation was
+  /// different than the `expected_action` in the assessment request. The
+  /// comparison is case-insensitive. This reason can only be returned if all of
+  /// the following are true: - your `site_key` has the POLICY_BASED_CHALLENGE
+  /// integration type - you set an action score threshold higher than 0.0 - you
+  /// provided a non-empty `expected_action`
   core.String? invalidReason;
 
   /// The ID of the iOS bundle with which the token was generated (iOS keys
@@ -4479,7 +4491,7 @@ class GoogleCloudRecaptchaenterpriseV1UserInfo {
 /// Settings specific to keys that can be used for WAF (Web Application
 /// Firewall).
 class GoogleCloudRecaptchaenterpriseV1WafSettings {
-  /// The WAF feature for which this key is enabled.
+  /// The Web Application Firewall (WAF) feature for which this key is enabled.
   ///
   /// Required.
   /// Possible string values are:
@@ -4491,7 +4503,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "EXPRESS" : Deprecated: Use `express_settings` instead.
   core.String? wafFeature;
 
-  /// The WAF service that uses this key.
+  /// The Web Application Firewall (WAF) service that uses this key.
   ///
   /// Required.
   /// Possible string values are:
@@ -4538,7 +4550,11 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   ///
   /// All subdomains of an allowed domain are automatically allowed. A valid
   /// domain requires a host and must not include any path, port, query or
-  /// fragment. Examples: 'example.com' or 'subdomain.example.com'
+  /// fragment. Examples: 'example.com' or 'subdomain.example.com' Each key
+  /// supports a maximum of 250 domains. To use a key on more domains, set
+  /// `allow_all_domains` to true. When this is set, you are responsible for
+  /// validating the hostname by checking the `token_properties.hostname` field
+  /// in each assessment response against your list of allowed domains.
   ///
   /// Optional.
   core.List<core.String>? allowedDomains;

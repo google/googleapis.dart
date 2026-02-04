@@ -176,9 +176,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -242,8 +242,8 @@ class ProjectsLocationsBackupPlanAssociationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The backup plan association project and location in
-  /// the format `projects/{project_id}/locations/{location}`. In Cloud BackupDR
-  /// locations map to GCP regions, for example **us-central1**.
+  /// the format `projects/{project_id}/locations/{location}`. In Backup and DR
+  /// locations map to Google Cloud regions, for example **us-central1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupPlanAssociationId] - Required. The name of the backup plan
@@ -380,7 +380,7 @@ class ProjectsLocationsBackupPlanAssociationsResource {
   /// `FetchBackupPlanAssociationsForResourceType` must match the call that
   /// provided the page token.
   ///
-  /// [resourceType] - Required. The type of the GCP resource. Ex:
+  /// [resourceType] - Required. The type of the Google Cloud resource. Ex:
   /// sql.googleapis.com/Instance
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -473,9 +473,10 @@ class ProjectsLocationsBackupPlanAssociationsResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve backup
   /// Plan Associations information, in the format
-  /// `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations
-  /// map to GCP regions, for example **us-central1**. To retrieve backup plan
-  /// associations for all locations, use "-" for the `{location}` value.
+  /// `projects/{project_id}/locations/{location}`. In Backup and DR, locations
+  /// map to Google Cloud regions, for example **us-central1**. To retrieve
+  /// backup plan associations for all locations, use "-" for the `{location}`
+  /// value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results
@@ -650,8 +651,8 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The `BackupPlan` project and location in the format
-  /// `projects/{project}/locations/{location}`. In Cloud BackupDR locations map
-  /// to GCP regions, for example **us-central1**.
+  /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR
+  /// locations map to Google Cloud regions, for example **us-central1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupPlanId] - Required. The name of the `BackupPlan` to create. The
@@ -801,9 +802,10 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve
   /// `BackupPlans` information. Format:
-  /// `projects/{project}/locations/{location}`. In Cloud BackupDR, locations
-  /// map to GCP regions, for e.g. **us-central1**. To retrieve backup plans for
-  /// all locations, use "-" for the `{location}` value.
+  /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR,
+  /// locations map to Google Cloud regions, for example **us-central1**. To
+  /// retrieve backup plans for all locations, use "-" for the `{location}`
+  /// value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Field match expression used to filter the results.
@@ -981,7 +983,8 @@ class ProjectsLocationsBackupPlansRevisionsResource {
   /// [parent] - Required. The project and location for which to retrieve
   /// `BackupPlanRevisions` information. Format:
   /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In
-  /// Cloud BackupDR, locations map to GCP regions, for e.g. **us-central1**.
+  /// Google Cloud Backup and DR, locations map to Google Cloud regions, for
+  /// example **us-central1**.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -2012,6 +2015,97 @@ class ProjectsLocationsBackupVaultsDataSourcesBackupsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Fetch Backups for a given resource type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Datasources are the parent resource for the backups.
+  /// Format:
+  /// projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{datasourceId}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupVaults/\[^/\]+/dataSources/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the results fetched
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. Supported
+  /// fields: * name * state * backup_type * create_time * expire_time *
+  /// enforced_retention_end_time * gcp_backup_plan_info.backup_plan *
+  /// cloud_sql_instance_backup_properties.instance_tier *
+  /// cloud_sql_instance_backup_properties.database_installed_version
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order by, sorted
+  /// in ascending order. Use "desc" after a field name for descending.
+  /// Supported fields: * name
+  ///
+  /// [pageSize] - Optional. The maximum number of Backups to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// Backups will be returned. The maximum value is 100; values above 100 will
+  /// be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call of
+  /// `FetchBackupsForResourceType`. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `FetchBackupsForResourceType` must match the call that provided the page
+  /// token.
+  ///
+  /// [resourceType] - Required. The type of the Google Cloud resource. Ex:
+  /// sqladmin.googleapis.com/Instance
+  ///
+  /// [view] - Optional. This parameter is used to specify the view of the
+  /// backup. If not specified, the default view is BASIC.
+  /// Possible string values are:
+  /// - "BACKUP_VIEW_UNSPECIFIED" : If the value is not set, the default 'FULL'
+  /// view is used.
+  /// - "BACKUP_VIEW_BASIC" : Includes basic data about the Backup, but not the
+  /// full contents.
+  /// - "BACKUP_VIEW_FULL" : Includes all data about the Backup. This is the
+  /// default value (for both ListBackups and GetBackup).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchBackupsForResourceTypeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchBackupsForResourceTypeResponse> fetchForResourceType(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? resourceType,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceType != null) 'resourceType': [resourceType],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/backups:fetchForResourceType';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchBackupsForResourceTypeResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets details of a Backup.
   ///
   /// Request parameters:
@@ -2285,7 +2379,7 @@ class ProjectsLocationsDataSourceReferencesResource {
   /// `FetchDataSourceReferencesForResourceType` must match the call that
   /// provided the page token.
   ///
-  /// [resourceType] - Required. The type of the GCP resource. Ex:
+  /// [resourceType] - Required. The type of the Google Cloud resource. Ex:
   /// sql.googleapis.com/Instance
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2368,6 +2462,76 @@ class ProjectsLocationsDataSourceReferencesResource {
       queryParams: queryParams_,
     );
     return DataSourceReference.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DataSourceReferences for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the results listed
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The following
+  /// field and operator combinations are supported: *
+  /// data_source_gcp_resource_info.gcp_resourcename with `=`, `!=` *
+  /// data_source_gcp_resource_info.type with `=`, `!=`
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order by, sorted
+  /// in ascending order. Use "desc" after a field name for descending.
+  /// Supported fields: * data_source *
+  /// data_source_gcp_resource_info.gcp_resourcename
+  ///
+  /// [pageSize] - Optional. The maximum number of DataSourceReferences to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 DataSourceReferences will be returned. The maximum value is 100;
+  /// values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDataSourceReferences` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListDataSourceReferences` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDataSourceReferencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDataSourceReferencesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dataSourceReferences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDataSourceReferencesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2594,9 +2758,10 @@ class ProjectsLocationsManagementServersResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve
   /// management servers information, in the format
-  /// 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations
-  /// map to Google Cloud regions, for example **us-central1**. To retrieve
-  /// management servers for all locations, use "-" for the '{location}' value.
+  /// 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and
+  /// DR, locations map to Google Cloud regions, for example **us-central1**. To
+  /// retrieve management servers for all locations, use "-" for the
+  /// '{location}' value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results.
@@ -2655,8 +2820,8 @@ class ProjectsLocationsManagementServersResource {
   ///
   /// [parent] - Required. The project and location to be used to check CSS
   /// metadata for target project information, in the format
-  /// 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations
-  /// map to Google Cloud regions, for example **us-central1**.
+  /// 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and
+  /// DR, locations map to Google Cloud regions, for example **us-central1**.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers$`.
   ///
@@ -2938,6 +3103,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2953,12 +3126,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2987,8 +3163,8 @@ class ProjectsLocationsResourceBackupConfigsResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve
   /// resource backup configs. Format:
-  /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR,
-  /// locations map to Google Cloud regions, for example **us-central1**.
+  /// 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and
+  /// DR, locations map to Google Cloud regions, for example **us-central1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filtering results.
@@ -3097,6 +3273,47 @@ class ProjectsLocationsTrialResource {
 
   ProjectsLocationsTrialResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Ends the trial for a project
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where the trial has been created.
+  /// Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Trial].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Trial> end(
+    EndTrialRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trial:end';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Trial.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Subscribes to a trial for a project
   ///
@@ -3422,19 +3639,85 @@ class AllocationAffinity {
   };
 }
 
+/// Properties for an AlloyDB cluster backup plan association.
+class AlloyDBClusterBackupPlanAssociationProperties {
+  /// The cluster UID of the AlloyDB cluster.
+  ///
+  /// Output only.
+  core.String? clusterUid;
+
+  AlloyDBClusterBackupPlanAssociationProperties({this.clusterUid});
+
+  AlloyDBClusterBackupPlanAssociationProperties.fromJson(core.Map json_)
+    : this(clusterUid: json_['clusterUid'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clusterUid != null) 'clusterUid': clusterUid!,
+  };
+}
+
 /// AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB
 /// cluster resource that are stored in the DataSource.
 ///
 /// .
 class AlloyDBClusterDataSourceProperties {
+  /// The cluster UID of the AlloyDB cluster backed up by the datasource.
+  ///
+  /// Output only.
+  core.String? clusterUid;
+
   /// Name of the AlloyDB cluster backed up by the datasource.
   ///
   /// Output only.
   core.String? name;
 
-  AlloyDBClusterDataSourceProperties({this.name});
+  /// Point in time recovery windows.
+  ///
+  /// The order is guaranteed to be ascending by start time.
+  ///
+  /// Output only.
+  core.List<AlloyDbPitrWindow>? pitrWindows;
+
+  AlloyDBClusterDataSourceProperties({
+    this.clusterUid,
+    this.name,
+    this.pitrWindows,
+  });
 
   AlloyDBClusterDataSourceProperties.fromJson(core.Map json_)
+    : this(
+        clusterUid: json_['clusterUid'] as core.String?,
+        name: json_['name'] as core.String?,
+        pitrWindows:
+            (json_['pitrWindows'] as core.List?)
+                ?.map(
+                  (value) => AlloyDbPitrWindow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clusterUid != null) 'clusterUid': clusterUid!,
+    if (name != null) 'name': name!,
+    if (pitrWindows != null) 'pitrWindows': pitrWindows!,
+  };
+}
+
+/// AlloyDBClusterDataSourceReferenceProperties represents the properties of an
+/// AlloyDB cluster that are stored in the DataSourceReference.
+class AlloyDBClusterDataSourceReferenceProperties {
+  /// Name of the AlloyDB cluster backed up by the datasource.
+  ///
+  /// Format: projects/{project}/locations/{location}/clusters/{cluster}
+  ///
+  /// Output only.
+  core.String? name;
+
+  AlloyDBClusterDataSourceReferenceProperties({this.name});
+
+  AlloyDBClusterDataSourceReferenceProperties.fromJson(core.Map json_)
     : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3488,6 +3771,41 @@ class AlloyDbClusterBackupProperties {
     if (databaseVersion != null) 'databaseVersion': databaseVersion!,
     if (description != null) 'description': description!,
     if (storedBytes != null) 'storedBytes': storedBytes!,
+  };
+}
+
+/// Point in time recovery window for an AlloyDB cluster.
+class AlloyDbPitrWindow {
+  /// The end time of the PITR window.
+  ///
+  /// It is not set if the corresponding Backup Plan Association is active.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Log retention days for the PITR window.
+  ///
+  /// Output only.
+  core.String? logRetentionDays;
+
+  /// The start time of the PITR window.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  AlloyDbPitrWindow({this.endTime, this.logRetentionDays, this.startTime});
+
+  AlloyDbPitrWindow.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        logRetentionDays: json_['logRetentionDays'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endTime != null) 'endTime': endTime!,
+    if (logRetentionDays != null) 'logRetentionDays': logRetentionDays!,
+    if (startTime != null) 'startTime': startTime!,
   };
 }
 
@@ -3775,6 +4093,26 @@ class Backup {
   /// Optional.
   core.List<BackupLock>? backupApplianceLocks;
 
+  /// Setting for how the enforced retention end time is inherited.
+  ///
+  /// This value is copied from this backup's BackupVault.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED" : Inheritance behavior not
+  /// set. This will default to `INHERIT_VAULT_RETENTION`.
+  /// - "INHERIT_VAULT_RETENTION" : The enforced retention end time of a backup
+  /// will be inherited from the backup vault's
+  /// `backup_minimum_enforced_retention_duration` field. This is the default
+  /// behavior.
+  /// - "MATCH_BACKUP_EXPIRE_TIME" : The enforced retention end time of a backup
+  /// will always match the expire time of the backup. If this is set, the
+  /// backup's enforced retention end time will be set to match the expire time
+  /// during creation of the backup. When updating, the ERET and expire time
+  /// must be updated together and have the same value. Invalid update requests
+  /// will be rejected by the server.
+  core.String? backupRetentionInheritance;
+
   /// Type of the backup, unspecified, scheduled or ondemand.
   ///
   /// Output only.
@@ -3835,6 +4173,16 @@ class Backup {
   /// Output only.
   GCPBackupPlanInfo? gcpBackupPlanInfo;
 
+  /// Unique identifier of the GCP resource that is being backed up.
+  ///
+  /// Output only.
+  BackupGcpResource? gcpResource;
+
+  /// The list of KMS key versions used to encrypt the backup.
+  ///
+  /// Optional. Output only.
+  core.List<core.String>? kmsKeyVersions;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// No labels currently defined.
@@ -3894,6 +4242,7 @@ class Backup {
     this.alloyDbBackupProperties,
     this.backupApplianceBackupProperties,
     this.backupApplianceLocks,
+    this.backupRetentionInheritance,
     this.backupType,
     this.cloudSqlInstanceBackupProperties,
     this.computeInstanceBackupProperties,
@@ -3905,6 +4254,8 @@ class Backup {
     this.etag,
     this.expireTime,
     this.gcpBackupPlanInfo,
+    this.gcpResource,
+    this.kmsKeyVersions,
     this.labels,
     this.name,
     this.resourceSizeBytes,
@@ -3939,6 +4290,8 @@ class Backup {
                   ),
                 )
                 .toList(),
+        backupRetentionInheritance:
+            json_['backupRetentionInheritance'] as core.String?,
         backupType: json_['backupType'] as core.String?,
         cloudSqlInstanceBackupProperties:
             json_.containsKey('cloudSqlInstanceBackupProperties')
@@ -3975,6 +4328,16 @@ class Backup {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        gcpResource:
+            json_.containsKey('gcpResource')
+                ? BackupGcpResource.fromJson(
+                  json_['gcpResource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kmsKeyVersions:
+            (json_['kmsKeyVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -4001,6 +4364,8 @@ class Backup {
       'backupApplianceBackupProperties': backupApplianceBackupProperties!,
     if (backupApplianceLocks != null)
       'backupApplianceLocks': backupApplianceLocks!,
+    if (backupRetentionInheritance != null)
+      'backupRetentionInheritance': backupRetentionInheritance!,
     if (backupType != null) 'backupType': backupType!,
     if (cloudSqlInstanceBackupProperties != null)
       'cloudSqlInstanceBackupProperties': cloudSqlInstanceBackupProperties!,
@@ -4016,6 +4381,8 @@ class Backup {
     if (etag != null) 'etag': etag!,
     if (expireTime != null) 'expireTime': expireTime!,
     if (gcpBackupPlanInfo != null) 'gcpBackupPlanInfo': gcpBackupPlanInfo!,
+    if (gcpResource != null) 'gcpResource': gcpResource!,
+    if (kmsKeyVersions != null) 'kmsKeyVersions': kmsKeyVersions!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (resourceSizeBytes != null) 'resourceSizeBytes': resourceSizeBytes!,
@@ -4221,10 +4588,10 @@ class BackupConfigDetails {
   /// Output only.
   core.String? backupConfigSourceDisplayName;
 
-  /// Backup and DR's Backup Plan specific data.
+  /// Google Cloud Backup and DR's Backup Plan specific data.
   BackupDrPlanConfig? backupDrPlanConfig;
 
-  /// Backup and DR's Template specific data.
+  /// Google Cloud Backup and DR's Template specific data.
   BackupDrTemplateConfig? backupDrTemplateConfig;
 
   /// The locations where the backups are to be stored.
@@ -4275,8 +4642,10 @@ class BackupConfigDetails {
   /// instance's automated backup config.
   /// - "COMPUTE_ENGINE_RESOURCE_POLICY" : Backup config is Compute Engine
   /// Resource Policy.
-  /// - "BACKUPDR_BACKUP_PLAN" : Backup config is Backup and DR's Backup Plan.
-  /// - "BACKUPDR_TEMPLATE" : Backup config is Backup and DR's Template.
+  /// - "BACKUPDR_BACKUP_PLAN" : Backup config is Google Cloud Backup and DR's
+  /// Backup Plan.
+  /// - "BACKUPDR_TEMPLATE" : Backup config is Google Cloud Backup and DR's
+  /// Template.
   core.String? type;
 
   BackupConfigDetails({
@@ -4431,8 +4800,8 @@ class BackupConfigInfo {
   };
 }
 
-/// BackupDrPlanConfig has additional information about Backup and DR's Plan
-/// backup configuration.
+/// BackupDrPlanConfig has additional information about Google Cloud Backup and
+/// DR's Plan backup configuration.
 class BackupDrPlanConfig {
   /// Backup rules of the backup plan resource.
   core.List<BackupDrPlanRule>? backupDrPlanRules;
@@ -4484,8 +4853,8 @@ class BackupDrPlanRule {
   };
 }
 
-/// BackupDrTemplateConfig has additional information about Backup and DR's
-/// Template backup configuration.
+/// Provides additional information about Google Cloud Backup and DR's Template
+/// backup configuration.
 class BackupDrTemplateConfig {
   /// The URI of the BackupDr template resource for the first party identity
   /// users.
@@ -4517,6 +4886,35 @@ class BackupDrTemplateConfig {
       'firstPartyManagementUri': firstPartyManagementUri!,
     if (thirdPartyManagementUri != null)
       'thirdPartyManagementUri': thirdPartyManagementUri!,
+  };
+}
+
+/// Minimum details to identify a Google Cloud resource for a backup.
+class BackupGcpResource {
+  /// Name of the Google Cloud resource.
+  core.String? gcpResourcename;
+
+  /// Location of the resource: //"global"/"unspecified".
+  core.String? location;
+
+  /// Type of the resource.
+  ///
+  /// Use the Unified Resource Type, eg. compute.googleapis.com/Instance.
+  core.String? type;
+
+  BackupGcpResource({this.gcpResourcename, this.location, this.type});
+
+  BackupGcpResource.fromJson(core.Map json_)
+    : this(
+        gcpResourcename: json_['gcpResourcename'] as core.String?,
+        location: json_['location'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gcpResourcename != null) 'gcpResourcename': gcpResourcename!,
+    if (location != null) 'location': location!,
+    if (type != null) 'type': type!,
   };
 }
 
@@ -4624,8 +5022,8 @@ class BackupPlan {
   /// Required.
   core.String? backupVault;
 
-  /// The Google Cloud Platform Service Account to be used by the BackupVault
-  /// for taking backups.
+  /// The Google Cloud service account to be used by the BackupVault for taking
+  /// backups.
   ///
   /// Specify the email address of the Backup Vault Service Account.
   ///
@@ -4663,7 +5061,7 @@ class BackupPlan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Applicable only for CloudSQL resource_type.
+  /// Applicable only for Cloud SQL resource_type.
   ///
   /// Configures how long logs will be stored. It is defined in “days”. This
   /// value should be greater than or equal to minimum enforced log retention
@@ -4671,6 +5069,15 @@ class BackupPlan {
   ///
   /// Optional.
   core.String? logRetentionDays;
+
+  /// Optional field to configure the maximum number of days for which a backup
+  /// can be retained.
+  ///
+  /// This field is only applicable for on-demand backups taken with custom
+  /// retention value.
+  ///
+  /// Optional.
+  core.int? maxCustomOnDemandRetentionDays;
 
   /// Identifier.
   ///
@@ -4735,6 +5142,7 @@ class BackupPlan {
     this.etag,
     this.labels,
     this.logRetentionDays,
+    this.maxCustomOnDemandRetentionDays,
     this.name,
     this.resourceType,
     this.revisionId,
@@ -4764,6 +5172,8 @@ class BackupPlan {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         logRetentionDays: json_['logRetentionDays'] as core.String?,
+        maxCustomOnDemandRetentionDays:
+            json_['maxCustomOnDemandRetentionDays'] as core.int?,
         name: json_['name'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
         revisionId: json_['revisionId'] as core.String?,
@@ -4786,6 +5196,8 @@ class BackupPlan {
     if (etag != null) 'etag': etag!,
     if (labels != null) 'labels': labels!,
     if (logRetentionDays != null) 'logRetentionDays': logRetentionDays!,
+    if (maxCustomOnDemandRetentionDays != null)
+      'maxCustomOnDemandRetentionDays': maxCustomOnDemandRetentionDays!,
     if (name != null) 'name': name!,
     if (resourceType != null) 'resourceType': resourceType!,
     if (revisionId != null) 'revisionId': revisionId!,
@@ -4800,6 +5212,12 @@ class BackupPlan {
 /// A BackupPlanAssociation represents a single BackupPlanAssociation which
 /// contains details like workload, backup plan etc
 class BackupPlanAssociation {
+  /// AlloyDB cluster's backup plan association properties.
+  ///
+  /// Output only.
+  AlloyDBClusterBackupPlanAssociationProperties?
+  alloydbClusterBackupPlanAssociationProperties;
+
   /// Resource name of backup plan which needs to be applied on workload.
   ///
   /// Format: projects/{project}/locations/{location}/backupPlans/{backupPlanId}
@@ -4841,6 +5259,12 @@ class BackupPlanAssociation {
   ///
   /// Output only.
   core.String? dataSource;
+
+  /// Filestore instance's backup plan association properties.
+  ///
+  /// Output only.
+  FilestoreInstanceBackupPlanAssociationProperties?
+  filestoreInstanceBackupPlanAssociationProperties;
 
   /// Identifier.
   ///
@@ -4888,12 +5312,14 @@ class BackupPlanAssociation {
   core.String? updateTime;
 
   BackupPlanAssociation({
+    this.alloydbClusterBackupPlanAssociationProperties,
     this.backupPlan,
     this.backupPlanRevisionId,
     this.backupPlanRevisionName,
     this.cloudSqlInstanceBackupPlanAssociationProperties,
     this.createTime,
     this.dataSource,
+    this.filestoreInstanceBackupPlanAssociationProperties,
     this.name,
     this.resource,
     this.resourceType,
@@ -4904,6 +5330,13 @@ class BackupPlanAssociation {
 
   BackupPlanAssociation.fromJson(core.Map json_)
     : this(
+        alloydbClusterBackupPlanAssociationProperties:
+            json_.containsKey('alloydbClusterBackupPlanAssociationProperties')
+                ? AlloyDBClusterBackupPlanAssociationProperties.fromJson(
+                  json_['alloydbClusterBackupPlanAssociationProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         backupPlan: json_['backupPlan'] as core.String?,
         backupPlanRevisionId: json_['backupPlanRevisionId'] as core.String?,
         backupPlanRevisionName: json_['backupPlanRevisionName'] as core.String?,
@@ -4916,6 +5349,15 @@ class BackupPlanAssociation {
                 : null,
         createTime: json_['createTime'] as core.String?,
         dataSource: json_['dataSource'] as core.String?,
+        filestoreInstanceBackupPlanAssociationProperties:
+            json_.containsKey(
+                  'filestoreInstanceBackupPlanAssociationProperties',
+                )
+                ? FilestoreInstanceBackupPlanAssociationProperties.fromJson(
+                  json_['filestoreInstanceBackupPlanAssociationProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         resource: json_['resource'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
@@ -4932,6 +5374,9 @@ class BackupPlanAssociation {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (alloydbClusterBackupPlanAssociationProperties != null)
+      'alloydbClusterBackupPlanAssociationProperties':
+          alloydbClusterBackupPlanAssociationProperties!,
     if (backupPlan != null) 'backupPlan': backupPlan!,
     if (backupPlanRevisionId != null)
       'backupPlanRevisionId': backupPlanRevisionId!,
@@ -4942,6 +5387,9 @@ class BackupPlanAssociation {
           cloudSqlInstanceBackupPlanAssociationProperties!,
     if (createTime != null) 'createTime': createTime!,
     if (dataSource != null) 'dataSource': dataSource!,
+    if (filestoreInstanceBackupPlanAssociationProperties != null)
+      'filestoreInstanceBackupPlanAssociationProperties':
+          filestoreInstanceBackupPlanAssociationProperties!,
     if (name != null) 'name': name!,
     if (resource != null) 'resource': resource!,
     if (resourceType != null) 'resourceType': resourceType!,
@@ -5119,6 +5567,24 @@ class BackupVault {
   /// Required.
   core.String? backupMinimumEnforcedRetentionDuration;
 
+  /// Setting for how a backup's enforced retention end time is inherited.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED" : Inheritance behavior not
+  /// set. This will default to `INHERIT_VAULT_RETENTION`.
+  /// - "INHERIT_VAULT_RETENTION" : The enforced retention end time of a backup
+  /// will be inherited from the backup vault's
+  /// `backup_minimum_enforced_retention_duration` field. This is the default
+  /// behavior.
+  /// - "MATCH_BACKUP_EXPIRE_TIME" : The enforced retention end time of a backup
+  /// will always match the expire time of the backup. If this is set, the
+  /// backup's enforced retention end time will be set to match the expire time
+  /// during creation of the backup. When updating, the ERET and expire time
+  /// must be updated together and have the same value. Invalid update requests
+  /// will be rejected by the server.
+  core.String? backupRetentionInheritance;
+
   /// The time when the instance was created.
   ///
   /// Output only.
@@ -5138,6 +5604,11 @@ class BackupVault {
   ///
   /// Optional.
   core.String? effectiveTime;
+
+  /// The encryption config of the backup vault.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfig;
 
   /// Server specified ETag for the backup vault resource to prevent
   /// simultaneous updates from overwiting each other.
@@ -5203,10 +5674,12 @@ class BackupVault {
     this.annotations,
     this.backupCount,
     this.backupMinimumEnforcedRetentionDuration,
+    this.backupRetentionInheritance,
     this.createTime,
     this.deletable,
     this.description,
     this.effectiveTime,
+    this.encryptionConfig,
     this.etag,
     this.labels,
     this.name,
@@ -5226,10 +5699,19 @@ class BackupVault {
         backupCount: json_['backupCount'] as core.String?,
         backupMinimumEnforcedRetentionDuration:
             json_['backupMinimumEnforcedRetentionDuration'] as core.String?,
+        backupRetentionInheritance:
+            json_['backupRetentionInheritance'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         deletable: json_['deletable'] as core.bool?,
         description: json_['description'] as core.String?,
         effectiveTime: json_['effectiveTime'] as core.String?,
+        encryptionConfig:
+            json_.containsKey('encryptionConfig')
+                ? EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         etag: json_['etag'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -5249,10 +5731,13 @@ class BackupVault {
     if (backupMinimumEnforcedRetentionDuration != null)
       'backupMinimumEnforcedRetentionDuration':
           backupMinimumEnforcedRetentionDuration!,
+    if (backupRetentionInheritance != null)
+      'backupRetentionInheritance': backupRetentionInheritance!,
     if (createTime != null) 'createTime': createTime!,
     if (deletable != null) 'deletable': deletable!,
     if (description != null) 'description': description!,
     if (effectiveTime != null) 'effectiveTime': effectiveTime!,
+    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
     if (etag != null) 'etag': etag!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
@@ -5267,8 +5752,8 @@ class BackupVault {
 /// `BackupWindow` defines a window of the day during which backup jobs will
 /// run.
 class BackupWindow {
-  /// The hour of day (1-24) when the window end for e.g. if value of end hour
-  /// of day is 10 that mean backup window end time is 10:00.
+  /// The hour of day (1-24) when the window end for example if value of end
+  /// hour of day is 10 that mean backup window end time is 10:00.
   ///
   /// End hour of day should be greater than start hour of day. 0 \<=
   /// start_hour_of_day \< end_hour_of_day \<= 24 End hour of day is not include
@@ -5278,8 +5763,8 @@ class BackupWindow {
   /// Required.
   core.int? endHourOfDay;
 
-  /// The hour of day (0-23) when the window starts for e.g. if value of start
-  /// hour of day is 6 that mean backup window start at 6:00.
+  /// The hour of day (0-23) when the window starts for example if value of
+  /// start hour of day is 6 that mean backup window start at 6:00.
   ///
   /// Required.
   core.int? startHourOfDay;
@@ -5406,21 +5891,8 @@ class Binding {
 typedef CancelOperationRequest = $Empty;
 
 /// Cloud SQL instance's BPA properties.
-class CloudSqlInstanceBackupPlanAssociationProperties {
-  /// The time when the instance was created.
-  ///
-  /// Output only.
-  core.String? instanceCreateTime;
-
-  CloudSqlInstanceBackupPlanAssociationProperties({this.instanceCreateTime});
-
-  CloudSqlInstanceBackupPlanAssociationProperties.fromJson(core.Map json_)
-    : this(instanceCreateTime: json_['instanceCreateTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instanceCreateTime != null) 'instanceCreateTime': instanceCreateTime!,
-  };
-}
+typedef CloudSqlInstanceBackupPlanAssociationProperties =
+    $InstanceBackupPlanAssociationProperties;
 
 /// CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
 /// properties.
@@ -5435,6 +5907,16 @@ class CloudSqlInstanceBackupProperties {
   ///
   /// Output only.
   core.bool? finalBackup;
+
+  /// The instance creation timestamp.
+  ///
+  /// Output only.
+  core.String? instanceCreateTime;
+
+  /// The instance delete timestamp.
+  ///
+  /// Output only.
+  core.String? instanceDeleteTime;
 
   /// The tier (or machine type) for this instance.
   ///
@@ -5453,6 +5935,8 @@ class CloudSqlInstanceBackupProperties {
   CloudSqlInstanceBackupProperties({
     this.databaseInstalledVersion,
     this.finalBackup,
+    this.instanceCreateTime,
+    this.instanceDeleteTime,
     this.instanceTier,
     this.sourceInstance,
   });
@@ -5462,6 +5946,8 @@ class CloudSqlInstanceBackupProperties {
         databaseInstalledVersion:
             json_['databaseInstalledVersion'] as core.String?,
         finalBackup: json_['finalBackup'] as core.bool?,
+        instanceCreateTime: json_['instanceCreateTime'] as core.String?,
+        instanceDeleteTime: json_['instanceDeleteTime'] as core.String?,
         instanceTier: json_['instanceTier'] as core.String?,
         sourceInstance: json_['sourceInstance'] as core.String?,
       );
@@ -5470,6 +5956,8 @@ class CloudSqlInstanceBackupProperties {
     if (databaseInstalledVersion != null)
       'databaseInstalledVersion': databaseInstalledVersion!,
     if (finalBackup != null) 'finalBackup': finalBackup!,
+    if (instanceCreateTime != null) 'instanceCreateTime': instanceCreateTime!,
+    if (instanceDeleteTime != null) 'instanceDeleteTime': instanceDeleteTime!,
     if (instanceTier != null) 'instanceTier': instanceTier!,
     if (sourceInstance != null) 'sourceInstance': sourceInstance!,
   };
@@ -6543,28 +7031,33 @@ class DataSourceGcpResource {
   };
 }
 
-/// The GCP resource that the DataSource is associated with.
+/// The Google Cloud resource that the DataSource is associated with.
 class DataSourceGcpResourceInfo {
+  /// The properties of the AlloyDB cluster.
+  ///
+  /// Output only.
+  AlloyDBClusterDataSourceReferenceProperties? alloyDbClusterProperties;
+
   /// The properties of the Cloud SQL instance.
   ///
   /// Output only.
   CloudSqlInstanceDataSourceReferenceProperties? cloudSqlInstanceProperties;
 
-  /// The resource name of the GCP resource.
+  /// The resource name of the Google Cloud resource.
   ///
   /// Ex: projects/{project}/zones/{zone}/instances/{instance}
   ///
   /// Output only.
   core.String? gcpResourcename;
 
-  /// The location of the GCP resource.
+  /// The location of the Google Cloud resource.
   ///
   /// Ex: //"global"/"unspecified"
   ///
   /// Output only.
   core.String? location;
 
-  /// The type of the GCP resource.
+  /// The type of the Google Cloud resource.
   ///
   /// Ex: compute.googleapis.com/Instance
   ///
@@ -6572,6 +7065,7 @@ class DataSourceGcpResourceInfo {
   core.String? type;
 
   DataSourceGcpResourceInfo({
+    this.alloyDbClusterProperties,
     this.cloudSqlInstanceProperties,
     this.gcpResourcename,
     this.location,
@@ -6580,6 +7074,13 @@ class DataSourceGcpResourceInfo {
 
   DataSourceGcpResourceInfo.fromJson(core.Map json_)
     : this(
+        alloyDbClusterProperties:
+            json_.containsKey('alloyDbClusterProperties')
+                ? AlloyDBClusterDataSourceReferenceProperties.fromJson(
+                  json_['alloyDbClusterProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         cloudSqlInstanceProperties:
             json_.containsKey('cloudSqlInstanceProperties')
                 ? CloudSqlInstanceDataSourceReferenceProperties.fromJson(
@@ -6593,6 +7094,8 @@ class DataSourceGcpResourceInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (alloyDbClusterProperties != null)
+      'alloyDbClusterProperties': alloyDbClusterProperties!,
     if (cloudSqlInstanceProperties != null)
       'cloudSqlInstanceProperties': cloudSqlInstanceProperties!,
     if (gcpResourcename != null) 'gcpResourcename': gcpResourcename!,
@@ -6638,7 +7141,7 @@ class DataSourceReference {
   /// Output only.
   core.String? dataSourceBackupCount;
 
-  /// The GCP resource that the DataSource is associated with.
+  /// The Google Cloud resource that the DataSource is associated with.
   ///
   /// Output only.
   DataSourceGcpResourceInfo? dataSourceGcpResourceInfo;
@@ -6649,6 +7152,12 @@ class DataSourceReference {
   /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
   core.String? name;
 
+  /// Total size of the storage used by all backup resources for the referenced
+  /// datasource.
+  ///
+  /// Output only.
+  core.String? totalStoredBytes;
+
   DataSourceReference({
     this.createTime,
     this.dataSource,
@@ -6657,6 +7166,7 @@ class DataSourceReference {
     this.dataSourceBackupCount,
     this.dataSourceGcpResourceInfo,
     this.name,
+    this.totalStoredBytes,
   });
 
   DataSourceReference.fromJson(core.Map json_)
@@ -6681,6 +7191,7 @@ class DataSourceReference {
                 )
                 : null,
         name: json_['name'] as core.String?,
+        totalStoredBytes: json_['totalStoredBytes'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6695,6 +7206,7 @@ class DataSourceReference {
     if (dataSourceGcpResourceInfo != null)
       'dataSourceGcpResourceInfo': dataSourceGcpResourceInfo!,
     if (name != null) 'name': name!,
+    if (totalStoredBytes != null) 'totalStoredBytes': totalStoredBytes!,
   };
 }
 
@@ -7148,6 +7660,51 @@ class DisplayDevice {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Message describing the EncryptionConfig of backup vault.
+///
+/// This determines how data within the vault is encrypted at rest.
+class EncryptionConfig {
+  /// The Cloud KMS key name to encrypt backups in this backup vault.
+  ///
+  /// Must be in the same region as the vault. Some workload backups like
+  /// compute disk backups may use their inherited source key instead. Format:
+  /// projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  EncryptionConfig({this.kmsKeyName});
+
+  EncryptionConfig.fromJson(core.Map json_)
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
+}
+
+/// Request message for ending a trial.
+class EndTrialRequest {
+  /// The reason for ending the trial.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "END_REASON_UNSPECIFIED" : End reason not set.
+  /// - "MOVE_TO_PAID" : Trial is deliberately ended by the user to transition
+  /// to paid usage.
+  /// - "DISCONTINUED" : Trial is discontinued before expiration.
+  core.String? endReason;
+
+  EndTrialRequest({this.endReason});
+
+  EndTrialRequest.fromJson(core.Map json_)
+    : this(endReason: json_['endReason'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endReason != null) 'endReason': endReason!,
+  };
+}
+
 /// A key/value pair to be used for storing metadata.
 class Entry {
   /// Key for the metadata entry.
@@ -7291,6 +7848,37 @@ class FetchBackupPlanAssociationsForResourceTypeResponse {
   };
 }
 
+/// Response for the FetchBackupsForResourceType method.
+class FetchBackupsForResourceTypeResponse {
+  /// The Backups from the specified parent.
+  core.List<Backup>? backups;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchBackupsForResourceTypeResponse({this.backups, this.nextPageToken});
+
+  FetchBackupsForResourceTypeResponse.fromJson(core.Map json_)
+    : this(
+        backups:
+            (json_['backups'] as core.List?)
+                ?.map(
+                  (value) => Backup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (backups != null) 'backups': backups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Response for the FetchDataSourceReferencesForResourceType method.
 class FetchDataSourceReferencesForResourceTypeResponse {
   /// The DataSourceReferences from the specified parent.
@@ -7346,7 +7934,7 @@ class FetchMsComplianceMetadataRequest {
 /// Response message for GetMsComplianceMetadata
 class FetchMsComplianceMetadataResponse {
   /// The ms compliance metadata of the target project, if the project is an
-  /// assured workloads project, values will be true, otherwise false.
+  /// Assured Workloads project, values will be true, otherwise false.
   core.bool? isAssuredWorkload;
 
   FetchMsComplianceMetadataResponse({this.isAssuredWorkload});
@@ -7406,6 +7994,10 @@ class FetchUsableBackupVaultsResponse {
     if (unreachable != null) 'unreachable': unreachable!,
   };
 }
+
+/// Filestore instance's BPA properties.
+typedef FilestoreInstanceBackupPlanAssociationProperties =
+    $InstanceBackupPlanAssociationProperties;
 
 /// Message for finalizing a Backup.
 class FinalizeBackupRequest {
@@ -7683,7 +8275,7 @@ class InitializeServiceRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -8067,6 +8659,50 @@ class ListBackupsResponse {
   };
 }
 
+/// Response for the ListDataSourceReferences method.
+class ListDataSourceReferencesResponse {
+  /// The DataSourceReferences from the specified parent.
+  core.List<DataSourceReference>? dataSourceReferences;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDataSourceReferencesResponse({
+    this.dataSourceReferences,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDataSourceReferencesResponse.fromJson(core.Map json_)
+    : this(
+        dataSourceReferences:
+            (json_['dataSourceReferences'] as core.List?)
+                ?.map(
+                  (value) => DataSourceReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dataSourceReferences != null)
+      'dataSourceReferences': dataSourceReferences!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// Response message for listing DataSources.
 class ListDataSourcesResponse {
   /// The list of DataSource instances in the project for the specified
@@ -8200,7 +8836,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -8213,11 +8861,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -8311,7 +8964,7 @@ class ManagementServer {
   /// Optional.
   core.List<NetworkConfig>? networks;
 
-  /// The OAuth 2.0 client id is required to make API calls to the BackupDR
+  /// The OAuth 2.0 client id is required to make API calls to the Backup and DR
   /// instance API of this ManagementServer.
   ///
   /// This is the value that should be provided in the 'aud' field of the OIDC
@@ -8537,7 +9190,7 @@ class NetworkConfig {
   /// - "PEERING_MODE_UNSPECIFIED" : Peering mode not set.
   /// - "PRIVATE_SERVICE_ACCESS" : Connect using Private Service Access to the
   /// Management Server. Private services access provides an IP address range
-  /// for multiple Google Cloud services, including Cloud BackupDR.
+  /// for multiple Google Cloud services, including Google Cloud Backup and DR.
   core.String? peeringMode;
 
   NetworkConfig({this.network, this.peeringMode});
@@ -9181,6 +9834,19 @@ class ResourceBackupConfig {
 
 /// Request message for restoring from a Backup.
 class RestoreBackupRequest {
+  /// A field mask used to clear server-side default values for fields within
+  /// the `instance_properties` oneof.
+  ///
+  /// When a field in this mask is cleared, the server will not apply its
+  /// default logic (like inheriting a value from the source) for that field.
+  /// The most common current use case is clearing default encryption keys.
+  /// Examples of field mask paths: - Compute Instance Disks:
+  /// `compute_instance_restore_properties.disks.*.disk_encryption_key` - Single
+  /// Disk: `disk_restore_properties.disk_encryption_key`
+  ///
+  /// Optional.
+  core.String? clearOverridesFieldMask;
+
   /// Compute Engine instance properties to be overridden during restore.
   ComputeInstanceRestoreProperties? computeInstanceRestoreProperties;
 
@@ -9213,6 +9879,7 @@ class RestoreBackupRequest {
   core.String? requestId;
 
   RestoreBackupRequest({
+    this.clearOverridesFieldMask,
     this.computeInstanceRestoreProperties,
     this.computeInstanceTargetEnvironment,
     this.diskRestoreProperties,
@@ -9223,6 +9890,8 @@ class RestoreBackupRequest {
 
   RestoreBackupRequest.fromJson(core.Map json_)
     : this(
+        clearOverridesFieldMask:
+            json_['clearOverridesFieldMask'] as core.String?,
         computeInstanceRestoreProperties:
             json_.containsKey('computeInstanceRestoreProperties')
                 ? ComputeInstanceRestoreProperties.fromJson(
@@ -9262,6 +9931,8 @@ class RestoreBackupRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (clearOverridesFieldMask != null)
+      'clearOverridesFieldMask': clearOverridesFieldMask!,
     if (computeInstanceRestoreProperties != null)
       'computeInstanceRestoreProperties': computeInstanceRestoreProperties!,
     if (computeInstanceTargetEnvironment != null)
@@ -9707,7 +10378,7 @@ class StandardSchedule {
   ///
   /// The value of this field must be a time zone name from the IANA tz
   /// database. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  /// for the list of valid timezone names. For e.g., Europe/Paris.
+  /// for the list of valid timezone names. For example, Europe/Paris.
   ///
   /// Required.
   core.String? timeZone;
@@ -9882,6 +10553,20 @@ class Trial {
 
 /// Request message for triggering a backup.
 class TriggerBackupRequest {
+  /// The duration for which backup data will be kept, while taking an on-demand
+  /// backup with custom retention.
+  ///
+  /// It is defined in "days". It is mutually exclusive with rule_id. This field
+  /// is required if rule_id is not provided.
+  ///
+  /// Optional.
+  core.int? customRetentionDays;
+
+  /// Labels to be applied on the backup.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -9906,15 +10591,27 @@ class TriggerBackupRequest {
   /// Optional.
   core.String? ruleId;
 
-  TriggerBackupRequest({this.requestId, this.ruleId});
+  TriggerBackupRequest({
+    this.customRetentionDays,
+    this.labels,
+    this.requestId,
+    this.ruleId,
+  });
 
   TriggerBackupRequest.fromJson(core.Map json_)
     : this(
+        customRetentionDays: json_['customRetentionDays'] as core.int?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         requestId: json_['requestId'] as core.String?,
         ruleId: json_['ruleId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (customRetentionDays != null)
+      'customRetentionDays': customRetentionDays!,
+    if (labels != null) 'labels': labels!,
     if (requestId != null) 'requestId': requestId!,
     if (ruleId != null) 'ruleId': ruleId!,
   };

@@ -1348,6 +1348,7 @@ void main() {
       final arg_maxResults = 42;
       final arg_orgUnitID = 'foo';
       final arg_pageToken = 'foo';
+      final arg_resourceDetailsFilter = 'foo';
       final arg_startTime = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1434,6 +1435,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['resourceDetailsFilter']!.first,
+            unittest.equals(arg_resourceDetailsFilter),
+          );
+          unittest.expect(
             queryMap['startTime']!.first,
             unittest.equals(arg_startTime),
           );
@@ -1460,6 +1465,7 @@ void main() {
         maxResults: arg_maxResults,
         orgUnitID: arg_orgUnitID,
         pageToken: arg_pageToken,
+        resourceDetailsFilter: arg_resourceDetailsFilter,
         startTime: arg_startTime,
         $fields: arg_$fields,
       );

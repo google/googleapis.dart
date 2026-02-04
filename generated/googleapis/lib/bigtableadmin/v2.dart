@@ -181,6 +181,14 @@ class OperationsProjectsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -196,12 +204,15 @@ class OperationsProjectsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2190,6 +2201,17 @@ class ProjectsInstancesMaterializedViewsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/materializedViews/\[^/\]+$`.
   ///
+  /// [view] - Optional. Describes which of the materialized view's fields
+  /// should be populated in the response. Defaults to SCHEMA_VIEW.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Uses the default view for each method as documented
+  /// in its request.
+  /// - "SCHEMA_VIEW" : Only populates fields related to the materialized view's
+  /// schema.
+  /// - "REPLICATION_VIEW" : Only populates fields related to the materialized
+  /// view's replication state.
+  /// - "FULL" : Populates all fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2202,9 +2224,11 @@ class ProjectsInstancesMaterializedViewsResource {
   /// this method will complete with the same error.
   async.Future<MaterializedView> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2284,6 +2308,18 @@ class ProjectsInstancesMaterializedViewsResource {
   /// page. When paginating, all other parameters provided to
   /// `ListMaterializedViews` must match the call that provided the page token.
   ///
+  /// [view] - Optional. Describes which of the materialized view's fields
+  /// should be populated in the response. For now, only the default value
+  /// SCHEMA_VIEW is supported.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Uses the default view for each method as documented
+  /// in its request.
+  /// - "SCHEMA_VIEW" : Only populates fields related to the materialized view's
+  /// schema.
+  /// - "REPLICATION_VIEW" : Only populates fields related to the materialized
+  /// view's replication state.
+  /// - "FULL" : Populates all fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2298,11 +2334,13 @@ class ProjectsInstancesMaterializedViewsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3992,9 +4030,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -5017,9 +5055,9 @@ class ColumnFamily {
   ///
   /// If omitted, the family only serves raw untyped bytes. For now, only the
   /// `Aggregate` type is supported. `Aggregate` can only be set at family
-  /// creation and is immutable afterwards. If `value_type` is `Aggregate`,
-  /// written data must be compatible with: * `value_type.input_type` for
-  /// `AddInput` mutations
+  /// creation and is immutable afterwards. This field is mutually exclusive
+  /// with `sql_type`. If `value_type` is `Aggregate`, written data must be
+  /// compatible with: * `value_type.input_type` for `AddInput` mutations
   Type? valueType;
 
   ColumnFamily({this.gcRule, this.stats, this.valueType});
@@ -5629,6 +5667,32 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
   };
 }
 
+/// The state of a materialized view's data in a particular cluster.
+class GoogleBigtableAdminV2MaterializedViewClusterState {
+  /// The state of the materialized view in this cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_NOT_KNOWN" : The state of the materialized view is unknown in
+  /// this cluster.
+  /// - "INITIALIZING" : The cluster or view was recently created, and the
+  /// materialized view must finish backfilling before it can begin serving Data
+  /// API requests.
+  /// - "READY" : The materialized view can serve Data API requests from this
+  /// cluster. Depending on materialization and replication delay, reads may not
+  /// immediately reflect the state of the materialized view in other clusters.
+  core.String? replicationState;
+
+  GoogleBigtableAdminV2MaterializedViewClusterState({this.replicationState});
+
+  GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(core.Map json_)
+    : this(replicationState: json_['replicationState'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (replicationState != null) 'replicationState': replicationState!,
+  };
+}
+
 /// A value that combines incremental updates into a summarized value.
 ///
 /// Data is never directly written or read using type `Aggregate`. Writes
@@ -6117,7 +6181,7 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
-typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared02;
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared00;
 
 /// A structured data value, consisting of fields which map to dynamically typed
 /// values.
@@ -6929,7 +6993,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -6942,11 +7018,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7063,6 +7144,17 @@ class LogicalView {
 
 /// A materialized view object that can be referenced in SQL queries.
 class MaterializedView {
+  /// Map from cluster ID to per-cluster materialized view state.
+  ///
+  /// If it could not be determined whether or not the materialized view has
+  /// data in a particular cluster (for example, if its zone is unavailable),
+  /// then there will be an entry for the cluster with `STATE_NOT_KNOWN` state.
+  /// Views: `REPLICATION_VIEW`, `FULL`.
+  ///
+  /// Output only.
+  core.Map<core.String, GoogleBigtableAdminV2MaterializedViewClusterState>?
+  clusterStates;
+
   /// Set to true to make the MaterializedView protected against deletion.
   ///
   /// Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
@@ -7091,10 +7183,26 @@ class MaterializedView {
   /// Required. Immutable.
   core.String? query;
 
-  MaterializedView({this.deletionProtection, this.etag, this.name, this.query});
+  MaterializedView({
+    this.clusterStates,
+    this.deletionProtection,
+    this.etag,
+    this.name,
+    this.query,
+  });
 
   MaterializedView.fromJson(core.Map json_)
     : this(
+        clusterStates: (json_['clusterStates']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
         deletionProtection: json_['deletionProtection'] as core.bool?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
@@ -7102,6 +7210,7 @@ class MaterializedView {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (clusterStates != null) 'clusterStates': clusterStates!,
     if (deletionProtection != null) 'deletionProtection': deletionProtection!,
     if (etag != null) 'etag': etag!,
     if (name != null) 'name': name!,

@@ -135,9 +135,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -832,6 +832,14 @@ class ProjectsLocationsBareMetalAdminClustersOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -847,12 +855,15 @@ class ProjectsLocationsBareMetalAdminClustersOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2179,6 +2190,14 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2194,12 +2213,15 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2275,6 +2297,14 @@ class ProjectsLocationsBareMetalClustersOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2290,12 +2320,15 @@ class ProjectsLocationsBareMetalClustersOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2456,6 +2489,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2471,12 +2512,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2520,6 +2564,8 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// fail with "cluster already exists" error and hence a update cluster is
   /// required to fix the cluster.
   ///
+  /// [skipValidations] - Optional. If set, skip the specified validations.
+  ///
   /// [validateOnly] - Validate the request without actually doing any updates.
   ///
   /// [vmwareAdminClusterId] - Required. User provided identifier that is used
@@ -2541,6 +2587,7 @@ class ProjectsLocationsVmwareAdminClustersResource {
     VmwareAdminCluster request,
     core.String parent, {
     core.bool? allowPreflightFailure,
+    core.List<core.String>? skipValidations,
     core.bool? validateOnly,
     core.String? vmwareAdminClusterId,
     core.String? $fields,
@@ -2549,6 +2596,7 @@ class ProjectsLocationsVmwareAdminClustersResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowPreflightFailure != null)
         'allowPreflightFailure': ['${allowPreflightFailure}'],
+      if (skipValidations != null) 'skipValidations': skipValidations,
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if (vmwareAdminClusterId != null)
         'vmwareAdminClusterId': [vmwareAdminClusterId],
@@ -2812,6 +2860,9 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareAdminClusters/\[^/\]+$`.
   ///
+  /// [skipValidations] - Optional. If set, the server-side preflight checks
+  /// will be skipped.
+  ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the VMwareAdminCluster resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
@@ -2835,12 +2886,14 @@ class ProjectsLocationsVmwareAdminClustersResource {
   async.Future<Operation> patch(
     VmwareAdminCluster request,
     core.String name, {
+    core.List<core.String>? skipValidations,
     core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (skipValidations != null) 'skipValidations': skipValidations,
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -3086,6 +3139,14 @@ class ProjectsLocationsVmwareAdminClustersOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3101,12 +3162,15 @@ class ProjectsLocationsVmwareAdminClustersOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3150,6 +3214,9 @@ class ProjectsLocationsVmwareClustersResource {
   /// fail with "cluster already exists" error and hence a update cluster is
   /// required to fix the cluster.
   ///
+  /// [skipValidations] - Optional. List of validations to skip during cluster
+  /// creation.
+  ///
   /// [validateOnly] - Validate the request without actually doing any updates.
   ///
   /// [vmwareClusterId] - User provided identifier that is used as part of the
@@ -3170,6 +3237,7 @@ class ProjectsLocationsVmwareClustersResource {
     VmwareCluster request,
     core.String parent, {
     core.bool? allowPreflightFailure,
+    core.List<core.String>? skipValidations,
     core.bool? validateOnly,
     core.String? vmwareClusterId,
     core.String? $fields,
@@ -3178,6 +3246,7 @@ class ProjectsLocationsVmwareClustersResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowPreflightFailure != null)
         'allowPreflightFailure': ['${allowPreflightFailure}'],
+      if (skipValidations != null) 'skipValidations': skipValidations,
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if (vmwareClusterId != null) 'vmwareClusterId': [vmwareClusterId],
       if ($fields != null) 'fields': [$fields],
@@ -3509,6 +3578,8 @@ class ProjectsLocationsVmwareClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareClusters/\[^/\]+$`.
   ///
+  /// [skipValidations] - null
+  ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the VMwareCluster resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
@@ -3532,12 +3603,14 @@ class ProjectsLocationsVmwareClustersResource {
   async.Future<Operation> patch(
     VmwareCluster request,
     core.String name, {
+    core.List<core.String>? skipValidations,
     core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (skipValidations != null) 'skipValidations': skipValidations,
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -3841,6 +3914,14 @@ class ProjectsLocationsVmwareClustersOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3856,12 +3937,15 @@ class ProjectsLocationsVmwareClustersOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4500,6 +4584,14 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4515,12 +4607,15 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4597,6 +4692,89 @@ class BareMetalAdminApiServerArgument {
     if (value != null) 'value': value!,
   };
 }
+
+/// BareMetalAdminBgpLbConfig represents configuration parameters for a Border
+/// Gateway Protocol (BGP) load balancer.
+class BareMetalAdminBgpLbConfig {
+  /// AddressPools is a list of non-overlapping IP pools used by load balancer
+  /// typed services.
+  ///
+  /// All addresses must be routable to load balancer nodes. IngressVIP must be
+  /// included in the pools.
+  ///
+  /// Required.
+  core.List<BareMetalAdminLoadBalancerAddressPool>? addressPools;
+
+  /// BGP autonomous system number (ASN) of the cluster.
+  ///
+  /// This field can be updated after cluster creation.
+  ///
+  /// Required.
+  core.String? asn;
+
+  /// The list of BGP peers that the cluster will connect to.
+  ///
+  /// At least one peer must be configured for each control plane node. Control
+  /// plane nodes will connect to these peers to advertise the control plane
+  /// VIP. The Services load balancer also uses these peers by default. This
+  /// field can be updated after cluster creation.
+  ///
+  /// Required.
+  core.List<BareMetalAdminBgpPeerConfig>? bgpPeerConfigs;
+
+  /// Specifies the node pool running data plane load balancing.
+  ///
+  /// L2 connectivity is required among nodes in this pool. If missing, the
+  /// control plane node pool is used for data plane load balancing.
+  BareMetalAdminLoadBalancerNodePoolConfig? loadBalancerNodePoolConfig;
+
+  BareMetalAdminBgpLbConfig({
+    this.addressPools,
+    this.asn,
+    this.bgpPeerConfigs,
+    this.loadBalancerNodePoolConfig,
+  });
+
+  BareMetalAdminBgpLbConfig.fromJson(core.Map json_)
+    : this(
+        addressPools:
+            (json_['addressPools'] as core.List?)
+                ?.map(
+                  (value) => BareMetalAdminLoadBalancerAddressPool.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        asn: json_['asn'] as core.String?,
+        bgpPeerConfigs:
+            (json_['bgpPeerConfigs'] as core.List?)
+                ?.map(
+                  (value) => BareMetalAdminBgpPeerConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        loadBalancerNodePoolConfig:
+            json_.containsKey('loadBalancerNodePoolConfig')
+                ? BareMetalAdminLoadBalancerNodePoolConfig.fromJson(
+                  json_['loadBalancerNodePoolConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (addressPools != null) 'addressPools': addressPools!,
+    if (asn != null) 'asn': asn!,
+    if (bgpPeerConfigs != null) 'bgpPeerConfigs': bgpPeerConfigs!,
+    if (loadBalancerNodePoolConfig != null)
+      'loadBalancerNodePoolConfig': loadBalancerNodePoolConfig!,
+  };
+}
+
+/// BareMetalAdminBgpPeerConfig represents configuration parameters for a Border
+/// Gateway Protocol (BGP) peer.
+typedef BareMetalAdminBgpPeerConfig = $BgpPeerConfig;
 
 /// Resource that represents a bare metal admin cluster.
 class BareMetalAdminCluster {
@@ -5074,8 +5252,14 @@ class BareMetalAdminIslandModeCidrConfig {
   };
 }
 
+/// Represents an IP pool used by the load balancer.
+typedef BareMetalAdminLoadBalancerAddressPool = $AddressPool;
+
 /// BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.
 class BareMetalAdminLoadBalancerConfig {
+  /// Configuration for BGP typed load balancers.
+  BareMetalAdminBgpLbConfig? bgpLbConfig;
+
   /// Manually configured load balancers.
   BareMetalAdminManualLbConfig? manualLbConfig;
 
@@ -5086,6 +5270,7 @@ class BareMetalAdminLoadBalancerConfig {
   BareMetalAdminVipConfig? vipConfig;
 
   BareMetalAdminLoadBalancerConfig({
+    this.bgpLbConfig,
     this.manualLbConfig,
     this.portConfig,
     this.vipConfig,
@@ -5093,6 +5278,12 @@ class BareMetalAdminLoadBalancerConfig {
 
   BareMetalAdminLoadBalancerConfig.fromJson(core.Map json_)
     : this(
+        bgpLbConfig:
+            json_.containsKey('bgpLbConfig')
+                ? BareMetalAdminBgpLbConfig.fromJson(
+                  json_['bgpLbConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         manualLbConfig:
             json_.containsKey('manualLbConfig')
                 ? BareMetalAdminManualLbConfig.fromJson(
@@ -5115,9 +5306,33 @@ class BareMetalAdminLoadBalancerConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (bgpLbConfig != null) 'bgpLbConfig': bgpLbConfig!,
     if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
     if (portConfig != null) 'portConfig': portConfig!,
     if (vipConfig != null) 'vipConfig': vipConfig!,
+  };
+}
+
+/// Specifies the load balancer's node pool configuration.
+class BareMetalAdminLoadBalancerNodePoolConfig {
+  /// The generic configuration for a node pool running a load balancer.
+  BareMetalNodePoolConfig? nodePoolConfig;
+
+  BareMetalAdminLoadBalancerNodePoolConfig({this.nodePoolConfig});
+
+  BareMetalAdminLoadBalancerNodePoolConfig.fromJson(core.Map json_)
+    : this(
+        nodePoolConfig:
+            json_.containsKey('nodePoolConfig')
+                ? BareMetalNodePoolConfig.fromJson(
+                  json_['nodePoolConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
   };
 }
 
@@ -5195,15 +5410,35 @@ class BareMetalAdminMaintenanceStatus {
 /// manual load balancer.
 typedef BareMetalAdminManualLbConfig = $ManualLbConfig;
 
+/// Specifies the multiple networking interfaces cluster configuration.
+typedef BareMetalAdminMultipleNetworkInterfacesConfig =
+    $MultipleNetworkInterfacesConfig;
+
 /// BareMetalAdminNetworkConfig specifies the cluster network configuration.
 class BareMetalAdminNetworkConfig {
+  /// Enables the use of advanced Anthos networking features, such as Bundled
+  /// Load Balancing with BGP or the egress NAT gateway.
+  ///
+  /// Setting configuration for advanced networking features will automatically
+  /// set this flag.
+  core.bool? advancedNetworking;
+
   /// Configuration for Island mode CIDR.
   BareMetalAdminIslandModeCidrConfig? islandModeCidr;
 
-  BareMetalAdminNetworkConfig({this.islandModeCidr});
+  /// Configuration for multiple network interfaces.
+  BareMetalAdminMultipleNetworkInterfacesConfig?
+  multipleNetworkInterfacesConfig;
+
+  BareMetalAdminNetworkConfig({
+    this.advancedNetworking,
+    this.islandModeCidr,
+    this.multipleNetworkInterfacesConfig,
+  });
 
   BareMetalAdminNetworkConfig.fromJson(core.Map json_)
     : this(
+        advancedNetworking: json_['advancedNetworking'] as core.bool?,
         islandModeCidr:
             json_.containsKey('islandModeCidr')
                 ? BareMetalAdminIslandModeCidrConfig.fromJson(
@@ -5211,10 +5446,20 @@ class BareMetalAdminNetworkConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        multipleNetworkInterfacesConfig:
+            json_.containsKey('multipleNetworkInterfacesConfig')
+                ? BareMetalAdminMultipleNetworkInterfacesConfig.fromJson(
+                  json_['multipleNetworkInterfacesConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (advancedNetworking != null) 'advancedNetworking': advancedNetworking!,
     if (islandModeCidr != null) 'islandModeCidr': islandModeCidr!,
+    if (multipleNetworkInterfacesConfig != null)
+      'multipleNetworkInterfacesConfig': multipleNetworkInterfacesConfig!,
   };
 }
 
@@ -5506,44 +5751,7 @@ class BareMetalBgpLbConfig {
 
 /// BareMetalBgpPeerConfig represents configuration parameters for a Border
 /// Gateway Protocol (BGP) peer.
-class BareMetalBgpPeerConfig {
-  /// BGP autonomous system number (ASN) for the network that contains the
-  /// external peer device.
-  ///
-  /// Required.
-  core.String? asn;
-
-  /// The IP address of the control plane node that connects to the external
-  /// peer.
-  ///
-  /// If you don't specify any control plane nodes, all control plane nodes can
-  /// connect to the external peer. If you specify one or more IP addresses,
-  /// only the nodes specified participate in peering sessions.
-  core.List<core.String>? controlPlaneNodes;
-
-  /// The IP address of the external peer device.
-  ///
-  /// Required.
-  core.String? ipAddress;
-
-  BareMetalBgpPeerConfig({this.asn, this.controlPlaneNodes, this.ipAddress});
-
-  BareMetalBgpPeerConfig.fromJson(core.Map json_)
-    : this(
-        asn: json_['asn'] as core.String?,
-        controlPlaneNodes:
-            (json_['controlPlaneNodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ipAddress: json_['ipAddress'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (asn != null) 'asn': asn!,
-    if (controlPlaneNodes != null) 'controlPlaneNodes': controlPlaneNodes!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-  };
-}
+typedef BareMetalBgpPeerConfig = $BgpPeerConfig;
 
 /// Resource that represents a bare metal user cluster.
 class BareMetalCluster {
@@ -6407,21 +6615,8 @@ class BareMetalMetalLbConfig {
 }
 
 /// Specifies the multiple networking interfaces cluster configuration.
-class BareMetalMultipleNetworkInterfacesConfig {
-  /// Whether to enable multiple network interfaces for your pods.
-  ///
-  /// When set network_config.advanced_networking is automatically set to true.
-  core.bool? enabled;
-
-  BareMetalMultipleNetworkInterfacesConfig({this.enabled});
-
-  BareMetalMultipleNetworkInterfacesConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef BareMetalMultipleNetworkInterfacesConfig =
+    $MultipleNetworkInterfacesConfig;
 
 /// Specifies the cluster network configuration.
 class BareMetalNetworkConfig {
@@ -7641,7 +7836,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -7654,11 +7861,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

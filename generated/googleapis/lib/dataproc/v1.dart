@@ -2052,6 +2052,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2067,12 +2075,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6433,6 +6444,14 @@ class ProjectsRegionsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6448,12 +6467,15 @@ class ProjectsRegionsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7538,6 +7560,9 @@ class AnalyzeBatchRequest {
   ///
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? requestorId;
 
   AnalyzeBatchRequest({this.requestId, this.requestorId});
@@ -8703,6 +8728,17 @@ class ClusterConfig {
   /// Optional.
   DataprocMetricConfig? dataprocMetricConfig;
 
+  /// A Cloud Storage bucket used to collect checkpoint diagnostic data
+  /// (https://cloud.google.com/dataproc/docs/support/diagnose-clusters#checkpoint_diagnostic_data).
+  ///
+  /// If you do not specify a diagnostic bucket, Cloud Dataproc will use the
+  /// Dataproc temp bucket to collect the checkpoint diagnostic data. This field
+  /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+  /// Storage bucket.
+  ///
+  /// Optional.
+  core.String? diagnosticBucket;
+
   /// Encryption settings for the cluster.
   ///
   /// Optional.
@@ -8804,6 +8840,7 @@ class ClusterConfig {
     this.clusterType,
     this.configBucket,
     this.dataprocMetricConfig,
+    this.diagnosticBucket,
     this.encryptionConfig,
     this.endpointConfig,
     this.gceClusterConfig,
@@ -8846,6 +8883,7 @@ class ClusterConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        diagnosticBucket: json_['diagnosticBucket'] as core.String?,
         encryptionConfig:
             json_.containsKey('encryptionConfig')
                 ? EncryptionConfig.fromJson(
@@ -8941,6 +8979,7 @@ class ClusterConfig {
     if (configBucket != null) 'configBucket': configBucket!,
     if (dataprocMetricConfig != null)
       'dataprocMetricConfig': dataprocMetricConfig!,
+    if (diagnosticBucket != null) 'diagnosticBucket': diagnosticBucket!,
     if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
     if (endpointConfig != null) 'endpointConfig': endpointConfig!,
     if (gceClusterConfig != null) 'gceClusterConfig': gceClusterConfig!,
@@ -10316,6 +10355,21 @@ class FlinkJob {
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
+  /// An optional list of Compute Engine zones where the Dataproc cluster will
+  /// not be located when Auto Zone is enabled.
+  ///
+  /// Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both
+  /// are omitted, the service will pick a zone in the cluster Compute Engine
+  /// region. If auto_zone_exclude_zone_uris is set and there is more than one
+  /// non-excluded zone, the service will pick one of the non-excluded zones.
+  /// Otherwise, cluster creation will fail with INVALID_ARGUMENT error.A full
+  /// URL, partial URI, or short name are valid. Examples:
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]
+  /// projects/\[project_id\]/zones/\[zone\] \[zone\]
+  ///
+  /// Optional.
+  core.List<core.String>? autoZoneExcludeZoneUris;
+
   /// Confidential Instance Config for clusters using Confidential VMs
   /// (https://cloud.google.com/compute/confidential-vm/docs).
   ///
@@ -10385,7 +10439,7 @@ class GceClusterConfig {
   /// Resource manager tags
   /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
   /// to add to all instances (see Use secure tags in Dataproc
-  /// (https://cloud.google.com/dataproc/docs/guides/attach-secure-tags)).
+  /// (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
   ///
   /// Optional.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -10450,6 +10504,7 @@ class GceClusterConfig {
   core.String? zoneUri;
 
   GceClusterConfig({
+    this.autoZoneExcludeZoneUris,
     this.confidentialInstanceConfig,
     this.internalIpOnly,
     this.metadata,
@@ -10468,6 +10523,10 @@ class GceClusterConfig {
 
   GceClusterConfig.fromJson(core.Map json_)
     : this(
+        autoZoneExcludeZoneUris:
+            (json_['autoZoneExcludeZoneUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         confidentialInstanceConfig:
             json_.containsKey('confidentialInstanceConfig')
                 ? ConfidentialInstanceConfig.fromJson(
@@ -10519,6 +10578,8 @@ class GceClusterConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (autoZoneExcludeZoneUris != null)
+      'autoZoneExcludeZoneUris': autoZoneExcludeZoneUris!,
     if (confidentialInstanceConfig != null)
       'confidentialInstanceConfig': confidentialInstanceConfig!,
     if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
@@ -12987,7 +13048,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// ListOperationsRequest.return_partial_success and reads across collections.
+  /// For example, when attempting to list all resources across all supported
+  /// locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -13000,11 +13073,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -14469,7 +14547,9 @@ class ProvisioningModelMix {
 
 /// Configuration for PyPi repository
 class PyPiRepositoryConfig {
-  /// PyPi repository address
+  /// The PyPi repository address.
+  ///
+  /// Note: This field is not available for batch workloads.
   ///
   /// Optional.
   core.String? pypiRepository;
@@ -14581,7 +14661,10 @@ class PySparkJob {
   /// HCFS URIs of archives to be extracted into the working directory of each
   /// executor.
   ///
-  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.Note: Spark
+  /// applications must be deployed in cluster mode
+  /// (https://spark.apache.org/docs/latest/cluster-overview.html) for correct
+  /// environment propagation.
   ///
   /// Optional.
   core.List<core.String>? archiveUris;
@@ -15128,6 +15211,16 @@ class RepairClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
+  /// Whether the request is submitted by Dataproc super user.
+  ///
+  /// If true, IAM will check 'dataproc.clusters.repair' permission instead of
+  /// 'dataproc.clusters.update' permission. This is to give Dataproc superuser
+  /// the ability to repair clusters without granting the overly broad update
+  /// permission.
+  ///
+  /// Optional.
+  core.bool? dataprocSuperUser;
+
   /// Timeout for graceful YARN decommissioning.
   ///
   /// Graceful decommissioning facilitates the removal of cluster nodes without
@@ -15170,6 +15263,7 @@ class RepairClusterRequest {
   RepairClusterRequest({
     this.cluster,
     this.clusterUuid,
+    this.dataprocSuperUser,
     this.gracefulDecommissionTimeout,
     this.nodePools,
     this.parentOperationId,
@@ -15185,6 +15279,7 @@ class RepairClusterRequest {
                 )
                 : null,
         clusterUuid: json_['clusterUuid'] as core.String?,
+        dataprocSuperUser: json_['dataprocSuperUser'] as core.bool?,
         gracefulDecommissionTimeout:
             json_['gracefulDecommissionTimeout'] as core.String?,
         nodePools:
@@ -15202,6 +15297,7 @@ class RepairClusterRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (cluster != null) 'cluster': cluster!,
     if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+    if (dataprocSuperUser != null) 'dataprocSuperUser': dataprocSuperUser!,
     if (gracefulDecommissionTimeout != null)
       'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
     if (nodePools != null) 'nodePools': nodePools!,
@@ -15476,8 +15572,8 @@ class RuntimeConfig {
 
   /// Cohort identifier.
   ///
-  /// Identifies families of the workloads having the same shape, e.g. daily ETL
-  /// jobs.
+  /// Identifies families of the workloads that have the same shape, for
+  /// example, daily ETL jobs.
   ///
   /// Optional.
   core.String? cohort;
@@ -17291,6 +17387,174 @@ class SparkBatch {
 /// Spark connect configuration for an interactive session.
 typedef SparkConnectConfig = $Empty;
 
+/// Represents the lifecycle and details of an Execution via Spark Connect
+class SparkConnectExecutionInfo {
+  /// Timestamp when the execution was closed.
+  core.String? closeTimestamp;
+
+  /// Detailed information about the execution.
+  core.String? detail;
+
+  /// Timestamp when the execution finished.
+  core.String? finishTimestamp;
+
+  /// List of job ids associated with the execution.
+  ///
+  /// Optional.
+  core.List<core.String>? jobIds;
+
+  /// Job tag of the execution.
+  ///
+  /// Required.
+  core.String? jobTag;
+
+  /// Unique identifier for the operation.
+  core.String? operationId;
+
+  /// Session ID, ties the execution to a specific Spark Connect session.
+  ///
+  /// Required.
+  core.String? sessionId;
+
+  /// Tags associated with the Spark session.
+  ///
+  /// Optional.
+  core.List<core.String>? sparkSessionTags;
+
+  /// List of sql execution ids associated with the execution.
+  ///
+  /// Optional.
+  core.List<core.String>? sqlExecIds;
+
+  /// Timestamp when the execution started.
+  core.String? startTimestamp;
+
+  /// Current state of the execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXECUTION_STATE_UNKNOWN" : Execution state is unknown.
+  /// - "EXECUTION_STATE_STARTED" : Execution state is started.
+  /// - "EXECUTION_STATE_COMPILED" : Execution state is compiled.
+  /// - "EXECUTION_STATE_READY" : Execution state is ready.
+  /// - "EXECUTION_STATE_CANCELED" : Execution state is canceled.
+  /// - "EXECUTION_STATE_FAILED" : Execution state is failed.
+  /// - "EXECUTION_STATE_FINISHED" : Execution state is finished.
+  /// - "EXECUTION_STATE_CLOSED" : Execution state is closed.
+  core.String? state;
+
+  /// statement of the execution.
+  core.String? statement;
+
+  /// User ID of the user who started the execution.
+  core.String? userId;
+
+  SparkConnectExecutionInfo({
+    this.closeTimestamp,
+    this.detail,
+    this.finishTimestamp,
+    this.jobIds,
+    this.jobTag,
+    this.operationId,
+    this.sessionId,
+    this.sparkSessionTags,
+    this.sqlExecIds,
+    this.startTimestamp,
+    this.state,
+    this.statement,
+    this.userId,
+  });
+
+  SparkConnectExecutionInfo.fromJson(core.Map json_)
+    : this(
+        closeTimestamp: json_['closeTimestamp'] as core.String?,
+        detail: json_['detail'] as core.String?,
+        finishTimestamp: json_['finishTimestamp'] as core.String?,
+        jobIds:
+            (json_['jobIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        jobTag: json_['jobTag'] as core.String?,
+        operationId: json_['operationId'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        sparkSessionTags:
+            (json_['sparkSessionTags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sqlExecIds:
+            (json_['sqlExecIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        startTimestamp: json_['startTimestamp'] as core.String?,
+        state: json_['state'] as core.String?,
+        statement: json_['statement'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (closeTimestamp != null) 'closeTimestamp': closeTimestamp!,
+    if (detail != null) 'detail': detail!,
+    if (finishTimestamp != null) 'finishTimestamp': finishTimestamp!,
+    if (jobIds != null) 'jobIds': jobIds!,
+    if (jobTag != null) 'jobTag': jobTag!,
+    if (operationId != null) 'operationId': operationId!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (sparkSessionTags != null) 'sparkSessionTags': sparkSessionTags!,
+    if (sqlExecIds != null) 'sqlExecIds': sqlExecIds!,
+    if (startTimestamp != null) 'startTimestamp': startTimestamp!,
+    if (state != null) 'state': state!,
+    if (statement != null) 'statement': statement!,
+    if (userId != null) 'userId': userId!,
+  };
+}
+
+/// Represents session-level information for Spark Connect
+class SparkConnectSessionInfo {
+  /// Timestamp when the session finished.
+  core.String? finishTimestamp;
+
+  /// Session ID of the session.
+  ///
+  /// Required.
+  core.String? sessionId;
+
+  /// Timestamp when the session started.
+  core.String? startTimestamp;
+
+  /// Total number of executions in the session.
+  ///
+  /// Optional.
+  core.String? totalExecution;
+
+  /// User ID of the user who started the session.
+  core.String? userId;
+
+  SparkConnectSessionInfo({
+    this.finishTimestamp,
+    this.sessionId,
+    this.startTimestamp,
+    this.totalExecution,
+    this.userId,
+  });
+
+  SparkConnectSessionInfo.fromJson(core.Map json_)
+    : this(
+        finishTimestamp: json_['finishTimestamp'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        startTimestamp: json_['startTimestamp'] as core.String?,
+        totalExecution: json_['totalExecution'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (finishTimestamp != null) 'finishTimestamp': finishTimestamp!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (startTimestamp != null) 'startTimestamp': startTimestamp!,
+    if (totalExecution != null) 'totalExecution': totalExecution!,
+    if (userId != null) 'userId': userId!,
+  };
+}
+
 /// Spark History Server configuration for the workload.
 class SparkHistoryServerConfig {
   /// Resource name of an existing Dataproc Cluster to act as a Spark History
@@ -18005,6 +18269,12 @@ class SparkWrapperObject {
   RddOperationGraph? rddOperationGraph;
   RddStorageInfo? rddStorageInfo;
   ResourceProfileInfo? resourceProfileInfo;
+
+  /// Spark Connect Execution Info
+  SparkConnectExecutionInfo? sparkConnectExecutionInfo;
+
+  /// Spark Connect Session Info
+  SparkConnectSessionInfo? sparkConnectSessionInfo;
   SparkPlanGraph? sparkPlanGraph;
   SpeculationStageSummary? speculationStageSummary;
   SqlExecutionUiData? sqlExecutionUiData;
@@ -18030,6 +18300,8 @@ class SparkWrapperObject {
     this.rddOperationGraph,
     this.rddStorageInfo,
     this.resourceProfileInfo,
+    this.sparkConnectExecutionInfo,
+    this.sparkConnectSessionInfo,
     this.sparkPlanGraph,
     this.speculationStageSummary,
     this.sqlExecutionUiData,
@@ -18132,6 +18404,20 @@ class SparkWrapperObject {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        sparkConnectExecutionInfo:
+            json_.containsKey('sparkConnectExecutionInfo')
+                ? SparkConnectExecutionInfo.fromJson(
+                  json_['sparkConnectExecutionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sparkConnectSessionInfo:
+            json_.containsKey('sparkConnectSessionInfo')
+                ? SparkConnectSessionInfo.fromJson(
+                  json_['sparkConnectSessionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sparkPlanGraph:
             json_.containsKey('sparkPlanGraph')
                 ? SparkPlanGraph.fromJson(
@@ -18209,6 +18495,10 @@ class SparkWrapperObject {
     if (rddStorageInfo != null) 'rddStorageInfo': rddStorageInfo!,
     if (resourceProfileInfo != null)
       'resourceProfileInfo': resourceProfileInfo!,
+    if (sparkConnectExecutionInfo != null)
+      'sparkConnectExecutionInfo': sparkConnectExecutionInfo!,
+    if (sparkConnectSessionInfo != null)
+      'sparkConnectSessionInfo': sparkConnectSessionInfo!,
     if (sparkPlanGraph != null) 'sparkPlanGraph': sparkPlanGraph!,
     if (speculationStageSummary != null)
       'speculationStageSummary': speculationStageSummary!,
@@ -20206,13 +20496,14 @@ class TrinoJob {
 
 /// Usage metrics represent approximate total resources consumed by a workload.
 class UsageMetrics {
-  /// Accelerator type being used, if any
+  /// DEPRECATED Accelerator type being used, if any
   ///
   /// Optional.
   core.String? acceleratorType;
 
-  /// Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless
-  /// pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+  /// DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see Dataproc
+  /// Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
   ///
   /// Optional.
   core.String? milliAcceleratorSeconds;
@@ -20223,11 +20514,6 @@ class UsageMetrics {
   ///
   /// Optional.
   core.String? milliDcuSeconds;
-
-  /// Slot usage in (milliSlot x seconds).
-  ///
-  /// Optional.
-  core.String? milliSlotSeconds;
 
   /// Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing
   /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -20244,7 +20530,6 @@ class UsageMetrics {
     this.acceleratorType,
     this.milliAcceleratorSeconds,
     this.milliDcuSeconds,
-    this.milliSlotSeconds,
     this.shuffleStorageGbSeconds,
     this.updateTime,
   });
@@ -20255,7 +20540,6 @@ class UsageMetrics {
         milliAcceleratorSeconds:
             json_['milliAcceleratorSeconds'] as core.String?,
         milliDcuSeconds: json_['milliDcuSeconds'] as core.String?,
-        milliSlotSeconds: json_['milliSlotSeconds'] as core.String?,
         shuffleStorageGbSeconds:
             json_['shuffleStorageGbSeconds'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
@@ -20266,7 +20550,6 @@ class UsageMetrics {
     if (milliAcceleratorSeconds != null)
       'milliAcceleratorSeconds': milliAcceleratorSeconds!,
     if (milliDcuSeconds != null) 'milliDcuSeconds': milliDcuSeconds!,
-    if (milliSlotSeconds != null) 'milliSlotSeconds': milliSlotSeconds!,
     if (shuffleStorageGbSeconds != null)
       'shuffleStorageGbSeconds': shuffleStorageGbSeconds!,
     if (updateTime != null) 'updateTime': updateTime!,
@@ -20303,11 +20586,6 @@ class UsageSnapshot {
   /// Optional.
   core.String? milliDcuPremium;
 
-  /// Milli (one-thousandth) Slot usage of the workload.
-  ///
-  /// Optional.
-  core.String? milliSlot;
-
   /// Shuffle Storage in gigabytes (GB).
   ///
   /// (see Dataproc Serverless pricing
@@ -20334,7 +20612,6 @@ class UsageSnapshot {
     this.milliAccelerator,
     this.milliDcu,
     this.milliDcuPremium,
-    this.milliSlot,
     this.shuffleStorageGb,
     this.shuffleStorageGbPremium,
     this.snapshotTime,
@@ -20346,7 +20623,6 @@ class UsageSnapshot {
         milliAccelerator: json_['milliAccelerator'] as core.String?,
         milliDcu: json_['milliDcu'] as core.String?,
         milliDcuPremium: json_['milliDcuPremium'] as core.String?,
-        milliSlot: json_['milliSlot'] as core.String?,
         shuffleStorageGb: json_['shuffleStorageGb'] as core.String?,
         shuffleStorageGbPremium:
             json_['shuffleStorageGbPremium'] as core.String?,
@@ -20358,7 +20634,6 @@ class UsageSnapshot {
     if (milliAccelerator != null) 'milliAccelerator': milliAccelerator!,
     if (milliDcu != null) 'milliDcu': milliDcu!,
     if (milliDcuPremium != null) 'milliDcuPremium': milliDcuPremium!,
-    if (milliSlot != null) 'milliSlot': milliSlot!,
     if (shuffleStorageGb != null) 'shuffleStorageGb': shuffleStorageGb!,
     if (shuffleStorageGbPremium != null)
       'shuffleStorageGbPremium': shuffleStorageGbPremium!,
@@ -20755,6 +21030,12 @@ typedef WriteSparkApplicationContextResponse = $Empty;
 /// This report is available for testing purposes only. It may be changed before
 /// final release.
 class YarnApplication {
+  /// The cumulative memory usage of the application for a job, measured in
+  /// mb-seconds.
+  ///
+  /// Optional.
+  core.String? memoryMbSeconds;
+
   /// The application name.
   ///
   /// Required.
@@ -20789,20 +21070,37 @@ class YarnApplication {
   /// Optional.
   core.String? trackingUrl;
 
-  YarnApplication({this.name, this.progress, this.state, this.trackingUrl});
+  /// The cumulative CPU time consumed by the application for a job, measured in
+  /// vcore-seconds.
+  ///
+  /// Optional.
+  core.String? vcoreSeconds;
+
+  YarnApplication({
+    this.memoryMbSeconds,
+    this.name,
+    this.progress,
+    this.state,
+    this.trackingUrl,
+    this.vcoreSeconds,
+  });
 
   YarnApplication.fromJson(core.Map json_)
     : this(
+        memoryMbSeconds: json_['memoryMbSeconds'] as core.String?,
         name: json_['name'] as core.String?,
         progress: (json_['progress'] as core.num?)?.toDouble(),
         state: json_['state'] as core.String?,
         trackingUrl: json_['trackingUrl'] as core.String?,
+        vcoreSeconds: json_['vcoreSeconds'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (memoryMbSeconds != null) 'memoryMbSeconds': memoryMbSeconds!,
     if (name != null) 'name': name!,
     if (progress != null) 'progress': progress!,
     if (state != null) 'state': state!,
     if (trackingUrl != null) 'trackingUrl': trackingUrl!,
+    if (vcoreSeconds != null) 'vcoreSeconds': vcoreSeconds!,
   };
 }

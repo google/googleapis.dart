@@ -749,6 +749,27 @@ void checkFormAction(api.FormAction o) {
   buildCounterFormAction--;
 }
 
+core.int buildCounterForwardedMetadata = 0;
+api.ForwardedMetadata buildForwardedMetadata() {
+  final o = api.ForwardedMetadata();
+  buildCounterForwardedMetadata++;
+  if (buildCounterForwardedMetadata < 3) {
+    o.space = 'foo';
+    o.spaceDisplayName = 'foo';
+  }
+  buildCounterForwardedMetadata--;
+  return o;
+}
+
+void checkForwardedMetadata(api.ForwardedMetadata o) {
+  buildCounterForwardedMetadata++;
+  if (buildCounterForwardedMetadata < 3) {
+    unittest.expect(o.space!, unittest.equals('foo'));
+    unittest.expect(o.spaceDisplayName!, unittest.equals('foo'));
+  }
+  buildCounterForwardedMetadata--;
+}
+
 core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed3() => [
   buildGoogleAppsCardV1ActionParameter(),
   buildGoogleAppsCardV1ActionParameter(),
@@ -3196,6 +3217,7 @@ api.PermissionSetting buildPermissionSetting() {
   final o = api.PermissionSetting();
   buildCounterPermissionSetting++;
   if (buildCounterPermissionSetting < 3) {
+    o.assistantManagersAllowed = true;
     o.managersAllowed = true;
     o.membersAllowed = true;
   }
@@ -3206,6 +3228,7 @@ api.PermissionSetting buildPermissionSetting() {
 void checkPermissionSetting(api.PermissionSetting o) {
   buildCounterPermissionSetting++;
   if (buildCounterPermissionSetting < 3) {
+    unittest.expect(o.assistantManagersAllowed!, unittest.isTrue);
     unittest.expect(o.managersAllowed!, unittest.isTrue);
     unittest.expect(o.membersAllowed!, unittest.isTrue);
   }
@@ -3250,8 +3273,11 @@ api.QuotedMessageMetadata buildQuotedMessageMetadata() {
   final o = api.QuotedMessageMetadata();
   buildCounterQuotedMessageMetadata++;
   if (buildCounterQuotedMessageMetadata < 3) {
+    o.forwardedMetadata = buildForwardedMetadata();
     o.lastUpdateTime = 'foo';
     o.name = 'foo';
+    o.quoteType = 'foo';
+    o.quotedMessageSnapshot = buildQuotedMessageSnapshot();
   }
   buildCounterQuotedMessageMetadata--;
   return o;
@@ -3260,10 +3286,62 @@ api.QuotedMessageMetadata buildQuotedMessageMetadata() {
 void checkQuotedMessageMetadata(api.QuotedMessageMetadata o) {
   buildCounterQuotedMessageMetadata++;
   if (buildCounterQuotedMessageMetadata < 3) {
+    checkForwardedMetadata(o.forwardedMetadata!);
     unittest.expect(o.lastUpdateTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.quoteType!, unittest.equals('foo'));
+    checkQuotedMessageSnapshot(o.quotedMessageSnapshot!);
   }
   buildCounterQuotedMessageMetadata--;
+}
+
+core.List<api.Annotation> buildUnnamed44() => [
+  buildAnnotation(),
+  buildAnnotation(),
+];
+
+void checkUnnamed44(core.List<api.Annotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAnnotation(o[0]);
+  checkAnnotation(o[1]);
+}
+
+core.List<api.Attachment> buildUnnamed45() => [
+  buildAttachment(),
+  buildAttachment(),
+];
+
+void checkUnnamed45(core.List<api.Attachment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAttachment(o[0]);
+  checkAttachment(o[1]);
+}
+
+core.int buildCounterQuotedMessageSnapshot = 0;
+api.QuotedMessageSnapshot buildQuotedMessageSnapshot() {
+  final o = api.QuotedMessageSnapshot();
+  buildCounterQuotedMessageSnapshot++;
+  if (buildCounterQuotedMessageSnapshot < 3) {
+    o.annotations = buildUnnamed44();
+    o.attachments = buildUnnamed45();
+    o.formattedText = 'foo';
+    o.sender = 'foo';
+    o.text = 'foo';
+  }
+  buildCounterQuotedMessageSnapshot--;
+  return o;
+}
+
+void checkQuotedMessageSnapshot(api.QuotedMessageSnapshot o) {
+  buildCounterQuotedMessageSnapshot++;
+  if (buildCounterQuotedMessageSnapshot < 3) {
+    checkUnnamed44(o.annotations!);
+    checkUnnamed45(o.attachments!);
+    unittest.expect(o.formattedText!, unittest.equals('foo'));
+    unittest.expect(o.sender!, unittest.equals('foo'));
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterQuotedMessageSnapshot--;
 }
 
 core.int buildCounterReaction = 0;
@@ -3289,12 +3367,12 @@ void checkReaction(api.Reaction o) {
   buildCounterReaction--;
 }
 
-core.List<api.ReactionCreatedEventData> buildUnnamed44() => [
+core.List<api.ReactionCreatedEventData> buildUnnamed46() => [
   buildReactionCreatedEventData(),
   buildReactionCreatedEventData(),
 ];
 
-void checkUnnamed44(core.List<api.ReactionCreatedEventData> o) {
+void checkUnnamed46(core.List<api.ReactionCreatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReactionCreatedEventData(o[0]);
   checkReactionCreatedEventData(o[1]);
@@ -3305,7 +3383,7 @@ api.ReactionBatchCreatedEventData buildReactionBatchCreatedEventData() {
   final o = api.ReactionBatchCreatedEventData();
   buildCounterReactionBatchCreatedEventData++;
   if (buildCounterReactionBatchCreatedEventData < 3) {
-    o.reactions = buildUnnamed44();
+    o.reactions = buildUnnamed46();
   }
   buildCounterReactionBatchCreatedEventData--;
   return o;
@@ -3314,17 +3392,17 @@ api.ReactionBatchCreatedEventData buildReactionBatchCreatedEventData() {
 void checkReactionBatchCreatedEventData(api.ReactionBatchCreatedEventData o) {
   buildCounterReactionBatchCreatedEventData++;
   if (buildCounterReactionBatchCreatedEventData < 3) {
-    checkUnnamed44(o.reactions!);
+    checkUnnamed46(o.reactions!);
   }
   buildCounterReactionBatchCreatedEventData--;
 }
 
-core.List<api.ReactionDeletedEventData> buildUnnamed45() => [
+core.List<api.ReactionDeletedEventData> buildUnnamed47() => [
   buildReactionDeletedEventData(),
   buildReactionDeletedEventData(),
 ];
 
-void checkUnnamed45(core.List<api.ReactionDeletedEventData> o) {
+void checkUnnamed47(core.List<api.ReactionDeletedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReactionDeletedEventData(o[0]);
   checkReactionDeletedEventData(o[1]);
@@ -3335,7 +3413,7 @@ api.ReactionBatchDeletedEventData buildReactionBatchDeletedEventData() {
   final o = api.ReactionBatchDeletedEventData();
   buildCounterReactionBatchDeletedEventData++;
   if (buildCounterReactionBatchDeletedEventData < 3) {
-    o.reactions = buildUnnamed45();
+    o.reactions = buildUnnamed47();
   }
   buildCounterReactionBatchDeletedEventData--;
   return o;
@@ -3344,7 +3422,7 @@ api.ReactionBatchDeletedEventData buildReactionBatchDeletedEventData() {
 void checkReactionBatchDeletedEventData(api.ReactionBatchDeletedEventData o) {
   buildCounterReactionBatchDeletedEventData++;
   if (buildCounterReactionBatchDeletedEventData < 3) {
-    checkUnnamed45(o.reactions!);
+    checkUnnamed47(o.reactions!);
   }
   buildCounterReactionBatchDeletedEventData--;
 }
@@ -3416,9 +3494,9 @@ void checkRichLinkMetadata(api.RichLinkMetadata o) {
   buildCounterRichLinkMetadata--;
 }
 
-core.List<api.Space> buildUnnamed46() => [buildSpace(), buildSpace()];
+core.List<api.Space> buildUnnamed48() => [buildSpace(), buildSpace()];
 
-void checkUnnamed46(core.List<api.Space> o) {
+void checkUnnamed48(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -3430,7 +3508,7 @@ api.SearchSpacesResponse buildSearchSpacesResponse() {
   buildCounterSearchSpacesResponse++;
   if (buildCounterSearchSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed46();
+    o.spaces = buildUnnamed48();
     o.totalSize = 42;
   }
   buildCounterSearchSpacesResponse--;
@@ -3441,18 +3519,18 @@ void checkSearchSpacesResponse(api.SearchSpacesResponse o) {
   buildCounterSearchSpacesResponse++;
   if (buildCounterSearchSpacesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed46(o.spaces!);
+    checkUnnamed48(o.spaces!);
     unittest.expect(o.totalSize!, unittest.equals(42));
   }
   buildCounterSearchSpacesResponse--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed47() => [
+core.List<api.WidgetMarkup> buildUnnamed49() => [
   buildWidgetMarkup(),
   buildWidgetMarkup(),
 ];
 
-void checkUnnamed47(core.List<api.WidgetMarkup> o) {
+void checkUnnamed49(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -3464,7 +3542,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed47();
+    o.widgets = buildUnnamed49();
   }
   buildCounterSection--;
   return o;
@@ -3474,17 +3552,17 @@ void checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header!, unittest.equals('foo'));
-    checkUnnamed47(o.widgets!);
+    checkUnnamed49(o.widgets!);
   }
   buildCounterSection--;
 }
 
-core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed48() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed50() => [
   buildGoogleAppsCardV1SelectionItem(),
   buildGoogleAppsCardV1SelectionItem(),
 ];
 
-void checkUnnamed48(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+void checkUnnamed50(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SelectionItem(o[0]);
   checkGoogleAppsCardV1SelectionItem(o[1]);
@@ -3495,7 +3573,7 @@ api.SelectionItems buildSelectionItems() {
   final o = api.SelectionItems();
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    o.items = buildUnnamed48();
+    o.items = buildUnnamed50();
   }
   buildCounterSelectionItems--;
   return o;
@@ -3504,17 +3582,17 @@ api.SelectionItems buildSelectionItems() {
 void checkSelectionItems(api.SelectionItems o) {
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    checkUnnamed48(o.items!);
+    checkUnnamed50(o.items!);
   }
   buildCounterSelectionItems--;
 }
 
-core.List<api.Membership> buildUnnamed49() => [
+core.List<api.Membership> buildUnnamed51() => [
   buildMembership(),
   buildMembership(),
 ];
 
-void checkUnnamed49(core.List<api.Membership> o) {
+void checkUnnamed51(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -3525,7 +3603,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
   final o = api.SetUpSpaceRequest();
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    o.memberships = buildUnnamed49();
+    o.memberships = buildUnnamed51();
     o.requestId = 'foo';
     o.space = buildSpace();
   }
@@ -3536,7 +3614,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
 void checkSetUpSpaceRequest(api.SetUpSpaceRequest o) {
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    checkUnnamed49(o.memberships!);
+    checkUnnamed51(o.memberships!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
     checkSpace(o.space!);
   }
@@ -3648,12 +3726,12 @@ void checkSpace(api.Space o) {
   buildCounterSpace--;
 }
 
-core.List<api.SpaceUpdatedEventData> buildUnnamed50() => [
+core.List<api.SpaceUpdatedEventData> buildUnnamed52() => [
   buildSpaceUpdatedEventData(),
   buildSpaceUpdatedEventData(),
 ];
 
-void checkUnnamed50(core.List<api.SpaceUpdatedEventData> o) {
+void checkUnnamed52(core.List<api.SpaceUpdatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpaceUpdatedEventData(o[0]);
   checkSpaceUpdatedEventData(o[1]);
@@ -3664,7 +3742,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
   final o = api.SpaceBatchUpdatedEventData();
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    o.spaces = buildUnnamed50();
+    o.spaces = buildUnnamed52();
   }
   buildCounterSpaceBatchUpdatedEventData--;
   return o;
@@ -3673,7 +3751,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
 void checkSpaceBatchUpdatedEventData(api.SpaceBatchUpdatedEventData o) {
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    checkUnnamed50(o.spaces!);
+    checkUnnamed52(o.spaces!);
   }
   buildCounterSpaceBatchUpdatedEventData--;
 }
@@ -4029,9 +4107,9 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed51() => [buildButton(), buildButton()];
+core.List<api.Button> buildUnnamed53() => [buildButton(), buildButton()];
 
-void checkUnnamed51(core.List<api.Button> o) {
+void checkUnnamed53(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -4042,7 +4120,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed51();
+    o.buttons = buildUnnamed53();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -4054,7 +4132,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed51(o.buttons!);
+    checkUnnamed53(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -4433,6 +4511,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFormAction(od);
+    });
+  });
+
+  unittest.group('obj-schema-ForwardedMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildForwardedMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ForwardedMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkForwardedMetadata(od);
     });
   });
 
@@ -5368,6 +5457,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkQuotedMessageMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuotedMessageSnapshot', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuotedMessageSnapshot();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuotedMessageSnapshot.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQuotedMessageSnapshot(od);
     });
   });
 

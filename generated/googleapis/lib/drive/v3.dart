@@ -22,6 +22,7 @@
 ///
 /// - [AboutResource]
 /// - [AccessproposalsResource]
+/// - [ApprovalsResource]
 /// - [AppsResource]
 /// - [ChangesResource]
 /// - [ChannelsResource]
@@ -103,6 +104,7 @@ class DriveApi {
   AboutResource get about => AboutResource(_requester);
   AccessproposalsResource get accessproposals =>
       AccessproposalsResource(_requester);
+  ApprovalsResource get approvals => ApprovalsResource(_requester);
   AppsResource get apps => AppsResource(_requester);
   ChangesResource get changes => ChangesResource(_requester);
   ChannelsResource get channels => ChannelsResource(_requester);
@@ -316,6 +318,100 @@ class AccessproposalsResource {
       body: body_,
       queryParams: queryParams_,
       downloadOptions: null,
+    );
+  }
+}
+
+class ApprovalsResource {
+  final commons.ApiRequester _requester;
+
+  ApprovalsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets an Approval by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file the Approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the Approval.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> get(
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the Approvals on a file.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file the Approval is on.
+  ///
+  /// [pageSize] - The maximum number of Approvals to return. When not set, at
+  /// most 100 Approvals will be returned.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of nextPageToken from a previous
+  /// response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ApprovalList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApprovalList> list(
+    core.String fileId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'files/' + commons.escapeVariable('$fileId') + '/approvals';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ApprovalList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
     );
   }
 }
@@ -1932,11 +2028,11 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [corpora] - Bodies of items (files or documents) to which the query
-  /// applies. Supported bodies are: * `user` * `domain` * `drive` * `allDrives`
-  /// Prefer `user` or `drive` to `allDrives` for efficiency. By default,
-  /// corpora is set to `user`. However, this can change depending on the filter
-  /// set through the `q` parameter. For more information, see
+  /// [corpora] - Specifies a collection of items (files or documents) to which
+  /// the query applies. Supported items include: * `user` * `domain` * `drive`
+  /// * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By
+  /// default, corpora is set to `user`. However, this can change depending on
+  /// the filter set through the `q` parameter. For more information, see
   /// [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
   ///
   /// [corpus] - Deprecated: The source of files to list. Use `corpora` instead.
@@ -1959,20 +2055,22 @@ class FilesResource {
   /// instead.
   ///
   /// [orderBy] - A comma-separated list of sort keys. Valid keys are: *
-  /// `createdTime`: When the file was created. * `folder`: The folder ID. This
-  /// field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
-  /// last time the file was modified by the user. * `modifiedTime`: The last
-  /// time the file was modified by anyone. * `name`: The name of the file. This
-  /// field is sorted using alphabetical ordering, so 1, 12, 2, 22. *
-  /// `name_natural`: The name of the file. This field is sorted using natural
-  /// sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage
-  /// quota bytes used by the file. * `recency`: The most recent timestamp from
-  /// the file's date-time fields. * `sharedWithMeTime`: When the file was
-  /// shared with the user, if applicable. * `starred`: Whether the user has
-  /// starred the file. * `viewedByMeTime`: The last time the file was viewed by
-  /// the user. Each key sorts ascending by default, but can be reversed with
-  /// the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime
-  /// desc,name`.
+  /// `createdTime`: When the file was created. Avoid using this key for queries
+  /// on large item collections as it might result in timeouts or other issues.
+  /// For time-related sorting on large item collections, use `modifiedTime`
+  /// instead. * `folder`: The folder ID. This field is sorted using
+  /// alphabetical ordering. * `modifiedByMeTime`: The last time the file was
+  /// modified by the user. * `modifiedTime`: The last time the file was
+  /// modified by anyone. * `name`: The name of the file. This field is sorted
+  /// using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name
+  /// of the file. This field is sorted using natural sort ordering, so 1, 2,
+  /// 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the
+  /// file. * `recency`: The most recent timestamp from the file's date-time
+  /// fields. * `sharedWithMeTime`: When the file was shared with the user, if
+  /// applicable. * `starred`: Whether the user has starred the file. *
+  /// `viewedByMeTime`: The last time the file was viewed by the user. Each key
+  /// sorts ascending by default, but can be reversed with the `desc` modifier.
+  /// Example usage: `?orderBy=folder,modifiedTime desc,name`.
   ///
   /// [pageSize] - The maximum number of files to return per page. Partial or
   /// empty result pages are possible even before the end of the files list has
@@ -2400,7 +2498,9 @@ class PermissionsResource {
 
   /// Creates a permission for a file or shared drive.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// For more information, see
+  /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+  /// **Warning:** Concurrent permissions operations on the same file aren't
   /// supported; only the last update is applied.
   ///
   /// [request] - The metadata request object.
@@ -2417,11 +2517,11 @@ class PermissionsResource {
   ///
   /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
   ///
-  /// [moveToNewOwnersRoot] - This parameter will only take effect if the item
-  /// is not in a shared drive and the request is attempting to transfer the
-  /// ownership of the item. If set to `true`, the item will be moved to the new
-  /// owner's My Drive root folder and all prior parents removed. If set to
-  /// `false`, parents are not changed.
+  /// [moveToNewOwnersRoot] - This parameter only takes effect if the item isn't
+  /// in a shared drive and the request is attempting to transfer the ownership
+  /// of the item. If set to `true`, the item is moved to the new owner's My
+  /// Drive root folder and all prior parents removed. If set to `false`,
+  /// parents aren't changed.
   ///
   /// [sendNotificationEmail] - Whether to send a notification email when
   /// sharing to users or groups. This defaults to `true` for users and groups,
@@ -2435,12 +2535,15 @@ class PermissionsResource {
   ///
   /// [transferOwnership] - Whether to transfer ownership to the specified user
   /// and downgrade the current owner to a writer. This parameter is required as
-  /// an acknowledgement of the side effect.
+  /// an acknowledgement of the side effect. For more information, see
+  /// [Transfer file ownership](https://developers.google.com/workspace/drive/api/guides/transfer-file).
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if the file ID
-  /// parameter refers to a shared drive and the requester is an administrator
-  /// of the domain to which the shared drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to `true`, and if the following additional conditions are met, the
+  /// requester is granted access: 1. The file ID parameter refers to a shared
+  /// drive. 2. The requester is an administrator of the domain to which the
+  /// shared drive belongs. For more information, see
+  /// [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2503,7 +2606,9 @@ class PermissionsResource {
 
   /// Deletes a permission.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// For more information, see
+  /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+  /// **Warning:** Concurrent permissions operations on the same file aren't
   /// supported; only the last update is applied.
   ///
   /// Request parameters:
@@ -2520,10 +2625,12 @@ class PermissionsResource {
   ///
   /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if the file ID
-  /// parameter refers to a shared drive and the requester is an administrator
-  /// of the domain to which the shared drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to `true`, and if the following additional conditions are met, the
+  /// requester is granted access: 1. The file ID parameter refers to a shared
+  /// drive. 2. The requester is an administrator of the domain to which the
+  /// shared drive belongs. For more information, see
+  /// [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2570,6 +2677,9 @@ class PermissionsResource {
 
   /// Gets a permission by ID.
   ///
+  /// For more information, see
+  /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -2581,10 +2691,12 @@ class PermissionsResource {
   ///
   /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if the file ID
-  /// parameter refers to a shared drive and the requester is an administrator
-  /// of the domain to which the shared drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to `true`, and if the following additional conditions are met, the
+  /// requester is granted access: 1. The file ID parameter refers to a shared
+  /// drive. 2. The requester is an administrator of the domain to which the
+  /// shared drive belongs. For more information, see
+  /// [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2632,12 +2744,15 @@ class PermissionsResource {
 
   /// Lists a file's or shared drive's permissions.
   ///
+  /// For more information, see
+  /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file or shared drive.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [pageSize] - The maximum number of permissions to return per page. When
   /// not set for files in a shared drive, at most 100 results will be returned.
@@ -2646,7 +2761,7 @@ class PermissionsResource {
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -2654,10 +2769,12 @@ class PermissionsResource {
   ///
   /// [supportsTeamDrives] - Deprecated: Use `supportsAllDrives` instead.
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if the file ID
-  /// parameter refers to a shared drive and the requester is an administrator
-  /// of the domain to which the shared drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to `true`, and if the following additional conditions are met, the
+  /// requester is granted access: 1. The file ID parameter refers to a shared
+  /// drive. 2. The requester is an administrator of the domain to which the
+  /// shared drive belongs. For more information, see
+  /// [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2707,7 +2824,9 @@ class PermissionsResource {
 
   /// Updates a permission with patch semantics.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
+  /// For more information, see
+  /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+  /// **Warning:** Concurrent permissions operations on the same file aren't
   /// supported; only the last update is applied.
   ///
   /// [request] - The metadata request object.
@@ -2730,12 +2849,15 @@ class PermissionsResource {
   ///
   /// [transferOwnership] - Whether to transfer ownership to the specified user
   /// and downgrade the current owner to a writer. This parameter is required as
-  /// an acknowledgement of the side effect.
+  /// an acknowledgement of the side effect. For more information, see
+  /// [Transfer file ownership](https://developers.google.com//workspace/drive/api/guides/transfer-file).
   ///
-  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if the file ID
-  /// parameter refers to a shared drive and the requester is an administrator
-  /// of the domain to which the shared drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator. If
+  /// set to `true`, and if the following additional conditions are met, the
+  /// requester is granted access: 1. The file ID parameter refers to a shared
+  /// drive. 2. The requester is an administrator of the domain to which the
+  /// shared drive belongs. For more information, see
+  /// [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2800,6 +2922,9 @@ class RepliesResource {
 
   /// Creates a reply to a comment.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2847,6 +2972,9 @@ class RepliesResource {
 
   /// Deletes a reply.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -2891,6 +3019,9 @@ class RepliesResource {
 
   /// Gets a reply by ID.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -2899,8 +3030,8 @@ class RepliesResource {
   ///
   /// [replyId] - The ID of the reply.
   ///
-  /// [includeDeleted] - Whether to return deleted replies. Deleted replies will
-  /// not include their original content.
+  /// [includeDeleted] - Whether to return deleted replies. Deleted replies
+  /// don't include their original content.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2942,6 +3073,9 @@ class RepliesResource {
 
   /// Lists a comment's replies.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -2949,13 +3083,13 @@ class RepliesResource {
   /// [commentId] - The ID of the comment.
   ///
   /// [includeDeleted] - Whether to include deleted replies. Deleted replies
-  /// will not include their original content.
+  /// don't include their original content.
   ///
   /// [pageSize] - The maximum number of replies to return per page.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2999,6 +3133,9 @@ class RepliesResource {
   }
 
   /// Updates a reply with patch semantics.
+  ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3171,6 +3308,13 @@ class RevisionsResource {
   ///
   /// For more information, see
   /// [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+  /// **Important:** The list of revisions returned by this method might be
+  /// incomplete for files with a large revision history, including frequently
+  /// edited Google Docs, Sheets, and Slides. Older revisions might be omitted
+  /// from the response, meaning the first revision returned may not be the
+  /// oldest existing revision. The revision history visible in the Workspace
+  /// editor user interface might be more complete than the list returned by the
+  /// API.
   ///
   /// Request parameters:
   ///
@@ -4131,6 +4275,151 @@ class AppList {
   };
 }
 
+/// Metadata for an approval.
+///
+/// An approval is a review/approve process for a Drive item.
+class Approval {
+  /// The Approval ID.
+  core.String? approvalId;
+
+  /// The time time the approval was completed.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// The time the approval was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time that the approval is due.
+  core.String? dueTime;
+
+  /// The user that requested the Approval.
+  User? initiator;
+
+  /// This is always drive#approval.
+  core.String? kind;
+
+  /// The most recent time the approval was modified.
+  ///
+  /// Output only.
+  core.String? modifyTime;
+
+  /// The responses made on the Approval by reviewers.
+  core.List<ReviewerResponse>? reviewerResponses;
+
+  /// The status of the approval at the time this resource was requested.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Approval status has not been set or was set to an
+  /// invalid value.
+  /// - "IN_PROGRESS" : The approval process has started and not finished.
+  /// - "APPROVED" : The approval process is finished and the target was
+  /// approved.
+  /// - "CANCELLED" : The approval process was cancelled before it finished.
+  /// - "DECLINED" : The approval process is finished and the target was
+  /// declined.
+  core.String? status;
+
+  /// Target file id of the approval.
+  core.String? targetFileId;
+
+  Approval({
+    this.approvalId,
+    this.completeTime,
+    this.createTime,
+    this.dueTime,
+    this.initiator,
+    this.kind,
+    this.modifyTime,
+    this.reviewerResponses,
+    this.status,
+    this.targetFileId,
+  });
+
+  Approval.fromJson(core.Map json_)
+    : this(
+        approvalId: json_['approvalId'] as core.String?,
+        completeTime: json_['completeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        dueTime: json_['dueTime'] as core.String?,
+        initiator:
+            json_.containsKey('initiator')
+                ? User.fromJson(
+                  json_['initiator'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        modifyTime: json_['modifyTime'] as core.String?,
+        reviewerResponses:
+            (json_['reviewerResponses'] as core.List?)
+                ?.map(
+                  (value) => ReviewerResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        status: json_['status'] as core.String?,
+        targetFileId: json_['targetFileId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (approvalId != null) 'approvalId': approvalId!,
+    if (completeTime != null) 'completeTime': completeTime!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dueTime != null) 'dueTime': dueTime!,
+    if (initiator != null) 'initiator': initiator!,
+    if (kind != null) 'kind': kind!,
+    if (modifyTime != null) 'modifyTime': modifyTime!,
+    if (reviewerResponses != null) 'reviewerResponses': reviewerResponses!,
+    if (status != null) 'status': status!,
+    if (targetFileId != null) 'targetFileId': targetFileId!,
+  };
+}
+
+/// The response of an Approvals list request.
+class ApprovalList {
+  /// The list of Approvals.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
+  core.List<Approval>? items;
+
+  /// This is always drive#approvalList
+  core.String? kind;
+
+  /// The page token for the next page of Approvals.
+  ///
+  /// This will be absent if the end of the Approvals list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
+  core.String? nextPageToken;
+
+  ApprovalList({this.items, this.kind, this.nextPageToken});
+
+  ApprovalList.fromJson(core.Map json_)
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Approval.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// A change to a file or shared drive.
 class Change {
   /// The type of the change.
@@ -4345,6 +4634,13 @@ class Comment {
   /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).
   core.String? anchor;
 
+  /// The email address of the user assigned to this comment.
+  ///
+  /// If no user is assigned, the field is unset.
+  ///
+  /// Output only.
+  core.String? assigneeEmailAddress;
+
   /// The author of the comment.
   ///
   /// The author's email address and permission ID will not be populated.
@@ -4385,6 +4681,13 @@ class Comment {
   /// Output only.
   core.String? kind;
 
+  /// A list of email addresses for users mentioned in this comment.
+  ///
+  /// If no users are mentioned, the list is empty.
+  ///
+  /// Output only.
+  core.List<core.String>? mentionedEmailAddresses;
+
   /// The last time the comment or any of its replies was modified (RFC 3339
   /// date-time).
   core.DateTime? modifiedTime;
@@ -4408,6 +4711,7 @@ class Comment {
 
   Comment({
     this.anchor,
+    this.assigneeEmailAddress,
     this.author,
     this.content,
     this.createdTime,
@@ -4415,6 +4719,7 @@ class Comment {
     this.htmlContent,
     this.id,
     this.kind,
+    this.mentionedEmailAddresses,
     this.modifiedTime,
     this.quotedFileContent,
     this.replies,
@@ -4424,6 +4729,7 @@ class Comment {
   Comment.fromJson(core.Map json_)
     : this(
         anchor: json_['anchor'] as core.String?,
+        assigneeEmailAddress: json_['assigneeEmailAddress'] as core.String?,
         author:
             json_.containsKey('author')
                 ? User.fromJson(
@@ -4439,6 +4745,10 @@ class Comment {
         htmlContent: json_['htmlContent'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
+        mentionedEmailAddresses:
+            (json_['mentionedEmailAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         modifiedTime:
             json_.containsKey('modifiedTime')
                 ? core.DateTime.parse(json_['modifiedTime'] as core.String)
@@ -4463,6 +4773,8 @@ class Comment {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (anchor != null) 'anchor': anchor!,
+    if (assigneeEmailAddress != null)
+      'assigneeEmailAddress': assigneeEmailAddress!,
     if (author != null) 'author': author!,
     if (content != null) 'content': content!,
     if (createdTime != null)
@@ -4471,6 +4783,8 @@ class Comment {
     if (htmlContent != null) 'htmlContent': htmlContent!,
     if (id != null) 'id': id!,
     if (kind != null) 'kind': kind!,
+    if (mentionedEmailAddresses != null)
+      'mentionedEmailAddresses': mentionedEmailAddresses!,
     if (modifiedTime != null)
       'modifiedTime': modifiedTime!.toUtc().toIso8601String(),
     if (quotedFileContent != null) 'quotedFileContent': quotedFileContent!,
@@ -7492,17 +7806,16 @@ class PermissionPermissionDetails {
 
   /// The permission type for this user.
   ///
-  /// While new values may be added in future, the following are currently
-  /// possible: * `file` * `member`
+  /// Supported values include: * `file` * `member`
   ///
   /// Output only.
   core.String? permissionType;
 
   /// The primary role for this user.
   ///
-  /// While new values may be added in the future, the following are currently
-  /// possible: * `owner` * `organizer` * `fileOrganizer` * `writer` *
-  /// `commenter` * `reader`
+  /// Supported values include: * `owner` * `organizer` * `fileOrganizer` *
+  /// `writer` * `commenter` * `reader` For more information, see
+  /// [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
   ///
   /// Output only.
   core.String? role;
@@ -7591,10 +7904,12 @@ class PermissionTeamDrivePermissionDetails {
 /// A permission for a file.
 ///
 /// A permission grants a user, group, domain, or the world access to a file or
-/// a folder hierarchy. By default, permissions requests only return a subset of
-/// fields. Permission kind, ID, type, and role are always returned. To retrieve
-/// specific fields, see
-/// https://developers.google.com/workspace/drive/api/guides/fields-parameter.
+/// a folder hierarchy. For more information, see
+/// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+/// By default, permission requests only return a subset of fields. Permission
+/// `kind`, `ID`, `type`, and `role` are always returned. To retrieve specific
+/// fields, see
+/// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
 /// Some resource methods (such as `permissions.update`) require a
 /// `permissionId`. Use the `permissions.list` method to retrieve the ID for a
 /// file, folder, or shared drive.
@@ -7606,7 +7921,7 @@ class Permission {
 
   /// Whether the account associated with this permission has been deleted.
   ///
-  /// This field only pertains to user and group permissions.
+  /// This field only pertains to permissions of type `user` or `group`.
   ///
   /// Output only.
   core.bool? deleted;
@@ -7614,10 +7929,10 @@ class Permission {
   /// The "pretty" name of the value of the permission.
   ///
   /// The following is a list of examples for each type of permission: * `user`
-  /// - User's full name, as defined for their Google account, such as "Joe
-  /// Smith." * `group` - Name of the Google Group, such as "The Company
+  /// - User's full name, as defined for their Google Account, such as "Dana A."
+  /// * `group` - Name of the Google Group, such as "The Company
   /// Administrators." * `domain` - String domain name, such as
-  /// "thecompany.com." * `anyone` - No `displayName` is present.
+  /// "cymbalgroup.com." * `anyone` - No `displayName` is present.
   ///
   /// Output only.
   core.String? displayName;
@@ -7637,13 +7952,14 @@ class Permission {
 
   /// The ID of this permission.
   ///
-  /// This is a unique identifier for the grantee, and is published in User
-  /// resources as `permissionId`. IDs should be treated as opaque values.
+  /// This is a unique identifier for the grantee, and is published in the
+  /// [User resource](https://developers.google.com/workspace/drive/api/reference/rest/v3/User)
+  /// as `permissionId`. IDs should be treated as opaque values.
   ///
   /// Output only.
   core.String? id;
 
-  /// When true, only organizers, owners, and users with permissions added
+  /// When `true`, only organizers, owners, and users with permissions added
   /// directly on the item can access it.
   core.bool? inheritedPermissionsDisabled;
 
@@ -7656,12 +7972,12 @@ class Permission {
 
   /// Whether the account associated with this permission is a pending owner.
   ///
-  /// Only populated for `user` type permissions for files that are not in a
+  /// Only populated for permissions of type `user` for files that aren't in a
   /// shared drive.
   core.bool? pendingOwner;
 
-  /// Details of whether the permissions on this item are inherited or directly
-  /// on this item.
+  /// Details of whether the permissions on this item are inherited or are
+  /// directly on this item.
   ///
   /// Output only.
   core.List<PermissionPermissionDetails>? permissionDetails;
@@ -7673,9 +7989,9 @@ class Permission {
 
   /// The role granted by this permission.
   ///
-  /// While new values may be supported in the future, the following are
-  /// currently allowed: * `owner` * `organizer` * `fileOrganizer` * `writer` *
-  /// `commenter` * `reader`
+  /// Supported values include: * `owner` * `organizer` * `fileOrganizer` *
+  /// `writer` * `commenter` * `reader` For more information, see
+  /// [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
   core.String? role;
 
   /// Deprecated: Output only.
@@ -7690,21 +8006,22 @@ class Permission {
 
   /// The type of the grantee.
   ///
-  /// Valid values are: * `user` * `group` * `domain` * `anyone` When creating a
-  /// permission, if `type` is `user` or `group`, you must provide an
-  /// `emailAddress` for the user or group. When `type` is `domain`, you must
-  /// provide a `domain`. There isn't extra information required for an `anyone`
-  /// type.
+  /// Supported values include: * `user` * `group` * `domain` * `anyone` When
+  /// creating a permission, if `type` is `user` or `group`, you must provide an
+  /// `emailAddress` for the user or group. If `type` is `domain`, you must
+  /// provide a `domain`. If `type` is `anyone`, no extra information is
+  /// required.
   core.String? type;
 
   /// Indicates the view for this permission.
   ///
-  /// Only populated for permissions that belong to a view. published and
-  /// metadata are the only supported values. - published: The permission's role
-  /// is published_reader. - metadata: The item is only visible to the metadata
-  /// view because the item has limited access and the scope has at least read
-  /// access to the parent. Note: The metadata view is currently only supported
-  /// on folders.
+  /// Only populated for permissions that belong to a view. The only supported
+  /// values are `published` and `metadata`: * `published`: The permission's
+  /// role is `publishedReader`. * `metadata`: The item is only visible to the
+  /// `metadata` view because the item has limited access and the scope has at
+  /// least read access to the parent. The `metadata` view is only supported on
+  /// folders. For more information, see
+  /// [Views](https://developers.google.com/workspace/drive/api/guides/ref-roles#views).
   core.String? view;
 
   Permission({
@@ -7805,7 +8122,7 @@ class PermissionList {
 
   /// The list of permissions.
   ///
-  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// If `nextPageToken` is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
   core.List<Permission>? permissions;
 
@@ -7839,12 +8156,19 @@ class PermissionList {
 class Reply {
   /// The action the reply performed to the parent comment.
   ///
-  /// Valid values are: * `resolve` * `reopen`
+  /// The supported values are: * `resolve` * `reopen`
   core.String? action;
+
+  /// The email address of the user assigned to this comment.
+  ///
+  /// If no user is assigned, the field is unset.
+  ///
+  /// Output only.
+  core.String? assigneeEmailAddress;
 
   /// The author of the reply.
   ///
-  /// The author's email address and permission ID will not be populated.
+  /// The author's email address and permission ID won't be populated.
   ///
   /// Output only.
   User? author;
@@ -7852,7 +8176,8 @@ class Reply {
   /// The plain text content of the reply.
   ///
   /// This field is used for setting the content, while `htmlContent` should be
-  /// displayed. This is required on creates if no `action` is specified.
+  /// displayed. This field is required by the `create` method if no `action`
+  /// value is specified.
   core.String? content;
 
   /// The time at which the reply was created (RFC 3339 date-time).
@@ -7882,11 +8207,19 @@ class Reply {
   /// Output only.
   core.String? kind;
 
+  /// A list of email addresses for users mentioned in this comment.
+  ///
+  /// If no users are mentioned, the list is empty.
+  ///
+  /// Output only.
+  core.List<core.String>? mentionedEmailAddresses;
+
   /// The last time the reply was modified (RFC 3339 date-time).
   core.DateTime? modifiedTime;
 
   Reply({
     this.action,
+    this.assigneeEmailAddress,
     this.author,
     this.content,
     this.createdTime,
@@ -7894,12 +8227,14 @@ class Reply {
     this.htmlContent,
     this.id,
     this.kind,
+    this.mentionedEmailAddresses,
     this.modifiedTime,
   });
 
   Reply.fromJson(core.Map json_)
     : this(
         action: json_['action'] as core.String?,
+        assigneeEmailAddress: json_['assigneeEmailAddress'] as core.String?,
         author:
             json_.containsKey('author')
                 ? User.fromJson(
@@ -7915,6 +8250,10 @@ class Reply {
         htmlContent: json_['htmlContent'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
+        mentionedEmailAddresses:
+            (json_['mentionedEmailAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         modifiedTime:
             json_.containsKey('modifiedTime')
                 ? core.DateTime.parse(json_['modifiedTime'] as core.String)
@@ -7923,6 +8262,8 @@ class Reply {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (action != null) 'action': action!,
+    if (assigneeEmailAddress != null)
+      'assigneeEmailAddress': assigneeEmailAddress!,
     if (author != null) 'author': author!,
     if (content != null) 'content': content!,
     if (createdTime != null)
@@ -7931,6 +8272,8 @@ class Reply {
     if (htmlContent != null) 'htmlContent': htmlContent!,
     if (id != null) 'id': id!,
     if (kind != null) 'kind': kind!,
+    if (mentionedEmailAddresses != null)
+      'mentionedEmailAddresses': mentionedEmailAddresses!,
     if (modifiedTime != null)
       'modifiedTime': modifiedTime!.toUtc().toIso8601String(),
   };
@@ -7954,7 +8297,7 @@ class ReplyList {
 
   /// The list of replies.
   ///
-  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// If `nextPageToken` is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
   core.List<Reply>? replies;
 
@@ -8039,6 +8382,43 @@ class ResolveAccessProposalRequest {
     if (role != null) 'role': role!,
     if (sendNotification != null) 'sendNotification': sendNotification!,
     if (view != null) 'view': view!,
+  };
+}
+
+/// A response on an Approval made by a specific Reviewer.
+class ReviewerResponse {
+  /// This is always drive#reviewerResponse.
+  core.String? kind;
+
+  /// A Reviewer’s Response for the Approval.
+  /// Possible string values are:
+  /// - "RESPONSE_UNSPECIFIED" : Response was set to an unrecognized value.
+  /// - "NO_RESPONSE" : The reviewer has not yet responded
+  /// - "APPROVED" : The Reviewer has approved the item.
+  /// - "DECLINED" : The Reviewer has declined the item.
+  core.String? response;
+
+  /// The user that is responsible for this response.
+  User? reviewer;
+
+  ReviewerResponse({this.kind, this.response, this.reviewer});
+
+  ReviewerResponse.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        response: json_['response'] as core.String?,
+        reviewer:
+            json_.containsKey('reviewer')
+                ? User.fromJson(
+                  json_['reviewer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (response != null) 'response': response!,
+    if (reviewer != null) 'reviewer': reviewer!,
   };
 }
 

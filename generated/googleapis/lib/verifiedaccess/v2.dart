@@ -774,6 +774,8 @@ class VerifyChallengeResponseResult {
   /// - "CHROME_BROWSER_OS_KEY" : Chrome Browser with the key stored at OS
   /// level.
   /// - "CHROME_BROWSER_NO_KEY" : Chrome Browser without an attestation key.
+  /// - "CHROME_OS_NO_KEY" : ChromeOS device without a signing key (e.g., Flex
+  /// without TPM). Applies to both device and user contexts on ChromeOS.
   core.String? keyTrustLevel;
 
   /// Unique customer id that this profile belongs to, as defined by the Google
@@ -795,6 +797,8 @@ class VerifyChallengeResponseResult {
   /// - "CHROME_BROWSER_OS_KEY" : Chrome Browser with the key stored at OS
   /// level.
   /// - "CHROME_BROWSER_NO_KEY" : Chrome Browser without an attestation key.
+  /// - "CHROME_OS_NO_KEY" : ChromeOS device without a signing key (e.g., Flex
+  /// without TPM). Applies to both device and user contexts on ChromeOS.
   core.String? profileKeyTrustLevel;
 
   /// The unique server-side ID of a profile on the device.

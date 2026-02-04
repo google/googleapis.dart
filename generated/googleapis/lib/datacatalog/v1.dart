@@ -2222,6 +2222,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2237,12 +2245,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5036,6 +5047,9 @@ class GoogleCloudDatacatalogV1Entry {
   /// Valid only for entries with the `FILESET` type.
   GoogleCloudDatacatalogV1GcsFilesetSpec? gcsFilesetSpec;
 
+  /// Spec for graph.
+  GoogleCloudDatacatalogV1GraphSpec? graphSpec;
+
   /// Indicates the entry's source system that Data Catalog integrates with,
   /// such as BigQuery, Pub/Sub, or Dataproc Metastore.
   ///
@@ -5118,6 +5132,9 @@ class GoogleCloudDatacatalogV1Entry {
   /// defaults to an empty timestamp.
   GoogleCloudDatacatalogV1SystemTimestamps? sourceSystemTimestamps;
 
+  /// Specification of a Spanner table.
+  GoogleCloudDatacatalogV1SpannerTableSpec? spannerTableSpec;
+
   /// Specification that applies to a relational database system.
   ///
   /// Only settable when `user_specified_system` is equal to `SQL_DATABASE`
@@ -5156,6 +5173,7 @@ class GoogleCloudDatacatalogV1Entry {
   /// Feature Store.
   /// - "FEATURE_VIEW" : Feature View resource in Vertex AI Feature Store.
   /// - "FEATURE_GROUP" : Feature Group resource in Vertex AI Feature Store.
+  /// - "GRAPH" : An entry type for a graph.
   core.String? type;
 
   /// Resource usage statistics.
@@ -5196,6 +5214,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.filesetSpec,
     this.fullyQualifiedName,
     this.gcsFilesetSpec,
+    this.graphSpec,
     this.integratedSystem,
     this.labels,
     this.linkedResource,
@@ -5207,6 +5226,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.schema,
     this.serviceSpec,
     this.sourceSystemTimestamps,
+    this.spannerTableSpec,
     this.sqlDatabaseSystemSpec,
     this.type,
     this.usageSignal,
@@ -5293,6 +5313,12 @@ class GoogleCloudDatacatalogV1Entry {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        graphSpec:
+            json_.containsKey('graphSpec')
+                ? GoogleCloudDatacatalogV1GraphSpec.fromJson(
+                  json_['graphSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         integratedSystem: json_['integratedSystem'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -5344,6 +5370,13 @@ class GoogleCloudDatacatalogV1Entry {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        spannerTableSpec:
+            json_.containsKey('spannerTableSpec')
+                ? GoogleCloudDatacatalogV1SpannerTableSpec.fromJson(
+                  json_['spannerTableSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlDatabaseSystemSpec:
             json_.containsKey('sqlDatabaseSystemSpec')
                 ? GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromJson(
@@ -5381,6 +5414,7 @@ class GoogleCloudDatacatalogV1Entry {
     if (filesetSpec != null) 'filesetSpec': filesetSpec!,
     if (fullyQualifiedName != null) 'fullyQualifiedName': fullyQualifiedName!,
     if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!,
+    if (graphSpec != null) 'graphSpec': graphSpec!,
     if (integratedSystem != null) 'integratedSystem': integratedSystem!,
     if (labels != null) 'labels': labels!,
     if (linkedResource != null) 'linkedResource': linkedResource!,
@@ -5393,6 +5427,7 @@ class GoogleCloudDatacatalogV1Entry {
     if (serviceSpec != null) 'serviceSpec': serviceSpec!,
     if (sourceSystemTimestamps != null)
       'sourceSystemTimestamps': sourceSystemTimestamps!,
+    if (spannerTableSpec != null) 'spannerTableSpec': spannerTableSpec!,
     if (sqlDatabaseSystemSpec != null)
       'sqlDatabaseSystemSpec': sqlDatabaseSystemSpec!,
     if (type != null) 'type': type!,
@@ -5754,6 +5789,321 @@ class GoogleCloudDatacatalogV1GcsFilesetSpec {
   core.Map<core.String, core.dynamic> toJson() => {
     if (filePatterns != null) 'filePatterns': filePatterns!,
     if (sampleGcsFileSpecs != null) 'sampleGcsFileSpecs': sampleGcsFileSpecs!,
+  };
+}
+
+/// Specification that applies to a graph.
+class GoogleCloudDatacatalogV1GraphSpec {
+  /// Edge tables of the graph.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>? edgeTables;
+
+  /// Fully qualified graph name.
+  ///
+  /// e.g. `named_catalog.MyGraph`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Node tables of the graph.
+  ///
+  /// Required.
+  core.List<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>? nodeTables;
+
+  GoogleCloudDatacatalogV1GraphSpec({
+    this.edgeTables,
+    this.name,
+    this.nodeTables,
+  });
+
+  GoogleCloudDatacatalogV1GraphSpec.fromJson(core.Map json_)
+    : this(
+        edgeTables:
+            (json_['edgeTables'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        nodeTables:
+            (json_['nodeTables'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (edgeTables != null) 'edgeTables': edgeTables!,
+    if (name != null) 'name': name!,
+    if (nodeTables != null) 'nodeTables': nodeTables!,
+  };
+}
+
+/// Element table definition.
+class GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
+  /// The alias name of the graph element.
+  ///
+  /// Required.
+  core.String? alias;
+
+  /// The name of the data source.
+  ///
+  /// This is either a table name or a view name that is used for graph element
+  /// input source. E.g. `Person` table or `PersonView` view.
+  ///
+  /// Required.
+  core.String? dataSource;
+
+  /// The destination node reference of the edge.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference?
+  destinationNodeReference;
+
+  /// If set, this is the input column for dynamic label in schemaless data
+  /// model.
+  ///
+  /// Optional.
+  core.String? dynamicLabelColumn;
+
+  /// If set, this is the input column for dynamic properties in schemaless data
+  /// model.
+  ///
+  /// Optional.
+  core.String? dynamicPropertiesColumn;
+
+  /// The name of the keys of the elements in the table.
+  ///
+  /// Required.
+  core.List<core.String>? elementKeys;
+
+  /// The input source of the graph element.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INPUT_SOURCE_UNSPECIFIED" : Default unknown input source.
+  /// - "TABLE" : Table input source.
+  /// - "VIEW" : View input source.
+  core.String? inputSource;
+
+  /// The kind of the graph element.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "KIND_UNSPECIFIED" : Default unknown kind.
+  /// - "NODE" : Node kind.
+  /// - "EDGE" : Edge kind.
+  core.String? kind;
+
+  /// The labels and their properties for the graph element.
+  ///
+  /// Required.
+  core.List<
+    GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+  >?
+  labelAndProperties;
+
+  /// The source node reference of the edge.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference?
+  sourceNodeReference;
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTable({
+    this.alias,
+    this.dataSource,
+    this.destinationNodeReference,
+    this.dynamicLabelColumn,
+    this.dynamicPropertiesColumn,
+    this.elementKeys,
+    this.inputSource,
+    this.kind,
+    this.labelAndProperties,
+    this.sourceNodeReference,
+  });
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(core.Map json_)
+    : this(
+        alias: json_['alias'] as core.String?,
+        dataSource: json_['dataSource'] as core.String?,
+        destinationNodeReference:
+            json_.containsKey('destinationNodeReference')
+                ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+                  json_['destinationNodeReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dynamicLabelColumn: json_['dynamicLabelColumn'] as core.String?,
+        dynamicPropertiesColumn:
+            json_['dynamicPropertiesColumn'] as core.String?,
+        elementKeys:
+            (json_['elementKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        inputSource: json_['inputSource'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        labelAndProperties:
+            (json_['labelAndProperties'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        sourceNodeReference:
+            json_.containsKey('sourceNodeReference')
+                ? GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+                  json_['sourceNodeReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (alias != null) 'alias': alias!,
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (destinationNodeReference != null)
+      'destinationNodeReference': destinationNodeReference!,
+    if (dynamicLabelColumn != null) 'dynamicLabelColumn': dynamicLabelColumn!,
+    if (dynamicPropertiesColumn != null)
+      'dynamicPropertiesColumn': dynamicPropertiesColumn!,
+    if (elementKeys != null) 'elementKeys': elementKeys!,
+    if (inputSource != null) 'inputSource': inputSource!,
+    if (kind != null) 'kind': kind!,
+    if (labelAndProperties != null) 'labelAndProperties': labelAndProperties!,
+    if (sourceNodeReference != null)
+      'sourceNodeReference': sourceNodeReference!,
+  };
+}
+
+/// A reference to a source or destination node in a graph edge.
+class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference {
+  /// The referencing columns in the edge table.
+  ///
+  /// The size of `edge_table_columns` must be equal to the size of
+  /// `node_table_columns`.
+  ///
+  /// Required.
+  core.List<core.String>? edgeTableColumns;
+
+  /// The reference to the source/destination node of the edge.
+  ///
+  /// This name must be a valid `alias` of a node element in the same graph.
+  /// Example, `Person` node can be a source node name of an edge element
+  /// `Person_to_Address`.
+  ///
+  /// Required.
+  core.String? nodeAlias;
+
+  /// The referenced columns of the source node table.
+  ///
+  /// Required.
+  core.List<core.String>? nodeTableColumns;
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference({
+    this.edgeTableColumns,
+    this.nodeAlias,
+    this.nodeTableColumns,
+  });
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+    core.Map json_,
+  ) : this(
+        edgeTableColumns:
+            (json_['edgeTableColumns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        nodeAlias: json_['nodeAlias'] as core.String?,
+        nodeTableColumns:
+            (json_['nodeTableColumns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (edgeTableColumns != null) 'edgeTableColumns': edgeTableColumns!,
+    if (nodeAlias != null) 'nodeAlias': nodeAlias!,
+    if (nodeTableColumns != null) 'nodeTableColumns': nodeTableColumns!,
+  };
+}
+
+/// The label and its properties.
+///
+/// Each label is associated with a set of properties.
+class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties {
+  /// The name of the label.
+  ///
+  /// Required.
+  core.String? label;
+
+  /// The properties associated with the label.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>?
+  properties;
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties({
+    this.label,
+    this.properties,
+  });
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
+    core.Map json_,
+  ) : this(
+        label: json_['label'] as core.String?,
+        properties:
+            (json_['properties'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (label != null) 'label': label!,
+    if (properties != null) 'properties': properties!,
+  };
+}
+
+/// A property declaration.
+class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty {
+  /// Property name.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Property data type.
+  ///
+  /// Required.
+  core.String? type;
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty({
+    this.name,
+    this.type,
+  });
+
+  GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
+    core.Map json_,
+  ) : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
   };
 }
 
@@ -7310,6 +7660,151 @@ class GoogleCloudDatacatalogV1SetConfigRequest {
   };
 }
 
+/// Specification of a Spanner table.
+class GoogleCloudDatacatalogV1SpannerTableSpec {
+  /// The foreign keys of the table.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>?
+  foreignKeys;
+
+  /// The primary key of the table.
+  ///
+  /// Output only.
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey? primaryKey;
+
+  GoogleCloudDatacatalogV1SpannerTableSpec({this.foreignKeys, this.primaryKey});
+
+  GoogleCloudDatacatalogV1SpannerTableSpec.fromJson(core.Map json_)
+    : this(
+        foreignKeys:
+            (json_['foreignKeys'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        primaryKey:
+            json_.containsKey('primaryKey')
+                ? GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
+                  json_['primaryKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (foreignKeys != null) 'foreignKeys': foreignKeys!,
+    if (primaryKey != null) 'primaryKey': primaryKey!,
+  };
+}
+
+/// Specification of a Spanner foreign key.
+class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
+  /// The ordered list of column mappings for this foreign key.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+  >?
+  columnMappings;
+
+  /// The table name this foreign key referenced to.
+  ///
+  /// Format:
+  /// `projects/{PROJECT_ID}/locations/{LOCATION}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`
+  ///
+  /// Output only.
+  core.String? entry;
+
+  /// The constraint_name of the foreign key, for example, FK_CustomerOrder.
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey({
+    this.columnMappings,
+    this.entry,
+    this.name,
+  });
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
+    core.Map json_,
+  ) : this(
+        columnMappings:
+            (json_['columnMappings'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        entry: json_['entry'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columnMappings != null) 'columnMappings': columnMappings!,
+    if (entry != null) 'entry': entry!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Column mapping for a Spanner foreign key.
+class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping {
+  /// The column in the current table that is part of the foreign key.
+  ///
+  /// Output only.
+  core.String? column;
+
+  /// The column in the referenced table that is part of the foreign key.
+  ///
+  /// Output only.
+  core.String? referenceColumn;
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping({
+    this.column,
+    this.referenceColumn,
+  });
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
+    core.Map json_,
+  ) : this(
+        column: json_['column'] as core.String?,
+        referenceColumn: json_['referenceColumn'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (column != null) 'column': column!,
+    if (referenceColumn != null) 'referenceColumn': referenceColumn!,
+  };
+}
+
+/// Specification of a Spanner primary key.
+class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
+  /// Column names of the primary key.
+  ///
+  /// Output only.
+  core.List<core.String>? columns;
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey({this.columns});
+
+  GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
+    core.Map json_,
+  ) : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columns != null) 'columns': columns!,
+  };
+}
+
 /// Specification that applies to entries that are part `SQL_DATABASE` system
 /// (user_specified_type)
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
@@ -8207,7 +8702,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -8220,11 +8727,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

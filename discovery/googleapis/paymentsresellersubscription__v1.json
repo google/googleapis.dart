@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250814",
+    "revision": "20260202",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "servicePath": "",
     "title": "Payments Reseller Subscription API",
@@ -114,7 +114,7 @@
                 "products": {
                     "methods": {
                         "list": {
-                            "description": "Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the partner. It should be autenticated with a service account.",
+                            "description": "Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the partner. It should be authenticated with a service account.",
                             "flatPath": "v1/partners/{partnersId}/products",
                             "httpMethod": "GET",
                             "id": "paymentsresellersubscription.partners.products.list",
@@ -159,7 +159,7 @@
                 "promotions": {
                     "methods": {
                         "findEligible": {
-                            "description": "Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.",
+                            "description": "Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.",
                             "flatPath": "v1/partners/{partnersId}/promotions:findEligible",
                             "httpMethod": "POST",
                             "id": "paymentsresellersubscription.partners.promotions.findEligible",
@@ -187,7 +187,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be autenticated with a service account.",
+                            "description": "Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account.",
                             "flatPath": "v1/partners/{partnersId}/promotions",
                             "httpMethod": "GET",
                             "id": "paymentsresellersubscription.partners.promotions.list",
@@ -201,7 +201,7 @@
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                    "description": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
@@ -276,7 +276,7 @@
                                     "type": "string"
                                 },
                                 "subscriptionId": {
-                                    "description": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.",
+                                    "description": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -382,6 +382,29 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "cycleOptions.initialCycleDuration.count": {
+                                    "description": "number of duration units to be included.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "cycleOptions.initialCycleDuration.unit": {
+                                    "description": "The unit used for the duration",
+                                    "enum": [
+                                        "UNIT_UNSPECIFIED",
+                                        "MONTH",
+                                        "DAY",
+                                        "HOUR"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Default value, reserved as an invalid or an unexpected value.",
+                                        "Unit of a calendar month.",
+                                        "Unit of a day.",
+                                        "Unit of an hour. It is used for testing."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Required. The parent resource name, which is the identifier of the partner. It will have the format of \"partners/{partner_id}\".",
                                     "location": "path",
@@ -390,7 +413,7 @@
                                     "type": "string"
                                 },
                                 "subscriptionId": {
-                                    "description": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.",
+                                    "description": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -490,6 +513,46 @@
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         }
+                    },
+                    "resources": {
+                        "lineItems": {
+                            "methods": {
+                                "patch": {
+                                    "description": "Updates a line item of a subscription. It should be authenticated with a service account.",
+                                    "flatPath": "v1/partners/{partnersId}/subscriptions/{subscriptionsId}/lineItems/{lineItemsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "paymentsresellersubscription.partners.subscriptions.lineItems.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}",
+                                            "location": "path",
+                                            "pattern": "^partners/[^/]+/subscriptions/[^/]+/lineItems/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. The list of fields to update. Only a limited set of fields can be updated. The allowed fields are the following: - `product_payload.googleHomePayload.googleStructureId`",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "SubscriptionLineItem"
+                                    },
+                                    "response": {
+                                        "$ref": "SubscriptionLineItem"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/sdm.service"
+                                    ]
+                                }
+                            }
+                        }
                     }
                 },
                 "userSessions": {
@@ -549,7 +612,7 @@
             "id": "CancelSubscriptionRequest",
             "properties": {
                 "cancelImmediately": {
-                    "description": "Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the cancelation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option currently. However, the user will still have access to the subscription until the end of the billing cycle.",
+                    "description": "Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the cancellation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option currently. However, the user will still have access to the subscription until the end of the billing cycle.",
                     "type": "boolean"
                 },
                 "cancellationReason": {
@@ -565,19 +628,21 @@
                         "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_SYSTEM_ERROR",
                         "CANCELLATION_REASON_SYSTEM_CANCEL",
+                        "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
                         "Reason is unspecified. Should not be used.",
-                        "Fraudualant transaction.",
+                        "Fraudulent transaction.",
                         "Buyer's remorse.",
-                        "Accidential purchase.",
+                        "Accidental purchase.",
                         "Payment is past due.",
                         "Used for notification only, do not use in Cancel API. User account closed.",
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
                         "Used for notification only, do not use in Cancel API. Cancellation due to an unrecoverable system error.",
                         "Used for notification only, do not use in Cancel API. The subscription is cancelled by Google automatically since it is no longer valid.",
+                        "Cancellation due to a billing system switch.",
                         "Other reason."
                     ],
                     "type": "string"
@@ -600,6 +665,10 @@
             "description": "Intent message for creating a Subscription resource.",
             "id": "CreateSubscriptionIntent",
             "properties": {
+                "cycleOptions": {
+                    "$ref": "CycleOptions",
+                    "description": "Optional. The cycle options for the subscription."
+                },
                 "parent": {
                     "description": "Required. The parent resource name, which is the identifier of the partner.",
                     "type": "string"
@@ -611,6 +680,17 @@
                 "subscriptionId": {
                     "description": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CycleOptions": {
+            "description": "The cycle options when starting and resuming a subscription.",
+            "id": "CycleOptions",
+            "properties": {
+                "initialCycleDuration": {
+                    "$ref": "Duration",
+                    "description": "Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the subscription with this initial cycle duration starting at the request time (see available methods below). A prorated charge will be applied. This option is available to the following methods: - partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate "
                 }
             },
             "type": "object"
@@ -760,12 +840,12 @@
                     "type": "string"
                 },
                 "pageSize": {
-                    "description": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                    "description": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "pageToken": {
-                    "description": "Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token.",
+                    "description": "Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the call that provided the page token.",
                     "type": "string"
                 }
             },
@@ -790,11 +870,11 @@
             "type": "object"
         },
         "FiniteBillingCycleDetails": {
-            "description": "Details for a subscriptiin line item with finite billing cycles.",
+            "description": "Details for a subscription line item with finite billing cycles.",
             "id": "FiniteBillingCycleDetails",
             "properties": {
                 "billingCycleCountLimit": {
-                    "description": "Required. The number of a subscription line item billing cycles after which billing will stop automatically.",
+                    "description": "The number of a subscription line item billing cycles after which billing will stop automatically.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -923,6 +1003,21 @@
                 "entitleIntent": {
                     "$ref": "EntitleSubscriptionIntent",
                     "description": "The request to entitle a subscription."
+                },
+                "intentOptions": {
+                    "$ref": "IntentPayloadIntentOptions",
+                    "description": "Optional. The additional features for the intent."
+                }
+            },
+            "type": "object"
+        },
+        "IntentPayloadIntentOptions": {
+            "description": "The options for the intent.",
+            "id": "IntentPayloadIntentOptions",
+            "properties": {
+                "enableOfferOverride": {
+                    "description": "Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent` based on the user's eligibility. Only applicable for certain YouTube free trial offers.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1019,7 +1114,7 @@
                     "type": "string"
                 },
                 "regionCodes": {
-                    "description": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1",
+                    "description": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1",
                     "items": {
                         "type": "string"
                     },
@@ -1163,7 +1258,7 @@
                     "type": "string"
                 },
                 "regionCodes": {
-                    "description": "Output only. 2-letter ISO region code where the promotion is available in. Ex. \"US\" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1",
+                    "description": "Output only. 2-letter ISO region code where the promotion is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1",
                     "items": {
                         "type": "string"
                     },
@@ -1233,7 +1328,26 @@
         "ResumeSubscriptionRequest": {
             "description": "Request to resume a suspended subscription.",
             "id": "ResumeSubscriptionRequest",
-            "properties": {},
+            "properties": {
+                "cycleOptions": {
+                    "$ref": "CycleOptions",
+                    "description": "Optional. The cycle options for the subscription."
+                },
+                "resumeMode": {
+                    "description": "Required. The mode to resume the subscription.",
+                    "enum": [
+                        "RESUME_MODE_UNSPECIFIED",
+                        "RESUME_MODE_CYCLE_OPTIONS",
+                        "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE"
+                    ],
+                    "enumDescriptions": [
+                        "Reserved for invalid or unexpected value. Do not use.",
+                        "Resume the subscription using the input from `cycle_options`.",
+                        "Resume the subscription with the existing billing schedule. The subscription's next renewal time must still be in the future for this mode to be applicable."
+                    ],
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "ResumeSubscriptionResponse": {
@@ -1321,12 +1435,14 @@
                     "enum": [
                         "PROCESSING_STATE_UNSPECIFIED",
                         "PROCESSING_STATE_CANCELLING",
-                        "PROCESSING_STATE_RECURRING"
+                        "PROCESSING_STATE_RECURRING",
+                        "PROCESSING_STATE_RESUMING"
                     ],
                     "enumDescriptions": [
                         "The processing state is unspecified.",
                         "The subscription is being cancelled.",
-                        "The subscription is recurring."
+                        "The subscription is recurring.",
+                        "The subscription is being resumed."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1425,19 +1541,21 @@
                         "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_SYSTEM_ERROR",
                         "CANCELLATION_REASON_SYSTEM_CANCEL",
+                        "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
                         "Reason is unspecified. Should not be used.",
-                        "Fraudualant transaction.",
+                        "Fraudulent transaction.",
                         "Buyer's remorse.",
-                        "Accidential purchase.",
+                        "Accidental purchase.",
                         "Payment is past due.",
                         "Used for notification only, do not use in Cancel API. User account closed.",
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
                         "Used for notification only, do not use in Cancel API. Cancellation due to an unrecoverable system error.",
                         "Used for notification only, do not use in Cancel API. The subscription is cancelled by Google automatically since it is no longer valid.",
+                        "Cancellation due to a billing system switch.",
                         "Other reason."
                     ],
                     "readOnly": true,
@@ -1488,13 +1606,17 @@
                     },
                     "type": "array"
                 },
+                "name": {
+                    "description": "Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}",
+                    "type": "string"
+                },
                 "oneTimeRecurrenceDetails": {
                     "$ref": "SubscriptionLineItemOneTimeRecurrenceDetails",
                     "description": "Output only. Details only set for a ONE_TIME recurrence line item.",
                     "readOnly": true
                 },
                 "product": {
-                    "description": "Required. Product resource name that identifies one the line item The format is 'partners/{partner_id}/products/{product_id}'.",
+                    "description": "Required. Product resource name that identifies the product associated with this line item. The format is 'partners/{partner_id}/products/{product_id}'.",
                     "type": "string"
                 },
                 "productPayload": {
@@ -1653,7 +1775,7 @@
                         "Billing cycle spec is not specified.",
                         "The billing cycle of the new subscription starts immediately but aligns with the previous subscription it upgrades or downgrades from. First cycle of the new subscription will be prorated.",
                         "The billing cycle of the new subscription starts immediately.",
-                        "The billing cycle starts at the end of the previous subscription's billing cycle and aligns with the previous subscription's billing cycle."
+                        "The new subscription will have the same `renewalTime` as the previous subscription, while the previous subscription is scheduled for cancellation at that same time."
                     ],
                     "type": "string"
                 },

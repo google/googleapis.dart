@@ -14,6 +14,8 @@
 
 /// App Hub API - v1
 ///
+/// App Hub lets you build, operate, and manage applications on Google Cloud.
+///
 /// For more information, see <https://cloud.google.com/app-hub/docs/>
 ///
 /// Create an instance of [AppHubApi] to access these resources:
@@ -25,6 +27,7 @@
 ///       - [ProjectsLocationsApplicationsWorkloadsResource]
 ///     - [ProjectsLocationsDiscoveredServicesResource]
 ///     - [ProjectsLocationsDiscoveredWorkloadsResource]
+///     - [ProjectsLocationsExtendedMetadataSchemasResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServiceProjectAttachmentsResource]
 library;
@@ -42,6 +45,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// App Hub lets you build, operate, and manage applications on Google Cloud.
 class AppHubApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -82,6 +86,9 @@ class ProjectsLocationsResource {
       ProjectsLocationsDiscoveredServicesResource(_requester);
   ProjectsLocationsDiscoveredWorkloadsResource get discoveredWorkloads =>
       ProjectsLocationsDiscoveredWorkloadsResource(_requester);
+  ProjectsLocationsExtendedMetadataSchemasResource
+  get extendedMetadataSchemas =>
+      ProjectsLocationsExtendedMetadataSchemasResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServiceProjectAttachmentsResource
@@ -171,6 +178,42 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a Boundary.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the boundary to retrieve. Format:
+  /// `projects/{project}/locations/{location}/boundary`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/boundary$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Boundary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Boundary> getBoundary(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Boundary.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -276,6 +319,69 @@ class ProjectsLocationsResource {
     return LookupServiceProjectAttachmentResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates a Boundary.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the boundary. Format:
+  /// "projects/{project}/locations/{location}/boundary"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/boundary$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Boundary resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateBoundary(
+    Boundary request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1586,6 +1692,103 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
   }
 }
 
+class ProjectsLocationsExtendedMetadataSchemasResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsExtendedMetadataSchemasResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets an Extended Metadata Schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Schema resource name. Format:
+  /// `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`.
+  /// `{extended_metadata_schema}` has the format
+  /// `"apphub.googleapis.com/{SchemaName}"`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/extendedMetadataSchemas/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExtendedMetadataSchema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExtendedMetadataSchema> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExtendedMetadataSchema.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists Extended Metadata Schemas available in a host project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project and location to list Extended Metadata
+  /// Schemas on. Expected format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExtendedMetadataSchemasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExtendedMetadataSchemasResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/extendedMetadataSchemas';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExtendedMetadataSchemasResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1730,6 +1933,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1745,12 +1956,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2344,6 +2558,71 @@ class Binding {
   };
 }
 
+/// Application management boundary.
+class Boundary {
+  /// Create time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource name of the CRM node being attached to the boundary.
+  ///
+  /// Format: `projects/{project-number}` or `projects/{project-id}`
+  ///
+  /// Optional.
+  core.String? crmNode;
+
+  /// Identifier.
+  ///
+  /// The resource name of the boundary. Format:
+  /// "projects/{project}/locations/{location}/boundary"
+  core.String? name;
+
+  /// Boundary type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "AUTOMATIC" : The Boundary automatically includes all descendants of the
+  /// CRM node.
+  /// - "MANUAL" : The list of projects within the Boundary is managed by the
+  /// user.
+  /// - "MANAGED_AUTOMATIC" : The Boundary automatically includes all
+  /// descendants of the CRM node, which is set via App Management folder
+  /// capability.
+  core.String? type;
+
+  /// Update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Boundary({
+    this.createTime,
+    this.crmNode,
+    this.name,
+    this.type,
+    this.updateTime,
+  });
+
+  Boundary.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        crmNode: json_['crmNode'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (crmNode != null) 'crmNode': crmNode!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -2567,6 +2846,111 @@ class Environment {
 /// information.
 typedef Expr = $Expr;
 
+/// Additional metadata for a Service or Workload.
+class ExtendedMetadata {
+  /// The metadata contents.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadataStruct;
+
+  ExtendedMetadata({this.metadataStruct});
+
+  ExtendedMetadata.fromJson(core.Map json_)
+    : this(
+        metadataStruct:
+            json_.containsKey('metadataStruct')
+                ? json_['metadataStruct'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (metadataStruct != null) 'metadataStruct': metadataStruct!,
+  };
+}
+
+/// ExtendedMetadataSchema represents a schema for extended metadata of a
+/// service or workload.
+class ExtendedMetadataSchema {
+  /// The JSON schema as a string.
+  ///
+  /// Output only.
+  core.String? jsonSchema;
+
+  /// Identifier.
+  ///
+  /// Resource name of the schema. Format:
+  /// projects//locations//extendedMetadataSchemas/
+  core.String? name;
+
+  /// The version of the schema.
+  ///
+  /// New versions are required to be backwards compatible.
+  ///
+  /// Output only.
+  core.String? schemaVersion;
+
+  ExtendedMetadataSchema({this.jsonSchema, this.name, this.schemaVersion});
+
+  ExtendedMetadataSchema.fromJson(core.Map json_)
+    : this(
+        jsonSchema: json_['jsonSchema'] as core.String?,
+        name: json_['name'] as core.String?,
+        schemaVersion: json_['schemaVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (name != null) 'name': name!,
+    if (schemaVersion != null) 'schemaVersion': schemaVersion!,
+  };
+}
+
+/// The functional type of a service or workload.
+class FunctionalType {
+  /// The functional type of a service or workload.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "AGENT" : Agent type.
+  /// - "MCP_SERVER" : MCP Server type.
+  core.String? type;
+
+  FunctionalType({this.type});
+
+  FunctionalType.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
+  };
+}
+
+/// The identity associated with a service or workload.
+class Identity {
+  /// The principal of the identity.
+  ///
+  /// Supported formats: * `sa://my-sa@PROJECT_ID.iam.gserviceaccount.com` for
+  /// GCP Service Account *
+  /// `principal://POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID`
+  /// for Managed Workload Identity
+  ///
+  /// Output only.
+  core.String? principal;
+
+  Identity({this.principal});
+
+  Identity.fromJson(core.Map json_)
+    : this(principal: json_['principal'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (principal != null) 'principal': principal!,
+  };
+}
+
 /// Response for ListApplications.
 class ListApplicationsResponse {
   /// List of Applications.
@@ -2691,6 +3075,39 @@ class ListDiscoveredWorkloadsResponse {
   };
 }
 
+/// Response for ListExtendedMetadataSchemas.
+class ListExtendedMetadataSchemasResponse {
+  /// List of Extended Metadata Schemas.
+  core.List<ExtendedMetadataSchema>? extendedMetadataSchemas;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListExtendedMetadataSchemasResponse({
+    this.extendedMetadataSchemas,
+    this.nextPageToken,
+  });
+
+  ListExtendedMetadataSchemasResponse.fromJson(core.Map json_)
+    : this(
+        extendedMetadataSchemas:
+            (json_['extendedMetadataSchemas'] as core.List?)
+                ?.map(
+                  (value) => ExtendedMetadataSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (extendedMetadataSchemas != null)
+      'extendedMetadataSchemas': extendedMetadataSchemas!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -2728,7 +3145,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2741,11 +3170,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3132,6 +3566,28 @@ class Policy {
   };
 }
 
+/// The registration type of a service.
+class RegistrationType {
+  /// The registration type of a service.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified registration type. Defaults to
+  /// EXCLUSIVE.
+  /// - "EXCLUSIVE" : The service can only be registered to one application.
+  /// - "SHARED" : The service can be registered to multiple applications.
+  core.String? type;
+
+  RegistrationType({this.type});
+
+  RegistrationType.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
+  };
+}
+
 /// Scope of an application.
 class Scope {
   /// Scope Type.
@@ -3362,11 +3818,30 @@ class ServiceProjectAttachment {
 
 /// Properties of an underlying cloud resource that can comprise a Service.
 class ServiceProperties {
+  /// Additional metadata specific to the resource type.
+  ///
+  /// The key is a string that identifies the type of metadata and the value is
+  /// the metadata contents specific to that type. Key format:
+  /// `apphub.googleapis.com/{metadataType}`
+  ///
+  /// Output only.
+  core.Map<core.String, ExtendedMetadata>? extendedMetadata;
+
+  /// The type of the service.
+  ///
+  /// Output only.
+  FunctionalType? functionalType;
+
   /// The service project identifier that the underlying cloud resource resides
   /// in.
   ///
   /// Output only.
   core.String? gcpProject;
+
+  /// The identity associated with the service.
+  ///
+  /// Output only.
+  Identity? identity;
 
   /// The location that the underlying resource resides in, for example,
   /// us-west1.
@@ -3374,24 +3849,71 @@ class ServiceProperties {
   /// Output only.
   core.String? location;
 
+  /// The registration type of the service.
+  ///
+  /// Output only.
+  RegistrationType? registrationType;
+
   /// The location that the underlying resource resides in if it is zonal, for
   /// example, us-west1-a).
   ///
   /// Output only.
   core.String? zone;
 
-  ServiceProperties({this.gcpProject, this.location, this.zone});
+  ServiceProperties({
+    this.extendedMetadata,
+    this.functionalType,
+    this.gcpProject,
+    this.identity,
+    this.location,
+    this.registrationType,
+    this.zone,
+  });
 
   ServiceProperties.fromJson(core.Map json_)
     : this(
+        extendedMetadata: (json_['extendedMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ExtendedMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        functionalType:
+            json_.containsKey('functionalType')
+                ? FunctionalType.fromJson(
+                  json_['functionalType']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         gcpProject: json_['gcpProject'] as core.String?,
+        identity:
+            json_.containsKey('identity')
+                ? Identity.fromJson(
+                  json_['identity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         location: json_['location'] as core.String?,
+        registrationType:
+            json_.containsKey('registrationType')
+                ? RegistrationType.fromJson(
+                  json_['registrationType']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         zone: json_['zone'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (extendedMetadata != null) 'extendedMetadata': extendedMetadata!,
+    if (functionalType != null) 'functionalType': functionalType!,
     if (gcpProject != null) 'gcpProject': gcpProject!,
+    if (identity != null) 'identity': identity!,
     if (location != null) 'location': location!,
+    if (registrationType != null) 'registrationType': registrationType!,
     if (zone != null) 'zone': zone!,
   };
 }
@@ -3603,6 +4125,20 @@ class Workload {
 
 /// Properties of an underlying compute resource represented by the Workload.
 class WorkloadProperties {
+  /// Additional metadata specific to the resource type.
+  ///
+  /// The key is a string that identifies the type of metadata and the value is
+  /// the metadata contents specific to that type. Key format:
+  /// `apphub.googleapis.com/{metadataType}`
+  ///
+  /// Output only.
+  core.Map<core.String, ExtendedMetadata>? extendedMetadata;
+
+  /// The type of the workload.
+  ///
+  /// Output only.
+  FunctionalType? functionalType;
+
   /// The service project identifier that the underlying cloud resource resides
   /// in.
   ///
@@ -3610,6 +4146,11 @@ class WorkloadProperties {
   ///
   /// Output only.
   core.String? gcpProject;
+
+  /// The identity associated with the workload.
+  ///
+  /// Output only.
+  Identity? identity;
 
   /// The location that the underlying compute resource resides in (for example,
   /// us-west1).
@@ -3623,17 +4164,50 @@ class WorkloadProperties {
   /// Output only.
   core.String? zone;
 
-  WorkloadProperties({this.gcpProject, this.location, this.zone});
+  WorkloadProperties({
+    this.extendedMetadata,
+    this.functionalType,
+    this.gcpProject,
+    this.identity,
+    this.location,
+    this.zone,
+  });
 
   WorkloadProperties.fromJson(core.Map json_)
     : this(
+        extendedMetadata: (json_['extendedMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ExtendedMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        functionalType:
+            json_.containsKey('functionalType')
+                ? FunctionalType.fromJson(
+                  json_['functionalType']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         gcpProject: json_['gcpProject'] as core.String?,
+        identity:
+            json_.containsKey('identity')
+                ? Identity.fromJson(
+                  json_['identity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         location: json_['location'] as core.String?,
         zone: json_['zone'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (extendedMetadata != null) 'extendedMetadata': extendedMetadata!,
+    if (functionalType != null) 'functionalType': functionalType!,
     if (gcpProject != null) 'gcpProject': gcpProject!,
+    if (identity != null) 'identity': identity!,
     if (location != null) 'location': location!,
     if (zone != null) 'zone': zone!,
   };

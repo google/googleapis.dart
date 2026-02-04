@@ -14,12 +14,25 @@
 
 /// Observability API - v1
 ///
+/// Provides functionality for configuring the observability scope, which
+/// controls the log, metric, and trace data that you can view.
+///
 /// For more information, see <https://cloud.google.com/stackdriver/docs/>
 ///
 /// Create an instance of [CloudObservabilityApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsOperationsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsOperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBucketsResource]
+///       - [ProjectsLocationsBucketsDatasetsResource]
+///         - [ProjectsLocationsBucketsDatasetsLinksResource]
+///         - [ProjectsLocationsBucketsDatasetsViewsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsScopesResource]
 ///     - [ProjectsLocationsTraceScopesResource]
@@ -38,6 +51,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Provides functionality for configuring the observability scope, which
+/// controls the log, metric, and trace data that you can view.
 class CloudObservabilityApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -46,6 +61,8 @@ class CloudObservabilityApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudObservabilityApi(
@@ -60,33 +77,29 @@ class CloudObservabilityApi {
        );
 }
 
-class ProjectsResource {
+class FoldersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResource get locations =>
-      ProjectsLocationsResource(_requester);
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
 
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
+  FoldersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResource {
+class FoldersLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResource get operations =>
-      ProjectsLocationsOperationsResource(_requester);
-  ProjectsLocationsScopesResource get scopes =>
-      ProjectsLocationsScopesResource(_requester);
-  ProjectsLocationsTraceScopesResource get traceScopes =>
-      ProjectsLocationsTraceScopesResource(_requester);
+  FoldersLocationsOperationsResource get operations =>
+      FoldersLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -115,14 +128,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern `^projects/\[^/\]+$`.
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -168,6 +187,1140 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource get operations =>
+      OrganizationsLocationsOperationsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsResource get buckets =>
+      ProjectsLocationsBucketsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsScopesResource get scopes =>
+      ProjectsLocationsScopesResource(_requester);
+  ProjectsLocationsTraceScopesResource get traceScopes =>
+      ProjectsLocationsTraceScopesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsBucketsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsDatasetsResource get datasets =>
+      ProjectsLocationsBucketsDatasetsResource(_requester);
+
+  ProjectsLocationsBucketsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get bucket resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the bucket to retrieve. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Bucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Bucket> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List buckets of a project in a particular location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of buckets.
+  /// The format is: projects/\[PROJECT_ID\]/locations/\[LOCATION\]
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of buckets to return. If
+  /// unspecified, then at most 100 buckets are returned. The maximum value is
+  /// 1000; values above 1000 are coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListBuckets` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [showDeleted] - Optional. If true, then the response will include deleted
+  /// buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/buckets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBucketsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsBucketsDatasetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsDatasetsLinksResource get links =>
+      ProjectsLocationsBucketsDatasetsLinksResource(_requester);
+  ProjectsLocationsBucketsDatasetsViewsResource get views =>
+      ProjectsLocationsBucketsDatasetsViewsResource(_requester);
+
+  ProjectsLocationsBucketsDatasetsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get a dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the dataset to retrieve. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Dataset> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Dataset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List datasets of a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent bucket that owns this collection of
+  /// datasets. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of datasets to return. If
+  /// unspecified, then at most 100 datasets are returned. The maximum value is
+  /// 1000; values above 1000 are coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDatasets` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [showDeleted] - Optional. If true, then the response will include deleted
+  /// datasets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatasetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatasetsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatasetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsBucketsDatasetsLinksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsDatasetsLinksResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Create a new link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the containing dataset for this link. The
+  /// format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [linkId] - Required. Id of the link to create.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Link request,
+    core.String parent, {
+    core.String? linkId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkId != null) 'linkId': [linkId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the link to delete. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/links/\[LINK_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the link to retrieve. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/links/\[LINK_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Link].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Link> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Link.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List links of a dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent dataset that owns this collection of
+  /// links. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of links to return. If
+  /// unspecified, then at most 100 links are returned. The maximum value is
+  /// 1000; values above 1000 are coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous `ListLinks`
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLinksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/links';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLinksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update a link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the link. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/links/\[LINK_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+/links/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Link request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBucketsDatasetsViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsDatasetsViewsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the view to retrieve. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/views/\[VIEW_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [View].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<View> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return View.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List views of a dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Dataset whose views are to be listed. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of views to return. If
+  /// unspecified, then at most 100 views are returned. The maximum value is
+  /// 1000; values above 1000 are coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous `ListViews`
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/views';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListViewsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -317,6 +1470,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -332,12 +1493,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -681,8 +1845,202 @@ class ProjectsLocationsTraceScopesResource {
   }
 }
 
+/// Bucket configuration for storing observability data.
+class Bucket {
+  /// Settings for configuring CMEK on a bucket.
+  ///
+  /// Optional.
+  CmekSettings? cmekSettings;
+
+  /// Create timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete timestamp.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Description of the bucket.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Name of the bucket. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]
+  core.String? name;
+
+  /// Timestamp when the bucket in soft-deleted state is purged.
+  ///
+  /// Output only.
+  core.String? purgeTime;
+
+  /// Update timestamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Bucket({
+    this.cmekSettings,
+    this.createTime,
+    this.deleteTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.purgeTime,
+    this.updateTime,
+  });
+
+  Bucket.fromJson(core.Map json_)
+    : this(
+        cmekSettings:
+            json_.containsKey('cmekSettings')
+                ? CmekSettings.fromJson(
+                  json_['cmekSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        purgeTime: json_['purgeTime'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cmekSettings != null) 'cmekSettings': cmekSettings!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (purgeTime != null) 'purgeTime': purgeTime!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Settings for configuring CMEK for a bucket.
+class CmekSettings {
+  /// The resource name for the configured Cloud KMS key.
+  ///
+  /// The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]
+  /// For example:
+  /// projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
+  /// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+  ///
+  /// The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]/cryptoKeyVersions/\[VERSION\]
+  /// For example:
+  /// projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1
+  /// This read-only field is used to convey the specific configured
+  /// CryptoKeyVersion of the `kms_key` that has been configured. It is
+  /// populated when the CMEK settings are bound to a single key version.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersion;
+
+  /// The service account used to access the key.
+  ///
+  /// Output only.
+  core.String? serviceAccountId;
+
+  CmekSettings({this.kmsKey, this.kmsKeyVersion, this.serviceAccountId});
+
+  CmekSettings.fromJson(core.Map json_)
+    : this(
+        kmsKey: json_['kmsKey'] as core.String?,
+        kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
+        serviceAccountId: json_['serviceAccountId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+    if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
+  };
+}
+
+/// A dataset is a collection of data that has a specific configuration.
+///
+/// A dataset can be backed by multiple tables. One bucket can have multiple
+/// datasets.
+class Dataset {
+  /// Create timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete timestamp.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Description of the dataset.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Name of the dataset. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]
+  core.String? name;
+
+  /// Timestamp when the dataset in soft-deleted state is purged.
+  ///
+  /// Output only.
+  core.String? purgeTime;
+
+  Dataset({
+    this.createTime,
+    this.deleteTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.purgeTime,
+  });
+
+  Dataset.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        purgeTime: json_['purgeTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (purgeTime != null) 'purgeTime': purgeTime!,
+  };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -691,6 +2049,147 @@ typedef CancelOperationRequest = $Empty;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// A link lets a dataset be accessible to BigQuery via usage of linked
+/// datasets.
+class Link {
+  /// Create timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the link.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A user friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Name of the link. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/links/\[LINK_ID\]
+  core.String? name;
+
+  Link({this.createTime, this.description, this.displayName, this.name});
+
+  Link.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Response for listing buckets.
+class ListBucketsResponse {
+  /// The list of buckets.
+  ///
+  /// Optional.
+  core.List<Bucket>? buckets;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// When this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListBucketsResponse({this.buckets, this.nextPageToken});
+
+  ListBucketsResponse.fromJson(core.Map json_)
+    : this(
+        buckets:
+            (json_['buckets'] as core.List?)
+                ?.map(
+                  (value) => Bucket.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (buckets != null) 'buckets': buckets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Response for listing datasets.
+class ListDatasetsResponse {
+  /// The list of datasets.
+  core.List<Dataset>? datasets;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// When this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDatasetsResponse({this.datasets, this.nextPageToken});
+
+  ListDatasetsResponse.fromJson(core.Map json_)
+    : this(
+        datasets:
+            (json_['datasets'] as core.List?)
+                ?.map(
+                  (value) => Dataset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datasets != null) 'datasets': datasets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Response for listing links.
+class ListLinksResponse {
+  /// The list of links.
+  core.List<Link>? links;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// When this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListLinksResponse({this.links, this.nextPageToken});
+
+  ListLinksResponse.fromJson(core.Map json_)
+    : this(
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) => Link.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (links != null) 'links': links!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
@@ -729,7 +2228,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -742,11 +2253,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -784,6 +2300,39 @@ class ListTraceScopesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (traceScopes != null) 'traceScopes': traceScopes!,
+  };
+}
+
+/// Response for listing views.
+class ListViewsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// When this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// The list of views.
+  core.List<View>? views;
+
+  ListViewsResponse({this.nextPageToken, this.views});
+
+  ListViewsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        views:
+            (json_['views'] as core.List?)
+                ?.map(
+                  (value) => View.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (views != null) 'views': views!,
   };
 }
 
@@ -983,6 +2532,61 @@ class TraceScope {
     if (description != null) 'description': description!,
     if (name != null) 'name': name!,
     if (resourceNames != null) 'resourceNames': resourceNames!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// A view corresponds to a read-only representation of a subset of the data in
+/// a dataset.
+class View {
+  /// Create timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the view.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User friendly display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Name of the view. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]/datasets/\[DATASET_ID\]/views/\[VIEW_ID\]
+  core.String? name;
+
+  /// Update timestamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  View({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.updateTime,
+  });
+
+  View.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }

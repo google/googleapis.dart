@@ -242,6 +242,61 @@ class BiddersFinalizedDealsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Sets the given finalized deal as ready to serve.
+  ///
+  /// By default, deals are set as ready to serve as soon as they're finalized.
+  /// If you want to opt out of the default behavior, and manually indicate that
+  /// deals are ready to serve, ask your Technical Account Manager to add you to
+  /// the allowlist. If you choose to use this method, finalized deals belonging
+  /// to the bidder and its child seats don't start serving until after you call
+  /// `setReadyToServe`, and after the deals become active. For example, you can
+  /// use this method to delay receiving bid requests until your creative is
+  /// ready. In addition, bidders can use the URL path
+  /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve
+  /// for the finalized deals belong to itself, its child seats and all their
+  /// clients. This method only applies to programmatic guaranteed deals.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [deal] - Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+  /// `bidders/{accountId}/finalizedDeals/{dealId}`
+  /// Value must have pattern `^bidders/\[^/\]+/finalizedDeals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FinalizedDeal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FinalizedDeal> setReadyToServe(
+    SetReadyToServeRequest request,
+    core.String deal, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$deal') + ':setReadyToServe';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return FinalizedDeal.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class BuyersResource {
@@ -1386,13 +1441,17 @@ class BuyersFinalizedDealsResource {
   /// to the bidder and its child seats don't start serving until after you call
   /// `setReadyToServe`, and after the deals become active. For example, you can
   /// use this method to delay receiving bid requests until your creative is
-  /// ready. This method only applies to programmatic guaranteed deals.
+  /// ready. In addition, bidders can use the URL path
+  /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve
+  /// for the finalized deals belong to itself, its child seats and all their
+  /// clients. This method only applies to programmatic guaranteed deals.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [deal] - Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`
+  /// [deal] - Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+  /// `bidders/{accountId}/finalizedDeals/{dealId}`
   /// Value must have pattern `^buyers/\[^/\]+/finalizedDeals/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2236,6 +2295,13 @@ class AuctionPackage {
   /// Output only.
   core.List<core.String>? eligibleSeatIds;
 
+  /// The minimum price a buyer has to bid to compete in this auction package.
+  ///
+  /// If this is field is not populated, there is no floor price.
+  ///
+  /// Output only.
+  Money? floorPriceCpm;
+
   /// The unique identifier for the auction package.
   ///
   /// Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` The
@@ -2285,6 +2351,7 @@ class AuctionPackage {
     this.description,
     this.displayName,
     this.eligibleSeatIds,
+    this.floorPriceCpm,
     this.name,
     this.subscribedBuyers,
     this.subscribedClients,
@@ -2303,6 +2370,12 @@ class AuctionPackage {
             (json_['eligibleSeatIds'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        floorPriceCpm:
+            json_.containsKey('floorPriceCpm')
+                ? Money.fromJson(
+                  json_['floorPriceCpm'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         subscribedBuyers:
             (json_['subscribedBuyers'] as core.List?)
@@ -2330,6 +2403,7 @@ class AuctionPackage {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (eligibleSeatIds != null) 'eligibleSeatIds': eligibleSeatIds!,
+    if (floorPriceCpm != null) 'floorPriceCpm': floorPriceCpm!,
     if (name != null) 'name': name!,
     if (subscribedBuyers != null) 'subscribedBuyers': subscribedBuyers!,
     if (subscribedClients != null) 'subscribedClients': subscribedClients!,
@@ -3868,20 +3942,61 @@ class MarketplaceTargeting {
   };
 }
 
-/// Describes a single Media Planner account.
+/// Represents a media planner account.
 class MediaPlanner {
   /// Account ID of the media planner.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? accountId;
 
-  MediaPlanner({this.accountId});
+  /// The ancestor names of the media planner.
+  ///
+  /// Format: `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the
+  /// response of the mediaPlanners.list method.
+  ///
+  /// Output only.
+  core.List<core.String>? ancestorNames;
+
+  /// The display name of the media planner.
+  ///
+  /// Can be used to filter the response of the mediaPlanners.list method.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The unique resource name of the media planner. Format:
+  /// `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the response
+  /// of the mediaPlanners.list method.
+  core.String? name;
+
+  MediaPlanner({
+    this.accountId,
+    this.ancestorNames,
+    this.displayName,
+    this.name,
+  });
 
   MediaPlanner.fromJson(core.Map json_)
-    : this(accountId: json_['accountId'] as core.String?);
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        ancestorNames:
+            (json_['ancestorNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accountId != null) 'accountId': accountId!,
+    if (ancestorNames != null) 'ancestorNames': ancestorNames!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
   };
 }
 

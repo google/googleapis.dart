@@ -692,6 +692,7 @@ buildGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest() {
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest < 3) {
     o.customToken = 'foo';
+    o.jti = 'foo';
     o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest--;
@@ -704,6 +705,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest < 3) {
     unittest.expect(o.customToken!, unittest.equals('foo'));
+    unittest.expect(o.jti!, unittest.equals('foo'));
     unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest--;

@@ -2700,6 +2700,7 @@ api.WorkforcePoolProvider buildWorkforcePoolProvider() {
     o.name = 'foo';
     o.oidc = buildGoogleIamAdminV1WorkforcePoolProviderOidc();
     o.saml = buildGoogleIamAdminV1WorkforcePoolProviderSaml();
+    o.scimUsage = 'foo';
     o.state = 'foo';
   }
   buildCounterWorkforcePoolProvider--;
@@ -2725,6 +2726,7 @@ void checkWorkforcePoolProvider(api.WorkforcePoolProvider o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleIamAdminV1WorkforcePoolProviderOidc(o.oidc!);
     checkGoogleIamAdminV1WorkforcePoolProviderSaml(o.saml!);
+    unittest.expect(o.scimUsage!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterWorkforcePoolProvider--;
@@ -2776,6 +2778,7 @@ api.WorkforcePoolProviderScimTenant buildWorkforcePoolProviderScimTenant() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.purgeTime = 'foo';
+    o.serviceAgent = 'foo';
     o.state = 'foo';
   }
   buildCounterWorkforcePoolProviderScimTenant--;
@@ -2793,6 +2796,7 @@ void checkWorkforcePoolProviderScimTenant(
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.purgeTime!, unittest.equals('foo'));
+    unittest.expect(o.serviceAgent!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterWorkforcePoolProviderScimTenant--;
@@ -5917,6 +5921,7 @@ void main() {
       final res =
           api.IamApi(mock).locations.workforcePools.providers.scimTenants;
       final arg_name = 'foo';
+      final arg_hardDelete = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5952,6 +5957,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['hardDelete']!.first,
+            unittest.equals('$arg_hardDelete'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5964,7 +5973,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(
+        arg_name,
+        hardDelete: arg_hardDelete,
+        $fields: arg_$fields,
+      );
       checkWorkforcePoolProviderScimTenant(
         response as api.WorkforcePoolProviderScimTenant,
       );

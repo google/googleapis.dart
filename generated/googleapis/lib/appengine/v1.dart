@@ -40,6 +40,7 @@
 ///       - [ProjectsLocationsApplicationsDomainMappingsResource]
 ///       - [ProjectsLocationsApplicationsServicesResource]
 ///         - [ProjectsLocationsApplicationsServicesVersionsResource]
+/// - [ProjectsLocationsApplicationsServicesVersionsInstancesResource]
 library;
 
 import 'dart:async' as async;
@@ -1274,6 +1275,11 @@ class AppsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: List all public locations: Use the
+  /// path GET /v1/locations. List project-visible locations: Use the path GET
+  /// /v1/projects/{project_id}/locations. This may include public locations as
+  /// well as private or other locations specifically visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [appsId] - Part of `name`. The resource that owns the locations
@@ -1395,6 +1401,14 @@ class AppsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1410,12 +1424,15 @@ class AppsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2766,6 +2783,61 @@ class ProjectsLocationsApplicationsDomainMappingsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes the specified domain mapping.
+  ///
+  /// A user must be authorized to administer the associated domain in order to
+  /// delete a DomainMapping resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Required. Name of the resource to delete.
+  /// Example: apps/myapp/domainMappings/example.com.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [domainMappingsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String domainMappingsId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/domainMappings/' +
+        commons.escapeVariable('$domainMappingsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the specified domain mapping.
   ///
   /// Request parameters:
@@ -2818,6 +2890,131 @@ class ProjectsLocationsApplicationsDomainMappingsResource {
     return DomainMapping.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Lists the domain mappings on an application.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDomainMappingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDomainMappingsResponse> list(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/domainMappings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDomainMappingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified domain mapping.
+  ///
+  /// To map an SSL certificate to a domain mapping, update certificate_id to
+  /// point to an AuthorizedCertificate resource. A user must be authorized to
+  /// administer the associated domain in order to update a DomainMapping
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/domainMappings/example.com.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [domainMappingsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DomainMapping request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String domainMappingsId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/domainMappings/' +
+        commons.escapeVariable('$domainMappingsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2963,6 +3160,12 @@ class ProjectsLocationsApplicationsServicesResource {
 
 class ProjectsLocationsApplicationsServicesVersionsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsServicesVersionsInstancesResource
+  get instances =>
+      ProjectsLocationsApplicationsServicesVersionsInstancesResource(
+        _requester,
+      );
 
   ProjectsLocationsApplicationsServicesVersionsResource(
     commons.ApiRequester client,
@@ -3119,6 +3322,163 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
       url_,
       'PATCH',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsApplicationsServicesVersionsInstancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsServicesVersionsInstancesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Enables debugging on a VM instance.
+  ///
+  /// This allows you to use the SSH command to connect to the virtual machine
+  /// where the instance lives. While in "debug mode", the instance continues to
+  /// serve live traffic. You should delete the instance when you are done
+  /// debugging and then allow the system to take over and determine if another
+  /// instance should be started.Only applicable for instances in App Engine
+  /// flexible environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [instancesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> debug(
+    DebugInstanceRequest request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId,
+    core.String versionsId,
+    core.String instancesId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId') +
+        '/instances/' +
+        commons.escapeVariable('$instancesId') +
+        ':debug';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops a running instance.The instance might be automatically recreated
+  /// based on the scaling settings of the version.
+  ///
+  /// For more information, see "How Instances are Managed" (standard
+  /// environment
+  /// (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed)
+  /// | flexible environment
+  /// (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To
+  /// ensure that instances are not re-created and avoid getting billed, you can
+  /// stop all instances within the target version by changing the serving
+  /// status of the version to STOPPED with the apps.services.versions.patch
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch)
+  /// method.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [instancesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId,
+    core.String versionsId,
+    core.String instancesId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId') +
+        '/instances/' +
+        commons.escapeVariable('$instancesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3426,6 +3786,8 @@ class AuthorizedCertificate {
   ///
   /// This certificate applies to these domains and their subdomains. Example:
   /// example.com.@OutputOnly
+  ///
+  /// Output only.
   core.List<core.String>? domainNames;
 
   /// The time when this certificate expires.
@@ -3439,6 +3801,8 @@ class AuthorizedCertificate {
   ///
   /// This is a unique value autogenerated on AuthorizedCertificate resource
   /// creation. Example: 12345.@OutputOnly
+  ///
+  /// Output only.
   core.String? id;
 
   /// Only applicable if this certificate is managed by App Engine.
@@ -3452,6 +3816,8 @@ class AuthorizedCertificate {
   /// Full path to the AuthorizedCertificate resource in the API.
   ///
   /// Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// The full paths to user visible Domain Mapping resources that have this
@@ -3463,6 +3829,8 @@ class AuthorizedCertificate {
   /// See domain_mappings_count for a complete count.Only returned by GET or
   /// LIST requests when specifically requested by the view=FULL_CERTIFICATE
   /// option.@OutputOnly
+  ///
+  /// Output only.
   core.List<core.String>? visibleDomainMappings;
 
   AuthorizedCertificate({
@@ -4027,12 +4395,16 @@ class DomainMapping {
   /// Full path to the DomainMapping resource in the API.
   ///
   /// Example: apps/myapp/domainMapping/example.com.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// The resource records required to configure this domain mapping.
   ///
   /// These records must be added to the domain's DNS configuration in order to
   /// serve the application via this domain mapping.@OutputOnly
+  ///
+  /// Output only.
   core.List<ResourceRecord>? resourceRecords;
 
   /// SSL configuration for this domain.
@@ -4845,7 +5217,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// ListOperationsRequest.return_partial_success and reads across collections.
+  /// For example, when attempting to list all resources across all supported
+  /// locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -4858,11 +5242,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -5736,6 +6125,8 @@ class SslSettings {
   /// certificate and this field will be left empty. To remove SSL support while
   /// there is still a pending managed certificate, clear the certificate_id
   /// field with an UpdateDomainMappingRequest.@OutputOnly
+  ///
+  /// Output only.
   core.String? pendingManagedCertificateId;
 
   /// SSL management type for this domain.

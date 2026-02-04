@@ -68,6 +68,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://cloudbuild.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://cloudbuild.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -140,6 +145,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://cloudbuild.europe-west9.rep.googleapis.com/",
             "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://cloudbuild.europe-west15.rep.googleapis.com/",
+            "location": "europe-west15"
         },
         {
             "description": "Regional Endpoint",
@@ -252,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250903",
+    "revision": "20260106",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -457,7 +467,7 @@
                 "builds": {
                     "methods": {
                         "approve": {
-                            "description": "Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.",
+                            "description": "Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.",
                             "flatPath": "v1/projects/{projectsId}/builds/{buildsId}:approve",
                             "httpMethod": "POST",
                             "id": "cloudbuild.projects.builds.approve",
@@ -1140,7 +1150,7 @@
                         "builds": {
                             "methods": {
                                 "approve": {
-                                    "description": "Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.",
+                                    "description": "Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:approve",
                                     "httpMethod": "POST",
                                     "id": "cloudbuild.projects.locations.builds.approve",
@@ -3723,6 +3733,11 @@
             "description": "An image built by the pipeline.",
             "id": "BuiltImage",
             "properties": {
+                "artifactRegistryPackage": {
+                    "description": "Output only. Path to the artifact in Artifact Registry.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "digest": {
                     "description": "Docker Registry 2.0 digest.",
                     "type": "string"
@@ -3902,7 +3917,7 @@
             "id": "DefaultServiceAccount",
             "properties": {
                 "name": {
-                    "description": "Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount",
+                    "description": "Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`.",
                     "type": "string"
                 },
                 "serviceAccountEmail": {
@@ -4860,6 +4875,10 @@
                     "description": "Maven `artifactId` value used when uploading the artifact to Artifact Registry.",
                     "type": "string"
                 },
+                "deployFolder": {
+                    "description": "Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`. This field is mutually exclusive with the `path` field.",
+                    "type": "string"
+                },
                 "groupId": {
                     "description": "Maven `groupId` value used when uploading the artifact to Artifact Registry.",
                     "type": "string"
@@ -5714,6 +5733,11 @@
             "description": "A Go module artifact uploaded to Artifact Registry using the GoModule directive.",
             "id": "UploadedGoModule",
             "properties": {
+                "artifactRegistryPackage": {
+                    "description": "Output only. Path to the artifact in Artifact Registry.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "fileHashes": {
                     "$ref": "FileHashes",
                     "description": "Hash types and values of the Go Module Artifact."
@@ -5734,6 +5758,11 @@
             "description": "A Maven artifact uploaded using the MavenArtifact directive.",
             "id": "UploadedMavenArtifact",
             "properties": {
+                "artifactRegistryPackage": {
+                    "description": "Output only. Path to the artifact in Artifact Registry.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "fileHashes": {
                     "$ref": "FileHashes",
                     "description": "Hash types and values of the Maven Artifact."
@@ -5754,6 +5783,11 @@
             "description": "An npm package uploaded to Artifact Registry using the NpmPackage directive.",
             "id": "UploadedNpmPackage",
             "properties": {
+                "artifactRegistryPackage": {
+                    "description": "Output only. Path to the artifact in Artifact Registry.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "fileHashes": {
                     "$ref": "FileHashes",
                     "description": "Hash types and values of the npm package."
@@ -5774,6 +5808,11 @@
             "description": "Artifact uploaded using the PythonPackage directive.",
             "id": "UploadedPythonPackage",
             "properties": {
+                "artifactRegistryPackage": {
+                    "description": "Output only. Path to the artifact in Artifact Registry.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "fileHashes": {
                     "$ref": "FileHashes",
                     "description": "Hash types and values of the Python Artifact."

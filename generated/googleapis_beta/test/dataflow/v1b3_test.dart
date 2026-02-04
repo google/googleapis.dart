@@ -4142,6 +4142,7 @@ api.RuntimeUpdatableParams buildRuntimeUpdatableParams() {
   final o = api.RuntimeUpdatableParams();
   buildCounterRuntimeUpdatableParams++;
   if (buildCounterRuntimeUpdatableParams < 3) {
+    o.acceptableBacklogDuration = 'foo';
     o.maxNumWorkers = 42;
     o.minNumWorkers = 42;
     o.workerUtilizationHint = 42.0;
@@ -4153,6 +4154,7 @@ api.RuntimeUpdatableParams buildRuntimeUpdatableParams() {
 void checkRuntimeUpdatableParams(api.RuntimeUpdatableParams o) {
   buildCounterRuntimeUpdatableParams++;
   if (buildCounterRuntimeUpdatableParams < 3) {
+    unittest.expect(o.acceptableBacklogDuration!, unittest.equals('foo'));
     unittest.expect(o.maxNumWorkers!, unittest.equals(42));
     unittest.expect(o.minNumWorkers!, unittest.equals(42));
     unittest.expect(o.workerUtilizationHint!, unittest.equals(42.0));
@@ -5744,6 +5746,7 @@ api.StreamingConfigTask buildStreamingConfigTask() {
     o.maxWorkItemCommitBytes = 'foo';
     o.operationalLimits = buildStreamingOperationalLimits();
     o.streamingComputationConfigs = buildUnnamed128();
+    o.streamingEngineStateTagEncodingVersion = 42;
     o.userStepToStateFamilyNameMap = buildUnnamed129();
     o.userWorkerRunnerV1Settings = 'foo';
     o.userWorkerRunnerV2Settings = 'foo';
@@ -5762,6 +5765,10 @@ void checkStreamingConfigTask(api.StreamingConfigTask o) {
     unittest.expect(o.maxWorkItemCommitBytes!, unittest.equals('foo'));
     checkStreamingOperationalLimits(o.operationalLimits!);
     checkUnnamed128(o.streamingComputationConfigs!);
+    unittest.expect(
+      o.streamingEngineStateTagEncodingVersion!,
+      unittest.equals(42),
+    );
     checkUnnamed129(o.userStepToStateFamilyNameMap!);
     unittest.expect(o.userWorkerRunnerV1Settings!, unittest.equals('foo'));
     unittest.expect(o.userWorkerRunnerV2Settings!, unittest.equals('foo'));

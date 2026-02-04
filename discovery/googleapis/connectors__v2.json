@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250917",
+    "revision": "20251216",
     "rootUrl": "https://connectors.googleapis.com/",
     "servicePath": "",
     "title": "Connectors API",
@@ -148,6 +148,11 @@
                                         "name"
                                     ],
                                     "parameters": {
+                                        "executionConfig.headers": {
+                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "name": {
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
@@ -244,6 +249,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "tools": {
+                                    "description": "Lists all available tools with POST.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/tools",
+                                    "httpMethod": "POST",
+                                    "id": "connectors.projects.locations.connections.tools",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/tools",
+                                    "request": {
+                                        "$ref": "ListToolsPostRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ListToolsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             },
                             "resources": {
@@ -286,6 +319,11 @@
                                                 "name"
                                             ],
                                             "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "name": {
                                                     "description": "Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action}",
                                                     "location": "path",
@@ -326,6 +364,11 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "pageSize": {
                                                     "description": "Number of Actions to return. Defaults to 25.",
                                                     "format": "int32",
@@ -386,6 +429,11 @@
                                                     "location": "query",
                                                     "type": "string"
                                                 },
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "name": {
                                                     "description": "Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType}",
                                                     "location": "path",
@@ -426,6 +474,11 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "pageSize": {
                                                     "description": "Number of entity types to return. Defaults to 25.",
                                                     "format": "int32",
@@ -481,6 +534,11 @@
                                                         "parent"
                                                     ],
                                                     "parameters": {
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "parent": {
                                                             "description": "Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}",
                                                             "location": "path",
@@ -509,6 +567,11 @@
                                                         "name"
                                                     ],
                                                     "parameters": {
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "name": {
                                                             "description": "Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}",
                                                             "location": "path",
@@ -545,6 +608,11 @@
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
                                                             "required": true,
                                                             "type": "string"
+                                                        },
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "path": "v2/{+entityType}/entities:deleteEntitiesWithConditions",
@@ -564,6 +632,11 @@
                                                         "name"
                                                     ],
                                                     "parameters": {
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "name": {
                                                             "description": "Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}",
                                                             "location": "path",
@@ -591,6 +664,11 @@
                                                     "parameters": {
                                                         "conditions": {
                                                             "description": "Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -642,6 +720,11 @@
                                                         "name"
                                                     ],
                                                     "parameters": {
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "name": {
                                                             "description": "Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}",
                                                             "location": "path",
@@ -681,6 +764,11 @@
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
                                                             "required": true,
                                                             "type": "string"
+                                                        },
+                                                        "executionConfig.headers": {
+                                                            "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                            "location": "query",
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "path": "v2/{+entityType}/entities:updateEntitiesWithConditions",
@@ -695,6 +783,109 @@
                                                     ]
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "methods": {
+                                        "get": {
+                                            "description": "Gets a specific resource.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
+                                            "httpMethod": "GET",
+                                            "id": "connectors.projects.locations.connections.resources.get",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "description": "Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/resources/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/{+name}",
+                                            "response": {
+                                                "$ref": "GetResourceResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "getResourcePost": {
+                                            "description": "Gets a specific resource with POST.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
+                                            "httpMethod": "POST",
+                                            "id": "connectors.projects.locations.connections.resources.getResourcePost",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/resources/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/{+name}",
+                                            "request": {
+                                                "$ref": "GetResourcePostRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GetResourceResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists all available resources.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources",
+                                            "httpMethod": "GET",
+                                            "id": "connectors.projects.locations.connections.resources.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Optional. Page size for the request.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Optional. Page token for the request.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/{+parent}/resources",
+                                            "response": {
+                                                "$ref": "ListResourcesResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 },
@@ -737,6 +928,11 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "executionConfig.headers": {
+                                                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "pageSize": {
                                                     "description": "Page size.",
                                                     "format": "int32",
@@ -1078,6 +1274,14 @@
                 "authCodeData": {
                     "$ref": "AuthCodeData",
                     "description": "Optional. AuthCodeData contains the data the runtime requires to exchange for access and refresh tokens. If the data is not provided, the runtime will read the data from the secret manager."
+                },
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "ExecutionConfig contains the configuration for the execution of the request."
+                },
+                "oauth2Config": {
+                    "$ref": "OAuth2Config",
+                    "description": "OAuth2Config contains the OAuth2 config for the connection."
                 }
             },
             "type": "object"
@@ -1107,6 +1311,10 @@
             "description": "Request message for ActionService.ExecuteAction",
             "id": "ExecuteActionRequest",
             "properties": {
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "Execution config for the request."
+                },
                 "parameters": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -1180,12 +1388,24 @@
             "description": "Request message for ConnectorAgentService.ExecuteTool",
             "id": "ExecuteToolRequest",
             "properties": {
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "execution config for the request."
+                },
                 "parameters": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
                         "type": "any"
                     },
                     "description": "Input parameters for the tool.",
+                    "type": "object"
+                },
+                "toolDefinition": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Tool definition for the tool to be executed.",
                     "type": "object"
                 }
             },
@@ -1195,6 +1415,17 @@
             "description": "Response message for ConnectorAgentService.ExecuteTool",
             "id": "ExecuteToolResponse",
             "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "description": "Metadata like service latency, etc.",
+                    "type": "object"
+                },
                 "result": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -1202,6 +1433,16 @@
                     },
                     "description": "Output from the tool execution.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ExecutionConfig": {
+            "id": "ExecutionConfig",
+            "properties": {
+                "headers": {
+                    "description": "headers to be used for the request. For example: headers:'{\"x-integration-connectors-managed-connection-id\":\"conn-id\",\"x-integration-connectors-runtime-config\":\"runtime-cfg\"}'",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1390,6 +1631,47 @@
                 "reference": {
                     "$ref": "Reference",
                     "description": "Reference captures the association between two different entity types. Value links to the reference of another entity type."
+                }
+            },
+            "type": "object"
+        },
+        "GetResourcePostRequest": {
+            "description": "Request message for ConnectorAgentService.GetResourcePost",
+            "id": "GetResourcePostRequest",
+            "properties": {
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "execution config for the request."
+                },
+                "toolSpec": {
+                    "$ref": "ToolSpec",
+                    "description": "List of tool specifications."
+                }
+            },
+            "type": "object"
+        },
+        "GetResourceResponse": {
+            "id": "GetResourceResponse",
+            "properties": {
+                "data": {
+                    "description": "The content of the resource.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "description": "Metadata like service latency, etc.",
+                    "type": "object"
+                },
+                "mimeType": {
+                    "description": "The MIME type of the resource.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2006,10 +2288,73 @@
             },
             "type": "object"
         },
+        "ListResourcesResponse": {
+            "id": "ListResourcesResponse",
+            "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "description": "Metadata like service latency, etc.",
+                    "type": "object"
+                },
+                "nextPageToken": {
+                    "description": "Next page token if more resources available.",
+                    "type": "string"
+                },
+                "resources": {
+                    "description": "List of available resources.",
+                    "items": {
+                        "$ref": "Resource"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListToolsPostRequest": {
+            "description": "Request message for ConnectorAgentService.ListToolsPost",
+            "id": "ListToolsPostRequest",
+            "properties": {
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "execution config for the request."
+                },
+                "pageSize": {
+                    "description": "Page size.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "Page token.",
+                    "type": "string"
+                },
+                "toolSpec": {
+                    "$ref": "ToolSpec",
+                    "description": "List of tool specifications."
+                }
+            },
+            "type": "object"
+        },
         "ListToolsResponse": {
             "description": "Response message for ConnectorAgentService.ListTools",
             "id": "ListToolsResponse",
             "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "description": "Metadata like service latency, etc.",
+                    "type": "object"
+                },
                 "nextPageToken": {
                     "description": "Next page token.",
                     "type": "string"
@@ -2171,6 +2516,24 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OAuth2Config": {
+            "id": "OAuth2Config",
+            "properties": {
+                "authUri": {
+                    "description": "Authorization Server URL/Token Endpoint for Authorization Code Flow",
+                    "type": "string"
+                },
+                "clientId": {
+                    "description": "Client ID for the OAuth2 flow.",
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "description": "Client secret for the OAuth2 flow.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2404,6 +2767,14 @@
             "description": "RefreshAccessTokenRequest includes the refresh token.",
             "id": "RefreshAccessTokenRequest",
             "properties": {
+                "executionConfig": {
+                    "$ref": "ExecutionConfig",
+                    "description": "ExecutionConfig contains the configuration for the execution of the request."
+                },
+                "oauth2Config": {
+                    "$ref": "OAuth2Config",
+                    "description": "OAuth2Config contains the OAuth2 config for the connection."
+                },
                 "refreshToken": {
                     "description": "Optional. Refresh Token String. If the Refresh Token is not provided, the runtime will read the data from the secret manager.",
                     "type": "string"
@@ -2428,6 +2799,33 @@
                     },
                     "description": "Metadata like service latency, etc.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Resource": {
+            "id": "Resource",
+            "properties": {
+                "description": {
+                    "description": "A description of what this resource represents.",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "The MIME type of this resource, if known.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human-readable name for this resource.",
+                    "type": "string"
+                },
+                "size": {
+                    "description": "The size of the raw resource content, in bytes, if known.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "The URI of this resource.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2764,6 +3162,27 @@
                 },
                 "title": {
                     "description": "A human-readable title for the tool.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ToolSpec": {
+            "id": "ToolSpec",
+            "properties": {
+                "toolDefinitions": {
+                    "description": "List of tool definitions.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "toolSpecVersion": {
+                    "description": "Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId",
                     "type": "string"
                 }
             },

@@ -29,6 +29,7 @@
 ///       - [ProjectsLocationsGatewaysRouteViewsResource]
 ///     - [ProjectsLocationsGrpcRoutesResource]
 ///     - [ProjectsLocationsHttpRoutesResource]
+///     - [ProjectsLocationsLbEdgeExtensionsResource]
 ///     - [ProjectsLocationsLbRouteExtensionsResource]
 ///     - [ProjectsLocationsLbTrafficExtensionsResource]
 ///     - [ProjectsLocationsMeshesResource]
@@ -105,6 +106,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsGrpcRoutesResource(_requester);
   ProjectsLocationsHttpRoutesResource get httpRoutes =>
       ProjectsLocationsHttpRoutesResource(_requester);
+  ProjectsLocationsLbEdgeExtensionsResource get lbEdgeExtensions =>
+      ProjectsLocationsLbEdgeExtensionsResource(_requester);
   ProjectsLocationsLbRouteExtensionsResource get lbRouteExtensions =>
       ProjectsLocationsLbRouteExtensionsResource(_requester);
   ProjectsLocationsLbTrafficExtensionsResource get lbTrafficExtensions =>
@@ -165,9 +168,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -999,7 +1002,7 @@ class ProjectsLocationsEndpointPoliciesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the EndpointPolicy. Must be in
-  /// the format `projects / * /locations/global`.
+  /// the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [endpointPolicyId] - Required. Short name of the EndpointPolicy resource
@@ -1043,7 +1046,7 @@ class ProjectsLocationsEndpointPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the EndpointPolicy to delete. Must be in the
-  /// format `projects / * /locations/global/endpointPolicies / * `.
+  /// format `projects / * /locations / * /endpointPolicies / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/endpointPolicies/\[^/\]+$`.
   ///
@@ -1080,7 +1083,7 @@ class ProjectsLocationsEndpointPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the EndpointPolicy to get. Must be in the
-  /// format `projects / * /locations/global/endpointPolicies / * `.
+  /// format `projects / * /locations / * /endpointPolicies / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/endpointPolicies/\[^/\]+$`.
   ///
@@ -1120,7 +1123,7 @@ class ProjectsLocationsEndpointPoliciesResource {
   ///
   /// [parent] - Required. The project and location from which the
   /// EndpointPolicies should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of EndpointPolicies to return per call.
@@ -1178,8 +1181,8 @@ class ProjectsLocationsEndpointPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the EndpointPolicy resource. It matches
-  /// pattern
-  /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+  /// pattern `projects/{project}/locations / *
+  /// /endpointPolicies/{endpoint_policy}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/endpointPolicies/\[^/\]+$`.
   ///
@@ -1556,7 +1559,7 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the GrpcRoute. Must be in the
-  /// format `projects / * /locations/global`.
+  /// format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [grpcRouteId] - Required. Short name of the GrpcRoute resource to be
@@ -1600,7 +1603,7 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the GrpcRoute to delete. Must be in the
-  /// format `projects / * /locations/global/grpcRoutes / * `.
+  /// format `projects / * /locations / * /grpcRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/grpcRoutes/\[^/\]+$`.
   ///
@@ -1637,7 +1640,7 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the GrpcRoute to get. Must be in the format
-  /// `projects / * /locations/global/grpcRoutes / * `.
+  /// `projects / * /locations / * /grpcRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/grpcRoutes/\[^/\]+$`.
   ///
@@ -1671,8 +1674,7 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the GrpcRoutes
-  /// should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of GrpcRoutes to return per call.
@@ -1729,7 +1731,7 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the GrpcRoute resource. It matches pattern
-  /// `projects / * /locations/global/grpcRoutes/`
+  /// `projects / * /locations / * /grpcRoutes/`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/grpcRoutes/\[^/\]+$`.
   ///
@@ -1786,7 +1788,7 @@ class ProjectsLocationsHttpRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the HttpRoute. Must be in the
-  /// format `projects / * /locations/global`.
+  /// format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [httpRouteId] - Required. Short name of the HttpRoute resource to be
@@ -1830,7 +1832,7 @@ class ProjectsLocationsHttpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the HttpRoute to delete. Must be in the
-  /// format `projects / * /locations/global/httpRoutes / * `.
+  /// format `projects / * /locations / * /httpRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/httpRoutes/\[^/\]+$`.
   ///
@@ -1867,7 +1869,7 @@ class ProjectsLocationsHttpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the HttpRoute to get. Must be in the format
-  /// `projects / * /locations/global/httpRoutes / * `.
+  /// `projects / * /locations / * /httpRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/httpRoutes/\[^/\]+$`.
   ///
@@ -1901,8 +1903,7 @@ class ProjectsLocationsHttpRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the HttpRoutes
-  /// should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of HttpRoutes to return per call.
@@ -1959,7 +1960,7 @@ class ProjectsLocationsHttpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the HttpRoute resource. It matches pattern
-  /// `projects / * /locations/global/httpRoutes/http_route_name>`.
+  /// `projects / * /locations / * /httpRoutes/http_route_name>`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/httpRoutes/\[^/\]+$`.
   ///
@@ -1987,6 +1988,285 @@ class ProjectsLocationsHttpRoutesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsLbEdgeExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsLbEdgeExtensionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new `LbEdgeExtension` resource in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `LbEdgeExtension`
+  /// resource. Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [lbEdgeExtensionId] - Required. User-provided ID of the `LbEdgeExtension`
+  /// resource to be created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    LbEdgeExtension request,
+    core.String parent, {
+    core.String? lbEdgeExtensionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (lbEdgeExtensionId != null) 'lbEdgeExtensionId': [lbEdgeExtensionId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/lbEdgeExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `LbEdgeExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `LbEdgeExtension` resource to delete.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbEdgeExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `LbEdgeExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `LbEdgeExtension` resource to get. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbEdgeExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LbEdgeExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LbEdgeExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LbEdgeExtension.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists `LbEdgeExtension` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `LbEdgeExtension` resources are listed. These values are specified in the
+  /// following format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint about how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server returns.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLbEdgeExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLbEdgeExtensionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/lbEdgeExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLbEdgeExtensionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of the specified `LbEdgeExtension` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Name of the `LbEdgeExtension` resource in
+  /// the following format:
+  /// `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbEdgeExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for 60 minutes since the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Used to specify the fields to be overwritten in
+  /// the `LbEdgeExtension` resource by the update. The fields specified in the
+  /// `update_mask` are relative to the resource, not the full request. A field
+  /// is overwritten if it is in the mask. If the user does not specify a mask,
+  /// then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    LbEdgeExtension request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2582,7 +2862,7 @@ class ProjectsLocationsMeshesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the Mesh. Must be in the
-  /// format `projects / * /locations/global`.
+  /// format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [meshId] - Required. Short name of the Mesh resource to be created.
@@ -2625,7 +2905,7 @@ class ProjectsLocationsMeshesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the Mesh to delete. Must be in the format
-  /// `projects / * /locations/global/meshes / * `.
+  /// `projects / * /locations / * /meshes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+$`.
   ///
@@ -2662,7 +2942,7 @@ class ProjectsLocationsMeshesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the Mesh to get. Must be in the format
-  /// `projects / * /locations/global/meshes / * `.
+  /// `projects / * /locations / * /meshes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+$`.
   ///
@@ -2696,7 +2976,7 @@ class ProjectsLocationsMeshesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the Meshes should
-  /// be listed, specified in the format `projects / * /locations/global`.
+  /// be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of Meshes to return per call.
@@ -2753,7 +3033,7 @@ class ProjectsLocationsMeshesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the Mesh resource. It matches pattern
-  /// `projects / * /locations/global/meshes/`.
+  /// `projects / * /locations / * /meshes/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+$`.
   ///
@@ -3036,6 +3316,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3051,12 +3339,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3546,7 +3837,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the TcpRoute. Must be in the
-  /// format `projects / * /locations/global`.
+  /// format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tcpRouteId] - Required. Short name of the TcpRoute resource to be
@@ -3590,7 +3881,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the TcpRoute to delete. Must be in the format
-  /// `projects / * /locations/global/tcpRoutes / * `.
+  /// `projects / * /locations / * /tcpRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tcpRoutes/\[^/\]+$`.
   ///
@@ -3627,7 +3918,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the TcpRoute to get. Must be in the format
-  /// `projects / * /locations/global/tcpRoutes / * `.
+  /// `projects / * /locations / * /tcpRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tcpRoutes/\[^/\]+$`.
   ///
@@ -3661,8 +3952,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the TcpRoutes
-  /// should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of TcpRoutes to return per call.
@@ -3719,7 +4009,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the TcpRoute resource. It matches pattern
-  /// `projects / * /locations/global/tcpRoutes/tcp_route_name>`.
+  /// `projects / * /locations / * /tcpRoutes/tcp_route_name>`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tcpRoutes/\[^/\]+$`.
   ///
@@ -3776,7 +4066,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the TlsRoute. Must be in the
-  /// format `projects / * /locations/global`.
+  /// format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tlsRouteId] - Required. Short name of the TlsRoute resource to be
@@ -3820,7 +4110,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the TlsRoute to delete. Must be in the format
-  /// `projects / * /locations/global/tlsRoutes / * `.
+  /// `projects / * /locations / * /tlsRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tlsRoutes/\[^/\]+$`.
   ///
@@ -3857,7 +4147,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the TlsRoute to get. Must be in the format
-  /// `projects / * /locations/global/tlsRoutes / * `.
+  /// `projects / * /locations / * /tlsRoutes / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tlsRoutes/\[^/\]+$`.
   ///
@@ -3891,8 +4181,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location from which the TlsRoutes
-  /// should be listed, specified in the format `projects / *
-  /// /locations/global`.
+  /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of TlsRoutes to return per call.
@@ -3949,7 +4238,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the TlsRoute resource. It matches pattern
-  /// `projects / * /locations/global/tlsRoutes/tls_route_name>`.
+  /// `projects / * /locations / * /tlsRoutes/tls_route_name>`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tlsRoutes/\[^/\]+$`.
   ///
@@ -4607,7 +4896,9 @@ class AuthzExtension {
 
   /// The format of communication supported by the callout extension.
   ///
-  /// If not specified, the default value `EXT_PROC_GRPC` is used.
+  /// This field is supported only for regional `AuthzExtension` resources. If
+  /// not specified, the default value `EXT_PROC_GRPC` is used. Global
+  /// `AuthzExtension` resources use the `EXT_PROC_GRPC` wire format.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4618,8 +4909,8 @@ class AuthzExtension {
   /// the protocol. All `supported_events` for a client request are sent as part
   /// of the same gRPC stream.
   /// - "EXT_AUTHZ_GRPC" : The extension service uses Envoy's `ext_authz` gRPC
-  /// API. The backend service for the extension must use HTTP2, or H2C as the
-  /// protocol. `EXT_AUTHZ_GRPC` is only supported for `AuthzExtension`
+  /// API. The backend service for the extension must use HTTP2 or H2C as the
+  /// protocol. `EXT_AUTHZ_GRPC` is only supported for regional `AuthzExtension`
   /// resources.
   core.String? wireFormat;
 
@@ -4965,7 +5256,7 @@ class EndpointPolicy {
   /// Identifier.
   ///
   /// Name of the EndpointPolicy resource. It matches pattern
-  /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+  /// `projects/{project}/locations / * /endpointPolicies/{endpoint_policy}`.
   core.String? name;
 
   /// A URL referring to ServerTlsPolicy resource.
@@ -5177,7 +5468,9 @@ class ExtensionChainExtension {
   /// (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent
   /// to the extension server.
   ///
-  /// The metadata is available under the namespace `com.google....`. For
+  /// For `AuthzExtension` resources, the metadata is available under the
+  /// namespace `com.google.authz_extension.`. For other types of extensions,
+  /// the metadata is available under the namespace `com.google....`. For
   /// example:
   /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The
   /// following variables are supported in the metadata: `{forwarding_rule_id}`
@@ -5203,10 +5496,80 @@ class ExtensionChainExtension {
   /// The name is logged as part of the HTTP request logs. The name must conform
   /// with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
   /// and can have a maximum length of 63 characters. Additionally, the first
-  /// character must be a letter and the last a letter or a number.
+  /// character must be a letter and the last a letter or a number. This field
+  /// is required except for AuthzExtension.
   ///
-  /// Required.
+  /// Optional.
   core.String? name;
+
+  /// When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+  ///
+  /// This makes `ext_proc` calls asynchronous. Envoy doesn't check for the
+  /// response from `ext_proc` calls. For more information about the filter,
+  /// see:
+  /// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-externalprocessor
+  /// This field is helpful when you want to try out the extension in async
+  /// log-only mode. Supported by regional `LbTrafficExtension` and
+  /// `LbRouteExtension` resources. Only `STREAMED` (default) body processing
+  /// mode is supported.
+  ///
+  /// Optional.
+  core.bool? observabilityMode;
+
+  /// Configures the send mode for request body processing.
+  ///
+  /// The field can only be set if `supported_events` includes `REQUEST_BODY`.
+  /// If `supported_events` includes `REQUEST_BODY`, but
+  /// `request_body_send_mode` is unset, the default value `STREAMED` is used.
+  /// When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must
+  /// include both `REQUEST_BODY` and `REQUEST_TRAILERS`. This field can be set
+  /// only for `LbTrafficExtension` and `LbRouteExtension` resources, and only
+  /// when the `service` field of the extension points to a `BackendService`.
+  /// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension`
+  /// resources.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BODY_SEND_MODE_UNSPECIFIED" : Default value. Do not use.
+  /// - "BODY_SEND_MODE_STREAMED" : Calls to the extension are executed in the
+  /// streamed mode. Subsequent chunks will be sent only after the previous
+  /// chunks have been processed. The content of the body chunks is sent one way
+  /// to the extension. Extension may send modified chunks back. This is the
+  /// default value if the processing mode is not specified.
+  /// - "BODY_SEND_MODE_FULL_DUPLEX_STREAMED" : Calls are executed in the full
+  /// duplex mode. Subsequent chunks will be sent for processing without waiting
+  /// for the response for the previous chunk or for the response for
+  /// `REQUEST_HEADERS` event. Extension can freely modify or chunk the body
+  /// contents. If the extension doesn't send the body contents back, the next
+  /// extension in the chain or the upstream will receive an empty body.
+  core.String? requestBodySendMode;
+
+  /// Configures the send mode for response processing.
+  ///
+  /// If unspecified, the default value `STREAMED` is used. The field can only
+  /// be set if `supported_events` includes `RESPONSE_BODY`. If
+  /// `supported_events` includes `RESPONSE_BODY`, but `response_body_send_mode`
+  /// is unset, the default value `STREAMED` is used. When this field is set to
+  /// `FULL_DUPLEX_STREAMED`, `supported_events` must include both
+  /// `RESPONSE_BODY` and `RESPONSE_TRAILERS`. This field can be set only for
+  /// `LbTrafficExtension` resources, and only when the `service` field of the
+  /// extension points to a `BackendService`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BODY_SEND_MODE_UNSPECIFIED" : Default value. Do not use.
+  /// - "BODY_SEND_MODE_STREAMED" : Calls to the extension are executed in the
+  /// streamed mode. Subsequent chunks will be sent only after the previous
+  /// chunks have been processed. The content of the body chunks is sent one way
+  /// to the extension. Extension may send modified chunks back. This is the
+  /// default value if the processing mode is not specified.
+  /// - "BODY_SEND_MODE_FULL_DUPLEX_STREAMED" : Calls are executed in the full
+  /// duplex mode. Subsequent chunks will be sent for processing without waiting
+  /// for the response for the previous chunk or for the response for
+  /// `REQUEST_HEADERS` event. Extension can freely modify or chunk the body
+  /// contents. If the extension doesn't send the body contents back, the next
+  /// extension in the chain or the upstream will receive an empty body.
+  core.String? responseBodySendMode;
 
   /// The reference to the service that runs the extension.
   ///
@@ -5236,7 +5599,9 @@ class ExtensionChainExtension {
   /// `LbRouteExtension` resource, this field is optional. If unspecified,
   /// `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension`
   /// resource, this field is required and must only contain `REQUEST_HEADERS`
-  /// event.
+  /// event. For the `AuthzExtension` resource, this field is optional.
+  /// `REQUEST_HEADERS` is the only supported event. If unspecified,
+  /// `REQUEST_HEADERS` event is assumed as supported.
   ///
   /// Optional.
   core.List<core.String>? supportedEvents;
@@ -5256,6 +5621,9 @@ class ExtensionChainExtension {
     this.forwardHeaders,
     this.metadata,
     this.name,
+    this.observabilityMode,
+    this.requestBodySendMode,
+    this.responseBodySendMode,
     this.service,
     this.supportedEvents,
     this.timeout,
@@ -5274,6 +5642,9 @@ class ExtensionChainExtension {
                 ? json_['metadata'] as core.Map<core.String, core.dynamic>
                 : null,
         name: json_['name'] as core.String?,
+        observabilityMode: json_['observabilityMode'] as core.bool?,
+        requestBodySendMode: json_['requestBodySendMode'] as core.String?,
+        responseBodySendMode: json_['responseBodySendMode'] as core.String?,
         service: json_['service'] as core.String?,
         supportedEvents:
             (json_['supportedEvents'] as core.List?)
@@ -5288,6 +5659,11 @@ class ExtensionChainExtension {
     if (forwardHeaders != null) 'forwardHeaders': forwardHeaders!,
     if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
+    if (observabilityMode != null) 'observabilityMode': observabilityMode!,
+    if (requestBodySendMode != null)
+      'requestBodySendMode': requestBodySendMode!,
+    if (responseBodySendMode != null)
+      'responseBodySendMode': responseBodySendMode!,
     if (service != null) 'service': service!,
     if (supportedEvents != null) 'supportedEvents': supportedEvents!,
     if (timeout != null) 'timeout': timeout!,
@@ -5363,8 +5739,8 @@ class Gateway {
   /// - "ENVOY_HEADERS_UNSPECIFIED" : Defaults to NONE.
   /// - "NONE" : Suppress envoy debug headers.
   /// - "DEBUG_HEADERS" : Envoy will insert default internal debug headers into
-  /// upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry
-  /// x-envoy-expected-rq-timeout-ms x-envoy-original-path
+  /// upstream requests: x-envoy-attempt-count, x-envoy-is-timeout-retry,
+  /// x-envoy-expected-rq-timeout-ms, x-envoy-original-path,
   /// x-envoy-upstream-stream-duration-ms
   core.String? envoyHeaders;
 
@@ -5640,8 +6016,8 @@ class GrpcRoute {
   /// Gateways defines a list of gateways this GrpcRoute is attached to, as one
   /// of the routing rules to route the requests served by the gateway.
   ///
-  /// Each gateway reference should match the pattern: `projects / *
-  /// /locations/global/gateways/`
+  /// Each gateway reference should match the pattern: `projects / * /locations
+  /// / * /gateways/`
   ///
   /// Optional.
   core.List<core.String>? gateways;
@@ -5680,8 +6056,8 @@ class GrpcRoute {
   /// Meshes defines a list of meshes this GrpcRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
-  /// Each mesh reference should match the pattern: `projects / *
-  /// /locations/global/meshes/`
+  /// Each mesh reference should match the pattern: `projects / * /locations / *
+  /// /meshes/`
   ///
   /// Optional.
   core.List<core.String>? meshes;
@@ -5689,7 +6065,7 @@ class GrpcRoute {
   /// Identifier.
   ///
   /// Name of the GrpcRoute resource. It matches pattern `projects / *
-  /// /locations/global/grpcRoutes/`
+  /// /locations / * /grpcRoutes/`
   core.String? name;
 
   /// A list of detailed rules defining how to route traffic.
@@ -6217,8 +6593,8 @@ class HttpRoute {
   /// Gateways defines a list of gateways this HttpRoute is attached to, as one
   /// of the routing rules to route the requests served by the gateway.
   ///
-  /// Each gateway reference should match the pattern: `projects / *
-  /// /locations/global/gateways/`
+  /// Each gateway reference should match the pattern: `projects / * /locations
+  /// / * /gateways/`
   ///
   /// Optional.
   core.List<core.String>? gateways;
@@ -6254,8 +6630,8 @@ class HttpRoute {
   /// Meshes defines a list of meshes this HttpRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
-  /// Each mesh reference should match the pattern: `projects / *
-  /// /locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+  /// Each mesh reference should match the pattern: `projects / * /locations / *
+  /// /meshes/` The attached Mesh should be of a type SIDECAR
   ///
   /// Optional.
   core.List<core.String>? meshes;
@@ -6263,7 +6639,7 @@ class HttpRoute {
   /// Identifier.
   ///
   /// Name of the HttpRoute resource. It matches pattern `projects / *
-  /// /locations/global/httpRoutes/http_route_name>`.
+  /// /locations / * /httpRoutes/http_route_name>`.
   core.String? name;
 
   /// Rules that define how traffic is routed and handled.
@@ -7308,6 +7684,124 @@ class HttpRouteURLRewrite {
   };
 }
 
+/// `LbEdgeExtension` is a resource that lets the extension service influence
+/// the selection of backend services and Cloud CDN cache keys by modifying
+/// request headers.
+class LbEdgeExtension {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A set of ordered extension chains that contain the match conditions and
+  /// extensions to execute.
+  ///
+  /// Match conditions for each extension chain are evaluated in sequence for a
+  /// given request. The first extension chain that has a condition that matches
+  /// the request is executed. Any subsequent extension chains do not execute.
+  /// Limited to 5 extension chains per resource.
+  ///
+  /// Required.
+  core.List<ExtensionChain>? extensionChains;
+
+  /// A list of references to the forwarding rules to which this service
+  /// extension is attached.
+  ///
+  /// At least one forwarding rule is required. Only one `LbEdgeExtension`
+  /// resource can be associated with a forwarding rule.
+  ///
+  /// Required.
+  core.List<core.String>? forwardingRules;
+
+  /// Set of labels associated with the `LbEdgeExtension` resource.
+  ///
+  /// The format must comply with
+  /// [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements)
+  /// for Google Cloud resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// All forwarding rules referenced by this extension must share the same load
+  /// balancing scheme.
+  ///
+  /// Supported values: `EXTERNAL_MANAGED`.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
+  /// - "INTERNAL_MANAGED" : Signifies that this is used for Internal HTTP(S)
+  /// Load Balancing.
+  /// - "EXTERNAL_MANAGED" : Signifies that this is used for External Managed
+  /// HTTP(S) Load Balancing.
+  core.String? loadBalancingScheme;
+
+  /// Identifier.
+  ///
+  /// Name of the `LbEdgeExtension` resource in the following format:
+  /// `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LbEdgeExtension({
+    this.createTime,
+    this.description,
+    this.extensionChains,
+    this.forwardingRules,
+    this.labels,
+    this.loadBalancingScheme,
+    this.name,
+    this.updateTime,
+  });
+
+  LbEdgeExtension.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensionChains:
+            (json_['extensionChains'] as core.List?)
+                ?.map(
+                  (value) => ExtensionChain.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        forwardingRules:
+            (json_['forwardingRules'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (extensionChains != null) 'extensionChains': extensionChains!,
+    if (forwardingRules != null) 'forwardingRules': forwardingRules!,
+    if (labels != null) 'labels': labels!,
+    if (loadBalancingScheme != null)
+      'loadBalancingScheme': loadBalancingScheme!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// `LbRouteExtension` is a resource that lets you control where traffic is
 /// routed to for a given request.
 class LbRouteExtension {
@@ -7877,6 +8371,47 @@ class ListHttpRoutesResponse {
   };
 }
 
+/// Message for response to listing `LbEdgeExtension` resources.
+class ListLbEdgeExtensionsResponse {
+  /// The list of `LbEdgeExtension` resources.
+  core.List<LbEdgeExtension>? lbEdgeExtensions;
+
+  /// A token identifying a page of results that the server returns.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListLbEdgeExtensionsResponse({
+    this.lbEdgeExtensions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListLbEdgeExtensionsResponse.fromJson(core.Map json_)
+    : this(
+        lbEdgeExtensions:
+            (json_['lbEdgeExtensions'] as core.List?)
+                ?.map(
+                  (value) => LbEdgeExtension.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (lbEdgeExtensions != null) 'lbEdgeExtensions': lbEdgeExtensions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// Message for response to listing `LbRouteExtension` resources.
 class ListLbRouteExtensionsResponse {
   /// The list of `LbRouteExtension` resources.
@@ -8088,7 +8623,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -8101,11 +8648,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -8423,8 +8975,8 @@ class Mesh {
   /// - "ENVOY_HEADERS_UNSPECIFIED" : Defaults to NONE.
   /// - "NONE" : Suppress envoy debug headers.
   /// - "DEBUG_HEADERS" : Envoy will insert default internal debug headers into
-  /// upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry
-  /// x-envoy-expected-rq-timeout-ms x-envoy-original-path
+  /// upstream requests: x-envoy-attempt-count, x-envoy-is-timeout-retry,
+  /// x-envoy-expected-rq-timeout-ms, x-envoy-original-path,
   /// x-envoy-upstream-stream-duration-ms
   core.String? envoyHeaders;
 
@@ -8446,8 +8998,8 @@ class Mesh {
 
   /// Identifier.
   ///
-  /// Name of the Mesh resource. It matches pattern `projects / *
-  /// /locations/global/meshes/`.
+  /// Name of the Mesh resource. It matches pattern `projects / * /locations / *
+  /// /meshes/`.
   core.String? name;
 
   /// Server-defined URL of this resource
@@ -9126,8 +9678,8 @@ class TcpRoute {
   /// Gateways defines a list of gateways this TcpRoute is attached to, as one
   /// of the routing rules to route the requests served by the gateway.
   ///
-  /// Each gateway reference should match the pattern: `projects / *
-  /// /locations/global/gateways/`
+  /// Each gateway reference should match the pattern: `projects / * /locations
+  /// / * /gateways/`
   ///
   /// Optional.
   core.List<core.String>? gateways;
@@ -9140,16 +9692,16 @@ class TcpRoute {
   /// Meshes defines a list of meshes this TcpRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
-  /// Each mesh reference should match the pattern: `projects / *
-  /// /locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+  /// Each mesh reference should match the pattern: `projects / * /locations / *
+  /// /meshes/` The attached Mesh should be of a type SIDECAR
   ///
   /// Optional.
   core.List<core.String>? meshes;
 
   /// Identifier.
   ///
-  /// Name of the TcpRoute resource. It matches pattern `projects / *
-  /// /locations/global/tcpRoutes/tcp_route_name>`.
+  /// Name of the TcpRoute resource. It matches pattern `projects / * /locations
+  /// / * /tcpRoutes/tcp_route_name>`.
   core.String? name;
 
   /// Rules that define how traffic is routed and handled.
@@ -9418,8 +9970,8 @@ class TlsRoute {
   /// Gateways defines a list of gateways this TlsRoute is attached to, as one
   /// of the routing rules to route the requests served by the gateway.
   ///
-  /// Each gateway reference should match the pattern: `projects / *
-  /// /locations/global/gateways/`
+  /// Each gateway reference should match the pattern: `projects / * /locations
+  /// / * /gateways/`
   ///
   /// Optional.
   core.List<core.String>? gateways;
@@ -9432,16 +9984,16 @@ class TlsRoute {
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
-  /// Each mesh reference should match the pattern: `projects / *
-  /// /locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+  /// Each mesh reference should match the pattern: `projects / * /locations / *
+  /// /meshes/` The attached Mesh should be of a type SIDECAR
   ///
   /// Optional.
   core.List<core.String>? meshes;
 
   /// Identifier.
   ///
-  /// Name of the TlsRoute resource. It matches pattern `projects / *
-  /// /locations/global/tlsRoutes/tls_route_name>`.
+  /// Name of the TlsRoute resource. It matches pattern `projects / * /locations
+  /// / * /tlsRoutes/tls_route_name>`.
   core.String? name;
 
   /// Rules that define how traffic is routed and handled.

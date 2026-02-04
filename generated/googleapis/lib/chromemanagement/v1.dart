@@ -27,6 +27,8 @@
 ///     - [CustomersAppsAndroidResource]
 ///     - [CustomersAppsChromeResource]
 ///     - [CustomersAppsWebResource]
+///   - [CustomersCertificateProvisioningProcessesResource]
+///     - [CustomersCertificateProvisioningProcessesOperationsResource]
 ///   - [CustomersProfilesResource]
 ///     - [CustomersProfilesCommandsResource]
 ///   - [CustomersReportsResource]
@@ -36,6 +38,7 @@
 ///     - [CustomersTelemetryNotificationConfigsResource]
 ///     - [CustomersTelemetryUsersResource]
 ///   - [CustomersThirdPartyProfileUsersResource]
+/// - [OperationsResource]
 library;
 
 import 'dart:async' as async;
@@ -82,6 +85,7 @@ class ChromeManagementApi {
   final commons.ApiRequester _requester;
 
   CustomersResource get customers => CustomersResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
 
   ChromeManagementApi(
     http.Client client, {
@@ -99,6 +103,9 @@ class CustomersResource {
   final commons.ApiRequester _requester;
 
   CustomersAppsResource get apps => CustomersAppsResource(_requester);
+  CustomersCertificateProvisioningProcessesResource
+  get certificateProvisioningProcesses =>
+      CustomersCertificateProvisioningProcessesResource(_requester);
   CustomersProfilesResource get profiles =>
       CustomersProfilesResource(_requester);
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
@@ -453,6 +460,314 @@ class CustomersAppsWebResource {
   }
 }
 
+class CustomersCertificateProvisioningProcessesResource {
+  final commons.ApiRequester _requester;
+
+  CustomersCertificateProvisioningProcessesOperationsResource get operations =>
+      CustomersCertificateProvisioningProcessesOperationsResource(_requester);
+
+  CustomersCertificateProvisioningProcessesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Claims a certificate provisioning process.
+  ///
+  /// For each certificate provisioning process, this operation can succeed only
+  /// for one `caller_instance_id`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the `CertificateProvisioningProcess`
+  /// to claim. The name pattern is given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+  >
+  claim(
+    GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
+    request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':claim';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a certificate provisioning process.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the `CertificateProvisioningProcess`
+  /// to return. The name pattern is given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1CertificateProvisioningProcess].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1CertificateProvisioningProcess>
+  get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1CertificateProvisioningProcess.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Marks a certificate provisioning process as failed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the `CertificateProvisioningProcess`
+  /// to return. The name pattern is given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1SetFailureResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1SetFailureResponse> setFailure(
+    GoogleChromeManagementVersionsV1SetFailureRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setFailure';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1SetFailureResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Requests the client that initiated a certificate provisioning process to
+  /// sign data.
+  ///
+  /// This should only be called after `ClaimCertificateProvisioningProcess` has
+  /// been successfully executed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the `CertificateProvisioningProcess`
+  /// to return. The name pattern is given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> signData(
+    GoogleChromeManagementVersionsV1SignDataRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signData';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Uploads a successfully issued certificate for a certificate provisioning
+  /// process.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the `CertificateProvisioningProcess`
+  /// to return. The name pattern is given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1UploadCertificateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1UploadCertificateResponse>
+  uploadCertificate(
+    GoogleChromeManagementVersionsV1UploadCertificateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':uploadCertificate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1UploadCertificateResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CustomersCertificateProvisioningProcessesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersCertificateProvisioningProcessesOperationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/certificateProvisioningProcesses/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class CustomersProfilesResource {
   final commons.ApiRequester _requester;
 
@@ -773,6 +1088,64 @@ class CustomersReportsResource {
   final commons.ApiRequester _requester;
 
   CustomersReportsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get a count of active devices per set time frames.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [date_day] - Day of a month. Must be from 1 to 31 and valid for the year
+  /// and month, or 0 to specify a year by itself or a year and month where the
+  /// day isn't significant.
+  ///
+  /// [date_month] - Month of a year. Must be from 1 to 12, or 0 to specify a
+  /// year without a month and day.
+  ///
+  /// [date_year] - Year of the date. Must be from 1 to 9999, or 0 to specify a
+  /// date without a year.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1CountActiveDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountActiveDevicesResponse>
+  countActiveDevices(
+    core.String customer, {
+    core.int? date_day,
+    core.int? date_month,
+    core.int? date_year,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (date_day != null) 'date.day': ['${date_day}'],
+      if (date_month != null) 'date.month': ['${date_month}'],
+      if (date_year != null) 'date.year': ['${date_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countActiveDevices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountActiveDevicesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Count of Chrome Browsers that have been recently enrolled, have new policy
   /// to be synced, or have no recent activity.
@@ -1125,6 +1498,124 @@ class CustomersReportsResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a count of devices per boot type.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [date_day] - Day of a month. Must be from 1 to 31 and valid for the year
+  /// and month, or 0 to specify a year by itself or a year and month where the
+  /// day isn't significant.
+  ///
+  /// [date_month] - Month of a year. Must be from 1 to 12, or 0 to specify a
+  /// year without a month and day.
+  ///
+  /// [date_year] - Year of the date. Must be from 1 to 9999, or 0 to specify a
+  /// date without a year.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountDevicesPerBootTypeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>
+  countDevicesPerBootType(
+    core.String customer, {
+    core.int? date_day,
+    core.int? date_month,
+    core.int? date_year,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (date_day != null) 'date.day': ['${date_day}'],
+      if (date_month != null) 'date.month': ['${date_month}'],
+      if (date_year != null) 'date.year': ['${date_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countDevicesPerBootType';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountDevicesPerBootTypeResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a count of devices per channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [date_day] - Day of a month. Must be from 1 to 31 and valid for the year
+  /// and month, or 0 to specify a year by itself or a year and month where the
+  /// day isn't significant.
+  ///
+  /// [date_month] - Month of a year. Must be from 1 to 12, or 0 to specify a
+  /// year without a month and day.
+  ///
+  /// [date_year] - Year of the date. Must be from 1 to 9999, or 0 to specify a
+  /// date without a year.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>
+  countDevicesPerReleaseChannel(
+    core.String customer, {
+    core.int? date_day,
+    core.int? date_month,
+    core.int? date_year,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (date_day != null) 'date.day': ['${date_day}'],
+      if (date_month != null) 'date.month': ['${date_month}'],
+      if (date_year != null) 'date.year': ['${date_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countDevicesPerReleaseChannel';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2042,6 +2533,166 @@ class CustomersThirdPartyProfileUsersResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    GoogleLongrunningCancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3122,6 +3773,33 @@ class GoogleChromeManagementV1ChromeAppSiteAccess {
   };
 }
 
+/// Response containing the number of active devices.
+class GoogleChromeManagementV1CountActiveDevicesResponse {
+  /// Number of active devices in the 7 days leading up to the date specified in
+  /// the request.
+  core.String? sevenDaysCount;
+
+  /// Number of active devices in the 30 days leading up to the date specified
+  /// in the request.
+  core.String? thirtyDaysCount;
+
+  GoogleChromeManagementV1CountActiveDevicesResponse({
+    this.sevenDaysCount,
+    this.thirtyDaysCount,
+  });
+
+  GoogleChromeManagementV1CountActiveDevicesResponse.fromJson(core.Map json_)
+    : this(
+        sevenDaysCount: json_['sevenDaysCount'] as core.String?,
+        thirtyDaysCount: json_['thirtyDaysCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (sevenDaysCount != null) 'sevenDaysCount': sevenDaysCount!,
+    if (thirtyDaysCount != null) 'thirtyDaysCount': thirtyDaysCount!,
+  };
+}
+
 /// Response containing summary of requested app installations.
 class GoogleChromeManagementV1CountChromeAppRequestsResponse {
   /// Token to specify the next page in the list.
@@ -3463,6 +4141,106 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
     if (browserVersions != null) 'browserVersions': browserVersions!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (totalSize != null) 'totalSize': totalSize!,
+  };
+}
+
+/// Response containing the number of devices with the given boot type.
+class GoogleChromeManagementV1CountDevicesPerBootTypeResponse {
+  /// Number of devices with dev boot type.
+  core.String? devBootTypeCount;
+
+  /// Number of devices with unreported boot type.
+  core.String? unreportedBootTypeCount;
+
+  /// Number of devices with verified boot type.
+  core.String? verifiedBootTypeCount;
+
+  GoogleChromeManagementV1CountDevicesPerBootTypeResponse({
+    this.devBootTypeCount,
+    this.unreportedBootTypeCount,
+    this.verifiedBootTypeCount,
+  });
+
+  GoogleChromeManagementV1CountDevicesPerBootTypeResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        devBootTypeCount: json_['devBootTypeCount'] as core.String?,
+        unreportedBootTypeCount:
+            json_['unreportedBootTypeCount'] as core.String?,
+        verifiedBootTypeCount: json_['verifiedBootTypeCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (devBootTypeCount != null) 'devBootTypeCount': devBootTypeCount!,
+    if (unreportedBootTypeCount != null)
+      'unreportedBootTypeCount': unreportedBootTypeCount!,
+    if (verifiedBootTypeCount != null)
+      'verifiedBootTypeCount': verifiedBootTypeCount!,
+  };
+}
+
+/// Response containing the number of devices with the given channel.
+class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
+  /// Number of devices with beta release channel.
+  core.String? betaChannelCount;
+
+  /// Number of devices with canary release channel.
+  core.String? canaryChannelCount;
+
+  /// Number of devices with dev release channel.
+  core.String? devChannelCount;
+
+  /// Number of devices with ltc release channel.
+  core.String? ltcChannelCount;
+
+  /// Number of devices with lts release channel.
+  core.String? ltsChannelCount;
+
+  /// Number of devices with stable release channel.
+  core.String? stableChannelCount;
+
+  /// Number of devices with an unreported release channel.
+  core.String? unreportedChannelCount;
+
+  /// Number of devices with unsupported release channel.
+  core.String? unsupportedChannelCount;
+
+  GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse({
+    this.betaChannelCount,
+    this.canaryChannelCount,
+    this.devChannelCount,
+    this.ltcChannelCount,
+    this.ltsChannelCount,
+    this.stableChannelCount,
+    this.unreportedChannelCount,
+    this.unsupportedChannelCount,
+  });
+
+  GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        betaChannelCount: json_['betaChannelCount'] as core.String?,
+        canaryChannelCount: json_['canaryChannelCount'] as core.String?,
+        devChannelCount: json_['devChannelCount'] as core.String?,
+        ltcChannelCount: json_['ltcChannelCount'] as core.String?,
+        ltsChannelCount: json_['ltsChannelCount'] as core.String?,
+        stableChannelCount: json_['stableChannelCount'] as core.String?,
+        unreportedChannelCount: json_['unreportedChannelCount'] as core.String?,
+        unsupportedChannelCount:
+            json_['unsupportedChannelCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (betaChannelCount != null) 'betaChannelCount': betaChannelCount!,
+    if (canaryChannelCount != null) 'canaryChannelCount': canaryChannelCount!,
+    if (devChannelCount != null) 'devChannelCount': devChannelCount!,
+    if (ltcChannelCount != null) 'ltcChannelCount': ltcChannelCount!,
+    if (ltsChannelCount != null) 'ltsChannelCount': ltsChannelCount!,
+    if (stableChannelCount != null) 'stableChannelCount': stableChannelCount!,
+    if (unreportedChannelCount != null)
+      'unreportedChannelCount': unreportedChannelCount!,
+    if (unsupportedChannelCount != null)
+      'unsupportedChannelCount': unsupportedChannelCount!,
   };
 }
 
@@ -5297,15 +6075,39 @@ class GoogleChromeManagementV1NetworkStatusReport {
   /// Output only.
   core.String? gatewayIpAddress;
 
+  /// The gateway IPv6 for this interface, if detected
+  ///
+  /// Output only.
+  core.String? gatewayIpv6Address;
+
   /// Network connection guid.
   ///
   /// Output only.
   core.String? guid;
 
+  /// IPv6 addresses assigned to this network, if any.
+  ///
+  /// Each address is a string in standard IPv6 text representation (e.g.,
+  /// "2001:db8::1").
+  ///
+  /// Output only.
+  core.List<core.String>? ipv6Address;
+
   /// LAN IP address.
   ///
   /// Output only.
   core.String? lanIpAddress;
+
+  /// The maximum downstream bandwidth in Kilobits per second (Kbps), if
+  /// reported by the network interface or connection.
+  ///
+  /// Output only.
+  core.String? linkDownSpeedKbps;
+
+  /// Whether the network was detected as metered.
+  ///
+  /// Output only.
+  core.bool? metered;
 
   /// Receiving bit rate measured in Megabits per second.
   ///
@@ -5355,8 +6157,12 @@ class GoogleChromeManagementV1NetworkStatusReport {
     this.connectionType,
     this.encryptionOn,
     this.gatewayIpAddress,
+    this.gatewayIpv6Address,
     this.guid,
+    this.ipv6Address,
     this.lanIpAddress,
+    this.linkDownSpeedKbps,
+    this.metered,
     this.receivingBitRateMbps,
     this.reportTime,
     this.sampleFrequency,
@@ -5373,8 +6179,15 @@ class GoogleChromeManagementV1NetworkStatusReport {
         connectionType: json_['connectionType'] as core.String?,
         encryptionOn: json_['encryptionOn'] as core.bool?,
         gatewayIpAddress: json_['gatewayIpAddress'] as core.String?,
+        gatewayIpv6Address: json_['gatewayIpv6Address'] as core.String?,
         guid: json_['guid'] as core.String?,
+        ipv6Address:
+            (json_['ipv6Address'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         lanIpAddress: json_['lanIpAddress'] as core.String?,
+        linkDownSpeedKbps: json_['linkDownSpeedKbps'] as core.String?,
+        metered: json_['metered'] as core.bool?,
         receivingBitRateMbps: json_['receivingBitRateMbps'] as core.String?,
         reportTime: json_['reportTime'] as core.String?,
         sampleFrequency: json_['sampleFrequency'] as core.String?,
@@ -5392,8 +6205,12 @@ class GoogleChromeManagementV1NetworkStatusReport {
     if (connectionType != null) 'connectionType': connectionType!,
     if (encryptionOn != null) 'encryptionOn': encryptionOn!,
     if (gatewayIpAddress != null) 'gatewayIpAddress': gatewayIpAddress!,
+    if (gatewayIpv6Address != null) 'gatewayIpv6Address': gatewayIpv6Address!,
     if (guid != null) 'guid': guid!,
+    if (ipv6Address != null) 'ipv6Address': ipv6Address!,
     if (lanIpAddress != null) 'lanIpAddress': lanIpAddress!,
+    if (linkDownSpeedKbps != null) 'linkDownSpeedKbps': linkDownSpeedKbps!,
+    if (metered != null) 'metered': metered!,
     if (receivingBitRateMbps != null)
       'receivingBitRateMbps': receivingBitRateMbps!,
     if (reportTime != null) 'reportTime': reportTime!,
@@ -5768,18 +6585,25 @@ class GoogleChromeManagementV1RiskAssessmentData {
 /// One risk assessment entry.
 class GoogleChromeManagementV1RiskAssessmentEntry {
   /// The risk assessment provider from which this entry comes from.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "RISK_ASSESSMENT_PROVIDER_UNSPECIFIED" : Default value when no provider
   /// is specified.
   /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : CRXcavator.
   /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Spin.Ai.
   /// - "RISK_ASSESSMENT_PROVIDER_LAYERX" : LayerX Security.
+  /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2" : Spin.AI V2.
   core.String? provider;
 
   /// The details of the provider's risk assessment.
+  ///
+  /// Output only.
   GoogleChromeManagementV1RiskAssessment? riskAssessment;
 
   /// The bucketed risk level for the risk assessment.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "RISK_LEVEL_UNSPECIFIED" : Risk level not specified.
   /// - "RISK_LEVEL_LOW" : Extension that represents a low risk.
@@ -6833,6 +7657,14 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// disconnected.
   core.String? eventType;
 
+  /// Payload for external display connected/disconnected event.
+  ///
+  /// Present only when `event_type` is `EXTERNAL_DISPLAY_CONNECTED` or
+  /// `EXTERNAL_DISPLAY_DISCONNECTED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryExternalDisplayEvent? externalDisplaysEvent;
+
   /// Payload for HTTPS latency change event.
   ///
   /// Present only when `event_type` is `NETWORK_HTTPS_LATENCY_CHANGE`.
@@ -6901,6 +7733,7 @@ class GoogleChromeManagementV1TelemetryEvent {
     this.audioSevereUnderrunEvent,
     this.device,
     this.eventType,
+    this.externalDisplaysEvent,
     this.httpsLatencyChangeEvent,
     this.name,
     this.networkStateChangeEvent,
@@ -6949,6 +7782,13 @@ class GoogleChromeManagementV1TelemetryEvent {
                 )
                 : null,
         eventType: json_['eventType'] as core.String?,
+        externalDisplaysEvent:
+            json_.containsKey('externalDisplaysEvent')
+                ? GoogleChromeManagementV1TelemetryExternalDisplayEvent.fromJson(
+                  json_['externalDisplaysEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         httpsLatencyChangeEvent:
             json_.containsKey('httpsLatencyChangeEvent')
                 ? GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent.fromJson(
@@ -7008,6 +7848,8 @@ class GoogleChromeManagementV1TelemetryEvent {
       'audioSevereUnderrunEvent': audioSevereUnderrunEvent!,
     if (device != null) 'device': device!,
     if (eventType != null) 'eventType': eventType!,
+    if (externalDisplaysEvent != null)
+      'externalDisplaysEvent': externalDisplaysEvent!,
     if (httpsLatencyChangeEvent != null)
       'httpsLatencyChangeEvent': httpsLatencyChangeEvent!,
     if (name != null) 'name': name!,
@@ -7045,6 +7887,85 @@ class GoogleChromeManagementV1TelemetryEventNotificationFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (eventTypes != null) 'eventTypes': eventTypes!,
+  };
+}
+
+/// External display data.
+class GoogleChromeManagementV1TelemetryExternalDisplayData {
+  /// The display name.
+  core.String? displayName;
+
+  /// The EDID version.
+  core.String? edidVersion;
+
+  /// The refresh rate.
+  core.String? refreshRate;
+
+  /// The horizontal resolution.
+  core.int? resolutionHorizontal;
+
+  /// The vertical resolution.
+  core.int? resolutionVertical;
+
+  /// The serial number.
+  core.int? serialNumber;
+
+  GoogleChromeManagementV1TelemetryExternalDisplayData({
+    this.displayName,
+    this.edidVersion,
+    this.refreshRate,
+    this.resolutionHorizontal,
+    this.resolutionVertical,
+    this.serialNumber,
+  });
+
+  GoogleChromeManagementV1TelemetryExternalDisplayData.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        edidVersion: json_['edidVersion'] as core.String?,
+        refreshRate: json_['refreshRate'] as core.String?,
+        resolutionHorizontal: json_['resolutionHorizontal'] as core.int?,
+        resolutionVertical: json_['resolutionVertical'] as core.int?,
+        serialNumber: json_['serialNumber'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (edidVersion != null) 'edidVersion': edidVersion!,
+    if (refreshRate != null) 'refreshRate': refreshRate!,
+    if (resolutionHorizontal != null)
+      'resolutionHorizontal': resolutionHorizontal!,
+    if (resolutionVertical != null) 'resolutionVertical': resolutionVertical!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+  };
+}
+
+/// External display connected/disconnected event payload.
+class GoogleChromeManagementV1TelemetryExternalDisplayEvent {
+  /// List of external displays that were connected/disconnected.
+  core.List<GoogleChromeManagementV1TelemetryExternalDisplayData>?
+  externalDisplayData;
+
+  GoogleChromeManagementV1TelemetryExternalDisplayEvent({
+    this.externalDisplayData,
+  });
+
+  GoogleChromeManagementV1TelemetryExternalDisplayEvent.fromJson(core.Map json_)
+    : this(
+        externalDisplayData:
+            (json_['externalDisplayData'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleChromeManagementV1TelemetryExternalDisplayData.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (externalDisplayData != null)
+      'externalDisplayData': externalDisplayData!,
   };
 }
 
@@ -7923,6 +8844,239 @@ class GoogleChromeManagementVersionsV1AttestationCredential {
   };
 }
 
+/// A certificate provisioning process.
+class GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
+  /// The client certificate is being provisioned for a ChromeOS device.
+  ///
+  /// This contains information about the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ChromeOsDevice? chromeOsDevice;
+
+  /// The client certificate is being provisioned for a ChromeOS user.
+  ///
+  /// This contains information about the current user session.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ChromeOsUserSession? chromeOsUserSession;
+
+  /// A message describing why this `CertificateProvisioningProcess` has failed.
+  ///
+  /// Presence of this field indicates that the `CertificateProvisioningProcess`
+  /// has failed.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  /// The CA connection is a generic CA connection.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1GenericCaConnection? genericCaConnection;
+
+  /// The profile is a generic certificate provisioning profile.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1GenericProfile? genericProfile;
+
+  /// The issued certificate for this `CertificateProvisioningProcess` in PEM
+  /// format.
+  ///
+  /// Output only.
+  core.String? issuedCertificate;
+
+  /// Identifier.
+  ///
+  /// Resource name of the `CertificateProvisioningProcess`. The name pattern is
+  /// given as
+  /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}`
+  /// with `{customer}` being the obfuscated customer id and
+  /// `{certificate_provisioning_process}` being the certificate provisioning
+  /// process id.
+  core.String? name;
+
+  /// The ID of the certificate provisioning profile.
+  ///
+  /// Output only.
+  core.String? provisioningProfileId;
+
+  /// The CA connection is a SCEP CA connection.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ScepCaConnection? scepCaConnection;
+
+  /// The profile is a SCEP certificate provisioning profile.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ScepProfile? scepProfile;
+
+  /// The data that the client was asked to sign.
+  ///
+  /// This field is only present after the `SignData` operation has been
+  /// initiated.
+  ///
+  /// Output only.
+  core.String? signData;
+  core.List<core.int> get signDataAsBytes => convert.base64.decode(signData!);
+
+  set signDataAsBytes(core.List<core.int> bytes_) {
+    signData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The signature of `signature_algorithm`, generated using the client's
+  /// private key using `signature_algorithm`.
+  ///
+  /// This field is only present after the `SignData` operation has finished.
+  ///
+  /// Output only.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The signature algorithm that the client and backend components use when
+  /// processing `sign_data`.
+  ///
+  /// If the `profile_type` is a `GenericProfile`, this field will only be
+  /// present after the `SignData` operation was initiated. If the
+  /// `profile_type` is a `ScepProfile`, the field will always be present.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SIGNATURE_ALGORITHM_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256" : The server-side builds the
+  /// PKCS#1 DigestInfo and sends a SHA256 hash of it to the client. The client
+  /// should sign using RSA with PKCS#1 v1.5 padding.
+  /// - "SIGNATURE_ALGORITHM_ECDSA_SHA256" : The server-side builds the PKCS#1
+  /// DigestInfo and sends it unhashed to the client. The client is responsible
+  /// for signing and hashing using the P-256 curve.
+  core.String? signatureAlgorithm;
+
+  /// Server-generated timestamp of when the certificate provisioning process
+  /// has been created.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The public key for which a certificate should be provisioned.
+  ///
+  /// Represented as a DER-encoded X.509 SubjectPublicKeyInfo.
+  ///
+  /// Output only.
+  core.String? subjectPublicKeyInfo;
+  core.List<core.int> get subjectPublicKeyInfoAsBytes =>
+      convert.base64.decode(subjectPublicKeyInfo!);
+
+  set subjectPublicKeyInfoAsBytes(core.List<core.int> bytes_) {
+    subjectPublicKeyInfo = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GoogleChromeManagementVersionsV1CertificateProvisioningProcess({
+    this.chromeOsDevice,
+    this.chromeOsUserSession,
+    this.failureMessage,
+    this.genericCaConnection,
+    this.genericProfile,
+    this.issuedCertificate,
+    this.name,
+    this.provisioningProfileId,
+    this.scepCaConnection,
+    this.scepProfile,
+    this.signData,
+    this.signature,
+    this.signatureAlgorithm,
+    this.startTime,
+    this.subjectPublicKeyInfo,
+  });
+
+  GoogleChromeManagementVersionsV1CertificateProvisioningProcess.fromJson(
+    core.Map json_,
+  ) : this(
+        chromeOsDevice:
+            json_.containsKey('chromeOsDevice')
+                ? GoogleChromeManagementVersionsV1ChromeOsDevice.fromJson(
+                  json_['chromeOsDevice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chromeOsUserSession:
+            json_.containsKey('chromeOsUserSession')
+                ? GoogleChromeManagementVersionsV1ChromeOsUserSession.fromJson(
+                  json_['chromeOsUserSession']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        failureMessage: json_['failureMessage'] as core.String?,
+        genericCaConnection:
+            json_.containsKey('genericCaConnection')
+                ? GoogleChromeManagementVersionsV1GenericCaConnection.fromJson(
+                  json_['genericCaConnection']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        genericProfile:
+            json_.containsKey('genericProfile')
+                ? GoogleChromeManagementVersionsV1GenericProfile.fromJson(
+                  json_['genericProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        issuedCertificate: json_['issuedCertificate'] as core.String?,
+        name: json_['name'] as core.String?,
+        provisioningProfileId: json_['provisioningProfileId'] as core.String?,
+        scepCaConnection:
+            json_.containsKey('scepCaConnection')
+                ? GoogleChromeManagementVersionsV1ScepCaConnection.fromJson(
+                  json_['scepCaConnection']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scepProfile:
+            json_.containsKey('scepProfile')
+                ? GoogleChromeManagementVersionsV1ScepProfile.fromJson(
+                  json_['scepProfile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        signData: json_['signData'] as core.String?,
+        signature: json_['signature'] as core.String?,
+        signatureAlgorithm: json_['signatureAlgorithm'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        subjectPublicKeyInfo: json_['subjectPublicKeyInfo'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (chromeOsDevice != null) 'chromeOsDevice': chromeOsDevice!,
+    if (chromeOsUserSession != null)
+      'chromeOsUserSession': chromeOsUserSession!,
+    if (failureMessage != null) 'failureMessage': failureMessage!,
+    if (genericCaConnection != null)
+      'genericCaConnection': genericCaConnection!,
+    if (genericProfile != null) 'genericProfile': genericProfile!,
+    if (issuedCertificate != null) 'issuedCertificate': issuedCertificate!,
+    if (name != null) 'name': name!,
+    if (provisioningProfileId != null)
+      'provisioningProfileId': provisioningProfileId!,
+    if (scepCaConnection != null) 'scepCaConnection': scepCaConnection!,
+    if (scepProfile != null) 'scepProfile': scepProfile!,
+    if (signData != null) 'signData': signData!,
+    if (signature != null) 'signature': signature!,
+    if (signatureAlgorithm != null) 'signatureAlgorithm': signatureAlgorithm!,
+    if (startTime != null) 'startTime': startTime!,
+    if (subjectPublicKeyInfo != null)
+      'subjectPublicKeyInfo': subjectPublicKeyInfo!,
+  };
+}
+
 /// A representation of a Chrome browser profile.
 class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /// The specific affiliation state of the profile.
@@ -8073,6 +9227,11 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /// Output only.
   GoogleChromeManagementVersionsV1ReportingData? reportingData;
 
+  /// Whether the profile supports FCM notifications.
+  ///
+  /// Output only.
+  core.bool? supportsFcmNotifications;
+
   /// Email address of the user to which the profile belongs.
   ///
   /// Output only.
@@ -8109,6 +9268,7 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
     this.profileId,
     this.profilePermanentId,
     this.reportingData,
+    this.supportsFcmNotifications,
     this.userEmail,
     this.userId,
   });
@@ -8155,6 +9315,8 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
                   json_['reportingData'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        supportsFcmNotifications:
+            json_['supportsFcmNotifications'] as core.bool?,
         userEmail: json_['userEmail'] as core.String?,
         userId: json_['userId'] as core.String?,
       );
@@ -8188,6 +9350,8 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
     if (profileId != null) 'profileId': profileId!,
     if (profilePermanentId != null) 'profilePermanentId': profilePermanentId!,
     if (reportingData != null) 'reportingData': reportingData!,
+    if (supportsFcmNotifications != null)
+      'supportsFcmNotifications': supportsFcmNotifications!,
     if (userEmail != null) 'userEmail': userEmail!,
     if (userId != null) 'userId': userId!,
   };
@@ -8332,6 +9496,115 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult {
   };
 }
 
+/// Describes the ChromeOS device that a `CertificateProvisioningProcess`
+/// belongs to.
+class GoogleChromeManagementVersionsV1ChromeOsDevice {
+  /// The unique Directory API ID of the device.
+  ///
+  /// This value is the same as the Admin Console's Directory API ID in the
+  /// ChromeOS Devices tab.
+  ///
+  /// Output only.
+  core.String? deviceDirectoryApiId;
+
+  /// Device serial number.
+  ///
+  /// This value is the same as the Admin Console's Serial Number in the
+  /// ChromeOS Devices tab.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  GoogleChromeManagementVersionsV1ChromeOsDevice({
+    this.deviceDirectoryApiId,
+    this.serialNumber,
+  });
+
+  GoogleChromeManagementVersionsV1ChromeOsDevice.fromJson(core.Map json_)
+    : this(
+        deviceDirectoryApiId: json_['deviceDirectoryApiId'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deviceDirectoryApiId != null)
+      'deviceDirectoryApiId': deviceDirectoryApiId!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+  };
+}
+
+/// Describes the ChromeOS user session that a `CertificateProvisioningProcess`
+/// belongs to.
+class GoogleChromeManagementVersionsV1ChromeOsUserSession {
+  /// This field contains information about the ChromeOS device that the user
+  /// session is running on.
+  ///
+  /// It is only set if the user is affiliated, i.e., if the user is managed by
+  /// the same organization that manages the ChromeOS device.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ChromeOsDevice? chromeOsDevice;
+
+  /// The unique Directory API ID of the user.
+  ///
+  /// Output only.
+  core.String? userDirectoryApiId;
+
+  /// The primary e-mail address of the user.
+  ///
+  /// Output only.
+  core.String? userPrimaryEmail;
+
+  GoogleChromeManagementVersionsV1ChromeOsUserSession({
+    this.chromeOsDevice,
+    this.userDirectoryApiId,
+    this.userPrimaryEmail,
+  });
+
+  GoogleChromeManagementVersionsV1ChromeOsUserSession.fromJson(core.Map json_)
+    : this(
+        chromeOsDevice:
+            json_.containsKey('chromeOsDevice')
+                ? GoogleChromeManagementVersionsV1ChromeOsDevice.fromJson(
+                  json_['chromeOsDevice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userDirectoryApiId: json_['userDirectoryApiId'] as core.String?,
+        userPrimaryEmail: json_['userPrimaryEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (chromeOsDevice != null) 'chromeOsDevice': chromeOsDevice!,
+    if (userDirectoryApiId != null) 'userDirectoryApiId': userDirectoryApiId!,
+    if (userPrimaryEmail != null) 'userPrimaryEmail': userPrimaryEmail!,
+  };
+}
+
+/// Request message for claiming a certificate provisioning process.
+class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest {
+  /// The instance id of the caller.
+  ///
+  /// Required.
+  core.String? callerInstanceId;
+
+  GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest({
+    this.callerInstanceId,
+  });
+
+  GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.fromJson(
+    core.Map json_,
+  ) : this(callerInstanceId: json_['callerInstanceId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (callerInstanceId != null) 'callerInstanceId': callerInstanceId!,
+  };
+}
+
+/// Response message for claiming a certificate provisioning process.
+typedef GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse =
+    $Empty;
+
 /// Information of a device that runs a Chrome browser profile.
 class GoogleChromeManagementVersionsV1DeviceInfo {
   /// Device ID that identifies the affiliated device on which the profile
@@ -8385,6 +9658,33 @@ class GoogleChromeManagementVersionsV1DeviceInfo {
     if (deviceType != null) 'deviceType': deviceType!,
     if (hostname != null) 'hostname': hostname!,
     if (machine != null) 'machine': machine!,
+  };
+}
+
+/// Describes a generic Certificate Authority Connection.
+typedef GoogleChromeManagementVersionsV1GenericCaConnection = $CaConnection;
+
+/// Describes a generic certificate provisioning profile.
+class GoogleChromeManagementVersionsV1GenericProfile {
+  /// A string that references the administrator-provided configuration for the
+  /// certificate provisioning profile.
+  ///
+  /// Output only.
+  core.String? profileAdapterConfigReference;
+
+  GoogleChromeManagementVersionsV1GenericProfile({
+    this.profileAdapterConfigReference,
+  });
+
+  GoogleChromeManagementVersionsV1GenericProfile.fromJson(core.Map json_)
+    : this(
+        profileAdapterConfigReference:
+            json_['profileAdapterConfigReference'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (profileAdapterConfigReference != null)
+      'profileAdapterConfigReference': profileAdapterConfigReference!,
   };
 }
 
@@ -8890,6 +10190,222 @@ class GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   };
 }
 
+/// Describes a SCEP Certificate Authority Connection.
+typedef GoogleChromeManagementVersionsV1ScepCaConnection = $CaConnection;
+
+/// Describes a SCEP certificate provisioning profile.
+class GoogleChromeManagementVersionsV1ScepProfile {
+  /// The certificate template name as defined by the admin on their on-prem
+  /// infrastructure.
+  ///
+  /// The Certificate Authority uses this name to identify the certificate
+  /// template.
+  ///
+  /// Output only.
+  core.String? certificateTemplateName;
+
+  /// The country of the subject.
+  ///
+  /// Output only.
+  core.String? country;
+
+  /// The allowed key usages for certificate's key.
+  ///
+  /// Output only.
+  core.List<core.String>? keyUsages;
+
+  /// The locality of the subject.
+  ///
+  /// Output only.
+  core.String? locality;
+
+  /// The name of the organization the subject belongs to.
+  ///
+  /// Output only.
+  core.String? organization;
+
+  /// The organizational units of the subject.
+  ///
+  /// Output only.
+  core.List<core.String>? organizationalUnits;
+
+  /// The state of the subject.
+  ///
+  /// Output only.
+  core.String? state;
+
+  /// The subject alternative names.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1SubjectAltName>? subjectAltNames;
+
+  /// The common name of the subject.
+  ///
+  /// Output only.
+  core.String? subjectCommonName;
+
+  GoogleChromeManagementVersionsV1ScepProfile({
+    this.certificateTemplateName,
+    this.country,
+    this.keyUsages,
+    this.locality,
+    this.organization,
+    this.organizationalUnits,
+    this.state,
+    this.subjectAltNames,
+    this.subjectCommonName,
+  });
+
+  GoogleChromeManagementVersionsV1ScepProfile.fromJson(core.Map json_)
+    : this(
+        certificateTemplateName:
+            json_['certificateTemplateName'] as core.String?,
+        country: json_['country'] as core.String?,
+        keyUsages:
+            (json_['keyUsages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        locality: json_['locality'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        organizationalUnits:
+            (json_['organizationalUnits'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        state: json_['state'] as core.String?,
+        subjectAltNames:
+            (json_['subjectAltNames'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleChromeManagementVersionsV1SubjectAltName.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        subjectCommonName: json_['subjectCommonName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (certificateTemplateName != null)
+      'certificateTemplateName': certificateTemplateName!,
+    if (country != null) 'country': country!,
+    if (keyUsages != null) 'keyUsages': keyUsages!,
+    if (locality != null) 'locality': locality!,
+    if (organization != null) 'organization': organization!,
+    if (organizationalUnits != null)
+      'organizationalUnits': organizationalUnits!,
+    if (state != null) 'state': state!,
+    if (subjectAltNames != null) 'subjectAltNames': subjectAltNames!,
+    if (subjectCommonName != null) 'subjectCommonName': subjectCommonName!,
+  };
+}
+
+/// Request message for marking a certificate provisioning process as failed.
+class GoogleChromeManagementVersionsV1SetFailureRequest {
+  /// A message describing the failure details.
+  ///
+  /// It is displayed on the ChromeOS client device.
+  ///
+  /// Required.
+  core.String? errorMessage;
+
+  GoogleChromeManagementVersionsV1SetFailureRequest({this.errorMessage});
+
+  GoogleChromeManagementVersionsV1SetFailureRequest.fromJson(core.Map json_)
+    : this(errorMessage: json_['errorMessage'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+  };
+}
+
+/// Response message for publishing a failure for a certificate provisioning
+/// process.
+typedef GoogleChromeManagementVersionsV1SetFailureResponse = $Empty;
+
+/// Request message for requesting a signature from the client that initated a
+/// certificate provisioning process.
+class GoogleChromeManagementVersionsV1SignDataRequest {
+  /// The data that the client was asked to sign.
+  ///
+  /// Required.
+  core.String? signData;
+  core.List<core.int> get signDataAsBytes => convert.base64.decode(signData!);
+
+  set signDataAsBytes(core.List<core.int> bytes_) {
+    signData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The signature algorithm that the adapter expects the client and backend
+  /// components to use when processing `sign_data`.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SIGNATURE_ALGORITHM_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256" : The server-side builds the
+  /// PKCS#1 DigestInfo and sends a SHA256 hash of it to the client. The client
+  /// should sign using RSA with PKCS#1 v1.5 padding.
+  /// - "SIGNATURE_ALGORITHM_ECDSA_SHA256" : The server-side builds the PKCS#1
+  /// DigestInfo and sends it unhashed to the client. The client is responsible
+  /// for signing and hashing using the P-256 curve.
+  core.String? signatureAlgorithm;
+
+  GoogleChromeManagementVersionsV1SignDataRequest({
+    this.signData,
+    this.signatureAlgorithm,
+  });
+
+  GoogleChromeManagementVersionsV1SignDataRequest.fromJson(core.Map json_)
+    : this(
+        signData: json_['signData'] as core.String?,
+        signatureAlgorithm: json_['signatureAlgorithm'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (signData != null) 'signData': signData!,
+    if (signatureAlgorithm != null) 'signatureAlgorithm': signatureAlgorithm!,
+  };
+}
+
+/// Describes a subject alternative name.
+class GoogleChromeManagementVersionsV1SubjectAltName {
+  /// The type of the SubjectAltName extension.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SUBJECT_ALT_NAME_TYPE_UNSPECIFIED" : The subject alternative name type
+  /// is unspecified.
+  /// - "RFC822_NAME" : The subject alternative name type is an email address
+  /// adhering to RFC822.
+  /// - "DNS_NAME" : The subject alternative name type is a Domain Name System
+  /// (DNS).
+  /// - "OTHER_NAME_USER_PRINCIPAL_NAME" : The subject alternative name type is
+  /// a User Principal Name (UPN).
+  /// - "UNIFORM_RESOURCE_IDENTIFIER" : The subject alternative name type is a
+  /// Uniform Resource Identifier (URI).
+  core.String? type;
+
+  /// The value of the subject alternative name with respect to the `type`.
+  ///
+  /// Output only.
+  core.String? value;
+
+  GoogleChromeManagementVersionsV1SubjectAltName({this.type, this.value});
+
+  GoogleChromeManagementVersionsV1SubjectAltName.fromJson(core.Map json_)
+    : this(
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
+}
+
 /// A representation of non-Google (third party) user that is associated with a
 /// managed Chrome profile.
 class GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
@@ -8918,6 +10434,160 @@ class GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
     if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+  };
+}
+
+/// Request message for uploading an issued certificate for a certificate
+/// provisioning process.
+class GoogleChromeManagementVersionsV1UploadCertificateRequest {
+  /// The issued certificate in PEM format.
+  ///
+  /// Required.
+  core.String? certificatePem;
+
+  GoogleChromeManagementVersionsV1UploadCertificateRequest({
+    this.certificatePem,
+  });
+
+  GoogleChromeManagementVersionsV1UploadCertificateRequest.fromJson(
+    core.Map json_,
+  ) : this(certificatePem: json_['certificatePem'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (certificatePem != null) 'certificatePem': certificatePem!,
+  };
+}
+
+/// Response message for publishing an issued certificate for a certificate
+/// provisioning process.
+typedef GoogleChromeManagementVersionsV1UploadCertificateResponse = $Empty;
+
+/// The request message for Operations.CancelOperation.
+typedef GoogleLongrunningCancelOperationRequest = $Empty;
+
+/// The response message for Operations.ListOperations.
+class GoogleLongrunningListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<GoogleLongrunningOperation>? operations;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class GoogleLongrunningOperation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  GoogleRpcStatus? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  GoogleLongrunningOperation.fromJson(core.Map json_)
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
   };
 }
 

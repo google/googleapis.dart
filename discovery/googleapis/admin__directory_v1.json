@@ -110,7 +110,7 @@
     "ownerName": "Google",
     "packagePath": "admin",
     "protocol": "rest",
-    "revision": "20250916",
+    "revision": "20260113",
     "rootUrl": "https://admin.googleapis.com/",
     "servicePath": "",
     "title": "Admin SDK API",
@@ -1662,7 +1662,7 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-groups",
+                            "description": "Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for groups](https://developers.google.com/workspace/admin/directory/v1/guides/search-groups).",
                             "location": "query",
                             "type": "string"
                         },
@@ -2899,7 +2899,7 @@
                                     "type": "string"
                                 },
                                 "query": {
-                                    "description": "String query used to filter results. Should be of the form \"field operator value\" where field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.",
+                                    "description": "String query used to filter results. Contains one or more search clauses, each with a field, operator, and value. A field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -3852,6 +3852,24 @@
         },
         "users": {
             "methods": {
+                "createGuest": {
+                    "description": "Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature.",
+                    "flatPath": "admin/directory/v1/users:createGuest",
+                    "httpMethod": "POST",
+                    "id": "directory.users.createGuest",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "admin/directory/v1/users:createGuest",
+                    "request": {
+                        "$ref": "DirectoryUsersCreateGuestRequest"
+                    },
+                    "response": {
+                        "$ref": "User"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/admin.directory.user"
+                    ]
+                },
                 "delete": {
                     "description": "Deletes a user.",
                     "flatPath": "admin/directory/v1/users/{userKey}",
@@ -4301,7 +4319,7 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-users",
+                            "description": "Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).",
                             "location": "query",
                             "type": "string"
                         },
@@ -5060,6 +5078,24 @@
             },
             "type": "object"
         },
+        "BluetoothAdapterInfo": {
+            "description": "Information about a device's Bluetooth adapter.",
+            "id": "BluetoothAdapterInfo",
+            "properties": {
+                "address": {
+                    "description": "Output only. The MAC address of the adapter.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "numConnectedDevices": {
+                    "description": "Output only. The number of devices connected to this adapter.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Building": {
             "description": "Public API: Resources.buildings",
             "id": "Building",
@@ -5437,6 +5473,14 @@
                     "description": "Output only. Contains backlight information for the device.",
                     "items": {
                         "$ref": "BacklightInfo"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "bluetoothAdapterInfo": {
+                    "description": "Output only. Information about Bluetooth adapters of the device.",
+                    "items": {
+                        "$ref": "BluetoothAdapterInfo"
                     },
                     "readOnly": true,
                     "type": "array"
@@ -6329,6 +6373,21 @@
             },
             "type": "object"
         },
+        "DirectoryUsersCreateGuestRequest": {
+            "description": "Directory users guest creation request message.",
+            "id": "DirectoryUsersCreateGuestRequest",
+            "properties": {
+                "customer": {
+                    "description": "Optional. Immutable ID of the Google Workspace account.",
+                    "type": "string"
+                },
+                "primaryGuestEmail": {
+                    "description": "Immutable. External email of the guest user being created.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DomainAlias": {
             "id": "DomainAlias",
             "properties": {
@@ -6720,6 +6779,17 @@
                 },
                 "nextPageToken": {
                     "description": "Token used to access next page of this result.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GuestAccountInfo": {
+            "description": "Account info specific to Guest users.",
+            "id": "GuestAccountInfo",
+            "properties": {
+                "primaryGuestEmail": {
+                    "description": "Immutable. The guest's external email.",
                     "type": "string"
                 }
             },
@@ -7935,6 +8005,10 @@
                     "description": "The user's gender. The maximum allowed data size for this field is 1KB.",
                     "type": "any"
                 },
+                "guestAccountInfo": {
+                    "$ref": "GuestAccountInfo",
+                    "description": "Immutable. Additional guest-related metadata fields"
+                },
                 "hashFunction": {
                     "description": "Stores the hash format of the `password` property. The following `hashFunction` values are allowed: * `MD5` - Accepts simple hex-encoded values. * `SHA-1` - Accepts simple hex-encoded values. * `crypt` - Compliant with the [C crypt library](https://en.wikipedia.org/wiki/Crypt_%28C%29). Supports the DES, MD5 (hash prefix `$1$`), SHA-256 (hash prefix `$5$`), and SHA-512 (hash prefix `$6$`) hash algorithms. If rounds are specified as part of the prefix, they must be 10,000 or fewer.",
                     "type": "string"
@@ -7973,6 +8047,10 @@
                 "isEnrolledIn2Sv": {
                     "description": "Output only. Is enrolled in 2-step verification (Read-only)",
                     "readOnly": true,
+                    "type": "boolean"
+                },
+                "isGuestUser": {
+                    "description": "Immutable. Indicates if the inserted user is a guest.",
                     "type": "boolean"
                 },
                 "isMailboxSetup": {

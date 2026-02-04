@@ -149,9 +149,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3183,7 +3183,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// SearchForInstances returns a list of matching instances.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3200,7 +3200,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
   /// DICOMweb request. For example, `instances`,
-  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+  /// `studies/{study_uid}/series/{series_uid}/instances`, or
+  /// `studies/{study_uid}/instances`.
   /// Value must have pattern `^instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3239,7 +3240,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// SearchForSeries returns a list of matching series.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForSeries, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3294,7 +3295,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// SearchForStudies returns a list of matching studies.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForStudies, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3448,7 +3449,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// unique identifiers (SUID).
   ///
   /// See
-  /// [Store Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// [Store Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
   /// For details on the implementation of StoreInstances, see
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3841,7 +3842,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// presented as metadata.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveStudyMetadata, see
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3896,7 +3897,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// RetrieveStudy returns all instances within the given study.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveStudy, see
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3951,7 +3952,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// SearchForInstances returns a list of matching instances.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3968,7 +3969,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
   /// DICOMweb request. For example, `instances`,
-  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+  /// `studies/{study_uid}/series/{series_uid}/instances`, or
+  /// `studies/{study_uid}/instances`.
   /// Value must have pattern `^studies/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4007,7 +4009,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// SearchForSeries returns a list of matching series.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForSeries, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4063,7 +4065,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// unique identifiers (SUID).
   ///
   /// See
-  /// [Store Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// [Store Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
   /// For details on the implementation of StoreInstances, see
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4193,7 +4195,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// and series, presented as metadata.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveSeriesMetadata, see
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4248,7 +4250,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// RetrieveSeries returns all instances within the given study and series.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveSeries, see
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4303,7 +4305,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// SearchForInstances returns a list of matching instances.
   ///
   /// See
-  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// [Search Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4320,7 +4322,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   ///
   /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
   /// DICOMweb request. For example, `instances`,
-  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+  /// `studies/{study_uid}/series/{series_uid}/instances`, or
+  /// `studies/{study_uid}/instances`.
   /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4435,7 +4438,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// and SOP Instance UID.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveInstance, see
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// and
@@ -4495,7 +4498,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// series, and SOP Instance UID presented as metadata.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveInstanceMetadata, see
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4553,7 +4556,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// series, and SOP Instance UID in an acceptable Rendered Media Type.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveRenderedInstance, see
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4624,7 +4627,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataResource
   /// tag from an instance.
   ///
   /// See
-  /// [Retrieve Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [Retrieve Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveBulkdata, see
   /// [Bulkdata resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4690,7 +4693,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// SOP Instance UID and frame numbers.
   ///
   /// See
-  /// \[RetrieveTransaction\](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
+  /// \[RetrieveTransaction\](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
   /// For details on the implementation of RetrieveFrames, see
   /// [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4749,7 +4752,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// Type.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// [RetrieveTransaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveRenderedFrames, see
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -4985,9 +4988,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// [P_type] - Optional. String of comma-delimited FHIR resource types. If
   /// provided, only resources of the specified resource type(s) are exported.
   ///
-  /// [organizeOutputBy] - Optional. Required. The FHIR resource type used to
-  /// organize exported resources. Only supports "Patient". When organized by
-  /// Patient resource, output files are grouped as follows: * Patient file(s)
+  /// [organizeOutputBy] - Required. The FHIR resource type used to organize
+  /// exported resources. Only supports "Patient". When organized by Patient
+  /// resource, output files are grouped as follows: * Patient file(s)
   /// containing the Patient resources. Each Patient is sequentially followed by
   /// all resources the Patient references, and all resources that reference the
   /// Patient (equivalent to a GetPatientEverything request). * Individual files
@@ -5215,8 +5218,14 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Export resources from the FHIR store to the specified destination.
   ///
   /// This method returns an Operation that can be used to track the status of
-  /// the export by calling GetOperation. Immediate fatal errors appear in the
-  /// error field, errors are also logged to Cloud Logging (see
+  /// the export by calling GetOperation. To improve performance, it is
+  /// recommended to make the `type` filter as specific as possible, including
+  /// only the resource types that are absolutely needed. This minimizes the
+  /// size of the initial dataset to be processed and is the most effective way
+  /// to improve performance. While post-filters like `_since` are useful for
+  /// refining results, they do not speed up the initial data retrieval phase,
+  /// which is primarily governed by the `type` filter. Immediate fatal errors
+  /// appear in the error field, errors are also logged to Cloud Logging (see
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   /// Otherwise, when the operation finishes, a detailed response of type
   /// ExportResourcesResponse is returned in the response field. The metadata
@@ -6342,7 +6351,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// destination.
   ///
   /// Implements the FHIR implementation guide \[system level
-  /// $export\](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export.
+  /// $export\](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export).
   /// The following headers must be set in the request: * `Accept`: specifies
   /// the format of the `OperationOutcome` response. Only
   /// `application/fhir+json` is supported. * `Prefer`: specifies whether the
@@ -6543,8 +6552,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `identifier=system|value` or `identifier=value` - similar to the `search`
   /// method on resources with a specific identifier. If the search criteria
   /// identify more than one match, the request returns a `412 Precondition
-  /// Failed` error. The request body must contain a JSON Patch document, and
-  /// the request headers must contain `Content-Type:
+  /// Failed` error. If the search criteria doesn't identify any matches, the
+  /// request returns a `404 Not Found` error. The request body must contain a
+  /// JSON Patch document, and the request headers must contain `Content-Type:
   /// application/json-patch+json`. On success, the response body contains a
   /// JSON-encoded representation of the updated resource, including the
   /// server-assigned version ID. Errors generated by the FHIR store contain a
@@ -7167,6 +7177,13 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
+  /// [resourceType] - Optional. The FHIR resource type to search, such as
+  /// Patient or Observation. For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/fhir/R4/resourcelist.html)),
+  /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7178,12 +7195,14 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> search(
-    SearchResourcesRequest request,
+    HttpBody request,
     core.String parent, {
+    core.String? resourceType,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (resourceType != null) 'resourceType': [resourceType],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7295,7 +7314,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchType(
-    SearchResourcesRequest request,
+    HttpBody request,
     core.String parent,
     core.String resourceType, {
     core.String? $fields,
@@ -8623,6 +8642,14 @@ class ProjectsLocationsDatasetsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8638,12 +8665,15 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -10609,7 +10639,7 @@ class DicomConfig {
   /// - "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE" : Remove tags based on DICOM
   /// Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition
   /// 2018e)
-  /// http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
+  /// https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
   /// - "KEEP_ALL_PROFILE" : Keep all tags.
   /// - "DEIDENTIFY_TAG_CONTENTS" : Inspects within tag contents and replaces
   /// sensitive text. The process can be configured using the TextConfig.
@@ -10635,7 +10665,7 @@ class DicomConfig {
   /// to an individual out of context, given access to the original images, or
   /// to a database of the original images containing the UIDs, it would be
   /// possible to recover the individual's identity."
-  /// http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+  /// https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
   ///
   /// Optional.
   core.bool? skipIdRedaction;
@@ -12117,10 +12147,15 @@ class FhirStoreMetric {
   /// resource type in the store.
   core.String? structuredStorageSizeBytes;
 
+  /// The total amount of versioned storage used by versioned FHIR resources of
+  /// this resource type in the store.
+  core.String? versionedStorageSizeBytes;
+
   FhirStoreMetric({
     this.count,
     this.resourceType,
     this.structuredStorageSizeBytes,
+    this.versionedStorageSizeBytes,
   });
 
   FhirStoreMetric.fromJson(core.Map json_)
@@ -12129,6 +12164,8 @@ class FhirStoreMetric {
         resourceType: json_['resourceType'] as core.String?,
         structuredStorageSizeBytes:
             json_['structuredStorageSizeBytes'] as core.String?,
+        versionedStorageSizeBytes:
+            json_['versionedStorageSizeBytes'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12136,6 +12173,8 @@ class FhirStoreMetric {
     if (resourceType != null) 'resourceType': resourceType!,
     if (structuredStorageSizeBytes != null)
       'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+    if (versionedStorageSizeBytes != null)
+      'versionedStorageSizeBytes': versionedStorageSizeBytes!,
   };
 }
 
@@ -12393,6 +12432,26 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// Optional.
   core.bool? force;
 
+  /// If true, the source store name will be included as a column in the
+  /// BigQuery schema.
+  ///
+  /// Optional.
+  core.bool? includeSourceStore;
+
+  /// Setting this field will use flattened DICOM instances schema for the
+  /// BigQuery table.
+  ///
+  /// The flattened schema will have one column for each DICOM tag.
+  ///
+  /// Optional.
+  SchemaFlattened? schemaFlattened;
+
+  /// Setting this field will store all the DICOM tags as a JSON type in a
+  /// single column.
+  ///
+  /// Optional.
+  SchemaJSON? schemaJson;
+
   /// BigQuery URI to a table, up to 2000 characters long, in the format
   /// `bq://projectId.bqDatasetId.tableId`
   ///
@@ -12416,6 +12475,9 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
 
   GoogleCloudHealthcareV1DicomBigQueryDestination({
     this.force,
+    this.includeSourceStore,
+    this.schemaFlattened,
+    this.schemaJson,
     this.tableUri,
     this.writeDisposition,
   });
@@ -12423,12 +12485,29 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(core.Map json_)
     : this(
         force: json_['force'] as core.bool?,
+        includeSourceStore: json_['includeSourceStore'] as core.bool?,
+        schemaFlattened:
+            json_.containsKey('schemaFlattened')
+                ? SchemaFlattened.fromJson(
+                  json_['schemaFlattened']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        schemaJson:
+            json_.containsKey('schemaJson')
+                ? SchemaJSON.fromJson(
+                  json_['schemaJson'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         tableUri: json_['tableUri'] as core.String?,
         writeDisposition: json_['writeDisposition'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (force != null) 'force': force!,
+    if (includeSourceStore != null) 'includeSourceStore': includeSourceStore!,
+    if (schemaFlattened != null) 'schemaFlattened': schemaFlattened!,
+    if (schemaJson != null) 'schemaJson': schemaJson!,
     if (tableUri != null) 'tableUri': tableUri!,
     if (writeDisposition != null) 'writeDisposition': writeDisposition!,
   };
@@ -13772,7 +13851,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -13785,11 +13876,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -14871,6 +14967,12 @@ class SchemaConfig {
   };
 }
 
+/// Using this field will flatten the DICOM instances into a BigQuery table.
+///
+/// The table will have one column for each DICOM tag. The column name will be
+/// the DICOM tag's textual representation.
+typedef SchemaFlattened = $Empty;
+
 /// An HL7v2 logical group construct.
 class SchemaGroup {
   /// True indicates that this is a choice group, meaning that only one of its
@@ -14925,6 +15027,25 @@ class SchemaGroup {
     if (name != null) 'name': name!,
   };
 }
+
+/// Using this field will set the schema such that all DICOM tags will be
+/// included in the BigQuery table as a single JSON type column.
+///
+/// The BigQuery table schema will include the following columns: *
+/// `StudyInstanceUID` (Type: STRING): DICOM Tag 0020000D. * `SeriesInstanceUID`
+/// (Type: STRING): DICOM Tag 0020000E. * `SOPInstanceUID` (Type: STRING): DICOM
+/// Tag 00080018. * `SourceDicomStore` (Type: STRING): The name of the source
+/// DICOM store. This field is only included if the `include_source_store`
+/// option is set to true. * `Metadata` (Type: JSON): All DICOM tags for the
+/// instance, stored in a single JSON object. * `StructuredStorageSize` (Type:
+/// INTEGER): Size of the structured storage in bytes. * `DroppedTags` (Type:
+/// STRING, Repeated: Yes): List of tags that were dropped during the
+/// conversion. * `StorageClass` (Type: STRING): The storage class of the
+/// instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the last update to
+/// the instance. * `BlobStorageSize` (Type: INTEGER): Size of the blob storage
+/// in bytes. * `Type` (Type: STRING): Indicates the type of operation (e.g.,
+/// INSERT, DELETE).
+typedef SchemaJSON = $Empty;
 
 /// A schema package contains a set of schemas and type definitions.
 class SchemaPackage {
@@ -15077,29 +15198,6 @@ class SchematizedData {
   core.Map<core.String, core.dynamic> toJson() => {
     if (data != null) 'data': data!,
     if (error != null) 'error': error!,
-  };
-}
-
-/// Request to search the resources in the specified FHIR store.
-class SearchResourcesRequest {
-  /// The FHIR resource type to search, such as Patient or Observation.
-  ///
-  /// For a complete list, see the FHIR Resource Index
-  /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
-  /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-  /// [R4](https://hl7.org/fhir/R4/resourcelist.html)),
-  /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
-  ///
-  /// Optional.
-  core.String? resourceType;
-
-  SearchResourcesRequest({this.resourceType});
-
-  SearchResourcesRequest.fromJson(core.Map json_)
-    : this(resourceType: json_['resourceType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceType != null) 'resourceType': resourceType!,
   };
 }
 
@@ -15545,7 +15643,7 @@ class TagFilterList {
   ///
   /// Tags must be DICOM Data Elements, File Meta Elements, or Directory
   /// Structuring Elements, as defined at:
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
+  /// https://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
   /// They may be provided by "Keyword" or "Tag". For example "PatientID",
   /// "00100010".
   ///
@@ -15874,6 +15972,16 @@ class ValidationConfig {
   /// Optional.
   core.bool? disableRequiredFieldValidation;
 
+  /// Whether to enable FHIRPath validation for incoming resource types that
+  /// have profiles configured for them in the `enabled_implementation_guides`
+  /// list.
+  ///
+  /// Set this to true to enable checking incoming resources for conformance
+  /// against FHIRPath requirements defined in the configured profiles.
+  ///
+  /// Optional.
+  core.bool? enableFhirpathProfileValidation;
+
   /// A list of implementation guide URLs in this FHIR store that are used to
   /// configure the profiles to use for validation.
   ///
@@ -15887,9 +15995,10 @@ class ValidationConfig {
   /// Healthcare API does not currently enforce all of the rules in a
   /// StructureDefinition. The following rules are supported: - min/max -
   /// minValue/maxValue - maxLength - type - fixed\[x\] - pattern\[x\] on simple
-  /// types - slicing, when using "value" as the discriminator type When a URL
-  /// cannot be resolved (for example, in a type assertion), the server does not
-  /// return an error.
+  /// types - slicing, when using "value" as the discriminator type - FHIRPath
+  /// constraints (only when `enable_fhirpath_profile_validation` is true) When
+  /// a URL cannot be resolved (for example, in a type assertion), the server
+  /// does not return an error.
   ///
   /// Optional.
   core.List<core.String>? enabledImplementationGuides;
@@ -15899,6 +16008,7 @@ class ValidationConfig {
     this.disableProfileValidation,
     this.disableReferenceTypeValidation,
     this.disableRequiredFieldValidation,
+    this.enableFhirpathProfileValidation,
     this.enabledImplementationGuides,
   });
 
@@ -15912,6 +16022,8 @@ class ValidationConfig {
             json_['disableReferenceTypeValidation'] as core.bool?,
         disableRequiredFieldValidation:
             json_['disableRequiredFieldValidation'] as core.bool?,
+        enableFhirpathProfileValidation:
+            json_['enableFhirpathProfileValidation'] as core.bool?,
         enabledImplementationGuides:
             (json_['enabledImplementationGuides'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -15927,6 +16039,8 @@ class ValidationConfig {
       'disableReferenceTypeValidation': disableReferenceTypeValidation!,
     if (disableRequiredFieldValidation != null)
       'disableRequiredFieldValidation': disableRequiredFieldValidation!,
+    if (enableFhirpathProfileValidation != null)
+      'enableFhirpathProfileValidation': enableFhirpathProfileValidation!,
     if (enabledImplementationGuides != null)
       'enabledImplementationGuides': enabledImplementationGuides!,
   };

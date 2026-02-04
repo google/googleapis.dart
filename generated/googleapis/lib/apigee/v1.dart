@@ -29,6 +29,7 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsAnalyticsResource]
 ///     - [OrganizationsAnalyticsDatastoresResource]
+///   - [OrganizationsApimServiceExtensionsResource]
 ///   - [OrganizationsApiproductsResource]
 ///     - [OrganizationsApiproductsAttributesResource]
 ///     - [OrganizationsApiproductsRateplansResource]
@@ -43,6 +44,8 @@
 ///     - [OrganizationsAppgroupsAppsResource]
 ///       - [OrganizationsAppgroupsAppsKeysResource]
 ///         - [OrganizationsAppgroupsAppsKeysApiproductsResource]
+///     - [OrganizationsAppgroupsBalanceResource]
+///     - [OrganizationsAppgroupsSubscriptionsResource]
 ///   - [OrganizationsAppsResource]
 ///   - [OrganizationsDatacollectorsResource]
 ///   - [OrganizationsDeploymentsResource]
@@ -225,6 +228,8 @@ class OrganizationsResource {
 
   OrganizationsAnalyticsResource get analytics =>
       OrganizationsAnalyticsResource(_requester);
+  OrganizationsApimServiceExtensionsResource get apimServiceExtensions =>
+      OrganizationsApimServiceExtensionsResource(_requester);
   OrganizationsApiproductsResource get apiproducts =>
       OrganizationsApiproductsResource(_requester);
   OrganizationsApisResource get apis => OrganizationsApisResource(_requester);
@@ -1252,6 +1257,254 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsApimServiceExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsApimServiceExtensionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates an APIM ServiceExtension in an organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization in which the service
+  /// extension will be created. Use the following structure in your request:
+  /// `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [apimServiceExtensionId] - Optional. ID used to uniquely identify of the
+  /// service extension. It must conform with RFC-1034, is restricted to
+  /// lower-cased letters, numbers and hyphens, and can have a maximum length of
+  /// 63 characters. Additionally, the first character must be a letter and the
+  /// last a letter or a number.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudApigeeV1ApimServiceExtension request,
+    core.String parent, {
+    core.String? apimServiceExtensionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (apimServiceExtensionId != null)
+        'apimServiceExtensionId': [apimServiceExtensionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/apimServiceExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes APIM service extension from an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the service extension. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/apimServiceExtensions/{extension_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apimServiceExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets APIM service extension details.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the service extension. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/apimServiceExtensions/{extension_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apimServiceExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApimServiceExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApimServiceExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApimServiceExtension.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all APIM service extensions in an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization for which to list the
+  /// service extension. Use the following structure in your request:
+  /// `organizations/{org}/apimServiceExtensions`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of items to return. If unspecified,
+  /// at most 25 service extension will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// `ListApimServiceExtensions` call, that you can use to retrieve the next
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListApimServiceExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListApimServiceExtensionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/apimServiceExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListApimServiceExtensionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an APIM service extension in an organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. unique name of the APIM service extension. The name
+  /// must conform with RFC-1034, is restricted to lower-cased letters, numbers
+  /// and hyphens, and can have a maximum length of 63 characters. Additionally,
+  /// the first character must be a letter and the last a letter or a number.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apimServiceExtensions/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the service extension is
+  /// not found, a new service extension will be created. In this situation,
+  /// `update_mask` is ignored.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudApigeeV1ApimServiceExtension request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2673,6 +2926,105 @@ class OrganizationsApisKeyvaluemapsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Get the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> update(
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsApisKeyvaluemapsEntriesResource {
@@ -3181,6 +3533,10 @@ class OrganizationsAppgroupsResource {
 
   OrganizationsAppgroupsAppsResource get apps =>
       OrganizationsAppgroupsAppsResource(_requester);
+  OrganizationsAppgroupsBalanceResource get balance =>
+      OrganizationsAppgroupsBalanceResource(_requester);
+  OrganizationsAppgroupsSubscriptionsResource get subscriptions =>
+      OrganizationsAppgroupsSubscriptionsResource(_requester);
 
   OrganizationsAppgroupsResource(commons.ApiRequester client)
     : _requester = client;
@@ -3316,6 +3672,84 @@ class OrganizationsAppgroupsResource {
     );
   }
 
+  /// Gets the account balance for the AppGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the AppGroup. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupBalance> getBalance(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupBalance.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the monetization configuration for the AppGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Monetization configuration for the AppGroup. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/appgroups/{app_group}/monetizationConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/monetizationConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupMonetizationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupMonetizationConfig>
+  getMonetizationConfig(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupMonetizationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists all AppGroups in an organization.
   ///
   /// A maximum of 1000 AppGroups are returned in the response if PageSize is
@@ -3424,6 +3858,52 @@ class OrganizationsAppgroupsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1AppGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the monetization configuration for the AppGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Monetization configuration for the AppGroup. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/appgroups/{app_group}/monetizationConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/monetizationConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupMonetizationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupMonetizationConfig>
+  updateMonetizationConfig(
+    GoogleCloudApigeeV1AppGroupMonetizationConfig request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupMonetizationConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3988,6 +4468,295 @@ class OrganizationsAppgroupsAppsKeysApiproductsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsAppgroupsBalanceResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsBalanceResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Adjust the prepaid balance for the AppGroup.
+  ///
+  /// This API will be used in scenarios where the AppGroup has been
+  /// under-charged or over-charged.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the AppGroup. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupBalance> adjust(
+    GoogleCloudApigeeV1AdjustAppGroupBalanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':adjust';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupBalance.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Credits the account balance for the AppGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the AppGroup. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupBalance> credit(
+    GoogleCloudApigeeV1CreditAppGroupBalanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':credit';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupBalance.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsAppgroupsSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsSubscriptionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a subscription to an API product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the appgroup that is purchasing a
+  /// subscription to the API product. Use the following structure in your
+  /// request: `organizations/{org}/appgroups/{appgroup}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupSubscription> create(
+    GoogleCloudApigeeV1AppGroupSubscription request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Expires an API product subscription immediately.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the API product subscription. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupSubscription> expire(
+    GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':expire';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get an api product subscription for an appgroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the AppGroupSubscription to retrieve.
+  /// Format:
+  /// `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupSubscription> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List all api product subscriptions for an appgroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the appgroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{appgroup}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of subscriptions to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// subscriptions will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAppGroupSubscriptions` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListAppGroupSubscriptions` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -10496,6 +11265,105 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Get the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> update(
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
@@ -11724,8 +12592,7 @@ class OrganizationsEnvironmentsSecurityActionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the security monitoring condition to
-  /// delete. Format:
+  /// [name] - Required. The name of the security action to delete. Format:
   /// `organizations/{org}/environment/{env}/securityActions/{security_action}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
@@ -14897,6 +15764,103 @@ class OrganizationsKeyvaluemapsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Get the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the key value map scoped to an organization, environment, or API
+  /// proxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map. Use **one** of the following structures in your request: *
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. *
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the
+  /// KeyValueMap is under an API Proxy resource that has the `space` attribute
+  /// set, IAM permissions are checked against the Space resource path. To learn
+  /// more, read the
+  /// [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+  /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueMap> update(
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsKeyvaluemapsEntriesResource {
@@ -15240,6 +16204,14 @@ class OrganizationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -15255,12 +16227,15 @@ class OrganizationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -16663,6 +17638,14 @@ class OrganizationsSecurityProfilesV2Resource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityProfilesV2/\[^/\]+$`.
   ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// profile. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16675,9 +17658,12 @@ class OrganizationsSecurityProfilesV2Resource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (riskAssessmentType != null)
+        'riskAssessmentType': [riskAssessmentType],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -16702,6 +17688,14 @@ class OrganizationsSecurityProfilesV2Resource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityProfilesV2/\[^/\]+$`.
   ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// profile. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16714,9 +17708,12 @@ class OrganizationsSecurityProfilesV2Resource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SecurityProfileV2> get(
     core.String name, {
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (riskAssessmentType != null)
+        'riskAssessmentType': [riskAssessmentType],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -16746,6 +17743,14 @@ class OrganizationsSecurityProfilesV2Resource {
   /// `ListSecurityProfilesV2` call. Provide this to retrieve the subsequent
   /// page.
   ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// profiles. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16760,11 +17765,14 @@ class OrganizationsSecurityProfilesV2Resource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (riskAssessmentType != null)
+        'riskAssessmentType': [riskAssessmentType],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -18598,6 +19606,35 @@ class GoogleCloudApigeeV1AddonsConfig {
   };
 }
 
+/// Request for AdjustAppGroupBalance.
+class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest {
+  /// * A positive value of `adjustment` means that that the API provider wants
+  /// to adjust the balance for an under-charged AppGroup i.e. the balance of
+  /// the AppGroup will decrease.
+  ///
+  /// * A negative value of `adjustment` is not supported. Use credit balance
+  /// API instead.
+  ///
+  /// Required.
+  GoogleTypeMoney? adjustment;
+
+  GoogleCloudApigeeV1AdjustAppGroupBalanceRequest({this.adjustment});
+
+  GoogleCloudApigeeV1AdjustAppGroupBalanceRequest.fromJson(core.Map json_)
+    : this(
+        adjustment:
+            json_.containsKey('adjustment')
+                ? GoogleTypeMoney.fromJson(
+                  json_['adjustment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adjustment != null) 'adjustment': adjustment!,
+  };
+}
+
 /// Request for AdjustDeveloperBalance.
 class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
   /// * A positive value of `adjustment` means that that the API provider wants
@@ -19115,6 +20152,11 @@ class GoogleCloudApigeeV1ApiDoc {
 
 /// The documentation for a catalog item.
 class GoogleCloudApigeeV1ApiDocDocumentation {
+  /// AsyncAPI Specification documentation.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1AsyncApiDocumentation? asyncApiDocumentation;
+
   /// GraphQL documentation.
   ///
   /// Optional.
@@ -19126,12 +20168,20 @@ class GoogleCloudApigeeV1ApiDocDocumentation {
   GoogleCloudApigeeV1OASDocumentation? oasDocumentation;
 
   GoogleCloudApigeeV1ApiDocDocumentation({
+    this.asyncApiDocumentation,
     this.graphqlDocumentation,
     this.oasDocumentation,
   });
 
   GoogleCloudApigeeV1ApiDocDocumentation.fromJson(core.Map json_)
     : this(
+        asyncApiDocumentation:
+            json_.containsKey('asyncApiDocumentation')
+                ? GoogleCloudApigeeV1AsyncApiDocumentation.fromJson(
+                  json_['asyncApiDocumentation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         graphqlDocumentation:
             json_.containsKey('graphqlDocumentation')
                 ? GoogleCloudApigeeV1GraphqlDocumentation.fromJson(
@@ -19149,6 +20199,8 @@ class GoogleCloudApigeeV1ApiDocDocumentation {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (asyncApiDocumentation != null)
+      'asyncApiDocumentation': asyncApiDocumentation!,
     if (graphqlDocumentation != null)
       'graphqlDocumentation': graphqlDocumentation!,
     if (oasDocumentation != null) 'oasDocumentation': oasDocumentation!,
@@ -19356,6 +20408,43 @@ class GoogleCloudApigeeV1ApiProduct {
   /// Modified time of this environment as milliseconds since epoch.
   core.String? lastModifiedAt;
 
+  /// Configuration used to group Apigee proxies with resources, method types,
+  /// LLM model and quotas.
+  ///
+  /// The resource refers to the resource URI (excluding the base path). With
+  /// this grouping, the API product creator is able to fine-tune and give
+  /// precise control over which REST methods have access to specific resources,
+  /// specific LLM model and how many calls can be made (using the `quota`
+  /// setting). **Note:** The `api_resources` setting cannot be specified for
+  /// both the API product and llm operation group; otherwise the call will
+  /// fail.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1LlmOperationGroup? llmOperationGroup;
+
+  /// Number of LLM tokens permitted per app by this API product for the
+  /// specified `llm_quota_interval` and `llm_quota_time_unit`.
+  ///
+  /// For example, an `llm_quota` of 50,000, for an `llm_quota_interval` of 12
+  /// and an `llm_quota_time_unit` of hours means 50,000 llm tokens are allowed
+  /// to be used every 12 hours.
+  ///
+  /// Optional.
+  core.String? llmQuota;
+
+  /// Time interval over which the number of tokens from LLM responses is
+  /// calculated.
+  ///
+  /// Optional.
+  core.String? llmQuotaInterval;
+
+  /// Time unit defined for the `llm_quota_interval`.
+  ///
+  /// Valid values include `minute`, `hour`, `day`, or `month`.
+  ///
+  /// Optional.
+  core.String? llmQuotaTimeUnit;
+
   /// Internal name of the API product.
   ///
   /// Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`.
@@ -19416,6 +20505,9 @@ class GoogleCloudApigeeV1ApiProduct {
   /// local counter for quota evaluation by all the operations, independent of
   /// proxy association. This behavior mimics the same as
   /// QUOTA_COUNTER_SCOPE_UNSPECIFIED.
+  /// - "PRODUCT" : When quota is not explicitly defined for each
+  /// operation(REST/GraphQL), the limits set at product level will be used as a
+  /// global counter for quota evaluation by all the operations.
   core.String? quotaCounterScope;
 
   /// Time interval over which the number of request messages is calculated.
@@ -19452,6 +20544,10 @@ class GoogleCloudApigeeV1ApiProduct {
     this.graphqlOperationGroup,
     this.grpcOperationGroup,
     this.lastModifiedAt,
+    this.llmOperationGroup,
+    this.llmQuota,
+    this.llmQuotaInterval,
+    this.llmQuotaTimeUnit,
     this.name,
     this.operationGroup,
     this.proxies,
@@ -19500,6 +20596,16 @@ class GoogleCloudApigeeV1ApiProduct {
                 )
                 : null,
         lastModifiedAt: json_['lastModifiedAt'] as core.String?,
+        llmOperationGroup:
+            json_.containsKey('llmOperationGroup')
+                ? GoogleCloudApigeeV1LlmOperationGroup.fromJson(
+                  json_['llmOperationGroup']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        llmQuota: json_['llmQuota'] as core.String?,
+        llmQuotaInterval: json_['llmQuotaInterval'] as core.String?,
+        llmQuotaTimeUnit: json_['llmQuotaTimeUnit'] as core.String?,
         name: json_['name'] as core.String?,
         operationGroup:
             json_.containsKey('operationGroup')
@@ -19535,6 +20641,10 @@ class GoogleCloudApigeeV1ApiProduct {
       'graphqlOperationGroup': graphqlOperationGroup!,
     if (grpcOperationGroup != null) 'grpcOperationGroup': grpcOperationGroup!,
     if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+    if (llmOperationGroup != null) 'llmOperationGroup': llmOperationGroup!,
+    if (llmQuota != null) 'llmQuota': llmQuota!,
+    if (llmQuotaInterval != null) 'llmQuotaInterval': llmQuotaInterval!,
+    if (llmQuotaTimeUnit != null) 'llmQuotaTimeUnit': llmQuotaTimeUnit!,
     if (name != null) 'name': name!,
     if (operationGroup != null) 'operationGroup': operationGroup!,
     if (proxies != null) 'proxies': proxies!,
@@ -20003,6 +21113,232 @@ class GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
   };
 }
 
+/// APIM Service Extension is a resource under an Apigee Organization that is
+/// used to create APIM Service Extension to route traffic to existing X
+/// instances.
+class GoogleCloudApigeeV1ApimServiceExtension {
+  /// The time that this resource was created on the server.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Name of the proxy deployed in the Apigee X instance.
+  ///
+  /// Required.
+  core.String? extensionProcessor;
+
+  /// List of extensions that are part of the service extension.
+  ///
+  /// Refer to https://cloud.google.com/service-extensions/docs/quotas#limits
+  /// for any limits.
+  ///
+  /// Optional.
+  core.List<GoogleCloudApigeeV1ApimServiceExtensionExtension>? extensions;
+
+  /// Name of the Google Cloud LB forwarding rule.
+  ///
+  /// Format:
+  /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+  /// projects/{project}/global/forwardingRules/{forwarding_rule}
+  ///
+  /// Required.
+  core.String? lbForwardingRule;
+
+  /// Identifier.
+  ///
+  /// unique name of the APIM service extension. The name must conform with
+  /// RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and
+  /// can have a maximum length of 63 characters. Additionally, the first
+  /// character must be a letter and the last a letter or a number.
+  core.String? name;
+
+  /// The network where the forwarding rule is created.
+  ///
+  /// Format: projects/{project}/global/networks/{network}
+  ///
+  /// Required.
+  core.String? network;
+
+  /// List of network configurations for the APIM service extension.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>?
+  networkConfigs;
+
+  /// State of the APIM service extension.
+  ///
+  /// Values other than `ACTIVE` mean the resource is not ready to use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "UPDATING" : The resource is being updated.
+  core.String? state;
+
+  /// The time that this resource was updated on the server.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1ApimServiceExtension({
+    this.createTime,
+    this.extensionProcessor,
+    this.extensions,
+    this.lbForwardingRule,
+    this.name,
+    this.network,
+    this.networkConfigs,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1ApimServiceExtension.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        extensionProcessor: json_['extensionProcessor'] as core.String?,
+        extensions:
+            (json_['extensions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudApigeeV1ApimServiceExtensionExtension.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        lbForwardingRule: json_['lbForwardingRule'] as core.String?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        networkConfigs:
+            (json_['networkConfigs'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (extensionProcessor != null) 'extensionProcessor': extensionProcessor!,
+    if (extensions != null) 'extensions': extensions!,
+    if (lbForwardingRule != null) 'lbForwardingRule': lbForwardingRule!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (networkConfigs != null) 'networkConfigs': networkConfigs!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Extension configuration for Apigee extension processor service extension.
+class GoogleCloudApigeeV1ApimServiceExtensionExtension {
+  /// Whether this request should fail open.
+  ///
+  /// Optional.
+  core.bool? failOpen;
+
+  /// One of the hostnames of Apigee EnvGroup where the proxy is deployed.
+  ///
+  /// This hostname (i.e FDQN) will be used to route traffic from the specified
+  /// forwarding rule to the environment in Apigee X instance where the proxy is
+  /// deployed for handling extension traffic. Format: ^(\[a-zA-Z0-9. _-\])+$
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Match Condition for CEL expression.
+  ///
+  /// Refer to
+  /// https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference
+  /// for more details.
+  ///
+  /// Optional.
+  core.String? matchCondition;
+
+  /// Name of the `LbTrafficExtension` resource.
+  ///
+  /// The name must conform with RFC-1034, is restricted to lower-cased letters,
+  /// numbers and hyphens, and can have a maximum length of 63 characters.
+  /// Additionally, the first character must be a letter and the last a letter
+  /// or a number.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Supported events for the Service Extension.
+  ///
+  /// If not specified, all events are supported.
+  ///
+  /// Optional.
+  core.List<core.String>? supportedEvents;
+
+  GoogleCloudApigeeV1ApimServiceExtensionExtension({
+    this.failOpen,
+    this.hostname,
+    this.matchCondition,
+    this.name,
+    this.supportedEvents,
+  });
+
+  GoogleCloudApigeeV1ApimServiceExtensionExtension.fromJson(core.Map json_)
+    : this(
+        failOpen: json_['failOpen'] as core.bool?,
+        hostname: json_['hostname'] as core.String?,
+        matchCondition: json_['matchCondition'] as core.String?,
+        name: json_['name'] as core.String?,
+        supportedEvents:
+            (json_['supportedEvents'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (failOpen != null) 'failOpen': failOpen!,
+    if (hostname != null) 'hostname': hostname!,
+    if (matchCondition != null) 'matchCondition': matchCondition!,
+    if (name != null) 'name': name!,
+    if (supportedEvents != null) 'supportedEvents': supportedEvents!,
+  };
+}
+
+/// Network configuration for the APIM service extension.
+class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig {
+  /// The region for the PSC NEG.
+  ///
+  /// Required.
+  core.String? region;
+
+  /// The subnet for the PSC NEG.
+  ///
+  /// Format: projects/{project}/regions/{region}/subnetworks/{subnet}
+  ///
+  /// Required.
+  core.String? subnet;
+
+  GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig({
+    this.region,
+    this.subnet,
+  });
+
+  GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig.fromJson(core.Map json_)
+    : this(
+        region: json_['region'] as core.String?,
+        subnet: json_['subnet'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (region != null) 'region': region!,
+    if (subnet != null) 'subnet': subnet!,
+  };
+}
+
 class GoogleCloudApigeeV1App {
   /// List of API products associated with the app.
   core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
@@ -20174,6 +21510,11 @@ class GoogleCloudApigeeV1AppGroup {
   /// app group name displayed in the UI
   core.String? displayName;
 
+  /// Email of the AppGroup.
+  ///
+  /// Optional.
+  core.String? email;
+
   /// Modified time as milliseconds since epoch.
   ///
   /// Output only.
@@ -20204,6 +21545,7 @@ class GoogleCloudApigeeV1AppGroup {
     this.channelUri,
     this.createdAt,
     this.displayName,
+    this.email,
     this.lastModifiedAt,
     this.name,
     this.organization,
@@ -20225,6 +21567,7 @@ class GoogleCloudApigeeV1AppGroup {
         channelUri: json_['channelUri'] as core.String?,
         createdAt: json_['createdAt'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
         lastModifiedAt: json_['lastModifiedAt'] as core.String?,
         name: json_['name'] as core.String?,
         organization: json_['organization'] as core.String?,
@@ -20238,6 +21581,7 @@ class GoogleCloudApigeeV1AppGroup {
     if (channelUri != null) 'channelUri': channelUri!,
     if (createdAt != null) 'createdAt': createdAt!,
     if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
     if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
     if (name != null) 'name': name!,
     if (organization != null) 'organization': organization!,
@@ -20484,6 +21828,152 @@ class GoogleCloudApigeeV1AppGroupAppKey {
   };
 }
 
+/// AppGroupBalance for the AppGroup.
+class GoogleCloudApigeeV1AppGroupBalance {
+  /// List of all wallets.
+  ///
+  /// Each individual wallet stores the account balance for a particular
+  /// currency.
+  ///
+  /// Output only.
+  core.List<GoogleCloudApigeeV1AppGroupBalanceWallet>? wallets;
+
+  GoogleCloudApigeeV1AppGroupBalance({this.wallets});
+
+  GoogleCloudApigeeV1AppGroupBalance.fromJson(core.Map json_)
+    : this(
+        wallets:
+            (json_['wallets'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1AppGroupBalanceWallet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (wallets != null) 'wallets': wallets!,
+  };
+}
+
+/// Wallet used to manage an account balance for a particular currency.
+class GoogleCloudApigeeV1AppGroupBalanceWallet {
+  /// Current remaining balance of the AppGroup for a particular currency.
+  GoogleTypeMoney? balance;
+
+  /// Time at which the AppGroup last added credit to the account in
+  /// milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? lastCreditTime;
+
+  GoogleCloudApigeeV1AppGroupBalanceWallet({this.balance, this.lastCreditTime});
+
+  GoogleCloudApigeeV1AppGroupBalanceWallet.fromJson(core.Map json_)
+    : this(
+        balance:
+            json_.containsKey('balance')
+                ? GoogleTypeMoney.fromJson(
+                  json_['balance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lastCreditTime: json_['lastCreditTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (balance != null) 'balance': balance!,
+    if (lastCreditTime != null) 'lastCreditTime': lastCreditTime!,
+  };
+}
+
+/// Monetization configuration for the AppGroup.
+class GoogleCloudApigeeV1AppGroupMonetizationConfig {
+  /// Billing type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BILLING_TYPE_UNSPECIFIED" : The default/unset value.
+  /// - "PREPAID" : AppGroup pays in advance for the use of APIs and the charged
+  /// amount is deducted from their account balance.
+  /// - "POSTPAID" : AppGroup does not maintain an account balance. The API
+  /// provider bills the AppGroup for API usage.
+  core.String? billingType;
+
+  GoogleCloudApigeeV1AppGroupMonetizationConfig({this.billingType});
+
+  GoogleCloudApigeeV1AppGroupMonetizationConfig.fromJson(core.Map json_)
+    : this(billingType: json_['billingType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (billingType != null) 'billingType': billingType!,
+  };
+}
+
+/// AppGroup Subscription details.
+class GoogleCloudApigeeV1AppGroupSubscription {
+  /// Name of the API product for which the appgroup is purchasing a
+  /// subscription.
+  ///
+  /// Required.
+  core.String? apiproduct;
+
+  /// Time when the API product subscription was created in milliseconds since
+  /// epoch.
+  ///
+  /// Output only.
+  core.String? createdAt;
+
+  /// Time when the API product subscription ends in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Time when the API product subscription was last modified in milliseconds
+  /// since epoch.
+  ///
+  /// Output only.
+  core.String? lastModifiedAt;
+
+  /// Name of the API product subscription.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Time when the API product subscription starts in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  GoogleCloudApigeeV1AppGroupSubscription({
+    this.apiproduct,
+    this.createdAt,
+    this.endTime,
+    this.lastModifiedAt,
+    this.name,
+    this.startTime,
+  });
+
+  GoogleCloudApigeeV1AppGroupSubscription.fromJson(core.Map json_)
+    : this(
+        apiproduct: json_['apiproduct'] as core.String?,
+        createdAt: json_['createdAt'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        lastModifiedAt: json_['lastModifiedAt'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiproduct != null) 'apiproduct': apiproduct!,
+    if (createdAt != null) 'createdAt': createdAt!,
+    if (endTime != null) 'endTime': endTime!,
+    if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+    if (name != null) 'name': name!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// Archive Deployment information.
 class GoogleCloudApigeeV1ArchiveDeployment {
   /// The time at which the Archive Deployment was created in milliseconds since
@@ -20553,6 +22043,32 @@ class GoogleCloudApigeeV1ArchiveDeployment {
     if (name != null) 'name': name!,
     if (operation != null) 'operation': operation!,
     if (updatedAt != null) 'updatedAt': updatedAt!,
+  };
+}
+
+/// AsyncAPI Specification documentation for a catalog item.
+class GoogleCloudApigeeV1AsyncApiDocumentation {
+  /// The documentation file contents for the AsyncAPI Specification.
+  ///
+  /// JSON and YAML file formats are supported.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1DocumentationFile? spec;
+
+  GoogleCloudApigeeV1AsyncApiDocumentation({this.spec});
+
+  GoogleCloudApigeeV1AsyncApiDocumentation.fromJson(core.Map json_)
+    : this(
+        spec:
+            json_.containsKey('spec')
+                ? GoogleCloudApigeeV1DocumentationFile.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (spec != null) 'spec': spec!,
   };
 }
 
@@ -20788,6 +22304,18 @@ class GoogleCloudApigeeV1Attributes {
 
 /// Request for BatchComputeSecurityAssessmentResults.
 class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
+  /// An array of API Hub APIs to assess.
+  ///
+  /// A maximum of 1 API can be assessed.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray?
+  apiHubApis;
+
+  /// An array of API Hub Gateways to assess.
+  ///
+  /// A maximum of 3 gateways can be assessed.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray?
+  apiHubGateways;
+
   /// Include only these resources.
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray?
   include;
@@ -20819,12 +22347,16 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
 
   /// Scope of the resources for the computation.
   ///
-  /// For Apigee, the environment is the scope of the resources.
+  /// When computing scores for Apigee proxies, the scope should be set to the
+  /// environment of the resources. When computing scores for API Hub
+  /// deployments, api_hub_scope should be set instead.
   ///
   /// Optional.
   core.String? scope;
 
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest({
+    this.apiHubApis,
+    this.apiHubGateways,
     this.include,
     this.includeAllResources,
     this.pageSize,
@@ -20836,6 +22368,19 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
     core.Map json_,
   ) : this(
+        apiHubApis:
+            json_.containsKey('apiHubApis')
+                ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray.fromJson(
+                  json_['apiHubApis'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiHubGateways:
+            json_.containsKey('apiHubGateways')
+                ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray.fromJson(
+                  json_['apiHubGateways']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         include:
             json_.containsKey('include')
                 ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray.fromJson(
@@ -20856,6 +22401,8 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (apiHubApis != null) 'apiHubApis': apiHubApis!,
+    if (apiHubGateways != null) 'apiHubGateways': apiHubGateways!,
     if (include != null) 'include': include!,
     if (includeAllResources != null)
       'includeAllResources': includeAllResources!,
@@ -20863,6 +22410,61 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
     if (pageToken != null) 'pageToken': pageToken!,
     if (profile != null) 'profile': profile!,
     if (scope != null) 'scope': scope!,
+  };
+}
+
+/// Message for the array of API Hub APIs.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray {
+  /// The array of API Hub API IDs.
+  ///
+  /// Format: `projects/{project}/locations/{location}/apis/{api}`
+  ///
+  /// Required.
+  core.List<core.String>? apis;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray({
+    this.apis,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray.fromJson(
+    core.Map json_,
+  ) : this(
+        apis:
+            (json_['apis'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apis != null) 'apis': apis!,
+  };
+}
+
+/// Message for the array of API Hub Gateways.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray {
+  /// The array of API Hub Gateway IDs.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+  ///
+  /// Required.
+  core.List<core.String>? gateways;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray({
+    this.gateways,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray.fromJson(
+    core.Map json_,
+  ) : this(
+        gateways:
+            (json_['gateways'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gateways != null) 'gateways': gateways!,
   };
 }
 
@@ -20911,6 +22513,9 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArr
 class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource {
   /// Name of this resource.
   ///
+  /// For an Apigee API Proxy, this should be the id of the API proxy. For an
+  /// API Hub Deployment, this should be the id of the deployment.
+  ///
   /// Required.
   core.String? name;
 
@@ -20920,6 +22525,7 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArr
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : ResourceType not specified.
   /// - "API_PROXY" : Resource is an Apigee Proxy.
+  /// - "API_HUB_DEPLOYMENT" : Resource is an API Hub deployment.
   core.String? type;
 
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource({
@@ -21634,6 +23240,50 @@ class GoogleCloudApigeeV1Credential {
     if (issuedAt != null) 'issuedAt': issuedAt!,
     if (scopes != null) 'scopes': scopes!,
     if (status != null) 'status': status!,
+  };
+}
+
+/// Request for CreditAppGroupBalance.
+class GoogleCloudApigeeV1CreditAppGroupBalanceRequest {
+  /// The amount of money to be credited.
+  ///
+  /// The wallet corresponding to the currency specified within
+  /// `transaction_amount` will be updated. For example, if you specified
+  /// `currency_code` within `transaction_amount` as "USD", then the amount
+  /// would be added to the wallet which has the "USD" currency or if no such
+  /// wallet exists, a new wallet will be created with the "USD" currency.
+  ///
+  /// Required.
+  GoogleTypeMoney? transactionAmount;
+
+  /// Each transaction_id uniquely identifies a credit balance request.
+  ///
+  /// If multiple requests are received with the same transaction_id, only one
+  /// of them will be considered.
+  ///
+  /// Required.
+  core.String? transactionId;
+
+  GoogleCloudApigeeV1CreditAppGroupBalanceRequest({
+    this.transactionAmount,
+    this.transactionId,
+  });
+
+  GoogleCloudApigeeV1CreditAppGroupBalanceRequest.fromJson(core.Map json_)
+    : this(
+        transactionAmount:
+            json_.containsKey('transactionAmount')
+                ? GoogleTypeMoney.fromJson(
+                  json_['transactionAmount']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        transactionId: json_['transactionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (transactionAmount != null) 'transactionAmount': transactionAmount!,
+    if (transactionId != null) 'transactionId': transactionId!,
   };
 }
 
@@ -23648,6 +25298,10 @@ class GoogleCloudApigeeV1EndpointAttachment {
   /// - "NEEDS_ATTENTION" : The connection has been accepted by the PSC
   /// producer, but it is not ready to serve the traffic due to producer side
   /// issues.
+  /// - "ACCEPTED_LIMITED_CAPACITY" : The connection has been accepted by the
+  /// PSC producer, but it will only serve capacity limited traffic. The
+  /// producer needs to take further actions to increase capacity for this
+  /// connection.
   core.String? connectionState;
 
   /// Host that can be used in either the HTTP target endpoint directly or as
@@ -24558,6 +26212,9 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
   };
 }
 
+/// Request for ExpireAppGroupSubscription.
+typedef GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest = $Empty;
+
 /// Request for ExpireDeveloperSubscription.
 typedef GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest = $Empty;
 
@@ -25325,6 +26982,14 @@ class GoogleCloudApigeeV1Instance {
   /// Optional.
   core.String? ipRange;
 
+  /// Indicates whether the instance is version locked.
+  ///
+  /// If true, the instance will not be updated by automated runtime rollouts.
+  /// This is only supported for Apigee X instances.
+  ///
+  /// Output only.
+  core.bool? isVersionLocked;
+
   /// Time the instance was last modified in milliseconds since epoch.
   ///
   /// Output only.
@@ -25334,6 +26999,12 @@ class GoogleCloudApigeeV1Instance {
   ///
   /// Required.
   core.String? location;
+
+  /// Apigee customers can set the preferred window to perform maintenance on
+  /// the instance (day of the week and time of day).
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1MaintenanceUpdatePolicy? maintenanceUpdatePolicy;
 
   /// Resource ID of the instance.
   ///
@@ -25375,6 +27046,15 @@ class GoogleCloudApigeeV1Instance {
   /// Output only.
   core.String? runtimeVersion;
 
+  /// Time and date of the scheduled maintenance for this instance.
+  ///
+  /// This field is only populated for instances that have opted into
+  /// Maintenance Window and if there is an upcoming maintenance. Cleared once
+  /// the maintenance is complete.
+  ///
+  /// Output only.
+  GoogleCloudApigeeV1ScheduledMaintenance? scheduledMaintenance;
+
   /// Resource name of the service attachment created for the instance in the
   /// format: `projects / * /regions / * /serviceAttachments / * ` Apigee
   /// customers can privately forward traffic to this service attachment using
@@ -25405,12 +27085,15 @@ class GoogleCloudApigeeV1Instance {
     this.displayName,
     this.host,
     this.ipRange,
+    this.isVersionLocked,
     this.lastModifiedAt,
     this.location,
+    this.maintenanceUpdatePolicy,
     this.name,
     this.peeringCidrRange,
     this.port,
     this.runtimeVersion,
+    this.scheduledMaintenance,
     this.serviceAttachment,
     this.state,
   });
@@ -25434,12 +27117,27 @@ class GoogleCloudApigeeV1Instance {
         displayName: json_['displayName'] as core.String?,
         host: json_['host'] as core.String?,
         ipRange: json_['ipRange'] as core.String?,
+        isVersionLocked: json_['isVersionLocked'] as core.bool?,
         lastModifiedAt: json_['lastModifiedAt'] as core.String?,
         location: json_['location'] as core.String?,
+        maintenanceUpdatePolicy:
+            json_.containsKey('maintenanceUpdatePolicy')
+                ? GoogleCloudApigeeV1MaintenanceUpdatePolicy.fromJson(
+                  json_['maintenanceUpdatePolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         peeringCidrRange: json_['peeringCidrRange'] as core.String?,
         port: json_['port'] as core.String?,
         runtimeVersion: json_['runtimeVersion'] as core.String?,
+        scheduledMaintenance:
+            json_.containsKey('scheduledMaintenance')
+                ? GoogleCloudApigeeV1ScheduledMaintenance.fromJson(
+                  json_['scheduledMaintenance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         serviceAttachment: json_['serviceAttachment'] as core.String?,
         state: json_['state'] as core.String?,
       );
@@ -25455,12 +27153,17 @@ class GoogleCloudApigeeV1Instance {
     if (displayName != null) 'displayName': displayName!,
     if (host != null) 'host': host!,
     if (ipRange != null) 'ipRange': ipRange!,
+    if (isVersionLocked != null) 'isVersionLocked': isVersionLocked!,
     if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
     if (location != null) 'location': location!,
+    if (maintenanceUpdatePolicy != null)
+      'maintenanceUpdatePolicy': maintenanceUpdatePolicy!,
     if (name != null) 'name': name!,
     if (peeringCidrRange != null) 'peeringCidrRange': peeringCidrRange!,
     if (port != null) 'port': port!,
     if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+    if (scheduledMaintenance != null)
+      'scheduledMaintenance': scheduledMaintenance!,
     if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
     if (state != null) 'state': state!,
   };
@@ -25698,21 +27401,32 @@ class GoogleCloudApigeeV1KeyValueMap {
   /// Required.
   core.bool? encrypted;
 
+  /// Flag that specifies whether entry values will be masked when returned.
+  ///
+  /// Optional.
+  core.bool? maskedValues;
+
   /// ID of the key value map.
   ///
   /// Required.
   core.String? name;
 
-  GoogleCloudApigeeV1KeyValueMap({this.encrypted, this.name});
+  GoogleCloudApigeeV1KeyValueMap({
+    this.encrypted,
+    this.maskedValues,
+    this.name,
+  });
 
   GoogleCloudApigeeV1KeyValueMap.fromJson(core.Map json_)
     : this(
         encrypted: json_['encrypted'] as core.bool?,
+        maskedValues: json_['maskedValues'] as core.bool?,
         name: json_['name'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (encrypted != null) 'encrypted': encrypted!,
+    if (maskedValues != null) 'maskedValues': maskedValues!,
     if (name != null) 'name': name!,
   };
 }
@@ -25967,6 +27681,42 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
   };
 }
 
+/// Response for list service extensions.
+class GoogleCloudApigeeV1ListApimServiceExtensionsResponse {
+  /// service extension in a given organization.
+  core.List<GoogleCloudApigeeV1ApimServiceExtension>? apimServiceExtensions;
+
+  /// Page token that you can include in an `ListApimServiceExtensions` request
+  /// to retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListApimServiceExtensionsResponse({
+    this.apimServiceExtensions,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListApimServiceExtensionsResponse.fromJson(core.Map json_)
+    : this(
+        apimServiceExtensions:
+            (json_['apimServiceExtensions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1ApimServiceExtension.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apimServiceExtensions != null)
+      'apimServiceExtensions': apimServiceExtensions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Response for ListAppGroupApps
 class GoogleCloudApigeeV1ListAppGroupAppsResponse {
   /// List of AppGroup apps and their credentials.
@@ -25997,6 +27747,42 @@ class GoogleCloudApigeeV1ListAppGroupAppsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (appGroupApps != null) 'appGroupApps': appGroupApps!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Response for ListAppGroupSubscriptions.
+class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse {
+  /// The list of subscriptions for an AppGroup.
+  core.List<GoogleCloudApigeeV1AppGroupSubscription>? appGroupSubscriptions;
+
+  /// Value that can be sent as `pageToken` to retrieve the next page of
+  /// content.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse({
+    this.appGroupSubscriptions,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse.fromJson(core.Map json_)
+    : this(
+        appGroupSubscriptions:
+            (json_['appGroupSubscriptions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1AppGroupSubscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (appGroupSubscriptions != null)
+      'appGroupSubscriptions': appGroupSubscriptions!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
   };
 }
@@ -27142,6 +28928,285 @@ class GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   };
 }
 
+/// Represents the pairing of REST resource path, model and the actions (verbs)
+/// allowed on the resource path.
+class GoogleCloudApigeeV1LlmOperation {
+  /// methods refers to the REST verbs as in
+  /// https://httpwg.org/specs/rfc9110.html For example: GET, POST, PUT, DELETE,
+  /// etc.
+  ///
+  /// They need to be in uppercase. When none specified, all verb types are
+  /// allowed.
+  ///
+  /// Optional.
+  core.List<core.String>? methods;
+
+  /// LLM model name associated with the API proxy
+  ///
+  /// Required.
+  core.String? model;
+
+  /// REST resource path associated with the API proxy or remote service.
+  ///
+  /// Required.
+  core.String? resource;
+
+  GoogleCloudApigeeV1LlmOperation({this.methods, this.model, this.resource});
+
+  GoogleCloudApigeeV1LlmOperation.fromJson(core.Map json_)
+    : this(
+        methods:
+            (json_['methods'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        model: json_['model'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (methods != null) 'methods': methods!,
+    if (model != null) 'model': model!,
+    if (resource != null) 'resource': resource!,
+  };
+}
+
+/// Binds the resources in an API proxy or remote service with the allowed REST
+/// methods and associated quota enforcement.
+class GoogleCloudApigeeV1LlmOperationConfig {
+  /// Name of the API proxy or remote service with which the resources, methods,
+  /// and quota are associated.
+  ///
+  /// Required.
+  core.String? apiSource;
+
+  /// Custom attributes associated with the operation.
+  ///
+  /// Optional.
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// List of resource/method/model for the API proxy to which quota will
+  /// applied.
+  ///
+  /// **Note**: Currently, you can specify only a single resource/method/model
+  /// mapping. The call will fail if more than one resource/method/model
+  /// mappings are provided.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1LlmOperation>? llmOperations;
+
+  /// LLM token Quota parameters to be enforced for the resources, methods, and
+  /// API source & LLM model combination.
+  ///
+  /// If none are specified, quota enforcement will not be done.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1LlmTokenQuota? llmTokenQuota;
+
+  GoogleCloudApigeeV1LlmOperationConfig({
+    this.apiSource,
+    this.attributes,
+    this.llmOperations,
+    this.llmTokenQuota,
+  });
+
+  GoogleCloudApigeeV1LlmOperationConfig.fromJson(core.Map json_)
+    : this(
+        apiSource: json_['apiSource'] as core.String?,
+        attributes:
+            (json_['attributes'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1Attribute.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        llmOperations:
+            (json_['llmOperations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1LlmOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        llmTokenQuota:
+            json_.containsKey('llmTokenQuota')
+                ? GoogleCloudApigeeV1LlmTokenQuota.fromJson(
+                  json_['llmTokenQuota'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiSource != null) 'apiSource': apiSource!,
+    if (attributes != null) 'attributes': attributes!,
+    if (llmOperations != null) 'llmOperations': llmOperations!,
+    if (llmTokenQuota != null) 'llmTokenQuota': llmTokenQuota!,
+  };
+}
+
+/// List of LLM operation configuration details associated with Apigee API
+/// proxies.
+class GoogleCloudApigeeV1LlmOperationGroup {
+  /// List of LLM operation configurations for either Apigee API proxies that
+  /// are associated with this API product.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1LlmOperationConfig>? operationConfigs;
+
+  GoogleCloudApigeeV1LlmOperationGroup({this.operationConfigs});
+
+  GoogleCloudApigeeV1LlmOperationGroup.fromJson(core.Map json_)
+    : this(
+        operationConfigs:
+            (json_['operationConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1LlmOperationConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (operationConfigs != null) 'operationConfigs': operationConfigs!,
+  };
+}
+
+/// LLM Token Quota contains the essential parameters needed that can be applied
+/// on the resources, methods, models, API source combination associated with
+/// this API product.
+///
+/// While LLM Token Quota is optional, setting it prevents requests from
+/// exceeding the provisioned parameters.
+class GoogleCloudApigeeV1LlmTokenQuota {
+  /// Time interval over which the number of request messages is calculated.
+  ///
+  /// Required.
+  core.String? interval;
+
+  /// Upper limit of LLM tokens allowed for the time interval and time unit
+  /// specified.
+  ///
+  /// Requests exceeding this limit will be rejected.
+  ///
+  /// Required.
+  core.String? limit;
+
+  /// Time unit defined for the `interval`.
+  ///
+  /// Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and
+  /// `interval` are valid, the default value is `hour`; otherwise, the default
+  /// is null.
+  ///
+  /// Optional.
+  core.String? timeUnit;
+
+  GoogleCloudApigeeV1LlmTokenQuota({this.interval, this.limit, this.timeUnit});
+
+  GoogleCloudApigeeV1LlmTokenQuota.fromJson(core.Map json_)
+    : this(
+        interval: json_['interval'] as core.String?,
+        limit: json_['limit'] as core.String?,
+        timeUnit: json_['timeUnit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (interval != null) 'interval': interval!,
+    if (limit != null) 'limit': limit!,
+    if (timeUnit != null) 'timeUnit': timeUnit!,
+  };
+}
+
+/// MaintenanceUpdatePolicy specifies the preferred window to perform
+/// maintenance on the instance (day of the week and time of day).
+class GoogleCloudApigeeV1MaintenanceUpdatePolicy {
+  /// Maintenance channel to specify relative scheduling for maintenance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MAINTENANCE_CHANNEL_UNSPECIFIED" : Unspecified maintenance channel.
+  /// - "WEEK1" : Receive 1 weeks notice before maintenance occurs
+  /// - "WEEK2" : Receive 2 weeks notice before maintenance occurs
+  core.String? maintenanceChannel;
+
+  /// Preferred windows to perform maintenance.
+  ///
+  /// Currently limited to 1.
+  ///
+  /// Optional.
+  core.List<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>?
+  maintenanceWindows;
+
+  GoogleCloudApigeeV1MaintenanceUpdatePolicy({
+    this.maintenanceChannel,
+    this.maintenanceWindows,
+  });
+
+  GoogleCloudApigeeV1MaintenanceUpdatePolicy.fromJson(core.Map json_)
+    : this(
+        maintenanceChannel: json_['maintenanceChannel'] as core.String?,
+        maintenanceWindows:
+            (json_['maintenanceWindows'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (maintenanceChannel != null) 'maintenanceChannel': maintenanceChannel!,
+    if (maintenanceWindows != null) 'maintenanceWindows': maintenanceWindows!,
+  };
+}
+
+/// MaintenanceWindow specifies the preferred day of the week and time of day to
+/// perform maintenance.
+class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
+  /// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// The start time (UTC) of the maintenance window.
+  ///
+  /// Required.
+  GoogleTypeTimeOfDay? startTime;
+
+  GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow({
+    this.day,
+    this.startTime,
+  });
+
+  GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow.fromJson(
+    core.Map json_,
+  ) : this(
+        day: json_['day'] as core.String?,
+        startTime:
+            json_.containsKey('startTime')
+                ? GoogleTypeTimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (day != null) 'day': day!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// Encapsulates additional information about query execution.
 class GoogleCloudApigeeV1Metadata {
   /// List of error messages as strings.
@@ -27797,12 +29862,15 @@ class GoogleCloudApigeeV1Organization {
   /// - "PAYG" : Access to Apigee using a Pay-As-You-Go plan.
   core.String? billingType;
 
-  /// Base64-encoded public certificate for the root CA of the Apigee
-  /// organization.
+  /// Deprecated: Use `ca_certificates` instead.
   ///
-  /// Valid only when \[RuntimeType\](#RuntimeType) is `CLOUD`.
+  /// Base64-encoded public certificate for the root CA of the Apigee
+  /// organization. Valid only when \[RuntimeType\](#RuntimeType) is `CLOUD`.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? caCertificate;
   core.List<core.int> get caCertificateAsBytes =>
       convert.base64.decode(caCertificate!);
@@ -27813,6 +29881,15 @@ class GoogleCloudApigeeV1Organization {
         .replaceAll('/', '_')
         .replaceAll('+', '-');
   }
+
+  /// Base64-encoded public certificates for the root CA of the Apigee
+  /// organization.
+  ///
+  /// Valid only when \[RuntimeType\](#RuntimeType) is `CLOUD`. Multiple
+  /// certificates are used to support certificate rotation.
+  ///
+  /// Output only.
+  core.List<core.String>? caCertificates;
 
   /// Cloud KMS key name used for encrypting control plane data that is stored
   /// in a multi region.
@@ -27990,6 +30067,7 @@ class GoogleCloudApigeeV1Organization {
     this.authorizedNetwork,
     this.billingType,
     this.caCertificate,
+    this.caCertificates,
     this.controlPlaneEncryptionKeyName,
     this.createdAt,
     this.customerName,
@@ -28033,6 +30111,10 @@ class GoogleCloudApigeeV1Organization {
         authorizedNetwork: json_['authorizedNetwork'] as core.String?,
         billingType: json_['billingType'] as core.String?,
         caCertificate: json_['caCertificate'] as core.String?,
+        caCertificates:
+            (json_['caCertificates'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         controlPlaneEncryptionKeyName:
             json_['controlPlaneEncryptionKeyName'] as core.String?,
         createdAt: json_['createdAt'] as core.String?,
@@ -28077,6 +30159,7 @@ class GoogleCloudApigeeV1Organization {
     if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
     if (billingType != null) 'billingType': billingType!,
     if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (caCertificates != null) 'caCertificates': caCertificates!,
     if (controlPlaneEncryptionKeyName != null)
       'controlPlaneEncryptionKeyName': controlPlaneEncryptionKeyName!,
     if (createdAt != null) 'createdAt': createdAt!,
@@ -30202,6 +32285,23 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 /// be overridden using the distribute trace configuration override APIs.
 typedef GoogleCloudApigeeV1RuntimeTraceSamplingConfig = $TraceSamplingConfig;
 
+/// Scheduled maintenance information for an instance.
+class GoogleCloudApigeeV1ScheduledMaintenance {
+  /// The start time (UTC) of the scheduled maintenance.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  GoogleCloudApigeeV1ScheduledMaintenance({this.startTime});
+
+  GoogleCloudApigeeV1ScheduledMaintenance.fromJson(core.Map json_)
+    : this(startTime: json_['startTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// Response for Schema call
 class GoogleCloudApigeeV1Schema {
   /// List of schema fields grouped as dimensions.
@@ -31014,7 +33114,16 @@ class GoogleCloudApigeeV1SecurityAssessmentResult {
 
 /// Resource for which we are computing security assessment.
 class GoogleCloudApigeeV1SecurityAssessmentResultResource {
+  /// Additional details for the API Hub deployment.
+  ///
+  /// Output only.
+  GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails?
+  apiHubDeploymentDetails;
+
   /// Name of this resource.
+  ///
+  /// For an Apigee API Proxy, this should be the id of the API proxy. For an
+  /// API Hub Deployment, this should be the id of the deployment.
   ///
   /// Required.
   core.String? name;
@@ -31030,9 +33139,11 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : ResourceType not specified.
   /// - "API_PROXY" : Resource is an Apigee Proxy.
+  /// - "API_HUB_DEPLOYMENT" : Resource is an API Hub deployment.
   core.String? type;
 
   GoogleCloudApigeeV1SecurityAssessmentResultResource({
+    this.apiHubDeploymentDetails,
     this.name,
     this.resourceRevisionId,
     this.type,
@@ -31040,15 +33151,77 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
 
   GoogleCloudApigeeV1SecurityAssessmentResultResource.fromJson(core.Map json_)
     : this(
+        apiHubDeploymentDetails:
+            json_.containsKey('apiHubDeploymentDetails')
+                ? GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails.fromJson(
+                  json_['apiHubDeploymentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         resourceRevisionId: json_['resourceRevisionId'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (apiHubDeploymentDetails != null)
+      'apiHubDeploymentDetails': apiHubDeploymentDetails!,
     if (name != null) 'name': name!,
     if (resourceRevisionId != null) 'resourceRevisionId': resourceRevisionId!,
     if (type != null) 'type': type!,
+  };
+}
+
+/// Additional details if the resource is an API Hub deployment.
+class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails {
+  /// The display name of the API Hub deployment.
+  core.String? displayName;
+
+  /// The gateway for the API Hub deployment.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+  core.String? gateway;
+
+  /// The gateway type for the API Hub deployment.
+  /// Possible string values are:
+  /// - "API_HUB_GATEWAY_TYPE_UNSPECIFIED" : Gateway type is not specified.
+  /// - "APIGEE_X" : Gateway is Apigee X for API Hub.
+  /// - "APIGEE_HYBRID" : Gateway is Apigee Hybrid for API Hub.
+  /// - "APIGEE_EDGE" : Gateway is Apigee Edge for API Hub.
+  /// - "APIGEE_OPDK" : Gateway is Apigee OPDK for API Hub.
+  core.String? gatewayType;
+
+  /// The resource uri for the API Hub deployment.
+  core.String? resourceUri;
+
+  /// The source project for the API Hub deployment.
+  core.String? sourceProject;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails({
+    this.displayName,
+    this.gateway,
+    this.gatewayType,
+    this.resourceUri,
+    this.sourceProject,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        displayName: json_['displayName'] as core.String?,
+        gateway: json_['gateway'] as core.String?,
+        gatewayType: json_['gatewayType'] as core.String?,
+        resourceUri: json_['resourceUri'] as core.String?,
+        sourceProject: json_['sourceProject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (gateway != null) 'gateway': gateway!,
+    if (gatewayType != null) 'gatewayType': gatewayType!,
+    if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (sourceProject != null) 'sourceProject': sourceProject!,
   };
 }
 
@@ -31147,6 +33320,7 @@ class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommen
   /// - "VERDICT_UNSPECIFIED" : The verdict is unspecified.
   /// - "PASS" : The assessment has passed.
   /// - "FAIL" : The assessment has failed.
+  /// - "NOT_APPLICABLE" : The verdict is not applicable.
   core.String? verdict;
 
   /// The weight of the assessment which was set in the profile.
@@ -31361,7 +33535,6 @@ class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
   /// - "ATTRIBUTE_ENVIRONMENTS" : Values will be a list of environments.
   /// - "ATTRIBUTE_IP_ADDRESS_RANGES" : Values will be a list of IP addresses.
   /// This could be either IPv4 or IPv6.
-  /// - "ATTRIBUTE_API_KEYS" : Values will be a list of API keys.
   core.String? attribute;
 
   /// The values of the attribute the user is providing feedback about.
@@ -31868,6 +34041,18 @@ class GoogleCloudApigeeV1SecurityProfileV2 {
   >?
   profileAssessmentConfigs;
 
+  /// The risk assessment type of the security profile.
+  ///
+  /// Defaults to ADVANCED_API_SECURITY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  core.String? riskAssessmentType;
+
   /// The time of the security profile update.
   ///
   /// Output only.
@@ -31879,6 +34064,7 @@ class GoogleCloudApigeeV1SecurityProfileV2 {
     this.googleDefined,
     this.name,
     this.profileAssessmentConfigs,
+    this.riskAssessmentType,
     this.updateTime,
   });
 
@@ -31898,6 +34084,7 @@ class GoogleCloudApigeeV1SecurityProfileV2 {
                 ),
               ),
             ),
+        riskAssessmentType: json_['riskAssessmentType'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -31908,12 +34095,17 @@ class GoogleCloudApigeeV1SecurityProfileV2 {
     if (name != null) 'name': name!,
     if (profileAssessmentConfigs != null)
       'profileAssessmentConfigs': profileAssessmentConfigs!,
+    if (riskAssessmentType != null) 'riskAssessmentType': riskAssessmentType!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
 /// The configuration definition for a specific assessment.
 class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
+  /// Include only these Gateway Types.
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray?
+  include;
+
   /// The weight of the assessment.
   /// Possible string values are:
   /// - "WEIGHT_UNSPECIFIED" : The weight is unspecified.
@@ -31922,14 +34114,51 @@ class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
   /// - "MAJOR" : The weight is major.
   core.String? weight;
 
-  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig({this.weight});
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig({
+    this.include,
+    this.weight,
+  });
 
   GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig.fromJson(
     core.Map json_,
-  ) : this(weight: json_['weight'] as core.String?);
+  ) : this(
+        include:
+            json_.containsKey('include')
+                ? GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray.fromJson(
+                  json_['include'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        weight: json_['weight'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (include != null) 'include': include!,
     if (weight != null) 'weight': weight!,
+  };
+}
+
+/// Message for the array of API Hub Gateway Types.
+class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray {
+  /// The array of API Hub Gateway Types.
+  ///
+  /// Required.
+  core.List<core.String>? gatewayTypes;
+
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray({
+    this.gatewayTypes,
+  });
+
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray.fromJson(
+    core.Map json_,
+  ) : this(
+        gatewayTypes:
+            (json_['gatewayTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gatewayTypes != null) 'gatewayTypes': gatewayTypes!,
   };
 }
 
@@ -34022,9 +36251,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -34038,11 +36276,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -34242,3 +36485,10 @@ typedef GoogleTypeInterval = $Interval;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef GoogleTypeTimeOfDay = $TimeOfDay;

@@ -81,6 +81,8 @@
 ///   - [ReportsFilesResource]
 /// - [SitesResource]
 /// - [SizesResource]
+/// - [StudioCreativeAssetsResource]
+/// - [StudioCreativesResource]
 /// - [SubaccountsResource]
 /// - [TargetableRemarketingListsResource]
 /// - [TargetingTemplatesResource]
@@ -220,6 +222,10 @@ class DfareportingApi {
   ReportsResource get reports => ReportsResource(_requester);
   SitesResource get sites => SitesResource(_requester);
   SizesResource get sizes => SizesResource(_requester);
+  StudioCreativeAssetsResource get studioCreativeAssets =>
+      StudioCreativeAssetsResource(_requester);
+  StudioCreativesResource get studioCreatives =>
+      StudioCreativesResource(_requester);
   SubaccountsResource get subaccounts => SubaccountsResource(_requester);
   TargetableRemarketingListsResource get targetableRemarketingLists =>
       TargetableRemarketingListsResource(_requester);
@@ -5571,12 +5577,130 @@ class DynamicFeedsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Retransforms a dynamic feed.
+  ///
+  /// Request parameters:
+  ///
+  /// [dynamicFeedId] - Required. Dynamic feed ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicFeed> retransform(
+    core.String dynamicFeedId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'studio/dynamicFeeds/' +
+        core.Uri.encodeFull('$dynamicFeedId') +
+        '/retransform';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return DynamicFeed.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a new dynamic feed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicFeed> update(
+    DynamicFeed request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'studio/dynamicFeeds';
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DynamicFeed.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class DynamicProfilesResource {
   final commons.ApiRequester _requester;
 
   DynamicProfilesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generates code for a dynamic profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [dynamicProfileId] - Required. Dynamic profile ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DynamicProfileGenerateCodeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DynamicProfileGenerateCodeResponse> generateCode(
+    core.String dynamicProfileId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'studio/dynamicProfiles/' +
+        core.Uri.encodeFull('$dynamicProfileId') +
+        '/generateCode';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DynamicProfileGenerateCodeResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Gets a dynamic profile by ID.
   ///
@@ -5651,6 +5775,42 @@ class DynamicProfilesResource {
     );
     return DynamicProfile.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Publish for a dynamic profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [dynamicProfileId] - Required. Dynamic profile ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> publish(
+    core.String dynamicProfileId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'studio/dynamicProfiles/' +
+        core.Uri.encodeFull('$dynamicProfileId') +
+        '/publish';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
     );
   }
 
@@ -10774,6 +10934,178 @@ class SizesResource {
   }
 }
 
+class StudioCreativeAssetsResource {
+  final commons.ApiRequester _requester;
+
+  StudioCreativeAssetsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Inserts a new studio creative asset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [StudioCreativeAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudioCreativeAssetsResponse> insert(
+    DfareportingStudioCreativeAssetsInsertRequest request, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'studio/creativeAssets';
+    } else {
+      url_ = '/upload/dfareporting/v4/studio/creativeAssets';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return StudioCreativeAssetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class StudioCreativesResource {
+  final commons.ApiRequester _requester;
+
+  StudioCreativesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a studio creative by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [studioCreativeId] - Required. Studio creative ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudioCreative].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudioCreative> get(
+    core.String studioCreativeId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'studio/creatives/' + core.Uri.encodeFull('$studioCreativeId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StudioCreative.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Inserts a new studio creative.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudioCreative].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudioCreative> insert(
+    StudioCreative request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'studio/creatives';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StudioCreative.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Publish for a studio creative.
+  ///
+  /// Request parameters:
+  ///
+  /// [studioCreativeId] - Required. Studio creative ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> publish(
+    core.String studioCreativeId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'studio/creatives/' +
+        core.Uri.encodeFull('$studioCreativeId') +
+        '/publish';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+}
+
 class SubaccountsResource {
   final commons.ApiRequester _requester;
 
@@ -12856,6 +13188,11 @@ class Ad {
   /// - "IN_STREAM_AUDIO"
   core.String? compatibility;
 
+  /// Contextual keyword targeting information for this ad.
+  ///
+  /// Optional.
+  ContextualKeywordTargeting? contextualKeywordTargeting;
+
   /// Information about the creation of this ad.
   ///
   /// This is a read-only field.
@@ -13015,6 +13352,7 @@ class Ad {
     this.clickThroughUrlSuffixProperties,
     this.comments,
     this.compatibility,
+    this.contextualKeywordTargeting,
     this.createInfo,
     this.creativeGroupAssignments,
     this.creativeRotation,
@@ -13082,6 +13420,13 @@ class Ad {
                 : null,
         comments: json_['comments'] as core.String?,
         compatibility: json_['compatibility'] as core.String?,
+        contextualKeywordTargeting:
+            json_.containsKey('contextualKeywordTargeting')
+                ? ContextualKeywordTargeting.fromJson(
+                  json_['contextualKeywordTargeting']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         createInfo:
             json_.containsKey('createInfo')
                 ? LastModifiedInfo.fromJson(
@@ -13229,6 +13574,8 @@ class Ad {
       'clickThroughUrlSuffixProperties': clickThroughUrlSuffixProperties!,
     if (comments != null) 'comments': comments!,
     if (compatibility != null) 'compatibility': compatibility!,
+    if (contextualKeywordTargeting != null)
+      'contextualKeywordTargeting': contextualKeywordTargeting!,
     if (createInfo != null) 'createInfo': createInfo!,
     if (creativeGroupAssignments != null)
       'creativeGroupAssignments': creativeGroupAssignments!,
@@ -14988,6 +15335,33 @@ class ContentSource {
 /// This is a read-only field.
 typedef ContentSourceMetaData = $ContentSourceMetaData;
 
+/// Contains information about a Contextual Keyword that can be targeted by ads.
+typedef ContextualKeyword = $ContextualKeyword;
+
+/// Contextual Keyword Targeting.
+class ContextualKeywordTargeting {
+  /// Contextual keywords that this ad targets
+  core.List<ContextualKeyword>? keywords;
+
+  ContextualKeywordTargeting({this.keywords});
+
+  ContextualKeywordTargeting.fromJson(core.Map json_)
+    : this(
+        keywords:
+            (json_['keywords'] as core.List?)
+                ?.map(
+                  (value) => ContextualKeyword.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (keywords != null) 'keywords': keywords!,
+  };
+}
+
 /// A Conversion represents when a user successfully performs a desired action
 /// after seeing an ad.
 class Conversion {
@@ -15582,6 +15956,15 @@ class Creative {
   /// - "CREATIVE_AUTHORING_SOURCE_GWD" : Google Web Designer used to author the
   /// creative.
   /// - "CREATIVE_AUTHORING_SOURCE_ACS" : ACS-UI used to author the creative.
+  /// - "CREATIVE_AUTHORING_SOURCE_ADOBE" : Creative authoring source is Adobe.
+  /// - "CREATIVE_AUTHORING_SOURCE_TYPEFACE_AI" : Creative authoring source is
+  /// Typeface.ai.
+  /// - "CREATIVE_AUTHORING_SOURCE_REMBRAND" : Creative authoring source is
+  /// Rembrand.
+  /// - "CREATIVE_AUTHORING_SOURCE_TRACKTO_STUDIO" : Creative authoring source
+  /// is Trackto.
+  /// - "CREATIVE_AUTHORING_SOURCE_BORNLOGIC" : Creative authoring source is
+  /// Bornlogic.
   core.String? authoringSource;
 
   /// Authoring tool for HTML5 banner creatives.
@@ -18359,6 +18742,10 @@ class DeliverySchedule {
 /// Contains dependent field value information.
 typedef DependentFieldValue = $DependentFieldValue;
 
+/// Request message for DfareportingStudioCreativeAssets.Insert.
+typedef DfareportingStudioCreativeAssetsInsertRequest =
+    $DfareportingStudioCreativeAssetsInsertRequest;
+
 /// Google Ad Manager Settings
 typedef DfpSettings = $DfpSettings;
 
@@ -18840,7 +19227,7 @@ class DynamicFeed {
 /// API only can create a dynamic feed under profile context,even though the
 /// dynnamic feed itself don't need the dynamic profile id.
 ///
-/// See go/cm3-dco-display-api-interface
+/// See
 class DynamicFeedsInsertRequest {
   /// Dynamic feed to insert.
   ///
@@ -19062,6 +19449,10 @@ class DynamicProfileFeedSettings {
     if (quantity != null) 'quantity': quantity!,
   };
 }
+
+/// Response message for DfareportingDynamicProfiles.GenerateCode.
+typedef DynamicProfileGenerateCodeResponse =
+    $DynamicProfileGenerateCodeResponse;
 
 /// Contains dynamic profile version information.
 class DynamicProfileVersion {
@@ -22483,7 +22874,8 @@ class Placement {
   /// (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`,
   /// TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo
   /// DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`,
-  /// Unicorn * `20`, Teads * `21`, Quantcast * `22`, Cognitiv
+  /// Unicorn * `20`, Teads * `21`, Quantcast * `22`, Cognitiv * `23`,
+  /// AdTheorent * `24`, DeepIntent * `25`, Pulsepoint
   ///
   /// Optional.
   core.String? adServingPlatformId;
@@ -25847,7 +26239,8 @@ class Site {
   /// Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk *
   /// `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`,
   /// Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`,
-  /// Teads * `21`, Quantcast * `22`, Cognitiv
+  /// Teads * `21`, Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`,
+  /// DeepIntent * `25`, Pulsepoint
   ///
   /// Optional.
   core.String? adServingPlatformId;
@@ -26428,6 +26821,308 @@ class SkippableSetting {
 /// Represents a sorted dimension.
 typedef SortedDimension = $SortedDimension;
 
+/// Contains studio creative information.
+class StudioCreative {
+  /// List of assets associated with this studio creative.
+  ///
+  /// It is a required field on insertion.
+  core.List<core.String>? assetIds;
+
+  /// Backup image asset ID of this studio creative.
+  core.String? backupImageAssetId;
+
+  /// The timestamp when the studio creative was created.
+  ///
+  /// This is a read-only, auto-generated field.
+  LastModifiedInfo? createdInfo;
+
+  /// Dimension of this studio creative.
+  ///
+  /// This is a required field on insertion if format is BANNER or EXPANDING.
+  StudioCreativeDimension? dimension;
+
+  /// Dynamic profile ID of this studio creative.
+  core.String? dynamicProfileId;
+
+  /// Format of this studio creative.
+  ///
+  /// This is a required field on insertion.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The format of the studio creative is unknown. This value is
+  /// unused.
+  /// - "BANNER" : Banner format.
+  /// - "EXPANDING" : Expanding format.
+  /// - "INTERSTITIAL" : Intertitial format.
+  /// - "VPAID_LINEAR_VIDEO" : VPAID linear video creative format.
+  core.String? format;
+
+  /// Unique ID of this studio creative.
+  ///
+  /// This is a read-only, auto-generated field.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The timestamp when the studio creative was last modified.
+  ///
+  /// This is a read-only, auto-generated field.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// Identifier.
+  ///
+  /// Name of this studio creative. This is a required field on insertion.
+  core.String? name;
+
+  /// Status of this studio creative.
+  ///
+  /// It is a read-only field.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN_STATUS" : The status of the studio creative is unknown. This
+  /// value is unused.
+  /// - "IN_DEVELOPMENT" : The creative is still being developed.
+  /// - "PUBLISHED" : The creative has been published and is ready for QA.
+  /// - "QA_REJECTED" : The creative has failed QA and must be corrected.
+  /// - "QA_APPROVED" : The creative has passed QA and is ready to be
+  /// trafficked.
+  /// - "TRAFFICKED" : The creative has been trafficked to an adserver.
+  core.String? status;
+
+  /// Studio account ID of this creative.
+  ///
+  /// This field, if left unset, will be auto-populated.
+  core.String? studioAccountId;
+
+  /// Studio advertiser ID of this studio creative.
+  ///
+  /// This is a required field on insertion.
+  core.String? studioAdvertiserId;
+
+  /// Studio campaign ID of this studio creative.
+  ///
+  /// This is a required field on insertion.
+  core.String? studioCampaignId;
+
+  StudioCreative({
+    this.assetIds,
+    this.backupImageAssetId,
+    this.createdInfo,
+    this.dimension,
+    this.dynamicProfileId,
+    this.format,
+    this.id,
+    this.lastModifiedInfo,
+    this.name,
+    this.status,
+    this.studioAccountId,
+    this.studioAdvertiserId,
+    this.studioCampaignId,
+  });
+
+  StudioCreative.fromJson(core.Map json_)
+    : this(
+        assetIds:
+            (json_['assetIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        backupImageAssetId: json_['backupImageAssetId'] as core.String?,
+        createdInfo:
+            json_.containsKey('createdInfo')
+                ? LastModifiedInfo.fromJson(
+                  json_['createdInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dimension:
+            json_.containsKey('dimension')
+                ? StudioCreativeDimension.fromJson(
+                  json_['dimension'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dynamicProfileId: json_['dynamicProfileId'] as core.String?,
+        format: json_['format'] as core.String?,
+        id: json_['id'] as core.String?,
+        lastModifiedInfo:
+            json_.containsKey('lastModifiedInfo')
+                ? LastModifiedInfo.fromJson(
+                  json_['lastModifiedInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        status: json_['status'] as core.String?,
+        studioAccountId: json_['studioAccountId'] as core.String?,
+        studioAdvertiserId: json_['studioAdvertiserId'] as core.String?,
+        studioCampaignId: json_['studioCampaignId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (assetIds != null) 'assetIds': assetIds!,
+    if (backupImageAssetId != null) 'backupImageAssetId': backupImageAssetId!,
+    if (createdInfo != null) 'createdInfo': createdInfo!,
+    if (dimension != null) 'dimension': dimension!,
+    if (dynamicProfileId != null) 'dynamicProfileId': dynamicProfileId!,
+    if (format != null) 'format': format!,
+    if (id != null) 'id': id!,
+    if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+    if (name != null) 'name': name!,
+    if (status != null) 'status': status!,
+    if (studioAccountId != null) 'studioAccountId': studioAccountId!,
+    if (studioAdvertiserId != null) 'studioAdvertiserId': studioAdvertiserId!,
+    if (studioCampaignId != null) 'studioCampaignId': studioCampaignId!,
+  };
+}
+
+/// Contains studio creative asset information.
+class StudioCreativeAsset {
+  /// The creation timestamp of the studio creative asset.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? createInfo;
+
+  /// The filename of the studio creative asset.
+  ///
+  /// It is default to the original filename of the asset.
+  core.String? filename;
+
+  /// The filesize of the studio creative asset.
+  ///
+  /// This is a read-only field.
+  core.String? filesize;
+
+  /// Unique ID of this studio creative asset.
+  ///
+  /// This is a read-only, auto-generated field.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The last modified timestamp of the studio creative asset.
+  ///
+  /// This is a read-only field.
+  ///
+  /// Output only.
+  LastModifiedInfo? lastModifiedInfo;
+
+  /// Studio account ID of this studio creative asset.
+  ///
+  /// This field, if left unset, will be auto-populated..
+  core.String? studioAccountId;
+
+  /// Studio advertiser ID of this studio creative asset.
+  ///
+  /// This is a required field on insertion.
+  core.String? studioAdvertiserId;
+
+  /// Studio creative ID of this studio creative asset.
+  ///
+  /// The asset will be associated to the creative if creative id is set.
+  core.String? studioCreativeId;
+
+  /// The type of the studio creative asset.
+  ///
+  /// It is a auto-generated, read-only field.
+  /// Possible string values are:
+  /// - "UNKNOWN_TYPE" : Unknown type of asset.
+  /// - "HTML" : The asset is an HTML file.
+  /// - "VIDEO" : The asset is a video file.
+  /// - "IMAGE" : The asset is an image file.
+  /// - "FONT" : The asset is a font file.
+  core.String? type;
+
+  /// The processing data of the studio creative asset.
+  ///
+  /// This is a read-only field.
+  VideoProcessingData? videoProcessingData;
+
+  StudioCreativeAsset({
+    this.createInfo,
+    this.filename,
+    this.filesize,
+    this.id,
+    this.lastModifiedInfo,
+    this.studioAccountId,
+    this.studioAdvertiserId,
+    this.studioCreativeId,
+    this.type,
+    this.videoProcessingData,
+  });
+
+  StudioCreativeAsset.fromJson(core.Map json_)
+    : this(
+        createInfo:
+            json_.containsKey('createInfo')
+                ? LastModifiedInfo.fromJson(
+                  json_['createInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filename: json_['filename'] as core.String?,
+        filesize: json_['filesize'] as core.String?,
+        id: json_['id'] as core.String?,
+        lastModifiedInfo:
+            json_.containsKey('lastModifiedInfo')
+                ? LastModifiedInfo.fromJson(
+                  json_['lastModifiedInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        studioAccountId: json_['studioAccountId'] as core.String?,
+        studioAdvertiserId: json_['studioAdvertiserId'] as core.String?,
+        studioCreativeId: json_['studioCreativeId'] as core.String?,
+        type: json_['type'] as core.String?,
+        videoProcessingData:
+            json_.containsKey('videoProcessingData')
+                ? VideoProcessingData.fromJson(
+                  json_['videoProcessingData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createInfo != null) 'createInfo': createInfo!,
+    if (filename != null) 'filename': filename!,
+    if (filesize != null) 'filesize': filesize!,
+    if (id != null) 'id': id!,
+    if (lastModifiedInfo != null) 'lastModifiedInfo': lastModifiedInfo!,
+    if (studioAccountId != null) 'studioAccountId': studioAccountId!,
+    if (studioAdvertiserId != null) 'studioAdvertiserId': studioAdvertiserId!,
+    if (studioCreativeId != null) 'studioCreativeId': studioCreativeId!,
+    if (type != null) 'type': type!,
+    if (videoProcessingData != null)
+      'videoProcessingData': videoProcessingData!,
+  };
+}
+
+/// Response message for DfareportingStudioCreativeAssets.Insert.
+class StudioCreativeAssetsResponse {
+  /// The list of studio creative assets.
+  core.List<StudioCreativeAsset>? assets;
+
+  StudioCreativeAssetsResponse({this.assets});
+
+  StudioCreativeAssetsResponse.fromJson(core.Map json_)
+    : this(
+        assets:
+            (json_['assets'] as core.List?)
+                ?.map(
+                  (value) => StudioCreativeAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (assets != null) 'assets': assets!,
+  };
+}
+
+/// Dimension information for a studio creative.
+typedef StudioCreativeDimension = $StudioCreativeDimension;
+
 /// Contains properties of a Campaign Manager subaccount.
 typedef Subaccount = $Subaccount;
 
@@ -26669,6 +27364,11 @@ class TargetingTemplate {
   /// This is a read-only, auto-generated field.
   DimensionValue? advertiserIdDimensionValue;
 
+  /// Contextual keyword targeting criteria.
+  ///
+  /// Optional.
+  ContextualKeywordTargeting? contextualKeywordTargeting;
+
   /// Time and day targeting criteria.
   DayPartTargeting? dayPartTargeting;
 
@@ -26713,6 +27413,7 @@ class TargetingTemplate {
     this.accountId,
     this.advertiserId,
     this.advertiserIdDimensionValue,
+    this.contextualKeywordTargeting,
     this.dayPartTargeting,
     this.geoTargeting,
     this.id,
@@ -26733,6 +27434,13 @@ class TargetingTemplate {
             json_.containsKey('advertiserIdDimensionValue')
                 ? DimensionValue.fromJson(
                   json_['advertiserIdDimensionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contextualKeywordTargeting:
+            json_.containsKey('contextualKeywordTargeting')
+                ? ContextualKeywordTargeting.fromJson(
+                  json_['contextualKeywordTargeting']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -26788,6 +27496,8 @@ class TargetingTemplate {
     if (advertiserId != null) 'advertiserId': advertiserId!,
     if (advertiserIdDimensionValue != null)
       'advertiserIdDimensionValue': advertiserIdDimensionValue!,
+    if (contextualKeywordTargeting != null)
+      'contextualKeywordTargeting': contextualKeywordTargeting!,
     if (dayPartTargeting != null) 'dayPartTargeting': dayPartTargeting!,
     if (geoTargeting != null) 'geoTargeting': geoTargeting!,
     if (id != null) 'id': id!,
@@ -27422,6 +28132,9 @@ class VideoFormatsListResponse {
 
 /// Video Offset
 typedef VideoOffset = $VideoOffset;
+
+/// Contains processing data for a video asset.
+typedef VideoProcessingData = $VideoProcessingData;
 
 /// Video Settings
 class VideoSettings {

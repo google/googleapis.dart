@@ -21,6 +21,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAddonsResource]
 ///     - [ProjectsLocationsApiHubInstancesResource]
 ///     - [ProjectsLocationsApisResource]
 ///       - [ProjectsLocationsApisVersionsResource]
@@ -90,6 +91,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAddonsResource get addons =>
+      ProjectsLocationsAddonsResource(_requester);
   ProjectsLocationsApiHubInstancesResource get apiHubInstances =>
       ProjectsLocationsApiHubInstancesResource(_requester);
   ProjectsLocationsApisResource get apis =>
@@ -207,9 +210,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -305,6 +308,66 @@ class ProjectsLocationsResource {
     );
   }
 
+  /// Retrieve API views.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter expression.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return. Default to
+  /// 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `RetrieveApiViews` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [view] - Required. The view type to return.
+  /// Possible string values are:
+  /// - "API_VIEW_TYPE_UNSPECIFIED" : The default view type.
+  /// - "MCP_SERVER" : The MCP server view in API hub.
+  /// - "MCP_TOOL" : The MCP tool view in API hub.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApihubV1RetrieveApiViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApihubV1RetrieveApiViewsResponse> retrieveApiViews(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':retrieveApiViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApihubV1RetrieveApiViewsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Search across API-Hub resources.
   ///
   /// [request] - The metadata request object.
@@ -346,6 +409,160 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1SearchResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAddonsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAddonsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get an addon.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the addon to get. Format:
+  /// `projects/{project}/locations/{location}/addons/{addon}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/addons/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApihubV1Addon].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApihubV1Addon> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApihubV1Addon.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List addons.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this addon will be created.
+  /// Format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression that filters the list of addons. The
+  /// only supported filter is `plugin_instance_name`. It can be used to filter
+  /// addons that are enabled for a given plugin instance. The format of the
+  /// filter is `plugin_instance_name =
+  /// "projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}"`.
+  ///
+  /// [pageSize] - Optional. The maximum number of hub addons to return. The
+  /// service may return fewer than this value. If unspecified, at most 50 hub
+  /// addons will be returned. The maximum value is 1000; values above 1000 will
+  /// be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAddons` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters (except page_size) provided to
+  /// `ListAddons` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApihubV1ListAddonsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApihubV1ListAddonsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/addons';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApihubV1ListAddonsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Manage addon config.
+  ///
+  /// This RPC is used for managing the config of the addon. Calling this RPC
+  /// moves the addon into an updating state until the long-running operation
+  /// succeeds.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the addon for which the config is to be
+  /// managed. Format: `projects/{project}/locations/{location}/addons/{addon}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/addons/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> manageConfig(
+    GoogleCloudApihubV1ManageAddonConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':manageConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -488,16 +705,16 @@ class ProjectsLocationsApiHubInstancesResource {
     );
   }
 
-  /// Looks up an Api Hub instance in a given GCP project.
+  /// Looks up an Api Hub instance in a given Google Cloud project.
   ///
-  /// There will always be only one Api Hub instance for a GCP project across
-  /// all locations.
+  /// There will always be only one Api Hub instance for a Google Cloud project
+  /// across all locations.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. There will always be only one Api Hub instance for a
-  /// GCP project across all locations. The parent resource for the Api Hub
-  /// instance resource. Format: `projects/{project}/locations/{location}`
+  /// Google Cloud project across all locations. The parent resource for the Api
+  /// Hub instance resource. Format: `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -750,7 +967,12 @@ class ProjectsLocationsApisResource {
   /// resource name. For example, `id(name) = \"api-1\"` is equivalent to `name
   /// = \"projects/test-project-id/locations/test-location-id/apis/api-1\"`
   /// provided the parent is
-  /// `projects/test-project-id/locations/test-location-id`. Expressions are
+  /// `projects/test-project-id/locations/test-location-id`. Another supported
+  /// filter function is `plugins(source_metadata)`. This function filters for
+  /// resources that are associated with a specific plugin. For example,
+  /// `plugins(source_metadata) :
+  /// "projects/test-project-id/locations/test-location-id/plugins/test-plugin-id"`
+  /// will return resources sourced from the given plugin. Expressions are
   /// combined with either `AND` logic operator or `OR` logical operator but not
   /// both of them together i.e. only one of the `AND` or `OR` operator can be
   /// used throughout the filter string and both the operators cannot be used
@@ -831,9 +1053,10 @@ class ProjectsLocationsApisResource {
   ///
   /// The following fields in the API can be updated: * display_name *
   /// description * owner * documentation * target_user * team * business_unit *
-  /// maturity_level * api_style * attributes The update_mask should be used to
-  /// specify the fields being updated. Updating the owner field requires
-  /// complete owner message and updates both owner and email fields.
+  /// maturity_level * api_style * attributes * fingerprint The update_mask
+  /// should be used to specify the fields being updated. Updating the owner
+  /// field requires complete owner message and updates both owner and email
+  /// fields.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1529,11 +1752,20 @@ class ProjectsLocationsApisVersionsOperationsResource {
   ///
   /// The following fields in the ApiOperation resource can be updated: *
   /// details.description * details.documentation * details.http_operation.path
-  /// * details.http_operation.method * details.deprecated * attributes The
-  /// update_mask should be used to specify the fields being updated. An
-  /// operation can be updated only if the operation was created via
-  /// CreateApiOperation API. If the operation was created by parsing the spec,
-  /// then it can be edited by updating the spec.
+  /// * details.http_operation.method * details.deprecated * attributes *
+  /// details.mcp_tool.title * details.mcp_tool.description *
+  /// details.mcp_tool.input_schema * details.mcp_tool.output_schema *
+  /// details.input_schema * details.output_schema *
+  /// details.mcp_tool.annotations.title *
+  /// details.mcp_tool.annotations.read_only_hint *
+  /// details.mcp_tool.annotations.destructive_hint *
+  /// details.mcp_tool.annotations.idempotent_hint *
+  /// details.mcp_tool.annotations.open_world_hint *
+  /// details.mcp_tool.annotations.additional_hints The update_mask should be
+  /// used to specify the fields being updated. An operation can be updated only
+  /// if the operation was created via CreateApiOperation API. If the operation
+  /// was created by parsing the spec, then it can be edited by updating the
+  /// spec.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1693,6 +1925,59 @@ class ProjectsLocationsApisVersionsSpecsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetch additional spec content.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the spec whose contents need to be
+  /// retrieved. Format:
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
+  ///
+  /// [specContentType] - Optional. The type of the spec contents to be
+  /// retrieved.
+  /// Possible string values are:
+  /// - "SPEC_CONTENT_TYPE_UNSPECIFIED" : Unspecified spec content type.
+  /// Defaults to spec content uploaded by the user.
+  /// - "BOOSTED_SPEC_CONTENT" : The spec content type for boosted spec.
+  /// - "GATEWAY_OPEN_API_SPEC" : The spec content type for OpenAPI spec. This
+  /// enum is used for OpenAPI specs ingested via APIGEE X Gateway.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApihubV1FetchAdditionalSpecContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApihubV1FetchAdditionalSpecContentResponse>
+  fetchAdditionalSpecContent(
+    core.String name, {
+    core.String? specContentType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (specContentType != null) 'specContentType': [specContentType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':fetchAdditionalSpecContent';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApihubV1FetchAdditionalSpecContentResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get details about the information parsed from a spec.
@@ -3922,6 +4207,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3937,12 +4230,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4646,10 +4942,11 @@ class ProjectsLocationsPluginsInstancesResource {
   /// comparison operator must be one of: `<`, `>` or `=`. Filters are not case
   /// sensitive. The following fields in the `PluginInstances` are eligible for
   /// filtering: * `state` - The state of the Plugin Instance. Allowed
-  /// comparison operators: `=`. A filter function is also supported in the
-  /// filter string. The filter function is `id(name)`. The `id(name)` function
-  /// returns the id of the resource name. For example, `id(name) =
-  /// \"plugin-instance-1\"` is equivalent to `name =
+  /// comparison operators: `=`. * `source_project_id` - The source project id
+  /// of the Plugin Instance. Allowed comparison operators: `=`. A filter
+  /// function is also supported in the filter string. The filter function is
+  /// `id(name)`. The `id(name)` function returns the id of the resource name.
+  /// For example, `id(name) = \"plugin-instance-1\"` is equivalent to `name =
   /// \"projects/test-project-id/locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"`
   /// provided the parent is
   /// `projects/test-project-id/locations/test-location-id/plugins/plugin-1`.
@@ -5163,6 +5460,229 @@ class GoogleCloudApihubV1ActionExecutionDetail {
   };
 }
 
+/// The additional spec content for the spec.
+///
+/// This contains the metadata and the last update time for the additional spec
+/// content.
+class GoogleCloudApihubV1AdditionalSpecContent {
+  /// The time at which the spec content was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The labels of the spec content e.g. specboost addon version.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The type of the spec content.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SPEC_CONTENT_TYPE_UNSPECIFIED" : Unspecified spec content type.
+  /// Defaults to spec content uploaded by the user.
+  /// - "BOOSTED_SPEC_CONTENT" : The spec content type for boosted spec.
+  /// - "GATEWAY_OPEN_API_SPEC" : The spec content type for OpenAPI spec. This
+  /// enum is used for OpenAPI specs ingested via APIGEE X Gateway.
+  core.String? specContentType;
+
+  /// The additional spec contents.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1SpecContents? specContents;
+
+  /// The time at which the spec content was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApihubV1AdditionalSpecContent({
+    this.createTime,
+    this.labels,
+    this.specContentType,
+    this.specContents,
+    this.updateTime,
+  });
+
+  GoogleCloudApihubV1AdditionalSpecContent.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        specContentType: json_['specContentType'] as core.String?,
+        specContents:
+            json_.containsKey('specContents')
+                ? GoogleCloudApihubV1SpecContents.fromJson(
+                  json_['specContents'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (labels != null) 'labels': labels!,
+    if (specContentType != null) 'specContentType': specContentType!,
+    if (specContents != null) 'specContents': specContents!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Addon resource.
+class GoogleCloudApihubV1Addon {
+  /// The configuration of the addon.
+  ///
+  /// Required.
+  GoogleCloudApihubV1AddonConfig? config;
+
+  /// The time at which the addon was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The data source on which the addon operates.
+  ///
+  /// This determines which field in the `config` oneof is used.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_UNSPECIFIED" : The data source of the addon is not
+  /// specified.
+  /// - "PLUGIN_INSTANCE" : Addon operates on data collected from specific
+  /// plugin instances.
+  /// - "ALL_DATA" : Addon operates on all data in the API hub.
+  core.String? dataSource;
+
+  /// The description of the addon.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of the addon.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The name of the addon to enable. Format:
+  /// `projects/{project}/locations/{location}/addons/{addon}`.
+  core.String? name;
+
+  /// The state of the addon.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ADDON_STATE_UNSPECIFIED" : The addon state is not specified.
+  /// - "ACTIVE" : The addon is active.
+  /// - "UPDATING" : The addon is being updated.
+  /// - "ERROR" : The addon is in error state.
+  /// - "INACTIVE" : The addon is inactive.
+  core.String? state;
+
+  /// The time at which the addon was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApihubV1Addon({
+    this.config,
+    this.createTime,
+    this.dataSource,
+    this.description,
+    this.displayName,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudApihubV1Addon.fromJson(core.Map json_)
+    : this(
+        config:
+            json_.containsKey('config')
+                ? GoogleCloudApihubV1AddonConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        dataSource: json_['dataSource'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (config != null) 'config': config!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Configuration for the addon.
+class GoogleCloudApihubV1AddonConfig {
+  /// Configuration for addons which act on all data in the API hub.
+  GoogleCloudApihubV1AllDataAddonConfig? allDataAddonConfig;
+
+  /// Configuration for gateway plugin addons.
+  GoogleCloudApihubV1GatewayPluginAddonConfig? gatewayPluginAddonConfig;
+
+  GoogleCloudApihubV1AddonConfig({
+    this.allDataAddonConfig,
+    this.gatewayPluginAddonConfig,
+  });
+
+  GoogleCloudApihubV1AddonConfig.fromJson(core.Map json_)
+    : this(
+        allDataAddonConfig:
+            json_.containsKey('allDataAddonConfig')
+                ? GoogleCloudApihubV1AllDataAddonConfig.fromJson(
+                  json_['allDataAddonConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gatewayPluginAddonConfig:
+            json_.containsKey('gatewayPluginAddonConfig')
+                ? GoogleCloudApihubV1GatewayPluginAddonConfig.fromJson(
+                  json_['gatewayPluginAddonConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allDataAddonConfig != null) 'allDataAddonConfig': allDataAddonConfig!,
+    if (gatewayPluginAddonConfig != null)
+      'gatewayPluginAddonConfig': gatewayPluginAddonConfig!,
+  };
+}
+
+/// Configuration for addons which act on all data in the API hub.
+///
+/// This is used to specify if the addon is enabled for all data in the API hub.
+class GoogleCloudApihubV1AllDataAddonConfig {
+  /// If true, the addon is enabled for all data in the API hub.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  GoogleCloudApihubV1AllDataAddonConfig({this.enabled});
+
+  GoogleCloudApihubV1AllDataAddonConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+  };
+}
+
 /// The value that can be assigned to the attribute when the data type is enum.
 class GoogleCloudApihubV1AllowedValue {
   /// The detailed description of the allowed value.
@@ -5311,6 +5831,9 @@ class GoogleCloudApihubV1Api {
   GoogleCloudApihubV1Documentation? documentation;
 
   /// Fingerprint of the API resource.
+  ///
+  /// This must be unique for each API resource. It can neither be unset nor be
+  /// updated to an existing fingerprint of another API resource.
   ///
   /// Optional.
   core.String? fingerprint;
@@ -5950,6 +6473,138 @@ class GoogleCloudApihubV1ApiOperation {
     if (sourceMetadata != null) 'sourceMetadata': sourceMetadata!,
     if (spec != null) 'spec': spec!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// The view of an API.
+class GoogleCloudApihubV1ApiView {
+  /// MCP server view.
+  ///
+  /// Output only.
+  GoogleCloudApihubV1FlattenedApiVersionDeploymentView? mcpServerView;
+
+  /// MCP tools view.
+  ///
+  /// Output only.
+  GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView? mcpToolView;
+
+  GoogleCloudApihubV1ApiView({this.mcpServerView, this.mcpToolView});
+
+  GoogleCloudApihubV1ApiView.fromJson(core.Map json_)
+    : this(
+        mcpServerView:
+            json_.containsKey('mcpServerView')
+                ? GoogleCloudApihubV1FlattenedApiVersionDeploymentView.fromJson(
+                  json_['mcpServerView'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mcpToolView:
+            json_.containsKey('mcpToolView')
+                ? GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView.fromJson(
+                  json_['mcpToolView'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (mcpServerView != null) 'mcpServerView': mcpServerView!,
+    if (mcpToolView != null) 'mcpToolView': mcpToolView!,
+  };
+}
+
+/// Configuration for Apigee Edge gateways.
+///
+/// Applicability of a filter is determined by the filter being provided. If
+/// none of the filters are provided the addon will be enabled for all data
+/// brought in by the gateway plugin instance.
+class GoogleCloudApihubV1ApigeeEdgeConfig {
+  /// The filter to apply on the resources managed by the gateway plugin
+  /// instance.
+  ///
+  /// If provided this filter applies environment specific filtering.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1EnvironmentFilter? environmentFilter;
+
+  GoogleCloudApihubV1ApigeeEdgeConfig({this.environmentFilter});
+
+  GoogleCloudApihubV1ApigeeEdgeConfig.fromJson(core.Map json_)
+    : this(
+        environmentFilter:
+            json_.containsKey('environmentFilter')
+                ? GoogleCloudApihubV1EnvironmentFilter.fromJson(
+                  json_['environmentFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (environmentFilter != null) 'environmentFilter': environmentFilter!,
+  };
+}
+
+/// Configuration for Apigee OPDK gateways.
+///
+/// Applicability of a filter is determined by the filter being provided. If
+/// none of the filters are provided the addon will be enabled for all data
+/// brought in by the gateway plugin instance.
+class GoogleCloudApihubV1ApigeeOPDKConfig {
+  /// The filter to apply on the resources managed by the gateway plugin
+  /// instance.
+  ///
+  /// If provided this filter applies environment specific filtering.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1EnvironmentFilter? environmentFilter;
+
+  GoogleCloudApihubV1ApigeeOPDKConfig({this.environmentFilter});
+
+  GoogleCloudApihubV1ApigeeOPDKConfig.fromJson(core.Map json_)
+    : this(
+        environmentFilter:
+            json_.containsKey('environmentFilter')
+                ? GoogleCloudApihubV1EnvironmentFilter.fromJson(
+                  json_['environmentFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (environmentFilter != null) 'environmentFilter': environmentFilter!,
+  };
+}
+
+/// Configuration for Apigee X and Apigee Hybrid gateways.
+///
+/// Applicability of a filter is determined by the filter being provided. If
+/// none of the filters are provided the addon will be enabled for all data
+/// brought in by the gateway plugin instance.
+class GoogleCloudApihubV1ApigeeXHybridConfig {
+  /// The filter to apply on the resources managed by the gateway plugin
+  /// instance.
+  ///
+  /// If provided this filter applies environment specific filtering.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1EnvironmentFilter? environmentFilter;
+
+  GoogleCloudApihubV1ApigeeXHybridConfig({this.environmentFilter});
+
+  GoogleCloudApihubV1ApigeeXHybridConfig.fromJson(core.Map json_)
+    : this(
+        environmentFilter:
+            json_.containsKey('environmentFilter')
+                ? GoogleCloudApihubV1EnvironmentFilter.fromJson(
+                  json_['environmentFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (environmentFilter != null) 'environmentFilter': environmentFilter!,
   };
 }
 
@@ -7383,8 +8038,8 @@ class GoogleCloudApihubV1Deployment {
 
   /// The project to which the deployment belongs.
   ///
-  /// For GCP gateways, this will refer to the project identifier. For others
-  /// like Edge/OPDK, this will refer to the org identifier.
+  /// For Google Cloud gateways, this will refer to the project identifier. For
+  /// others like Edge/OPDK, this will refer to the org identifier.
   ///
   /// Optional.
   core.String? sourceProject;
@@ -7630,8 +8285,8 @@ class GoogleCloudApihubV1DiscoveredApiObservation {
   /// `projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}`
   core.String? name;
 
-  /// For an observation pushed from a gcp resource, this would be the gcp
-  /// project id.
+  /// For an observation pushed from a Google Cloud resource, this would be the
+  /// Google Cloud project id.
   ///
   /// Optional.
   core.String? origin;
@@ -7968,6 +8623,43 @@ class GoogleCloudApihubV1EnumAttributeValues {
   };
 }
 
+/// Filter for environments.
+class GoogleCloudApihubV1EnvironmentFilter {
+  /// Indicates if this filter should match all environments or only a subset of
+  /// environments.
+  ///
+  /// If set to true, all environments are matched.
+  ///
+  /// Optional.
+  core.bool? allEnvironments;
+
+  /// If provided, only environments in this list are matched.
+  ///
+  /// This field is ignored if `all_environments` is true.
+  ///
+  /// Optional.
+  core.List<core.String>? environments;
+
+  GoogleCloudApihubV1EnvironmentFilter({
+    this.allEnvironments,
+    this.environments,
+  });
+
+  GoogleCloudApihubV1EnvironmentFilter.fromJson(core.Map json_)
+    : this(
+        allEnvironments: json_['allEnvironments'] as core.bool?,
+        environments:
+            (json_['environments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allEnvironments != null) 'allEnvironments': allEnvironments!,
+    if (environments != null) 'environments': environments!,
+  };
+}
+
 /// The ExecutePluginInstanceAction method's request.
 class GoogleCloudApihubV1ExecutePluginInstanceActionRequest {
   /// The execution details for the action to execute.
@@ -8149,6 +8841,236 @@ class GoogleCloudApihubV1ExternalApi {
     if (name != null) 'name': name!,
     if (paths != null) 'paths': paths!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// The FetchAdditionalSpecContent method's response.
+class GoogleCloudApihubV1FetchAdditionalSpecContentResponse {
+  /// The additional spec content.
+  GoogleCloudApihubV1AdditionalSpecContent? additionalSpecContent;
+
+  GoogleCloudApihubV1FetchAdditionalSpecContentResponse({
+    this.additionalSpecContent,
+  });
+
+  GoogleCloudApihubV1FetchAdditionalSpecContentResponse.fromJson(core.Map json_)
+    : this(
+        additionalSpecContent:
+            json_.containsKey('additionalSpecContent')
+                ? GoogleCloudApihubV1AdditionalSpecContent.fromJson(
+                  json_['additionalSpecContent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalSpecContent != null)
+      'additionalSpecContent': additionalSpecContent!,
+  };
+}
+
+/// A flattened view of an API, its version and one of the linked deployments.
+class GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
+  /// The API.
+  GoogleCloudApihubV1Api? api;
+
+  /// The deployment.
+  GoogleCloudApihubV1Deployment? deployment;
+
+  /// The version.
+  GoogleCloudApihubV1Version? version;
+
+  GoogleCloudApihubV1FlattenedApiVersionDeploymentView({
+    this.api,
+    this.deployment,
+    this.version,
+  });
+
+  GoogleCloudApihubV1FlattenedApiVersionDeploymentView.fromJson(core.Map json_)
+    : this(
+        api:
+            json_.containsKey('api')
+                ? GoogleCloudApihubV1Api.fromJson(
+                  json_['api'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deployment:
+            json_.containsKey('deployment')
+                ? GoogleCloudApihubV1Deployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? GoogleCloudApihubV1Version.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (api != null) 'api': api!,
+    if (deployment != null) 'deployment': deployment!,
+    if (version != null) 'version': version!,
+  };
+}
+
+/// A flattened view of an API, its version, one of its operations and one of
+/// the linked deployments.
+///
+/// If there are no deployments linked to the operation then the result will be
+/// empty.
+class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
+  /// The API.
+  GoogleCloudApihubV1Api? api;
+
+  /// The API operation.
+  GoogleCloudApihubV1ApiOperation? apiOperation;
+
+  /// The deployment.
+  GoogleCloudApihubV1Deployment? deployment;
+
+  /// The version.
+  GoogleCloudApihubV1Version? version;
+
+  GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView({
+    this.api,
+    this.apiOperation,
+    this.deployment,
+    this.version,
+  });
+
+  GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView.fromJson(
+    core.Map json_,
+  ) : this(
+        api:
+            json_.containsKey('api')
+                ? GoogleCloudApihubV1Api.fromJson(
+                  json_['api'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiOperation:
+            json_.containsKey('apiOperation')
+                ? GoogleCloudApihubV1ApiOperation.fromJson(
+                  json_['apiOperation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deployment:
+            json_.containsKey('deployment')
+                ? GoogleCloudApihubV1Deployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? GoogleCloudApihubV1Version.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (api != null) 'api': api!,
+    if (apiOperation != null) 'apiOperation': apiOperation!,
+    if (deployment != null) 'deployment': deployment!,
+    if (version != null) 'version': version!,
+  };
+}
+
+/// Configuration for gateway plugin addons.
+///
+/// This is used to specify the list of gateway plugin configs for which the
+/// addon is enabled.
+class GoogleCloudApihubV1GatewayPluginAddonConfig {
+  /// The list of gateway plugin configs for which the addon is enabled.
+  ///
+  /// Each gateway plugin config should have a unique plugin instance.
+  ///
+  /// Required.
+  core.List<GoogleCloudApihubV1GatewayPluginConfig>? gatewayPluginConfigs;
+
+  GoogleCloudApihubV1GatewayPluginAddonConfig({this.gatewayPluginConfigs});
+
+  GoogleCloudApihubV1GatewayPluginAddonConfig.fromJson(core.Map json_)
+    : this(
+        gatewayPluginConfigs:
+            (json_['gatewayPluginConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1GatewayPluginConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gatewayPluginConfigs != null)
+      'gatewayPluginConfigs': gatewayPluginConfigs!,
+  };
+}
+
+/// Configuration for a gateway plugin.
+///
+/// This is used to specify configs for different gateways.
+class GoogleCloudApihubV1GatewayPluginConfig {
+  /// Configuration for Apigee Edge gateways.
+  GoogleCloudApihubV1ApigeeEdgeConfig? apigeeEdgeConfig;
+
+  /// Configuration for Apigee OPDK gateways.
+  GoogleCloudApihubV1ApigeeOPDKConfig? apigeeOpdkConfig;
+
+  /// Configuration for Apigee X and Apigee Hybrid gateways.
+  GoogleCloudApihubV1ApigeeXHybridConfig? apigeeXHybridConfig;
+
+  /// The name of the gateway plugin instance for which the config is to be
+  /// specified.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/plugins/{plugin}/pluginInstances/{plugin_instance}
+  ///
+  /// Required.
+  core.String? pluginInstance;
+
+  GoogleCloudApihubV1GatewayPluginConfig({
+    this.apigeeEdgeConfig,
+    this.apigeeOpdkConfig,
+    this.apigeeXHybridConfig,
+    this.pluginInstance,
+  });
+
+  GoogleCloudApihubV1GatewayPluginConfig.fromJson(core.Map json_)
+    : this(
+        apigeeEdgeConfig:
+            json_.containsKey('apigeeEdgeConfig')
+                ? GoogleCloudApihubV1ApigeeEdgeConfig.fromJson(
+                  json_['apigeeEdgeConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apigeeOpdkConfig:
+            json_.containsKey('apigeeOpdkConfig')
+                ? GoogleCloudApihubV1ApigeeOPDKConfig.fromJson(
+                  json_['apigeeOpdkConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apigeeXHybridConfig:
+            json_.containsKey('apigeeXHybridConfig')
+                ? GoogleCloudApihubV1ApigeeXHybridConfig.fromJson(
+                  json_['apigeeXHybridConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pluginInstance: json_['pluginInstance'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apigeeEdgeConfig != null) 'apigeeEdgeConfig': apigeeEdgeConfig!,
+    if (apigeeOpdkConfig != null) 'apigeeOpdkConfig': apigeeOpdkConfig!,
+    if (apigeeXHybridConfig != null)
+      'apigeeXHybridConfig': apigeeXHybridConfig!,
+    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
   };
 }
 
@@ -8554,6 +9476,14 @@ class GoogleCloudApihubV1LastExecution {
   /// - "FAILED" : The plugin instance execution failed.
   core.String? result;
 
+  /// The result metadata of the last execution of the plugin instance.
+  ///
+  /// This will be a string representation of a JSON object and will be
+  /// available on successful execution.
+  ///
+  /// Output only.
+  core.String? resultMetadata;
+
   /// The last execution start time of the plugin instance.
   ///
   /// Output only.
@@ -8563,6 +9493,7 @@ class GoogleCloudApihubV1LastExecution {
     this.endTime,
     this.errorMessage,
     this.result,
+    this.resultMetadata,
     this.startTime,
   });
 
@@ -8571,6 +9502,7 @@ class GoogleCloudApihubV1LastExecution {
         endTime: json_['endTime'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
         result: json_['result'] as core.String?,
+        resultMetadata: json_['resultMetadata'] as core.String?,
         startTime: json_['startTime'] as core.String?,
       );
 
@@ -8578,6 +9510,7 @@ class GoogleCloudApihubV1LastExecution {
     if (endTime != null) 'endTime': endTime!,
     if (errorMessage != null) 'errorMessage': errorMessage!,
     if (result != null) 'result': result!,
+    if (resultMetadata != null) 'resultMetadata': resultMetadata!,
     if (startTime != null) 'startTime': startTime!,
   };
 }
@@ -8667,6 +9600,36 @@ class GoogleCloudApihubV1LintResponse {
 
 /// The LintSpec method's request.
 typedef GoogleCloudApihubV1LintSpecRequest = $Empty;
+
+/// The ListAddons method's response.
+class GoogleCloudApihubV1ListAddonsResponse {
+  /// The list of addons.
+  core.List<GoogleCloudApihubV1Addon>? addons;
+
+  /// A token to retrieve the next page of results, or empty if there are no
+  /// more results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudApihubV1ListAddonsResponse({this.addons, this.nextPageToken});
+
+  GoogleCloudApihubV1ListAddonsResponse.fromJson(core.Map json_)
+    : this(
+        addons:
+            (json_['addons'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1Addon.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (addons != null) 'addons': addons!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
 
 /// The ListApiOperations method's response.
 class GoogleCloudApihubV1ListApiOperationsResponse {
@@ -9231,6 +10194,33 @@ class GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   };
 }
 
+/// The ManageAddonConfig method's request.
+class GoogleCloudApihubV1ManageAddonConfigRequest {
+  /// The config of the addon to be managed.
+  ///
+  /// This config will replace the config present in the addon. The type of the
+  /// config should match the config type already present in the addon.
+  ///
+  /// Required.
+  GoogleCloudApihubV1AddonConfig? config;
+
+  GoogleCloudApihubV1ManageAddonConfigRequest({this.config});
+
+  GoogleCloudApihubV1ManageAddonConfigRequest.fromJson(core.Map json_)
+    : this(
+        config:
+            json_.containsKey('config')
+                ? GoogleCloudApihubV1AddonConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (config != null) 'config': config!,
+  };
+}
+
 /// The ManagePluginInstanceSourceData method's request.
 class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   /// Action to be performed.
@@ -9316,6 +10306,86 @@ class GoogleCloudApihubV1MatchResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
+  };
+}
+
+/// Details describing an MCP Tool.
+class GoogleCloudApihubV1McpTool {
+  /// Optional annotations for the tool.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1ToolAnnotations? annotations;
+
+  /// Description of what the tool does.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Input schema for the operation.
+  ///
+  /// This can be parsed only from MCP schema type.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1OperationSchema? inputSchema;
+
+  /// The name of the tool, unique within its parent scope (version).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Output schema for the operation.
+  ///
+  /// This can be parsed only from MCP schema type.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1OperationSchema? outputSchema;
+
+  /// Optional title for the tool.
+  ///
+  /// Optional.
+  core.String? title;
+
+  GoogleCloudApihubV1McpTool({
+    this.annotations,
+    this.description,
+    this.inputSchema,
+    this.name,
+    this.outputSchema,
+    this.title,
+  });
+
+  GoogleCloudApihubV1McpTool.fromJson(core.Map json_)
+    : this(
+        annotations:
+            json_.containsKey('annotations')
+                ? GoogleCloudApihubV1ToolAnnotations.fromJson(
+                  json_['annotations'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        inputSchema:
+            json_.containsKey('inputSchema')
+                ? GoogleCloudApihubV1OperationSchema.fromJson(
+                  json_['inputSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        outputSchema:
+            json_.containsKey('outputSchema')
+                ? GoogleCloudApihubV1OperationSchema.fromJson(
+                  json_['outputSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (annotations != null) 'annotations': annotations!,
+    if (description != null) 'description': description!,
+    if (inputSchema != null) 'inputSchema': inputSchema!,
+    if (name != null) 'name': name!,
+    if (outputSchema != null) 'outputSchema': outputSchema!,
+    if (title != null) 'title': title!,
   };
 }
 
@@ -9506,11 +10576,15 @@ class GoogleCloudApihubV1OperationDetails {
   /// The HTTP Operation.
   GoogleCloudApihubV1HttpOperation? httpOperation;
 
+  /// The MCP Tool Operation.
+  GoogleCloudApihubV1McpTool? mcpTool;
+
   GoogleCloudApihubV1OperationDetails({
     this.deprecated,
     this.description,
     this.documentation,
     this.httpOperation,
+    this.mcpTool,
   });
 
   GoogleCloudApihubV1OperationDetails.fromJson(core.Map json_)
@@ -9529,6 +10603,12 @@ class GoogleCloudApihubV1OperationDetails {
                   json_['httpOperation'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        mcpTool:
+            json_.containsKey('mcpTool')
+                ? GoogleCloudApihubV1McpTool.fromJson(
+                  json_['mcpTool'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9536,6 +10616,33 @@ class GoogleCloudApihubV1OperationDetails {
     if (description != null) 'description': description!,
     if (documentation != null) 'documentation': documentation!,
     if (httpOperation != null) 'httpOperation': httpOperation!,
+    if (mcpTool != null) 'mcpTool': mcpTool!,
+  };
+}
+
+/// The operation schema needed for an operation.
+class GoogleCloudApihubV1OperationSchema {
+  /// The JSON schema.
+  ///
+  /// Only valid JSON is accepted but semantic validation of schema is not
+  /// supported right now.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? jsonSchema;
+
+  GoogleCloudApihubV1OperationSchema({this.jsonSchema});
+
+  GoogleCloudApihubV1OperationSchema.fromJson(core.Map json_)
+    : this(
+        jsonSchema:
+            json_.containsKey('jsonSchema')
+                ? json_['jsonSchema'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
   };
 }
 
@@ -9956,11 +11063,21 @@ class GoogleCloudApihubV1PluginInstance {
   /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
   core.String? name;
 
+  /// The source environment's config present in the gateway instance linked to
+  /// the plugin instance.
+  ///
+  /// The key is the `source_environment` name from the SourceEnvironment
+  /// message.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudApihubV1SourceEnvironment>?
+  sourceEnvironmentsConfig;
+
   /// The source project id of the plugin instance.
   ///
-  /// This will be the id of runtime project in case of gcp based plugins and
-  /// org id in case of non gcp based plugins. This field will be a required
-  /// field for Google provided on-ramp plugins.
+  /// This will be the id of runtime project in case of Google Cloud based
+  /// plugins and org id in case of non-Google Cloud based plugins. This field
+  /// will be a required field for Google provided on-ramp plugins.
   ///
   /// Optional.
   core.String? sourceProjectId;
@@ -10003,6 +11120,7 @@ class GoogleCloudApihubV1PluginInstance {
     this.displayName,
     this.errorMessage,
     this.name,
+    this.sourceEnvironmentsConfig,
     this.sourceProjectId,
     this.state,
     this.updateTime,
@@ -10038,6 +11156,16 @@ class GoogleCloudApihubV1PluginInstance {
         displayName: json_['displayName'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
         name: json_['name'] as core.String?,
+        sourceEnvironmentsConfig: (json_['sourceEnvironmentsConfig']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudApihubV1SourceEnvironment.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
         sourceProjectId: json_['sourceProjectId'] as core.String?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
@@ -10051,6 +11179,8 @@ class GoogleCloudApihubV1PluginInstance {
     if (displayName != null) 'displayName': displayName!,
     if (errorMessage != null) 'errorMessage': errorMessage!,
     if (name != null) 'name': name!,
+    if (sourceEnvironmentsConfig != null)
+      'sourceEnvironmentsConfig': sourceEnvironmentsConfig!,
     if (sourceProjectId != null) 'sourceProjectId': sourceProjectId!,
     if (state != null) 'state': state!,
     if (updateTime != null) 'updateTime': updateTime!,
@@ -10080,7 +11210,8 @@ class GoogleCloudApihubV1PluginInstanceAction {
 
   /// The configuration of resources created for a given plugin instance action.
   ///
-  /// Note these will be returned only in case of Non-GCP plugins like OPDK.
+  /// Note these will be returned only in case of non-Google Cloud plugins like
+  /// OPDK.
   ///
   /// Output only.
   GoogleCloudApihubV1ResourceConfig? resourceConfig;
@@ -10102,8 +11233,8 @@ class GoogleCloudApihubV1PluginInstanceAction {
 
   /// The service account used to publish data.
   ///
-  /// Note, the service account will only be accepted for non GCP plugins like
-  /// OPDK.
+  /// Note, the service account will only be accepted for non-Google Cloud
+  /// plugins like OPDK.
   ///
   /// Optional.
   core.String? serviceAccount;
@@ -10383,6 +11514,38 @@ class GoogleCloudApihubV1ResourceConfig {
   };
 }
 
+/// The RetrieveApiViews method's response.
+class GoogleCloudApihubV1RetrieveApiViewsResponse {
+  /// The list of API views.
+  core.List<GoogleCloudApihubV1ApiView>? apiViews;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  GoogleCloudApihubV1RetrieveApiViewsResponse({
+    this.apiViews,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApihubV1RetrieveApiViewsResponse.fromJson(core.Map json_)
+    : this(
+        apiViews:
+            (json_['apiViews'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1ApiView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiViews != null) 'apiViews': apiViews!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Runtime project attachment represents an attachment from the runtime project
 /// to the host project.
 ///
@@ -10618,6 +11781,56 @@ class GoogleCloudApihubV1Secret {
   };
 }
 
+/// Message representing the source environment details.
+class GoogleCloudApihubV1SourceEnvironment {
+  /// The time at which the environment was created at the source.
+  ///
+  /// Optional.
+  core.String? createTime;
+
+  /// The name of the environment at the source.
+  ///
+  /// This should map to Deployment.
+  ///
+  /// Required.
+  core.String? sourceEnvironment;
+
+  /// The location where additional information about source environments can be
+  /// found.
+  ///
+  /// The location should be relative path of the environment manifest with
+  /// respect to a plugin instance.
+  core.String? sourceEnvironmentUri;
+
+  /// The time at which the environment was last updated at the source.
+  ///
+  /// Optional.
+  core.String? updateTime;
+
+  GoogleCloudApihubV1SourceEnvironment({
+    this.createTime,
+    this.sourceEnvironment,
+    this.sourceEnvironmentUri,
+    this.updateTime,
+  });
+
+  GoogleCloudApihubV1SourceEnvironment.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        sourceEnvironment: json_['sourceEnvironment'] as core.String?,
+        sourceEnvironmentUri: json_['sourceEnvironmentUri'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (sourceEnvironment != null) 'sourceEnvironment': sourceEnvironment!,
+    if (sourceEnvironmentUri != null)
+      'sourceEnvironmentUri': sourceEnvironmentUri!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// SourceMetadata represents the metadata for a resource at the source.
 class GoogleCloudApihubV1SourceMetadata {
   /// The time at which the resource was created at the source.
@@ -10690,6 +11903,11 @@ class GoogleCloudApihubV1SourceMetadata {
 /// Note that specs of various types can be uploaded, however parsing of details
 /// is supported for OpenAPI spec currently.
 class GoogleCloudApihubV1Spec {
+  /// The additional spec contents for the spec.
+  ///
+  /// Output only.
+  core.List<GoogleCloudApihubV1AdditionalSpecContent>? additionalSpecContents;
+
   /// The list of user defined attributes associated with the spec.
   ///
   /// The key is the attribute name. It will be of the format:
@@ -10783,6 +12001,7 @@ class GoogleCloudApihubV1Spec {
   core.String? updateTime;
 
   GoogleCloudApihubV1Spec({
+    this.additionalSpecContents,
     this.attributes,
     this.contents,
     this.createTime,
@@ -10800,6 +12019,14 @@ class GoogleCloudApihubV1Spec {
 
   GoogleCloudApihubV1Spec.fromJson(core.Map json_)
     : this(
+        additionalSpecContents:
+            (json_['additionalSpecContents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApihubV1AdditionalSpecContent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         attributes:
             (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -10856,6 +12083,8 @@ class GoogleCloudApihubV1Spec {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalSpecContents != null)
+      'additionalSpecContents': additionalSpecContents!,
     if (attributes != null) 'attributes': attributes!,
     if (contents != null) 'contents': contents!,
     if (createTime != null) 'createTime': createTime!,
@@ -11127,6 +12356,70 @@ class GoogleCloudApihubV1SummaryEntry {
   core.Map<core.String, core.dynamic> toJson() => {
     if (count != null) 'count': count!,
     if (severity != null) 'severity': severity!,
+  };
+}
+
+/// Annotations for a Tool.
+class GoogleCloudApihubV1ToolAnnotations {
+  /// Additional hints which may help tools and not covered in defaults.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? additionalHints;
+
+  /// Hint indicating if the tool may have destructive side effects.
+  ///
+  /// Optional.
+  core.bool? destructiveHint;
+
+  /// Hint indicating if the tool is idempotent.
+  ///
+  /// Optional.
+  core.bool? idempotentHint;
+
+  /// Hint indicating if the tool interacts with the open world (e.g.,
+  /// internet).
+  ///
+  /// Optional.
+  core.bool? openWorldHint;
+
+  /// Hint indicating if the tool is read-only.
+  ///
+  /// Optional.
+  core.bool? readOnlyHint;
+
+  /// A human-readable title for the tool (if different from Tool.title).
+  ///
+  /// Optional.
+  core.String? title;
+
+  GoogleCloudApihubV1ToolAnnotations({
+    this.additionalHints,
+    this.destructiveHint,
+    this.idempotentHint,
+    this.openWorldHint,
+    this.readOnlyHint,
+    this.title,
+  });
+
+  GoogleCloudApihubV1ToolAnnotations.fromJson(core.Map json_)
+    : this(
+        additionalHints: (json_['additionalHints']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        destructiveHint: json_['destructiveHint'] as core.bool?,
+        idempotentHint: json_['idempotentHint'] as core.bool?,
+        openWorldHint: json_['openWorldHint'] as core.bool?,
+        readOnlyHint: json_['readOnlyHint'] as core.bool?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalHints != null) 'additionalHints': additionalHints!,
+    if (destructiveHint != null) 'destructiveHint': destructiveHint!,
+    if (idempotentHint != null) 'idempotentHint': idempotentHint!,
+    if (openWorldHint != null) 'openWorldHint': openWorldHint!,
+    if (readOnlyHint != null) 'readOnlyHint': readOnlyHint!,
+    if (title != null) 'title': title!,
   };
 }
 
@@ -11533,9 +12826,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -11549,11 +12851,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

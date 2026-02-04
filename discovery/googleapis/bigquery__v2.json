@@ -61,6 +61,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://bigquery.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://bigquery.europe-west6.rep.googleapis.com/",
             "location": "europe-west6"
         },
@@ -78,6 +83,16 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://bigquery.me-central2.rep.googleapis.com/",
             "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigquery.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigquery.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
         },
         {
             "description": "Regional Endpoint",
@@ -150,7 +165,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250919",
+    "revision": "20260118",
     "rootUrl": "https://bigquery.googleapis.com/",
     "servicePath": "bigquery/v2/",
     "title": "BigQuery API",
@@ -3040,7 +3055,7 @@
             "id": "BigtableColumn",
             "properties": {
                 "encoding": {
-                    "description": "Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.",
+                    "description": "Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto messages. This can only be used in combination with JSON type. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.",
                     "type": "string"
                 },
                 "fieldName": {
@@ -3050,6 +3065,10 @@
                 "onlyReadLatest": {
                     "description": "Optional. If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.",
                     "type": "boolean"
+                },
+                "protoConfig": {
+                    "$ref": "BigtableProtoConfig",
+                    "description": "Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY."
                 },
                 "qualifierEncoded": {
                     "description": "[Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as `.` field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as field_name.",
@@ -3079,7 +3098,7 @@
                     "type": "array"
                 },
                 "encoding": {
-                    "description": "Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.",
+                    "description": "Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto messages. This can only be used in combination with JSON type. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.",
                     "type": "string"
                 },
                 "familyId": {
@@ -3089,6 +3108,10 @@
                 "onlyReadLatest": {
                     "description": "Optional. If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.",
                     "type": "boolean"
+                },
+                "protoConfig": {
+                    "$ref": "BigtableProtoConfig",
+                    "description": "Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY."
                 },
                 "type": {
                     "description": "Optional. The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.",
@@ -3119,6 +3142,21 @@
                 "readRowkeyAsString": {
                     "description": "Optional. If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "BigtableProtoConfig": {
+            "description": "Information related to a Bigtable protobuf column.",
+            "id": "BigtableProtoConfig",
+            "properties": {
+                "protoMessageName": {
+                    "description": "Optional. The fully qualified proto message name of the protobuf. In the format of \"foo.bar.Message\".",
+                    "type": "string"
+                },
+                "schemaBundleId": {
+                    "description": "Optional. The ID of the Bigtable SchemaBundle resource associated with this protobuf. The ID should be referred to within the parent table, e.g., `foo` rather than `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/foo`. See [more details on Bigtable SchemaBundles](https://docs.cloud.google.com/bigtable/docs/create-manage-protobuf-schemas).",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4640,6 +4678,14 @@
                 "timestampFormat": {
                     "description": "Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.",
                     "type": "string"
+                },
+                "timestampTargetPrecision": {
+                    "description": "Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5146,25 +5192,30 @@
             "id": "IncrementalResultStats",
             "properties": {
                 "disabledReason": {
-                    "description": "Reason why incremental query results are/were not written by the query.",
+                    "description": "Output only. Reason why incremental query results are/were not written by the query.",
                     "enum": [
                         "DISABLED_REASON_UNSPECIFIED",
-                        "OTHER"
+                        "OTHER",
+                        "UNSUPPORTED_OPERATOR"
                     ],
                     "enumDescriptions": [
                         "Disabled reason not specified.",
-                        "Some other reason."
+                        "Incremental results are/were disabled for reasons not covered by the other enum values, e.g. runtime issues.",
+                        "Query includes an operation that is not supported."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "resultSetLastModifyTime": {
-                    "description": "The time at which the result table's contents were modified. May be absent if no results have been written or the query has completed.",
+                    "description": "Output only. The time at which the result table's contents were modified. May be absent if no results have been written or the query has completed.",
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "resultSetLastReplaceTime": {
-                    "description": "The time at which the result table's contents were completely replaced. May be absent if no results have been written or the query has completed.",
+                    "description": "Output only. The time at which the result table's contents were completely replaced. May be absent if no results have been written or the query has completed.",
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -5177,6 +5228,10 @@
                 "baseTable": {
                     "$ref": "TableReference",
                     "description": "The base table reference."
+                },
+                "indexId": {
+                    "description": "The index id.",
+                    "type": "string"
                 },
                 "postIndexPruningParallelInputCount": {
                     "description": "The number of parallel inputs after index pruning.",
@@ -5513,7 +5568,7 @@
                     "description": "[Pick one] Configures a load job."
                 },
                 "maxSlots": {
-                    "description": "Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the number of slots used to execute the job will be throttled to try and keep its slot consumption below the requested rate.",
+                    "description": "Optional. A target limit on the rate of slot consumption by this job. If set to a value > 0, BigQuery will attempt to limit the rate of slot consumption by this job to keep it below the configured limit, even if the job is eligible for more slots based on fair scheduling. The unused slots will be available for other jobs and queries to use. Note: This feature is not yet generally available.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -5823,6 +5878,14 @@
                     "description": "Optional. Date format used for parsing TIMESTAMP values.",
                     "type": "string"
                 },
+                "timestampTargetPrecision": {
+                    "description": "Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
                 "useAvroLogicalTypes": {
                     "description": "Optional. If sourceFormat is set to \"AVRO\", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).",
                     "type": "boolean"
@@ -5950,7 +6013,7 @@
                 },
                 "useLegacySql": {
                     "default": "true",
-                    "description": "Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
+                    "description": "Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
                     "type": "boolean"
                 },
                 "useQueryCache": {
@@ -6239,6 +6302,14 @@
                 },
                 "quotaDeferments": {
                     "description": "Output only. Quotas which delayed this job's start time.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "reservationGroupPath": {
+                    "description": "Output only. The reservation group path of the reservation assigned to this job. This field has a limit of 10 nested reservation groups. This is to maintain consistency between reservatins info schema and jobs info schema. The first reservation group is the root reservation group and the last is the leaf or lowest level reservation group.",
                     "items": {
                         "type": "string"
                     },
@@ -7878,7 +7949,7 @@
                     "type": "integer"
                 },
                 "maxSlots": {
-                    "description": "Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the number of slots used to execute the job will be throttled to try and keep its slot consumption below the requested rate. This limit is best effort.",
+                    "description": "Optional. A target limit on the rate of slot consumption by this query. If set to a value > 0, BigQuery will attempt to limit the rate of slot consumption by this query to keep it below the configured limit, even if the query is eligible for more slots based on fair scheduling. The unused slots will be available for other jobs and queries to use. Note: This feature is not yet generally available.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -7922,7 +7993,7 @@
                 },
                 "useLegacySql": {
                     "default": "true",
-                    "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
+                    "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
                     "type": "boolean"
                 },
                 "useQueryCache": {
@@ -11284,7 +11355,7 @@
                     "type": "boolean"
                 },
                 "useLegacySql": {
-                    "description": "Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True.",
+                    "description": "Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True.",
                     "type": "boolean"
                 },
                 "userDefinedFunctionResources": {

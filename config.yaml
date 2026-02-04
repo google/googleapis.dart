@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 15.0.0
+    version: 16.0.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -11,7 +11,7 @@ packages:
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     resolution: workspace
     extraDevDependencies:
-        googleapis_auth: '>=1.0.0 <3.0.0'
+        googleapis_auth: '^2.0.0'
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
@@ -42,6 +42,7 @@ packages:
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - apphub:v1
+    - appsmarket:v2
     - areainsights:v1
     - artifactregistry:v1
     - assuredworkloads:v1
@@ -54,6 +55,7 @@ packages:
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigqueryconnection:v1
     - bigquerydatapolicy:v1
+    - bigquerydatapolicy:v2
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
@@ -69,6 +71,8 @@ packages:
     - chromemanagement:v1
     - chromepolicy:v1
     - chromeuxreport:v1
+    - chromewebstore:v1.1
+    - chromewebstore:v2
     - civicinfo:v2 # https://developers.google.com/civic-information/
     - classroom:v1 # https://developers.google.com/classroom/
     - cloudasset:v1
@@ -107,8 +111,10 @@ packages:
     - css:v1
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datacatalog:v1
+    - dataform:v1
     - datafusion:v1
     - datalineage:v1
+    - datamanager:v1
     - datamigration:v1
     - datapipelines:v1
     - dataplex:v1
@@ -167,6 +173,7 @@ packages:
     - groupssettings:v1 # https://developers.google.com/admin-sdk/groups-settings/
     - healthcare:v1
     - homegraph:v1
+    - hypercomputecluster:v1
     - iam:v1 # https://cloud.google.com/iam/
     - iam:v2
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
@@ -243,6 +250,7 @@ packages:
     - policyanalyzer:v1
     - policysimulator:v1
     - policytroubleshooter:v1
+    - policytroubleshooter:v3
     - pollen:v1
     - privateca:v1
     - publicca:v1
@@ -334,7 +342,6 @@ packages:
     - analyticsadmin:v1alpha
     - analyticsadmin:v1beta
     - analyticsdata:v1beta
-    - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
     - cloudsupport:v2beta
@@ -484,6 +491,7 @@ skipped_apis:
 - policysimulator:v1alpha
 - policysimulator:v1beta
 - policytroubleshooter:v1beta # v1 included
+- policytroubleshooter:v3beta
 - privateca:v1beta1
 - publicca:v1alpha1
 - publicca:v1beta1
@@ -508,6 +516,7 @@ skipped_apis:
 - sqladmin:v1 # empty!
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
+- threatintelligence:v1beta
 - tpu:v1alpha1 # v1 included
 - tpu:v2alpha1
 - translate:v2 # v3 included

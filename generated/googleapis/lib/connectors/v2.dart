@@ -28,6 +28,7 @@
 ///       - [ProjectsLocationsConnectionsActionsResource]
 ///       - [ProjectsLocationsConnectionsEntityTypesResource]
 ///         - [ProjectsLocationsConnectionsEntityTypesEntitiesResource]
+///       - [ProjectsLocationsConnectionsResourcesResource]
 ///       - [ProjectsLocationsConnectionsToolsResource]
 library;
 
@@ -93,7 +94,9 @@ class ProjectsLocationsConnectionsResource {
       ProjectsLocationsConnectionsActionsResource(_requester);
   ProjectsLocationsConnectionsEntityTypesResource get entityTypes =>
       ProjectsLocationsConnectionsEntityTypesResource(_requester);
-  ProjectsLocationsConnectionsToolsResource get tools =>
+  ProjectsLocationsConnectionsResourcesResource get resources =>
+      ProjectsLocationsConnectionsResourcesResource(_requester);
+  ProjectsLocationsConnectionsToolsResource get tools_1 =>
       ProjectsLocationsConnectionsToolsResource(_requester);
 
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
@@ -154,6 +157,10 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -166,9 +173,12 @@ class ProjectsLocationsConnectionsResource {
   /// this method will complete with the same error.
   async.Future<CheckStatusResponse> checkStatus(
     core.String name, {
+    core.String? executionConfig_headers,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -319,6 +329,50 @@ class ProjectsLocationsConnectionsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Lists all available tools with POST.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListToolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListToolsResponse> tools(
+    ListToolsPostRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ListToolsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsConnectionsActionsResource {
@@ -383,6 +437,10 @@ class ProjectsLocationsConnectionsActionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/actions/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [view] - Specified view of the action schema.
   /// Possible string values are:
   /// - "ACTION_SCHEMA_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset value.
@@ -402,10 +460,13 @@ class ProjectsLocationsConnectionsActionsResource {
   /// this method will complete with the same error.
   async.Future<Action> get(
     core.String name, {
+    core.String? executionConfig_headers,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -428,6 +489,10 @@ class ProjectsLocationsConnectionsActionsResource {
   /// projects/{project}/locations/{location}/connections/{connection}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
   ///
   /// [pageSize] - Number of Actions to return. Defaults to 25.
   ///
@@ -455,12 +520,15 @@ class ProjectsLocationsConnectionsActionsResource {
   /// this method will complete with the same error.
   async.Future<ListActionsResponse> list(
     core.String parent, {
+    core.String? executionConfig_headers,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -501,6 +569,10 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// [contextMetadata] - Context metadata for request could be used to fetch
   /// customization of entity type schema.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [view] - Specifies view for entity type schema.
   /// Possible string values are:
   /// - "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset
@@ -522,11 +594,14 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   async.Future<EntityType> get(
     core.String name, {
     core.String? contextMetadata,
+    core.String? executionConfig_headers,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (contextMetadata != null) 'contextMetadata': [contextMetadata],
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -551,6 +626,10 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// projects/{project}/locations/{location}/connections/{connection}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
   ///
   /// [pageSize] - Number of entity types to return. Defaults to 25.
   ///
@@ -578,12 +657,15 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// this method will complete with the same error.
   async.Future<ListEntityTypesResponse> list(
     core.String parent, {
+    core.String? executionConfig_headers,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -626,6 +708,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -639,10 +725,13 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   async.Future<Entity> create(
     Entity request,
     core.String parent, {
+    core.String? executionConfig_headers,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -667,6 +756,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+/entities/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -677,8 +770,14 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? executionConfig_headers,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -710,6 +809,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// consider 'empty conditions' to be a match-all case. Connector developers
   /// can determine and document what a match-all case constraint would be.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -723,10 +826,13 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   async.Future<Empty> deleteEntitiesWithConditions(
     core.String entityType, {
     core.String? conditions,
+    core.String? executionConfig_headers,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (conditions != null) 'conditions': [conditions],
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -753,6 +859,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+/entities/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -763,8 +873,14 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Entity> get(core.String name, {core.String? $fields}) async {
+  async.Future<Entity> get(
+    core.String name, {
+    core.String? executionConfig_headers,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -802,6 +918,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// field. The connector documentation should have information about what
   /// format of filters/conditions are supported.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [pageSize] - Number of entity rows to return. Defaults page size = 25. Max
   /// page size = 200.
   ///
@@ -825,6 +945,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   async.Future<ListEntitiesResponse> list(
     core.String parent, {
     core.String? conditions,
+    core.String? executionConfig_headers,
     core.int? pageSize,
     core.String? pageToken,
     core.List<core.String>? sortBy,
@@ -833,6 +954,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (conditions != null) 'conditions': [conditions],
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (sortBy != null) 'sortBy': sortBy,
@@ -869,6 +992,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+/entities/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -882,10 +1009,13 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   async.Future<Entity> patch(
     Entity request,
     core.String name, {
+    core.String? executionConfig_headers,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -920,6 +1050,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// consider 'empty conditions' to be a match-all case. Connector developers
   /// can determine and document what a match-all case constraint would be.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -935,11 +1069,14 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     Entity request,
     core.String entityType, {
     core.String? conditions,
+    core.String? executionConfig_headers,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (conditions != null) 'conditions': [conditions],
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -955,6 +1092,157 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return UpdateEntitiesWithConditionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsConnectionsResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsResourcesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets a specific resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Resource. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/\[^/\]+$`.
+  ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetResourceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetResourceResponse> get(
+    core.String name, {
+    core.String? executionConfig_headers,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetResourceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a specific resource with POST.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Resource. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetResourceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetResourceResponse> getResourcePost(
+    GetResourcePostRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GetResourceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all available resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
+  /// [pageSize] - Optional. Page size for the request.
+  ///
+  /// [pageToken] - Optional. Page token for the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListResourcesResponse> list(
+    core.String parent, {
+    core.String? executionConfig_headers,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/resources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListResourcesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1019,6 +1307,10 @@ class ProjectsLocationsConnectionsToolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
+  /// [executionConfig_headers] - headers to be used for the request. For
+  /// example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  ///
   /// [pageSize] - Page size.
   ///
   /// [pageToken] - Page token.
@@ -1035,11 +1327,14 @@ class ProjectsLocationsConnectionsToolsResource {
   /// this method will complete with the same error.
   async.Future<ListToolsResponse> list(
     core.String parent, {
+    core.String? executionConfig_headers,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionConfig_headers != null)
+        'executionConfig.headers': [executionConfig_headers],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1430,7 +1725,18 @@ class ExchangeAuthCodeRequest {
   /// Optional.
   AuthCodeData? authCodeData;
 
-  ExchangeAuthCodeRequest({this.authCodeData});
+  /// ExecutionConfig contains the configuration for the execution of the
+  /// request.
+  ExecutionConfig? executionConfig;
+
+  /// OAuth2Config contains the OAuth2 config for the connection.
+  OAuth2Config? oauth2Config;
+
+  ExchangeAuthCodeRequest({
+    this.authCodeData,
+    this.executionConfig,
+    this.oauth2Config,
+  });
 
   ExchangeAuthCodeRequest.fromJson(core.Map json_)
     : this(
@@ -1440,10 +1746,25 @@ class ExchangeAuthCodeRequest {
                   json_['authCodeData'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oauth2Config:
+            json_.containsKey('oauth2Config')
+                ? OAuth2Config.fromJson(
+                  json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (authCodeData != null) 'authCodeData': authCodeData!,
+    if (executionConfig != null) 'executionConfig': executionConfig!,
+    if (oauth2Config != null) 'oauth2Config': oauth2Config!,
   };
 }
 
@@ -1486,6 +1807,9 @@ class ExchangeAuthCodeResponse {
 
 /// Request message for ActionService.ExecuteAction
 class ExecuteActionRequest {
+  /// Execution config for the request.
+  ExecutionConfig? executionConfig;
+
   /// Parameters for executing the action.
   ///
   /// The parameters can be key/value pairs or nested structs.
@@ -1494,10 +1818,17 @@ class ExecuteActionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  ExecuteActionRequest({this.parameters});
+  ExecuteActionRequest({this.executionConfig, this.parameters});
 
   ExecuteActionRequest.fromJson(core.Map json_)
     : this(
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         parameters:
             json_.containsKey('parameters')
                 ? json_['parameters'] as core.Map<core.String, core.dynamic>
@@ -1505,6 +1836,7 @@ class ExecuteActionRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (executionConfig != null) 'executionConfig': executionConfig!,
     if (parameters != null) 'parameters': parameters!,
   };
 }
@@ -1609,39 +1941,78 @@ class ExecuteSqlQueryResponse {
 
 /// Request message for ConnectorAgentService.ExecuteTool
 class ExecuteToolRequest {
+  /// execution config for the request.
+  ExecutionConfig? executionConfig;
+
   /// Input parameters for the tool.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  ExecuteToolRequest({this.parameters});
+  /// Tool definition for the tool to be executed.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? toolDefinition;
+
+  ExecuteToolRequest({
+    this.executionConfig,
+    this.parameters,
+    this.toolDefinition,
+  });
 
   ExecuteToolRequest.fromJson(core.Map json_)
     : this(
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         parameters:
             json_.containsKey('parameters')
                 ? json_['parameters'] as core.Map<core.String, core.dynamic>
                 : null,
+        toolDefinition:
+            json_.containsKey('toolDefinition')
+                ? json_['toolDefinition'] as core.Map<core.String, core.dynamic>
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (executionConfig != null) 'executionConfig': executionConfig!,
     if (parameters != null) 'parameters': parameters!,
+    if (toolDefinition != null) 'toolDefinition': toolDefinition!,
   };
 }
 
 /// Response message for ConnectorAgentService.ExecuteTool
 class ExecuteToolResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Output from the tool execution.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? result;
 
-  ExecuteToolResponse({this.result});
+  ExecuteToolResponse({this.metadata, this.result});
 
   ExecuteToolResponse.fromJson(core.Map json_)
     : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         result:
             json_.containsKey('result')
                 ? json_['result'] as core.Map<core.String, core.dynamic>
@@ -1649,7 +2020,25 @@ class ExecuteToolResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
     if (result != null) 'result': result!,
+  };
+}
+
+class ExecutionConfig {
+  /// headers to be used for the request.
+  ///
+  /// For example:
+  /// headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}'
+  core.String? headers;
+
+  ExecutionConfig({this.headers});
+
+  ExecutionConfig.fromJson(core.Map json_)
+    : this(headers: json_['headers'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (headers != null) 'headers': headers!,
   };
 }
 
@@ -1788,6 +2177,82 @@ class Field {
     if (name != null) 'name': name!,
     if (nullable != null) 'nullable': nullable!,
     if (reference != null) 'reference': reference!,
+  };
+}
+
+/// Request message for ConnectorAgentService.GetResourcePost
+class GetResourcePostRequest {
+  /// execution config for the request.
+  ExecutionConfig? executionConfig;
+
+  /// List of tool specifications.
+  ToolSpec? toolSpec;
+
+  GetResourcePostRequest({this.executionConfig, this.toolSpec});
+
+  GetResourcePostRequest.fromJson(core.Map json_)
+    : this(
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        toolSpec:
+            json_.containsKey('toolSpec')
+                ? ToolSpec.fromJson(
+                  json_['toolSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (executionConfig != null) 'executionConfig': executionConfig!,
+    if (toolSpec != null) 'toolSpec': toolSpec!,
+  };
+}
+
+class GetResourceResponse {
+  /// The content of the resource.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
+  /// The MIME type of the resource.
+  core.String? mimeType;
+
+  GetResourceResponse({this.data, this.metadata, this.mimeType});
+
+  GetResourceResponse.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
+        mimeType: json_['mimeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+    if (metadata != null) 'metadata': metadata!,
+    if (mimeType != null) 'mimeType': mimeType!,
   };
 }
 
@@ -2232,18 +2697,121 @@ class ListEntityTypesResponse {
   };
 }
 
+class ListResourcesResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
+  /// Next page token if more resources available.
+  core.String? nextPageToken;
+
+  /// List of available resources.
+  core.List<Resource>? resources;
+
+  ListResourcesResponse({this.metadata, this.nextPageToken, this.resources});
+
+  ListResourcesResponse.fromJson(core.Map json_)
+    : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) => Resource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resources != null) 'resources': resources!,
+  };
+}
+
+/// Request message for ConnectorAgentService.ListToolsPost
+class ListToolsPostRequest {
+  /// execution config for the request.
+  ExecutionConfig? executionConfig;
+
+  /// Page size.
+  core.int? pageSize;
+
+  /// Page token.
+  core.String? pageToken;
+
+  /// List of tool specifications.
+  ToolSpec? toolSpec;
+
+  ListToolsPostRequest({
+    this.executionConfig,
+    this.pageSize,
+    this.pageToken,
+    this.toolSpec,
+  });
+
+  ListToolsPostRequest.fromJson(core.Map json_)
+    : this(
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        toolSpec:
+            json_.containsKey('toolSpec')
+                ? ToolSpec.fromJson(
+                  json_['toolSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (executionConfig != null) 'executionConfig': executionConfig!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (toolSpec != null) 'toolSpec': toolSpec!,
+  };
+}
+
 /// Response message for ConnectorAgentService.ListTools
 class ListToolsResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Next page token.
   core.String? nextPageToken;
 
   /// List of available tools.
   core.List<Tool>? tools;
 
-  ListToolsResponse({this.nextPageToken, this.tools});
+  ListToolsResponse({this.metadata, this.nextPageToken, this.tools});
 
   ListToolsResponse.fromJson(core.Map json_)
     : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         nextPageToken: json_['nextPageToken'] as core.String?,
         tools:
             (json_['tools'] as core.List?)
@@ -2256,8 +2824,35 @@ class ListToolsResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (tools != null) 'tools': tools!,
+  };
+}
+
+class OAuth2Config {
+  /// Authorization Server URL/Token Endpoint for Authorization Code Flow
+  core.String? authUri;
+
+  /// Client ID for the OAuth2 flow.
+  core.String? clientId;
+
+  /// Client secret for the OAuth2 flow.
+  core.String? clientSecret;
+
+  OAuth2Config({this.authUri, this.clientId, this.clientSecret});
+
+  OAuth2Config.fromJson(core.Map json_)
+    : this(
+        authUri: json_['authUri'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authUri != null) 'authUri': authUri!,
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
   };
 }
 
@@ -2398,6 +2993,13 @@ class Reference {
 
 /// RefreshAccessTokenRequest includes the refresh token.
 class RefreshAccessTokenRequest {
+  /// ExecutionConfig contains the configuration for the execution of the
+  /// request.
+  ExecutionConfig? executionConfig;
+
+  /// OAuth2Config contains the OAuth2 config for the connection.
+  OAuth2Config? oauth2Config;
+
   /// Refresh Token String.
   ///
   /// If the Refresh Token is not provided, the runtime will read the data from
@@ -2406,12 +3008,33 @@ class RefreshAccessTokenRequest {
   /// Optional.
   core.String? refreshToken;
 
-  RefreshAccessTokenRequest({this.refreshToken});
+  RefreshAccessTokenRequest({
+    this.executionConfig,
+    this.oauth2Config,
+    this.refreshToken,
+  });
 
   RefreshAccessTokenRequest.fromJson(core.Map json_)
-    : this(refreshToken: json_['refreshToken'] as core.String?);
+    : this(
+        executionConfig:
+            json_.containsKey('executionConfig')
+                ? ExecutionConfig.fromJson(
+                  json_['executionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oauth2Config:
+            json_.containsKey('oauth2Config')
+                ? OAuth2Config.fromJson(
+                  json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (executionConfig != null) 'executionConfig': executionConfig!,
+    if (oauth2Config != null) 'oauth2Config': oauth2Config!,
     if (refreshToken != null) 'refreshToken': refreshToken!,
   };
 }
@@ -2450,6 +3073,42 @@ class RefreshAccessTokenResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (accessCredentials != null) 'accessCredentials': accessCredentials!,
     if (metadata != null) 'metadata': metadata!,
+  };
+}
+
+class Resource {
+  /// A description of what this resource represents.
+  core.String? description;
+
+  /// The MIME type of this resource, if known.
+  core.String? mimeType;
+
+  /// A human-readable name for this resource.
+  core.String? name;
+
+  /// The size of the raw resource content, in bytes, if known.
+  core.String? size;
+
+  /// The URI of this resource.
+  core.String? uri;
+
+  Resource({this.description, this.mimeType, this.name, this.size, this.uri});
+
+  Resource.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        name: json_['name'] as core.String?,
+        size: json_['size'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (name != null) 'name': name!,
+    if (size != null) 'size': size!,
+    if (uri != null) 'uri': uri!,
   };
 }
 
@@ -2674,6 +3333,35 @@ class ToolAnnotations {
     if (openWorldHint != null) 'openWorldHint': openWorldHint!,
     if (readOnlyHint != null) 'readOnlyHint': readOnlyHint!,
     if (title != null) 'title': title!,
+  };
+}
+
+class ToolSpec {
+  /// List of tool definitions.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? toolDefinitions;
+
+  /// Version of the tool spec.
+  ///
+  /// Format: providerId/connectorId/versionId/toolSpecId
+  core.String? toolSpecVersion;
+
+  ToolSpec({this.toolDefinitions, this.toolSpecVersion});
+
+  ToolSpec.fromJson(core.Map json_)
+    : this(
+        toolDefinitions:
+            (json_['toolDefinitions'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        toolSpecVersion: json_['toolSpecVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (toolDefinitions != null) 'toolDefinitions': toolDefinitions!,
+    if (toolSpecVersion != null) 'toolSpecVersion': toolSpecVersion!,
   };
 }
 

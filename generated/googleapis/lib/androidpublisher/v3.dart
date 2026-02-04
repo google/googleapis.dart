@@ -7111,6 +7111,57 @@ class PurchasesSubscriptionsv2Resource {
     );
   }
 
+  /// Defers the renewal of a subscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [token] - Required. The token provided to the user's device when the
+  /// subscription was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeferSubscriptionPurchaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeferSubscriptionPurchaseResponse> defer(
+    DeferSubscriptionPurchaseRequest request,
+    core.String packageName,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/subscriptionsv2/tokens/' +
+        commons.escapeVariable('$token') +
+        ':defer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DeferSubscriptionPurchaseResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Get metadata about a subscription
   ///
   /// Request parameters:
@@ -8791,7 +8842,7 @@ class AppVersionRange {
 }
 
 /// Deprecated: subscription archiving is not supported.
-typedef ArchiveSubscriptionRequest = $Shared02;
+typedef ArchiveSubscriptionRequest = $Shared00;
 
 /// Metadata of an asset module.
 class AssetModuleMetadata {
@@ -8864,11 +8915,13 @@ class AssetSliceSet {
 /// Represents a base plan that automatically renews at the end of its
 /// subscription period.
 class AutoRenewingBasePlanType {
-  /// Account hold period of the subscription, specified in ISO 8601 format.
+  /// Custom account hold period of the subscription, specified in ISO 8601
+  /// format.
   ///
-  /// Acceptable values must be in days and between P0D and P60D. If not
-  /// specified, the default value is P30D. The sum of gracePeriodDuration and
-  /// accountHoldDuration must be between P30D and P60D days, inclusive.
+  /// Acceptable values must be in days and between P0D and P60D. An empty field
+  /// represents a recommended account hold, calculated as 60 days minus grace
+  /// period. The sum of gracePeriodDuration and accountHoldDuration must be
+  /// between P30D and P60D days, inclusive.
   ///
   /// Optional.
   core.String? accountHoldDuration;
@@ -9043,6 +9096,9 @@ class AutoRenewingPlan {
   };
 }
 
+/// Details of a base price pricing phase.
+typedef BaseDetails = $Empty;
+
 /// A single base plan for a subscription.
 class BasePlan {
   /// Set when the base plan automatically renews at a regular interval.
@@ -9173,6 +9229,9 @@ class BasePlan {
     if (state != null) 'state': state!,
   };
 }
+
+/// Details about base price offer phase.
+typedef BasePriceOfferPhase = $Empty;
 
 /// Request message for BatchDeleteOneTimeProductOffers.
 class BatchDeleteOneTimeProductOffersRequest {
@@ -10293,7 +10352,18 @@ class ConvertRegionPricesRequest {
   /// Tax exclusive.
   Money? price;
 
-  ConvertRegionPricesRequest({this.price});
+  /// Product tax category code in context.
+  ///
+  /// Product tax category determines the transaction tax rates applied to the
+  /// product that will be factored into the price calculation. If not set, tax
+  /// rates for the default product tax category will be used. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159)
+  /// for more information.
+  ///
+  /// Optional.
+  core.String? productTaxCategoryCode;
+
+  ConvertRegionPricesRequest({this.price, this.productTaxCategoryCode});
 
   ConvertRegionPricesRequest.fromJson(core.Map json_)
     : this(
@@ -10303,10 +10373,13 @@ class ConvertRegionPricesRequest {
                   json_['price'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        productTaxCategoryCode: json_['productTaxCategoryCode'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (price != null) 'price': price!,
+    if (productTaxCategoryCode != null)
+      'productTaxCategoryCode': productTaxCategoryCode!,
   };
 }
 
@@ -10737,6 +10810,92 @@ class DeactivateSubscriptionOfferRequest {
     if (offerId != null) 'offerId': offerId!,
     if (packageName != null) 'packageName': packageName!,
     if (productId != null) 'productId': productId!,
+  };
+}
+
+/// Request for the v2 purchases.subscriptions.defer API.
+class DeferSubscriptionPurchaseRequest {
+  /// Details about the subscription deferral.
+  ///
+  /// Required.
+  DeferralContext? deferralContext;
+
+  DeferSubscriptionPurchaseRequest({this.deferralContext});
+
+  DeferSubscriptionPurchaseRequest.fromJson(core.Map json_)
+    : this(
+        deferralContext:
+            json_.containsKey('deferralContext')
+                ? DeferralContext.fromJson(
+                  json_['deferralContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deferralContext != null) 'deferralContext': deferralContext!,
+  };
+}
+
+/// Response for the v2 purchases.subscriptions.defer API.
+class DeferSubscriptionPurchaseResponse {
+  /// The new expiry time for each subscription items.
+  core.List<ItemExpiryTimeDetails>? itemExpiryTimeDetails;
+
+  DeferSubscriptionPurchaseResponse({this.itemExpiryTimeDetails});
+
+  DeferSubscriptionPurchaseResponse.fromJson(core.Map json_)
+    : this(
+        itemExpiryTimeDetails:
+            (json_['itemExpiryTimeDetails'] as core.List?)
+                ?.map(
+                  (value) => ItemExpiryTimeDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (itemExpiryTimeDetails != null)
+      'itemExpiryTimeDetails': itemExpiryTimeDetails!,
+  };
+}
+
+/// Deferral context of the purchases.subscriptionsv2.defer API.
+class DeferralContext {
+  /// The duration by which all subscription items should be deferred.
+  ///
+  /// Required.
+  core.String? deferDuration;
+
+  /// The API will fail if the etag does not match the latest etag for this
+  /// subscription.
+  ///
+  /// The etag is retrieved from purchases.subscriptionsv2.get:
+  /// https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get
+  ///
+  /// Required.
+  core.String? etag;
+
+  /// If set to "true", the request is a dry run to validate the effect of
+  /// Defer, the subscription would not be impacted.
+  core.bool? validateOnly;
+
+  DeferralContext({this.deferDuration, this.etag, this.validateOnly});
+
+  DeferralContext.fromJson(core.Map json_)
+    : this(
+        deferDuration: json_['deferDuration'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deferDuration != null) 'deferDuration': deferDuration!,
+    if (etag != null) 'etag': etag!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
   };
 }
 
@@ -11594,6 +11753,127 @@ class ExternalAccountIdentifiers {
   };
 }
 
+/// User account identifier in your app.
+class ExternalAccountIds {
+  /// Specifies an optional obfuscated string that is uniquely associated with
+  /// the purchaser's user account in your app.
+  ///
+  /// If you pass this value, Google Play can use it to detect irregular
+  /// activity. Do not use this field to store any Personally Identifiable
+  /// Information (PII) such as emails in cleartext. Attempting to store PII in
+  /// this field will result in purchases being blocked. Google Play recommends
+  /// that you use either encryption or a one-way hash to generate an obfuscated
+  /// identifier to send to Google Play. This identifier is limited to 64
+  /// characters. This field can only be set for resubscription purchases. See
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+  /// to set this field for purchases made using the standard in-app billing
+  /// flow.
+  ///
+  /// Optional.
+  core.String? obfuscatedAccountId;
+
+  /// Specifies an optional obfuscated string that is uniquely associated with
+  /// the purchaser's user profile in your app.
+  ///
+  /// If you pass this value, Google Play can use it to detect irregular
+  /// activity. Do not use this field to store any Personally Identifiable
+  /// Information (PII) such as emails in cleartext. Attempting to store PII in
+  /// this field will result in purchases being blocked. Google Play recommends
+  /// that you use either encryption or a one-way hash to generate an obfuscated
+  /// identifier to send to Google Play. This identifier is limited to 64
+  /// characters. This field can only be set for resubscription purchases. See
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+  /// to set this field for purchases made using the standard in-app billing
+  /// flow.
+  ///
+  /// Optional.
+  core.String? obfuscatedProfileId;
+
+  ExternalAccountIds({this.obfuscatedAccountId, this.obfuscatedProfileId});
+
+  ExternalAccountIds.fromJson(core.Map json_)
+    : this(
+        obfuscatedAccountId: json_['obfuscatedAccountId'] as core.String?,
+        obfuscatedProfileId: json_['obfuscatedProfileId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (obfuscatedAccountId != null)
+      'obfuscatedAccountId': obfuscatedAccountId!,
+    if (obfuscatedProfileId != null)
+      'obfuscatedProfileId': obfuscatedProfileId!,
+  };
+}
+
+/// Reporting details unique to the external offers program.
+class ExternalOfferDetails {
+  /// The external transaction id associated with the app download event through
+  /// an external link.
+  ///
+  /// Required when reporting transactions made in externally installed apps.
+  ///
+  /// Optional.
+  core.String? appDownloadEventExternalTransactionId;
+
+  /// The category of the downloaded app though this transaction.
+  ///
+  /// This must match the category provided in Play Console during the external
+  /// app verification process. Only required for app downloads.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED" : Unspecified, do not use.
+  /// - "APP" : The app is classified under the app category.
+  /// - "GAME" : The app is classified under the game category.
+  core.String? installedAppCategory;
+
+  /// The package name of the app downloaded through this transaction.
+  ///
+  /// Required when link_type is LINK_TO_APP_DOWNLOAD.
+  ///
+  /// Optional.
+  core.String? installedAppPackage;
+
+  /// The type of content being reported by this transaction.
+  ///
+  /// Required when reporting app downloads or purchased digital content offers
+  /// made in app installed through Google Play.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED" : Unspecified, do not use.
+  /// - "LINK_TO_DIGITAL_CONTENT_OFFER" : An offer to purchase digital content.
+  /// - "LINK_TO_APP_DOWNLOAD" : An app install.
+  core.String? linkType;
+
+  ExternalOfferDetails({
+    this.appDownloadEventExternalTransactionId,
+    this.installedAppCategory,
+    this.installedAppPackage,
+    this.linkType,
+  });
+
+  ExternalOfferDetails.fromJson(core.Map json_)
+    : this(
+        appDownloadEventExternalTransactionId:
+            json_['appDownloadEventExternalTransactionId'] as core.String?,
+        installedAppCategory: json_['installedAppCategory'] as core.String?,
+        installedAppPackage: json_['installedAppPackage'] as core.String?,
+        linkType: json_['linkType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (appDownloadEventExternalTransactionId != null)
+      'appDownloadEventExternalTransactionId':
+          appDownloadEventExternalTransactionId!,
+    if (installedAppCategory != null)
+      'installedAppCategory': installedAppCategory!,
+    if (installedAppPackage != null)
+      'installedAppPackage': installedAppPackage!,
+    if (linkType != null) 'linkType': linkType!,
+  };
+}
+
 /// Details of an external subscription.
 class ExternalSubscription {
   /// The type of the external subscription.
@@ -11640,6 +11920,11 @@ class ExternalTransaction {
   ///
   /// Output only.
   Price? currentTaxAmount;
+
+  /// Details necessary to accurately report external offers transactions.
+  ///
+  /// Optional.
+  ExternalOfferDetails? externalOfferDetails;
 
   /// The id of this transaction.
   ///
@@ -11724,6 +12009,7 @@ class ExternalTransaction {
     this.createTime,
     this.currentPreTaxAmount,
     this.currentTaxAmount,
+    this.externalOfferDetails,
     this.externalTransactionId,
     this.oneTimeTransaction,
     this.originalPreTaxAmount,
@@ -11751,6 +12037,13 @@ class ExternalTransaction {
             json_.containsKey('currentTaxAmount')
                 ? Price.fromJson(
                   json_['currentTaxAmount']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        externalOfferDetails:
+            json_.containsKey('externalOfferDetails')
+                ? ExternalOfferDetails.fromJson(
+                  json_['externalOfferDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -11807,6 +12100,8 @@ class ExternalTransaction {
     if (currentPreTaxAmount != null)
       'currentPreTaxAmount': currentPreTaxAmount!,
     if (currentTaxAmount != null) 'currentTaxAmount': currentTaxAmount!,
+    if (externalOfferDetails != null)
+      'externalOfferDetails': externalOfferDetails!,
     if (externalTransactionId != null)
       'externalTransactionId': externalTransactionId!,
     if (oneTimeTransaction != null) 'oneTimeTransaction': oneTimeTransaction!,
@@ -11993,6 +12288,12 @@ class ExternallyHostedApk {
     if (versionName != null) 'versionName': versionName!,
   };
 }
+
+/// Details of a free trial pricing phase.
+typedef FreeTrialDetails = $Empty;
+
+/// Details about free trial offer phase.
+typedef FreeTrialOfferPhase = $Empty;
 
 /// A full refund of the remaining amount of a transaction.
 typedef FullRefund = $Empty;
@@ -13076,11 +13377,13 @@ class InstallmentPlan {
 /// Represents an installments base plan where a user commits to a specified
 /// number of payments.
 class InstallmentsBasePlanType {
-  /// Account hold period of the subscription, specified in ISO 8601 format.
+  /// Custom account hold period of the subscription, specified in ISO 8601
+  /// format.
   ///
-  /// Acceptable values must be in days and between P0D and P60D. If not
-  /// specified, the default value is P30D. The sum of gracePeriodDuration and
-  /// accountHoldDuration must be between P30D and P60D days, inclusive.
+  /// Acceptable values must be in days and between P0D and P60D. An empty field
+  /// represents a recommended account hold, calculated as 60 days minus grace
+  /// period. The sum of gracePeriodDuration and accountHoldDuration must be
+  /// between P30D and P60D days, inclusive.
   ///
   /// Optional.
   core.String? accountHoldDuration;
@@ -13221,6 +13524,9 @@ class InternalAppSharingArtifact {
   };
 }
 
+/// Details of an introductory price pricing phase.
+typedef IntroductoryPriceDetails = $Empty;
+
 /// Contains the introductory price information for a subscription.
 class IntroductoryPriceInfo {
   /// Introductory price of the subscription, not including tax.
@@ -13276,6 +13582,81 @@ class IntroductoryPriceInfo {
   };
 }
 
+/// Details about introductory price offer phase.
+typedef IntroductoryPriceOfferPhase = $Empty;
+
+/// Expiry time details of a subscription item.
+class ItemExpiryTimeDetails {
+  /// The new expiry time for this subscription item.
+  core.String? expiryTime;
+
+  /// The product ID of the subscription item (for example, 'premium_plan').
+  core.String? productId;
+
+  ItemExpiryTimeDetails({this.expiryTime, this.productId});
+
+  ItemExpiryTimeDetails.fromJson(core.Map json_)
+    : this(
+        expiryTime: json_['expiryTime'] as core.String?,
+        productId: json_['productId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (expiryTime != null) 'expiryTime': expiryTime!,
+    if (productId != null) 'productId': productId!,
+  };
+}
+
+/// Details about a subscription line item that is being replaced.
+class ItemReplacement {
+  /// The base plan ID of the subscription line item being replaced.
+  core.String? basePlanId;
+
+  /// The offer ID of the subscription line item being replaced, if applicable.
+  core.String? offerId;
+
+  /// The product ID of the subscription line item being replaced.
+  core.String? productId;
+
+  /// The replacement mode applied during the purchase.
+  /// Possible string values are:
+  /// - "REPLACEMENT_MODE_UNSPECIFIED" : Unspecified replacement mode.
+  /// - "WITH_TIME_PRORATION" : The new plan will be prorated and credited from
+  /// the old plan.
+  /// - "CHARGE_PRORATED_PRICE" : The user will be charged a prorated price for
+  /// the new plan.
+  /// - "WITHOUT_PRORATION" : The new plan will replace the old one without
+  /// prorating the time.
+  /// - "CHARGE_FULL_PRICE" : The user will be charged the full price for the
+  /// new plan.
+  /// - "DEFERRED" : The old plan will be cancelled and the new plan will be
+  /// effective after the old one expires.
+  /// - "KEEP_EXISTING" : The plan will remain unchanged with this replacement.
+  core.String? replacementMode;
+
+  ItemReplacement({
+    this.basePlanId,
+    this.offerId,
+    this.productId,
+    this.replacementMode,
+  });
+
+  ItemReplacement.fromJson(core.Map json_)
+    : this(
+        basePlanId: json_['basePlanId'] as core.String?,
+        offerId: json_['offerId'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        replacementMode: json_['replacementMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (basePlanId != null) 'basePlanId': basePlanId!,
+    if (offerId != null) 'offerId': offerId!,
+    if (productId != null) 'productId': productId!,
+    if (replacementMode != null) 'replacementMode': replacementMode!,
+  };
+}
+
 /// Targeting based on language.
 class LanguageTargeting {
   /// Alternative languages.
@@ -13308,7 +13689,7 @@ class LanguageTargeting {
 class LineItem {
   /// Item's listed price on Play Store, this may or may not include tax.
   ///
-  /// Excludes any discounts or promotions.
+  /// Excludes Google-funded discounts only.
   Money? listingPrice;
 
   /// Details of a one-time purchase.
@@ -13740,6 +14121,19 @@ class ManagedProductTaxAndComplianceSettings {
   /// tokenized digital asset.
   core.bool? isTokenizedDigitalAsset;
 
+  /// Product tax category code to assign to the in-app product.
+  ///
+  /// Product tax category determines the transaction tax rates applied to the
+  /// product. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159)
+  /// for more information.
+  core.String? productTaxCategoryCode;
+
+  /// Regional age rating information.
+  ///
+  /// Currently this field is only supported for region code `US`.
+  core.List<RegionalProductAgeRatingInfo>? regionalProductAgeRatingInfos;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -13748,6 +14142,8 @@ class ManagedProductTaxAndComplianceSettings {
   ManagedProductTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
     this.isTokenizedDigitalAsset,
+    this.productTaxCategoryCode,
+    this.regionalProductAgeRatingInfos,
     this.taxRateInfoByRegionCode,
   });
 
@@ -13755,6 +14151,15 @@ class ManagedProductTaxAndComplianceSettings {
     : this(
         eeaWithdrawalRightType: json_['eeaWithdrawalRightType'] as core.String?,
         isTokenizedDigitalAsset: json_['isTokenizedDigitalAsset'] as core.bool?,
+        productTaxCategoryCode: json_['productTaxCategoryCode'] as core.String?,
+        regionalProductAgeRatingInfos:
+            (json_['regionalProductAgeRatingInfos'] as core.List?)
+                ?.map(
+                  (value) => RegionalProductAgeRatingInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         taxRateInfoByRegionCode: (json_['taxRateInfoByRegionCode']
                 as core.Map<core.String, core.dynamic>?)
             ?.map(
@@ -13772,6 +14177,10 @@ class ManagedProductTaxAndComplianceSettings {
       'eeaWithdrawalRightType': eeaWithdrawalRightType!,
     if (isTokenizedDigitalAsset != null)
       'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
+    if (productTaxCategoryCode != null)
+      'productTaxCategoryCode': productTaxCategoryCode!,
+    if (regionalProductAgeRatingInfos != null)
+      'regionalProductAgeRatingInfos': regionalProductAgeRatingInfos!,
     if (taxRateInfoByRegionCode != null)
       'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
   };
@@ -14091,6 +14500,127 @@ class OfferDetails {
     if (basePlanId != null) 'basePlanId': basePlanId!,
     if (offerId != null) 'offerId': offerId!,
     if (offerTags != null) 'offerTags': offerTags!,
+  };
+}
+
+/// Offer phase details.
+class OfferPhase {
+  /// Set when the offer phase is a base plan pricing phase.
+  BasePriceOfferPhase? basePrice;
+
+  /// Set when the offer phase is a free trial.
+  FreeTrialOfferPhase? freeTrial;
+
+  /// Set when the offer phase is an introductory price offer phase.
+  IntroductoryPriceOfferPhase? introductoryPrice;
+
+  /// Set when the offer phase is a proration period.
+  ProrationPeriodOfferPhase? prorationPeriod;
+
+  OfferPhase({
+    this.basePrice,
+    this.freeTrial,
+    this.introductoryPrice,
+    this.prorationPeriod,
+  });
+
+  OfferPhase.fromJson(core.Map json_)
+    : this(
+        basePrice:
+            json_.containsKey('basePrice')
+                ? BasePriceOfferPhase.fromJson(
+                  json_['basePrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        freeTrial:
+            json_.containsKey('freeTrial')
+                ? FreeTrialOfferPhase.fromJson(
+                  json_['freeTrial'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        introductoryPrice:
+            json_.containsKey('introductoryPrice')
+                ? IntroductoryPriceOfferPhase.fromJson(
+                  json_['introductoryPrice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        prorationPeriod:
+            json_.containsKey('prorationPeriod')
+                ? ProrationPeriodOfferPhase.fromJson(
+                  json_['prorationPeriod']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (basePrice != null) 'basePrice': basePrice!,
+    if (freeTrial != null) 'freeTrial': freeTrial!,
+    if (introductoryPrice != null) 'introductoryPrice': introductoryPrice!,
+    if (prorationPeriod != null) 'prorationPeriod': prorationPeriod!,
+  };
+}
+
+/// Details of a pricing phase for the entitlement period funded by this order.
+class OfferPhaseDetails {
+  /// The order funds a base price period.
+  BaseDetails? baseDetails;
+
+  /// The order funds a free trial period.
+  FreeTrialDetails? freeTrialDetails;
+
+  /// The order funds an introductory pricing period.
+  IntroductoryPriceDetails? introductoryPriceDetails;
+
+  /// The order funds a proration period.
+  ProrationPeriodDetails? prorationPeriodDetails;
+
+  OfferPhaseDetails({
+    this.baseDetails,
+    this.freeTrialDetails,
+    this.introductoryPriceDetails,
+    this.prorationPeriodDetails,
+  });
+
+  OfferPhaseDetails.fromJson(core.Map json_)
+    : this(
+        baseDetails:
+            json_.containsKey('baseDetails')
+                ? BaseDetails.fromJson(
+                  json_['baseDetails'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        freeTrialDetails:
+            json_.containsKey('freeTrialDetails')
+                ? FreeTrialDetails.fromJson(
+                  json_['freeTrialDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        introductoryPriceDetails:
+            json_.containsKey('introductoryPriceDetails')
+                ? IntroductoryPriceDetails.fromJson(
+                  json_['introductoryPriceDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        prorationPeriodDetails:
+            json_.containsKey('prorationPeriodDetails')
+                ? ProrationPeriodDetails.fromJson(
+                  json_['prorationPeriodDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (baseDetails != null) 'baseDetails': baseDetails!,
+    if (freeTrialDetails != null) 'freeTrialDetails': freeTrialDetails!,
+    if (introductoryPriceDetails != null)
+      'introductoryPriceDetails': introductoryPriceDetails!,
+    if (prorationPeriodDetails != null)
+      'prorationPeriodDetails': prorationPeriodDetails!,
   };
 }
 
@@ -14858,6 +15388,8 @@ class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
   /// as AVAILABLE.
   /// - "AVAILABLE_IF_RELEASED" : The purchase option is initially unavailable,
   /// but made available via a released pre-order offer.
+  /// - "AVAILABLE_FOR_OFFERS_ONLY" : The purchase option is unavailable but
+  /// offers linked to it (i.e. Play Points offer) are available.
   core.String? availability;
 
   /// The price of the purchase option in the specified region.
@@ -14935,17 +15467,41 @@ class OneTimeProductTaxAndComplianceSettings {
   /// tokenized digital asset.
   core.bool? isTokenizedDigitalAsset;
 
+  /// Product tax category code to assign to the one-time product.
+  ///
+  /// Product tax category determines the transaction tax rates applied to the
+  /// product. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159)
+  /// for more information.
+  core.String? productTaxCategoryCode;
+
+  /// Regional age rating information.
+  ///
+  /// Currently this field is only supported for region code `US`.
+  core.List<RegionalProductAgeRatingInfo>? regionalProductAgeRatingInfos;
+
   /// Regional tax configuration.
   core.List<RegionalTaxConfig>? regionalTaxConfigs;
 
   OneTimeProductTaxAndComplianceSettings({
     this.isTokenizedDigitalAsset,
+    this.productTaxCategoryCode,
+    this.regionalProductAgeRatingInfos,
     this.regionalTaxConfigs,
   });
 
   OneTimeProductTaxAndComplianceSettings.fromJson(core.Map json_)
     : this(
         isTokenizedDigitalAsset: json_['isTokenizedDigitalAsset'] as core.bool?,
+        productTaxCategoryCode: json_['productTaxCategoryCode'] as core.String?,
+        regionalProductAgeRatingInfos:
+            (json_['regionalProductAgeRatingInfos'] as core.List?)
+                ?.map(
+                  (value) => RegionalProductAgeRatingInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         regionalTaxConfigs:
             (json_['regionalTaxConfigs'] as core.List?)
                 ?.map(
@@ -14959,6 +15515,10 @@ class OneTimeProductTaxAndComplianceSettings {
   core.Map<core.String, core.dynamic> toJson() => {
     if (isTokenizedDigitalAsset != null)
       'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
+    if (productTaxCategoryCode != null)
+      'productTaxCategoryCode': productTaxCategoryCode!,
+    if (regionalProductAgeRatingInfos != null)
+      'regionalProductAgeRatingInfos': regionalProductAgeRatingInfos!,
     if (regionalTaxConfigs != null) 'regionalTaxConfigs': regionalTaxConfigs!,
   };
 }
@@ -14967,6 +15527,12 @@ class OneTimeProductTaxAndComplianceSettings {
 class OneTimePurchaseDetails {
   /// The offer ID of the one-time purchase offer.
   core.String? offerId;
+
+  /// The details of a pre-order purchase.
+  ///
+  /// Only set if it is a pre-order purchase. Note that this field will be set
+  /// even after pre-order is fulfilled.
+  PreorderDetails? preorderDetails;
 
   /// ID of the purchase option.
   ///
@@ -14986,6 +15552,7 @@ class OneTimePurchaseDetails {
 
   OneTimePurchaseDetails({
     this.offerId,
+    this.preorderDetails,
     this.purchaseOptionId,
     this.quantity,
     this.rentalDetails,
@@ -14994,6 +15561,13 @@ class OneTimePurchaseDetails {
   OneTimePurchaseDetails.fromJson(core.Map json_)
     : this(
         offerId: json_['offerId'] as core.String?,
+        preorderDetails:
+            json_.containsKey('preorderDetails')
+                ? PreorderDetails.fromJson(
+                  json_['preorderDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         purchaseOptionId: json_['purchaseOptionId'] as core.String?,
         quantity: json_['quantity'] as core.int?,
         rentalDetails:
@@ -15006,6 +15580,7 @@ class OneTimePurchaseDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (offerId != null) 'offerId': offerId!,
+    if (preorderDetails != null) 'preorderDetails': preorderDetails!,
     if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
     if (quantity != null) 'quantity': quantity!,
     if (rentalDetails != null) 'rentalDetails': rentalDetails!,
@@ -15073,6 +15648,19 @@ class Order {
   /// purchased.
   core.String? purchaseToken;
 
+  /// The originating sales channel of the order.
+  /// Possible string values are:
+  /// - "SALES_CHANNEL_UNSPECIFIED" : Sales channel unspecified. This value is
+  /// not used.
+  /// - "IN_APP" : Standard orders that initiated from in-app.
+  /// - "PC_EMULATOR" : Orders initiated from a PC emulator for in-app
+  /// purchases.
+  /// - "NATIVE_PC" : Orders initiated from a native PC app for in-app
+  /// purchases.
+  /// - "PLAY_STORE" : Orders initiated from the Google Play store.
+  /// - "OUTSIDE_PLAY_STORE" : Orders initiated outside the Google Play store.
+  core.String? salesChannel;
+
   /// The state of the order.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified. This value is not used.
@@ -15102,6 +15690,7 @@ class Order {
     this.orderId,
     this.pointsDetails,
     this.purchaseToken,
+    this.salesChannel,
     this.state,
     this.tax,
     this.total,
@@ -15152,6 +15741,7 @@ class Order {
                 )
                 : null,
         purchaseToken: json_['purchaseToken'] as core.String?,
+        salesChannel: json_['salesChannel'] as core.String?,
         state: json_['state'] as core.String?,
         tax:
             json_.containsKey('tax')
@@ -15179,6 +15769,7 @@ class Order {
     if (orderId != null) 'orderId': orderId!,
     if (pointsDetails != null) 'pointsDetails': pointsDetails!,
     if (purchaseToken != null) 'purchaseToken': purchaseToken!,
+    if (salesChannel != null) 'salesChannel': salesChannel!,
     if (state != null) 'state': state!,
     if (tax != null) 'tax': tax!,
     if (total != null) 'total': total!,
@@ -15456,6 +16047,44 @@ class OtherRegionsSubscriptionOfferPhasePrices {
   };
 }
 
+/// Information specific to an out of app purchase.
+class OutOfAppPurchaseContext {
+  /// User account identifier from the last expired subscription for this SKU.
+  ExternalAccountIdentifiers? expiredExternalAccountIdentifiers;
+
+  /// The purchase token of the last expired subscription.
+  ///
+  /// This purchase token must only be used to help identify the user if the
+  /// link between the purchaseToken and user is stored in your database. This
+  /// cannot be used to call the Google Developer API if it has been more than
+  /// 60 days since expiry.
+  core.String? expiredPurchaseToken;
+
+  OutOfAppPurchaseContext({
+    this.expiredExternalAccountIdentifiers,
+    this.expiredPurchaseToken,
+  });
+
+  OutOfAppPurchaseContext.fromJson(core.Map json_)
+    : this(
+        expiredExternalAccountIdentifiers:
+            json_.containsKey('expiredExternalAccountIdentifiers')
+                ? ExternalAccountIdentifiers.fromJson(
+                  json_['expiredExternalAccountIdentifiers']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expiredPurchaseToken: json_['expiredPurchaseToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (expiredExternalAccountIdentifiers != null)
+      'expiredExternalAccountIdentifiers': expiredExternalAccountIdentifiers!,
+    if (expiredPurchaseToken != null)
+      'expiredPurchaseToken': expiredPurchaseToken!,
+  };
+}
+
 /// Information about the current page.
 ///
 /// List operations that supports paging return only one "page" of results. This
@@ -15624,6 +16253,25 @@ class PointsDetails {
       'pointsDiscountRateMicros': pointsDiscountRateMicros!,
     if (pointsOfferId != null) 'pointsOfferId': pointsOfferId!,
     if (pointsSpent != null) 'pointsSpent': pointsSpent!,
+  };
+}
+
+/// Details of a pre-order purchase.
+typedef PreorderDetails = $Empty;
+
+/// Offer details information related to a preorder line item.
+class PreorderOfferDetails {
+  /// The time when a preordered item is released for a preorder purchase.
+  core.String? preorderReleaseTime;
+
+  PreorderOfferDetails({this.preorderReleaseTime});
+
+  PreorderOfferDetails.fromJson(core.Map json_)
+    : this(preorderReleaseTime: json_['preorderReleaseTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (preorderReleaseTime != null)
+      'preorderReleaseTime': preorderReleaseTime!,
   };
 }
 
@@ -15826,6 +16474,11 @@ class ProductOfferDetails {
   /// The per-transaction offer token used to make this purchase line item.
   core.String? offerToken;
 
+  /// Offer details for a preorder offer.
+  ///
+  /// This will only be set for preorders.
+  PreorderOfferDetails? preorderOfferDetails;
+
   /// The purchase option ID.
   core.String? purchaseOptionId;
 
@@ -15847,6 +16500,7 @@ class ProductOfferDetails {
     this.offerId,
     this.offerTags,
     this.offerToken,
+    this.preorderOfferDetails,
     this.purchaseOptionId,
     this.quantity,
     this.refundableQuantity,
@@ -15862,6 +16516,13 @@ class ProductOfferDetails {
                 ?.map((value) => value as core.String)
                 .toList(),
         offerToken: json_['offerToken'] as core.String?,
+        preorderOfferDetails:
+            json_.containsKey('preorderOfferDetails')
+                ? PreorderOfferDetails.fromJson(
+                  json_['preorderOfferDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         purchaseOptionId: json_['purchaseOptionId'] as core.String?,
         quantity: json_['quantity'] as core.int?,
         refundableQuantity: json_['refundableQuantity'] as core.int?,
@@ -15879,6 +16540,8 @@ class ProductOfferDetails {
     if (offerId != null) 'offerId': offerId!,
     if (offerTags != null) 'offerTags': offerTags!,
     if (offerToken != null) 'offerToken': offerToken!,
+    if (preorderOfferDetails != null)
+      'preorderOfferDetails': preorderOfferDetails!,
     if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
     if (quantity != null) 'quantity': quantity!,
     if (refundableQuantity != null) 'refundableQuantity': refundableQuantity!,
@@ -16160,7 +16823,80 @@ class ProductPurchaseV2 {
 }
 
 /// Request for the product.purchases.acknowledge API.
-typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
+class ProductPurchasesAcknowledgeRequest {
+  /// Payload to attach to the purchase.
+  core.String? developerPayload;
+
+  ProductPurchasesAcknowledgeRequest({this.developerPayload});
+
+  ProductPurchasesAcknowledgeRequest.fromJson(core.Map json_)
+    : this(developerPayload: json_['developerPayload'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (developerPayload != null) 'developerPayload': developerPayload!,
+  };
+}
+
+/// Details of a proration period.
+///
+/// A proration period can be a period calculated during a plan change to cover
+/// existing entitlements (For more information, see
+/// [Allow users to upgrade, downgrade, or change their subscription](https://developer.android.com/google/play/billing/subscriptions#allow-users-change),
+/// or a prorated period to align add-on renewal dates with the base (For more
+/// information, see
+/// [Rules applicable for items in the purchase](https://developer.android.com/google/play/billing/subscription-with-addons#rules-base-addons)).
+class ProrationPeriodDetails {
+  /// Represent the original offer phase from the purchased the line item if the
+  /// proration period contains any of them.
+  ///
+  /// For example, a proration period from CHARGE_FULL_PRICE plan change may
+  /// merge the 1st offer phase of the subscription offer of the new product
+  /// user purchased. In this case, the original offer phase will be set here.
+  /// Possible string values are:
+  /// - "OFFER_PHASE_UNSPECIFIED" : Offer phase unspecified. This value is not
+  /// used.
+  /// - "BASE" : The order funds a base price period.
+  /// - "INTRODUCTORY" : The order funds an introductory pricing period.
+  /// - "FREE_TRIAL" : The order funds a free trial period.
+  core.String? originalOfferPhase;
+
+  ProrationPeriodDetails({this.originalOfferPhase});
+
+  ProrationPeriodDetails.fromJson(core.Map json_)
+    : this(originalOfferPhase: json_['originalOfferPhase'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (originalOfferPhase != null) 'originalOfferPhase': originalOfferPhase!,
+  };
+}
+
+/// Details about proration period offer phase.
+class ProrationPeriodOfferPhase {
+  /// The original offer phase type before the proration period.
+  ///
+  /// Only set when the proration period is updated from an existing offer
+  /// phase.
+  /// Possible string values are:
+  /// - "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED" : Unspecified original offer
+  /// phase type.
+  /// - "BASE" : The subscription is in the base pricing phase (e.g. full
+  /// price).
+  /// - "INTRODUCTORY" : The subscription is in an introductory pricing phase.
+  /// - "FREE_TRIAL" : The subscription is in a free trial.
+  core.String? originalOfferPhaseType;
+
+  ProrationPeriodOfferPhase({this.originalOfferPhaseType});
+
+  ProrationPeriodOfferPhase.fromJson(core.Map json_)
+    : this(
+        originalOfferPhaseType: json_['originalOfferPhaseType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (originalOfferPhaseType != null)
+      'originalOfferPhaseType': originalOfferPhaseType!,
+  };
+}
 
 /// Details about taxation, Google Play policy and legal compliance for one-time
 /// product purchase options.
@@ -16514,6 +17250,40 @@ class RegionalPriceMigrationConfig {
     if (oldestAllowedPriceVersionTime != null)
       'oldestAllowedPriceVersionTime': oldestAllowedPriceVersionTime!,
     if (priceIncreaseType != null) 'priceIncreaseType': priceIncreaseType!,
+    if (regionCode != null) 'regionCode': regionCode!,
+  };
+}
+
+/// Details about the age rating for a specific geographic region.
+class RegionalProductAgeRatingInfo {
+  /// The age rating tier of a product for the given region.
+  /// Possible string values are:
+  /// - "PRODUCT_AGE_RATING_TIER_UNKNOWN" : Unknown age rating tier.
+  /// - "PRODUCT_AGE_RATING_TIER_EVERYONE" : Age rating tier for products that
+  /// are appropriate for all ages.
+  /// - "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE" : Age rating tier for
+  /// products that are appropriate for 13 years and above.
+  /// - "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE" : Age rating tier for
+  /// products that are appropriate for 16 years and above.
+  /// - "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE" : Age rating tier for
+  /// products that are appropriate for 18 years and above.
+  core.String? productAgeRatingTier;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
+  /// "US".
+  core.String? regionCode;
+
+  RegionalProductAgeRatingInfo({this.productAgeRatingTier, this.regionCode});
+
+  RegionalProductAgeRatingInfo.fromJson(core.Map json_)
+    : this(
+        productAgeRatingTier: json_['productAgeRatingTier'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (productAgeRatingTier != null)
+      'productAgeRatingTier': productAgeRatingTier!,
     if (regionCode != null) 'regionCode': regionCode!,
   };
 }
@@ -17699,6 +18469,8 @@ class SubscriptionDetails {
   core.String? offerId;
 
   /// The pricing phase for the billing period funded by this order.
+  ///
+  /// Deprecated. Use offer_phase_details instead.
   /// Possible string values are:
   /// - "OFFER_PHASE_UNSPECIFIED" : Offer phase unspecified. This value is not
   /// used.
@@ -17706,6 +18478,9 @@ class SubscriptionDetails {
   /// - "INTRODUCTORY" : The order funds an introductory pricing period.
   /// - "FREE_TRIAL" : The order funds a free trial period.
   core.String? offerPhase;
+
+  /// The pricing phase details for the entitlement period funded by this order.
+  OfferPhaseDetails? offerPhaseDetails;
 
   /// The end of the billing period funded by this order.
   ///
@@ -17725,6 +18500,7 @@ class SubscriptionDetails {
     this.basePlanId,
     this.offerId,
     this.offerPhase,
+    this.offerPhaseDetails,
     this.servicePeriodEndTime,
     this.servicePeriodStartTime,
   });
@@ -17734,6 +18510,13 @@ class SubscriptionDetails {
         basePlanId: json_['basePlanId'] as core.String?,
         offerId: json_['offerId'] as core.String?,
         offerPhase: json_['offerPhase'] as core.String?,
+        offerPhaseDetails:
+            json_.containsKey('offerPhaseDetails')
+                ? OfferPhaseDetails.fromJson(
+                  json_['offerPhaseDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         servicePeriodEndTime: json_['servicePeriodEndTime'] as core.String?,
         servicePeriodStartTime: json_['servicePeriodStartTime'] as core.String?,
       );
@@ -17742,6 +18525,7 @@ class SubscriptionDetails {
     if (basePlanId != null) 'basePlanId': basePlanId!,
     if (offerId != null) 'offerId': offerId!,
     if (offerPhase != null) 'offerPhase': offerPhase!,
+    if (offerPhaseDetails != null) 'offerPhaseDetails': offerPhaseDetails!,
     if (servicePeriodEndTime != null)
       'servicePeriodEndTime': servicePeriodEndTime!,
     if (servicePeriodStartTime != null)
@@ -18468,6 +19252,13 @@ class SubscriptionPurchaseLineItem {
   /// renews).
   core.String? expiryTime;
 
+  /// Details of the item being replaced.
+  ///
+  /// This field is only populated if this item replaced another item in a
+  /// previous subscription and is only available for 60 days after the purchase
+  /// time.
+  ItemReplacement? itemReplacement;
+
   /// The order id of the latest successful order associated with this item.
   ///
   /// Not present if the item is not owned by the user yet (e.g. the item being
@@ -18476,6 +19267,9 @@ class SubscriptionPurchaseLineItem {
 
   /// The offer details for this item.
   OfferDetails? offerDetails;
+
+  /// Current offer phase details for this item.
+  OfferPhase? offerPhase;
 
   /// The item is prepaid.
   PrepaidPlan? prepaidPlan;
@@ -18493,8 +19287,10 @@ class SubscriptionPurchaseLineItem {
     this.deferredItemRemoval,
     this.deferredItemReplacement,
     this.expiryTime,
+    this.itemReplacement,
     this.latestSuccessfulOrderId,
     this.offerDetails,
+    this.offerPhase,
     this.prepaidPlan,
     this.productId,
     this.signupPromotion,
@@ -18524,12 +19320,25 @@ class SubscriptionPurchaseLineItem {
                 )
                 : null,
         expiryTime: json_['expiryTime'] as core.String?,
+        itemReplacement:
+            json_.containsKey('itemReplacement')
+                ? ItemReplacement.fromJson(
+                  json_['itemReplacement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         latestSuccessfulOrderId:
             json_['latestSuccessfulOrderId'] as core.String?,
         offerDetails:
             json_.containsKey('offerDetails')
                 ? OfferDetails.fromJson(
                   json_['offerDetails'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        offerPhase:
+            json_.containsKey('offerPhase')
+                ? OfferPhase.fromJson(
+                  json_['offerPhase'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         prepaidPlan:
@@ -18555,9 +19364,11 @@ class SubscriptionPurchaseLineItem {
     if (deferredItemReplacement != null)
       'deferredItemReplacement': deferredItemReplacement!,
     if (expiryTime != null) 'expiryTime': expiryTime!,
+    if (itemReplacement != null) 'itemReplacement': itemReplacement!,
     if (latestSuccessfulOrderId != null)
       'latestSuccessfulOrderId': latestSuccessfulOrderId!,
     if (offerDetails != null) 'offerDetails': offerDetails!,
+    if (offerPhase != null) 'offerPhase': offerPhase!,
     if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
     if (productId != null) 'productId': productId!,
     if (signupPromotion != null) 'signupPromotion': signupPromotion!,
@@ -18579,6 +19390,12 @@ class SubscriptionPurchaseV2 {
   /// Only present if the subscription currently has subscription_state
   /// SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED.
   CanceledStateContext? canceledStateContext;
+
+  /// Entity tag representing the current state of the subscription.
+  ///
+  /// The developer will provide this etag for subscription actions. This etag
+  /// is always present for auto-renewing and prepaid subscriptions.
+  core.String? etag;
 
   /// User account identifier in the third-party service.
   ExternalAccountIdentifiers? externalAccountIdentifiers;
@@ -18612,6 +19429,14 @@ class SubscriptionPurchaseV2 {
   /// * Convert from prepaid to auto renewing subscription. * Convert from an
   /// auto renewing subscription to prepaid. * Topup a prepaid subscription.
   core.String? linkedPurchaseToken;
+
+  /// Additional context for out of app purchases.
+  ///
+  /// This information is only present for re-subscription purchases
+  /// (subscription purchases made after the previous subscription of the same
+  /// product has expired) made through the Google Play subscriptions center.
+  /// This field will be removed after you acknowledge the subscription.
+  OutOfAppPurchaseContext? outOfAppPurchaseContext;
 
   /// Additional context around paused subscriptions.
   ///
@@ -18667,11 +19492,13 @@ class SubscriptionPurchaseV2 {
   SubscriptionPurchaseV2({
     this.acknowledgementState,
     this.canceledStateContext,
+    this.etag,
     this.externalAccountIdentifiers,
     this.kind,
     this.latestOrderId,
     this.lineItems,
     this.linkedPurchaseToken,
+    this.outOfAppPurchaseContext,
     this.pausedStateContext,
     this.regionCode,
     this.startTime,
@@ -18690,6 +19517,7 @@ class SubscriptionPurchaseV2 {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        etag: json_['etag'] as core.String?,
         externalAccountIdentifiers:
             json_.containsKey('externalAccountIdentifiers')
                 ? ExternalAccountIdentifiers.fromJson(
@@ -18708,6 +19536,13 @@ class SubscriptionPurchaseV2 {
                 )
                 .toList(),
         linkedPurchaseToken: json_['linkedPurchaseToken'] as core.String?,
+        outOfAppPurchaseContext:
+            json_.containsKey('outOfAppPurchaseContext')
+                ? OutOfAppPurchaseContext.fromJson(
+                  json_['outOfAppPurchaseContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         pausedStateContext:
             json_.containsKey('pausedStateContext')
                 ? PausedStateContext.fromJson(
@@ -18738,6 +19573,7 @@ class SubscriptionPurchaseV2 {
       'acknowledgementState': acknowledgementState!,
     if (canceledStateContext != null)
       'canceledStateContext': canceledStateContext!,
+    if (etag != null) 'etag': etag!,
     if (externalAccountIdentifiers != null)
       'externalAccountIdentifiers': externalAccountIdentifiers!,
     if (kind != null) 'kind': kind!,
@@ -18745,6 +19581,8 @@ class SubscriptionPurchaseV2 {
     if (lineItems != null) 'lineItems': lineItems!,
     if (linkedPurchaseToken != null)
       'linkedPurchaseToken': linkedPurchaseToken!,
+    if (outOfAppPurchaseContext != null)
+      'outOfAppPurchaseContext': outOfAppPurchaseContext!,
     if (pausedStateContext != null) 'pausedStateContext': pausedStateContext!,
     if (regionCode != null) 'regionCode': regionCode!,
     if (startTime != null) 'startTime': startTime!,
@@ -18756,7 +19594,37 @@ class SubscriptionPurchaseV2 {
 }
 
 /// Request for the purchases.subscriptions.acknowledge API.
-typedef SubscriptionPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
+class SubscriptionPurchasesAcknowledgeRequest {
+  /// Payload to attach to the purchase.
+  core.String? developerPayload;
+
+  /// User account identifier in your app.
+  ///
+  /// Optional.
+  ExternalAccountIds? externalAccountIds;
+
+  SubscriptionPurchasesAcknowledgeRequest({
+    this.developerPayload,
+    this.externalAccountIds,
+  });
+
+  SubscriptionPurchasesAcknowledgeRequest.fromJson(core.Map json_)
+    : this(
+        developerPayload: json_['developerPayload'] as core.String?,
+        externalAccountIds:
+            json_.containsKey('externalAccountIds')
+                ? ExternalAccountIds.fromJson(
+                  json_['externalAccountIds']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (developerPayload != null) 'developerPayload': developerPayload!,
+    if (externalAccountIds != null) 'externalAccountIds': externalAccountIds!,
+  };
+}
 
 /// Request for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferRequest {
@@ -18816,6 +19684,19 @@ class SubscriptionTaxAndComplianceSettings {
   /// tokenized digital asset.
   core.bool? isTokenizedDigitalAsset;
 
+  /// Product tax category code to assign to the subscription.
+  ///
+  /// Product tax category determines the transaction tax rates applied to the
+  /// subscription. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159)
+  /// for more information.
+  core.String? productTaxCategoryCode;
+
+  /// Regional age rating information.
+  ///
+  /// Currently this field is only supported for region code `US`.
+  core.List<RegionalProductAgeRatingInfo>? regionalProductAgeRatingInfos;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -18824,6 +19705,8 @@ class SubscriptionTaxAndComplianceSettings {
   SubscriptionTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
     this.isTokenizedDigitalAsset,
+    this.productTaxCategoryCode,
+    this.regionalProductAgeRatingInfos,
     this.taxRateInfoByRegionCode,
   });
 
@@ -18831,6 +19714,15 @@ class SubscriptionTaxAndComplianceSettings {
     : this(
         eeaWithdrawalRightType: json_['eeaWithdrawalRightType'] as core.String?,
         isTokenizedDigitalAsset: json_['isTokenizedDigitalAsset'] as core.bool?,
+        productTaxCategoryCode: json_['productTaxCategoryCode'] as core.String?,
+        regionalProductAgeRatingInfos:
+            (json_['regionalProductAgeRatingInfos'] as core.List?)
+                ?.map(
+                  (value) => RegionalProductAgeRatingInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         taxRateInfoByRegionCode: (json_['taxRateInfoByRegionCode']
                 as core.Map<core.String, core.dynamic>?)
             ?.map(
@@ -18848,6 +19740,10 @@ class SubscriptionTaxAndComplianceSettings {
       'eeaWithdrawalRightType': eeaWithdrawalRightType!,
     if (isTokenizedDigitalAsset != null)
       'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
+    if (productTaxCategoryCode != null)
+      'productTaxCategoryCode': productTaxCategoryCode!,
+    if (regionalProductAgeRatingInfos != null)
+      'regionalProductAgeRatingInfos': regionalProductAgeRatingInfos!,
     if (taxRateInfoByRegionCode != null)
       'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
   };
@@ -19567,10 +20463,10 @@ class TrackRelease {
   };
 }
 
-/// Representation of a single country where the contents of a track are
+/// Representation of a single country where the contents of a track can be made
 /// available.
 class TrackTargetedCountry {
-  /// The country to target, as a two-letter CLDR code.
+  /// The country that can be targeted, as a two-letter CLDR code.
   core.String? countryCode;
 
   TrackTargetedCountry({this.countryCode});

@@ -916,6 +916,7 @@ api.BuiltImage buildBuiltImage() {
   final o = api.BuiltImage();
   buildCounterBuiltImage++;
   if (buildCounterBuiltImage < 3) {
+    o.artifactRegistryPackage = 'foo';
     o.digest = 'foo';
     o.name = 'foo';
     o.pushTiming = buildTimeSpan();
@@ -927,6 +928,7 @@ api.BuiltImage buildBuiltImage() {
 void checkBuiltImage(api.BuiltImage o) {
   buildCounterBuiltImage++;
   if (buildCounterBuiltImage < 3) {
+    unittest.expect(o.artifactRegistryPackage!, unittest.equals('foo'));
     unittest.expect(o.digest!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkTimeSpan(o.pushTiming!);
@@ -2059,6 +2061,7 @@ api.MavenArtifact buildMavenArtifact() {
   buildCounterMavenArtifact++;
   if (buildCounterMavenArtifact < 3) {
     o.artifactId = 'foo';
+    o.deployFolder = 'foo';
     o.groupId = 'foo';
     o.path = 'foo';
     o.repository = 'foo';
@@ -2072,6 +2075,7 @@ void checkMavenArtifact(api.MavenArtifact o) {
   buildCounterMavenArtifact++;
   if (buildCounterMavenArtifact < 3) {
     unittest.expect(o.artifactId!, unittest.equals('foo'));
+    unittest.expect(o.deployFolder!, unittest.equals('foo'));
     unittest.expect(o.groupId!, unittest.equals('foo'));
     unittest.expect(o.path!, unittest.equals('foo'));
     unittest.expect(o.repository!, unittest.equals('foo'));
@@ -2965,6 +2969,7 @@ api.UploadedGoModule buildUploadedGoModule() {
   final o = api.UploadedGoModule();
   buildCounterUploadedGoModule++;
   if (buildCounterUploadedGoModule < 3) {
+    o.artifactRegistryPackage = 'foo';
     o.fileHashes = buildFileHashes();
     o.pushTiming = buildTimeSpan();
     o.uri = 'foo';
@@ -2976,6 +2981,7 @@ api.UploadedGoModule buildUploadedGoModule() {
 void checkUploadedGoModule(api.UploadedGoModule o) {
   buildCounterUploadedGoModule++;
   if (buildCounterUploadedGoModule < 3) {
+    unittest.expect(o.artifactRegistryPackage!, unittest.equals('foo'));
     checkFileHashes(o.fileHashes!);
     checkTimeSpan(o.pushTiming!);
     unittest.expect(o.uri!, unittest.equals('foo'));
@@ -2988,6 +2994,7 @@ api.UploadedMavenArtifact buildUploadedMavenArtifact() {
   final o = api.UploadedMavenArtifact();
   buildCounterUploadedMavenArtifact++;
   if (buildCounterUploadedMavenArtifact < 3) {
+    o.artifactRegistryPackage = 'foo';
     o.fileHashes = buildFileHashes();
     o.pushTiming = buildTimeSpan();
     o.uri = 'foo';
@@ -2999,6 +3006,7 @@ api.UploadedMavenArtifact buildUploadedMavenArtifact() {
 void checkUploadedMavenArtifact(api.UploadedMavenArtifact o) {
   buildCounterUploadedMavenArtifact++;
   if (buildCounterUploadedMavenArtifact < 3) {
+    unittest.expect(o.artifactRegistryPackage!, unittest.equals('foo'));
     checkFileHashes(o.fileHashes!);
     checkTimeSpan(o.pushTiming!);
     unittest.expect(o.uri!, unittest.equals('foo'));
@@ -3011,6 +3019,7 @@ api.UploadedNpmPackage buildUploadedNpmPackage() {
   final o = api.UploadedNpmPackage();
   buildCounterUploadedNpmPackage++;
   if (buildCounterUploadedNpmPackage < 3) {
+    o.artifactRegistryPackage = 'foo';
     o.fileHashes = buildFileHashes();
     o.pushTiming = buildTimeSpan();
     o.uri = 'foo';
@@ -3022,6 +3031,7 @@ api.UploadedNpmPackage buildUploadedNpmPackage() {
 void checkUploadedNpmPackage(api.UploadedNpmPackage o) {
   buildCounterUploadedNpmPackage++;
   if (buildCounterUploadedNpmPackage < 3) {
+    unittest.expect(o.artifactRegistryPackage!, unittest.equals('foo'));
     checkFileHashes(o.fileHashes!);
     checkTimeSpan(o.pushTiming!);
     unittest.expect(o.uri!, unittest.equals('foo'));
@@ -3034,6 +3044,7 @@ api.UploadedPythonPackage buildUploadedPythonPackage() {
   final o = api.UploadedPythonPackage();
   buildCounterUploadedPythonPackage++;
   if (buildCounterUploadedPythonPackage < 3) {
+    o.artifactRegistryPackage = 'foo';
     o.fileHashes = buildFileHashes();
     o.pushTiming = buildTimeSpan();
     o.uri = 'foo';
@@ -3045,6 +3056,7 @@ api.UploadedPythonPackage buildUploadedPythonPackage() {
 void checkUploadedPythonPackage(api.UploadedPythonPackage o) {
   buildCounterUploadedPythonPackage++;
   if (buildCounterUploadedPythonPackage < 3) {
+    unittest.expect(o.artifactRegistryPackage!, unittest.equals('foo'));
     checkFileHashes(o.fileHashes!);
     checkTimeSpan(o.pushTiming!);
     unittest.expect(o.uri!, unittest.equals('foo'));

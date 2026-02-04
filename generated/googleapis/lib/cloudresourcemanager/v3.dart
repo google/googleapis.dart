@@ -1104,6 +1104,8 @@ class LocationsTagBindingCollectionsResource {
 
   /// Updates tag bindings directly attached to a GCP resource.
   ///
+  /// Update_mask can be kept empty or "*".
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1117,6 +1119,8 @@ class LocationsTagBindingCollectionsResource {
   /// Value must have pattern
   /// `^locations/\[^/\]+/tagBindingCollections/\[^/\]+$`.
   ///
+  /// [updateMask] - Optional. An update mask to selectively update fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1127,13 +1131,15 @@ class LocationsTagBindingCollectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> update(
+  async.Future<Operation> patch(
     TagBindingCollection request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1141,7 +1147,7 @@ class LocationsTagBindingCollectionsResource {
 
     final response_ = await _requester.request(
       url_,
-      'PUT',
+      'PATCH',
       body: body_,
       queryParams: queryParams_,
     );
@@ -3937,9 +3943,6 @@ class ListTagKeysResponse {
 class ListTagValuesResponse {
   /// A pagination token returned from a previous call to `ListTagValues` that
   /// indicates from where listing should continue.
-  ///
-  /// This is currently not used, but the server may at any point start
-  /// supplying a valid token.
   core.String? nextPageToken;
 
   /// A possibly paginated list of TagValues that are direct descendants of the
@@ -4793,6 +4796,14 @@ class TagHold {
 
 /// A TagKey, used to group a set of TagValues.
 class TagKey {
+  /// Regular expression constraint for freeform tag values.
+  ///
+  /// If present, it implicitly allows freeform values (constrained by the
+  /// regex).
+  ///
+  /// Optional.
+  core.String? allowedValuesRegex;
+
   /// Creation time.
   ///
   /// Output only.
@@ -4885,6 +4896,7 @@ class TagKey {
   core.String? updateTime;
 
   TagKey({
+    this.allowedValuesRegex,
     this.createTime,
     this.description,
     this.etag,
@@ -4899,6 +4911,7 @@ class TagKey {
 
   TagKey.fromJson(core.Map json_)
     : this(
+        allowedValuesRegex: json_['allowedValuesRegex'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
@@ -4914,6 +4927,7 @@ class TagKey {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (allowedValuesRegex != null) 'allowedValuesRegex': allowedValuesRegex!,
     if (createTime != null) 'createTime': createTime!,
     if (description != null) 'description': description!,
     if (etag != null) 'etag': etag!,

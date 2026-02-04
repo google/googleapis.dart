@@ -5782,7 +5782,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 }
 
 /// String/text values.
-typedef GoogleCloudContentwarehouseV1TextArray = $Shared05;
+typedef GoogleCloudContentwarehouseV1TextArray = $Shared09;
 
 /// Configurations for a text property.
 typedef GoogleCloudContentwarehouseV1TextTypeOptions = $Empty;

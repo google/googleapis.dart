@@ -96,7 +96,35 @@ class AccountsProductsLocalInventoriesResource {
   ///
   /// [name] - Required. The name of the local inventory for the given product
   /// to delete. Format:
-  /// `accounts/{account}/products/{product}/localInventories/{store_code}`
+  /// `accounts/{account}/products/{product}/localInventories/{store_code}` The
+  /// `{product}` segment is a unique identifier for the product. This
+  /// identifier must be unique within a merchant account and generally follows
+  /// the structure: `content_language~feed_label~offer_id`. Example:
+  /// `en~US~sku123` For legacy local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123` for `store_code` "store123", the `{product}` segment
+  /// must be the base64url encoding of this string, which is
+  /// `ZW5-VVMtc2t1LzEyMw`. The full resource name for the local inventory would
+  /// be `accounts/123/products/ZW5-VVMtc2t1LzEyMw/localInventories/store123`.
+  /// 2. **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format for the product segment is
+  /// `channel~content_language~feed_label~offer_id`. For example, the full
+  /// resource name for a local inventory at `store_code` "store123" would be:
+  /// `accounts/123/products/online~en~US~sku123/localInventories/store123`.
   /// Value must have pattern
   /// `^accounts/\[^/\]+/products/\[^/\]+/localInventories/\[^/\]+$`.
   ///
@@ -136,7 +164,32 @@ class AccountsProductsLocalInventoriesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The account and product where this inventory will be
-  /// inserted. Format: `accounts/{account}/products/{product}`
+  /// inserted. Format: `accounts/{account}/products/{product}` The `{product}`
+  /// segment is a unique identifier for the product. This identifier must be
+  /// unique within a merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
+  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/products/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -186,7 +239,32 @@ class AccountsProductsLocalInventoriesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The `name` of the parent product to list local
-  /// inventories for. Format: `accounts/{account}/products/{product}`
+  /// inventories for. Format: `accounts/{account}/products/{product}` The
+  /// `{product}` segment is a unique identifier for the product. This
+  /// identifier must be unique within a merchant account and generally follows
+  /// the structure: `content_language~feed_label~offer_id`. Example:
+  /// `en~US~sku123` For legacy local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
+  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/products/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of `LocalInventory` resources for the
@@ -258,7 +336,35 @@ class AccountsProductsRegionalInventoriesResource {
   ///
   /// [name] - Required. The name of the `RegionalInventory` resource to delete.
   /// Format:
-  /// `accounts/{account}/products/{product}/regionalInventories/{region}`
+  /// `accounts/{account}/products/{product}/regionalInventories/{region}` The
+  /// `{product}` segment is a unique identifier for the product. This
+  /// identifier must be unique within a merchant account and generally follows
+  /// the structure: `content_language~feed_label~offer_id`. Example:
+  /// `en~US~sku123` For legacy local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123` for `region` "region123", the `{product}` segment must
+  /// be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`.
+  /// The full resource name for the regional inventory would be
+  /// `accounts/123/products/ZW5-VVMtc2t1LzEyMw/regionalInventories/region123`.
+  /// 2. **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format for the product segment is
+  /// `channel~content_language~feed_label~offer_id`. For example, the full
+  /// resource name for a regional inventory in `region` "region123" would be:
+  /// `accounts/123/products/online~en~US~sku123/regionalInventories/region123`.
   /// Value must have pattern
   /// `^accounts/\[^/\]+/products/\[^/\]+/regionalInventories/\[^/\]+$`.
   ///
@@ -298,7 +404,32 @@ class AccountsProductsRegionalInventoriesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The account and product where this inventory will be
-  /// inserted. Format: `accounts/{account}/products/{product}`
+  /// inserted. Format: `accounts/{account}/products/{product}` The `{product}`
+  /// segment is a unique identifier for the product. This identifier must be
+  /// unique within a merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
+  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/products/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -349,7 +480,32 @@ class AccountsProductsRegionalInventoriesResource {
   ///
   /// [parent] - Required. The `name` of the parent product to list
   /// `RegionalInventory` resources for. Format:
-  /// `accounts/{account}/products/{product}`
+  /// `accounts/{account}/products/{product}` The `{product}` segment is a
+  /// unique identifier for the product. This identifier must be unique within a
+  /// merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
+  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/products/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of `RegionalInventory` resources for the
@@ -419,6 +575,100 @@ typedef Empty = $Empty;
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
 typedef Interval = $Interval;
+
+/// A message that represents loyalty program.
+class InventoryLoyaltyProgram {
+  /// The cashback that can be used for future purchases.
+  Price? cashbackForFutureUse;
+
+  /// The amount of loyalty points earned on a purchase.
+  core.String? loyaltyPoints;
+
+  /// A date range during which the item is eligible for member price.
+  ///
+  /// If not specified, the member price is always applicable. The date range is
+  /// represented by a pair of ISO 8601 dates separated by a space, comma, or
+  /// slash.
+  Interval? memberPriceEffectiveInterval;
+
+  /// The price for members of the given tier, that is, the instant discount
+  /// price.
+  ///
+  /// Must be smaller or equal to the regular price.
+  Price? price;
+
+  /// The label of the loyalty program.
+  ///
+  /// This is an internal label that uniquely identifies the relationship
+  /// between a business entity and a loyalty program entity. The label must be
+  /// provided if there are multiple loyalty programs available for the
+  /// merchant, so that the system can associate the assets below (for example,
+  /// price and points) with the correct business. The corresponding program
+  /// must be linked to the Merchant Center account.
+  core.String? programLabel;
+
+  /// The label of the shipping benefit.
+  ///
+  /// If the field has value, this offer has loyalty shipping benefit. If the
+  /// field value isn't provided, the item is not eligible for loyalty shipping
+  /// for the given loyalty tier.
+  core.String? shippingLabel;
+
+  /// The label of the tier within the loyalty program.
+  ///
+  /// Must match one of the labels within the program.
+  core.String? tierLabel;
+
+  InventoryLoyaltyProgram({
+    this.cashbackForFutureUse,
+    this.loyaltyPoints,
+    this.memberPriceEffectiveInterval,
+    this.price,
+    this.programLabel,
+    this.shippingLabel,
+    this.tierLabel,
+  });
+
+  InventoryLoyaltyProgram.fromJson(core.Map json_)
+    : this(
+        cashbackForFutureUse:
+            json_.containsKey('cashbackForFutureUse')
+                ? Price.fromJson(
+                  json_['cashbackForFutureUse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        loyaltyPoints: json_['loyaltyPoints'] as core.String?,
+        memberPriceEffectiveInterval:
+            json_.containsKey('memberPriceEffectiveInterval')
+                ? Interval.fromJson(
+                  json_['memberPriceEffectiveInterval']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        price:
+            json_.containsKey('price')
+                ? Price.fromJson(
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        programLabel: json_['programLabel'] as core.String?,
+        shippingLabel: json_['shippingLabel'] as core.String?,
+        tierLabel: json_['tierLabel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cashbackForFutureUse != null)
+      'cashbackForFutureUse': cashbackForFutureUse!,
+    if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
+    if (memberPriceEffectiveInterval != null)
+      'memberPriceEffectiveInterval': memberPriceEffectiveInterval!,
+    if (price != null) 'price': price!,
+    if (programLabel != null) 'programLabel': programLabel!,
+    if (shippingLabel != null) 'shippingLabel': shippingLabel!,
+    if (tierLabel != null) 'tierLabel': tierLabel!,
+  };
+}
 
 /// Response message for the `ListLocalInventories` method.
 class ListLocalInventoriesResponse {
@@ -510,7 +760,35 @@ class LocalInventory {
   /// The name of the `LocalInventory` resource.
   ///
   /// Format:
-  /// `accounts/{account}/products/{product}/localInventories/{store_code}`
+  /// `accounts/{account}/products/{product}/localInventories/{store_code}` The
+  /// `{product}` segment is a unique identifier for the product. This
+  /// identifier must be unique within a merchant account and generally follows
+  /// the structure: `content_language~feed_label~offer_id`. Example:
+  /// `en~US~sku123` For legacy local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123` for `store_code` "store123", the `{product}` segment
+  /// must be the base64url encoding of this string, which is
+  /// `ZW5-VVMtc2t1LzEyMw`. The full resource name for the local inventory would
+  /// be `accounts/123/products/ZW5-VVMtc2t1LzEyMw/localInventories/store123`.
+  /// 2. **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format for the product segment is
+  /// `channel~content_language~feed_label~offer_id`. For example, the full
+  /// resource name for a local inventory at `store_code` "store123" would be:
+  /// `accounts/123/products/online~en~US~sku123/localInventories/store123`.
   ///
   /// Output only.
   core.String? name;
@@ -576,6 +854,22 @@ class LocalInventoryAttributes {
   /// Optional.
   core.String? instoreProductLocation;
 
+  /// An optional list of loyalty programs containing applicable loyalty member
+  /// prices for this product at this store.
+  ///
+  /// This field is used to show store-specific member prices on Local Inventory
+  /// Ads (LIA). To use this, the loyalty program must be configured in Google
+  /// Merchant Center. The benefits provided must match the merchant's website
+  /// and be clear to members. This is only applicable for merchants in
+  /// supported countries. See
+  /// [Loyalty program](https://support.google.com/merchants/answer/12922446)
+  /// for details on supported countries and loyalty program configuration. For
+  /// local inventory specific details, see the
+  /// [Local inventory data specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.List<InventoryLoyaltyProgram>? loyaltyPrograms;
+
   /// Supported
   /// [pickup method](https://support.google.com/merchants/answer/3061342) for
   /// this product.
@@ -640,6 +934,7 @@ class LocalInventoryAttributes {
   LocalInventoryAttributes({
     this.availability,
     this.instoreProductLocation,
+    this.loyaltyPrograms,
     this.pickupMethod,
     this.pickupSla,
     this.price,
@@ -652,6 +947,14 @@ class LocalInventoryAttributes {
     : this(
         availability: json_['availability'] as core.String?,
         instoreProductLocation: json_['instoreProductLocation'] as core.String?,
+        loyaltyPrograms:
+            (json_['loyaltyPrograms'] as core.List?)
+                ?.map(
+                  (value) => InventoryLoyaltyProgram.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         pickupMethod: json_['pickupMethod'] as core.String?,
         pickupSla: json_['pickupSla'] as core.String?,
         price:
@@ -680,6 +983,7 @@ class LocalInventoryAttributes {
     if (availability != null) 'availability': availability!,
     if (instoreProductLocation != null)
       'instoreProductLocation': instoreProductLocation!,
+    if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
     if (pickupMethod != null) 'pickupMethod': pickupMethod!,
     if (pickupSla != null) 'pickupSla': pickupSla!,
     if (price != null) 'price': price!,
@@ -710,7 +1014,35 @@ class RegionalInventory {
   /// The name of the `RegionalInventory` resource.
   ///
   /// Format:
-  /// `{regional_inventory.name=accounts/{account}/products/{product}/regionalInventories/{region}`
+  /// `accounts/{account}/products/{product}/regionalInventories/{region}` The
+  /// `{product}` segment is a unique identifier for the product. This
+  /// identifier must be unique within a merchant account and generally follows
+  /// the structure: `content_language~feed_label~offer_id`. Example:
+  /// `en~US~sku123` For legacy local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123` for `region` "region123", the `{product}` segment must
+  /// be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`.
+  /// The full resource name for the regional inventory would be
+  /// `accounts/123/products/ZW5-VVMtc2t1LzEyMw/regionalInventories/region123`.
+  /// 2. **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format for the product segment is
+  /// `channel~content_language~feed_label~offer_id`. For example, the full
+  /// resource name for a regional inventory in `region` "region123" would be:
+  /// `accounts/123/products/online~en~US~sku123/regionalInventories/region123`.
   ///
   /// Output only.
   core.String? name;
@@ -772,6 +1104,26 @@ class RegionalInventoryAttributes {
   /// - "OUT_OF_STOCK" : Indicates that the product is out of stock.
   core.String? availability;
 
+  /// An optional list of loyalty programs containing applicable loyalty member
+  /// prices for this product in this region.
+  ///
+  /// This field is used to show region-specific member prices on Product
+  /// Listing Ads (PLA). To use this, the loyalty program must be configured in
+  /// Google Merchant Center, and the merchant must be using the Regional
+  /// Availability and Pricing (RAAP) feature. The benefits provided must match
+  /// the merchant's website and be clear to members. This is only applicable
+  /// for merchants in supported countries. See
+  /// [Loyalty program](https://support.google.com/merchants/answer/12922446)
+  /// for details on supported countries and loyalty program configuration. Also
+  /// see
+  /// [Regional availability and pricing](https://support.google.com/merchants/answer/14644124)
+  /// and
+  /// [How to set up regional member pricing](https://support.google.com/merchants/answer/16388178)
+  /// for more information.
+  ///
+  /// Optional.
+  core.List<InventoryLoyaltyProgram>? loyaltyPrograms;
+
   /// Price of the product in this region.
   ///
   /// Optional.
@@ -791,6 +1143,7 @@ class RegionalInventoryAttributes {
 
   RegionalInventoryAttributes({
     this.availability,
+    this.loyaltyPrograms,
     this.price,
     this.salePrice,
     this.salePriceEffectiveDate,
@@ -799,6 +1152,14 @@ class RegionalInventoryAttributes {
   RegionalInventoryAttributes.fromJson(core.Map json_)
     : this(
         availability: json_['availability'] as core.String?,
+        loyaltyPrograms:
+            (json_['loyaltyPrograms'] as core.List?)
+                ?.map(
+                  (value) => InventoryLoyaltyProgram.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         price:
             json_.containsKey('price')
                 ? Price.fromJson(
@@ -822,6 +1183,7 @@ class RegionalInventoryAttributes {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (availability != null) 'availability': availability!,
+    if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
     if (price != null) 'price': price!,
     if (salePrice != null) 'salePrice': salePrice!,
     if (salePriceEffectiveDate != null)

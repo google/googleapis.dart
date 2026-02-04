@@ -2914,7 +2914,7 @@ class BuildProvenance {
   };
 }
 
-typedef BuilderConfig = $Shared01;
+typedef BuilderConfig = $Shared03;
 typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
@@ -3622,6 +3622,9 @@ class DiscoveryOccurrence {
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
+  /// The last time vulnerability scan results changed.
+  core.String? lastVulnerabilityUpdateTime;
+
   /// The status of an SBOM generation.
   SBOMStatus? sbomStatus;
 
@@ -3635,6 +3638,7 @@ class DiscoveryOccurrence {
     this.cpe,
     this.files,
     this.lastScanTime,
+    this.lastVulnerabilityUpdateTime,
     this.sbomStatus,
   });
 
@@ -3675,6 +3679,8 @@ class DiscoveryOccurrence {
                 )
                 .toList(),
         lastScanTime: json_['lastScanTime'] as core.String?,
+        lastVulnerabilityUpdateTime:
+            json_['lastVulnerabilityUpdateTime'] as core.String?,
         sbomStatus:
             json_.containsKey('sbomStatus')
                 ? SBOMStatus.fromJson(
@@ -3694,6 +3700,8 @@ class DiscoveryOccurrence {
     if (cpe != null) 'cpe': cpe!,
     if (files != null) 'files': files!,
     if (lastScanTime != null) 'lastScanTime': lastScanTime!,
+    if (lastVulnerabilityUpdateTime != null)
+      'lastVulnerabilityUpdateTime': lastVulnerabilityUpdateTime!,
     if (sbomStatus != null) 'sbomStatus': sbomStatus!,
   };
 }
@@ -4064,7 +4072,7 @@ class GrafeasV1FileLocation {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared01;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4778,6 +4786,9 @@ typedef NonCompliantFile = $NonCompliantFile;
 
 /// A type of analysis that can be done for a resource.
 class Note {
+  /// The timestamp when the advisory was first published by the source feed.
+  core.String? advisoryPublishTime;
+
   /// A note describing an attestation role.
   AttestationNote? attestation;
 
@@ -4880,6 +4891,7 @@ class Note {
   VulnerabilityAssessmentNote? vulnerabilityAssessment;
 
   Note({
+    this.advisoryPublishTime,
     this.attestation,
     this.build,
     this.compliance,
@@ -4906,6 +4918,7 @@ class Note {
 
   Note.fromJson(core.Map json_)
     : this(
+        advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
         attestation:
             json_.containsKey('attestation')
                 ? AttestationNote.fromJson(
@@ -5008,6 +5021,8 @@ class Note {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (advisoryPublishTime != null)
+      'advisoryPublishTime': advisoryPublishTime!,
     if (attestation != null) 'attestation': attestation!,
     if (build != null) 'build': build!,
     if (compliance != null) 'compliance': compliance!,
@@ -6136,8 +6151,39 @@ class SecretOccurrence {
   /// Possible string values are:
   /// - "SECRET_KIND_UNSPECIFIED" : Unspecified
   /// - "SECRET_KIND_UNKNOWN" : The secret kind is unknown.
-  /// - "SECRET_KIND_GCP_SERVICE_ACCOUNT_KEY" : A GCP service account key per:
+  /// - "SECRET_KIND_GCP_SERVICE_ACCOUNT_KEY" : A Google Cloud service account
+  /// key per:
   /// https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+  /// - "SECRET_KIND_GCP_API_KEY" : A Google Cloud API key per:
+  /// https://cloud.google.com/docs/authentication/api-keys
+  /// - "SECRET_KIND_GCP_OAUTH2_CLIENT_CREDENTIALS" : A Google Cloud OAuth2
+  /// client credentials per:
+  /// https://developers.google.com/identity/protocols/oauth2
+  /// - "SECRET_KIND_GCP_OAUTH2_ACCESS_TOKEN" : A Google Cloud OAuth2 access
+  /// token per: https://cloud.google.com/docs/authentication/token-types#access
+  /// - "SECRET_KIND_ANTHROPIC_ADMIN_API_KEY" : An Anthropic Admin API key.
+  /// - "SECRET_KIND_ANTHROPIC_API_KEY" : An Anthropic API key.
+  /// - "SECRET_KIND_AZURE_ACCESS_TOKEN" : An Azure access token.
+  /// - "SECRET_KIND_AZURE_IDENTITY_TOKEN" : An Azure Identity Platform ID
+  /// token.
+  /// - "SECRET_KIND_DOCKER_HUB_PERSONAL_ACCESS_TOKEN" : A Docker Hub personal
+  /// access token.
+  /// - "SECRET_KIND_GITHUB_APP_REFRESH_TOKEN" : A GitHub App refresh token.
+  /// - "SECRET_KIND_GITHUB_APP_SERVER_TO_SERVER_TOKEN" : A GitHub App
+  /// server-to-server token.
+  /// - "SECRET_KIND_GITHUB_APP_USER_TO_SERVER_TOKEN" : A GitHub App
+  /// user-to-server token.
+  /// - "SECRET_KIND_GITHUB_CLASSIC_PERSONAL_ACCESS_TOKEN" : A GitHub personal
+  /// access token (classic).
+  /// - "SECRET_KIND_GITHUB_FINE_GRAINED_PERSONAL_ACCESS_TOKEN" : A GitHub
+  /// fine-grained personal access token.
+  /// - "SECRET_KIND_GITHUB_OAUTH_TOKEN" : A GitHub OAuth token.
+  /// - "SECRET_KIND_HUGGINGFACE_API_KEY" : A Hugging Face API key.
+  /// - "SECRET_KIND_OPENAI_API_KEY" : An OpenAI API key.
+  /// - "SECRET_KIND_PERPLEXITY_API_KEY" : A Perplexity API key.
+  /// - "SECRET_KIND_STRIPE_SECRET_KEY" : A Stripe secret key.
+  /// - "SECRET_KIND_STRIPE_RESTRICTED_KEY" : A Stripe restricted key.
+  /// - "SECRET_KIND_STRIPE_WEBHOOK_SECRET" : A Stripe webhook secret.
   core.String? kind;
 
   /// Locations where the secret is detected.
@@ -6229,7 +6275,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared01;
+typedef SlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.

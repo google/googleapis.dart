@@ -831,6 +831,7 @@ api.TransferConfig buildTransferConfig() {
     o.emailPreferences = buildEmailPreferences();
     o.encryptionConfiguration = buildEncryptionConfiguration();
     o.error = buildStatus();
+    o.managedTableType = 'foo';
     o.name = 'foo';
     o.nextRunTime = 'foo';
     o.notificationPubsubTopic = 'foo';
@@ -859,6 +860,7 @@ void checkTransferConfig(api.TransferConfig o) {
     checkEmailPreferences(o.emailPreferences!);
     checkEncryptionConfiguration(o.encryptionConfiguration!);
     checkStatus(o.error!);
+    unittest.expect(o.managedTableType!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nextRunTime!, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic!, unittest.equals('foo'));

@@ -62,6 +62,37 @@ void checkInterval(api.Interval o) {
   buildCounterInterval--;
 }
 
+core.int buildCounterInventoryLoyaltyProgram = 0;
+api.InventoryLoyaltyProgram buildInventoryLoyaltyProgram() {
+  final o = api.InventoryLoyaltyProgram();
+  buildCounterInventoryLoyaltyProgram++;
+  if (buildCounterInventoryLoyaltyProgram < 3) {
+    o.cashbackForFutureUse = buildPrice();
+    o.loyaltyPoints = 'foo';
+    o.memberPriceEffectiveInterval = buildInterval();
+    o.price = buildPrice();
+    o.programLabel = 'foo';
+    o.shippingLabel = 'foo';
+    o.tierLabel = 'foo';
+  }
+  buildCounterInventoryLoyaltyProgram--;
+  return o;
+}
+
+void checkInventoryLoyaltyProgram(api.InventoryLoyaltyProgram o) {
+  buildCounterInventoryLoyaltyProgram++;
+  if (buildCounterInventoryLoyaltyProgram < 3) {
+    checkPrice(o.cashbackForFutureUse!);
+    unittest.expect(o.loyaltyPoints!, unittest.equals('foo'));
+    checkInterval(o.memberPriceEffectiveInterval!);
+    checkPrice(o.price!);
+    unittest.expect(o.programLabel!, unittest.equals('foo'));
+    unittest.expect(o.shippingLabel!, unittest.equals('foo'));
+    unittest.expect(o.tierLabel!, unittest.equals('foo'));
+  }
+  buildCounterInventoryLoyaltyProgram--;
+}
+
 core.List<api.LocalInventory> buildUnnamed0() => [
   buildLocalInventory(),
   buildLocalInventory(),
@@ -153,6 +184,17 @@ void checkLocalInventory(api.LocalInventory o) {
   buildCounterLocalInventory--;
 }
 
+core.List<api.InventoryLoyaltyProgram> buildUnnamed2() => [
+  buildInventoryLoyaltyProgram(),
+  buildInventoryLoyaltyProgram(),
+];
+
+void checkUnnamed2(core.List<api.InventoryLoyaltyProgram> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInventoryLoyaltyProgram(o[0]);
+  checkInventoryLoyaltyProgram(o[1]);
+}
+
 core.int buildCounterLocalInventoryAttributes = 0;
 api.LocalInventoryAttributes buildLocalInventoryAttributes() {
   final o = api.LocalInventoryAttributes();
@@ -160,6 +202,7 @@ api.LocalInventoryAttributes buildLocalInventoryAttributes() {
   if (buildCounterLocalInventoryAttributes < 3) {
     o.availability = 'foo';
     o.instoreProductLocation = 'foo';
+    o.loyaltyPrograms = buildUnnamed2();
     o.pickupMethod = 'foo';
     o.pickupSla = 'foo';
     o.price = buildPrice();
@@ -176,6 +219,7 @@ void checkLocalInventoryAttributes(api.LocalInventoryAttributes o) {
   if (buildCounterLocalInventoryAttributes < 3) {
     unittest.expect(o.availability!, unittest.equals('foo'));
     unittest.expect(o.instoreProductLocation!, unittest.equals('foo'));
+    checkUnnamed2(o.loyaltyPrograms!);
     unittest.expect(o.pickupMethod!, unittest.equals('foo'));
     unittest.expect(o.pickupSla!, unittest.equals('foo'));
     checkPrice(o.price!);
@@ -232,12 +276,24 @@ void checkRegionalInventory(api.RegionalInventory o) {
   buildCounterRegionalInventory--;
 }
 
+core.List<api.InventoryLoyaltyProgram> buildUnnamed3() => [
+  buildInventoryLoyaltyProgram(),
+  buildInventoryLoyaltyProgram(),
+];
+
+void checkUnnamed3(core.List<api.InventoryLoyaltyProgram> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInventoryLoyaltyProgram(o[0]);
+  checkInventoryLoyaltyProgram(o[1]);
+}
+
 core.int buildCounterRegionalInventoryAttributes = 0;
 api.RegionalInventoryAttributes buildRegionalInventoryAttributes() {
   final o = api.RegionalInventoryAttributes();
   buildCounterRegionalInventoryAttributes++;
   if (buildCounterRegionalInventoryAttributes < 3) {
     o.availability = 'foo';
+    o.loyaltyPrograms = buildUnnamed3();
     o.price = buildPrice();
     o.salePrice = buildPrice();
     o.salePriceEffectiveDate = buildInterval();
@@ -250,6 +306,7 @@ void checkRegionalInventoryAttributes(api.RegionalInventoryAttributes o) {
   buildCounterRegionalInventoryAttributes++;
   if (buildCounterRegionalInventoryAttributes < 3) {
     unittest.expect(o.availability!, unittest.equals('foo'));
+    checkUnnamed3(o.loyaltyPrograms!);
     checkPrice(o.price!);
     checkPrice(o.salePrice!);
     checkInterval(o.salePriceEffectiveDate!);
@@ -277,6 +334,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkInterval(od);
+    });
+  });
+
+  unittest.group('obj-schema-InventoryLoyaltyProgram', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInventoryLoyaltyProgram();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InventoryLoyaltyProgram.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkInventoryLoyaltyProgram(od);
     });
   });
 

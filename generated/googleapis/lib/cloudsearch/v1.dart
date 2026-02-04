@@ -19,7 +19,7 @@
 /// Cloud Search.
 ///
 /// For more information, see
-/// <https://developers.google.com/cloud-search/docs/guides/>
+/// <https://developers.google.com/workspace/cloud-search/docs/guides/>
 ///
 /// Create an instance of [CloudSearchApi] to access these resources:
 ///
@@ -687,7 +687,7 @@ class IndexingDatasourcesItemsResource {
   /// version of the currently indexed item. The maximum length for this field
   /// is 1024 bytes. For information on how item version affects the deletion
   /// process, refer to
-  /// [Handle revisions after manual deletes](https://developers.google.com/cloud-search/docs/guides/operations).
+  /// [Handle revisions after manual deletes](https://developers.google.com/workspace/cloud-search/docs/guides/operations).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1149,7 +1149,7 @@ class MediaResource {
   ///
   /// The upload endpoint supports direct and resumable upload protocols and is
   /// intended for large items that can not be
-  /// [inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+  /// [inlined during index requests](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
   /// To index large content: 1. Call indexing.datasources.items.upload with the
   /// item name to begin an upload session and retrieve the UploadItemRef. 1.
   /// Call media.upload to upload the content, as a streaming request, using the
@@ -1157,7 +1157,7 @@ class MediaResource {
   /// indexing.datasources.items.index to index the item. Populate the
   /// \[ItemContent\](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
   /// with the UploadItemRef from step 1. For additional information, see
-  /// [Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+  /// [Create a content connector using the REST API](https://developers.google.com/workspace/cloud-search/docs/guides/content-connector#rest).
   /// **Note:** This API requires a service account to execute.
   ///
   /// [request] - The metadata request object.
@@ -1273,6 +1273,14 @@ class OperationsLroResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1288,12 +1296,15 @@ class OperationsLroResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1317,58 +1328,13 @@ class QueryResource {
 
   QueryResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns Debug information for Cloud Search Query API provides the search
-  /// method.
-  ///
-  /// **Note:** This API requires a standard end user account to execute. A
-  /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up \[Google Workspace domain-wide
-  /// delegation of
-  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DebugResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DebugResponse> debugSearch(
-    SearchRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1/query:debugSearch';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return DebugResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Provides functionality to remove logged activity for a user.
   ///
   /// Currently to be used only for Chat 1p clients **Note:** This API requires
   /// a standard end user account to execute. A service account can't perform
   /// Remove Activity requests directly; to use a service account to perform
   /// queries, set up \[Google Workspace domain-wide delegation of
-  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// authority\](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1415,7 +1381,7 @@ class QueryResource {
   /// A service account can't perform Query API requests directly; to use a
   /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
-  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// authority\](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1459,7 +1425,7 @@ class QueryResource {
   /// service account can't perform Query API requests directly; to use a
   /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
-  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// authority\](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1509,7 +1475,7 @@ class QuerySourcesResource {
   /// service account can't perform Query API requests directly; to use a
   /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
-  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// authority\](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
   ///
   /// Request parameters:
   ///
@@ -1876,7 +1842,7 @@ class SettingsDatasourcesResource {
   /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [updateMask] - Only applies to
-  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  /// \[`settings.datasources.patch`\](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
   /// Update mask to control which fields to update. Example field paths:
   /// `name`, `displayName`. * If `update_mask` is non-empty, then only the
   /// fields specified in the `update_mask` are updated. * If you specify a
@@ -2161,7 +2127,7 @@ class SettingsSearchapplicationsResource {
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [updateMask] - Only applies to
-  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
   /// Update mask to control which fields to update. Example field paths:
   /// `search_application.name`, `search_application.displayName`. * If
   /// `update_mask` is non-empty, then only the fields specified in the
@@ -2260,7 +2226,7 @@ class SettingsSearchapplicationsResource {
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [updateMask] - Only applies to
-  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
   /// Update mask to control which fields to update. Example field paths:
   /// `search_application.name`, `search_application.displayName`. * If
   /// `update_mask` is non-empty, then only the fields specified in the
@@ -3741,57 +3707,6 @@ class DebugOptions {
   };
 }
 
-/// Debug Search Response.
-class DebugResponse {
-  /// Serialized string of GenericSearchRequest.
-  core.String? gsrRequest;
-  core.List<core.int> get gsrRequestAsBytes =>
-      convert.base64.decode(gsrRequest!);
-
-  set gsrRequestAsBytes(core.List<core.int> bytes_) {
-    gsrRequest = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Serialized string of GenericSearchResponse.
-  core.String? gsrResponse;
-  core.List<core.int> get gsrResponseAsBytes =>
-      convert.base64.decode(gsrResponse!);
-
-  set gsrResponseAsBytes(core.List<core.int> bytes_) {
-    gsrResponse = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Search response.
-  SearchResponse? searchResponse;
-
-  DebugResponse({this.gsrRequest, this.gsrResponse, this.searchResponse});
-
-  DebugResponse.fromJson(core.Map json_)
-    : this(
-        gsrRequest: json_['gsrRequest'] as core.String?,
-        gsrResponse: json_['gsrResponse'] as core.String?,
-        searchResponse:
-            json_.containsKey('searchResponse')
-                ? SearchResponse.fromJson(
-                  json_['searchResponse']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gsrRequest != null) 'gsrRequest': gsrRequest!,
-    if (gsrResponse != null) 'gsrResponse': gsrResponse!,
-    if (searchResponse != null) 'searchResponse': searchResponse!,
-  };
-}
-
 class DeleteQueueItemsRequest {
   /// The name of connector making this call.
   ///
@@ -3895,7 +3810,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared07;
+typedef DoubleValues = $Shared11;
 
 /// A person's email address.
 class EmailAddress {
@@ -5070,7 +4985,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared08;
+typedef IntegerValues = $Shared12;
 
 /// Represents an interaction between a user and an item.
 class Interaction {
@@ -5176,7 +5091,7 @@ class Item {
   /// value that is less than or equal to the version of the currently indexed
   /// item. The maximum length for this field is 1024 bytes. For information on
   /// how item version affects the deletion process, refer to
-  /// [Handle revisions after manual deletes](https://developers.google.com/cloud-search/docs/guides/operations).
+  /// [Handle revisions after manual deletes](https://developers.google.com/workspace/cloud-search/docs/guides/operations).
   ///
   /// Required.
   core.String? version;
@@ -5259,7 +5174,7 @@ class Item {
 /// Access control list information for the item.
 ///
 /// For more information see
-/// [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+/// [Map ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
 class ItemAcl {
   /// Sets the type of access rules to apply when an item inherits its ACL from
   /// a parent.
@@ -5794,7 +5709,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -5807,11 +5734,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -6804,7 +6736,7 @@ class PropertyDefinition {
   /// Only supported for Text properties. IsReturnable must be true to set this
   /// option. In a given datasource maximum of 5 properties can be marked as
   /// is_wildcard_searchable. For more details, see
-  /// [Define object properties](https://developers.google.com/cloud-search/docs/guides/schema-guide#properties)
+  /// [Define object properties](https://developers.google.com/workspace/cloud-search/docs/guides/schema-guide#properties)
   core.bool? isWildcardSearchable;
 
   /// The name of the property.
@@ -7176,6 +7108,12 @@ class QueryInterpretation {
   /// filled when the reason is NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.
   core.String? interpretedQuery;
 
+  /// The actual number of results returned by the interpreted query.
+  core.int? interpretedQueryActualResultCount;
+
+  /// The estimated number of results returned by the interpreted query.
+  core.String? interpretedQueryEstimatedResultCount;
+
   /// The reason for interpretation of the query.
   ///
   /// This field will not be UNSPECIFIED if the interpretation type is not NONE.
@@ -7192,6 +7130,8 @@ class QueryInterpretation {
   QueryInterpretation({
     this.interpretationType,
     this.interpretedQuery,
+    this.interpretedQueryActualResultCount,
+    this.interpretedQueryEstimatedResultCount,
     this.reason,
   });
 
@@ -7199,12 +7139,21 @@ class QueryInterpretation {
     : this(
         interpretationType: json_['interpretationType'] as core.String?,
         interpretedQuery: json_['interpretedQuery'] as core.String?,
+        interpretedQueryActualResultCount:
+            json_['interpretedQueryActualResultCount'] as core.int?,
+        interpretedQueryEstimatedResultCount:
+            json_['interpretedQueryEstimatedResultCount'] as core.String?,
         reason: json_['reason'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (interpretationType != null) 'interpretationType': interpretationType!,
     if (interpretedQuery != null) 'interpretedQuery': interpretedQuery!,
+    if (interpretedQueryActualResultCount != null)
+      'interpretedQueryActualResultCount': interpretedQueryActualResultCount!,
+    if (interpretedQueryEstimatedResultCount != null)
+      'interpretedQueryEstimatedResultCount':
+          interpretedQueryEstimatedResultCount!,
     if (reason != null) 'reason': reason!,
   };
 }
@@ -8190,7 +8139,7 @@ class SearchQualityMetadata {
 
 /// The search API request.
 ///
-/// NEXT ID: 17
+/// NEXT ID: 24
 class SearchRequest {
   /// Context attributes for the request which will be used to adjust ranking of
   /// search results.
@@ -8309,7 +8258,7 @@ class SearchRequest {
 
 /// The search API response.
 ///
-/// NEXT ID: 17
+/// NEXT ID: 19
 class SearchResponse {
   /// Debugging information about the response.
   ResponseDebugInfo? debugInfo;
@@ -8444,6 +8393,8 @@ class SearchResponse {
 }
 
 /// Results containing indexed information for a document.
+///
+/// Next ID: 16
 class SearchResult {
   /// If source is clustered, provide list of clustered results.
   ///
@@ -9308,7 +9259,7 @@ class UpdateDataSourceRequest {
   DataSource? source;
 
   /// Only applies to
-  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  /// \[`settings.datasources.patch`\](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
   ///
   /// Update mask to control which fields to update. Example field paths:
   /// `name`, `displayName`. * If `update_mask` is non-empty, then only the

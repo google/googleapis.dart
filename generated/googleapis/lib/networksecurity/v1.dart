@@ -32,7 +32,9 @@
 ///     - [ProjectsLocationsAuthzPoliciesResource]
 ///     - [ProjectsLocationsBackendAuthenticationConfigsResource]
 ///     - [ProjectsLocationsClientTlsPoliciesResource]
+///     - [ProjectsLocationsDnsThreatDetectorsResource]
 ///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
+///     - [ProjectsLocationsFirewallEndpointsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
 ///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
 ///     - [ProjectsLocationsInterceptDeploymentGroupsResource]
@@ -991,6 +993,14 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1006,12 +1016,15 @@ class OrganizationsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1178,9 +1191,10 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
   /// `projects|organizations / * /locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of SecurityProfileGroups to return per call.
+  /// [pageSize] - Optional. Maximum number of SecurityProfileGroups to return
+  /// per call.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListSecurityProfileGroupsResponse` Indicates that this is a continuation
   /// of a prior `ListSecurityProfileGroups` call, and that the system should
   /// return the next page of data.
@@ -1417,9 +1431,10 @@ class OrganizationsLocationsSecurityProfilesResource {
   /// `projects|organizations / * /locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of SecurityProfiles to return per call.
+  /// [pageSize] - Optional. Maximum number of SecurityProfiles to return per
+  /// call.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListSecurityProfilesResponse` Indicates that this is a continuation of a
   /// prior `ListSecurityProfiles` call, and that the system should return the
   /// next page of data.
@@ -1532,9 +1547,13 @@ class ProjectsLocationsResource {
       ProjectsLocationsBackendAuthenticationConfigsResource(_requester);
   ProjectsLocationsClientTlsPoliciesResource get clientTlsPolicies =>
       ProjectsLocationsClientTlsPoliciesResource(_requester);
+  ProjectsLocationsDnsThreatDetectorsResource get dnsThreatDetectors =>
+      ProjectsLocationsDnsThreatDetectorsResource(_requester);
   ProjectsLocationsFirewallEndpointAssociationsResource
   get firewallEndpointAssociations =>
       ProjectsLocationsFirewallEndpointAssociationsResource(_requester);
+  ProjectsLocationsFirewallEndpointsResource get firewallEndpoints =>
+      ProjectsLocationsFirewallEndpointsResource(_requester);
   ProjectsLocationsGatewaySecurityPoliciesResource
   get gatewaySecurityPolicies =>
       ProjectsLocationsGatewaySecurityPoliciesResource(_requester);
@@ -1605,14 +1624,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3766,6 +3791,234 @@ class ProjectsLocationsClientTlsPoliciesResource {
   }
 }
 
+class ProjectsLocationsDnsThreatDetectorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDnsThreatDetectorsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new DnsThreatDetector in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The value for the parent of the DnsThreatDetector
+  /// resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dnsThreatDetectorId] - Optional. The ID of the requesting
+  /// DnsThreatDetector object. If this field is not supplied, the service
+  /// generates an identifier.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsThreatDetector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsThreatDetector> create(
+    DnsThreatDetector request,
+    core.String parent, {
+    core.String? dnsThreatDetectorId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dnsThreatDetectorId != null)
+        'dnsThreatDetectorId': [dnsThreatDetectorId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsThreatDetectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DnsThreatDetector.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single DnsThreatDetector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DnsThreatDetector resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsThreatDetectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a single DnsThreatDetector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DnsThreatDetector resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsThreatDetectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsThreatDetector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsThreatDetector> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DnsThreatDetector.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DnsThreatDetectors in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for `ListDnsThreatDetectorsRequest`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server may return
+  /// fewer items than requested. If unspecified, the server picks an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDnsThreatDetectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDnsThreatDetectorsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsThreatDetectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDnsThreatDetectorsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a single DnsThreatDetector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. Name of the DnsThreatDetector resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsThreatDetectors/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The field mask is used to specify the fields to
+  /// be overwritten in the DnsThreatDetector resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the mask is
+  /// not provided then all fields present in the request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsThreatDetector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsThreatDetector> patch(
+    DnsThreatDetector request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DnsThreatDetector.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsFirewallEndpointAssociationsResource {
   final commons.ApiRequester _requester;
 
@@ -4023,6 +4276,280 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
     FirewallEndpointAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFirewallEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFirewallEndpointsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new FirewallEndpoint in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [firewallEndpointId] - Required. Id of the requesting object. If
+  /// auto-generating Id server-side, remove this field and firewall_endpoint_id
+  /// from the method_signature of Create RPC.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    FirewallEndpoint request,
+    core.String parent, {
+    core.String? firewallEndpointId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (firewallEndpointId != null)
+        'firewallEndpointId': [firewallEndpointId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallEndpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallEndpoint> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FirewallEndpoint.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists FirewallEndpoints in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListEndpointsRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFirewallEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFirewallEndpointsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFirewallEndpointsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update a single Endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. Name of resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Endpoint resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    FirewallEndpoint request,
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
@@ -6882,6 +7409,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6897,12 +7432,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -8892,8 +9430,8 @@ class AuthzPolicyTarget {
   /// All gateways and forwarding rules referenced by this policy and extensions
   /// must share the same load balancing scheme.
   ///
-  /// Supported values: `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, and
-  /// `EXTERNAL_MANAGED`. For more information, refer to
+  /// Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
+  /// information, refer to
   /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   ///
   /// Required.
@@ -8909,9 +9447,6 @@ class AuthzPolicyTarget {
 
   /// A list of references to the Forwarding Rules on which this policy will be
   /// applied.
-  ///
-  /// For policies created for Cloudrun, this field will reference the Cloud Run
-  /// services.
   ///
   /// Required.
   core.List<core.String>? resources;
@@ -9263,7 +9798,7 @@ class CustomMirroringProfile {
   /// packet, a replica will be mirrored to the location-local target in this
   /// group.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? mirroringEndpointGroup;
 
   CustomMirroringProfile({this.mirroringEndpointGroup});
@@ -9345,6 +9880,85 @@ class Destination {
     if (httpHeaderMatch != null) 'httpHeaderMatch': httpHeaderMatch!,
     if (methods != null) 'methods': methods!,
     if (ports != null) 'ports': ports!,
+  };
+}
+
+/// A DNS threat detector sends DNS query logs to a _provider_ that then
+/// analyzes the logs to identify threat events in the DNS queries.
+///
+/// By default, all VPC networks in your projects are included. You can exclude
+/// specific networks by supplying `excluded_networks`.
+class DnsThreatDetector {
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A list of network resource names which aren't monitored by this
+  /// DnsThreatDetector.
+  ///
+  /// Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
+  ///
+  /// Optional.
+  core.List<core.String>? excludedNetworks;
+
+  /// Any labels associated with the DnsThreatDetector, listed as key value
+  /// pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the DnsThreatDetector resource.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The provider used for DNS threat analysis.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PROVIDER_UNSPECIFIED" : An unspecified provider.
+  /// - "INFOBLOX" : The Infoblox DNS threat detector provider.
+  core.String? provider;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DnsThreatDetector({
+    this.createTime,
+    this.excludedNetworks,
+    this.labels,
+    this.name,
+    this.provider,
+    this.updateTime,
+  });
+
+  DnsThreatDetector.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        excludedNetworks:
+            (json_['excludedNetworks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        provider: json_['provider'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (excludedNetworks != null) 'excludedNetworks': excludedNetworks!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (provider != null) 'provider': provider!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -9673,7 +10287,23 @@ class FirewallEndpointAssociationReference {
 }
 
 /// Settings for the endpoint.
-typedef FirewallEndpointEndpointSettings = $Empty;
+class FirewallEndpointEndpointSettings {
+  /// Indicates whether Jumbo Frames are enabled.
+  ///
+  /// Default value is false.
+  ///
+  /// Optional. Immutable.
+  core.bool? jumboFramesEnabled;
+
+  FirewallEndpointEndpointSettings({this.jumboFramesEnabled});
+
+  FirewallEndpointEndpointSettings.fromJson(core.Map json_)
+    : this(jumboFramesEnabled: json_['jumboFramesEnabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (jumboFramesEnabled != null) 'jumboFramesEnabled': jumboFramesEnabled!,
+  };
+}
 
 /// The GatewaySecurityPolicy resource contains a collection of
 /// GatewaySecurityPolicyRules and associated metadata.
@@ -11302,6 +11932,49 @@ class ListClientTlsPoliciesResponse {
   };
 }
 
+/// The response message to requesting a list of DnsThreatDetectors.
+class ListDnsThreatDetectorsResponse {
+  /// The list of DnsThreatDetector resources.
+  core.List<DnsThreatDetector>? dnsThreatDetectors;
+
+  /// A token, which can be sent as `page_token`, to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Unreachable `DnsThreatDetector` resources.
+  core.List<core.String>? unreachable;
+
+  ListDnsThreatDetectorsResponse({
+    this.dnsThreatDetectors,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDnsThreatDetectorsResponse.fromJson(core.Map json_)
+    : this(
+        dnsThreatDetectors:
+            (json_['dnsThreatDetectors'] as core.List?)
+                ?.map(
+                  (value) => DnsThreatDetector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dnsThreatDetectors != null) 'dnsThreatDetectors': dnsThreatDetectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// Message for response to listing Associations
 class ListFirewallEndpointAssociationsResponse {
   /// The list of Association
@@ -11822,7 +12495,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -11835,11 +12520,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -12327,6 +13017,7 @@ class MirroringDeploymentGroup {
   /// - "ACTIVE" : The deployment group is ready.
   /// - "CREATING" : The deployment group is being created.
   /// - "DELETING" : The deployment group is being deleted.
+  /// - "CLOSED" : The deployment group is being wiped out (project deleted).
   core.String? state;
 
   /// The timestamp when the resource was most recently updated.
@@ -12554,6 +13245,17 @@ class MirroringEndpointGroup {
   /// group.
   core.String? state;
 
+  /// The type of the endpoint group.
+  ///
+  /// If left unspecified, defaults to DIRECT.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Not set.
+  /// - "DIRECT" : An endpoint group that sends packets to a single deployment
+  /// group.
+  core.String? type;
+
   /// The timestamp when the resource was most recently updated.
   ///
   /// See https://google.aip.dev/148#timestamps.
@@ -12571,6 +13273,7 @@ class MirroringEndpointGroup {
     this.name,
     this.reconciling,
     this.state,
+    this.type,
     this.updateTime,
   });
 
@@ -12603,6 +13306,7 @@ class MirroringEndpointGroup {
         name: json_['name'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -12618,6 +13322,7 @@ class MirroringEndpointGroup {
     if (name != null) 'name': name!,
     if (reconciling != null) 'reconciling': reconciling!,
     if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }

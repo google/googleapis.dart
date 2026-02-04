@@ -1138,6 +1138,7 @@ api.TagKey buildTagKey() {
   final o = api.TagKey();
   buildCounterTagKey++;
   if (buildCounterTagKey < 3) {
+    o.allowedValuesRegex = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
@@ -1156,6 +1157,7 @@ api.TagKey buildTagKey() {
 void checkTagKey(api.TagKey o) {
   buildCounterTagKey++;
   if (buildCounterTagKey < 3) {
+    unittest.expect(o.allowedValuesRegex!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
@@ -2974,12 +2976,13 @@ void main() {
       checkTagBindingCollection(response as api.TagBindingCollection);
     });
 
-    unittest.test('method--update', () async {
+    unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res =
           api.CloudResourceManagerApi(mock).locations.tagBindingCollections;
       final arg_request = buildTagBindingCollection();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3020,6 +3023,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -3030,9 +3037,10 @@ void main() {
         }),
         true,
       );
-      final response = await res.update(
+      final response = await res.patch(
         arg_request,
         arg_name,
+        updateMask: arg_updateMask,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

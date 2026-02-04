@@ -53,15 +53,8 @@ class FetchGitHub extends FetchCore {
 
     final pool = Pool(10);
     try {
-      var count = 0;
       return await pool
           .forEach(list, (DirectoryListItems item) async {
-            print(
-              ansi.darkGray.wrap(
-                'Requesting ${++count} of ${list.length} - ${item.id}',
-              ),
-            );
-
             RestDescription? description;
             for (var i = 1; i <= 10; i++) {
               description = await download(item);

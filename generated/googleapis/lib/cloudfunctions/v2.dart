@@ -86,14 +86,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -233,6 +239,52 @@ class ProjectsLocationsFunctionsResource {
 
     final url_ =
         'v2/' + core.Uri.encodeFull('$name') + ':commitFunctionUpgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Commits a function upgrade from GCF Gen1 to GCF Gen2.
+  ///
+  /// This action deletes the Gen1 function, leaving the Gen2 function active
+  /// and manageable by the GCFv2 API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which upgrade should be
+  /// committed to Gen2.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> commitFunctionUpgradeAsGen2(
+    CommitFunctionUpgradeAsGen2Request request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$name') + ':commitFunctionUpgradeAsGen2';
 
     final response_ = await _requester.request(
       url_,
@@ -999,6 +1051,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1014,12 +1074,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1430,6 +1493,33 @@ class BuildConfig {
     if (workerPool != null) 'workerPool': workerPool!,
   };
 }
+
+/// Contains overrides related to the function's build configuration.
+class BuildConfigOverrides {
+  /// Specifies the desired runtime for the new Cloud Run function.
+  ///
+  /// (e.g., `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be
+  /// used to change the runtime language (e.g., from `NODEJS` to `PYTHON`). The
+  /// backend will enforce this. 2. This field can ONLY be used to upgrade the
+  /// runtime version (e.g., `nodejs18` to `nodejs20`). Downgrading the version
+  /// is not permitted. The backend will validate the version change. If
+  /// provided and valid, this overrides the runtime of the Gen1 function.
+  ///
+  /// Optional.
+  core.String? runtime;
+
+  BuildConfigOverrides({this.runtime});
+
+  BuildConfigOverrides.fromJson(core.Map json_)
+    : this(runtime: json_['runtime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (runtime != null) 'runtime': runtime!,
+  };
+}
+
+/// Request for the `CommitFunctionUpgradeAsGen2` method.
+typedef CommitFunctionUpgradeAsGen2Request = $Empty;
 
 /// Request for the `CommitFunctionUpgrade` method.
 typedef CommitFunctionUpgradeRequest = $Empty;
@@ -2009,7 +2099,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2022,11 +2124,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -2787,6 +2894,26 @@ class ServiceConfig {
   };
 }
 
+/// Contains overrides related to the function's service configuration.
+class ServiceConfigOverrides {
+  /// Specifies the maximum number of instances for the new Cloud Run function.
+  ///
+  /// If provided, this overrides the max_instance_count setting of the Gen1
+  /// function.
+  ///
+  /// Optional.
+  core.int? maxInstanceCount;
+
+  ServiceConfigOverrides({this.maxInstanceCount});
+
+  ServiceConfigOverrides.fromJson(core.Map json_)
+    : this(maxInstanceCount: json_['maxInstanceCount'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
+  };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -2823,6 +2950,16 @@ class SetIamPolicyRequest {
 
 /// Request for the `SetupFunctionUpgradeConfig` method.
 class SetupFunctionUpgradeConfigRequest {
+  /// Specifies overrides for the build process.
+  ///
+  /// Optional.
+  BuildConfigOverrides? buildConfigOverrides;
+
+  /// Specifies overrides for the service configuration.
+  ///
+  /// Optional.
+  ServiceConfigOverrides? serviceConfigOverrides;
+
   /// The trigger's service account.
   ///
   /// The service account must have permission to invoke Cloud Run services, the
@@ -2833,14 +2970,36 @@ class SetupFunctionUpgradeConfigRequest {
   /// Optional.
   core.String? triggerServiceAccount;
 
-  SetupFunctionUpgradeConfigRequest({this.triggerServiceAccount});
+  SetupFunctionUpgradeConfigRequest({
+    this.buildConfigOverrides,
+    this.serviceConfigOverrides,
+    this.triggerServiceAccount,
+  });
 
   SetupFunctionUpgradeConfigRequest.fromJson(core.Map json_)
     : this(
+        buildConfigOverrides:
+            json_.containsKey('buildConfigOverrides')
+                ? BuildConfigOverrides.fromJson(
+                  json_['buildConfigOverrides']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceConfigOverrides:
+            json_.containsKey('serviceConfigOverrides')
+                ? ServiceConfigOverrides.fromJson(
+                  json_['serviceConfigOverrides']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         triggerServiceAccount: json_['triggerServiceAccount'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (buildConfigOverrides != null)
+      'buildConfigOverrides': buildConfigOverrides!,
+    if (serviceConfigOverrides != null)
+      'serviceConfigOverrides': serviceConfigOverrides!,
     if (triggerServiceAccount != null)
       'triggerServiceAccount': triggerServiceAccount!,
   };
@@ -3039,7 +3198,14 @@ class UpgradeInfo {
   /// - "ROLLBACK_FUNCTION_UPGRADE_TRAFFIC_ERROR" :
   /// RollbackFunctionUpgradeTraffic API was un-successful.
   /// - "COMMIT_FUNCTION_UPGRADE_ERROR" : CommitFunctionUpgrade API was
-  /// un-successful.
+  /// un-successful and 1st gen function might have broken.
+  /// - "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE" : CommitFunctionUpgrade
+  /// API was un-successful but safe to rollback traffic or abort.
+  /// - "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL" : Indicates that the
+  /// `CommitFunctionUpgradeAsGen2` API call succeeded and the function was
+  /// successfully migrated to the 2nd Gen stack.
+  /// - "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR" : CommitFunctionUpgradeAsGen2
+  /// API was un-successful and 1st gen function might have broken.
   core.String? upgradeState;
 
   UpgradeInfo({

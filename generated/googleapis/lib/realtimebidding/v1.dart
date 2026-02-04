@@ -728,7 +728,7 @@ class BiddersPretargetingConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the pretargeting configuration to get. Format:
-  /// bidders/{bidderAccountId}/pretargetingConfig/{configId}
+  /// bidders/{bidderAccountId}/pretargetingConfigs/{configId}
   /// Value must have pattern `^bidders/\[^/\]+/pretargetingConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

@@ -102,10 +102,10 @@ class ProjectsLocationsResource {
   /// should be returned. Must be in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of IPs to return.
+  /// [pageSize] - Optional. Maximum number of IPs to return.
   ///
-  /// [pageToken] - A page token, received from a previous `FetchStaticIps`
-  /// call.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FetchStaticIps` call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,6 +174,12 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
   ///
   /// Request parameters:
   ///
@@ -461,26 +467,26 @@ class ProjectsLocationsConnectionProfilesResource {
   /// profiles.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - A filter expression that filters connection profiles listed in
-  /// the response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, \>, or \<. For example, list connection profiles created
-  /// this year by specifying **createTime %gt;
+  /// [filter] - Optional. A filter expression that filters connection profiles
+  /// listed in the response. The expression must specify the field name, a
+  /// comparison operator, and the value that you want to use for filtering. The
+  /// value must be a string, a number, or a boolean. The comparison operator
+  /// must be either =, !=, \>, or \<. For example, list connection profiles
+  /// created this year by specifying **createTime %gt;
   /// 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For
   /// example, you could specify **mySql.username = %lt;my_username%gt;** to
   /// list all connection profiles configured to connect with a specific
   /// username.
   ///
-  /// [orderBy] - A comma-separated list of fields to order results according
-  /// to.
+  /// [orderBy] - Optional. A comma-separated list of fields to order results
+  /// according to.
   ///
   /// [pageSize] - The maximum number of connection profiles to return. The
   /// service may return fewer than this value. If unspecified, at most 50
   /// connection profiles will be returned. The maximum value is 1000; values
   /// above 1000 are coerced to 1000.
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListConnectionProfiles` call. Provide this to retrieve the subsequent
   /// page. When paginating, all other parameters provided to
   /// `ListConnectionProfiles` must match the call that provided the page token.
@@ -839,8 +845,8 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// [conversionWorkspaceId] - Required. The ID of the conversion workspace to
   /// create.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -890,11 +896,11 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [force] - Force delete the conversion workspace, even if there's a running
-  /// migration that is using the workspace.
+  /// [force] - Optional. Force delete the conversion workspace, even if there's
+  /// a running migration that is using the workspace.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -1189,25 +1195,26 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// workspaces.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - A filter expression that filters conversion workspaces listed
-  /// in the response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, \>, or \<. For example, list conversion workspaces created
-  /// this year by specifying **createTime %gt;
+  /// [filter] - Optional. A filter expression that filters conversion
+  /// workspaces listed in the response. The expression must specify the field
+  /// name, a comparison operator, and the value that you want to use for
+  /// filtering. The value must be a string, a number, or a boolean. The
+  /// comparison operator must be either =, !=, \>, or \<. For example, list
+  /// conversion workspaces created this year by specifying **createTime %gt;
   /// 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
   /// example, you could specify **source.version = "12.c.1"** to select all
   /// conversion workspaces with source database version equal to 12.c.1.
   ///
-  /// [pageSize] - The maximum number of conversion workspaces to return. The
-  /// service may return fewer than this value. If unspecified, at most 50 sets
-  /// are returned.
+  /// [pageSize] - Optional. The maximum number of conversion workspaces to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 sets are returned.
   ///
-  /// [pageToken] - The nextPageToken value received in the previous call to
-  /// conversionWorkspaces.list, used in the subsequent request to retrieve the
-  /// next page of results. On first call this should be left blank. When
-  /// paginating, all other parameters provided to conversionWorkspaces.list
-  /// must match the call that provided the page token.
+  /// [pageToken] - Optional. The nextPageToken value received in the previous
+  /// call to conversionWorkspaces.list, used in the subsequent request to
+  /// retrieve the next page of results. On first call this should be left
+  /// blank. When paginating, all other parameters provided to
+  /// conversionWorkspaces.list must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1257,8 +1264,8 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -1571,8 +1578,8 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
   ///
   /// [mappingRuleId] - Required. The ID of the rule to create.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -1756,14 +1763,14 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of rules to return. The service may return
-  /// fewer than this value.
+  /// [pageSize] - Optional. The maximum number of rules to return. The service
+  /// may return fewer than this value.
   ///
-  /// [pageToken] - The nextPageToken value received in the previous call to
-  /// mappingRules.list, used in the subsequent request to retrieve the next
-  /// page of results. On first call this should be left blank. When paginating,
-  /// all other parameters provided to mappingRules.list must match the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. The nextPageToken value received in the previous
+  /// call to mappingRules.list, used in the subsequent request to retrieve the
+  /// next page of results. On first call this should be left blank. When
+  /// paginating, all other parameters provided to mappingRules.list must match
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1870,12 +1877,12 @@ class ProjectsLocationsMigrationJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
-  /// [force] - The destination CloudSQL connection profile is always deleted
-  /// with the migration job. In case of force delete, the destination CloudSQL
-  /// replica database is also deleted.
+  /// [force] - Optional. The destination CloudSQL connection profile is always
+  /// deleted with the migration job. In case of force delete, the destination
+  /// CloudSQL replica database is also deleted.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -1922,7 +1929,8 @@ class ProjectsLocationsMigrationJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the migration job resource to demote its destination.
+  /// [name] - Required. Name of the migration job resource to demote its
+  /// destination.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
@@ -2193,29 +2201,30 @@ class ProjectsLocationsMigrationJobsResource {
   /// migrationJobs.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - A filter expression that filters migration jobs listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, \>, or \<. For example, list migration jobs created this
-  /// year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You
-  /// can also filter nested fields. For example, you could specify
-  /// **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration jobs
-  /// connecting through the specific SSH tunnel bastion.
+  /// [filter] - Optional. A filter expression that filters migration jobs
+  /// listed in the response. The expression must specify the field name, a
+  /// comparison operator, and the value that you want to use for filtering. The
+  /// value must be a string, a number, or a boolean. The comparison operator
+  /// must be either =, !=, \>, or \<. For example, list migration jobs created
+  /// this year by specifying **createTime %gt;
+  /// 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
+  /// example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to
+  /// select all migration jobs connecting through the specific SSH tunnel
+  /// bastion.
   ///
-  /// [orderBy] - Sort the results based on the migration job name. Valid values
-  /// are: "name", "name asc", and "name desc".
+  /// [orderBy] - Optional. Sort the results based on the migration job name.
+  /// Valid values are: "name", "name asc", and "name desc".
   ///
-  /// [pageSize] - The maximum number of migration jobs to return. The service
-  /// may return fewer than this value. If unspecified, at most 50 migration
-  /// jobs will be returned. The maximum value is 1000; values above 1000 are
-  /// coerced to 1000.
+  /// [pageSize] - Optional. The maximum number of migration jobs to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// migration jobs will be returned. The maximum value is 1000; values above
+  /// 1000 are coerced to 1000.
   ///
-  /// [pageToken] - The nextPageToken value received in the previous call to
-  /// migrationJobs.list, used in the subsequent request to retrieve the next
-  /// page of results. On first call this should be left blank. When paginating,
-  /// all other parameters provided to migrationJobs.list must match the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. The nextPageToken value received in the previous
+  /// call to migrationJobs.list, used in the subsequent request to retrieve the
+  /// next page of results. On first call this should be left blank. When
+  /// paginating, all other parameters provided to migrationJobs.list must match
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2266,8 +2275,8 @@ class ProjectsLocationsMigrationJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -2771,10 +2780,10 @@ class ProjectsLocationsMigrationJobsObjectsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of objects to return. Default is 50. The
-  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// [pageSize] - Optional. Maximum number of objects to return. Default is 50.
+  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous
+  /// [pageToken] - Optional. Page token received from a previous
   /// `ListMigrationJObObjectsRequest` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListMigrationJobObjectsRequest` must match the call that provided the
@@ -3103,6 +3112,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3118,12 +3135,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3356,24 +3376,24 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// connections.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - A filter expression that filters private connections listed in
-  /// the response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, \>, or \<. For example, list private connections created
-  /// this year by specifying **createTime %gt;
+  /// [filter] - Optional. A filter expression that filters private connections
+  /// listed in the response. The expression must specify the field name, a
+  /// comparison operator, and the value that you want to use for filtering. The
+  /// value must be a string, a number, or a boolean. The comparison operator
+  /// must be either =, !=, \>, or \<. For example, list private connections
+  /// created this year by specifying **createTime %gt;
   /// 2021-01-01T00:00:00.000000000Z**.
   ///
-  /// [orderBy] - Order by fields for the result.
+  /// [orderBy] - Optional. Order by fields for the result.
   ///
-  /// [pageSize] - Maximum number of private connections to return. If
+  /// [pageSize] - Optional. Maximum number of private connections to return. If
   /// unspecified, at most 50 private connections that are returned. The maximum
   /// value is 1000; values above 1000 are coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous `ListPrivateConnections`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListPrivateConnections` must match the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `ListPrivateConnections` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListPrivateConnections` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3559,6 +3579,7 @@ class AlloyDbSettings {
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
   /// - "POSTGRES_17" : The database version is Postgres 17.
+  /// - "POSTGRES_18" : The database version is Postgres 18.
   core.String? databaseVersion;
 
   /// The encryption config can be specified to encrypt the data disks and other
@@ -3671,6 +3692,8 @@ class ApplyConversionWorkspaceRequest {
   ///
   /// Leaving this field empty will apply all of the entities. Supports Google
   /// AIP 160 based filtering.
+  ///
+  /// Optional.
   core.String? filter;
 
   ApplyConversionWorkspaceRequest({
@@ -6765,7 +6788,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -6778,11 +6813,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7381,6 +7421,12 @@ class MigrationJob {
   /// **Oracle to AlloyDB for PostgreSQL** migrations.
   OracleToPostgresConfig? oracleToPostgresConfig;
 
+  /// A failback replication pointer to the resource name (URI) of the original
+  /// migration job.
+  ///
+  /// Optional.
+  core.String? originalMigrationName;
+
   /// Data dump parallelism settings used by the migration.
   ///
   /// Optional.
@@ -7400,6 +7446,21 @@ class MigrationJob {
   /// waiting for dump to begin
   /// - "READY_FOR_PROMOTE" : The migration job is ready to be promoted.
   core.String? phase;
+
+  /// Configuration for heterogeneous failback migrations from **PostgreSQL to
+  /// SQL Server**.
+  PostgresToSqlServerConfig? postgresToSqlserverConfig;
+
+  /// Migration job mode.
+  ///
+  /// Migration jobs can be standard forward jobs or failback migration jobs.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PURPOSE_UNSPECIFIED" : Unknown purpose. Will be defaulted to MIGRATE.
+  /// - "MIGRATE" : Standard migration job.
+  /// - "FAILBACK" : Failback replication job.
+  core.String? purpose;
 
   /// The details needed to communicate to the source over Reverse SSH tunnel
   /// connectivity.
@@ -7495,8 +7556,11 @@ class MigrationJob {
     this.name,
     this.objectsConfig,
     this.oracleToPostgresConfig,
+    this.originalMigrationName,
     this.performanceConfig,
     this.phase,
+    this.postgresToSqlserverConfig,
+    this.purpose,
     this.reverseSshConnectivity,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -7565,6 +7629,7 @@ class MigrationJob {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        originalMigrationName: json_['originalMigrationName'] as core.String?,
         performanceConfig:
             json_.containsKey('performanceConfig')
                 ? PerformanceConfig.fromJson(
@@ -7573,6 +7638,14 @@ class MigrationJob {
                 )
                 : null,
         phase: json_['phase'] as core.String?,
+        postgresToSqlserverConfig:
+            json_.containsKey('postgresToSqlserverConfig')
+                ? PostgresToSqlServerConfig.fromJson(
+                  json_['postgresToSqlserverConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        purpose: json_['purpose'] as core.String?,
         reverseSshConnectivity:
             json_.containsKey('reverseSshConnectivity')
                 ? ReverseSshConnectivity.fromJson(
@@ -7644,8 +7717,13 @@ class MigrationJob {
     if (objectsConfig != null) 'objectsConfig': objectsConfig!,
     if (oracleToPostgresConfig != null)
       'oracleToPostgresConfig': oracleToPostgresConfig!,
+    if (originalMigrationName != null)
+      'originalMigrationName': originalMigrationName!,
     if (performanceConfig != null) 'performanceConfig': performanceConfig!,
     if (phase != null) 'phase': phase!,
+    if (postgresToSqlserverConfig != null)
+      'postgresToSqlserverConfig': postgresToSqlserverConfig!,
+    if (purpose != null) 'purpose': purpose!,
     if (reverseSshConnectivity != null)
       'reverseSshConnectivity': reverseSshConnectivity!,
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
@@ -8680,6 +8758,9 @@ class PostgreSqlConnectionProfile {
   /// Optional.
   core.String? database;
 
+  /// Forward SSH tunnel connectivity.
+  ForwardSshTunnelConnectivity? forwardSshConnectivity;
+
   /// The IP or hostname of the source PostgreSQL database.
   ///
   /// Required.
@@ -8716,6 +8797,9 @@ class PostgreSqlConnectionProfile {
   /// Required.
   core.int? port;
 
+  /// Private connectivity.
+  PrivateConnectivity? privateConnectivity;
+
   /// Private service connect connectivity.
   PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
 
@@ -8737,11 +8821,13 @@ class PostgreSqlConnectionProfile {
     this.alloydbClusterId,
     this.cloudSqlId,
     this.database,
+    this.forwardSshConnectivity,
     this.host,
     this.networkArchitecture,
     this.password,
     this.passwordSet,
     this.port,
+    this.privateConnectivity,
     this.privateServiceConnectConnectivity,
     this.ssl,
     this.staticIpConnectivity,
@@ -8753,11 +8839,25 @@ class PostgreSqlConnectionProfile {
         alloydbClusterId: json_['alloydbClusterId'] as core.String?,
         cloudSqlId: json_['cloudSqlId'] as core.String?,
         database: json_['database'] as core.String?,
+        forwardSshConnectivity:
+            json_.containsKey('forwardSshConnectivity')
+                ? ForwardSshTunnelConnectivity.fromJson(
+                  json_['forwardSshConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         host: json_['host'] as core.String?,
         networkArchitecture: json_['networkArchitecture'] as core.String?,
         password: json_['password'] as core.String?,
         passwordSet: json_['passwordSet'] as core.bool?,
         port: json_['port'] as core.int?,
+        privateConnectivity:
+            json_.containsKey('privateConnectivity')
+                ? PrivateConnectivity.fromJson(
+                  json_['privateConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         privateServiceConnectConnectivity:
             json_.containsKey('privateServiceConnectConnectivity')
                 ? PrivateServiceConnectConnectivity.fromJson(
@@ -8785,12 +8885,16 @@ class PostgreSqlConnectionProfile {
     if (alloydbClusterId != null) 'alloydbClusterId': alloydbClusterId!,
     if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
     if (database != null) 'database': database!,
+    if (forwardSshConnectivity != null)
+      'forwardSshConnectivity': forwardSshConnectivity!,
     if (host != null) 'host': host!,
     if (networkArchitecture != null)
       'networkArchitecture': networkArchitecture!,
     if (password != null) 'password': password!,
     if (passwordSet != null) 'passwordSet': passwordSet!,
     if (port != null) 'port': port!,
+    if (privateConnectivity != null)
+      'privateConnectivity': privateConnectivity!,
     if (privateServiceConnectConnectivity != null)
       'privateServiceConnectConnectivity': privateServiceConnectConnectivity!,
     if (ssl != null) 'ssl': ssl!,
@@ -8801,34 +8905,66 @@ class PostgreSqlConnectionProfile {
 }
 
 /// Configuration for Postgres as a destination in a migration.
-class PostgresDestinationConfig {
-  /// Maximum number of connections Database Migration Service will open to the
-  /// destination for data migration.
+typedef PostgresDestinationConfig = $DestinationConfig;
+
+/// Configuration for Postgres as a source in a migration.
+class PostgresSourceConfig {
+  /// Whether to skip full dump or not.
   ///
   /// Optional.
-  core.int? maxConcurrentConnections;
+  core.bool? skipFullDump;
 
-  /// Timeout for data migration transactions.
+  PostgresSourceConfig({this.skipFullDump});
+
+  PostgresSourceConfig.fromJson(core.Map json_)
+    : this(skipFullDump: json_['skipFullDump'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (skipFullDump != null) 'skipFullDump': skipFullDump!,
+  };
+}
+
+/// Configuration for heterogeneous failback migrations from **PostgreSQL to SQL
+/// Server**.
+class PostgresToSqlServerConfig {
+  /// Configuration for PostgreSQL source.
   ///
   /// Optional.
-  core.String? transactionTimeout;
+  PostgresSourceConfig? postgresSourceConfig;
 
-  PostgresDestinationConfig({
-    this.maxConcurrentConnections,
-    this.transactionTimeout,
+  /// Configuration for SQL Server destination.
+  ///
+  /// Optional.
+  SqlServerDestinationConfig? sqlserverDestinationConfig;
+
+  PostgresToSqlServerConfig({
+    this.postgresSourceConfig,
+    this.sqlserverDestinationConfig,
   });
 
-  PostgresDestinationConfig.fromJson(core.Map json_)
+  PostgresToSqlServerConfig.fromJson(core.Map json_)
     : this(
-        maxConcurrentConnections:
-            json_['maxConcurrentConnections'] as core.int?,
-        transactionTimeout: json_['transactionTimeout'] as core.String?,
+        postgresSourceConfig:
+            json_.containsKey('postgresSourceConfig')
+                ? PostgresSourceConfig.fromJson(
+                  json_['postgresSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlserverDestinationConfig:
+            json_.containsKey('sqlserverDestinationConfig')
+                ? SqlServerDestinationConfig.fromJson(
+                  json_['sqlserverDestinationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (maxConcurrentConnections != null)
-      'maxConcurrentConnections': maxConcurrentConnections!,
-    if (transactionTimeout != null) 'transactionTimeout': transactionTimeout!,
+    if (postgresSourceConfig != null)
+      'postgresSourceConfig': postgresSourceConfig!,
+    if (sqlserverDestinationConfig != null)
+      'sqlserverDestinationConfig': sqlserverDestinationConfig!,
   };
 }
 
@@ -10356,6 +10492,9 @@ class SqlServerDatabaseBackup {
     if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
   };
 }
+
+/// Configuration for SQL Server as a destination in a migration.
+typedef SqlServerDestinationConfig = $DestinationConfig;
 
 /// Encryption settings for the SQL Server database.
 class SqlServerEncryptionOptions {

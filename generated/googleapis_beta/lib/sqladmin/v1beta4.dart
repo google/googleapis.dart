@@ -983,6 +983,57 @@ class InstancesResource {
 
   InstancesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Lists all versions of EntraID certificates for the specified instance.
+  ///
+  /// There can be up to three sets of certificates listed: the certificate that
+  /// is currently in use, a future that has been added but not yet used to sign
+  /// a certificate, and a certificate that has been rotated out.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstancesListEntraIdCertificatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstancesListEntraIdCertificatesResponse>
+  ListEntraIdCertificates(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/listEntraIdCertificates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InstancesListEntraIdCertificatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists all versions of server certificates and certificate authorities
   /// (CAs) for the specified instance.
   ///
@@ -1034,6 +1085,56 @@ class InstancesResource {
     return InstancesListServerCertificatesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Rotates the Entra Id certificate version to one previously added with the
+  /// addEntraIdCertificate method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> RotateEntraIdCertificate(
+    InstancesRotateEntraIdCertificateRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/rotateEntraIdCertificate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Rotates the server certificate version to one previously added with the
@@ -1140,6 +1241,53 @@ class InstancesResource {
     return SqlInstancesAcquireSsrsLeaseResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Adds a new Entra ID certificate for the specified instance.
+  ///
+  /// If an Entra ID certificate was previously added but never used in a
+  /// certificate rotation, this operation replaces that version.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addEntraIdCertificate(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/addEntraIdCertificate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Add a new trusted Certificate Authority (CA) version for the specified
@@ -3564,9 +3712,15 @@ class UsersResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [databaseRoles] - Optional. List of database roles to grant to the user.
+  /// body.database_roles will be ignored for update request.
+  ///
   /// [host] - Optional. Host of the user in the instance.
   ///
   /// [name] - Name of the user in the instance.
+  ///
+  /// [revokeExistingRoles] - Optional. revoke the existing roles granted to the
+  /// user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3582,14 +3736,19 @@ class UsersResource {
     User request,
     core.String project,
     core.String instance, {
+    core.List<core.String>? databaseRoles,
     core.String? host,
     core.String? name,
+    core.bool? revokeExistingRoles,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (databaseRoles != null) 'databaseRoles': databaseRoles,
       if (host != null) 'host': [host],
       if (name != null) 'name': [name],
+      if (revokeExistingRoles != null)
+        'revokeExistingRoles': ['${revokeExistingRoles}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3848,6 +4007,7 @@ class Backup {
   /// - "MYSQL_8_0_46" : The database major version is MySQL 8.0 and the minor
   /// version is 46.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_9_7" : The database version is MySQL 9.7.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -3864,6 +4024,7 @@ class Backup {
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
+  /// - "POSTGRES_18" : The database version is PostgreSQL 18.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4371,6 +4532,7 @@ class BackupRun {
   /// - "MYSQL_8_0_46" : The database major version is MySQL 8.0 and the minor
   /// version is 46.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_9_7" : The database version is MySQL 9.7.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -4387,6 +4549,7 @@ class BackupRun {
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
+  /// - "POSTGRES_18" : The database version is PostgreSQL 18.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4923,6 +5086,7 @@ class ConnectSettings {
   /// - "MYSQL_8_0_46" : The database major version is MySQL 8.0 and the minor
   /// version is 46.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_9_7" : The database version is MySQL 9.7.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -4939,6 +5103,7 @@ class ConnectSettings {
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
+  /// - "POSTGRES_18" : The database version is PostgreSQL 18.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -5427,6 +5592,7 @@ class DatabaseInstance {
   /// - "MYSQL_8_0_46" : The database major version is MySQL 8.0 and the minor
   /// version is 46.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_9_7" : The database version is MySQL 9.7.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -5443,6 +5609,7 @@ class DatabaseInstance {
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
+  /// - "POSTGRES_18" : The database version is PostgreSQL 18.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -6296,26 +6463,50 @@ class DnsNameMapping {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DNS_SCOPE_UNSPECIFIED" : Unknown DNS scope.
-  /// - "INSTANCE" : Indicates a instance-level DNS name.
+  /// - "DNS_SCOPE_UNSPECIFIED" : DNS scope not set. This value should not be
+  /// used.
+  /// - "INSTANCE" : Indicates an instance-level DNS name.
+  /// - "CLUSTER" : Indicates a cluster-level DNS name.
   core.String? dnsScope;
 
   /// The DNS name.
+  ///
+  /// Output only.
   core.String? name;
 
-  DnsNameMapping({this.connectionType, this.dnsScope, this.name});
+  /// The manager for this DNS record.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RECORD_MANAGER_UNSPECIFIED" : Record manager not set. This value should
+  /// not be used.
+  /// - "CUSTOMER" : The record may be managed by the customer. It is not
+  /// automatically managed by Cloud SQL automation.
+  /// - "CLOUD_SQL_AUTOMATION" : The record is managed by Cloud SQL, which will
+  /// create, update, and delete the DNS records for the zone automatically when
+  /// the Cloud SQL database instance is created or updated.
+  core.String? recordManager;
+
+  DnsNameMapping({
+    this.connectionType,
+    this.dnsScope,
+    this.name,
+    this.recordManager,
+  });
 
   DnsNameMapping.fromJson(core.Map json_)
     : this(
         connectionType: json_['connectionType'] as core.String?,
         dnsScope: json_['dnsScope'] as core.String?,
         name: json_['name'] as core.String?,
+        recordManager: json_['recordManager'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (connectionType != null) 'connectionType': connectionType!,
     if (dnsScope != null) 'dnsScope': dnsScope!,
     if (name != null) 'name': name!,
+    if (recordManager != null) 'recordManager': recordManager!,
   };
 }
 
@@ -6329,6 +6520,14 @@ typedef Empty = $Empty;
 
 /// The request payload used to execute SQL statements.
 class ExecuteSqlPayload {
+  /// Specifies the name of the application that is making the request.
+  ///
+  /// This field is used for telemetry. Only alphanumeric characters, dashes,
+  /// and underscores are allowed. The maximum length is 32 characters.
+  ///
+  /// Optional.
+  core.String? application;
+
   /// When set to true, the API caller identity associated with the request is
   /// used for database authentication.
   ///
@@ -6342,8 +6541,8 @@ class ExecuteSqlPayload {
   /// Optional.
   core.String? database;
 
-  /// Controls how the API should respond when the SQL execution result exceeds
-  /// 10 MB.
+  /// Controls how the API should respond when the SQL execution result is
+  /// incomplete due to the size limit or another error.
   ///
   /// The default mode is to throw an error.
   ///
@@ -6351,11 +6550,11 @@ class ExecuteSqlPayload {
   /// Possible string values are:
   /// - "PARTIAL_RESULT_MODE_UNSPECIFIED" : Unspecified mode, effectively the
   /// same as `FAIL_PARTIAL_RESULT`.
-  /// - "FAIL_PARTIAL_RESULT" : Throw an error if the result exceeds 10 MB.
-  /// Don't return the result.
+  /// - "FAIL_PARTIAL_RESULT" : Throw an error if the result exceeds 10 MB or if
+  /// only a partial result can be retrieved. Don't return the result.
   /// - "ALLOW_PARTIAL_RESULT" : Return a truncated result and set
-  /// `partial_result` to true if the result exceeds 10 MB. Don't throw an
-  /// error.
+  /// `partial_result` to true if the result exceeds 10 MB or if only a partial
+  /// result can be retrieved due to error. Don't throw an error.
   core.String? partialResultMode;
 
   /// The maximum number of rows returned per SQL statement.
@@ -6380,6 +6579,7 @@ class ExecuteSqlPayload {
   core.String? user;
 
   ExecuteSqlPayload({
+    this.application,
     this.autoIamAuthn,
     this.database,
     this.partialResultMode,
@@ -6390,6 +6590,7 @@ class ExecuteSqlPayload {
 
   ExecuteSqlPayload.fromJson(core.Map json_)
     : this(
+        application: json_['application'] as core.String?,
         autoIamAuthn: json_['autoIamAuthn'] as core.bool?,
         database: json_['database'] as core.String?,
         partialResultMode: json_['partialResultMode'] as core.String?,
@@ -6399,6 +6600,7 @@ class ExecuteSqlPayload {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (application != null) 'application': application!,
     if (autoIamAuthn != null) 'autoIamAuthn': autoIamAuthn!,
     if (database != null) 'database': database!,
     if (partialResultMode != null) 'partialResultMode': partialResultMode!,
@@ -7266,7 +7468,9 @@ class ImportContextBakImportOptions {
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
   /// Whether or not the backup importing will restore database with NORECOVERY
-  /// option Applies only to Cloud SQL for SQL Server.
+  /// option.
+  ///
+  /// Applies only to Cloud SQL for SQL Server.
   core.bool? noRecovery;
 
   /// Whether or not the backup importing request will just bring database
@@ -7660,6 +7864,11 @@ class ImportContext {
 /// This specifies when Cloud SQL Insights feature is enabled and optional
 /// configuration.
 class InsightsConfig {
+  /// Whether enhanced query insights feature is enabled.
+  ///
+  /// Optional.
+  core.bool? enhancedQueryInsightsEnabled;
+
   /// Whether Query Insights feature is enabled.
   core.bool? queryInsightsEnabled;
 
@@ -7685,6 +7894,7 @@ class InsightsConfig {
   core.bool? recordClientAddress;
 
   InsightsConfig({
+    this.enhancedQueryInsightsEnabled,
     this.queryInsightsEnabled,
     this.queryPlansPerMinute,
     this.queryStringLength,
@@ -7694,6 +7904,8 @@ class InsightsConfig {
 
   InsightsConfig.fromJson(core.Map json_)
     : this(
+        enhancedQueryInsightsEnabled:
+            json_['enhancedQueryInsightsEnabled'] as core.bool?,
         queryInsightsEnabled: json_['queryInsightsEnabled'] as core.bool?,
         queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
         queryStringLength: json_['queryStringLength'] as core.int?,
@@ -7702,6 +7914,8 @@ class InsightsConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (enhancedQueryInsightsEnabled != null)
+      'enhancedQueryInsightsEnabled': enhancedQueryInsightsEnabled!,
     if (queryInsightsEnabled != null)
       'queryInsightsEnabled': queryInsightsEnabled!,
     if (queryPlansPerMinute != null)
@@ -7905,6 +8119,44 @@ class InstancesImportRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (importContext != null) 'importContext': importContext!,
+  };
+}
+
+/// Instances ListEntraIdCertificates response.
+class InstancesListEntraIdCertificatesResponse {
+  /// The `sha1_fingerprint` of the active certificate from `certs`.
+  core.String? activeVersion;
+
+  /// List of Entra ID certificates for the instance.
+  core.List<SslCert>? certs;
+
+  /// This is always `sql#instancesListEntraIdCertificates`.
+  core.String? kind;
+
+  InstancesListEntraIdCertificatesResponse({
+    this.activeVersion,
+    this.certs,
+    this.kind,
+  });
+
+  InstancesListEntraIdCertificatesResponse.fromJson(core.Map json_)
+    : this(
+        activeVersion: json_['activeVersion'] as core.String?,
+        certs:
+            (json_['certs'] as core.List?)
+                ?.map(
+                  (value) => SslCert.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (activeVersion != null) 'activeVersion': activeVersion!,
+    if (certs != null) 'certs': certs!,
+    if (kind != null) 'kind': kind!,
   };
 }
 
@@ -8182,6 +8434,34 @@ class InstancesRestoreBackupRequest {
   };
 }
 
+/// Rotate Entra ID Certificate request.
+class InstancesRotateEntraIdCertificateRequest {
+  /// Contains details about the rotate Entra ID certificate operation.
+  ///
+  /// Optional.
+  RotateEntraIdCertificateContext? rotateEntraIdCertificateContext;
+
+  InstancesRotateEntraIdCertificateRequest({
+    this.rotateEntraIdCertificateContext,
+  });
+
+  InstancesRotateEntraIdCertificateRequest.fromJson(core.Map json_)
+    : this(
+        rotateEntraIdCertificateContext:
+            json_.containsKey('rotateEntraIdCertificateContext')
+                ? RotateEntraIdCertificateContext.fromJson(
+                  json_['rotateEntraIdCertificateContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rotateEntraIdCertificateContext != null)
+      'rotateEntraIdCertificateContext': rotateEntraIdCertificateContext!,
+  };
+}
+
 /// Rotate Server CA request.
 class InstancesRotateServerCaRequest {
   /// Contains details about the rotate server CA operation.
@@ -8364,6 +8644,28 @@ class IpConfiguration {
   /// Optional.
   core.String? serverCaPool;
 
+  /// Controls the automatic server certificate rotation feature.
+  ///
+  /// This feature is disabled by default. When enabled, the server certificate
+  /// will be automatically rotated during Cloud SQL scheduled maintenance or
+  /// self-service maintenance updates up to six months before it expires. This
+  /// setting can only be set if server_ca_mode is either GOOGLE_MANAGED_CAS_CA
+  /// or CUSTOMER_MANAGED_CAS_CA.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVER_CERTIFICATE_ROTATION_MODE_UNSPECIFIED" : Unspecified: no
+  /// automatic server certificate rotation.
+  /// - "NO_AUTOMATIC_ROTATION" : No automatic server certificate rotation. The
+  /// user must \[manage server certificate
+  /// rotation\](/sql/docs/mysql/manage-ssl-instance#rotate-server-certificate-cas)
+  /// on their side.
+  /// - "AUTOMATIC_ROTATION_DURING_MAINTENANCE" : Automatic server certificate
+  /// rotation during Cloud SQL scheduled maintenance or self-service
+  /// maintenance updates. Requires `server_ca_mode` to be
+  /// `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`.
+  core.String? serverCertificateRotationMode;
+
   /// Specify how SSL/TLS is enforced in database connections.
   ///
   /// If you must use the `require_ssl` flag for backward compatibility, then
@@ -8413,6 +8715,7 @@ class IpConfiguration {
     this.requireSsl,
     this.serverCaMode,
     this.serverCaPool,
+    this.serverCertificateRotationMode,
     this.sslMode,
   });
 
@@ -8444,6 +8747,8 @@ class IpConfiguration {
         requireSsl: json_['requireSsl'] as core.bool?,
         serverCaMode: json_['serverCaMode'] as core.String?,
         serverCaPool: json_['serverCaPool'] as core.String?,
+        serverCertificateRotationMode:
+            json_['serverCertificateRotationMode'] as core.String?,
         sslMode: json_['sslMode'] as core.String?,
       );
 
@@ -8461,6 +8766,8 @@ class IpConfiguration {
     if (requireSsl != null) 'requireSsl': requireSsl!,
     if (serverCaMode != null) 'serverCaMode': serverCaMode!,
     if (serverCaPool != null) 'serverCaPool': serverCaPool!,
+    if (serverCertificateRotationMode != null)
+      'serverCertificateRotationMode': serverCertificateRotationMode!,
     if (sslMode != null) 'sslMode': sslMode!,
   };
 }
@@ -9012,7 +9319,8 @@ class Operation {
   /// - "CREATE_REPLICA" : Creates a Cloud SQL replica instance.
   /// - "CREATE_USER" : Creates a new user in a Cloud SQL instance.
   /// - "DELETE_USER" : Deletes a user from a Cloud SQL instance.
-  /// - "UPDATE_USER" : Updates an existing user in a Cloud SQL instance.
+  /// - "UPDATE_USER" : Updates an existing user in a Cloud SQL instance. If a
+  /// user with the specified username doesn't exist, a new user is created.
   /// - "CREATE_DATABASE" : Creates a database in the Cloud SQL instance.
   /// - "DELETE_DATABASE" : Deletes a database in the Cloud SQL instance.
   /// - "UPDATE_DATABASE" : Updates a database in the Cloud SQL instance.
@@ -9345,7 +9653,11 @@ class PasswordStatus {
   };
 }
 
-/// Database instance local user password validation policy
+/// Database instance local user password validation policy.
+///
+/// This message defines the password policy for local database users. When
+/// enabled, it enforces constraints on password complexity, length, and reuse.
+/// Keep this policy enabled to help prevent unauthorized access.
 class PasswordValidationPolicy {
   /// The complexity of the password.
   /// Possible string values are:
@@ -9364,7 +9676,11 @@ class PasswordValidationPolicy {
   /// Disallow username as a part of the password.
   core.bool? disallowUsernameSubstring;
 
-  /// Whether the password policy is enabled or not.
+  /// Whether to enable the password policy or not.
+  ///
+  /// When enabled, passwords must meet complexity requirements. Keep this
+  /// policy enabled to help prevent unauthorized access. Disabling this policy
+  /// allows weak passwords.
   core.bool? enablePasswordPolicy;
 
   /// Minimum number of characters allowed.
@@ -9431,8 +9747,79 @@ class PerformDiskShrinkContext {
   };
 }
 
-/// Context to perform a point-in-time restore of an instance managed by Google
-/// Cloud Backup and Disaster Recovery.
+/// Performance Capture configuration.
+class PerformanceCaptureConfig {
+  /// Enable or disable the Performance Capture.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The minimum number of consecutive readings above threshold that triggers
+  /// instance state capture.
+  ///
+  /// Optional.
+  core.int? probeThreshold;
+
+  /// The time interval in seconds between any two probes.
+  ///
+  /// Optional.
+  core.int? probingIntervalSeconds;
+
+  /// The minimum number of server threads running to trigger the capture on
+  /// primary.
+  ///
+  /// Optional.
+  core.int? runningThreadsThreshold;
+
+  /// The minimum number of seconds replica must be lagging behind primary to
+  /// trigger capture on replica.
+  ///
+  /// Optional.
+  core.int? secondsBehindSourceThreshold;
+
+  /// The amount of time in seconds that a transaction needs to have been open
+  /// before the watcher starts recording it.
+  ///
+  /// Optional.
+  core.int? transactionDurationThreshold;
+
+  PerformanceCaptureConfig({
+    this.enabled,
+    this.probeThreshold,
+    this.probingIntervalSeconds,
+    this.runningThreadsThreshold,
+    this.secondsBehindSourceThreshold,
+    this.transactionDurationThreshold,
+  });
+
+  PerformanceCaptureConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        probeThreshold: json_['probeThreshold'] as core.int?,
+        probingIntervalSeconds: json_['probingIntervalSeconds'] as core.int?,
+        runningThreadsThreshold: json_['runningThreadsThreshold'] as core.int?,
+        secondsBehindSourceThreshold:
+            json_['secondsBehindSourceThreshold'] as core.int?,
+        transactionDurationThreshold:
+            json_['transactionDurationThreshold'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+    if (probeThreshold != null) 'probeThreshold': probeThreshold!,
+    if (probingIntervalSeconds != null)
+      'probingIntervalSeconds': probingIntervalSeconds!,
+    if (runningThreadsThreshold != null)
+      'runningThreadsThreshold': runningThreadsThreshold!,
+    if (secondsBehindSourceThreshold != null)
+      'secondsBehindSourceThreshold': secondsBehindSourceThreshold!,
+    if (transactionDurationThreshold != null)
+      'transactionDurationThreshold': transactionDurationThreshold!,
+  };
+}
+
+/// Context to perform a point-in-time restore of an instance managed by Backup
+/// and Disaster Recovery (DR) Service.
 class PointInTimeRestoreContext {
   /// The name of the allocated IP range for the internal IP Cloud SQL instance.
   ///
@@ -9446,7 +9833,7 @@ class PointInTimeRestoreContext {
   /// Optional.
   core.String? allocatedIpRange;
 
-  /// The Google Cloud Backup and Disaster Recovery Datasource URI.
+  /// The Backup and Disaster Recovery (DR) Service Datasource URI.
   ///
   /// Format:
   /// projects/{project}/locations/{region}/backupVaults/{backupvault}/dataSources/{datasource}.
@@ -9546,6 +9933,19 @@ class PoolNodeConfig {
   /// Output only.
   core.String? name;
 
+  /// The list of settings for requested automatically-setup Private Service
+  /// Connect (PSC) consumer endpoints that can be used to connect to this read
+  /// pool node.
+  ///
+  /// Output only.
+  core.List<PscAutoConnectionConfig>? pscAutoConnections;
+
+  /// The Private Service Connect (PSC) service attachment of the read pool
+  /// node.
+  ///
+  /// Output only.
+  core.String? pscServiceAttachmentLink;
+
   /// The current state of the read pool node.
   ///
   /// Output only.
@@ -9570,6 +9970,8 @@ class PoolNodeConfig {
     this.gceZone,
     this.ipAddresses,
     this.name,
+    this.pscAutoConnections,
+    this.pscServiceAttachmentLink,
     this.state,
   });
 
@@ -9594,6 +9996,16 @@ class PoolNodeConfig {
                 )
                 .toList(),
         name: json_['name'] as core.String?,
+        pscAutoConnections:
+            (json_['pscAutoConnections'] as core.List?)
+                ?.map(
+                  (value) => PscAutoConnectionConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pscServiceAttachmentLink:
+            json_['pscServiceAttachmentLink'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
@@ -9603,6 +10015,9 @@ class PoolNodeConfig {
     if (gceZone != null) 'gceZone': gceZone!,
     if (ipAddresses != null) 'ipAddresses': ipAddresses!,
     if (name != null) 'name': name!,
+    if (pscAutoConnections != null) 'pscAutoConnections': pscAutoConnections!,
+    if (pscServiceAttachmentLink != null)
+      'pscServiceAttachmentLink': pscServiceAttachmentLink!,
     if (state != null) 'state': state!,
   };
 }
@@ -9673,6 +10088,7 @@ class PreCheckMajorVersionUpgradeContext {
   /// - "MYSQL_8_0_46" : The database major version is MySQL 8.0 and the minor
   /// version is 46.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_9_7" : The database version is MySQL 9.7.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -9689,6 +10105,7 @@ class PreCheckMajorVersionUpgradeContext {
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
+  /// - "POSTGRES_18" : The database version is PostgreSQL 18.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -9905,13 +10322,23 @@ class QueryResult {
   /// Message related to the SQL execution result.
   core.String? message;
 
-  /// Set to true if the SQL execution's result is truncated due to size limits.
+  /// Set to true if the SQL execution's result is truncated due to size limits
+  /// or an error retrieving results.
   core.bool? partialResult;
 
   /// Rows returned by the SQL statement.
   core.List<Row>? rows;
 
-  QueryResult({this.columns, this.message, this.partialResult, this.rows});
+  /// If results were truncated due to an error, details of that error.
+  Status? status;
+
+  QueryResult({
+    this.columns,
+    this.message,
+    this.partialResult,
+    this.rows,
+    this.status,
+  });
 
   QueryResult.fromJson(core.Map json_)
     : this(
@@ -9933,6 +10360,12 @@ class QueryResult {
                   ),
                 )
                 .toList(),
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9940,6 +10373,7 @@ class QueryResult {
     if (message != null) 'message': message!,
     if (partialResult != null) 'partialResult': partialResult!,
     if (rows != null) 'rows': rows!,
+    if (status != null) 'status': status!,
   };
 }
 
@@ -10204,6 +10638,35 @@ class RestoreBackupContext {
   };
 }
 
+/// Instance rotate Entra ID certificate context.
+class RotateEntraIdCertificateContext {
+  /// This is always `sql#rotateEntraIdCertificateContext`.
+  ///
+  /// Optional.
+  core.String? kind;
+
+  /// The fingerprint of the next version to be rotated to.
+  ///
+  /// If left unspecified, will be rotated to the most recently added Entra ID
+  /// certificate version.
+  ///
+  /// Optional.
+  core.String? nextVersion;
+
+  RotateEntraIdCertificateContext({this.kind, this.nextVersion});
+
+  RotateEntraIdCertificateContext.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        nextVersion: json_['nextVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (nextVersion != null) 'nextVersion': nextVersion!,
+  };
+}
+
 /// Instance rotate server CA context.
 class RotateServerCaContext {
   /// This is always `sql#rotateServerCaContext`.
@@ -10331,6 +10794,14 @@ class Settings {
   )
   core.List<core.String>? authorizedGaeApplications;
 
+  /// Cloud SQL for MySQL auto-upgrade configuration.
+  ///
+  /// When this parameter is set to true, auto-upgrade is enabled for MySQL 8.0
+  /// minor versions. The MySQL version must be 8.0.35 or higher.
+  ///
+  /// Optional.
+  core.bool? autoUpgradeEnabled;
+
   /// Availability type.
   ///
   /// Potential values: * `ZONAL`: The instance serves data from only one zone.
@@ -10382,6 +10853,20 @@ class Settings {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? crashSafeReplicationEnabled;
+
+  /// This parameter controls whether to allow using ExecuteSql API to connect
+  /// to the instance.
+  ///
+  /// Not allowed by default.
+  /// Possible string values are:
+  /// - "DATA_API_ACCESS_UNSPECIFIED" : Unspecified, effectively the same as
+  /// `DISALLOW_DATA_API`.
+  /// - "DISALLOW_DATA_API" : Disallow using ExecuteSql API to connect to the
+  /// instance.
+  /// - "ALLOW_DATA_API" : Allow using ExecuteSql API to connect to the
+  /// instance. For private IP instances, this allows authorized users to access
+  /// the instance from the public internet using ExecuteSql API.
+  core.String? dataApiAccess;
 
   /// Configuration for data cache.
   DataCacheConfig? dataCacheConfig;
@@ -10460,6 +10945,11 @@ class Settings {
   /// Optional.
   core.bool? enableGoogleMlIntegration;
 
+  /// The Microsoft Entra ID configuration for the SQL Server instance.
+  ///
+  /// Optional.
+  SqlServerEntraIdConfig? entraidConfig;
+
   /// The final backup configuration for the instance.
   ///
   /// Optional.
@@ -10493,6 +10983,12 @@ class Settings {
 
   /// The local user password validation policy of the instance.
   PasswordValidationPolicy? passwordValidationPolicy;
+
+  /// Configuration for Performance Capture, provides diagnostic metrics during
+  /// high load situations.
+  ///
+  /// Optional.
+  PerformanceCaptureConfig? performanceCaptureConfig;
 
   /// The pricing plan for this instance.
   ///
@@ -10582,12 +11078,14 @@ class Settings {
     this.activeDirectoryConfig,
     this.advancedMachineFeatures,
     this.authorizedGaeApplications,
+    this.autoUpgradeEnabled,
     this.availabilityType,
     this.backupConfiguration,
     this.collation,
     this.connectionPoolConfig,
     this.connectorEnforcement,
     this.crashSafeReplicationEnabled,
+    this.dataApiAccess,
     this.dataCacheConfig,
     this.dataDiskProvisionedIops,
     this.dataDiskProvisionedThroughput,
@@ -10600,6 +11098,7 @@ class Settings {
     this.edition,
     this.enableDataplexIntegration,
     this.enableGoogleMlIntegration,
+    this.entraidConfig,
     this.finalBackupConfig,
     this.insightsConfig,
     this.ipConfiguration,
@@ -10607,6 +11106,7 @@ class Settings {
     this.locationPreference,
     this.maintenanceWindow,
     this.passwordValidationPolicy,
+    this.performanceCaptureConfig,
     this.pricingPlan,
     this.readPoolAutoScaleConfig,
     this.replicationLagMaxSeconds,
@@ -10642,6 +11142,7 @@ class Settings {
             (json_['authorizedGaeApplications'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        autoUpgradeEnabled: json_['autoUpgradeEnabled'] as core.bool?,
         availabilityType: json_['availabilityType'] as core.String?,
         backupConfiguration:
             json_.containsKey('backupConfiguration')
@@ -10661,6 +11162,7 @@ class Settings {
         connectorEnforcement: json_['connectorEnforcement'] as core.String?,
         crashSafeReplicationEnabled:
             json_['crashSafeReplicationEnabled'] as core.bool?,
+        dataApiAccess: json_['dataApiAccess'] as core.String?,
         dataCacheConfig:
             json_.containsKey('dataCacheConfig')
                 ? DataCacheConfig.fromJson(
@@ -10699,6 +11201,12 @@ class Settings {
             json_['enableDataplexIntegration'] as core.bool?,
         enableGoogleMlIntegration:
             json_['enableGoogleMlIntegration'] as core.bool?,
+        entraidConfig:
+            json_.containsKey('entraidConfig')
+                ? SqlServerEntraIdConfig.fromJson(
+                  json_['entraidConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         finalBackupConfig:
             json_.containsKey('finalBackupConfig')
                 ? FinalBackupConfig.fromJson(
@@ -10742,6 +11250,13 @@ class Settings {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        performanceCaptureConfig:
+            json_.containsKey('performanceCaptureConfig')
+                ? PerformanceCaptureConfig.fromJson(
+                  json_['performanceCaptureConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         pricingPlan: json_['pricingPlan'] as core.String?,
         readPoolAutoScaleConfig:
             json_.containsKey('readPoolAutoScaleConfig')
@@ -10779,6 +11294,7 @@ class Settings {
       'advancedMachineFeatures': advancedMachineFeatures!,
     if (authorizedGaeApplications != null)
       'authorizedGaeApplications': authorizedGaeApplications!,
+    if (autoUpgradeEnabled != null) 'autoUpgradeEnabled': autoUpgradeEnabled!,
     if (availabilityType != null) 'availabilityType': availabilityType!,
     if (backupConfiguration != null)
       'backupConfiguration': backupConfiguration!,
@@ -10789,6 +11305,7 @@ class Settings {
       'connectorEnforcement': connectorEnforcement!,
     if (crashSafeReplicationEnabled != null)
       'crashSafeReplicationEnabled': crashSafeReplicationEnabled!,
+    if (dataApiAccess != null) 'dataApiAccess': dataApiAccess!,
     if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
     if (dataDiskProvisionedIops != null)
       'dataDiskProvisionedIops': dataDiskProvisionedIops!,
@@ -10808,6 +11325,7 @@ class Settings {
       'enableDataplexIntegration': enableDataplexIntegration!,
     if (enableGoogleMlIntegration != null)
       'enableGoogleMlIntegration': enableGoogleMlIntegration!,
+    if (entraidConfig != null) 'entraidConfig': entraidConfig!,
     if (finalBackupConfig != null) 'finalBackupConfig': finalBackupConfig!,
     if (insightsConfig != null) 'insightsConfig': insightsConfig!,
     if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
@@ -10816,6 +11334,8 @@ class Settings {
     if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
     if (passwordValidationPolicy != null)
       'passwordValidationPolicy': passwordValidationPolicy!,
+    if (performanceCaptureConfig != null)
+      'performanceCaptureConfig': performanceCaptureConfig!,
     if (pricingPlan != null) 'pricingPlan': pricingPlan!,
     if (readPoolAutoScaleConfig != null)
       'readPoolAutoScaleConfig': readPoolAutoScaleConfig!,
@@ -10863,7 +11383,10 @@ class SqlActiveDirectoryConfig {
   /// - "ACTIVE_DIRECTORY_MODE_UNSPECIFIED" : Unspecified mode.
   /// - "MANAGED_ACTIVE_DIRECTORY" : Managed Active Directory mode. This is the
   /// fallback option to maintain backward compatibility.
-  /// - "SELF_MANAGED_ACTIVE_DIRECTORY" : Self-managed Active Directory mode.
+  /// - "SELF_MANAGED_ACTIVE_DIRECTORY" : Deprecated: Use
+  /// CUSTOMER_MANAGED_ACTIVE_DIRECTORY instead.
+  /// - "CUSTOMER_MANAGED_ACTIVE_DIRECTORY" : Customer-managed Active Directory
+  /// mode.
   core.String? mode;
 
   /// The organizational unit distinguished name.
@@ -11095,7 +11618,15 @@ class SqlInstancesExecuteSqlResponse {
   /// The list of results after executing all the SQL statements.
   core.List<QueryResult>? results;
 
-  SqlInstancesExecuteSqlResponse({this.messages, this.metadata, this.results});
+  /// Contains the error from the database if the SQL execution failed.
+  Status? status;
+
+  SqlInstancesExecuteSqlResponse({
+    this.messages,
+    this.metadata,
+    this.results,
+    this.status,
+  });
 
   SqlInstancesExecuteSqlResponse.fromJson(core.Map json_)
     : this(
@@ -11121,12 +11652,19 @@ class SqlInstancesExecuteSqlResponse {
                   ),
                 )
                 .toList(),
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (messages != null) 'messages': messages!,
     if (metadata != null) 'metadata': metadata!,
     if (results != null) 'results': results!,
+    if (status != null) 'status': status!,
   };
 }
 
@@ -11614,6 +12152,39 @@ class SqlServerDatabaseDetails {
   };
 }
 
+/// SQL Server Entra ID configuration.
+class SqlServerEntraIdConfig {
+  /// The application ID for the Entra ID configuration.
+  ///
+  /// Optional.
+  core.String? applicationId;
+
+  /// This is always sql#sqlServerEntraIdConfig
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// The tenant ID for the Entra ID configuration.
+  ///
+  /// Optional.
+  core.String? tenantId;
+
+  SqlServerEntraIdConfig({this.applicationId, this.kind, this.tenantId});
+
+  SqlServerEntraIdConfig.fromJson(core.Map json_)
+    : this(
+        applicationId: json_['applicationId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (applicationId != null) 'applicationId': applicationId!,
+    if (kind != null) 'kind': kind!,
+    if (tenantId != null) 'tenantId': tenantId!,
+  };
+}
+
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetails {
   /// If the user has been disabled
@@ -11895,6 +12466,15 @@ class SslCertsListResponse {
   };
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
+
 /// Initial sync flags for certain Cloud SQL APIs.
 ///
 /// Currently used for the MySQL external server initial dump.
@@ -12040,6 +12620,11 @@ class TruncateLogContext {
 
 /// A Cloud SQL user resource.
 class User {
+  /// Role memberships of the user
+  ///
+  /// Optional.
+  core.List<core.String>? databaseRoles;
+
   /// Dual password status for the user.
   /// Possible string values are:
   /// - "DUAL_PASSWORD_TYPE_UNSPECIFIED" : The default value.
@@ -12063,6 +12648,14 @@ class User {
   ///
   /// Optional.
   core.String? host;
+
+  /// The full email for an IAM user.
+  ///
+  /// For normal database users, this will not be filled. Only applicable to
+  /// MySQL database users.
+  ///
+  /// Optional.
+  core.String? iamEmail;
 
   /// Indicates if a group is active or inactive for IAM database
   /// authentication.
@@ -12117,12 +12710,15 @@ class User {
   /// Cloud IAM group.
   /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Read-only. Login for a service
   /// account that belongs to the Cloud IAM group.
+  /// - "ENTRAID_USER" : Microsoft Entra ID user.
   core.String? type;
 
   User({
+    this.databaseRoles,
     this.dualPasswordType,
     this.etag,
     this.host,
+    this.iamEmail,
     this.iamStatus,
     this.instance,
     this.kind,
@@ -12136,9 +12732,14 @@ class User {
 
   User.fromJson(core.Map json_)
     : this(
+        databaseRoles:
+            (json_['databaseRoles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         dualPasswordType: json_['dualPasswordType'] as core.String?,
         etag: json_['etag'] as core.String?,
         host: json_['host'] as core.String?,
+        iamEmail: json_['iamEmail'] as core.String?,
         iamStatus: json_['iamStatus'] as core.String?,
         instance: json_['instance'] as core.String?,
         kind: json_['kind'] as core.String?,
@@ -12163,9 +12764,11 @@ class User {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (databaseRoles != null) 'databaseRoles': databaseRoles!,
     if (dualPasswordType != null) 'dualPasswordType': dualPasswordType!,
     if (etag != null) 'etag': etag!,
     if (host != null) 'host': host!,
+    if (iamEmail != null) 'iamEmail': iamEmail!,
     if (iamStatus != null) 'iamStatus': iamStatus!,
     if (instance != null) 'instance': instance!,
     if (kind != null) 'kind': kind!,

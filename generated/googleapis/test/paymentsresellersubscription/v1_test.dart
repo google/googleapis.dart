@@ -92,6 +92,7 @@ api.CreateSubscriptionIntent buildCreateSubscriptionIntent() {
   final o = api.CreateSubscriptionIntent();
   buildCounterCreateSubscriptionIntent++;
   if (buildCounterCreateSubscriptionIntent < 3) {
+    o.cycleOptions = buildCycleOptions();
     o.parent = 'foo';
     o.subscription = buildSubscription();
     o.subscriptionId = 'foo';
@@ -103,11 +104,31 @@ api.CreateSubscriptionIntent buildCreateSubscriptionIntent() {
 void checkCreateSubscriptionIntent(api.CreateSubscriptionIntent o) {
   buildCounterCreateSubscriptionIntent++;
   if (buildCounterCreateSubscriptionIntent < 3) {
+    checkCycleOptions(o.cycleOptions!);
     unittest.expect(o.parent!, unittest.equals('foo'));
     checkSubscription(o.subscription!);
     unittest.expect(o.subscriptionId!, unittest.equals('foo'));
   }
   buildCounterCreateSubscriptionIntent--;
+}
+
+core.int buildCounterCycleOptions = 0;
+api.CycleOptions buildCycleOptions() {
+  final o = api.CycleOptions();
+  buildCounterCycleOptions++;
+  if (buildCounterCycleOptions < 3) {
+    o.initialCycleDuration = buildDuration();
+  }
+  buildCounterCycleOptions--;
+  return o;
+}
+
+void checkCycleOptions(api.CycleOptions o) {
+  buildCounterCycleOptions++;
+  if (buildCounterCycleOptions < 3) {
+    checkDuration(o.initialCycleDuration!);
+  }
+  buildCounterCycleOptions--;
 }
 
 core.int buildCounterDuration = 0;
@@ -495,6 +516,7 @@ api.IntentPayload buildIntentPayload() {
   if (buildCounterIntentPayload < 3) {
     o.createIntent = buildCreateSubscriptionIntent();
     o.entitleIntent = buildEntitleSubscriptionIntent();
+    o.intentOptions = buildIntentPayloadIntentOptions();
   }
   buildCounterIntentPayload--;
   return o;
@@ -505,8 +527,28 @@ void checkIntentPayload(api.IntentPayload o) {
   if (buildCounterIntentPayload < 3) {
     checkCreateSubscriptionIntent(o.createIntent!);
     checkEntitleSubscriptionIntent(o.entitleIntent!);
+    checkIntentPayloadIntentOptions(o.intentOptions!);
   }
   buildCounterIntentPayload--;
+}
+
+core.int buildCounterIntentPayloadIntentOptions = 0;
+api.IntentPayloadIntentOptions buildIntentPayloadIntentOptions() {
+  final o = api.IntentPayloadIntentOptions();
+  buildCounterIntentPayloadIntentOptions++;
+  if (buildCounterIntentPayloadIntentOptions < 3) {
+    o.enableOfferOverride = true;
+  }
+  buildCounterIntentPayloadIntentOptions--;
+  return o;
+}
+
+void checkIntentPayloadIntentOptions(api.IntentPayloadIntentOptions o) {
+  buildCounterIntentPayloadIntentOptions++;
+  if (buildCounterIntentPayloadIntentOptions < 3) {
+    unittest.expect(o.enableOfferOverride!, unittest.isTrue);
+  }
+  buildCounterIntentPayloadIntentOptions--;
 }
 
 core.List<api.Product> buildUnnamed4() => [buildProduct(), buildProduct()];
@@ -884,14 +926,20 @@ core.int buildCounterResumeSubscriptionRequest = 0;
 api.ResumeSubscriptionRequest buildResumeSubscriptionRequest() {
   final o = api.ResumeSubscriptionRequest();
   buildCounterResumeSubscriptionRequest++;
-  if (buildCounterResumeSubscriptionRequest < 3) {}
+  if (buildCounterResumeSubscriptionRequest < 3) {
+    o.cycleOptions = buildCycleOptions();
+    o.resumeMode = 'foo';
+  }
   buildCounterResumeSubscriptionRequest--;
   return o;
 }
 
 void checkResumeSubscriptionRequest(api.ResumeSubscriptionRequest o) {
   buildCounterResumeSubscriptionRequest++;
-  if (buildCounterResumeSubscriptionRequest < 3) {}
+  if (buildCounterResumeSubscriptionRequest < 3) {
+    checkCycleOptions(o.cycleOptions!);
+    unittest.expect(o.resumeMode!, unittest.equals('foo'));
+  }
   buildCounterResumeSubscriptionRequest--;
 }
 
@@ -1074,6 +1122,7 @@ api.SubscriptionLineItem buildSubscriptionLineItem() {
     o.lineItemFreeTrialEndTime = 'foo';
     o.lineItemIndex = 42;
     o.lineItemPromotionSpecs = buildUnnamed18();
+    o.name = 'foo';
     o.oneTimeRecurrenceDetails =
         buildSubscriptionLineItemOneTimeRecurrenceDetails();
     o.product = 'foo';
@@ -1095,6 +1144,7 @@ void checkSubscriptionLineItem(api.SubscriptionLineItem o) {
     unittest.expect(o.lineItemFreeTrialEndTime!, unittest.equals('foo'));
     unittest.expect(o.lineItemIndex!, unittest.equals(42));
     checkUnnamed18(o.lineItemPromotionSpecs!);
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkSubscriptionLineItemOneTimeRecurrenceDetails(
       o.oneTimeRecurrenceDetails!,
     );
@@ -1420,6 +1470,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CycleOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCycleOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CycleOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCycleOptions(od);
+    });
+  });
+
   unittest.group('obj-schema-Duration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDuration();
@@ -1608,6 +1669,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkIntentPayload(od);
+    });
+  });
+
+  unittest.group('obj-schema-IntentPayloadIntentOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIntentPayloadIntentOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IntentPayloadIntentOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIntentPayloadIntentOptions(od);
     });
   });
 
@@ -2487,6 +2559,8 @@ void main() {
           api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
       final arg_request = buildSubscription();
       final arg_parent = 'foo';
+      final arg_cycleOptions_initialCycleDuration_count = 42;
+      final arg_cycleOptions_initialCycleDuration_unit = 'foo';
       final arg_subscriptionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2528,6 +2602,16 @@ void main() {
             }
           }
           unittest.expect(
+            core.int.parse(
+              queryMap['cycleOptions.initialCycleDuration.count']!.first,
+            ),
+            unittest.equals(arg_cycleOptions_initialCycleDuration_count),
+          );
+          unittest.expect(
+            queryMap['cycleOptions.initialCycleDuration.unit']!.first,
+            unittest.equals(arg_cycleOptions_initialCycleDuration_unit),
+          );
+          unittest.expect(
             queryMap['subscriptionId']!.first,
             unittest.equals(arg_subscriptionId),
           );
@@ -2545,6 +2629,10 @@ void main() {
       final response = await res.provision(
         arg_request,
         arg_parent,
+        cycleOptions_initialCycleDuration_count:
+            arg_cycleOptions_initialCycleDuration_count,
+        cycleOptions_initialCycleDuration_unit:
+            arg_cycleOptions_initialCycleDuration_unit,
         subscriptionId: arg_subscriptionId,
         $fields: arg_$fields,
       );
@@ -2749,6 +2837,80 @@ void main() {
       checkUndoCancelSubscriptionResponse(
         response as api.UndoCancelSubscriptionResponse,
       );
+    });
+  });
+
+  unittest.group('resource-PartnersSubscriptionsLineItemsResource', () {
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.PaymentsResellerSubscriptionApi(
+            mock,
+          ).partners.subscriptions.lineItems;
+      final arg_request = buildSubscriptionLineItem();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SubscriptionLineItem.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSubscriptionLineItem(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSubscriptionLineItem());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkSubscriptionLineItem(response as api.SubscriptionLineItem);
     });
   });
 

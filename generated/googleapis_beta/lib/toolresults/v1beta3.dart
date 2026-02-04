@@ -5253,7 +5253,7 @@ class TestIssue {
   ///
   /// Should always be a message from
   /// com.google.devtools.toolresults.v1.warnings
-  Any? warning;
+  Any? warningMigration;
 
   TestIssue({
     this.category,
@@ -5261,7 +5261,7 @@ class TestIssue {
     this.severity,
     this.stackTrace,
     this.type,
-    this.warning,
+    this.warningMigration,
   });
 
   TestIssue.fromJson(core.Map json_)
@@ -5276,10 +5276,11 @@ class TestIssue {
                 )
                 : null,
         type: json_['type'] as core.String?,
-        warning:
-            json_.containsKey('warning')
+        warningMigration:
+            json_.containsKey('warning_migration')
                 ? Any.fromJson(
-                  json_['warning'] as core.Map<core.String, core.dynamic>,
+                  json_['warning_migration']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
       );
@@ -5290,7 +5291,7 @@ class TestIssue {
     if (severity != null) 'severity': severity!,
     if (stackTrace != null) 'stackTrace': stackTrace!,
     if (type != null) 'type': type!,
-    if (warning != null) 'warning': warning!,
+    if (warningMigration != null) 'warning_migration': warningMigration!,
   };
 }
 

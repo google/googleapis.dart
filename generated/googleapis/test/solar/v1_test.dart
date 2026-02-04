@@ -900,6 +900,7 @@ void main() {
     unittest.test('method--findClosest', () async {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).buildingInsights;
+      final arg_exactQualityRequired = true;
       final arg_experiments = buildUnnamed9();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
@@ -938,6 +939,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['exactQualityRequired']!.first,
+            unittest.equals('$arg_exactQualityRequired'),
+          );
+          unittest.expect(
             queryMap['experiments']!,
             unittest.equals(arg_experiments),
           );
@@ -965,6 +970,7 @@ void main() {
         true,
       );
       final response = await res.findClosest(
+        exactQualityRequired: arg_exactQualityRequired,
         experiments: arg_experiments,
         location_latitude: arg_location_latitude,
         location_longitude: arg_location_longitude,

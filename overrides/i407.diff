@@ -2,7 +2,7 @@ diff --git a/discovery/googleapis/logging__v2.json b/discovery/googleapis/loggin
 index 225d72fdc..9993774ef 100644
 --- a/discovery/googleapis/logging__v2.json
 +++ b/discovery/googleapis/logging__v2.json
-@@ -1717,27 +1717,6 @@
+@@ -1981,27 +1981,6 @@
                          "https://www.googleapis.com/auth/logging.read"
                      ]
                  },
@@ -30,7 +30,7 @@ index 225d72fdc..9993774ef 100644
                  "write": {
                      "description": "Writes log entries to Logging. This API method is the only way to send log entries to Logging. This method is used, directly or indirectly, by the Logging agent (fluentd) and all logging libraries configured to use Logging. A single request may contain log entries for a maximum of 1000 different resource names (projects, organizations, billing accounts or folders), where the resource name for a log entry is determined from its logName field.",
                      "flatPath": "v2/entries:write",
-@@ -10480,50 +10459,6 @@
+@@ -11623,50 +11602,6 @@
              },
              "type": "object"
          },
@@ -44,7 +44,7 @@ index 225d72fdc..9993774ef 100644
 -                    "type": "string"
 -                },
 -                "filter": {
--                    "description": "Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
+-                    "description": "Optional. A filter that chooses which log entries to return. For more information, see Logging query language (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
 -                    "type": "string"
 -                },
 -                "resourceNames": {

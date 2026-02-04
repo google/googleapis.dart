@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250910",
+    "revision": "20260109",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Deploy API",
@@ -173,7 +173,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2042,6 +2042,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -2888,6 +2893,11 @@
                     "description": "Output only. Promotes a release to a specified 'Target' as defined in a Timed Promote Release rule.",
                     "readOnly": true
                 },
+                "uid": {
+                    "description": "Output only. Unique identifier of the `AutomationRun`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "updateTime": {
                     "description": "Output only. Time at which the automationRun was updated.",
                     "format": "google-datetime",
@@ -3207,6 +3217,11 @@
                 "defaultSkaffoldVersion": {
                     "description": "Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.",
                     "type": "string"
+                },
+                "defaultToolVersions": {
+                    "$ref": "ToolVersions",
+                    "description": "Output only. Default tool versions. These tool versions are assigned when a Release is created without specifying tool versions.",
+                    "readOnly": true
                 },
                 "name": {
                     "description": "Name of the configuration.",
@@ -4615,6 +4630,13 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5427,6 +5449,10 @@
                     "readOnly": true,
                     "type": "array"
                 },
+                "toolVersions": {
+                    "$ref": "ToolVersions",
+                    "description": "Optional. The tool versions to use for this release and all subsequent operations involving this release. If unset, tool versions are frozen when the release is created."
+                },
                 "uid": {
                     "description": "Output only. Unique identifier of the `Release`.",
                     "readOnly": true,
@@ -5439,6 +5465,31 @@
             "description": "ReleaseCondition contains all conditions relevant to a Release.",
             "id": "ReleaseCondition",
             "properties": {
+                "dockerVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's Docker version.",
+                    "readOnly": true
+                },
+                "helmVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's Helm version.",
+                    "readOnly": true
+                },
+                "kptVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's kpt version.",
+                    "readOnly": true
+                },
+                "kubectlVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's Kubectl version.",
+                    "readOnly": true
+                },
+                "kustomizeVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's Kustomize version.",
+                    "readOnly": true
+                },
                 "releaseReadyCondition": {
                     "$ref": "ReleaseReadyCondition",
                     "description": "Details around the Releases's overall status."
@@ -5446,6 +5497,11 @@
                 "skaffoldSupportedCondition": {
                     "$ref": "SkaffoldSupportedCondition",
                     "description": "Details around the support state of the release's Skaffold version."
+                },
+                "skaffoldVersionSupportedCondition": {
+                    "$ref": "ToolVersionSupportedCondition",
+                    "description": "Output only. Details around the support state of the release's Skaffold version.",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -6358,7 +6414,7 @@
                     ],
                     "enumDescriptions": [
                         "Rollout update type unspecified.",
-                        "rollout state updated to pending.",
+                        "Rollout state updated to pending (release has succeeded, waiting on the rollout to start).",
                         "Rollout state updated to pending release.",
                         "Rollout state updated to in progress.",
                         "Rollout state updated to cancelling.",
@@ -7222,6 +7278,78 @@
                 },
                 "timeZone": {
                     "description": "Required. The time zone in IANA format [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g. America/New_York).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ToolVersionSupportedCondition": {
+            "description": "ToolVersionSupportedCondition contains information about when support for the release's version of a tool ends.",
+            "id": "ToolVersionSupportedCondition",
+            "properties": {
+                "maintenanceModeTime": {
+                    "description": "Output only. The time at which this release's version of the tool will enter maintenance mode.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Output only. True if the version of Tool used by this release is supported.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "supportExpirationTime": {
+                    "description": "Output only. The time at which this release's version of the tool will no longer be supported.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "toolVersionSupportState": {
+                    "description": "Output only. The tool support state for this release's version of the tool.",
+                    "enum": [
+                        "TOOL_VERSION_SUPPORT_STATE_UNSPECIFIED",
+                        "TOOL_VERSION_SUPPORT_STATE_SUPPORTED",
+                        "TOOL_VERSION_SUPPORT_STATE_MAINTENANCE_MODE",
+                        "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "This tool version is currently supported.",
+                        "This tool version is in maintenance mode.",
+                        "This tool version is no longer supported."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ToolVersions": {
+            "description": "Details of ToolVersions for the release.",
+            "id": "ToolVersions",
+            "properties": {
+                "docker": {
+                    "description": "Optional. The Docker version to use for Cloud Deploy operations.",
+                    "type": "string"
+                },
+                "helm": {
+                    "description": "Optional. The Helm version to use for Cloud Deploy operations.",
+                    "type": "string"
+                },
+                "kpt": {
+                    "description": "Optional. The kpt version to use for Cloud Deploy operations.",
+                    "type": "string"
+                },
+                "kubectl": {
+                    "description": "Optional. The Kubectl version to use for Cloud Deploy operations.",
+                    "type": "string"
+                },
+                "kustomize": {
+                    "description": "Optional. The Kustomize version to use for Cloud Deploy operations.",
+                    "type": "string"
+                },
+                "skaffold": {
+                    "description": "Optional. The Skaffold version to use for Cloud Deploy operations.",
                     "type": "string"
                 }
             },

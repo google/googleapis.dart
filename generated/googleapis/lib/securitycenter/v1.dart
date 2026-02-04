@@ -2951,6 +2951,9 @@ class OrganizationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<OrganizationSettings> updateOrganizationSettings(
     OrganizationSettings request,
     core.String name, {
@@ -4923,6 +4926,14 @@ class OrganizationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4938,12 +4949,15 @@ class OrganizationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -10009,6 +10023,72 @@ class AdaptiveProtection {
   };
 }
 
+/// Represents an ADC application associated with the finding.
+class AdcApplication {
+  /// Consumer provided attributes for the AppHub application.
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributes? attributes;
+
+  /// The resource name of an ADC Application.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/spaces/{space}/applications/{application}
+  core.String? name;
+
+  AdcApplication({this.attributes, this.name});
+
+  AdcApplication.fromJson(core.Map json_)
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? GoogleCloudSecuritycenterV1ResourceApplicationAttributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (attributes != null) 'attributes': attributes!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Represents an ADC template associated with the finding.
+class AdcApplicationTemplateRevision {
+  /// The resource name of an ADC Application Template Revision.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+  core.String? name;
+
+  AdcApplicationTemplateRevision({this.name});
+
+  AdcApplicationTemplateRevision.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Represents an ADC shared template associated with the finding.
+class AdcSharedTemplateRevision {
+  /// The resource name of an ADC Shared Template Revision.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+  core.String? name;
+
+  AdcSharedTemplateRevision({this.name});
+
+  AdcSharedTemplateRevision.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+  };
+}
+
 /// Details about resources affected by this finding.
 class AffectedResources {
   /// The count of resources affected by the finding.
@@ -10055,6 +10135,9 @@ class AiModel {
   /// The publisher of the model, for example, “google” or “nvidia”.
   core.String? publisher;
 
+  /// The purpose of the model, for example, "Inteference" or "Training".
+  core.String? usageCategory;
+
   AiModel({
     this.deploymentPlatform,
     this.displayName,
@@ -10063,6 +10146,7 @@ class AiModel {
     this.location,
     this.name,
     this.publisher,
+    this.usageCategory,
   });
 
   AiModel.fromJson(core.Map json_)
@@ -10074,6 +10158,7 @@ class AiModel {
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
         publisher: json_['publisher'] as core.String?,
+        usageCategory: json_['usageCategory'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10084,6 +10169,7 @@ class AiModel {
     if (location != null) 'location': location!,
     if (name != null) 'name': name!,
     if (publisher != null) 'publisher': publisher!,
+    if (usageCategory != null) 'usageCategory': usageCategory!,
   };
 }
 
@@ -10137,6 +10223,68 @@ class Application {
   core.Map<core.String, core.dynamic> toJson() => {
     if (baseUri != null) 'baseUri': baseUri!,
     if (fullUri != null) 'fullUri': fullUri!,
+  };
+}
+
+/// Represents the result of evaluating artifact guard policies.
+class ArtifactGuardPolicies {
+  /// A list of failing policies.
+  core.List<ArtifactGuardPolicy>? failingPolicies;
+
+  /// The ID of the resource that has policies configured for it.
+  core.String? resourceId;
+
+  ArtifactGuardPolicies({this.failingPolicies, this.resourceId});
+
+  ArtifactGuardPolicies.fromJson(core.Map json_)
+    : this(
+        failingPolicies:
+            (json_['failingPolicies'] as core.List?)
+                ?.map(
+                  (value) => ArtifactGuardPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        resourceId: json_['resourceId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (failingPolicies != null) 'failingPolicies': failingPolicies!,
+    if (resourceId != null) 'resourceId': resourceId!,
+  };
+}
+
+/// Represents an artifact guard policy.
+class ArtifactGuardPolicy {
+  /// The reason for the policy failure, for example, "severity=HIGH AND
+  /// max_vuln_count=2".
+  core.String? failureReason;
+
+  /// The ID of the failing policy, for example,
+  /// "organizations/3392779/locations/global/policies/prod-policy".
+  core.String? policyId;
+
+  /// The type of the policy evaluation.
+  /// Possible string values are:
+  /// - "ARTIFACT_GUARD_POLICY_TYPE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "VULNERABILITY" : Vulnerability type.
+  core.String? type;
+
+  ArtifactGuardPolicy({this.failureReason, this.policyId, this.type});
+
+  ArtifactGuardPolicy.fromJson(core.Map json_)
+    : this(
+        failureReason: json_['failureReason'] as core.String?,
+        policyId: json_['policyId'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (failureReason != null) 'failureReason': failureReason!,
+    if (policyId != null) 'policyId': policyId!,
+    if (type != null) 'type': type!,
   };
 }
 
@@ -11427,6 +11575,12 @@ class CloudDlpDataProfile {
   /// `projects/123/locations/europe/tableProfiles/8383929`.
   core.String? dataProfile;
 
+  /// Type of information detected by SDP.
+  ///
+  /// Info type includes name, version and sensitivity of the detected
+  /// information type.
+  core.List<InfoType>? infoTypes;
+
   /// The resource hierarchy level at which the data profile was generated.
   /// Possible string values are:
   /// - "PARENT_TYPE_UNSPECIFIED" : Unspecified parent type.
@@ -11434,16 +11588,25 @@ class CloudDlpDataProfile {
   /// - "PROJECT" : Project-level configurations.
   core.String? parentType;
 
-  CloudDlpDataProfile({this.dataProfile, this.parentType});
+  CloudDlpDataProfile({this.dataProfile, this.infoTypes, this.parentType});
 
   CloudDlpDataProfile.fromJson(core.Map json_)
     : this(
         dataProfile: json_['dataProfile'] as core.String?,
+        infoTypes:
+            (json_['infoTypes'] as core.List?)
+                ?.map(
+                  (value) => InfoType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         parentType: json_['parentType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (dataProfile != null) 'dataProfile': dataProfile!,
+    if (infoTypes != null) 'infoTypes': infoTypes!,
     if (parentType != null) 'parentType': parentType!,
   };
 }
@@ -12944,6 +13107,15 @@ class File {
   /// Path of the file in terms of underlying disk/partition identifiers.
   DiskPath? diskPath;
 
+  /// The load state of the file.
+  /// Possible string values are:
+  /// - "FILE_LOAD_STATE_UNSPECIFIED" : The file state is unspecified.
+  /// - "LOADED_BY_PROCESS" : The file is being used by an active process at the
+  /// time of scanning.
+  /// - "NOT_LOADED_BY_PROCESS" : The file is not being used by any active
+  /// process at the time of scanning.
+  core.String? fileLoadState;
+
   /// The length in bytes of the file prefix that was hashed.
   ///
   /// If hashed_size == size, any hashes reported represent the entire file.
@@ -12971,6 +13143,7 @@ class File {
   File({
     this.contents,
     this.diskPath,
+    this.fileLoadState,
     this.hashedSize,
     this.operations,
     this.partiallyHashed,
@@ -12988,6 +13161,7 @@ class File {
                   json_['diskPath'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        fileLoadState: json_['fileLoadState'] as core.String?,
         hashedSize: json_['hashedSize'] as core.String?,
         operations:
             (json_['operations'] as core.List?)
@@ -13006,6 +13180,7 @@ class File {
   core.Map<core.String, core.dynamic> toJson() => {
     if (contents != null) 'contents': contents!,
     if (diskPath != null) 'diskPath': diskPath!,
+    if (fileLoadState != null) 'fileLoadState': fileLoadState!,
     if (hashedSize != null) 'hashedSize': hashedSize!,
     if (operations != null) 'operations': operations!,
     if (partiallyHashed != null) 'partiallyHashed': partiallyHashed!,
@@ -13057,6 +13232,9 @@ class Finding {
 
   /// Represents an application associated with the finding.
   Application? application;
+
+  /// ArtifactGuardPolicies associated with the finding.
+  ArtifactGuardPolicies? artifactGuardPolicies;
 
   /// The results of an attack path simulation relevant to this finding.
   AttackExposure? attackExposure;
@@ -13321,6 +13499,9 @@ class Finding {
   /// creation time.
   core.String? resourceName;
 
+  /// Secret associated with the finding.
+  Secret? secret;
+
   /// User specified security marks.
   ///
   /// These marks are entirely managed by the user and come from the
@@ -13416,6 +13597,7 @@ class Finding {
     this.affectedResources,
     this.aiModel,
     this.application,
+    this.artifactGuardPolicies,
     this.attackExposure,
     this.backupDisasterRecovery,
     this.canonicalName,
@@ -13466,6 +13648,7 @@ class Finding {
     this.parentDisplayName,
     this.processes,
     this.resourceName,
+    this.secret,
     this.securityMarks,
     this.securityPosture,
     this.severity,
@@ -13501,6 +13684,13 @@ class Finding {
             json_.containsKey('application')
                 ? Application.fromJson(
                   json_['application'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        artifactGuardPolicies:
+            json_.containsKey('artifactGuardPolicies')
+                ? ArtifactGuardPolicies.fromJson(
+                  json_['artifactGuardPolicies']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         attackExposure:
@@ -13763,6 +13953,12 @@ class Finding {
                 )
                 .toList(),
         resourceName: json_['resourceName'] as core.String?,
+        secret:
+            json_.containsKey('secret')
+                ? Secret.fromJson(
+                  json_['secret'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         securityMarks:
             json_.containsKey('securityMarks')
                 ? SecurityMarks.fromJson(
@@ -13809,6 +14005,8 @@ class Finding {
     if (affectedResources != null) 'affectedResources': affectedResources!,
     if (aiModel != null) 'aiModel': aiModel!,
     if (application != null) 'application': application!,
+    if (artifactGuardPolicies != null)
+      'artifactGuardPolicies': artifactGuardPolicies!,
     if (attackExposure != null) 'attackExposure': attackExposure!,
     if (backupDisasterRecovery != null)
       'backupDisasterRecovery': backupDisasterRecovery!,
@@ -13862,6 +14060,7 @@ class Finding {
     if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
     if (processes != null) 'processes': processes!,
     if (resourceName != null) 'resourceName': resourceName!,
+    if (secret != null) 'secret': secret!,
     if (securityMarks != null) 'securityMarks': securityMarks!,
     if (securityPosture != null) 'securityPosture': securityPosture!,
     if (severity != null) 'severity': severity!,
@@ -14618,6 +14817,191 @@ class GoogleCloudSecuritycenterV1Property {
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
     if (valueExpression != null) 'valueExpression': valueExpression!,
+  };
+}
+
+/// The App Hub Application associated with the finding's resource.
+class GoogleCloudSecuritycenterV1ResourceApplication {
+  /// Consumer provided attributes for the application
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributes? attributes;
+
+  /// The resource name of an Application.
+  ///
+  /// Format:
+  /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
+  core.String? name;
+
+  GoogleCloudSecuritycenterV1ResourceApplication({this.attributes, this.name});
+
+  GoogleCloudSecuritycenterV1ResourceApplication.fromJson(core.Map json_)
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? GoogleCloudSecuritycenterV1ResourceApplicationAttributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (attributes != null) 'attributes': attributes!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Consumer provided attributes for the application
+class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
+  /// Business team that ensures user needs are met and value is delivered
+  core.List<
+    GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+  >?
+  businessOwners;
+
+  /// User-defined criticality information.
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality?
+  criticality;
+
+  /// Developer team that owns development and coding.
+  core.List<
+    GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+  >?
+  developerOwners;
+
+  /// User-defined environment information.
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment?
+  environment;
+
+  /// Operator team that ensures runtime and operations.
+  core.List<
+    GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+  >?
+  operatorOwners;
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributes({
+    this.businessOwners,
+    this.criticality,
+    this.developerOwners,
+    this.environment,
+    this.operatorOwners,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributes.fromJson(
+    core.Map json_,
+  ) : this(
+        businessOwners:
+            (json_['businessOwners'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        criticality:
+            json_.containsKey('criticality')
+                ? GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality.fromJson(
+                  json_['criticality'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        developerOwners:
+            (json_['developerOwners'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        environment:
+            json_.containsKey('environment')
+                ? GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operatorOwners:
+            (json_['operatorOwners'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (businessOwners != null) 'businessOwners': businessOwners!,
+    if (criticality != null) 'criticality': criticality!,
+    if (developerOwners != null) 'developerOwners': developerOwners!,
+    if (environment != null) 'environment': environment!,
+    if (operatorOwners != null) 'operatorOwners': operatorOwners!,
+  };
+}
+
+/// Contact information of stakeholders.
+class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo {
+  /// Email address of the contacts.
+  core.String? email;
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo({
+    this.email,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
+    core.Map json_,
+  ) : this(email: json_['email'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (email != null) 'email': email!,
+  };
+}
+
+/// Criticality of the Application, Service, or Workload
+class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
+  /// Criticality Type.
+  /// Possible string values are:
+  /// - "CRITICALITY_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
+  /// - "HIGH" : High impact.
+  /// - "MEDIUM" : Medium impact.
+  /// - "LOW" : Low impact.
+  core.String? type;
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality({
+    this.type,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality.fromJson(
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
+  };
+}
+
+/// Environment of the Application, Service, or Workload
+class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment {
+  /// Environment Type.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "PRODUCTION" : Production environment.
+  /// - "STAGING" : Staging environment.
+  /// - "TEST" : Test environment.
+  /// - "DEVELOPMENT" : Development environment.
+  core.String? type;
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment({
+    this.type,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment.fromJson(
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
   };
 }
 
@@ -15439,6 +15823,48 @@ class Indicator {
     if (ipAddresses != null) 'ipAddresses': ipAddresses!,
     if (signatures != null) 'signatures': signatures!,
     if (uris != null) 'uris': uris!,
+  };
+}
+
+/// Type of information detected by the API.
+class InfoType {
+  /// Name of the information type.
+  ///
+  /// Either a name of your choosing when creating a CustomInfoType, or one of
+  /// the names listed at
+  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// when specifying a built-in type. When sending Cloud DLP results to Data
+  /// Catalog, infoType names should conform to the pattern
+  /// `[A-Za-z0-9$_-]{1,64}`.
+  core.String? name;
+
+  /// Optional custom sensitivity for this InfoType.
+  ///
+  /// This only applies to data profiling.
+  SensitivityScore? sensitivityScore;
+
+  /// Optional version name for this InfoType.
+  core.String? version;
+
+  InfoType({this.name, this.sensitivityScore, this.version});
+
+  InfoType.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        sensitivityScore:
+            json_.containsKey('sensitivityScore')
+                ? SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+    if (version != null) 'version': version!,
   };
 }
 
@@ -16344,7 +16770,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -16357,11 +16795,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -17615,6 +18058,18 @@ class Requests {
 /// Information related to the Google Cloud resource that is associated with
 /// this finding.
 class Resource {
+  /// The ADC application associated with the finding.
+  AdcApplication? adcApplication;
+
+  /// The ADC template associated with the finding.
+  AdcApplicationTemplateRevision? adcApplicationTemplate;
+
+  /// The ADC shared template associated with the finding.
+  AdcSharedTemplateRevision? adcSharedTemplate;
+
+  /// The App Hub application this resource belongs to.
+  GoogleCloudSecuritycenterV1ResourceApplication? application;
+
   /// The AWS metadata associated with the finding.
   AwsMetadata? awsMetadata;
 
@@ -17684,6 +18139,10 @@ class Resource {
   core.String? type;
 
   Resource({
+    this.adcApplication,
+    this.adcApplicationTemplate,
+    this.adcSharedTemplate,
+    this.application,
     this.awsMetadata,
     this.azureMetadata,
     this.cloudProvider,
@@ -17704,6 +18163,33 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
     : this(
+        adcApplication:
+            json_.containsKey('adcApplication')
+                ? AdcApplication.fromJson(
+                  json_['adcApplication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adcApplicationTemplate:
+            json_.containsKey('adcApplicationTemplate')
+                ? AdcApplicationTemplateRevision.fromJson(
+                  json_['adcApplicationTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adcSharedTemplate:
+            json_.containsKey('adcSharedTemplate')
+                ? AdcSharedTemplateRevision.fromJson(
+                  json_['adcSharedTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        application:
+            json_.containsKey('application')
+                ? GoogleCloudSecuritycenterV1ResourceApplication.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         awsMetadata:
             json_.containsKey('awsMetadata')
                 ? AwsMetadata.fromJson(
@@ -17745,6 +18231,11 @@ class Resource {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adcApplication != null) 'adcApplication': adcApplication!,
+    if (adcApplicationTemplate != null)
+      'adcApplicationTemplate': adcApplicationTemplate!,
+    if (adcSharedTemplate != null) 'adcSharedTemplate': adcSharedTemplate!,
+    if (application != null) 'application': application!,
     if (awsMetadata != null) 'awsMetadata': awsMetadata!,
     if (azureMetadata != null) 'azureMetadata': azureMetadata!,
     if (cloudProvider != null) 'cloudProvider': cloudProvider!,
@@ -17882,6 +18373,119 @@ class Role {
 
 /// Request message for running asset discovery for an organization.
 typedef RunAssetDiscoveryRequest = $Empty;
+
+/// Details about a secret or credential associated with the finding.
+class Secret {
+  /// The environment variable containing the secret.
+  SecretEnvironmentVariable? environmentVariable;
+
+  /// The file containing the secret.
+  SecretFilePath? filePath;
+
+  /// The status of the secret.
+  SecretStatus? status;
+
+  /// The type of secret, for example, GCP_API_KEY.
+  core.String? type;
+
+  Secret({this.environmentVariable, this.filePath, this.status, this.type});
+
+  Secret.fromJson(core.Map json_)
+    : this(
+        environmentVariable:
+            json_.containsKey('environmentVariable')
+                ? SecretEnvironmentVariable.fromJson(
+                  json_['environmentVariable']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filePath:
+            json_.containsKey('filePath')
+                ? SecretFilePath.fromJson(
+                  json_['filePath'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status:
+            json_.containsKey('status')
+                ? SecretStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (environmentVariable != null)
+      'environmentVariable': environmentVariable!,
+    if (filePath != null) 'filePath': filePath!,
+    if (status != null) 'status': status!,
+    if (type != null) 'type': type!,
+  };
+}
+
+/// Environment variable containing the secret.
+class SecretEnvironmentVariable {
+  /// Environment variable name as a JSON encoded string.
+  ///
+  /// Note that value is not included since the value contains the secret data,
+  /// which is sensitive core content.
+  core.String? key;
+
+  SecretEnvironmentVariable({this.key});
+
+  SecretEnvironmentVariable.fromJson(core.Map json_)
+    : this(key: json_['key'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (key != null) 'key': key!,
+  };
+}
+
+/// File path containing the secret.
+class SecretFilePath {
+  /// Path to the file.
+  core.String? path;
+
+  SecretFilePath({this.path});
+
+  SecretFilePath.fromJson(core.Map json_)
+    : this(path: json_['path'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (path != null) 'path': path!,
+  };
+}
+
+/// The status of the secret.
+class SecretStatus {
+  /// Time that the secret was found.
+  core.String? lastUpdatedTime;
+
+  /// The validity of the secret.
+  /// Possible string values are:
+  /// - "SECRET_VALIDITY_UNSPECIFIED" : Default value; no validation was
+  /// attempted.
+  /// - "SECRET_VALIDITY_UNSUPPORTED" : There is no mechanism to validate the
+  /// secret.
+  /// - "SECRET_VALIDITY_FAILED" : Validation is supported but the validation
+  /// failed.
+  /// - "SECRET_VALIDITY_INVALID" : The secret is confirmed to be invalid.
+  /// - "SECRET_VALIDITY_VALID" : The secret is confirmed to be valid.
+  core.String? validity;
+
+  SecretStatus({this.lastUpdatedTime, this.validity});
+
+  SecretStatus.fromJson(core.Map json_)
+    : this(
+        lastUpdatedTime: json_['lastUpdatedTime'] as core.String?,
+        validity: json_['validity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (lastUpdatedTime != null) 'lastUpdatedTime': lastUpdatedTime!,
+    if (validity != null) 'validity': validity!,
+  };
+}
 
 /// SecurityBulletin are notifications of vulnerabilities of Google products.
 class SecurityBulletin {
@@ -18181,6 +18785,36 @@ class SecurityPosture {
     if (postureDeploymentResource != null)
       'postureDeploymentResource': postureDeploymentResource!,
     if (revisionId != null) 'revisionId': revisionId!,
+  };
+}
+
+/// Score is calculated from of all elements in the data profile.
+///
+/// A higher level means the data is more sensitive.
+class SensitivityScore {
+  /// The sensitivity score applied to the resource.
+  /// Possible string values are:
+  /// - "SENSITIVITY_SCORE_LEVEL_UNSPECIFIED" : Unused.
+  /// - "SENSITIVITY_LOW" : No sensitive information detected. The resource
+  /// isn't publicly accessible.
+  /// - "SENSITIVITY_UNKNOWN" : Unable to determine sensitivity.
+  /// - "SENSITIVITY_MODERATE" : Medium risk. Contains personally identifiable
+  /// information (PII), potentially sensitive data, or fields with free-text
+  /// data that are at a higher risk of having intermittent sensitive data.
+  /// Consider limiting access.
+  /// - "SENSITIVITY_HIGH" : High risk. Sensitive personally identifiable
+  /// information (SPII) can be present. Exfiltration of data can lead to user
+  /// data loss. Re-identification of users might be possible. Consider limiting
+  /// usage and or removing SPII.
+  core.String? score;
+
+  SensitivityScore({this.score});
+
+  SensitivityScore.fromJson(core.Map json_)
+    : this(score: json_['score'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (score != null) 'score': score!,
   };
 }
 

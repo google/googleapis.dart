@@ -123,9 +123,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -327,6 +327,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -342,12 +350,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2215,6 +2226,76 @@ class GceConfidentialInstanceConfig {
   };
 }
 
+/// A Persistent Directory backed by a Compute Engine
+/// [Hyperdisk Balanced High Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/hyperdisk-balanced-ha).
+///
+/// This is a high-availability block storage solution that offers a balance
+/// between performance and cost for most general-purpose workloads.
+class GceHyperdiskBalancedHighAvailability {
+  /// Number of seconds to wait after initially creating or subsequently
+  /// shutting down the workstation before converting its disk into a snapshot.
+  ///
+  /// This generally saves costs at the expense of greater startup time on next
+  /// workstation start, as the service will need to create a disk from the
+  /// archival snapshot. A value of `"0s"` indicates that the disk will never be
+  /// archived.
+  ///
+  /// Optional.
+  core.String? archiveTimeout;
+
+  /// Whether the persistent disk should be deleted when the workstation is
+  /// deleted.
+  ///
+  /// Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RECLAIM_POLICY_UNSPECIFIED" : Do not use.
+  /// - "DELETE" : Delete the persistent disk when deleting the workstation.
+  /// - "RETAIN" : Keep the persistent disk when deleting the workstation. An
+  /// administrator must manually delete the disk.
+  core.String? reclaimPolicy;
+
+  /// The GB capacity of a persistent home directory for each workstation
+  /// created with this configuration.
+  ///
+  /// Must be empty if source_snapshot is set. Valid values are `10`, `50`,
+  /// `100`, `200`, `500`, or `1000`. Defaults to `200`.
+  ///
+  /// Optional.
+  core.int? sizeGb;
+
+  /// Name of the snapshot to use as the source for the disk.
+  ///
+  /// If set, size_gb must be empty. Must be formatted as ext4 file system with
+  /// no partitions.
+  ///
+  /// Optional.
+  core.String? sourceSnapshot;
+
+  GceHyperdiskBalancedHighAvailability({
+    this.archiveTimeout,
+    this.reclaimPolicy,
+    this.sizeGb,
+    this.sourceSnapshot,
+  });
+
+  GceHyperdiskBalancedHighAvailability.fromJson(core.Map json_)
+    : this(
+        archiveTimeout: json_['archiveTimeout'] as core.String?,
+        reclaimPolicy: json_['reclaimPolicy'] as core.String?,
+        sizeGb: json_['sizeGb'] as core.int?,
+        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (archiveTimeout != null) 'archiveTimeout': archiveTimeout!,
+    if (reclaimPolicy != null) 'reclaimPolicy': reclaimPolicy!,
+    if (sizeGb != null) 'sizeGb': sizeGb!,
+    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
+  };
+}
+
 /// A runtime using a Compute Engine instance.
 class GceInstance {
   /// A list of the type and count of accelerator cards attached to the
@@ -2283,6 +2364,11 @@ class GceInstance {
   /// Optional.
   core.bool? enableNestedVirtualization;
 
+  /// Custom metadata to apply to Compute Engine instances.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? instanceMetadata;
+
   /// The type of machine to use for VM instances—for example,
   /// `"e2-standard-4"`.
   ///
@@ -2339,6 +2425,20 @@ class GceInstance {
   /// Optional.
   GceShieldedInstanceConfig? shieldedInstanceConfig;
 
+  /// Link to the startup script stored in Cloud Storage.
+  ///
+  /// This script will be run on the host workstation VM when the VM is created.
+  /// The URI must be of the form gs://{bucket-name}/{object-name}. If
+  /// specifying a startup script, the service account must have
+  /// [Permission to access the bucket and script file in Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-permissions).
+  /// Otherwise, the script must be publicly accessible. Note that the service
+  /// regularly updates the OS version of the host VM, and it is the
+  /// responsibility of the user to ensure the script stays compatible with the
+  /// OS version.
+  ///
+  /// Optional.
+  core.String? startupScriptUri;
+
   /// Network tags to add to the Compute Engine VMs backing the workstations.
   ///
   /// This option applies
@@ -2368,12 +2468,14 @@ class GceInstance {
     this.disablePublicIpAddresses,
     this.disableSsh,
     this.enableNestedVirtualization,
+    this.instanceMetadata,
     this.machineType,
     this.poolSize,
     this.pooledInstances,
     this.serviceAccount,
     this.serviceAccountScopes,
     this.shieldedInstanceConfig,
+    this.startupScriptUri,
     this.tags,
     this.vmTags,
   });
@@ -2409,6 +2511,9 @@ class GceInstance {
         disableSsh: json_['disableSsh'] as core.bool?,
         enableNestedVirtualization:
             json_['enableNestedVirtualization'] as core.bool?,
+        instanceMetadata: (json_['instanceMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
         machineType: json_['machineType'] as core.String?,
         poolSize: json_['poolSize'] as core.int?,
         pooledInstances: json_['pooledInstances'] as core.int?,
@@ -2424,6 +2529,7 @@ class GceInstance {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        startupScriptUri: json_['startupScriptUri'] as core.String?,
         tags:
             (json_['tags'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -2444,6 +2550,7 @@ class GceInstance {
     if (disableSsh != null) 'disableSsh': disableSsh!,
     if (enableNestedVirtualization != null)
       'enableNestedVirtualization': enableNestedVirtualization!,
+    if (instanceMetadata != null) 'instanceMetadata': instanceMetadata!,
     if (machineType != null) 'machineType': machineType!,
     if (poolSize != null) 'poolSize': poolSize!,
     if (pooledInstances != null) 'pooledInstances': pooledInstances!,
@@ -2452,6 +2559,7 @@ class GceInstance {
       'serviceAccountScopes': serviceAccountScopes!,
     if (shieldedInstanceConfig != null)
       'shieldedInstanceConfig': shieldedInstanceConfig!,
+    if (startupScriptUri != null) 'startupScriptUri': startupScriptUri!,
     if (tags != null) 'tags': tags!,
     if (vmTags != null) 'vmTags': vmTags!,
   };
@@ -2812,7 +2920,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2825,11 +2945,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3130,6 +3255,10 @@ class Operation {
 /// Updates to this field will not update existing workstations and will only
 /// take effect on new workstations.
 class PersistentDirectory {
+  /// A PersistentDirectory backed by a Compute Engine hyperdisk high
+  /// availability disk.
+  GceHyperdiskBalancedHighAvailability? gceHd;
+
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
   GceRegionalPersistentDisk? gcePd;
 
@@ -3138,10 +3267,16 @@ class PersistentDirectory {
   /// Optional.
   core.String? mountPath;
 
-  PersistentDirectory({this.gcePd, this.mountPath});
+  PersistentDirectory({this.gceHd, this.gcePd, this.mountPath});
 
   PersistentDirectory.fromJson(core.Map json_)
     : this(
+        gceHd:
+            json_.containsKey('gceHd')
+                ? GceHyperdiskBalancedHighAvailability.fromJson(
+                  json_['gceHd'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         gcePd:
             json_.containsKey('gcePd')
                 ? GceRegionalPersistentDisk.fromJson(
@@ -3152,6 +3287,7 @@ class PersistentDirectory {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (gceHd != null) 'gceHd': gceHd!,
     if (gcePd != null) 'gcePd': gcePd!,
     if (mountPath != null) 'mountPath': mountPath!,
   };

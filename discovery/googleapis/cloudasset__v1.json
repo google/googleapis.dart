@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250711",
+    "revision": "20260102",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Asset API",
@@ -2054,8 +2054,8 @@
                     ],
                     "enumDescriptions": [
                         "This is only used for distinguishing unset values and should never be used.",
-                        "Indicate that all values are allowed for list constraints. Indicate that enforcement is off for boolean constraints.",
-                        "Indicate that all values are denied for list constraints. Indicate that enforcement is on for boolean constraints."
+                        "Indicates that all values are allowed for list constraints. Indicates that enforcement is off for boolean constraints.",
+                        "Indicates that all values are denied for list constraints. Indicates that enforcement is on for boolean constraints."
                     ],
                     "type": "string"
                 },
@@ -2097,7 +2097,7 @@
                     "type": "string"
                 },
                 "condition": {
-                    "description": "Organization Policy condition/expression. For example: `resource.instanceName.matches(\"[production|test]_.*_(\\d)+\")'` or, `resource.management.auto_upgrade == true`",
+                    "description": "Organization Policy condition/expression. For example: `resource.instanceName.matches(\"(production|test)_(.+_)?[\\d]+\")'` or, `resource.management.auto_upgrade == true`",
                     "type": "string"
                 },
                 "description": {
@@ -4662,6 +4662,13 @@
             "description": "Resource representation as defined by the corresponding service providing the resource for a given API version.",
             "id": "VersionedResource",
             "properties": {
+                "assetExceptions": {
+                    "description": "The exceptions of a resource.",
+                    "items": {
+                        "$ref": "AssetException"
+                    },
+                    "type": "array"
+                },
                 "resource": {
                     "additionalProperties": {
                         "description": "Properties of the object.",

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/apps.alerts": {
-                    "description": "See and delete your domain's G Suite alerts, and send alert feedback"
+                    "description": "See and delete your domain's Google Workspace alerts, and send alert feedback"
                 }
             }
         }
@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250414",
+    "revision": "20251117",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "servicePath": "",
     "title": "Google Workspace Alert Center API",
@@ -532,7 +532,8 @@
                         "FRAUD",
                         "NUMBER_HARVESTING",
                         "PAYMENTS_FRAUD",
-                        "UNWANTED_CONTENT"
+                        "UNWANTED_CONTENT",
+                        "UNQUALIFIED_EDU"
                     ],
                     "enumDescriptions": [
                         "Abuse reason is unspecified.",
@@ -543,7 +544,8 @@
                         "This account is being suspended for fraud.",
                         "This account is being suspended for number harvesting.",
                         "This account is being suspended for payments fraud.",
-                        "This account is being suspended for unwanted content."
+                        "This account is being suspended for unwanted content.",
+                        "This account is being suspended for being an unqualified educational institution."
                     ],
                     "type": "string"
                 },
@@ -1659,6 +1661,10 @@
                 },
                 "documentId": {
                     "description": "Drive file ID.",
+                    "type": "string"
+                },
+                "messageId": {
+                    "description": "RFC2822 message ID.",
                     "type": "string"
                 },
                 "resourceTitle": {

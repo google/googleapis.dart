@@ -1866,6 +1866,18 @@ class QuotaInfo {
   /// quota usage).
   core.Map<core.String, core.int>? quotaConsumed;
 
+  /// Indicates the state of the quota extraction.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "QUOTA_EXTRACTION_STATE_UNSPECIFIED" : Indicates the quota extraction
+  /// has not started.
+  /// - "QUOTA_EXTRACTION_STATE_DARK_LAUNCH" : Indicates the quota extraction is
+  /// in dark launch and verifying quota enforcement.
+  /// - "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION" : Indicates the quota
+  /// extraction traffic migration is in progress.
+  core.String? quotaExtractionState;
+
   /// Quota metrics to indicate the usage.
   ///
   /// Depending on the check request, one or more of the following metrics will
@@ -1880,7 +1892,12 @@ class QuotaInfo {
   /// "serviceruntime.googleapis.com/quota/exceeded"
   core.List<MetricValueSet>? quotaMetrics;
 
-  QuotaInfo({this.limitExceeded, this.quotaConsumed, this.quotaMetrics});
+  QuotaInfo({
+    this.limitExceeded,
+    this.quotaConsumed,
+    this.quotaExtractionState,
+    this.quotaMetrics,
+  });
 
   QuotaInfo.fromJson(core.Map json_)
     : this(
@@ -1891,6 +1908,7 @@ class QuotaInfo {
         quotaConsumed: (json_['quotaConsumed']
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.int)),
+        quotaExtractionState: json_['quotaExtractionState'] as core.String?,
         quotaMetrics:
             (json_['quotaMetrics'] as core.List?)
                 ?.map(
@@ -1904,6 +1922,8 @@ class QuotaInfo {
   core.Map<core.String, core.dynamic> toJson() => {
     if (limitExceeded != null) 'limitExceeded': limitExceeded!,
     if (quotaConsumed != null) 'quotaConsumed': quotaConsumed!,
+    if (quotaExtractionState != null)
+      'quotaExtractionState': quotaExtractionState!,
     if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
   };
 }

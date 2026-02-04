@@ -1301,9 +1301,11 @@ class RegionalInventoryDataSource {
   };
 }
 
-/// The supplemental data source for local and online products.
+/// The
+/// [supplemental data source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#link-supplemental-data-source)
+/// for local and online products.
 ///
-/// After creation, you should make sure to link the supplemental product data
+/// After creation,you should make sure to link the supplemental product data
 /// source into one or more primary product data sources.
 class SupplementalProductDataSource {
   /// The two-letter ISO 639-1 language of the items in the data source.

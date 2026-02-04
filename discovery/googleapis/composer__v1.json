@@ -257,7 +257,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250803",
+    "revision": "20260127",
     "rootUrl": "https://composer.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Composer API",
@@ -1213,6 +1213,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -1291,6 +1296,14 @@
                     "description": "Output only. Url for a docker build log of an upgraded image.",
                     "readOnly": true,
                     "type": "string"
+                },
+                "configConflicts": {
+                    "description": "Output only. Contains information about environment configuration that is incompatible with the new image version, except for pypi modules conflicts.",
+                    "items": {
+                        "$ref": "ConfigConflict"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 },
                 "containsPypiModulesConflict": {
                     "description": "Output only. Whether build has succeeded or failed on modules conflicts.",
@@ -1429,6 +1442,31 @@
                 "statusMessage": {
                     "description": "Output only. Text to provide more descriptive status.",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConfigConflict": {
+            "description": "Environment configuration conflict.",
+            "id": "ConfigConflict",
+            "properties": {
+                "message": {
+                    "description": "Conflict message.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Conflict type. It can be blocking or non-blocking.",
+                    "enum": [
+                        "CONFLICT_TYPE_UNSPECIFIED",
+                        "BLOCKING",
+                        "NON_BLOCKING"
+                    ],
+                    "enumDescriptions": [
+                        "Conflict type is unknown.",
+                        "Conflict is blocking, the upgrade would fail.",
+                        "Conflict is non-blocking. The upgrade would succeed, but the environment configuration would be changed."
+                    ],
                     "type": "string"
                 }
             },
@@ -1647,13 +1685,15 @@
                         "ENVIRONMENT_SIZE_UNSPECIFIED",
                         "ENVIRONMENT_SIZE_SMALL",
                         "ENVIRONMENT_SIZE_MEDIUM",
-                        "ENVIRONMENT_SIZE_LARGE"
+                        "ENVIRONMENT_SIZE_LARGE",
+                        "ENVIRONMENT_SIZE_EXTRA_LARGE"
                     ],
                     "enumDescriptions": [
                         "The size of the environment is unspecified.",
                         "The environment size is small.",
                         "The environment size is medium.",
-                        "The environment size is large."
+                        "The environment size is large.",
+                        "The environment size is extra large."
                     ],
                     "type": "string"
                 },
@@ -1922,6 +1962,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -2335,7 +2382,7 @@
                     "type": "boolean"
                 },
                 "enablePrivateEnvironment": {
-                    "description": "Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+                    "description": "Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use `networking_type` instead.",
                     "type": "boolean"
                 },
                 "enablePrivatelyUsedPublicIps": {

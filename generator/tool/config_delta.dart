@@ -1,109 +1,143 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
-/// Use this to print a CSV-friendly delta between an old config and a new
-/// config.
-Future<void> main(List<String> args) async {
-  if (args.length != 2) {
-    stderr.writeln(r'''
-run with two args: <old_config_file_path> <new_config_file_path>',
-
-You migt also want to do
-  git show LAST_PUBLISHED_VERSION:config.yaml > old_config.yaml''');
+Future<void> main() async {
+  // 1. Find the latest googleapis-vX.Y.Z tag
+  final tagsResult = await Process.run('git', ['tag', '-l', 'googleapis-v*']);
+  if (tagsResult.exitCode != 0) {
+    stderr.writeln('Failed to list git tags: ${tagsResult.stderr}');
     exitCode = 1;
     return;
   }
 
-  final configs = [..._configs('old', args[0]), ..._configs('new', args[1])];
+  final tags =
+      LineSplitter.split(
+        tagsResult.stdout as String,
+      ).where((t) => t.trim().isNotEmpty).toList();
 
-  stderr.writeln('config count: ${configs.length}');
+  if (tags.isEmpty) {
+    stderr.writeln('No googleapis-v* tags found.');
+    exitCode = 1;
+    return;
+  }
 
-  final allApis = SplayTreeSet.of(
-    configs.expand((element) => element.apis.keys),
-  );
+  // Parse versions to find the latest
+  String? latestTag;
+  Version? latestVersion;
 
-  for (var name in _names) {
-    stderr.writeln('\n### $name');
-    final oldVer = configs.singleWhere(
-      (element) => element.version == 'old' && element.name == name,
-    );
-    final newVer = configs.singleWhere(
-      (element) => element.version == 'new' && element.name == name,
-    );
-    for (var api in allApis) {
-      final oldApi = oldVer.apis[api].toString();
-      final newApi = newVer.apis[api].toString();
-      if (oldApi == newApi) {
-        continue;
+  for (var tag in tags) {
+    final versionStr = tag.substring('googleapis-v'.length);
+    try {
+      final version = Version.parse(versionStr);
+      if (latestVersion == null || version > latestVersion) {
+        latestVersion = version;
+        latestTag = tag;
       }
-      if (newApi == 'null') {
-        stderr.writeln('- `$api` removed');
-      } else if (oldApi == 'null') {
-        stderr.writeln('- `$api` new!');
-      } else {
-        stderr.writeln(
-          [
-            api.padRight(30),
-            'old:',
-            oldApi.padRight(10),
-            'new:',
-            newApi.padRight(10),
-          ].join('\t'),
-        );
-      }
+    } catch (e) {
+      // Ignore tags that don't match the expected format
+      continue;
     }
   }
 
-  final rows = [
-    ['api', ...configs.map((e) => '${e.name}@${e.version}')],
-    for (var api in allApis)
-      [api, ...configs.map((e) => e.apis[api]?.join(',') ?? '')],
-  ];
+  if (latestTag == null) {
+    stderr.writeln('Could not find a valid latest version tag.');
+    exitCode = 1;
+    return;
+  }
 
-  print(rows.map((row) => row.map((e) => '"$e"').join(',')).join('\n'));
-}
+  stderr.writeln('Comparing against latest tag: $latestTag');
 
-Iterable<_Configuration> _configs(String version, String path) sync* {
-  stderr.writeln('file: $version');
-  final fileContents = File(path).readAsStringSync();
-  final yaml = loadYaml(fileContents, sourceUrl: Uri.parse(path)) as YamlMap;
-  final packages = yaml['packages'] as YamlList?;
+  // 2. Read config.yaml from that tag
+  final oldConfigContent = await _gitShow(latestTag, 'config.yaml');
+  if (oldConfigContent == null) {
+    stderr.writeln('Could not read config.yaml from $latestTag');
+    exitCode = 1;
+    return;
+  }
 
-  for (var name in _names) {
-    stderr.writeln('  api: $name');
-    final entry =
-        packages!.singleWhere(
-              (element) => element is Map && element.containsKey(name),
-            )
-            as YamlMap;
+  // 3. Read current config.yaml
+  final newConfigContent = File('config.yaml').readAsStringSync();
 
-    final data = entry[name] as YamlMap;
+  // 4. Parse configurations
+  final oldApis = _parseApis(oldConfigContent);
+  final newApis = _parseApis(newConfigContent);
 
-    final apiList = (data['apis'] as YamlList).cast<String>();
+  // 5. Calculate Delta
+  final allApiNames =
+      SplayTreeSet<String>()
+        ..addAll(oldApis.keys)
+        ..addAll(newApis.keys);
 
-    final apis = SplayTreeMap<String, Set<String>>();
-
-    for (var api in apiList) {
-      final split = api.split(':');
-      assert(split.length == 2);
-      final apiName = split[0];
-      final apiVersion = split[1];
-
-      apis.putIfAbsent(apiName, SplayTreeSet.new).add(apiVersion);
+  for (var api in allApiNames) {
+    if (!oldApis.containsKey(api)) {
+      print('- `$api` - new');
+      continue;
     }
-    yield _Configuration(name, version, apis);
+
+    if (!newApis.containsKey(api)) {
+      print('- `$api` - removed');
+      continue;
+    }
+
+    final oldVersions = oldApis[api]!;
+    final newVersions = newApis[api]!;
+
+    final added = newVersions.difference(oldVersions);
+    final removed = oldVersions.difference(newVersions);
+
+    for (var v in removed) {
+      print('- `$api` - removed `$v`');
+    }
+    for (var v in added) {
+      print('- `$api` - added `$v`');
+    }
   }
 }
 
-const _names = {'googleapis', 'googleapis_beta'};
+Future<String?> _gitShow(String ref, String path) async {
+  final result = await Process.run('git', ['show', '$ref:$path']);
+  if (result.exitCode != 0) {
+    return null;
+  }
+  return result.stdout as String;
+}
 
-class _Configuration {
-  final String name;
-  final String version;
+Map<String, Set<String>> _parseApis(String yamlContent) {
+  final doc = loadYaml(yamlContent);
+  if (doc is! Map) throw const FormatException('Config must be a map');
 
-  final Map<String, Set<String>> apis;
+  final apis = <String, Set<String>>{};
 
-  _Configuration(this.name, this.version, this.apis);
+  // We need to look for 'packages' key which is a list
+  final packages = doc['packages'] as List;
+
+  // Find the 'googleapis' entry
+  final googleapisConfig =
+      packages
+          .whereType<Map>()
+          .where((element) => element.containsKey('googleapis'))
+          .firstOrNull;
+
+  if (googleapisConfig == null) return apis;
+
+  final googleapisMap = googleapisConfig['googleapis'] as Map;
+  if (!googleapisMap.containsKey('apis')) return apis;
+
+  final apiList = googleapisMap['apis'] as List;
+
+  for (var entry in apiList) {
+    // format is "api:version"
+    final parts = (entry as String).split(':');
+    if (parts.length == 2) {
+      final name = parts[0];
+      final version = parts[1];
+      apis.putIfAbsent(name, SplayTreeSet.new).add(version);
+    }
+  }
+
+  return apis;
 }

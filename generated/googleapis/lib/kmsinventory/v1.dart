@@ -25,6 +25,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsKeyRingsResource]
 ///       - [ProjectsLocationsKeyRingsCryptoKeysResource]
+///   - [ProjectsProtectedResourcesResource]
 library;
 
 import 'dart:async' as async;
@@ -79,12 +80,16 @@ class OrganizationsProtectedResourcesResource {
     : _requester = client;
 
   /// Returns metadata about the resources protected by the given Cloud KMS
-  /// CryptoKey in the given Cloud organization.
+  /// CryptoKey in the given Cloud organization/project.
   ///
   /// Request parameters:
   ///
-  /// [scope] - Required. Resource name of the organization. Example:
-  /// organizations/123
+  /// [scope] - Required. A scope can be an organization or a project. Resources
+  /// protected by the crypto key in provided scope will be returned. The
+  /// allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
+  /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g.,
+  /// "projects/12345678")
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [cryptoKey] - Required. The resource name of the CryptoKey.
@@ -161,6 +166,8 @@ class ProjectsResource {
       ProjectsCryptoKeysResource(_requester);
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
+  ProjectsProtectedResourcesResource get protectedResources =>
+      ProjectsProtectedResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -252,15 +259,28 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// Returns aggregate information about the resources protected by the given
   /// Cloud KMS CryptoKey.
   ///
-  /// Only resources within the same Cloud organization as the key will be
-  /// returned. The project that holds the key must be part of an organization
-  /// in order for this call to succeed.
+  /// By default, summary of resources within the same Cloud organization as the
+  /// key will be returned, which requires the KMS organization service account
+  /// to be configured(refer
+  /// https://docs.cloud.google.com/kms/docs/view-key-usage#required-roles). If
+  /// the KMS organization service account is not configured or key's project is
+  /// not part of an organization, set fallback_scope to
+  /// `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources
+  /// within the key's project.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the CryptoKey.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/.*$`.
+  ///
+  /// [fallbackScope] - Optional. The scope to use if the kms organization
+  /// service account is not configured.
+  /// Possible string values are:
+  /// - "FALLBACK_SCOPE_UNSPECIFIED" : Unspecified scope type.
+  /// - "FALLBACK_SCOPE_PROJECT" : If set to `FALLBACK_SCOPE_PROJECT`, the API
+  /// will fall back to using key's project as request scope if the kms
+  /// organization service account is not configured.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,8 +293,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>
-  getProtectedResourcesSummary(core.String name, {core.String? $fields}) async {
+  getProtectedResourcesSummary(
+    core.String name, {
+    core.String? fallbackScope,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (fallbackScope != null) 'fallbackScope': [fallbackScope],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -287,6 +312,92 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsProtectedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsProtectedResourcesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Returns metadata about the resources protected by the given Cloud KMS
+  /// CryptoKey in the given Cloud organization/project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. A scope can be an organization or a project. Resources
+  /// protected by the crypto key in provided scope will be returned. The
+  /// allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
+  /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g.,
+  /// "projects/12345678")
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [cryptoKey] - Required. The resource name of the CryptoKey.
+  ///
+  /// [pageSize] - The maximum number of resources to return. The service may
+  /// return fewer than this value. If unspecified, at most 500 resources will
+  /// be returned. The maximum value is 500; values above 500 will be coerced to
+  /// 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// KeyTrackingService.SearchProtectedResources call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// KeyTrackingService.SearchProtectedResources must match the call that
+  /// provided the page token.
+  ///
+  /// [resourceTypes] - Optional. A list of resource types that this request
+  /// searches for. If empty, it will search all the
+  /// [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types).
+  /// Regular expressions are also supported. For example: *
+  /// `compute.googleapis.com.*` snapshots resources whose type starts with
+  /// `compute.googleapis.com`. * `.*Image` snapshots resources whose type ends
+  /// with `Image`. * `.*Image.*` snapshots resources whose type contains
+  /// `Image`. See [RE2](https://github.com/google/re2/wiki/Syntax) for all
+  /// supported regular expression syntax. If the regular expression does not
+  /// match any supported resource type, an INVALID_ARGUMENT error will be
+  /// returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>
+  search(
+    core.String scope, {
+    core.String? cryptoKey,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceTypes,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (cryptoKey != null) 'cryptoKey': [cryptoKey],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceTypes != null) 'resourceTypes': resourceTypes,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$scope') + '/protectedResources:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -427,7 +538,7 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
 }
 
 /// Aggregate information about the resources protected by a Cloud KMS key in
-/// the same Cloud organization as the key.
+/// the same Cloud organization/project as the key.
 class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   /// The number of resources protected by the key grouped by Cloud product.
   core.Map<core.String, core.String>? cloudProducts;
@@ -452,6 +563,11 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   /// The number of resources protected by the key grouped by resource type.
   core.Map<core.String, core.String>? resourceTypes;
 
+  /// Warning messages for the state of response ProtectedResourcesSummary For
+  /// example, if the organization service account is not configured,
+  /// INSUFFICIENT_PERMISSIONS_PARTIAL_DATA warning will be returned.
+  core.List<GoogleCloudKmsInventoryV1Warning>? warnings;
+
   GoogleCloudKmsInventoryV1ProtectedResourcesSummary({
     this.cloudProducts,
     this.locations,
@@ -459,6 +575,7 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
     this.projectCount,
     this.resourceCount,
     this.resourceTypes,
+    this.warnings,
   });
 
   GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(core.Map json_)
@@ -474,6 +591,14 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
         resourceTypes: (json_['resourceTypes']
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudKmsInventoryV1Warning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -483,6 +608,7 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
     if (projectCount != null) 'projectCount': projectCount!,
     if (resourceCount != null) 'resourceCount': resourceCount!,
     if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+    if (warnings != null) 'warnings': warnings!,
   };
 }
 
@@ -522,6 +648,43 @@ class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   };
 }
 
+/// Warning message specifying various states of response data that might
+/// indicate incomplete or partial results.
+class GoogleCloudKmsInventoryV1Warning {
+  /// The literal message providing context and details about the warnings.
+  core.String? displayMessage;
+
+  /// The specific warning code for the displayed message.
+  /// Possible string values are:
+  /// - "WARNING_CODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "INSUFFICIENT_PERMISSIONS_PARTIAL_DATA" : Indicates that the caller or
+  /// service agent lacks necessary permissions to view some of the requested
+  /// data. The response may be partial. Examples: - KMS organization service
+  /// agent {service_agent_name} lacks the
+  /// `cloudasset.assets.searchAllResources` permission on the scope.
+  /// - "RESOURCE_LIMIT_EXCEEDED_PARTIAL_DATA" : Indicates that a resource limit
+  /// has been exceeded, resulting in partial data. Examples: - The project has
+  /// more than 10,000 assets (resources, crypto keys, key handles, IAM
+  /// policies, etc).
+  /// - "ORG_LESS_PROJECT_PARTIAL_DATA" : Indicates that the project is
+  /// org-less. Thus the analysis is only done for the project level data and
+  /// results might be partial.
+  core.String? warningCode;
+
+  GoogleCloudKmsInventoryV1Warning({this.displayMessage, this.warningCode});
+
+  GoogleCloudKmsInventoryV1Warning.fromJson(core.Map json_)
+    : this(
+        displayMessage: json_['displayMessage'] as core.String?,
+        warningCode: json_['warningCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayMessage != null) 'displayMessage': displayMessage!,
+    if (warningCode != null) 'warningCode': warningCode!,
+  };
+}
+
 /// A CryptoKey represents a logical key that can be used for cryptographic
 /// operations.
 ///
@@ -539,8 +702,11 @@ class GoogleCloudKmsV1CryptoKey {
   ///
   /// Only applicable if CryptoKeyVersions have a ProtectionLevel of
   /// EXTERNAL_VPC, with the resource name in the format `projects / *
-  /// /locations / * /ekmConnections / * `. Note, this list is non-exhaustive
-  /// and may apply to additional ProtectionLevels in the future.
+  /// /locations / * /ekmConnections / * `. Only applicable if CryptoKeyVersions
+  /// have a ProtectionLevel of HSM_SINGLE_TENANT, with the resource name in the
+  /// format `projects / * /locations / * /singleTenantHsmInstances / * `. Note,
+  /// this list is non-exhaustive and may apply to additional ProtectionLevels
+  /// in the future.
   ///
   /// Immutable.
   core.String? cryptoKeyBackend;
@@ -786,13 +952,26 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
   /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
   /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_44" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_87" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 5. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
   /// hash-based digital signature algorithm, at security level 1. Randomized
   /// pre-hash version supporting SHA256 digests.
+  /// - "PQ_SIGN_ML_DSA_44_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 1. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_65_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 3. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 5. Randomized version
+  /// supporting externally-computed message representatives.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -887,6 +1066,8 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Whether or not this key version is eligible for reimport, by being

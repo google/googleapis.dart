@@ -3875,10 +3875,10 @@ class GoogleCloudAssetV1Constraint {
   /// Possible string values are:
   /// - "CONSTRAINT_DEFAULT_UNSPECIFIED" : This is only used for distinguishing
   /// unset values and should never be used.
-  /// - "ALLOW" : Indicate that all values are allowed for list constraints.
-  /// Indicate that enforcement is off for boolean constraints.
-  /// - "DENY" : Indicate that all values are denied for list constraints.
-  /// Indicate that enforcement is on for boolean constraints.
+  /// - "ALLOW" : Indicates that all values are allowed for list constraints.
+  /// Indicates that enforcement is off for boolean constraints.
+  /// - "DENY" : Indicates that all values are denied for list constraints.
+  /// Indicates that enforcement is on for boolean constraints.
   core.String? constraintDefault;
 
   /// Detailed description of what this `Constraint` controls as well as how and
@@ -3950,7 +3950,7 @@ class GoogleCloudAssetV1CustomConstraint {
   /// Organization Policy condition/expression.
   ///
   /// For example:
-  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
+  /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")'` or,
   /// `resource.management.auto_upgrade == true`
   core.String? condition;
 
@@ -8651,6 +8651,9 @@ typedef VersionedPackage = $VersionedPackage;
 /// Resource representation as defined by the corresponding service providing
 /// the resource for a given API version.
 class VersionedResource {
+  /// The exceptions of a resource.
+  core.List<AssetException>? assetExceptions;
+
   /// JSON representation of the resource as defined by the corresponding
   /// service providing this resource.
   ///
@@ -8674,10 +8677,18 @@ class VersionedResource {
   /// version will be "v1".
   core.String? version;
 
-  VersionedResource({this.resource, this.version});
+  VersionedResource({this.assetExceptions, this.resource, this.version});
 
   VersionedResource.fromJson(core.Map json_)
     : this(
+        assetExceptions:
+            (json_['assetExceptions'] as core.List?)
+                ?.map(
+                  (value) => AssetException.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         resource:
             json_.containsKey('resource')
                 ? json_['resource'] as core.Map<core.String, core.dynamic>
@@ -8686,6 +8697,7 @@ class VersionedResource {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (assetExceptions != null) 'assetExceptions': assetExceptions!,
     if (resource != null) 'resource': resource!,
     if (version != null) 'version': version!,
   };

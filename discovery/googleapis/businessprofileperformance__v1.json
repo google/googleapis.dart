@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241002",
+    "revision": "20251026",
     "rootUrl": "https://businessprofileperformance.googleapis.com/",
     "servicePath": "",
     "title": "Business Profile Performance API",
@@ -127,6 +127,20 @@
                                 "BUSINESS_FOOD_ORDERS",
                                 "BUSINESS_FOOD_MENU_CLICKS"
                             ],
+                            "enumDeprecated": [
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                true,
+                                false
+                            ],
                             "enumDescriptions": [
                                 "Represents the default unknown value.",
                                 "Business impressions on Google Maps on Desktop devices. Multiple impressions by a unique user within a single day are counted as a single impression.",
@@ -218,6 +232,20 @@
                                 "BUSINESS_BOOKINGS",
                                 "BUSINESS_FOOD_ORDERS",
                                 "BUSINESS_FOOD_MENU_CLICKS"
+                            ],
+                            "enumDeprecated": [
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                true,
+                                false
                             ],
                             "enumDescriptions": [
                                 "Represents the default unknown value.",
@@ -441,6 +469,20 @@
                         "BUSINESS_BOOKINGS",
                         "BUSINESS_FOOD_ORDERS",
                         "BUSINESS_FOOD_MENU_CLICKS"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false
                     ],
                     "enumDescriptions": [
                         "Represents the default unknown value.",

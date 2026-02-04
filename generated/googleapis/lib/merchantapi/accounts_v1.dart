@@ -41,6 +41,7 @@
 ///   - [AccountsShippingSettingsResource]
 ///   - [AccountsTermsOfServiceAgreementStatesResource]
 ///   - [AccountsUsersResource]
+///     - [AccountsUsersMeResource]
 /// - [TermsOfServiceResource]
 library;
 
@@ -159,10 +160,12 @@ class AccountsResource {
   /// account or sub-account.
   ///
   /// Deleting an advanced account leads to the deletion of all of its
-  /// sub-accounts. Executing this method requires admin access. The deletion
-  /// succeeds only if the account does not provide services to any other
-  /// account and has no processed offers. You can use the `force` parameter to
-  /// override this.
+  /// sub-accounts. This also deletes the account's \[developer registration
+  /// entity\](/merchant/api/reference/rest/accounts_v1/accounts.developerRegistration)
+  /// and any associated GCP project to the account. Executing this method
+  /// requires admin access. The deletion succeeds only if the account does not
+  /// provide services to any other account and has no processed offers. You can
+  /// use the `force` parameter to override this.
   ///
   /// Request parameters:
   ///
@@ -237,38 +240,6 @@ class AccountsResource {
       queryParams: queryParams_,
     );
     return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Retrieves the merchant account that the calling GCP is registered with.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GetAccountForGcpRegistrationResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GetAccountForGcpRegistrationResponse>
-  getAccountForGcpRegistration({core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'accounts/v1/accounts:getAccountForGcpRegistration';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GetAccountForGcpRegistrationResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
   }
 
   /// Note: For the `accounts.list` method, quota and limits usage are charged
@@ -830,6 +801,38 @@ class AccountsDeveloperRegistrationResource {
 
   AccountsDeveloperRegistrationResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Retrieves the merchant account that the calling GCP is registered with.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetAccountForGcpRegistrationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetAccountForGcpRegistrationResponse>
+  getAccountForGcpRegistration({core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'accounts/v1/accounts:getAccountForGcpRegistration';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetAccountForGcpRegistrationResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Retrieves a developer registration for a merchant.
   ///
@@ -3266,6 +3269,8 @@ class AccountsTermsOfServiceAgreementStatesResource {
 class AccountsUsersResource {
   final commons.ApiRequester _requester;
 
+  AccountsUsersMeResource get me => AccountsUsersMeResource(_requester);
+
   AccountsUsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Merchant Center account user.
@@ -3482,6 +3487,57 @@ class AccountsUsersResource {
     };
 
     final url_ = 'accounts/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsUsersMeResource {
+  final commons.ApiRequester _requester;
+
+  AccountsUsersMeResource(commons.ApiRequester client) : _requester = client;
+
+  /// Updates the user that is represented by the caller from pending to
+  /// verified.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [account] - Required. The name of the account under which the caller is a
+  /// user. Format: `accounts/{account}`
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> verifySelf(
+    VerifySelfRequest request,
+    core.String account, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'accounts/v1/' +
+        core.Uri.encodeFull('$account') +
+        '/users/me:verifySelf';
 
     final response_ = await _requester.request(
       url_,
@@ -4019,6 +4075,12 @@ class AccountService {
   /// performance.
   CampaignsManagement? campaignsManagement;
 
+  /// Service type for comparison shopping.
+  ///
+  /// The provider is a CSS (Comparison Shopping Service) managing the account.
+  /// See https://support.google.com/merchants/answer/12653197
+  ComparisonShopping? comparisonShopping;
+
   /// An optional, immutable identifier that Google uses to refer to this
   /// account when communicating with the provider.
   ///
@@ -4088,6 +4150,7 @@ class AccountService {
     this.accountAggregation,
     this.accountManagement,
     this.campaignsManagement,
+    this.comparisonShopping,
     this.externalAccountId,
     this.handshake,
     this.localListingManagement,
@@ -4118,6 +4181,13 @@ class AccountService {
             json_.containsKey('campaignsManagement')
                 ? CampaignsManagement.fromJson(
                   json_['campaignsManagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        comparisonShopping:
+            json_.containsKey('comparisonShopping')
+                ? ComparisonShopping.fromJson(
+                  json_['comparisonShopping']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -4153,6 +4223,7 @@ class AccountService {
     if (accountManagement != null) 'accountManagement': accountManagement!,
     if (campaignsManagement != null)
       'campaignsManagement': campaignsManagement!,
+    if (comparisonShopping != null) 'comparisonShopping': comparisonShopping!,
     if (externalAccountId != null) 'externalAccountId': externalAccountId!,
     if (handshake != null) 'handshake': handshake!,
     if (localListingManagement != null)
@@ -4176,6 +4247,42 @@ class AddAccountService {
   /// Payload for service type Account Aggregation.
   AccountAggregation? accountAggregation;
 
+  /// The provider manages this account.
+  ///
+  /// Payload for service type Account Management.
+  AccountManagement? accountManagement;
+
+  /// The provider manages campaigns for this account.
+  ///
+  /// Payload for service type campaigns management.
+  CampaignsManagement? campaignsManagement;
+
+  /// The provider is a CSS (Comparison Shopping Service) of this account.
+  ///
+  /// Payload for service type Comparison Shopping.
+  ComparisonShopping? comparisonShopping;
+
+  /// An optional, immutable identifier that Google uses to refer to this
+  /// account when communicating with the provider.
+  ///
+  /// This should be the unique account ID within the provider's system (for
+  /// example, your shop ID in Shopify). If you have multiple accounts with the
+  /// same provider - for instance, different accounts for various regions — the
+  /// `external_account_id` differentiates between them, ensuring accurate
+  /// linking and integration between Google and the provider. The external
+  /// account ID must be specified for the campaigns management service type.
+  /// The external account ID must not be specified for the account aggregation
+  /// service type. The external account ID is optional / may be specified for
+  /// all other service types.
+  ///
+  /// Immutable.
+  core.String? externalAccountId;
+
+  /// The provider manages products for this account.
+  ///
+  /// Payload for service type products management.
+  ProductsManagement? productsManagement;
+
   /// The provider of the service.
   ///
   /// Either the reference to an account such as `providers/123` or a well-known
@@ -4185,7 +4292,15 @@ class AddAccountService {
   /// Required.
   core.String? provider;
 
-  AddAccountService({this.accountAggregation, this.provider});
+  AddAccountService({
+    this.accountAggregation,
+    this.accountManagement,
+    this.campaignsManagement,
+    this.comparisonShopping,
+    this.externalAccountId,
+    this.productsManagement,
+    this.provider,
+  });
 
   AddAccountService.fromJson(core.Map json_)
     : this(
@@ -4196,11 +4311,46 @@ class AddAccountService {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        accountManagement:
+            json_.containsKey('accountManagement')
+                ? AccountManagement.fromJson(
+                  json_['accountManagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        campaignsManagement:
+            json_.containsKey('campaignsManagement')
+                ? CampaignsManagement.fromJson(
+                  json_['campaignsManagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        comparisonShopping:
+            json_.containsKey('comparisonShopping')
+                ? ComparisonShopping.fromJson(
+                  json_['comparisonShopping']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        externalAccountId: json_['externalAccountId'] as core.String?,
+        productsManagement:
+            json_.containsKey('productsManagement')
+                ? ProductsManagement.fromJson(
+                  json_['productsManagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         provider: json_['provider'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accountAggregation != null) 'accountAggregation': accountAggregation!,
+    if (accountManagement != null) 'accountManagement': accountManagement!,
+    if (campaignsManagement != null)
+      'campaignsManagement': campaignsManagement!,
+    if (comparisonShopping != null) 'comparisonShopping': comparisonShopping!,
+    if (externalAccountId != null) 'externalAccountId': externalAccountId!,
+    if (productsManagement != null) 'productsManagement': productsManagement!,
     if (provider != null) 'provider': provider!,
   };
 }
@@ -4219,7 +4369,13 @@ class AddUser {
   /// Required.
   core.String? userId;
 
-  AddUser({this.user, this.userId});
+  /// Settings related to configuring the verification email that is sent after
+  /// adding a user.
+  ///
+  /// Optional.
+  VerificationMailSettings? verificationMailSettings;
+
+  AddUser({this.user, this.userId, this.verificationMailSettings});
 
   AddUser.fromJson(core.Map json_)
     : this(
@@ -4230,11 +4386,20 @@ class AddUser {
                 )
                 : null,
         userId: json_['userId'] as core.String?,
+        verificationMailSettings:
+            json_.containsKey('verificationMailSettings')
+                ? VerificationMailSettings.fromJson(
+                  json_['verificationMailSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (user != null) 'user': user!,
     if (userId != null) 'userId': userId!,
+    if (verificationMailSettings != null)
+      'verificationMailSettings': verificationMailSettings!,
   };
 }
 
@@ -5221,6 +5386,9 @@ class ClaimHomepageRequest {
   };
 }
 
+/// `ComparisonShopping` payload.
+typedef ComparisonShopping = $Empty;
+
 /// Request message for the `CreateAndConfigureAccount` method.
 class CreateAndConfigureAccountRequest {
   /// The account to be created.
@@ -5240,12 +5408,26 @@ class CreateAndConfigureAccountRequest {
   /// Required.
   core.List<AddAccountService>? service;
 
+  /// If a relationship is created with a provider, you can set an alias for it
+  /// with this field.
+  ///
+  /// The calling user must be an admin on the provider to be able to set an
+  /// alias.
+  ///
+  /// Optional.
+  core.List<SetAliasForRelationship>? setAlias;
+
   /// Users to be added to the account.
   ///
   /// Optional.
   core.List<AddUser>? user;
 
-  CreateAndConfigureAccountRequest({this.account, this.service, this.user});
+  CreateAndConfigureAccountRequest({
+    this.account,
+    this.service,
+    this.setAlias,
+    this.user,
+  });
 
   CreateAndConfigureAccountRequest.fromJson(core.Map json_)
     : this(
@@ -5263,6 +5445,14 @@ class CreateAndConfigureAccountRequest {
                   ),
                 )
                 .toList(),
+        setAlias:
+            (json_['setAlias'] as core.List?)
+                ?.map(
+                  (value) => SetAliasForRelationship.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         user:
             (json_['user'] as core.List?)
                 ?.map(
@@ -5276,6 +5466,7 @@ class CreateAndConfigureAccountRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (account != null) 'account': account!,
     if (service != null) 'service': service!,
+    if (setAlias != null) 'setAlias': setAlias!,
     if (user != null) 'user': user!,
   };
 }
@@ -6317,6 +6508,13 @@ class ItemUpdatesAccountLevelSettings {
       'allowStrictAvailabilityUpdates': allowStrictAvailabilityUpdates!,
   };
 }
+
+/// An object that represents a latitude/longitude pair.
+///
+/// This is expressed as a pair of doubles to represent degrees latitude and
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
+typedef LatLng = $LatLng;
 
 /// Collection of information related to the LFP link.
 class LfpLink {
@@ -7670,6 +7868,58 @@ class ProposeAccountServiceRequest {
   };
 }
 
+/// A radius area that defines the region area.
+class RadiusArea {
+  /// The center of the radius area.
+  ///
+  /// It represents a latitude/longitude pair in decimal degrees format.
+  ///
+  /// Required.
+  LatLng? latLng;
+
+  /// The radius distance of the area.
+  ///
+  /// Required.
+  core.double? radius;
+
+  /// The unit of the radius.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RADIUS_UNITS_UNSPECIFIED" : Unused default value
+  /// - "MILES" : The distance is measured in miles.
+  /// - "KILOMETERS" : The distance is measured in kilometers.
+  core.String? radiusUnits;
+
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// or the country the radius area applies to.
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  RadiusArea({this.latLng, this.radius, this.radiusUnits, this.regionCode});
+
+  RadiusArea.fromJson(core.Map json_)
+    : this(
+        latLng:
+            json_.containsKey('latLng')
+                ? LatLng.fromJson(
+                  json_['latLng'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        radius: (json_['radius'] as core.num?)?.toDouble(),
+        radiusUnits: json_['radiusUnits'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (latLng != null) 'latLng': latLng!,
+    if (radius != null) 'radius': radius!,
+    if (radiusUnits != null) 'radiusUnits': radiusUnits!,
+    if (regionCode != null) 'regionCode': regionCode!,
+  };
+}
+
 /// Shipping rate group definitions.
 ///
 /// Only the last one is allowed to have an empty `applicable_shipping_labels`,
@@ -7803,6 +8053,11 @@ class Region {
   /// Optional.
   PostalCodeArea? postalCodeArea;
 
+  /// A radius area that defines the region area.
+  ///
+  /// Optional.
+  RadiusArea? radiusArea;
+
   /// Indicates if the region is eligible for use in the Regional Inventory
   /// configuration.
   ///
@@ -7820,6 +8075,7 @@ class Region {
     this.geotargetArea,
     this.name,
     this.postalCodeArea,
+    this.radiusArea,
     this.regionalInventoryEligible,
     this.shippingEligible,
   });
@@ -7841,6 +8097,12 @@ class Region {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        radiusArea:
+            json_.containsKey('radiusArea')
+                ? RadiusArea.fromJson(
+                  json_['radiusArea'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         regionalInventoryEligible:
             json_['regionalInventoryEligible'] as core.bool?,
         shippingEligible: json_['shippingEligible'] as core.bool?,
@@ -7851,6 +8113,7 @@ class Region {
     if (geotargetArea != null) 'geotargetArea': geotargetArea!,
     if (name != null) 'name': name!,
     if (postalCodeArea != null) 'postalCodeArea': postalCodeArea!,
+    if (radiusArea != null) 'radiusArea': radiusArea!,
     if (regionalInventoryEligible != null)
       'regionalInventoryEligible': regionalInventoryEligible!,
     if (shippingEligible != null) 'shippingEligible': shippingEligible!,
@@ -8311,6 +8574,40 @@ class Service {
     if (serviceName != null) 'serviceName': serviceName!,
     if (shipmentType != null) 'shipmentType': shipmentType!,
     if (storeConfig != null) 'storeConfig': storeConfig!,
+  };
+}
+
+/// Set an alias for a relationship between a provider and the account to be
+/// created.
+class SetAliasForRelationship {
+  /// The unique ID of this account in the provider's system.
+  ///
+  /// The value must be unique across all accounts on the platform for this
+  /// provider.
+  ///
+  /// Required.
+  core.String? accountIdAlias;
+
+  /// The provider of the service.
+  ///
+  /// This is a reference to an account such as `providers/123` or
+  /// `accounts/123`. The same provider must be specified in at least one of the
+  /// `service` fields.
+  ///
+  /// Required.
+  core.String? provider;
+
+  SetAliasForRelationship({this.accountIdAlias, this.provider});
+
+  SetAliasForRelationship.fromJson(core.Map json_)
+    : this(
+        accountIdAlias: json_['accountIdAlias'] as core.String?,
+        provider: json_['provider'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountIdAlias != null) 'accountIdAlias': accountIdAlias!,
+    if (provider != null) 'provider': provider!,
   };
 }
 
@@ -8939,7 +9236,7 @@ class UriSettings {
   };
 }
 
-/// The `User` message represents a user associated with a Merchant Center
+/// The `User` resource represents a user associated with a Merchant Center
 /// account.
 ///
 /// It is used to manage user permissions and access rights within the account.
@@ -9052,6 +9349,37 @@ class Value {
     if (subtable != null) 'subtable': subtable!,
   };
 }
+
+/// Settings related to the verification email that is sent after adding a user.
+class VerificationMailSettings {
+  /// Mode of the verification mail.
+  ///
+  /// If not set, the default is `SEND_VERIFICATION_MAIL`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VERIFICATION_MAIL_MODE_UNSPECIFIED" : Default first member of every
+  /// enum. Do not use.
+  /// - "SEND_VERIFICATION_MAIL" : An invitation email is sent to the user added
+  /// shortly after.
+  /// - "SUPPRESS_VERIFICATION_MAIL" : No invitation email is sent. This can be
+  /// useful if the user is expected to accept the invitation through the API
+  /// without needing another notification.
+  core.String? verificationMailMode;
+
+  VerificationMailSettings({this.verificationMailMode});
+
+  VerificationMailSettings.fromJson(core.Map json_)
+    : this(verificationMailMode: json_['verificationMailMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (verificationMailMode != null)
+      'verificationMailMode': verificationMailMode!,
+  };
+}
+
+/// Request message for the `VerifySelf` method.
+typedef VerifySelfRequest = $Empty;
 
 /// A fulfillment warehouse, which stores and handles inventory.
 class Warehouse {

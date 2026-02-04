@@ -1245,6 +1245,7 @@ api.DiscoveryOccurrence buildDiscoveryOccurrence() {
     o.cpe = 'foo';
     o.files = buildUnnamed26();
     o.lastScanTime = 'foo';
+    o.lastVulnerabilityUpdateTime = 'foo';
     o.sbomStatus = buildSBOMStatus();
   }
   buildCounterDiscoveryOccurrence--;
@@ -1263,6 +1264,7 @@ void checkDiscoveryOccurrence(api.DiscoveryOccurrence o) {
     unittest.expect(o.cpe!, unittest.equals('foo'));
     checkUnnamed26(o.files!);
     unittest.expect(o.lastScanTime!, unittest.equals('foo'));
+    unittest.expect(o.lastVulnerabilityUpdateTime!, unittest.equals('foo'));
     checkSBOMStatus(o.sbomStatus!);
   }
   buildCounterDiscoveryOccurrence--;
@@ -2490,6 +2492,7 @@ api.Note buildNote() {
   final o = api.Note();
   buildCounterNote++;
   if (buildCounterNote < 3) {
+    o.advisoryPublishTime = 'foo';
     o.attestation = buildAttestationNote();
     o.build = buildBuildNote();
     o.compliance = buildComplianceNote();
@@ -2520,6 +2523,7 @@ api.Note buildNote() {
 void checkNote(api.Note o) {
   buildCounterNote++;
   if (buildCounterNote < 3) {
+    unittest.expect(o.advisoryPublishTime!, unittest.equals('foo'));
     checkAttestationNote(o.attestation!);
     checkBuildNote(o.build!);
     checkComplianceNote(o.compliance!);

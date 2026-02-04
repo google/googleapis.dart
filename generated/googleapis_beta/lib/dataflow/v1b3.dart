@@ -4795,6 +4795,8 @@ class Environment {
 
   /// A description of the process that generated the request.
   ///
+  /// Optional.
+  ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? userAgent;
@@ -9263,6 +9265,13 @@ class RuntimeMetadata {
 ///
 /// These fields have no effect when specified during job creation.
 class RuntimeUpdatableParams {
+  /// The backlog threshold duration in seconds for autoscaling.
+  ///
+  /// Value must be non-negative.
+  ///
+  /// Optional.
+  core.String? acceptableBacklogDuration;
+
   /// The maximum number of workers to cap autoscaling at.
   ///
   /// This field is currently only supported for Streaming Engine jobs.
@@ -9282,6 +9291,7 @@ class RuntimeUpdatableParams {
   core.double? workerUtilizationHint;
 
   RuntimeUpdatableParams({
+    this.acceptableBacklogDuration,
     this.maxNumWorkers,
     this.minNumWorkers,
     this.workerUtilizationHint,
@@ -9289,6 +9299,8 @@ class RuntimeUpdatableParams {
 
   RuntimeUpdatableParams.fromJson(core.Map json_)
     : this(
+        acceptableBacklogDuration:
+            json_['acceptableBacklogDuration'] as core.String?,
         maxNumWorkers: json_['maxNumWorkers'] as core.int?,
         minNumWorkers: json_['minNumWorkers'] as core.int?,
         workerUtilizationHint:
@@ -9296,6 +9308,8 @@ class RuntimeUpdatableParams {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (acceptableBacklogDuration != null)
+      'acceptableBacklogDuration': acceptableBacklogDuration!,
     if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
     if (minNumWorkers != null) 'minNumWorkers': minNumWorkers!,
     if (workerUtilizationHint != null)
@@ -11208,6 +11222,11 @@ class StreamingConfigTask {
   /// Set of computation configuration information.
   core.List<StreamingComputationConfig>? streamingComputationConfigs;
 
+  /// The state tag encoding format version for streaming engine jobs.
+  ///
+  /// Optional.
+  core.int? streamingEngineStateTagEncodingVersion;
+
   /// Map from user step names to state families.
   core.Map<core.String, core.String>? userStepToStateFamilyNameMap;
 
@@ -11254,6 +11273,7 @@ class StreamingConfigTask {
     this.maxWorkItemCommitBytes,
     this.operationalLimits,
     this.streamingComputationConfigs,
+    this.streamingEngineStateTagEncodingVersion,
     this.userStepToStateFamilyNameMap,
     this.userWorkerRunnerV1Settings,
     this.userWorkerRunnerV2Settings,
@@ -11283,6 +11303,8 @@ class StreamingConfigTask {
                   ),
                 )
                 .toList(),
+        streamingEngineStateTagEncodingVersion:
+            json_['streamingEngineStateTagEncodingVersion'] as core.int?,
         userStepToStateFamilyNameMap: (json_['userStepToStateFamilyNameMap']
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -11305,6 +11327,9 @@ class StreamingConfigTask {
     if (operationalLimits != null) 'operationalLimits': operationalLimits!,
     if (streamingComputationConfigs != null)
       'streamingComputationConfigs': streamingComputationConfigs!,
+    if (streamingEngineStateTagEncodingVersion != null)
+      'streamingEngineStateTagEncodingVersion':
+          streamingEngineStateTagEncodingVersion!,
     if (userStepToStateFamilyNameMap != null)
       'userStepToStateFamilyNameMap': userStepToStateFamilyNameMap!,
     if (userWorkerRunnerV1Settings != null)

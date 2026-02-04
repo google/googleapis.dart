@@ -31,6 +31,8 @@
 ///       - [ProjectsLocationsProcessorsHumanReviewConfigResource]
 ///       - [ProjectsLocationsProcessorsProcessorVersionsResource]
 ///         - [ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource]
+///     - [ProjectsLocationsSchemasResource]
+///       - [ProjectsLocationsSchemasSchemaVersionsResource]
 ///   - [ProjectsOperationsResource]
 library;
 
@@ -140,6 +142,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsProcessorTypesResource(_requester);
   ProjectsLocationsProcessorsResource get processors =>
       ProjectsLocationsProcessorsResource(_requester);
+  ProjectsLocationsSchemasResource get schemas =>
+      ProjectsLocationsSchemasResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -227,9 +231,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -389,6 +393,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -404,12 +416,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -937,6 +952,9 @@ class ProjectsLocationsProcessorsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsProcessorsHumanReviewConfigResource {
   final commons.ApiRequester _requester;
 
@@ -967,6 +985,9 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> reviewDocument(
     GoogleCloudDocumentaiV1ReviewDocumentRequest request,
     core.String humanReviewConfig, {
@@ -1510,6 +1531,521 @@ class ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource {
   }
 }
 
+class ProjectsLocationsSchemasResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSchemasSchemaVersionsResource get schemaVersions =>
+      ProjectsLocationsSchemasSchemaVersionsResource(_requester);
+
+  ProjectsLocationsSchemasResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) under which to
+  /// create the Schema. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1NextSchema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1NextSchema> create(
+    GoogleCloudDocumentaiV1NextSchema request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/schemas';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1NextSchema.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Schema to be deleted. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any child resources of this Schema
+  /// will also be deleted. (Otherwise, the request will only work if the Schema
+  /// has no child resources.)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Schema to get. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1NextSchema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1NextSchema> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1NextSchema.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists Schemas.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of schema groups to return. If
+  /// unspecified, at most `10` Schema will be returned. The maximum value is
+  /// `20`. Values above `20` will be coerced to `20`.
+  ///
+  /// [pageToken] - Optional. We will return the schema groups sorted by
+  /// creation time. The page token will point to the next Schema.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1ListSchemasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1ListSchemasResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/schemas';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1ListSchemasResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a schema.
+  ///
+  /// Editable fields are: - `display_name` - `labels`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the Schema. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The update mask to apply to the resource.
+  /// **Note:** Only the following fields can be updated: - display_name. -
+  /// labels.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1NextSchema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1NextSchema> patch(
+    GoogleCloudDocumentaiV1NextSchema request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1NextSchema.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsSchemasSchemaVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSchemasSchemaVersionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a schema version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) under which to
+  /// create the SchemaVersion. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1SchemaVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1SchemaVersion> create(
+    GoogleCloudDocumentaiV1SchemaVersion request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/schemaVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a schema version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SchemaVersion to delete. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+/schemaVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Generates a schema version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project, location and schema) under which
+  /// to generate the SchemaVersion. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1GenerateSchemaVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1GenerateSchemaVersionResponse> generate(
+    GoogleCloudDocumentaiV1GenerateSchemaVersionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/schemaVersions:generate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1GenerateSchemaVersionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a schema version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SchemaVersion to get. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+/schemaVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1SchemaVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1SchemaVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SchemaVersions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of SchemaVersion to return. If
+  /// unspecified, at most `10` SchemaVersion will be returned. The maximum
+  /// value is `20`. Values above `20` will be coerced to `20`.
+  ///
+  /// [pageToken] - Optional. We will return the SchemaVersion sorted by
+  /// creation time. The page token will point to the next SchemaVersion.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1ListSchemaVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1ListSchemaVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/schemaVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1ListSchemaVersionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a schema version.
+  ///
+  /// Editable fields are: - `display_name` - `labels`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the SchemaVersion. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+/schemaVersions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The update mask to apply to the resource.
+  /// **Note:** Only the following fields can be updated: - display_name. -
+  /// labels.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1SchemaVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1SchemaVersion> patch(
+    GoogleCloudDocumentaiV1SchemaVersion request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1618,6 +2154,9 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   /// Whether human review should be skipped for this request.
   ///
   /// Default to `false`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1BatchProcessRequest({
@@ -1749,10 +2288,30 @@ class GoogleCloudDocumentaiV1Document {
   /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1DocumentEntity>? entities;
 
+  /// The entity revision id that `document.entities` field is based on.
+  ///
+  /// If this field is set and `entities_revisions` is not empty, the entities
+  /// in `document.entities` field are the entities in the entity revision with
+  /// this id and `document.entity_validation_output` field is the
+  /// `entity_validation_output` field in this entity revision.
+  core.String? entitiesRevisionId;
+
+  /// A list of entity revisions.
+  ///
+  /// The entity revisions are appended to the document in the processing order.
+  /// This field can be used for comparing the entity extraction results at
+  /// different stages of the processing.
+  core.List<GoogleCloudDocumentaiV1DocumentEntitiesRevision>? entitiesRevisions;
+
   /// Placeholder.
   ///
   /// Relationship among Document.entities.
   core.List<GoogleCloudDocumentaiV1DocumentEntityRelation>? entityRelations;
+
+  /// The entity validation output for the document.
+  ///
+  /// This is the validation output for `document.entities` field.
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutput? entityValidationOutput;
 
   /// Any error that occurred while processing this document.
   GoogleRpcStatus? error;
@@ -1808,7 +2367,10 @@ class GoogleCloudDocumentaiV1Document {
     this.docid,
     this.documentLayout,
     this.entities,
+    this.entitiesRevisionId,
+    this.entitiesRevisions,
     this.entityRelations,
+    this.entityValidationOutput,
     this.error,
     this.mimeType,
     this.pages,
@@ -1846,6 +2408,16 @@ class GoogleCloudDocumentaiV1Document {
                   ),
                 )
                 .toList(),
+        entitiesRevisionId: json_['entitiesRevisionId'] as core.String?,
+        entitiesRevisions:
+            (json_['entitiesRevisions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDocumentaiV1DocumentEntitiesRevision.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         entityRelations:
             (json_['entityRelations'] as core.List?)
                 ?.map(
@@ -1855,6 +2427,13 @@ class GoogleCloudDocumentaiV1Document {
                       ),
                 )
                 .toList(),
+        entityValidationOutput:
+            json_.containsKey('entityValidationOutput')
+                ? GoogleCloudDocumentaiV1DocumentEntityValidationOutput.fromJson(
+                  json_['entityValidationOutput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         error:
             json_.containsKey('error')
                 ? GoogleRpcStatus.fromJson(
@@ -1910,7 +2489,11 @@ class GoogleCloudDocumentaiV1Document {
     if (docid != null) 'docid': docid!,
     if (documentLayout != null) 'documentLayout': documentLayout!,
     if (entities != null) 'entities': entities!,
+    if (entitiesRevisionId != null) 'entitiesRevisionId': entitiesRevisionId!,
+    if (entitiesRevisions != null) 'entitiesRevisions': entitiesRevisions!,
     if (entityRelations != null) 'entityRelations': entityRelations!,
+    if (entityValidationOutput != null)
+      'entityValidationOutput': entityValidationOutput!,
     if (error != null) 'error': error!,
     if (mimeType != null) 'mimeType': mimeType!,
     if (pages != null) 'pages': pages!,
@@ -2445,6 +3028,64 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
   };
 }
 
+/// Entity revision.
+class GoogleCloudDocumentaiV1DocumentEntitiesRevision {
+  /// The entities in this revision.
+  core.List<GoogleCloudDocumentaiV1DocumentEntity>? entities;
+
+  /// The entity validation output for this revision.
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutput? entityValidationOutput;
+
+  /// The history of this revision.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1DocumentProvenance? provenance;
+
+  /// The revision id.
+  core.String? revisionId;
+
+  GoogleCloudDocumentaiV1DocumentEntitiesRevision({
+    this.entities,
+    this.entityValidationOutput,
+    this.provenance,
+    this.revisionId,
+  });
+
+  GoogleCloudDocumentaiV1DocumentEntitiesRevision.fromJson(core.Map json_)
+    : this(
+        entities:
+            (json_['entities'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        entityValidationOutput:
+            json_.containsKey('entityValidationOutput')
+                ? GoogleCloudDocumentaiV1DocumentEntityValidationOutput.fromJson(
+                  json_['entityValidationOutput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        provenance:
+            json_.containsKey('provenance')
+                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                  json_['provenance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        revisionId: json_['revisionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (entities != null) 'entities': entities!,
+    if (entityValidationOutput != null)
+      'entityValidationOutput': entityValidationOutput!,
+    if (provenance != null) 'provenance': provenance!,
+    if (revisionId != null) 'revisionId': revisionId!,
+  };
+}
+
 /// An entity that could be a phrase in the text or a property that belongs to
 /// the document.
 ///
@@ -2641,6 +3282,9 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
+
+  /// A signature - a graphical representation of a person's name, often used to
+  /// sign a document.
   core.bool? signatureValue;
 
   /// An optional field to store a normalized string.
@@ -2717,6 +3361,101 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 /// Relationship between Entities.
 typedef GoogleCloudDocumentaiV1DocumentEntityRelation =
     $GoogleCloudDocumentaiV1DocumentEntityRelation;
+
+/// The output of the validation given the document and the validation rules.
+class GoogleCloudDocumentaiV1DocumentEntityValidationOutput {
+  /// The overall result of the validation, true if all applicable rules are
+  /// valid.
+  core.bool? passAllRules;
+
+  /// The result of each validation rule.
+  core.List<
+    GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult
+  >?
+  validationResults;
+
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutput({
+    this.passAllRules,
+    this.validationResults,
+  });
+
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutput.fromJson(core.Map json_)
+    : this(
+        passAllRules: json_['passAllRules'] as core.bool?,
+        validationResults:
+            (json_['validationResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (passAllRules != null) 'passAllRules': passAllRules!,
+    if (validationResults != null) 'validationResults': validationResults!,
+  };
+}
+
+/// Validation result for a single validation rule.
+class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult {
+  /// The name of the rule resource that is used for validation.
+  ///
+  /// Format: `projects/{project}/locations/{location}/rules/{rule}`
+  ///
+  /// Optional.
+  core.String? rule;
+
+  /// The description of the validation rule.
+  core.String? ruleDescription;
+
+  /// The display name of the validation rule.
+  core.String? ruleName;
+
+  /// The detailed information of the running the validation process using the
+  /// entity from the document based on the validation rule.
+  core.String? validationDetails;
+
+  /// The result of the validation rule.
+  /// Possible string values are:
+  /// - "VALIDATION_RESULT_TYPE_UNSPECIFIED" : The validation result type is
+  /// unspecified.
+  /// - "VALIDATION_RESULT_TYPE_VALID" : The validation is valid.
+  /// - "VALIDATION_RESULT_TYPE_INVALID" : The validation is invalid.
+  /// - "VALIDATION_RESULT_TYPE_SKIPPED" : The validation is skipped.
+  /// - "VALIDATION_RESULT_TYPE_NOT_APPLICABLE" : The validation is not
+  /// applicable.
+  core.String? validationResultType;
+
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult({
+    this.rule,
+    this.ruleDescription,
+    this.ruleName,
+    this.validationDetails,
+    this.validationResultType,
+  });
+
+  GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult.fromJson(
+    core.Map json_,
+  ) : this(
+        rule: json_['rule'] as core.String?,
+        ruleDescription: json_['ruleDescription'] as core.String?,
+        ruleName: json_['ruleName'] as core.String?,
+        validationDetails: json_['validationDetails'] as core.String?,
+        validationResultType: json_['validationResultType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rule != null) 'rule': rule!,
+    if (ruleDescription != null) 'ruleDescription': ruleDescription!,
+    if (ruleName != null) 'ruleName': ruleName!,
+    if (validationDetails != null) 'validationDetails': validationDetails!,
+    if (validationResultType != null)
+      'validationResultType': validationResultType!,
+  };
+}
 
 /// Config that controls the output of documents.
 ///
@@ -4199,6 +4938,14 @@ class GoogleCloudDocumentaiV1DocumentSchema {
   /// Display name to show to users.
   core.String? displayName;
 
+  /// Document level prompt provided by the user.
+  ///
+  /// This custom text is injected into the AI model's prompt to provide extra,
+  /// document-wide guidance for processing.
+  ///
+  /// Optional.
+  core.String? documentPrompt;
+
   /// Entity types of the schema.
   core.List<GoogleCloudDocumentaiV1DocumentSchemaEntityType>? entityTypes;
 
@@ -4208,6 +4955,7 @@ class GoogleCloudDocumentaiV1DocumentSchema {
   GoogleCloudDocumentaiV1DocumentSchema({
     this.description,
     this.displayName,
+    this.documentPrompt,
     this.entityTypes,
     this.metadata,
   });
@@ -4216,6 +4964,7 @@ class GoogleCloudDocumentaiV1DocumentSchema {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        documentPrompt: json_['documentPrompt'] as core.String?,
         entityTypes:
             (json_['entityTypes'] as core.List?)
                 ?.map(
@@ -4236,6 +4985,7 @@ class GoogleCloudDocumentaiV1DocumentSchema {
   core.Map<core.String, core.dynamic> toJson() => {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
+    if (documentPrompt != null) 'documentPrompt': documentPrompt!,
     if (entityTypes != null) 'entityTypes': entityTypes!,
     if (metadata != null) 'metadata': metadata!,
   };
@@ -4647,6 +5397,30 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
     if (changedText != null) 'changedText': changedText!,
     if (provenance != null) 'provenance': provenance!,
     if (textAnchor != null) 'textAnchor': textAnchor!,
+  };
+}
+
+/// A set of inline documents.
+class GoogleCloudDocumentaiV1Documents {
+  /// The list of documents.
+  core.List<GoogleCloudDocumentaiV1Document>? documents;
+
+  GoogleCloudDocumentaiV1Documents({this.documents});
+
+  GoogleCloudDocumentaiV1Documents.fromJson(core.Map json_)
+    : this(
+        documents:
+            (json_['documents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDocumentaiV1Document.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (documents != null) 'documents': documents!,
   };
 }
 
@@ -5158,6 +5932,148 @@ class GoogleCloudDocumentaiV1GcsPrefix {
   };
 }
 
+/// Request message for GenerateSchemaVersion.
+class GoogleCloudDocumentaiV1GenerateSchemaVersionRequest {
+  /// The base schema version name to use for the schema generation.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+  core.String? baseSchemaVersion;
+
+  /// The set of documents placed on Cloud Storage.
+  GoogleCloudDocumentaiV1GcsDocuments? gcsDocuments;
+
+  /// The common prefix of documents placed on Cloud Storage.
+  GoogleCloudDocumentaiV1GcsPrefix? gcsPrefix;
+
+  /// User specified parameters for the schema generation.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams?
+  generateSchemaVersionParams;
+
+  /// The set of documents specified inline.
+  ///
+  /// For each document, its `uri` or `content` field must be set.
+  GoogleCloudDocumentaiV1Documents? inlineDocuments;
+
+  /// The set of raw documents.
+  GoogleCloudDocumentaiV1RawDocuments? rawDocuments;
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionRequest({
+    this.baseSchemaVersion,
+    this.gcsDocuments,
+    this.gcsPrefix,
+    this.generateSchemaVersionParams,
+    this.inlineDocuments,
+    this.rawDocuments,
+  });
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionRequest.fromJson(core.Map json_)
+    : this(
+        baseSchemaVersion: json_['baseSchemaVersion'] as core.String?,
+        gcsDocuments:
+            json_.containsKey('gcsDocuments')
+                ? GoogleCloudDocumentaiV1GcsDocuments.fromJson(
+                  json_['gcsDocuments'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsPrefix:
+            json_.containsKey('gcsPrefix')
+                ? GoogleCloudDocumentaiV1GcsPrefix.fromJson(
+                  json_['gcsPrefix'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        generateSchemaVersionParams:
+            json_.containsKey('generateSchemaVersionParams')
+                ? GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams.fromJson(
+                  json_['generateSchemaVersionParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inlineDocuments:
+            json_.containsKey('inlineDocuments')
+                ? GoogleCloudDocumentaiV1Documents.fromJson(
+                  json_['inlineDocuments']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rawDocuments:
+            json_.containsKey('rawDocuments')
+                ? GoogleCloudDocumentaiV1RawDocuments.fromJson(
+                  json_['rawDocuments'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (baseSchemaVersion != null) 'baseSchemaVersion': baseSchemaVersion!,
+    if (gcsDocuments != null) 'gcsDocuments': gcsDocuments!,
+    if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+    if (generateSchemaVersionParams != null)
+      'generateSchemaVersionParams': generateSchemaVersionParams!,
+    if (inlineDocuments != null) 'inlineDocuments': inlineDocuments!,
+    if (rawDocuments != null) 'rawDocuments': rawDocuments!,
+  };
+}
+
+/// The parameters for the schema generation.
+class GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams {
+  /// Previous prompt-answers in a chronological order.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1SchemaGenerationHistory? history;
+
+  /// The prompt used for the schema generation.
+  ///
+  /// Optional.
+  core.String? prompt;
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams({
+    this.history,
+    this.prompt,
+  });
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams.fromJson(
+    core.Map json_,
+  ) : this(
+        history:
+            json_.containsKey('history')
+                ? GoogleCloudDocumentaiV1SchemaGenerationHistory.fromJson(
+                  json_['history'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        prompt: json_['prompt'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (history != null) 'history': history!,
+    if (prompt != null) 'prompt': prompt!,
+  };
+}
+
+/// Response message for GenerateSchemaVersion.
+class GoogleCloudDocumentaiV1GenerateSchemaVersionResponse {
+  /// The schema version generated by the model.
+  GoogleCloudDocumentaiV1SchemaVersion? schemaVersion;
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionResponse({this.schemaVersion});
+
+  GoogleCloudDocumentaiV1GenerateSchemaVersionResponse.fromJson(core.Map json_)
+    : this(
+        schemaVersion:
+            json_.containsKey('schemaVersion')
+                ? GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+                  json_['schemaVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (schemaVersion != null) 'schemaVersion': schemaVersion!,
+  };
+}
+
 /// The status of human review on a processed document.
 class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
@@ -5333,6 +6249,126 @@ class GoogleCloudDocumentaiV1ListProcessorsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (processors != null) 'processors': processors!,
+  };
+}
+
+/// Response message for ListSchemaVersions.
+class GoogleCloudDocumentaiV1ListSchemaVersionsResponse {
+  /// Points to the next SchemaVersion, otherwise empty.
+  core.String? nextPageToken;
+
+  /// The list of SchemaVersions.
+  core.List<GoogleCloudDocumentaiV1SchemaVersion>? schemaVersions;
+
+  GoogleCloudDocumentaiV1ListSchemaVersionsResponse({
+    this.nextPageToken,
+    this.schemaVersions,
+  });
+
+  GoogleCloudDocumentaiV1ListSchemaVersionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemaVersions:
+            (json_['schemaVersions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemaVersions != null) 'schemaVersions': schemaVersions!,
+  };
+}
+
+/// Response message for ListSchemas.
+class GoogleCloudDocumentaiV1ListSchemasResponse {
+  /// Points to the next Schema, otherwise empty.
+  core.String? nextPageToken;
+
+  /// The list of Schemas.
+  core.List<GoogleCloudDocumentaiV1NextSchema>? schemas;
+
+  GoogleCloudDocumentaiV1ListSchemasResponse({
+    this.nextPageToken,
+    this.schemas,
+  });
+
+  GoogleCloudDocumentaiV1ListSchemasResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDocumentaiV1NextSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemas != null) 'schemas': schemas!,
+  };
+}
+
+/// NextSchema is a collection of SchemaVersions.
+class GoogleCloudDocumentaiV1NextSchema {
+  /// The time when the Schema was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The user-defined name of the Schema.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The GCP labels for the Schema.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the Schema. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}`
+  core.String? name;
+
+  /// The time when the Schema was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDocumentaiV1NextSchema({
+    this.createTime,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudDocumentaiV1NextSchema.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -5620,6 +6656,16 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig?
   chunkingConfig;
 
+  /// Whether to include image annotations in layout parser response.
+  ///
+  /// Optional.
+  core.bool? enableImageAnnotation;
+
+  /// Whether to include table annotations in layout parser response.
+  ///
+  /// Optional.
+  core.bool? enableTableAnnotation;
+
   /// Whether to include bounding boxes in layout parser processor response.
   ///
   /// Optional.
@@ -5632,6 +6678,8 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
 
   GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig({
     this.chunkingConfig,
+    this.enableImageAnnotation,
+    this.enableTableAnnotation,
     this.returnBoundingBoxes,
     this.returnImages,
   });
@@ -5645,12 +6693,18 @@ class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        enableImageAnnotation: json_['enableImageAnnotation'] as core.bool?,
+        enableTableAnnotation: json_['enableTableAnnotation'] as core.bool?,
         returnBoundingBoxes: json_['returnBoundingBoxes'] as core.bool?,
         returnImages: json_['returnImages'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (chunkingConfig != null) 'chunkingConfig': chunkingConfig!,
+    if (enableImageAnnotation != null)
+      'enableImageAnnotation': enableImageAnnotation!,
+    if (enableTableAnnotation != null)
+      'enableTableAnnotation': enableTableAnnotation!,
     if (returnBoundingBoxes != null)
       'returnBoundingBoxes': returnBoundingBoxes!,
     if (returnImages != null) 'returnImages': returnImages!,
@@ -5726,6 +6780,9 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// Whether human review should be skipped for this request.
   ///
   /// Default to `false`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1ProcessRequest({
@@ -6466,6 +7523,30 @@ class GoogleCloudDocumentaiV1RawDocument {
   };
 }
 
+/// Specifies a set of raw documents.
+class GoogleCloudDocumentaiV1RawDocuments {
+  /// Specifies raw document content and mime type.
+  core.List<GoogleCloudDocumentaiV1RawDocument>? documents;
+
+  GoogleCloudDocumentaiV1RawDocuments({this.documents});
+
+  GoogleCloudDocumentaiV1RawDocuments.fromJson(core.Map json_)
+    : this(
+        documents:
+            (json_['documents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDocumentaiV1RawDocument.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (documents != null) 'documents': documents!,
+  };
+}
+
 /// Request message for the ReviewDocument method.
 class GoogleCloudDocumentaiV1ReviewDocumentRequest {
   /// The document schema of the human review task.
@@ -6518,6 +7599,143 @@ class GoogleCloudDocumentaiV1ReviewDocumentRequest {
       'enableSchemaValidation': enableSchemaValidation!,
     if (inlineDocument != null) 'inlineDocument': inlineDocument!,
     if (priority != null) 'priority': priority!,
+  };
+}
+
+/// The history of schema generation iterations.
+class GoogleCloudDocumentaiV1SchemaGenerationHistory {
+  /// Previous prompt-answers in a chronological order.
+  ///
+  /// Required.
+  core.List<GoogleCloudDocumentaiV1SchemaGenerationIteration>? iterations;
+
+  GoogleCloudDocumentaiV1SchemaGenerationHistory({this.iterations});
+
+  GoogleCloudDocumentaiV1SchemaGenerationHistory.fromJson(core.Map json_)
+    : this(
+        iterations:
+            (json_['iterations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDocumentaiV1SchemaGenerationIteration.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (iterations != null) 'iterations': iterations!,
+  };
+}
+
+/// A single iteration of the schema generation.
+class GoogleCloudDocumentaiV1SchemaGenerationIteration {
+  /// The previous schema version adjusted by the model.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1SchemaVersion? adjustedSchema;
+
+  /// The schema version generated by the model.
+  ///
+  /// Required.
+  GoogleCloudDocumentaiV1SchemaVersion? generatedSchema;
+
+  /// The prompt used for the iteration.
+  ///
+  /// Optional.
+  core.String? prompt;
+
+  GoogleCloudDocumentaiV1SchemaGenerationIteration({
+    this.adjustedSchema,
+    this.generatedSchema,
+    this.prompt,
+  });
+
+  GoogleCloudDocumentaiV1SchemaGenerationIteration.fromJson(core.Map json_)
+    : this(
+        adjustedSchema:
+            json_.containsKey('adjustedSchema')
+                ? GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+                  json_['adjustedSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        generatedSchema:
+            json_.containsKey('generatedSchema')
+                ? GoogleCloudDocumentaiV1SchemaVersion.fromJson(
+                  json_['generatedSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        prompt: json_['prompt'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adjustedSchema != null) 'adjustedSchema': adjustedSchema!,
+    if (generatedSchema != null) 'generatedSchema': generatedSchema!,
+    if (prompt != null) 'prompt': prompt!,
+  };
+}
+
+/// SchemaVersion is a version of the Schema which is created in SchemaGroup.
+class GoogleCloudDocumentaiV1SchemaVersion {
+  /// The time when the SchemaVersion was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The user-defined name of the SchemaVersion.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The GCP labels for the SchemaVersion.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the SchemaVersion. Format:
+  /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+  core.String? name;
+
+  /// The schema of the SchemaVersion.
+  ///
+  /// Required.
+  GoogleCloudDocumentaiV1DocumentSchema? schema;
+
+  GoogleCloudDocumentaiV1SchemaVersion({
+    this.createTime,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.schema,
+  });
+
+  GoogleCloudDocumentaiV1SchemaVersion.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        schema:
+            json_.containsKey('schema')
+                ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (schema != null) 'schema': schema!,
   };
 }
 
@@ -6793,9 +8011,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -6809,11 +8036,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250714",
+    "revision": "20260112",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",

@@ -124,6 +124,45 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get the AutoMigrationConfig for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the AutoMigrationConfig. Format:
+  /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoMigrationConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoMigrationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoMigrationConfig> getAutoMigrationConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutoMigrationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -131,9 +170,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -181,6 +220,53 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the AutoMigrationConfig for a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the AutoMigrationConfig. Format:
+  /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoMigrationConfig$`.
+  ///
+  /// [updateMask] - Optional. The update mask applies to the resource. See
+  /// google.protobuf.FieldMask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateAutoMigrationConfig(
+    AutoMigrationConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1310,6 +1396,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1325,12 +1419,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2052,6 +2149,41 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// AutoMigrationConfig contains the automigration configuration for a project.
+class AutoMigrationConfig {
+  /// Whether the auto migration is enabled for the project.
+  ///
+  /// Optional.
+  core.bool? autoMigrationEnabled;
+
+  /// Identifier.
+  ///
+  /// The name of the AutoMigrationConfig. Format:
+  /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+  core.String? name;
+
+  /// Time the AutoMigrationConfig was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AutoMigrationConfig({this.autoMigrationEnabled, this.name, this.updateTime});
+
+  AutoMigrationConfig.fromJson(core.Map json_)
+    : this(
+        autoMigrationEnabled: json_['autoMigrationEnabled'] as core.bool?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (autoMigrationEnabled != null)
+      'autoMigrationEnabled': autoMigrationEnabled!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2241,6 +2373,8 @@ class Deployment {
   /// failed due to a permission issue.
   /// - "BUCKET_CREATION_FAILED" : Cloud Storage bucket creation failed due to
   /// an issue unrelated to permissions.
+  /// - "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED" : Failed to import values from an
+  /// external source.
   core.String? errorCode;
 
   /// Location of Terraform error logs in Google Cloud Storage.
@@ -2713,7 +2847,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2726,11 +2872,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3306,6 +3457,8 @@ class Preview {
   /// access Cloud Build API.
   /// - "PREVIEW_BUILD_RUN_FAILED" : Preview created a build but build failed
   /// and logs were generated.
+  /// - "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED" : Failed to import values from an
+  /// external source.
   core.String? errorCode;
 
   /// Link to tf-error.ndjson file, which contains the full list of the errors
@@ -4139,6 +4292,8 @@ class Revision {
   /// updating a deployment was started but failed.
   /// - "QUOTA_VALIDATION_FAILED" : quota validation failed for one or more
   /// resources in terraform configuration files.
+  /// - "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED" : Failed to import values from an
+  /// external source.
   core.String? errorCode;
 
   /// Location of Terraform error logs in Google Cloud Storage.

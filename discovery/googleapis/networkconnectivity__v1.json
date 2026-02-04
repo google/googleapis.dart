@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250910",
+    "revision": "20260120",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
     "servicePath": "",
     "title": "Network Connectivity API",
@@ -113,6 +113,34 @@
             "resources": {
                 "locations": {
                     "methods": {
+                        "checkConsumerConfig": {
+                            "description": "CheckConsumerConfig validates the consumer network and project for potential PSC connection creation. This method performs several checks, including: - Validating the existence and permissions of the service class. - Ensuring the consumer network exists and is accessible. - Verifying XPN relationships if applicable. - Checking for compatible IP versions between the consumer network and the requested version. This method performs a dynamic IAM check for the `networkconnectivity.serviceClasses.use` permission on the service class resource in the Prepare phase.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:checkConsumerConfig",
+                            "httpMethod": "POST",
+                            "id": "networkconnectivity.projects.locations.checkConsumerConfig",
+                            "parameterOrder": [
+                                "location"
+                            ],
+                            "parameters": {
+                                "location": {
+                                    "description": "Required. The location resource path. Example: - projects/{project}/locations/{location}",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+location}:checkConsumerConfig",
+                            "request": {
+                                "$ref": "CheckConsumerConfigRequest"
+                            },
+                            "response": {
+                                "$ref": "CheckConsumerConfigResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "get": {
                             "description": "Gets information about a location.",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
@@ -148,7 +176,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -187,6 +215,184 @@
                         }
                     },
                     "resources": {
+                        "automatedDnsRecords": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a new AutomatedDnsRecord in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords",
+                                    "httpMethod": "POST",
+                                    "id": "networkconnectivity.projects.locations.automatedDnsRecords.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "automatedDnsRecordId": {
+                                            "description": "Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/automatedDnsRecords/foo') See https://google.aip.dev/122#resource-id-segments Unique per location. If one is not provided, one will be generated.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "insertMode": {
+                                            "description": "Optional. The insert mode when creating AutomatedDnsRecord.",
+                                            "enum": [
+                                                "INSERT_MODE_UNSPECIFIED",
+                                                "FAIL_IF_EXISTS",
+                                                "OVERWRITE"
+                                            ],
+                                            "enumDescriptions": [
+                                                "An invalid insert mode as the default case.",
+                                                "Fail the request if the record already exists in cloud DNS.",
+                                                "Overwrite the existing record in cloud DNS."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The parent resource's name of the AutomatedDnsRecord. ex. projects/123/locations/us-east1",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/automatedDnsRecords",
+                                    "request": {
+                                        "$ref": "AutomatedDnsRecord"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleLongrunningOperation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a single AutomatedDnsRecord.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords/{automatedDnsRecordsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "networkconnectivity.projects.locations.automatedDnsRecords.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "deleteMode": {
+                                            "description": "Optional. Delete mode when deleting AutomatedDnsRecord. If set to DEPROGRAM, the record will be deprogrammed in Cloud DNS. If set to SKIP_DEPROGRAMMING, the record will not be deprogrammed in Cloud DNS.",
+                                            "enum": [
+                                                "DELETE_MODE_UNSPECIFIED",
+                                                "DEPROGRAM",
+                                                "SKIP_DEPROGRAMMING"
+                                            ],
+                                            "enumDescriptions": [
+                                                "An invalid delete mode as the default case.",
+                                                "Deprogram the record in Cloud DNS.",
+                                                "Skip deprogramming the record in Cloud DNS."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "etag": {
+                                            "description": "Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The name of the AutomatedDnsRecord to delete.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/automatedDnsRecords/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleLongrunningOperation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets details of a single AutomatedDnsRecord.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords/{automatedDnsRecordsId}",
+                                    "httpMethod": "GET",
+                                    "id": "networkconnectivity.projects.locations.automatedDnsRecords.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the AutomatedDnsRecord to get. Format: projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/automatedDnsRecords/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "AutomatedDnsRecord"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists AutomatedDnsRecords in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords",
+                                    "httpMethod": "GET",
+                                    "id": "networkconnectivity.projects.locations.automatedDnsRecords.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "A filter expression that filters the results listed in the response.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Sort the results by a certain order.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The maximum number of results per page that should be returned.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The parent resource's name. ex. projects/123/locations/us-east1",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/automatedDnsRecords",
+                                    "response": {
+                                        "$ref": "ListAutomatedDnsRecordsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "global": {
                             "resources": {
                                 "hubs": {
@@ -2106,6 +2312,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -2254,81 +2465,6 @@
                                     "path": "v1/{+parent}/regionalEndpoints",
                                     "response": {
                                         "$ref": "ListRegionalEndpointsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                }
-                            }
-                        },
-                        "remoteTransportProfiles": {
-                            "methods": {
-                                "get": {
-                                    "description": "Gets details of a single RemoteTransportProfile.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles/{remoteTransportProfilesId}",
-                                    "httpMethod": "GET",
-                                    "id": "networkconnectivity.projects.locations.remoteTransportProfiles.get",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Required. Name of the resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/remoteTransportProfiles/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+name}",
-                                    "response": {
-                                        "$ref": "RemoteTransportProfile"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "list": {
-                                    "description": "Lists RemoteTransportProfiles in a given project and location.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles",
-                                    "httpMethod": "GET",
-                                    "id": "networkconnectivity.projects.locations.remoteTransportProfiles.list",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "filter": {
-                                            "description": "Optional. Filtering results.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "orderBy": {
-                                            "description": "Optional. Hint for how to order the results.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "pageToken": {
-                                            "description": "Optional. A token identifying a page of results the server should return.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "parent": {
-                                            "description": "Required. Parent value for ListRemoteTransportProfilesRequest.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+parent}/remoteTransportProfiles",
-                                    "response": {
-                                        "$ref": "ListRemoteTransportProfilesResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -2860,6 +2996,7 @@
                                         "autoSubnetworkConfig.allocRangeSpace": {
                                             "description": "Optional. The space where we search for a free range to create a subnetwork. It can be narrow down or pick a different space. This is in standard CIDR format. If not specified, “10.0.0.0/8” is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork.",
                                             "location": "query",
+                                            "repeated": true,
                                             "type": "string"
                                         },
                                         "autoSubnetworkConfig.ipStack": {
@@ -3579,188 +3716,6 @@
                                     ]
                                 }
                             }
-                        },
-                        "transports": {
-                            "methods": {
-                                "create": {
-                                    "description": "Creates a new Transport in a given project and location.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transports",
-                                    "httpMethod": "POST",
-                                    "id": "networkconnectivity.projects.locations.transports.create",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "parent": {
-                                            "description": "Required. Value for parent.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "requestId": {
-                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "transportId": {
-                                            "description": "Required. Id of the requesting object",
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+parent}/transports",
-                                    "request": {
-                                        "$ref": "Transport"
-                                    },
-                                    "response": {
-                                        "$ref": "GoogleLongrunningOperation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "delete": {
-                                    "description": "Deletes a single Transport.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-                                    "httpMethod": "DELETE",
-                                    "id": "networkconnectivity.projects.locations.transports.delete",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Required. Name of the resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "requestId": {
-                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+name}",
-                                    "response": {
-                                        "$ref": "GoogleLongrunningOperation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "get": {
-                                    "description": "Gets details of a single Transport.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-                                    "httpMethod": "GET",
-                                    "id": "networkconnectivity.projects.locations.transports.get",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Required. Name of the resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+name}",
-                                    "response": {
-                                        "$ref": "Transport"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "list": {
-                                    "description": "Lists Transports in a given project and location.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transports",
-                                    "httpMethod": "GET",
-                                    "id": "networkconnectivity.projects.locations.transports.list",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "filter": {
-                                            "description": "Optional. Filtering results.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "orderBy": {
-                                            "description": "Optional. Hint for how to order the results.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "pageToken": {
-                                            "description": "Optional. A token identifying a page of results the server should return.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "parent": {
-                                            "description": "Required. Parent value for ListTransportsRequest.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+parent}/transports",
-                                    "response": {
-                                        "$ref": "ListTransportsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "patch": {
-                                    "description": "Updates the parameters of a single Transport.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-                                    "httpMethod": "PATCH",
-                                    "id": "networkconnectivity.projects.locations.transports.patch",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Identifier. Name of the resource, see google.aip.dev/122 for resource naming.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "requestId": {
-                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "updateMask": {
-                                            "description": "Optional. Field mask is used to specify the fields to be overwritten in the Transport resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten.",
-                                            "format": "google-fieldmask",
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+name}",
-                                    "request": {
-                                        "$ref": "Transport"
-                                    },
-                                    "response": {
-                                        "$ref": "GoogleLongrunningOperation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                }
-                            }
                         }
                     }
                 }
@@ -3909,6 +3864,11 @@
             "description": "Information for the automatically created subnetwork and its associated IR.",
             "id": "AutoCreatedSubnetworkInfo",
             "properties": {
+                "delinked": {
+                    "description": "Output only. Indicates whether the subnetwork is delinked from the Service Connection Policy. Only set if the subnetwork mode is AUTO_CREATED during creation.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "internalRange": {
                     "description": "Output only. URI of the automatically created Internal Range. Only set if the subnetwork mode is AUTO_CREATED during creation.",
                     "readOnly": true,
@@ -3932,6 +3892,155 @@
             },
             "type": "object"
         },
+        "AutomatedDnsCreationSpec": {
+            "description": "The specification for automatically creating a DNS record.",
+            "id": "AutomatedDnsCreationSpec",
+            "properties": {
+                "dnsSuffix": {
+                    "description": "Required. The DNS suffix to use for the DNS record. Must end with a dot. This should be a valid DNS domain name as per RFC 1035. Each label (between dots) can contain letters, digits, and hyphens, and must not start or end with a hyphen. Example: \"my-service.example.com.\", \"internal.\"",
+                    "type": "string"
+                },
+                "hostname": {
+                    "description": "Required. The hostname (the first label of the FQDN) to use for the DNS record. This should be a valid DNS label as per RFC 1035. Generally, this means the hostname can contain letters, digits, and hyphens, and must not start or end with a hyphen. Example: \"my-instance\", \"db-1\"",
+                    "type": "string"
+                },
+                "ttl": {
+                    "description": "Optional. The Time To Live for the DNS record, in seconds. If not provided, a default of 30 seconds will be used.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutomatedDnsRecord": {
+            "description": "Represents a DNS record managed by the AutomatedDnsRecord API.",
+            "id": "AutomatedDnsRecord",
+            "properties": {
+                "consumerNetwork": {
+                    "description": "Required. Immutable. The full resource path of the consumer network this AutomatedDnsRecord is visible to. Example: \"projects/{projectNumOrId}/global/networks/{networkName}\".",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The timestamp of when the record was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "creationMode": {
+                    "description": "Required. Immutable. The creation mode of the AutomatedDnsRecord. This field is immutable.",
+                    "enum": [
+                        "CREATION_MODE_UNSPECIFIED",
+                        "CONSUMER_API",
+                        "SERVICE_CONNECTION_MAP"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "The record was created through the AutomatedDnsRecord CCFE consumer API.",
+                        "The record was created by a ServiceConnectionMap. Its lifecycle is managed by that ServiceConnectionMap."
+                    ],
+                    "type": "string"
+                },
+                "currentConfig": {
+                    "$ref": "Config",
+                    "description": "Output only. The current settings for this record as identified by (`hostname`, `dns_suffix`, `type`) in Cloud DNS. The `current_config` field reflects the actual settings of the DNS record in Cloud DNS based on the `hostname`, `dns_suffix`, and `type`. * **Absence:** If `current_config` is unset, it means a DNS record with the specified `hostname`, `dns_suffix`, and `type` does not currently exist in Cloud DNS. This could be because the `AutomatedDnsRecord` has never been successfully programmed, has been deleted, or there was an error during provisioning. * **Presence:** If `current_config` is present: * It can be different from the `original_config`. This can happen due to several reasons: * Out-of-band changes: A consumer might have directly modified the DNS record in Cloud DNS. * `OVERWRITE` operations from other `AutomatedDnsRecord` resources: Another `AutomatedDnsRecord` with the same identifying attributes (`hostname`, `dns_suffix`, `type`) but a different configuration might have overwritten the record using `insert_mode: OVERWRITE`. Therefore, the presence of `current_config` indicates that a corresponding DNS record exists, but its values (TTL and RRData) might not always align with the `original_config` of the AutomatedDnsRecord.",
+                    "readOnly": true
+                },
+                "description": {
+                    "description": "A human-readable description of the record.",
+                    "type": "string"
+                },
+                "dnsSuffix": {
+                    "description": "Required. Immutable. The dns suffix for this record to use in longest-suffix matching. Requires a trailing dot. Example: \"example.com.\"",
+                    "type": "string"
+                },
+                "dnsZone": {
+                    "description": "Output only. DnsZone is the DNS zone managed by automation. Format: projects/{project}/managedZones/{managedZone}",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "fqdn": {
+                    "description": "Output only. The FQDN created by combining the hostname and dns suffix. Should include a trailing dot.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "hostname": {
+                    "description": "Required. Immutable. The hostname for the DNS record. This value will be prepended to the `dns_suffix` to create the full domain name (FQDN) for the record. For example, if `hostname` is \"corp.db\" and `dns_suffix` is \"example.com.\", the resulting record will be \"corp.db.example.com.\". Should not include a trailing dot.",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. User-defined labels.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "Immutable. Identifier. The name of an AutomatedDnsRecord. Format: projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record} See: https://google.aip.dev/122#fields-representing-resource-names",
+                    "type": "string"
+                },
+                "originalConfig": {
+                    "$ref": "Config",
+                    "description": "Required. Immutable. The configuration settings used to create this DNS record. These settings define the desired state of the record as specified by the producer."
+                },
+                "recordType": {
+                    "description": "Required. Immutable. The identifier of a supported record type.",
+                    "enum": [
+                        "RECORD_TYPE_UNSPECIFIED",
+                        "A",
+                        "AAAA",
+                        "TXT",
+                        "CNAME"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Represents an A record.",
+                        "Represents an AAAA record.",
+                        "Represents a TXT record.",
+                        "Represents a CNAME record."
+                    ],
+                    "type": "string"
+                },
+                "serviceClass": {
+                    "description": "Required. Immutable. The service class identifier which authorizes this AutomatedDnsRecord. Any API calls targeting this AutomatedDnsRecord must have `networkconnectivity.serviceclasses.use` IAM permission for the provided service class.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current operational state of this AutomatedDnsRecord as managed by Service Connectivity Automation.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PROGRAMMED",
+                        "FAILED_DEPROGRAMMING",
+                        "CREATING",
+                        "DELETING"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "The AutomatedDnsRecord has been successfully programmed.",
+                        "A non-recoverable error occurred while attempting to deprogram the DNS record from Cloud DNS during deletion.",
+                        "The AutomatedDnsRecord is being created.",
+                        "The AutomatedDnsRecord is being deleted."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "stateDetails": {
+                    "description": "Output only. A human-readable message providing more context about the current state, such as an error description if the state is `FAILED_DEPROGRAMMING`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The timestamp of when the record was updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Binding": {
             "description": "Associates `members`, or principals, with a `role`.",
             "id": "Binding",
@@ -3949,6 +4058,96 @@
                 },
                 "role": {
                     "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CheckConsumerConfigRequest": {
+            "description": "Request for CheckConsumerConfig.",
+            "id": "CheckConsumerConfigRequest",
+            "properties": {
+                "consumerNetwork": {
+                    "description": "Required. Full resource name of the consumer network. Example: - projects/{project}/global/networks/{network}.",
+                    "type": "string"
+                },
+                "endpointProject": {
+                    "description": "The project number or ID where the PSC endpoint is to be created.",
+                    "type": "string"
+                },
+                "requestedIpVersion": {
+                    "description": "The requested IP Version",
+                    "enum": [
+                        "IP_VERSION_UNSPECIFIED",
+                        "IPV4",
+                        "IPV6"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. We will use IPv4 or IPv6 depending on the IP version of first available subnetwork.",
+                        "Will use IPv4 only.",
+                        "Will use IPv6 only."
+                    ],
+                    "type": "string"
+                },
+                "serviceClass": {
+                    "description": "Required. The service class identifier of the producer.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CheckConsumerConfigResponse": {
+            "description": "Response for CheckConsumerConfig.",
+            "id": "CheckConsumerConfigResponse",
+            "properties": {
+                "errors": {
+                    "description": "List of validation errors. If the list is empty, the consumer config is valid.",
+                    "items": {
+                        "enum": [
+                            "ERROR_UNSPECIFIED",
+                            "NETWORK_PROJECT_INVALID",
+                            "NETWORK_PROJECT_APIS_NOT_ENABLED",
+                            "NETWORK_INVALID",
+                            "CONNECTION_POLICY_MISSING",
+                            "IP_VERSION_NOT_SUPPORTED",
+                            "NETWORK_PROJECT_SERVICE_AGENT_NOT_FOUND",
+                            "ENDPOINT_PROJECT_INVALID",
+                            "ENDPOINT_PROJECT_API_NOT_ENABLED",
+                            "ENDPOINT_PROJECT_IS_NOT_SERVICE_PROJECT"
+                        ],
+                        "enumDescriptions": [
+                            "An invalid error as the default case.",
+                            "Invalid Network project.",
+                            "Network Connectivity APIs not enabled in network project.",
+                            "Invalid network.",
+                            "No ServiceConnectionPolicy found for this network and ServiceClass.",
+                            "IP version not supported in any of the subnetworks.",
+                            "Service Agent missing for network project.",
+                            "Invalid endpoint project.",
+                            "Network Connectivity API is not enabled in the endpoint project.",
+                            "Endpoint project is not a service project of the network project."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Config": {
+            "description": "Defines the configuration of a DNS record.",
+            "id": "Config",
+            "properties": {
+                "rrdatas": {
+                    "description": "Required. The list of resource record data strings. The content and format of these strings depend on the AutomatedDnsRecord.type. For many common record types, this list may contain multiple strings. As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: [\"192.0.2.1\"] or [\"192.0.2.1\", \"192.0.2.2\"] TXT record: [\"This is a text record\"] CNAME record: [\"target.example.com.\"] AAAA record: [\"::1\"] or [\"2001:0db8:85a3:0000:0000:8a2e:0370:7334\", \"2001:0db8:85a3:0000:0000:8a2e:0370:7335\"]",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ttl": {
+                    "description": "Required. Number of seconds that this DNS record can be cached by resolvers.",
+                    "format": "google-duration",
                     "type": "string"
                 }
             },
@@ -4004,8 +4203,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Output only. A map to store mapping between customer vip and target service attachment. Only service attachment with producer specified ip addresses are stored here.",
-                    "readOnly": true,
+                    "description": "Optional. A map to store mapping between customer vip and target service attachment. This field can be used to specify a static IP address for a PSC connection.",
                     "type": "object"
                 },
                 "state": {
@@ -4034,6 +4232,11 @@
             "description": "PSC connection details on consumer side.",
             "id": "ConsumerPscConnection",
             "properties": {
+                "dnsAutomationStatus": {
+                    "$ref": "DnsAutomationStatus",
+                    "description": "Output only. The status of DNS automation for this PSC connection.",
+                    "readOnly": true
+                },
                 "error": {
                     "$ref": "GoogleRpcStatus",
                     "deprecated": true,
@@ -4241,6 +4444,44 @@
             },
             "type": "object"
         },
+        "DnsAutomationStatus": {
+            "description": "The status of DNS automation for a PSC connection.",
+            "id": "DnsAutomationStatus",
+            "properties": {
+                "error": {
+                    "$ref": "GoogleRpcStatus",
+                    "description": "Output only. The error details if the state is CREATE_FAILED or DELETE_FAILED.",
+                    "readOnly": true
+                },
+                "fqdn": {
+                    "description": "Output only. The fully qualified domain name of the DNS record.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current state of DNS automation.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PENDING_CREATE",
+                        "ACTIVE",
+                        "PENDING_DELETE",
+                        "CREATE_FAILED",
+                        "DELETE_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "DNS record creation is pending.",
+                        "DNS record is active.",
+                        "DNS record deletion is pending.",
+                        "DNS record creation failed.",
+                        "DNS record deletion failed."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
@@ -4321,6 +4562,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "GoogleLongrunningOperation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -4647,8 +4895,9 @@
                     "description": "Optional. Range auto-allocation options, may be set only when auto-allocation is selected by not setting ip_cidr_range (and setting prefix_length)."
                 },
                 "createTime": {
-                    "description": "Time when the internal range was created.",
+                    "description": "Output only. Time when the internal range was created.",
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "description": {
@@ -4735,8 +4984,9 @@
                     "type": "array"
                 },
                 "updateTime": {
-                    "description": "Time when the internal range was updated.",
+                    "description": "Output only. Time when the internal range was updated.",
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "usage": {
@@ -4827,7 +5077,7 @@
                     "type": "string"
                 },
                 "proposedExcludeExportRanges": {
-                    "description": "Output only. The proposed exclude export IP ranges waiting for hub administration's approval.",
+                    "description": "Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.",
                     "items": {
                         "type": "string"
                     },
@@ -4835,7 +5085,7 @@
                     "type": "array"
                 },
                 "proposedIncludeExportRanges": {
-                    "description": "Output only. The proposed include export IP ranges waiting for hub administration's approval.",
+                    "description": "Output only. The proposed include export IP ranges waiting for hub administrator's approval.",
                     "items": {
                         "type": "string"
                     },
@@ -4907,7 +5157,7 @@
                     "type": "array"
                 },
                 "proposedExcludeExportRanges": {
-                    "description": "Output only. The proposed exclude export IP ranges waiting for hub administration's approval.",
+                    "description": "Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.",
                     "items": {
                         "type": "string"
                     },
@@ -4915,7 +5165,7 @@
                     "type": "array"
                 },
                 "proposedIncludeExportRanges": {
-                    "description": "Output only. The proposed include export IP ranges waiting for hub administration's approval.",
+                    "description": "Output only. The proposed include export IP ranges waiting for hub administrator's approval.",
                     "items": {
                         "type": "string"
                     },
@@ -4955,6 +5205,31 @@
                     "description": "Output only. The VPC network where these VPN tunnels are located.",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListAutomatedDnsRecordsResponse": {
+            "description": "Response for ListAutomatedDnsRecords.",
+            "id": "ListAutomatedDnsRecordsResponse",
+            "properties": {
+                "automatedDnsRecords": {
+                    "description": "AutomatedDnsRecords to be returned.",
+                    "items": {
+                        "$ref": "AutomatedDnsRecord"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result.",
+                    "type": "string"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5195,31 +5470,6 @@
             },
             "type": "object"
         },
-        "ListRemoteTransportProfilesResponse": {
-            "description": "Message for response to listing RemoteTransportProfiles",
-            "id": "ListRemoteTransportProfilesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token identifying a page of results the server should return.",
-                    "type": "string"
-                },
-                "remoteTransportProfiles": {
-                    "description": "The list of RemoteTransportProfiles.",
-                    "items": {
-                        "$ref": "RemoteTransportProfile"
-                    },
-                    "type": "array"
-                },
-                "unreachable": {
-                    "description": "Unordered list. Locations that could not be reached.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "ListRouteTablesResponse": {
             "description": "Response for HubService.ListRouteTables method.",
             "id": "ListRouteTablesResponse",
@@ -5387,31 +5637,6 @@
                 },
                 "unreachable": {
                     "description": "Locations that could not be reached.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListTransportsResponse": {
-            "description": "Message for response to listing Transports.",
-            "id": "ListTransportsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token identifying a page of results the server should return.",
-                    "type": "string"
-                },
-                "transports": {
-                    "description": "The list of Transport.",
-                    "items": {
-                        "$ref": "Transport"
-                    },
-                    "type": "array"
-                },
-                "unreachable": {
-                    "description": "Unordered list. Locations that could not be reached.",
                     "items": {
                         "type": "string"
                     },
@@ -5768,7 +5993,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Immutable. A unique name of the resource in the form of `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`",
+                    "description": "Immutable. Identifier. A unique name of the resource in the form of `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`",
                     "type": "string"
                 },
                 "network": {
@@ -5826,6 +6051,10 @@
             "description": "The PSC configurations on producer side.",
             "id": "ProducerPscConfig",
             "properties": {
+                "automatedDnsCreationSpec": {
+                    "$ref": "AutomatedDnsCreationSpec",
+                    "description": "Optional. The specification for automatically creating a DNS record for this PSC connection."
+                },
                 "serviceAttachmentUri": {
                     "description": "The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.",
                     "type": "string"
@@ -6105,7 +6334,7 @@
                     "type": "string"
                 },
                 "network": {
-                    "description": "The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`",
+                    "description": "Optional. The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`",
                     "type": "string"
                 },
                 "pscForwardingRule": {
@@ -6114,7 +6343,7 @@
                     "type": "string"
                 },
                 "subnetwork": {
-                    "description": "The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`",
+                    "description": "Optional. The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`",
                     "type": "string"
                 },
                 "targetGoogleApi": {
@@ -6178,138 +6407,6 @@
                 },
                 "spokeUri": {
                     "description": "Required. The URI of the spoke to reject update.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RemoteTransportProfile": {
-            "description": "Message describing RemoteTransportProfile object.",
-            "id": "RemoteTransportProfile",
-            "properties": {
-                "createTime": {
-                    "description": "Output only. [Output only] Create time stamp.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Output only. Description of the profile.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "flow": {
-                    "description": "Output only. [Output only] Type of provisioning flows supported by this profile.",
-                    "enum": [
-                        "KEY_PROVISIONING_FLOW_UNSPECIFIED",
-                        "INPUT_ONLY",
-                        "OUTPUT_ONLY",
-                        "INPUT_OR_OUTPUT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified key provisioning flow.",
-                        "The activationKey field on the Transport must be included in a create or patch request to establish connectivity.",
-                        "The generatedActivationKey field is populated and must be read from the resource and passed into the other provider.",
-                        "Both activation key fields are allowed for establishing connectivity. If a key is input, the generated key is still present after provisioning is finished."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Output only. Labels as key value pairs.",
-                    "readOnly": true,
-                    "type": "object"
-                },
-                "name": {
-                    "description": "Identifier. Name of the resource in the format of $provider-$site.",
-                    "type": "string"
-                },
-                "orderState": {
-                    "description": "Output only. [Output only] Order state for this profile.",
-                    "enum": [
-                        "STATE_UNSPECIFIED",
-                        "CLOSED",
-                        "OPEN"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified state.",
-                        "Not enough capacity for customers to order.",
-                        "Enough capacity to fulfill an order."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "provider": {
-                    "description": "Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft Azure”.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "providerSite": {
-                    "description": "Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the region where connectivity is being established. If the profile provides facility-level selection, this is an identity of the facility any connections on this profile are going through.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "region": {
-                    "description": "Output only. GCP Region where this profile is available.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "sla": {
-                    "description": "Output only. [Output only] Availability class that will be configured for this particular RemoteTransportProfile.",
-                    "enum": [
-                        "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED",
-                        "HIGH",
-                        "MAXIMUM"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified service level availability.",
-                        "This represents a 99.9% service level on the availability of the configured connectivity.",
-                        "This represents a 99.99% service level on the availability of the configured connectivity."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "supportedBandwidths": {
-                    "description": "Output only. List of bandwidth enum values that are supported by this profile.",
-                    "items": {
-                        "enum": [
-                            "BANDWIDTH_UNSPECIFIED",
-                            "BPS_50M",
-                            "BPS_100M",
-                            "BPS_200M",
-                            "BPS_300M",
-                            "BPS_400M",
-                            "BPS_500M",
-                            "BPS_1G",
-                            "BPS_2G",
-                            "BPS_5G",
-                            "BPS_10G"
-                        ],
-                        "enumDescriptions": [
-                            "Unspecified bandwidth.",
-                            "50 Megabits per second.",
-                            "100 Megabits per second.",
-                            "200 Megabits per second.",
-                            "300 Megabits per second.",
-                            "400 Megabits per second.",
-                            "500 Megabits per second.",
-                            "1 Gigabit per second.",
-                            "2 Gigabits per second.",
-                            "5 Gigabits per second.",
-                            "10 Gigabits per second."
-                        ],
-                        "type": "string"
-                    },
-                    "readOnly": true,
-                    "type": "array"
-                },
-                "updateTime": {
-                    "description": "Output only. [Output only] Update time stamp.",
-                    "format": "google-datetime",
-                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -6860,7 +6957,7 @@
                     "type": "string"
                 },
                 "fieldPathsPendingUpdate": {
-                    "description": "Optional. The list of fields waiting for hub administration's approval.",
+                    "description": "Optional. The list of fields waiting for hub administrator's approval.",
                     "items": {
                         "type": "string"
                     },
@@ -7157,7 +7254,7 @@
             "type": "object"
         },
         "StateReason": {
-            "description": "The reason a spoke is inactive.",
+            "description": "The reason for the current state of the spoke.",
             "id": "StateReason",
             "properties": {
                 "code": {
@@ -7234,138 +7331,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Transport": {
-            "description": "Message describing Transport object.",
-            "id": "Transport",
-            "properties": {
-                "adminEnabled": {
-                    "description": "Optional. Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.",
-                    "type": "boolean"
-                },
-                "advertisedRoutes": {
-                    "description": "Optional. [Preview only] List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.",
-                    "type": "string"
-                },
-                "bandwidth": {
-                    "description": "Required. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.",
-                    "enum": [
-                        "BANDWIDTH_UNSPECIFIED",
-                        "BPS_50M",
-                        "BPS_100M",
-                        "BPS_200M",
-                        "BPS_300M",
-                        "BPS_400M",
-                        "BPS_500M",
-                        "BPS_1G",
-                        "BPS_2G",
-                        "BPS_5G",
-                        "BPS_10G"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified bandwidth.",
-                        "50 Megabits per second.",
-                        "100 Megabits per second.",
-                        "200 Megabits per second.",
-                        "300 Megabits per second.",
-                        "400 Megabits per second.",
-                        "500 Megabits per second.",
-                        "1 Gigabit per second.",
-                        "2 Gigabits per second.",
-                        "5 Gigabits per second.",
-                        "10 Gigabits per second."
-                    ],
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "Output only. [Output only] Create time stamp.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Optional. Description of the Transport.",
-                    "type": "string"
-                },
-                "generatedActivationKey": {
-                    "description": "Output only. [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. Labels as key value pairs.",
-                    "type": "object"
-                },
-                "mtuLimit": {
-                    "description": "Output only. [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this transport.",
-                    "format": "int32",
-                    "readOnly": true,
-                    "type": "integer"
-                },
-                "name": {
-                    "description": "Identifier. Name of the resource, see google.aip.dev/122 for resource naming.",
-                    "type": "string"
-                },
-                "network": {
-                    "description": "Required. [Preview only] Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.",
-                    "type": "string"
-                },
-                "providedActivationKey": {
-                    "description": "Optional. Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.",
-                    "type": "string"
-                },
-                "region": {
-                    "description": "Required. GCP Region where this Transport is located.",
-                    "type": "string"
-                },
-                "remoteProfile": {
-                    "description": "Required. Resource URL of the remoteTransportProfile that this Transport is connecting to. Format: projects/{project}/locations/{location}/remoteTransportProfiles/{remote_transport_profile}",
-                    "type": "string"
-                },
-                "stackType": {
-                    "description": "Optional. IP version stack for the established connectivity.",
-                    "enum": [
-                        "STACK_TYPE_UNSPECIFIED",
-                        "IPV4_ONLY",
-                        "IPV4_IPV6"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified stack type.",
-                        "Only IPv4 is supported. (default)",
-                        "Both IPv4 and IPv6 are supported."
-                    ],
-                    "type": "string"
-                },
-                "state": {
-                    "description": "Output only. [Output only] State of the underlying connectivity.",
-                    "enum": [
-                        "STATE_UNSPECIFIED",
-                        "CREATING",
-                        "PENDING_CONFIG",
-                        "PENDING_KEY",
-                        "ACTIVE"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified state.",
-                        "The resource exists locally and is being created / associated with the resource on the remote provider’s end of the underlying connectivity.",
-                        "The Transport exists on both sides of the connection, and is waiting for configuration to finalize and be verified as operational.",
-                        "The Transport was created in GCP. Depending on the profile’s key provisioning flow, this is either waiting for an activation key to be input (the key will be validated that it uses remote resources that match the Transport), or for the generated key to be input to the provider for finalizing. The configured bandwidth is not yet guaranteed.",
-                        "The Transport is configured and the underlying connectivity is considered operational."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "updateTime": {
-                    "description": "Output only. [Output only] Update time stamp.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
                 }
             },
             "type": "object"

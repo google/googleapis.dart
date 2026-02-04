@@ -35,6 +35,7 @@ api.Assignment buildAssignment() {
     o.enableGeminiInBigquery = true;
     o.jobType = 'foo';
     o.name = 'foo';
+    o.schedulingPolicy = buildSchedulingPolicy();
     o.state = 'foo';
   }
   buildCounterAssignment--;
@@ -48,6 +49,7 @@ void checkAssignment(api.Assignment o) {
     unittest.expect(o.enableGeminiInBigquery!, unittest.isTrue);
     unittest.expect(o.jobType!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkSchedulingPolicy(o.schedulingPolicy!);
     unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterAssignment--;
@@ -578,6 +580,7 @@ api.Reservation buildReservation() {
     o.replicationStatus = buildReplicationStatus();
     o.reservationGroup = 'foo';
     o.scalingMode = 'foo';
+    o.schedulingPolicy = buildSchedulingPolicy();
     o.secondaryLocation = 'foo';
     o.slotCapacity = 'foo';
     o.updateTime = 'foo';
@@ -603,6 +606,7 @@ void checkReservation(api.Reservation o) {
     checkReplicationStatus(o.replicationStatus!);
     unittest.expect(o.reservationGroup!, unittest.equals('foo'));
     unittest.expect(o.scalingMode!, unittest.equals('foo'));
+    checkSchedulingPolicy(o.schedulingPolicy!);
     unittest.expect(o.secondaryLocation!, unittest.equals('foo'));
     unittest.expect(o.slotCapacity!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -627,6 +631,27 @@ void checkReservationGroup(api.ReservationGroup o) {
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterReservationGroup--;
+}
+
+core.int buildCounterSchedulingPolicy = 0;
+api.SchedulingPolicy buildSchedulingPolicy() {
+  final o = api.SchedulingPolicy();
+  buildCounterSchedulingPolicy++;
+  if (buildCounterSchedulingPolicy < 3) {
+    o.concurrency = 'foo';
+    o.maxSlots = 'foo';
+  }
+  buildCounterSchedulingPolicy--;
+  return o;
+}
+
+void checkSchedulingPolicy(api.SchedulingPolicy o) {
+  buildCounterSchedulingPolicy++;
+  if (buildCounterSchedulingPolicy < 3) {
+    unittest.expect(o.concurrency!, unittest.equals('foo'));
+    unittest.expect(o.maxSlots!, unittest.equals('foo'));
+  }
+  buildCounterSchedulingPolicy--;
 }
 
 core.List<api.Assignment> buildUnnamed12() => [
@@ -1112,6 +1137,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkReservationGroup(od);
+    });
+  });
+
+  unittest.group('obj-schema-SchedulingPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSchedulingPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SchedulingPolicy.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSchedulingPolicy(od);
     });
   });
 

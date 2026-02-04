@@ -53,7 +53,7 @@ class PeopleServiceApi {
   static const contactsReadonlyScope =
       'https://www.googleapis.com/auth/contacts.readonly';
 
-  /// See and download your organization's GSuite directory
+  /// See and download your organization's Google Workspace directory
   static const directoryReadonlyScope =
       'https://www.googleapis.com/auth/directory.readonly';
 

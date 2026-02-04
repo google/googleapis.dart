@@ -1753,17 +1753,17 @@ class Assignment {
   /// Optional.
   core.String? assignee;
 
-  /// This field controls if "Gemini in BigQuery"
-  /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should
-  /// be enabled for this reservation assignment, which is not on by default.
+  /// Deprecated: "Gemini in BigQuery" is now available by default for all
+  /// BigQuery editions and should not be explicitly set.
   ///
-  /// "Gemini in BigQuery" has a distinct compliance posture from BigQuery. If
-  /// this field is set to true, the assignment job type is QUERY, and the
-  /// parent reservation edition is ENTERPRISE_PLUS, then the assignment will
-  /// give the grantee project/organization access to "Gemini in BigQuery"
-  /// features.
+  /// Controls if "Gemini in BigQuery"
+  /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should
+  /// be enabled for this reservation assignment.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableGeminiInBigquery;
 
   /// Which type of jobs will use the reservation.
@@ -1807,6 +1807,16 @@ class Assignment {
   /// Output only.
   core.String? name;
 
+  /// The scheduling policy to use for jobs and queries of this assignee when
+  /// running under the associated reservation.
+  ///
+  /// The scheduling policy controls how the reservation's resources are
+  /// distributed. This overrides the default scheduling policy specified on the
+  /// reservation. This feature is not yet generally available.
+  ///
+  /// Optional.
+  SchedulingPolicy? schedulingPolicy;
+
   /// State of the assignment.
   ///
   /// Output only.
@@ -1822,6 +1832,7 @@ class Assignment {
     this.enableGeminiInBigquery,
     this.jobType,
     this.name,
+    this.schedulingPolicy,
     this.state,
   });
 
@@ -1831,6 +1842,13 @@ class Assignment {
         enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
         jobType: json_['jobType'] as core.String?,
         name: json_['name'] as core.String?,
+        schedulingPolicy:
+            json_.containsKey('schedulingPolicy')
+                ? SchedulingPolicy.fromJson(
+                  json_['schedulingPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         state: json_['state'] as core.String?,
       );
 
@@ -1840,6 +1858,7 @@ class Assignment {
       'enableGeminiInBigquery': enableGeminiInBigquery!,
     if (jobType != null) 'jobType': jobType!,
     if (name != null) 'name': name!,
+    if (schedulingPolicy != null) 'schedulingPolicy': schedulingPolicy!,
     if (state != null) 'state': state!,
   };
 }
@@ -2938,6 +2957,15 @@ class Reservation {
   /// `google.rpc.Code.INVALID_ARGUMENT`.
   core.String? scalingMode;
 
+  /// The scheduling policy to use for jobs and queries running under this
+  /// reservation.
+  ///
+  /// The scheduling policy controls how the reservation's resources are
+  /// distributed. This feature is not yet generally available.
+  ///
+  /// Optional.
+  SchedulingPolicy? schedulingPolicy;
+
   /// The current location of the reservation's secondary replica.
   ///
   /// This field is only set for reservations using the managed disaster
@@ -2985,6 +3013,7 @@ class Reservation {
     this.replicationStatus,
     this.reservationGroup,
     this.scalingMode,
+    this.schedulingPolicy,
     this.secondaryLocation,
     this.slotCapacity,
     this.updateTime,
@@ -3020,6 +3049,13 @@ class Reservation {
                 : null,
         reservationGroup: json_['reservationGroup'] as core.String?,
         scalingMode: json_['scalingMode'] as core.String?,
+        schedulingPolicy:
+            json_.containsKey('schedulingPolicy')
+                ? SchedulingPolicy.fromJson(
+                  json_['schedulingPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         secondaryLocation: json_['secondaryLocation'] as core.String?,
         slotCapacity: json_['slotCapacity'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
@@ -3042,6 +3078,7 @@ class Reservation {
     if (replicationStatus != null) 'replicationStatus': replicationStatus!,
     if (reservationGroup != null) 'reservationGroup': reservationGroup!,
     if (scalingMode != null) 'scalingMode': scalingMode!,
+    if (schedulingPolicy != null) 'schedulingPolicy': schedulingPolicy!,
     if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
     if (slotCapacity != null) 'slotCapacity': slotCapacity!,
     if (updateTime != null) 'updateTime': updateTime!,
@@ -3065,6 +3102,40 @@ class ReservationGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
+  };
+}
+
+/// The scheduling policy controls how a reservation's resources are
+/// distributed.
+class SchedulingPolicy {
+  /// If present and \> 0, the reservation will attempt to limit the concurrency
+  /// of jobs running for any particular project within it to the given value.
+  ///
+  /// This feature is not yet generally available.
+  ///
+  /// Optional.
+  core.String? concurrency;
+
+  /// If present and \> 0, the reservation will attempt to limit the slot
+  /// consumption of queries running for any particular project within it to the
+  /// given value.
+  ///
+  /// This feature is not yet generally available.
+  ///
+  /// Optional.
+  core.String? maxSlots;
+
+  SchedulingPolicy({this.concurrency, this.maxSlots});
+
+  SchedulingPolicy.fromJson(core.Map json_)
+    : this(
+        concurrency: json_['concurrency'] as core.String?,
+        maxSlots: json_['maxSlots'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (concurrency != null) 'concurrency': concurrency!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
   };
 }
 

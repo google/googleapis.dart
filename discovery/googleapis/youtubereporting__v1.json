@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230704",
+    "revision": "20260113",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Reporting API",
@@ -435,6 +435,11 @@
                     "description": "gdata",
                     "type": "string"
                 },
+                "downloadExternalReadToken": {
+                    "description": "gdata",
+                    "format": "byte",
+                    "type": "string"
+                },
                 "downloadReadHandle": {
                     "description": "gdata",
                     "format": "byte",
@@ -442,6 +447,11 @@
                 },
                 "readToken": {
                     "description": "gdata",
+                    "type": "string"
+                },
+                "uploadFragmentListCreationInfo": {
+                    "description": "gdata",
+                    "format": "byte",
                     "type": "string"
                 },
                 "uploadMetadataContainer": {

@@ -595,14 +595,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -648,6 +654,52 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Refines the input translated text to improve the quality.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or location to make a call. Must refer to a
+  /// caller's project. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}`. For global
+  /// calls, use `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RefineTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RefineTextResponse> refineText(
+    RefineTextRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':refineText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RefineTextResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1124,7 +1176,7 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the project from which to list
+  /// [parent] - Required. The resource name of the dataset from which to list
   /// the Adaptive MT files.
   /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
   /// Value must have pattern
@@ -1184,8 +1236,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResou
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the project from which to list
-  /// the Adaptive MT files. The following format lists all sentences under a
+  /// [parent] - Required. The resource name of the Adaptive MT file from which
+  /// to list the sentences. The following format lists all sentences under a
   /// file.
   /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
   /// The following format lists all sentences within a dataset.
@@ -1248,8 +1300,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the project from which to list
-  /// the Adaptive MT files. The following format lists all sentences under a
+  /// [parent] - Required. The resource name of the Adaptive MT file from which
+  /// to list the sentences. The following format lists all sentences under a
   /// file.
   /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
   /// The following format lists all sentences within a dataset.
@@ -1821,14 +1873,14 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the glossary. Glossary names have
-  /// the form
+  /// [name] - Identifier. The resource name of the glossary. Glossary names
+  /// have the form
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. Currently only
-  /// `display_name` and 'input_config'
+  /// [updateMask] - The list of fields to be updated. Currently, only
+  /// `display_name` and `input_config` are supported.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2398,6 +2450,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2413,12 +2473,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2501,10 +2564,10 @@ class AdaptiveMtDataset {
   /// The number of examples in the dataset.
   core.int? exampleCount;
 
+  /// Identifier.
+  ///
   /// The resource name of the dataset, in form of
   /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset_id}`
-  ///
-  /// Required.
   core.String? name;
 
   /// The BCP-47 language code of the source language.
@@ -2563,10 +2626,10 @@ class AdaptiveMtFile {
   /// The number of entries that the file contains.
   core.int? entryCount;
 
+  /// Identifier.
+  ///
   /// The resource name of the file, in form of
   /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
-  ///
-  /// Required.
   core.String? name;
 
   /// Timestamp when this file was last updated.
@@ -2607,10 +2670,10 @@ class AdaptiveMtSentence {
   /// Output only.
   core.String? createTime;
 
+  /// Identifier.
+  ///
   /// The resource name of the file, in form of
   /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}`
-  ///
-  /// Required.
   core.String? name;
 
   /// The source sentence.
@@ -2661,7 +2724,7 @@ class AdaptiveMtTranslateRequest {
   /// Required.
   core.List<core.String>? content;
 
-  /// The resource name for the dataset to use for adaptive MT.
+  /// The resource name for the dataset to use for adaptive MT translation.
   ///
   /// `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}`
   ///
@@ -2956,6 +3019,11 @@ class BatchTranslateDocumentRequest {
   /// Required.
   BatchDocumentOutputConfig? outputConfig;
 
+  /// If true, only native pdf pages will be translated.
+  ///
+  /// Optional.
+  core.bool? pdfNativeOnly;
+
   /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
@@ -2967,7 +3035,8 @@ class BatchTranslateDocumentRequest {
 
   /// The ISO-639 language code to use for translation of the input document.
   ///
-  /// Specify up to 10 language codes here.
+  /// Specify up to 10 language codes here. Supported language codes are listed
+  /// in [Language Support](https://cloud.google.com/translate/docs/languages).
   ///
   /// Required.
   core.List<core.String>? targetLanguageCodes;
@@ -2981,6 +3050,7 @@ class BatchTranslateDocumentRequest {
     this.inputConfigs,
     this.models,
     this.outputConfig,
+    this.pdfNativeOnly,
     this.sourceLanguageCode,
     this.targetLanguageCodes,
   });
@@ -3021,6 +3091,7 @@ class BatchTranslateDocumentRequest {
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        pdfNativeOnly: json_['pdfNativeOnly'] as core.bool?,
         sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
         targetLanguageCodes:
             (json_['targetLanguageCodes'] as core.List?)
@@ -3040,6 +3111,7 @@ class BatchTranslateDocumentRequest {
     if (inputConfigs != null) 'inputConfigs': inputConfigs!,
     if (models != null) 'models': models!,
     if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (pdfNativeOnly != null) 'pdfNativeOnly': pdfNativeOnly!,
     if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
     if (targetLanguageCodes != null)
       'targetLanguageCodes': targetLanguageCodes!,
@@ -3100,10 +3172,16 @@ class BatchTranslateTextRequest {
 
   /// Source language code.
   ///
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages).
+  ///
   /// Required.
   core.String? sourceLanguageCode;
 
   /// Specify up to 10 language codes here.
+  ///
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages).
   ///
   /// Required.
   core.List<core.String>? targetLanguageCodes;
@@ -3314,6 +3392,11 @@ class DetectLanguageRequest {
   /// The content of the input stored as a string.
   core.String? content;
 
+  /// The document configuration of the input.
+  ///
+  /// Optional.
+  DocumentInputConfig? documentInputConfig;
+
   /// The labels with user-defined metadata for the request.
   ///
   /// Label keys and values can be no longer than 63 characters (Unicode
@@ -3344,11 +3427,24 @@ class DetectLanguageRequest {
   /// Optional.
   core.String? model;
 
-  DetectLanguageRequest({this.content, this.labels, this.mimeType, this.model});
+  DetectLanguageRequest({
+    this.content,
+    this.documentInputConfig,
+    this.labels,
+    this.mimeType,
+    this.model,
+  });
 
   DetectLanguageRequest.fromJson(core.Map json_)
     : this(
         content: json_['content'] as core.String?,
+        documentInputConfig:
+            json_.containsKey('documentInputConfig')
+                ? DocumentInputConfig.fromJson(
+                  json_['documentInputConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3358,6 +3454,8 @@ class DetectLanguageRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (content != null) 'content': content!,
+    if (documentInputConfig != null)
+      'documentInputConfig': documentInputConfig!,
     if (labels != null) 'labels': labels!,
     if (mimeType != null) 'mimeType': mimeType!,
     if (model != null) 'model': model!,
@@ -3767,12 +3865,10 @@ class Glossary {
   /// Used with unidirectional glossaries.
   LanguageCodePair? languagePair;
 
-  /// The resource name of the glossary.
+  /// Identifier.
   ///
-  /// Glossary names have the form
+  /// The resource name of the glossary. Glossary names have the form
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-  ///
-  /// Required.
   core.String? name;
 
   /// When CreateGlossary was called.
@@ -4198,6 +4294,8 @@ class LanguageCodesSet {
   ///
   /// All entries are unique. The list contains at least two entries. Expected
   /// to be an exact match for GlossaryTerm.language_code.
+  ///
+  /// Optional.
   core.List<core.String>? languageCodes;
 
   LanguageCodesSet({this.languageCodes});
@@ -4528,7 +4626,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -4541,11 +4651,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -4562,6 +4677,8 @@ class Model {
 
   /// The dataset from which the model is trained, in form of
   /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
+  ///
+  /// Required.
   core.String? dataset;
 
   /// The name of the model to show in the interface.
@@ -4881,6 +4998,100 @@ class ReferenceSentencePairList {
   };
 }
 
+/// Request message for RefineText.
+class RefineTextRequest {
+  /// The source texts and original translations in the source and target
+  /// languages.
+  ///
+  /// Required.
+  core.List<RefinementEntry>? refinementEntries;
+
+  /// The BCP-47 language code of the source text in the request, for example,
+  /// "en-US".
+  ///
+  /// Required.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code for translation output, for example, "zh-CN".
+  ///
+  /// Required.
+  core.String? targetLanguageCode;
+
+  RefineTextRequest({
+    this.refinementEntries,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+  });
+
+  RefineTextRequest.fromJson(core.Map json_)
+    : this(
+        refinementEntries:
+            (json_['refinementEntries'] as core.List?)
+                ?.map(
+                  (value) => RefinementEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (refinementEntries != null) 'refinementEntries': refinementEntries!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+  };
+}
+
+/// Response message for RefineText.
+class RefineTextResponse {
+  /// The refined translations obtained from the original translations.
+  core.List<core.String>? refinedTranslations;
+
+  RefineTextResponse({this.refinedTranslations});
+
+  RefineTextResponse.fromJson(core.Map json_)
+    : this(
+        refinedTranslations:
+            (json_['refinedTranslations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (refinedTranslations != null)
+      'refinedTranslations': refinedTranslations!,
+  };
+}
+
+/// A single refinement entry for RefineTextRequest.
+class RefinementEntry {
+  /// The original translation of the source text.
+  ///
+  /// Required.
+  core.String? originalTranslation;
+
+  /// The source text to be refined.
+  ///
+  /// Required.
+  core.String? sourceText;
+
+  RefinementEntry({this.originalTranslation, this.sourceText});
+
+  RefinementEntry.fromJson(core.Map json_)
+    : this(
+        originalTranslation: json_['originalTranslation'] as core.String?,
+        sourceText: json_['sourceText'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (originalTranslation != null)
+      'originalTranslation': originalTranslation!,
+    if (sourceText != null) 'sourceText': sourceText!,
+  };
+}
+
 /// A single romanization response.
 class Romanization {
   /// The ISO-639 language code of source text in the initial request, detected
@@ -4922,6 +5133,8 @@ class RomanizeTextRequest {
   /// The ISO-639 language code of the input text if known, for example, "hi" or
   /// "zh".
   ///
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages#roman).
   /// If the source language isn't specified, the API attempts to identify the
   /// source language automatically and returns the source language for each
   /// content in the response.
@@ -5134,17 +5347,19 @@ class TranslateDocumentRequest {
   /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
-  /// Supported language codes are listed in Language Support. If the source
-  /// language isn't specified, the API attempts to identify the source language
-  /// automatically and returns the source language within the response. Source
-  /// language must be specified if the request contains a glossary or a custom
-  /// model.
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages). If
+  /// the source language isn't specified, the API attempts to identify the
+  /// source language automatically and returns the source language within the
+  /// response. Source language must be specified if the request contains a
+  /// glossary or a custom model.
   ///
   /// Optional.
   core.String? sourceLanguageCode;
 
   /// The ISO-639 language code to use for translation of the input document,
-  /// set to one of the language codes listed in Language Support.
+  /// set to one of the language codes listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages).
   ///
   /// Required.
   core.String? targetLanguageCode;
@@ -5349,15 +5564,18 @@ class TranslateTextRequest {
   /// The ISO-639 language code of the input text if known, for example, "en-US"
   /// or "sr-Latn".
   ///
-  /// Supported language codes are listed in Language Support. If the source
-  /// language isn't specified, the API attempts to identify the source language
-  /// automatically and returns the source language within the response.
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages). If
+  /// the source language isn't specified, the API attempts to identify the
+  /// source language automatically and returns the source language within the
+  /// response.
   ///
   /// Optional.
   core.String? sourceLanguageCode;
 
   /// The ISO-639 language code to use for translation of the input text, set to
-  /// one of the language codes listed in Language Support.
+  /// one of the language codes listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages).
   ///
   /// Required.
   core.String? targetLanguageCode;

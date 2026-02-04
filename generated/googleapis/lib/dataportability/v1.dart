@@ -165,6 +165,26 @@ class DataPortabilityApi {
   static const dataportabilityMymapsMapsScope =
       'https://www.googleapis.com/auth/dataportability.mymaps.maps';
 
+  /// Copy Nest camera event data
+  static const dataportabilityNestCameraEventScope =
+      'https://www.googleapis.com/auth/dataportability.nest.camera_event';
+
+  /// Copy Nest camera feature data
+  static const dataportabilityNestCameraFeatureScope =
+      'https://www.googleapis.com/auth/dataportability.nest.camera_feature';
+
+  /// Copy Nest camera footage
+  static const dataportabilityNestCameraVideoScope =
+      'https://www.googleapis.com/auth/dataportability.nest.camera_video';
+
+  /// Copy your Nest Store and Nest Renew billing and payment information
+  static const dataportabilityNestStoreScope =
+      'https://www.googleapis.com/auth/dataportability.nest.store';
+
+  /// Copy your Nest user information
+  static const dataportabilityNestUserScope =
+      'https://www.googleapis.com/auth/dataportability.nest.user';
+
   /// Move a copy of your food purchase and reservation activity
   static const dataportabilityOrderReservePurchasesReservationsScope =
       'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations';
@@ -272,6 +292,10 @@ class DataPortabilityApi {
   /// Move a copy of your YouTube comments
   static const dataportabilityYoutubeCommentsScope =
       'https://www.googleapis.com/auth/dataportability.youtube.comments';
+
+  /// Move a copy of all your YouTube messages
+  static const dataportabilityYoutubeConversationsScope =
+      'https://www.googleapis.com/auth/dataportability.youtube.conversations';
 
   /// Move a copy of your YouTube messages in live chat
   static const dataportabilityYoutubeLiveChatScope =

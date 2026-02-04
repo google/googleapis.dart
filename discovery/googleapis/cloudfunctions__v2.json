@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250908",
+    "revision": "20260129",
     "rootUrl": "https://cloudfunctions.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Functions API",
@@ -114,7 +114,7 @@
                 "locations": {
                     "methods": {
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "cloudfunctions.projects.locations.list",
@@ -123,7 +123,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -212,6 +212,34 @@
                                     "path": "v2/{+name}:commitFunctionUpgrade",
                                     "request": {
                                         "$ref": "CommitFunctionUpgradeRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "commitFunctionUpgradeAsGen2": {
+                                    "description": "Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the Gen1 function, leaving the Gen2 function active and manageable by the GCFv2 API.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:commitFunctionUpgradeAsGen2",
+                                    "httpMethod": "POST",
+                                    "id": "cloudfunctions.projects.locations.functions.commitFunctionUpgradeAsGen2",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the function for which upgrade should be committed to Gen2.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:commitFunctionUpgradeAsGen2",
+                                    "request": {
+                                        "$ref": "CommitFunctionUpgradeAsGen2Request"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -703,6 +731,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v2/{+name}/operations",
@@ -908,6 +941,23 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "BuildConfigOverrides": {
+            "description": "Contains overrides related to the function's build configuration.",
+            "id": "BuildConfigOverrides",
+            "properties": {
+                "runtime": {
+                    "description": "Optional. Specifies the desired runtime for the new Cloud Run function. (e.g., `\"nodejs20\"`, `\"python312\"`). Constraints: 1. This field CANNOT be used to change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend will enforce this. 2. This field can ONLY be used to upgrade the runtime version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not permitted. The backend will validate the version change. If provided and valid, this overrides the runtime of the Gen1 function.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommitFunctionUpgradeAsGen2Request": {
+            "description": "Request for the `CommitFunctionUpgradeAsGen2` method.",
+            "id": "CommitFunctionUpgradeAsGen2Request",
+            "properties": {},
             "type": "object"
         },
         "CommitFunctionUpgradeRequest": {
@@ -1284,7 +1334,8 @@
                         "SETUP_FUNCTION_UPGRADE_CONFIG",
                         "ABORT_FUNCTION_UPGRADE",
                         "COMMIT_FUNCTION_UPGRADE",
-                        "DETACH_FUNCTION"
+                        "DETACH_FUNCTION",
+                        "COMMIT_FUNCTION_UPGRADE_AS_GEN2"
                     ],
                     "enumDescriptions": [
                         "Unspecified",
@@ -1296,7 +1347,8 @@
                         "SetupFunctionUpgradeConfig",
                         "AbortFunctionUpgrade",
                         "CommitFunctionUpgrade",
-                        "DetachFunction"
+                        "DetachFunction",
+                        "CommitFunctionUpgradeAsGen2"
                     ],
                     "type": "string"
                 },
@@ -1484,6 +1536,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -1977,6 +2036,18 @@
             },
             "type": "object"
         },
+        "ServiceConfigOverrides": {
+            "description": "Contains overrides related to the function's service configuration.",
+            "id": "ServiceConfigOverrides",
+            "properties": {
+                "maxInstanceCount": {
+                    "description": "Optional. Specifies the maximum number of instances for the new Cloud Run function. If provided, this overrides the max_instance_count setting of the Gen1 function.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "SetIamPolicyRequest": {
             "description": "Request message for `SetIamPolicy` method.",
             "id": "SetIamPolicyRequest",
@@ -1997,6 +2068,14 @@
             "description": "Request for the `SetupFunctionUpgradeConfig` method.",
             "id": "SetupFunctionUpgradeConfigRequest",
             "properties": {
+                "buildConfigOverrides": {
+                    "$ref": "BuildConfigOverrides",
+                    "description": "Optional. Specifies overrides for the build process."
+                },
+                "serviceConfigOverrides": {
+                    "$ref": "ServiceConfigOverrides",
+                    "description": "Optional. Specifies overrides for the service configuration."
+                },
                 "triggerServiceAccount": {
                     "description": "Optional. The trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.",
                     "type": "string"
@@ -2150,7 +2229,10 @@
                         "REDIRECT_FUNCTION_UPGRADE_TRAFFIC_SUCCESSFUL",
                         "REDIRECT_FUNCTION_UPGRADE_TRAFFIC_ERROR",
                         "ROLLBACK_FUNCTION_UPGRADE_TRAFFIC_ERROR",
-                        "COMMIT_FUNCTION_UPGRADE_ERROR"
+                        "COMMIT_FUNCTION_UPGRADE_ERROR",
+                        "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE",
+                        "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL",
+                        "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR"
                     ],
                     "enumDescriptions": [
                         "Unspecified state. Most functions are in this upgrade state.",
@@ -2163,7 +2245,10 @@
                         "RedirectFunctionUpgradeTraffic API was successful and traffic is served by 2nd Gen function stack.",
                         "RedirectFunctionUpgradeTraffic API was un-successful.",
                         "RollbackFunctionUpgradeTraffic API was un-successful.",
-                        "CommitFunctionUpgrade API was un-successful."
+                        "CommitFunctionUpgrade API was un-successful and 1st gen function might have broken.",
+                        "CommitFunctionUpgrade API was un-successful but safe to rollback traffic or abort.",
+                        "Indicates that the `CommitFunctionUpgradeAsGen2` API call succeeded and the function was successfully migrated to the 2nd Gen stack.",
+                        "CommitFunctionUpgradeAsGen2 API was un-successful and 1st gen function might have broken."
                     ],
                     "type": "string"
                 }

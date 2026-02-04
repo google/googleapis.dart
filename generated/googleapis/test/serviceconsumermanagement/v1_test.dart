@@ -191,6 +191,14 @@ void checkUnnamed0(core.List<api.Operation> o) {
   checkOperation(o[1]);
 }
 
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterListOperationsResponse = 0;
 api.ListOperationsResponse buildListOperationsResponse() {
   final o = api.ListOperationsResponse();
@@ -198,6 +206,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed0();
+    o.unreachable = buildUnnamed1();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -208,16 +217,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed0(o.operations!);
+    checkUnnamed1(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.TenancyUnit> buildUnnamed1() => [
+core.List<api.TenancyUnit> buildUnnamed2() => [
   buildTenancyUnit(),
   buildTenancyUnit(),
 ];
 
-void checkUnnamed1(core.List<api.TenancyUnit> o) {
+void checkUnnamed2(core.List<api.TenancyUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTenancyUnit(o[0]);
   checkTenancyUnit(o[1]);
@@ -229,7 +239,7 @@ api.ListTenancyUnitsResponse buildListTenancyUnitsResponse() {
   buildCounterListTenancyUnitsResponse++;
   if (buildCounterListTenancyUnitsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tenancyUnits = buildUnnamed1();
+    o.tenancyUnits = buildUnnamed2();
   }
   buildCounterListTenancyUnitsResponse--;
   return o;
@@ -239,36 +249,9 @@ void checkListTenancyUnitsResponse(api.ListTenancyUnitsResponse o) {
   buildCounterListTenancyUnitsResponse++;
   if (buildCounterListTenancyUnitsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed1(o.tenancyUnits!);
+    checkUnnamed2(o.tenancyUnits!);
   }
   buildCounterListTenancyUnitsResponse--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed2() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed2(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed3() => {
@@ -285,6 +268,33 @@ core.Map<core.String, core.Object?> buildUnnamed3() => {
 };
 
 void checkUnnamed3(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed4() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed4(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -305,9 +315,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2();
+    o.metadata = buildUnnamed3();
     o.name = 'foo';
-    o.response = buildUnnamed3();
+    o.response = buildUnnamed4();
   }
   buildCounterOperation--;
   return o;
@@ -318,16 +328,16 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed2(o.metadata!);
+    checkUnnamed3(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed3(o.response!);
+    checkUnnamed4(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -338,7 +348,7 @@ api.PolicyBinding buildPolicyBinding() {
   final o = api.PolicyBinding();
   buildCounterPolicyBinding++;
   if (buildCounterPolicyBinding < 3) {
-    o.members = buildUnnamed4();
+    o.members = buildUnnamed5();
     o.role = 'foo';
   }
   buildCounterPolicyBinding--;
@@ -348,7 +358,7 @@ api.PolicyBinding buildPolicyBinding() {
 void checkPolicyBinding(api.PolicyBinding o) {
   buildCounterPolicyBinding++;
   if (buildCounterPolicyBinding < 3) {
-    checkUnnamed4(o.members!);
+    checkUnnamed5(o.members!);
     unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterPolicyBinding--;
@@ -373,12 +383,12 @@ void checkRemoveTenantProjectRequest(api.RemoveTenantProjectRequest o) {
   buildCounterRemoveTenantProjectRequest--;
 }
 
-core.List<api.TenancyUnit> buildUnnamed5() => [
+core.List<api.TenancyUnit> buildUnnamed6() => [
   buildTenancyUnit(),
   buildTenancyUnit(),
 ];
 
-void checkUnnamed5(core.List<api.TenancyUnit> o) {
+void checkUnnamed6(core.List<api.TenancyUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTenancyUnit(o[0]);
   checkTenancyUnit(o[1]);
@@ -390,7 +400,7 @@ api.SearchTenancyUnitsResponse buildSearchTenancyUnitsResponse() {
   buildCounterSearchTenancyUnitsResponse++;
   if (buildCounterSearchTenancyUnitsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tenancyUnits = buildUnnamed5();
+    o.tenancyUnits = buildUnnamed6();
   }
   buildCounterSearchTenancyUnitsResponse--;
   return o;
@@ -400,14 +410,14 @@ void checkSearchTenancyUnitsResponse(api.SearchTenancyUnitsResponse o) {
   buildCounterSearchTenancyUnitsResponse++;
   if (buildCounterSearchTenancyUnitsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed5(o.tenancyUnits!);
+    checkUnnamed6(o.tenancyUnits!);
   }
   buildCounterSearchTenancyUnitsResponse--;
 }
 
-core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -419,7 +429,7 @@ api.ServiceAccountConfig buildServiceAccountConfig() {
   buildCounterServiceAccountConfig++;
   if (buildCounterServiceAccountConfig < 3) {
     o.accountId = 'foo';
-    o.tenantProjectRoles = buildUnnamed6();
+    o.tenantProjectRoles = buildUnnamed7();
   }
   buildCounterServiceAccountConfig--;
   return o;
@@ -429,12 +439,12 @@ void checkServiceAccountConfig(api.ServiceAccountConfig o) {
   buildCounterServiceAccountConfig++;
   if (buildCounterServiceAccountConfig < 3) {
     unittest.expect(o.accountId!, unittest.equals('foo'));
-    checkUnnamed6(o.tenantProjectRoles!);
+    checkUnnamed7(o.tenantProjectRoles!);
   }
   buildCounterServiceAccountConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -447,7 +457,7 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
   },
 };
 
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -461,15 +471,15 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
-  buildUnnamed7(),
-  buildUnnamed7(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
+  buildUnnamed8(),
+  buildUnnamed8(),
 ];
 
-void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7(o[0]);
-  checkUnnamed7(o[1]);
+  checkUnnamed8(o[0]);
+  checkUnnamed8(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -478,7 +488,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8();
+    o.details = buildUnnamed9();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -489,18 +499,18 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed8(o.details!);
+    checkUnnamed9(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-core.List<api.TenantResource> buildUnnamed9() => [
+core.List<api.TenantResource> buildUnnamed10() => [
   buildTenantResource(),
   buildTenantResource(),
 ];
 
-void checkUnnamed9(core.List<api.TenantResource> o) {
+void checkUnnamed10(core.List<api.TenantResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTenantResource(o[0]);
   checkTenantResource(o[1]);
@@ -515,7 +525,7 @@ api.TenancyUnit buildTenancyUnit() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.service = 'foo';
-    o.tenantResources = buildUnnamed9();
+    o.tenantResources = buildUnnamed10();
   }
   buildCounterTenancyUnit--;
   return o;
@@ -528,22 +538,22 @@ void checkTenancyUnit(api.TenancyUnit o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.service!, unittest.equals('foo'));
-    checkUnnamed9(o.tenantResources!);
+    checkUnnamed10(o.tenantResources!);
   }
   buildCounterTenancyUnit--;
 }
 
-core.Map<core.String, core.String> buildUnnamed10() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed11() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed10(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -556,9 +566,9 @@ api.TenantProjectConfig buildTenantProjectConfig() {
   if (buildCounterTenantProjectConfig < 3) {
     o.billingConfig = buildBillingConfig();
     o.folder = 'foo';
-    o.labels = buildUnnamed10();
+    o.labels = buildUnnamed11();
     o.serviceAccountConfig = buildServiceAccountConfig();
-    o.services = buildUnnamed11();
+    o.services = buildUnnamed12();
     o.tenantProjectPolicy = buildTenantProjectPolicy();
   }
   buildCounterTenantProjectConfig--;
@@ -570,20 +580,20 @@ void checkTenantProjectConfig(api.TenantProjectConfig o) {
   if (buildCounterTenantProjectConfig < 3) {
     checkBillingConfig(o.billingConfig!);
     unittest.expect(o.folder!, unittest.equals('foo'));
-    checkUnnamed10(o.labels!);
+    checkUnnamed11(o.labels!);
     checkServiceAccountConfig(o.serviceAccountConfig!);
-    checkUnnamed11(o.services!);
+    checkUnnamed12(o.services!);
     checkTenantProjectPolicy(o.tenantProjectPolicy!);
   }
   buildCounterTenantProjectConfig--;
 }
 
-core.List<api.PolicyBinding> buildUnnamed12() => [
+core.List<api.PolicyBinding> buildUnnamed13() => [
   buildPolicyBinding(),
   buildPolicyBinding(),
 ];
 
-void checkUnnamed12(core.List<api.PolicyBinding> o) {
+void checkUnnamed13(core.List<api.PolicyBinding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBinding(o[0]);
   checkPolicyBinding(o[1]);
@@ -594,7 +604,7 @@ api.TenantProjectPolicy buildTenantProjectPolicy() {
   final o = api.TenantProjectPolicy();
   buildCounterTenantProjectPolicy++;
   if (buildCounterTenantProjectPolicy < 3) {
-    o.policyBindings = buildUnnamed12();
+    o.policyBindings = buildUnnamed13();
   }
   buildCounterTenantProjectPolicy--;
   return o;
@@ -603,7 +613,7 @@ api.TenantProjectPolicy buildTenantProjectPolicy() {
 void checkTenantProjectPolicy(api.TenantProjectPolicy o) {
   buildCounterTenantProjectPolicy++;
   if (buildCounterTenantProjectPolicy < 3) {
-    checkUnnamed12(o.policyBindings!);
+    checkUnnamed13(o.policyBindings!);
   }
   buildCounterTenantProjectPolicy--;
 }
@@ -613,6 +623,7 @@ api.TenantResource buildTenantResource() {
   final o = api.TenantResource();
   buildCounterTenantResource++;
   if (buildCounterTenantResource < 3) {
+    o.migratedTenantProject = 'foo';
     o.resource = 'foo';
     o.status = 'foo';
     o.tag = 'foo';
@@ -624,6 +635,7 @@ api.TenantResource buildTenantResource() {
 void checkTenantResource(api.TenantResource o) {
   buildCounterTenantResource++;
   if (buildCounterTenantResource < 3) {
+    unittest.expect(o.migratedTenantProject!, unittest.equals('foo'));
     unittest.expect(o.resource!, unittest.equals('foo'));
     unittest.expect(o.status!, unittest.equals('foo'));
     unittest.expect(o.tag!, unittest.equals('foo'));
@@ -1059,6 +1071,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1106,6 +1119,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -1121,6 +1138,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
         $fields: arg_$fields,
       );
       checkListOperationsResponse(response as api.ListOperationsResponse);

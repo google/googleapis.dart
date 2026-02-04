@@ -1032,6 +1032,18 @@ class CalendarsResource {
   }
 
   /// Creates a secondary calendar.
+  /// The authenticated user for the request is made the data owner of the new
+  /// calendar.
+  ///
+  /// Note: We recommend to authenticate as the intended data owner of the
+  /// calendar.
+  ///
+  /// You can use domain-wide delegation of authority to allow applications to
+  /// act on behalf of a specific user. Don't use a service account for
+  /// authentication. If you use a service account for authentication, the
+  /// service account is the data owner, which can lead to unexpected behavior.
+  /// For example, if a service account is the data owner, data ownership cannot
+  /// be transferred.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2642,9 +2654,12 @@ class AclRule {
   /// - "writer" - Provides read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible. Provides read access to the calendar's ACLs.
-  /// - "owner" - Provides ownership of the calendar. This role has all of the
-  /// permissions of the writer role with the additional ability to manipulate
-  /// ACLs.
+  /// - "owner" - Provides manager access to the calendar. This role has all of
+  /// the permissions of the writer role with the additional ability to modify
+  /// access levels of other users.
+  /// Important: the owner role is different from the calendar's data owner. A
+  /// calendar has a single data owner, but can have multiple users with owner
+  /// role.
   core.String? role;
 
   /// The extent to which calendar access is granted by this ACL rule.
@@ -2676,9 +2691,19 @@ class AclRule {
 }
 
 class Calendar {
+  /// Whether this calendar automatically accepts invitations.
+  ///
+  /// Only valid for resource calendars.
+  core.bool? autoAcceptInvitations;
+
   /// Conferencing properties for this calendar, for example what types of
   /// conferences are allowed.
   ConferenceProperties? conferenceProperties;
+
+  /// The email of the owner of the calendar.
+  ///
+  /// Set only for secondary calendars. Read-only.
+  core.String? dataOwner;
 
   /// Description of the calendar.
   ///
@@ -2711,7 +2736,9 @@ class Calendar {
   core.String? timeZone;
 
   Calendar({
+    this.autoAcceptInvitations,
     this.conferenceProperties,
+    this.dataOwner,
     this.description,
     this.etag,
     this.id,
@@ -2723,6 +2750,7 @@ class Calendar {
 
   Calendar.fromJson(core.Map json_)
     : this(
+        autoAcceptInvitations: json_['autoAcceptInvitations'] as core.bool?,
         conferenceProperties:
             json_.containsKey('conferenceProperties')
                 ? ConferenceProperties.fromJson(
@@ -2730,6 +2758,7 @@ class Calendar {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        dataOwner: json_['dataOwner'] as core.String?,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
@@ -2740,8 +2769,11 @@ class Calendar {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (autoAcceptInvitations != null)
+      'autoAcceptInvitations': autoAcceptInvitations!,
     if (conferenceProperties != null)
       'conferenceProperties': conferenceProperties!,
+    if (dataOwner != null) 'dataOwner': dataOwner!,
     if (description != null) 'description': description!,
     if (etag != null) 'etag': etag!,
     if (id != null) 'id': id!,
@@ -2843,10 +2875,18 @@ class CalendarListEntry {
   /// - "writer" - Provides read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible.
-  /// - "owner" - Provides ownership of the calendar. This role has all of the
-  /// permissions of the writer role with the additional ability to see and
-  /// manipulate ACLs.
+  /// - "owner" - Provides manager access to the calendar. This role has all of
+  /// the permissions of the writer role with the additional ability to see and
+  /// modify access levels of other users.
+  /// Important: the owner role is different from the calendar's data owner. A
+  /// calendar has a single data owner, but can have multiple users with owner
+  /// role.
   core.String? accessRole;
+
+  /// Whether this calendar automatically accepts invitations.
+  ///
+  /// Only valid for resource calendars. Read-only.
+  core.bool? autoAcceptInvitations;
 
   /// The main color of the calendar in the hexadecimal format "#0088aa".
   ///
@@ -2866,6 +2906,11 @@ class CalendarListEntry {
   /// Conferencing properties for this calendar, for example what types of
   /// conferences are allowed.
   ConferenceProperties? conferenceProperties;
+
+  /// The email of the owner of the calendar.
+  ///
+  /// Set only for secondary calendars. Read-only.
+  core.String? dataOwner;
 
   /// The default reminders that the authenticated user has for this calendar.
   core.List<EventReminder>? defaultReminders;
@@ -2938,9 +2983,11 @@ class CalendarListEntry {
 
   CalendarListEntry({
     this.accessRole,
+    this.autoAcceptInvitations,
     this.backgroundColor,
     this.colorId,
     this.conferenceProperties,
+    this.dataOwner,
     this.defaultReminders,
     this.deleted,
     this.description,
@@ -2961,6 +3008,7 @@ class CalendarListEntry {
   CalendarListEntry.fromJson(core.Map json_)
     : this(
         accessRole: json_['accessRole'] as core.String?,
+        autoAcceptInvitations: json_['autoAcceptInvitations'] as core.bool?,
         backgroundColor: json_['backgroundColor'] as core.String?,
         colorId: json_['colorId'] as core.String?,
         conferenceProperties:
@@ -2970,6 +3018,7 @@ class CalendarListEntry {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        dataOwner: json_['dataOwner'] as core.String?,
         defaultReminders:
             (json_['defaultReminders'] as core.List?)
                 ?.map(
@@ -3002,10 +3051,13 @@ class CalendarListEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accessRole != null) 'accessRole': accessRole!,
+    if (autoAcceptInvitations != null)
+      'autoAcceptInvitations': autoAcceptInvitations!,
     if (backgroundColor != null) 'backgroundColor': backgroundColor!,
     if (colorId != null) 'colorId': colorId!,
     if (conferenceProperties != null)
       'conferenceProperties': conferenceProperties!,
+    if (dataOwner != null) 'dataOwner': dataOwner!,
     if (defaultReminders != null) 'defaultReminders': defaultReminders!,
     if (deleted != null) 'deleted': deleted!,
     if (description != null) 'description': description!,
@@ -4981,9 +5033,12 @@ class Events {
   /// - "writer" - The user has read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible.
-  /// - "owner" - The user has ownership of the calendar. This role has all of
-  /// the permissions of the writer role with the additional ability to see and
-  /// manipulate ACLs.
+  /// - "owner" - The user has manager access to the calendar. This role has all
+  /// of the permissions of the writer role with the additional ability to see
+  /// and modify access levels of other users.
+  /// Important: the owner role is different from the calendar's data owner. A
+  /// calendar has a single data owner, but can have multiple users with owner
+  /// role.
   core.String? accessRole;
 
   /// The default reminders on the calendar for the authenticated user.

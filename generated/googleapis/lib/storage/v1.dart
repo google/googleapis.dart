@@ -1057,6 +1057,9 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [returnPartialSuccess] - If true, return a list of bucket resource names
+  /// for buckets that are in unreachable locations.
+  ///
   /// [softDeleted] - If true, only soft-deleted bucket versions will be
   /// returned. The default is false. For more information, see
   /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -1079,6 +1082,7 @@ class BucketsResource {
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
+    core.bool? returnPartialSuccess,
     core.bool? softDeleted,
     core.String? userProject,
     core.String? $fields,
@@ -1089,6 +1093,8 @@ class BucketsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -3201,6 +3207,9 @@ class ObjectsResource {
   /// - "publicRead" : Object owner gets OWNER access, and allUsers get READER
   /// access.
   ///
+  /// [dropContextGroups] - Specifies which groups of Object Contexts from the
+  /// source object(s) should be dropped from the destination object.
+  ///
   /// [ifGenerationMatch] - Makes the operation conditional on whether the
   /// object's current generation matches the given value. Setting to 0 makes
   /// the operation succeed only if there are no live versions of the object.
@@ -3231,6 +3240,7 @@ class ObjectsResource {
     core.String destinationBucket,
     core.String destinationObject, {
     core.String? destinationPredefinedAcl,
+    core.List<core.String>? dropContextGroups,
     core.String? ifGenerationMatch,
     core.String? ifMetagenerationMatch,
     core.String? kmsKeyName,
@@ -3241,6 +3251,7 @@ class ObjectsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (destinationPredefinedAcl != null)
         'destinationPredefinedAcl': [destinationPredefinedAcl],
+      if (dropContextGroups != null) 'dropContextGroups': dropContextGroups,
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -4326,6 +4337,9 @@ class ObjectsResource {
   /// - "publicRead" : Object owner gets OWNER access, and allUsers get READER
   /// access.
   ///
+  /// [dropContextGroups] - Specifies which groups of Object Contexts from the
+  /// source object should be dropped from the destination object.
+  ///
   /// [ifGenerationMatch] - Makes the operation conditional on whether the
   /// object's current generation matches the given value. Setting to 0 makes
   /// the operation succeed only if there are no live versions of the object.
@@ -4399,6 +4413,7 @@ class ObjectsResource {
     core.String destinationObject, {
     core.String? destinationKmsKeyName,
     core.String? destinationPredefinedAcl,
+    core.List<core.String>? dropContextGroups,
     core.String? ifGenerationMatch,
     core.String? ifGenerationNotMatch,
     core.String? ifMetagenerationMatch,
@@ -4420,6 +4435,7 @@ class ObjectsResource {
         'destinationKmsKeyName': [destinationKmsKeyName],
       if (destinationPredefinedAcl != null)
         'destinationPredefinedAcl': [destinationPredefinedAcl],
+      if (dropContextGroups != null) 'dropContextGroups': dropContextGroups,
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
       if (ifGenerationNotMatch != null)
         'ifGenerationNotMatch': [ifGenerationNotMatch],
@@ -7229,7 +7245,11 @@ class Buckets {
   /// results.
   core.String? nextPageToken;
 
-  Buckets({this.items, this.kind, this.nextPageToken});
+  /// The list of bucket resource names that could not be reached during the
+  /// listing operation.
+  core.List<core.String>? unreachable;
+
+  Buckets({this.items, this.kind, this.nextPageToken, this.unreachable});
 
   Buckets.fromJson(core.Map json_)
     : this(
@@ -7243,12 +7263,17 @@ class Buckets {
                 .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (items != null) 'items': items!,
     if (kind != null) 'kind': kind!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7491,6 +7516,9 @@ class ComposeRequestSourceObjects {
 
 /// A Compose request.
 class ComposeRequest {
+  /// If true, the source objects will be deleted.
+  core.bool? deleteSourceObjects;
+
   /// Properties of the resulting object.
   Object? destination;
 
@@ -7500,10 +7528,16 @@ class ComposeRequest {
   /// The list of source objects that will be concatenated into a single object.
   core.List<ComposeRequestSourceObjects>? sourceObjects;
 
-  ComposeRequest({this.destination, this.kind, this.sourceObjects});
+  ComposeRequest({
+    this.deleteSourceObjects,
+    this.destination,
+    this.kind,
+    this.sourceObjects,
+  });
 
   ComposeRequest.fromJson(core.Map json_)
     : this(
+        deleteSourceObjects: json_['deleteSourceObjects'] as core.bool?,
         destination:
             json_.containsKey('destination')
                 ? Object.fromJson(
@@ -7522,6 +7556,8 @@ class ComposeRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (deleteSourceObjects != null)
+      'deleteSourceObjects': deleteSourceObjects!,
     if (destination != null) 'destination': destination!,
     if (kind != null) 'kind': kind!,
     if (sourceObjects != null) 'sourceObjects': sourceObjects!,
@@ -9200,6 +9236,12 @@ class RelocateBucketRequest {
   RelocateBucketRequestDestinationCustomPlacementConfig?
   destinationCustomPlacementConfig;
 
+  /// Resource name of a Cloud KMS key, of the form
+  /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key.
+  ///
+  /// If set, is used to encrypt all objects in the destination bucket.
+  core.String? destinationKmsKeyName;
+
   /// The new location the bucket will be relocated to.
   core.String? destinationLocation;
 
@@ -9208,6 +9250,7 @@ class RelocateBucketRequest {
 
   RelocateBucketRequest({
     this.destinationCustomPlacementConfig,
+    this.destinationKmsKeyName,
     this.destinationLocation,
     this.validateOnly,
   });
@@ -9221,6 +9264,7 @@ class RelocateBucketRequest {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        destinationKmsKeyName: json_['destinationKmsKeyName'] as core.String?,
         destinationLocation: json_['destinationLocation'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
@@ -9228,6 +9272,8 @@ class RelocateBucketRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (destinationCustomPlacementConfig != null)
       'destinationCustomPlacementConfig': destinationCustomPlacementConfig!,
+    if (destinationKmsKeyName != null)
+      'destinationKmsKeyName': destinationKmsKeyName!,
     if (destinationLocation != null)
       'destinationLocation': destinationLocation!,
     if (validateOnly != null) 'validateOnly': validateOnly!,

@@ -929,7 +929,6 @@ class $DimensionValue {
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest
 /// - analyticsadmin:v1beta : GoogleProtobufEmpty
 /// - analyticsdata:v1beta : EmptyFilter
-/// - area120tables:v1alpha1 : Empty
 /// - bigqueryconnection:v1beta1 : Empty
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
@@ -2556,6 +2555,7 @@ class $Shared {
 /// - prod_tt_sasportal:v1alpha1 : SasPortalStatus
 /// - recommendationengine:v1beta1 : GoogleRpcStatus
 /// - sasportal:v1alpha1 : SasPortalStatus
+/// - sqladmin:v1beta4 : Status
 /// - toolresults:v1beta3 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.

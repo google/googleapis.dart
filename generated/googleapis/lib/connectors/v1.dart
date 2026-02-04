@@ -228,9 +228,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3209,6 +3209,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3224,12 +3232,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5449,6 +5460,11 @@ class ConnectorInfraConfig {
   /// The window used for ratelimiting runtime requests to connections.
   core.String? connectionRatelimitWindowSeconds;
 
+  /// Indicate whether connection service account is enabled.
+  ///
+  /// If false, the common runtime service agent is used.
+  core.bool? connectionServiceAccountEnabled;
+
   /// Indicate whether connector versioning is enabled.
   core.bool? connectorVersioningEnabled;
 
@@ -5484,6 +5500,9 @@ class ConnectorInfraConfig {
   /// Indicate whether memstore is required for connector job.
   core.bool? provisionMemstore;
 
+  /// Indicate whether public network ingress should be enabled.
+  core.bool? publicNetworkIngressEnabled;
+
   /// Max QPS supported by the connector version before throttling of requests.
   core.String? ratelimitThreshold;
 
@@ -5499,6 +5518,7 @@ class ConnectorInfraConfig {
   ConnectorInfraConfig({
     this.alwaysAllocateCpu,
     this.connectionRatelimitWindowSeconds,
+    this.connectionServiceAccountEnabled,
     this.connectorVersioningEnabled,
     this.deploymentModel,
     this.hpaConfig,
@@ -5509,6 +5529,7 @@ class ConnectorInfraConfig {
     this.networkEgressModeOverride,
     this.provisionCloudSpanner,
     this.provisionMemstore,
+    this.publicNetworkIngressEnabled,
     this.ratelimitThreshold,
     this.resourceLimits,
     this.resourceRequests,
@@ -5520,6 +5541,8 @@ class ConnectorInfraConfig {
         alwaysAllocateCpu: json_['alwaysAllocateCpu'] as core.bool?,
         connectionRatelimitWindowSeconds:
             json_['connectionRatelimitWindowSeconds'] as core.String?,
+        connectionServiceAccountEnabled:
+            json_['connectionServiceAccountEnabled'] as core.bool?,
         connectorVersioningEnabled:
             json_['connectorVersioningEnabled'] as core.bool?,
         deploymentModel: json_['deploymentModel'] as core.String?,
@@ -5544,6 +5567,8 @@ class ConnectorInfraConfig {
                 : null,
         provisionCloudSpanner: json_['provisionCloudSpanner'] as core.bool?,
         provisionMemstore: json_['provisionMemstore'] as core.bool?,
+        publicNetworkIngressEnabled:
+            json_['publicNetworkIngressEnabled'] as core.bool?,
         ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
         resourceLimits:
             json_.containsKey('resourceLimits')
@@ -5566,6 +5591,8 @@ class ConnectorInfraConfig {
     if (alwaysAllocateCpu != null) 'alwaysAllocateCpu': alwaysAllocateCpu!,
     if (connectionRatelimitWindowSeconds != null)
       'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
+    if (connectionServiceAccountEnabled != null)
+      'connectionServiceAccountEnabled': connectionServiceAccountEnabled!,
     if (connectorVersioningEnabled != null)
       'connectorVersioningEnabled': connectorVersioningEnabled!,
     if (deploymentModel != null) 'deploymentModel': deploymentModel!,
@@ -5582,6 +5609,8 @@ class ConnectorInfraConfig {
     if (provisionCloudSpanner != null)
       'provisionCloudSpanner': provisionCloudSpanner!,
     if (provisionMemstore != null) 'provisionMemstore': provisionMemstore!,
+    if (publicNetworkIngressEnabled != null)
+      'publicNetworkIngressEnabled': publicNetworkIngressEnabled!,
     if (ratelimitThreshold != null) 'ratelimitThreshold': ratelimitThreshold!,
     if (resourceLimits != null) 'resourceLimits': resourceLimits!,
     if (resourceRequests != null) 'resourceRequests': resourceRequests!,
@@ -6595,6 +6624,32 @@ class EUASecret {
 /// particular connector version or it is derived from the configurations
 /// provided by the customer in Connection resource.
 class EgressControlConfig {
+  /// Access mode for egress control.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACCESS_MODE_UNSPECIFIED" : The default value. Per best practices
+  /// (go/protodosdonts#unspecified-enum), the first value should be UNSPECIFIED
+  /// and have a tag of 0. Application logic should treat this the same as
+  /// RESTRICTED.
+  /// - "RESTRICTED" : Enforce the allowlist. Only projects in
+  /// 'allowlisted_project_numbers' are permitted.
+  /// - "ALLOW_ALL" : Allow all projects. 'allowlisted_project_numbers' is
+  /// ignored.
+  core.String? accessMode;
+
+  /// Additional extraction rules to identity the backends from customer
+  /// provided configuration in Connection resource.
+  ///
+  /// These rules are applied in addition to the ones specified in
+  /// `oneof_backends`.
+  ExtractionRules? additionalExtractionRules;
+
+  /// Used when access_mode is RESTRICTED or ACCESS_MODE_UNSPECIFIED.
+  ///
+  /// Optional.
+  core.List<core.String>? allowlistedProjectNumbers;
+
   /// Static Comma separated backends which are common for all Connection
   /// resources.
   ///
@@ -6604,12 +6659,43 @@ class EgressControlConfig {
 
   /// Extractions Rules to extract the backends from customer provided
   /// configuration.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ExtractionRules? extractionRules;
 
-  EgressControlConfig({this.backends, this.extractionRules});
+  /// Launch environment for egress control.
+  /// Possible string values are:
+  /// - "LAUNCH_ENVIRONMENT_UNSPECIFIED" : Default value. If not specified, the
+  /// launch environment will default to AUTOPUSH.
+  /// - "AUTOPUSH" : Autopush environment.
+  /// - "STAGING" : Staging environment.
+  /// - "PROD" : Prod environment.
+  core.String? launchEnvironment;
+
+  EgressControlConfig({
+    this.accessMode,
+    this.additionalExtractionRules,
+    this.allowlistedProjectNumbers,
+    this.backends,
+    this.extractionRules,
+    this.launchEnvironment,
+  });
 
   EgressControlConfig.fromJson(core.Map json_)
     : this(
+        accessMode: json_['accessMode'] as core.String?,
+        additionalExtractionRules:
+            json_.containsKey('additionalExtractionRules')
+                ? ExtractionRules.fromJson(
+                  json_['additionalExtractionRules']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        allowlistedProjectNumbers:
+            (json_['allowlistedProjectNumbers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         backends: json_['backends'] as core.String?,
         extractionRules:
             json_.containsKey('extractionRules')
@@ -6618,11 +6704,18 @@ class EgressControlConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        launchEnvironment: json_['launchEnvironment'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (accessMode != null) 'accessMode': accessMode!,
+    if (additionalExtractionRules != null)
+      'additionalExtractionRules': additionalExtractionRules!,
+    if (allowlistedProjectNumbers != null)
+      'allowlistedProjectNumbers': allowlistedProjectNumbers!,
     if (backends != null) 'backends': backends!,
     if (extractionRules != null) 'extractionRules': extractionRules!,
+    if (launchEnvironment != null) 'launchEnvironment': launchEnvironment!,
   };
 }
 
@@ -8496,14 +8589,20 @@ class ExtractionRule {
   /// If empty, whole source value will be used.
   core.String? extractionRegex;
 
+  /// Format string used to format the extracted backend details.
+  ///
+  /// If empty, extracted backend details will be returned as it is.
+  core.String? formatString;
+
   /// Source on which the rule is applied.
   Source? source;
 
-  ExtractionRule({this.extractionRegex, this.source});
+  ExtractionRule({this.extractionRegex, this.formatString, this.source});
 
   ExtractionRule.fromJson(core.Map json_)
     : this(
         extractionRegex: json_['extractionRegex'] as core.String?,
+        formatString: json_['formatString'] as core.String?,
         source:
             json_.containsKey('source')
                 ? Source.fromJson(
@@ -8514,6 +8613,7 @@ class ExtractionRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (extractionRegex != null) 'extractionRegex': extractionRegex!,
+    if (formatString != null) 'formatString': formatString!,
     if (source != null) 'source': source!,
   };
 }
@@ -9626,7 +9726,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -9639,11 +9751,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -11750,6 +11867,7 @@ class Source {
   /// Possible string values are:
   /// - "SOURCE_TYPE_UNSPECIFIED" : Default SOURCE.
   /// - "CONFIG_VARIABLE" : Config Variable source type.
+  /// - "AUTH_CONFIG_VARIABLE" : Auth Config Variable source type.
   core.String? sourceType;
 
   Source({this.fieldId, this.sourceType});

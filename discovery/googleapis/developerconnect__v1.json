@@ -77,7 +77,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250904",
+    "revision": "20260123",
     "rootUrl": "https://developerconnect.googleapis.com/",
     "servicePath": "",
     "title": "Developer Connect API",
@@ -191,7 +191,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "developerconnect.projects.locations.list",
@@ -200,7 +200,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -571,6 +571,57 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "finishOAuthFlow": {
+                                            "description": "Finishes OAuth flow for an account connector.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/accountConnectors/{accountConnectorsId}/users:finishOAuthFlow",
+                                            "httpMethod": "GET",
+                                            "id": "developerconnect.projects.locations.accountConnectors.users.finishOAuthFlow",
+                                            "parameterOrder": [
+                                                "accountConnector"
+                                            ],
+                                            "parameters": {
+                                                "accountConnector": {
+                                                    "description": "Required. The resource name of the AccountConnector in the format `projects/*/locations/*/accountConnectors/*`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/accountConnectors/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "googleOauthParams.scopes": {
+                                                    "description": "Required. The scopes returned by Google OAuth flow.",
+                                                    "location": "query",
+                                                    "repeated": true,
+                                                    "type": "string"
+                                                },
+                                                "googleOauthParams.ticket": {
+                                                    "description": "Required. The ticket to be used for post processing the callback from Google OAuth flow.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "googleOauthParams.versionInfo": {
+                                                    "description": "Optional. The version info returned by Google OAuth flow.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "oauthParams.code": {
+                                                    "description": "Required. The code to be used for getting the token from SCM provider.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "oauthParams.ticket": {
+                                                    "description": "Required. The ticket to be used for post processing the callback from SCM provider.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+accountConnector}/users:finishOAuthFlow",
+                                            "response": {
+                                                "$ref": "FinishOAuthResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "list": {
                                             "description": "Lists Users in a given project, location, and account_connector.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/accountConnectors/{accountConnectorsId}/users",
@@ -612,6 +663,31 @@
                                             "path": "v1/{+parent}/users",
                                             "response": {
                                                 "$ref": "ListUsersResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "startOAuthFlow": {
+                                            "description": "Starts OAuth flow for an account connector.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/accountConnectors/{accountConnectorsId}/users:startOAuthFlow",
+                                            "httpMethod": "GET",
+                                            "id": "developerconnect.projects.locations.accountConnectors.users.startOAuthFlow",
+                                            "parameterOrder": [
+                                                "accountConnector"
+                                            ],
+                                            "parameters": {
+                                                "accountConnector": {
+                                                    "description": "Required. The resource name of the AccountConnector in the format `projects/*/locations/*/accountConnectors/*`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/accountConnectors/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+accountConnector}/users:startOAuthFlow",
+                                            "response": {
+                                                "$ref": "StartOAuthResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -917,7 +993,7 @@
                                 "gitRepositoryLinks": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect will configure the Git Repository to send webhook events to Developer Connect. Connections that use Firebase GitHub Application will have events forwarded to the Firebase service. All other Connections will have events forwarded to Cloud Build.",
+                                            "description": "Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect will configure the Git Repository to send webhook events to Developer Connect. Connections that use Firebase GitHub Application will have events forwarded to the Firebase service. Connections that use Gemini Code Assist will have events forwarded to Gemini Code Assist service. All other Connections will have events forwarded to Cloud Build.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/gitRepositoryLinks",
                                             "httpMethod": "POST",
                                             "id": "developerconnect.projects.locations.connections.gitRepositoryLinks.create",
@@ -1322,7 +1398,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Delete a single Insight.",
+                                    "description": "Deletes a single Insight.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightsConfigs/{insightsConfigsId}",
                                     "httpMethod": "DELETE",
                                     "id": "developerconnect.projects.locations.insightsConfigs.delete",
@@ -1475,6 +1551,78 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
+                            },
+                            "resources": {
+                                "deploymentEvents": {
+                                    "methods": {
+                                        "get": {
+                                            "description": "Gets a single Deployment Event.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightsConfigs/{insightsConfigsId}/deploymentEvents/{deploymentEventsId}",
+                                            "httpMethod": "GET",
+                                            "id": "developerconnect.projects.locations.insightsConfigs.deploymentEvents.get",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The name of the deployment event to retrieve. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightsConfigs/[^/]+/deploymentEvents/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "response": {
+                                                "$ref": "DeploymentEvent"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists Deployment Events in a given insights config.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightsConfigs/{insightsConfigsId}/deploymentEvents",
+                                            "httpMethod": "GET",
+                                            "id": "developerconnect.projects.locations.insightsConfigs.deploymentEvents.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "filter": {
+                                                    "description": "Optional. Filter expression that matches a subset of the DeploymentEvents. https://google.aip.dev/160.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Optional. The maximum number of deployment events to return. The service may return fewer than this value. If unspecified, at most 50 deployment events will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Optional. A page token, received from a previous `ListDeploymentEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeploymentEvents` must match the call that provided the page token.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. The parent insights config that owns this collection of deployment events. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightsConfigs/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/deploymentEvents",
+                                            "response": {
+                                                "$ref": "ListDeploymentEventsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                }
                             }
                         },
                         "operations": {
@@ -1588,6 +1736,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -1645,11 +1798,33 @@
                 },
                 "providerOauthConfig": {
                     "$ref": "ProviderOAuthConfig",
-                    "description": "Provider OAuth config."
+                    "description": "Optional. Provider OAuth config."
                 },
                 "updateTime": {
                     "description": "Output only. The timestamp when the accountConnector was updated.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AppHubService": {
+            "description": "AppHubService represents the App Hub Service.",
+            "id": "AppHubService",
+            "properties": {
+                "apphubService": {
+                    "description": "Required. Output only. Immutable. The name of the App Hub Service. Format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "criticality": {
+                    "description": "Output only. The criticality of the App Hub Service.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "environment": {
+                    "description": "Output only. The environment of the App Hub Service.",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -1697,6 +1872,79 @@
             },
             "type": "object"
         },
+        "ArtifactDeployment": {
+            "description": "The ArtifactDeployment resource represents the deployment of the artifact within the InsightsConfig resource.",
+            "id": "ArtifactDeployment",
+            "properties": {
+                "artifactAlias": {
+                    "description": "Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-docker.pkg.dev/my-project/my-repo/image:1.0.0",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "artifactReference": {
+                    "description": "Output only. The artifact that is deployed.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "containerStatusSummary": {
+                    "description": "Output only. The summary of container status of the artifact deployment. Format as `ContainerStatusState-Reason : restartCount` e.g. \"Waiting-ImagePullBackOff : 3\"",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deployTime": {
+                    "description": "Output only. The time at which the deployment was deployed.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Output only. Unique identifier of `ArtifactDeployment`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "sourceCommitUris": {
+                    "description": "Output only. The source commits at which this artifact was built. Extracted from provenance.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "undeployTime": {
+                    "description": "Output only. The time at which the deployment was undeployed, all artifacts are considered undeployed once this time is set.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BasicAuthentication": {
+            "description": "Basic authentication with username and password.",
+            "id": "BasicAuthentication",
+            "properties": {
+                "passwordSecretVersion": {
+                    "description": "The password SecretManager secret version to authenticate as.",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Required. The username to authenticate as.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BearerTokenAuthentication": {
+            "description": "Bearer token authentication with a token.",
+            "id": "BearerTokenAuthentication",
+            "properties": {
+                "tokenSecretVersion": {
+                    "description": "Optional. The token SecretManager secret version to authenticate as.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "BitbucketCloudConfig": {
             "description": "Configuration for connections to an instance of Bitbucket Cloud.",
             "id": "BitbucketCloudConfig",
@@ -1710,7 +1958,7 @@
                     "description": "Required. An access token with the minimum `repository` access. It can either be a workspace, project or repository access token. It's recommended to use a system account to generate the credentials."
                 },
                 "webhookSecretSecretVersion": {
-                    "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This is used to validate and create webhooks.",
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location). This is used to validate and create webhooks.",
                     "type": "string"
                 },
                 "workspace": {
@@ -1750,7 +1998,7 @@
                     "type": "string"
                 },
                 "webhookSecretSecretVersion": {
-                    "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.",
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location). This is used to validate webhooks.",
                     "type": "string"
                 }
             },
@@ -1825,6 +2073,10 @@
                     "$ref": "GitLabEnterpriseConfig",
                     "description": "Configuration for connections to an instance of GitLab Enterprise."
                 },
+                "httpConfig": {
+                    "$ref": "GenericHTTPEndpointConfig",
+                    "description": "Optional. Configuration for connections to an HTTP service provider."
+                },
                 "installationState": {
                     "$ref": "InstallationState",
                     "description": "Output only. Installation state of the Connection.",
@@ -1846,6 +2098,10 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "secureSourceManagerInstanceConfig": {
+                    "$ref": "SecureSourceManagerInstanceConfig",
+                    "description": "Configuration for connections to an instance of Secure Source Manager."
+                },
                 "uid": {
                     "description": "Output only. A system-assigned unique identifier for the Connection.",
                     "readOnly": true,
@@ -1866,6 +2122,74 @@
             "properties": {
                 "keyReference": {
                     "description": "Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeploymentEvent": {
+            "description": "The DeploymentEvent resource represents the deployment of the artifact within the InsightsConfig resource.",
+            "id": "DeploymentEvent",
+            "properties": {
+                "artifactDeployments": {
+                    "description": "Output only. The artifact deployments of the DeploymentEvent. Each artifact deployment contains the artifact uri and the runtime configuration uri. For GKE, this would be all the containers images that are deployed in the pod.",
+                    "items": {
+                        "$ref": "ArtifactDeployment"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "createTime": {
+                    "description": "Output only. The create time of the DeploymentEvent.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deployTime": {
+                    "description": "Output only. The time at which the DeploymentEvent was deployed. This would be the min of all ArtifactDeployment deploy_times.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Identifier. The name of the DeploymentEvent. This name is provided by Developer Connect insights. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}",
+                    "type": "string"
+                },
+                "runtimeConfig": {
+                    "$ref": "RuntimeConfig",
+                    "description": "Output only. The runtime configurations where the DeploymentEvent happened.",
+                    "readOnly": true
+                },
+                "runtimeDeploymentUri": {
+                    "description": "Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is the fully qualified replica set uri. e.g. container.googleapis.com/projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/apps/replicasets/{replica-set-id} For Cloud Run, this is the revision name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the DeploymentEvent.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "STATE_ACTIVE",
+                        "STATE_INACTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "No state specified.",
+                        "The deployment is active in the runtime.",
+                        "The deployment is not in the runtime."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "undeployTime": {
+                    "description": "Output only. The time at which the DeploymentEvent was undeployed, all artifacts are considered undeployed once this time is set. This would be the max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is still active (i.e. does not have an undeploy_time), this field will be empty.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The update time of the DeploymentEvent.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2027,6 +2351,17 @@
             },
             "type": "object"
         },
+        "FinishOAuthResponse": {
+            "description": "Message for responding to finishing an OAuth flow.",
+            "id": "FinishOAuthResponse",
+            "properties": {
+                "exchangeError": {
+                    "$ref": "ExchangeError",
+                    "description": "The error resulted from exchanging OAuth tokens from the service provider."
+                }
+            },
+            "type": "object"
+        },
         "GKEWorkload": {
             "description": "GKEWorkload represents the Google Kubernetes Engine runtime.",
             "id": "GKEWorkload",
@@ -2038,6 +2373,33 @@
                 "deployment": {
                     "description": "Output only. The name of the GKE deployment. Format: `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GenericHTTPEndpointConfig": {
+            "description": "Defines the configuration for connections to an HTTP service provider.",
+            "id": "GenericHTTPEndpointConfig",
+            "properties": {
+                "basicAuthentication": {
+                    "$ref": "BasicAuthentication",
+                    "description": "Optional. Basic authentication with username and password."
+                },
+                "bearerTokenAuthentication": {
+                    "$ref": "BearerTokenAuthentication",
+                    "description": "Optional. Bearer token authentication with a token."
+                },
+                "hostUri": {
+                    "description": "Required. Immutable. The service provider's https endpoint.",
+                    "type": "string"
+                },
+                "serviceDirectoryConfig": {
+                    "$ref": "ServiceDirectoryConfig",
+                    "description": "Optional. Configuration for using Service Directory to privately connect to a HTTP service provider. This should only be set if the Http service provider is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the HTTP service provider will be made over the public internet."
+                },
+                "sslCaCertificate": {
+                    "description": "Optional. The SSL certificate to use for requests to the HTTP service provider.",
                     "type": "string"
                 }
             },
@@ -2061,12 +2423,14 @@
                     "enum": [
                         "GIT_HUB_APP_UNSPECIFIED",
                         "DEVELOPER_CONNECT",
-                        "FIREBASE"
+                        "FIREBASE",
+                        "GEMINI_CODE_ASSIST"
                     ],
                     "enumDescriptions": [
                         "GitHub App not specified.",
                         "The Developer Connect GitHub Application.",
-                        "The Firebase GitHub Application."
+                        "The Firebase GitHub Application.",
+                        "The Gemini Code Assist Application."
                     ],
                     "type": "string"
                 },
@@ -2106,8 +2470,12 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "organization": {
+                    "description": "Optional. Immutable. GitHub Enterprise organization in which the GitHub App is created.",
+                    "type": "string"
+                },
                 "privateKeySecretVersion": {
-                    "description": "Optional. SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.",
+                    "description": "Optional. SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location).",
                     "type": "string"
                 },
                 "serverVersion": {
@@ -2124,7 +2492,7 @@
                     "type": "string"
                 },
                 "webhookSecretSecretVersion": {
-                    "description": "Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.",
+                    "description": "Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location).",
                     "type": "string"
                 }
             },
@@ -2143,7 +2511,7 @@
                     "description": "Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to."
                 },
                 "webhookSecretSecretVersion": {
-                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.",
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location). This is used to validate webhooks.",
                     "type": "string"
                 }
             },
@@ -2179,7 +2547,7 @@
                     "type": "string"
                 },
                 "webhookSecretSecretVersion": {
-                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.",
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location). This is used to validate webhooks.",
                     "type": "string"
                 }
             },
@@ -2192,6 +2560,11 @@
                 "enabled": {
                     "description": "Optional. Setting this to true allows the git proxy to be used for performing git operations on the repositories linked in the connection.",
                     "type": "boolean"
+                },
+                "httpProxyBaseUri": {
+                    "description": "Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated only when enabled is set to true. This endpoint is used by other Google services that integrate with Developer Connect.",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2293,6 +2666,17 @@
             },
             "type": "object"
         },
+        "GoogleCloudRun": {
+            "description": "GoogleCloudRun represents the Cloud Run runtime.",
+            "id": "GoogleCloudRun",
+            "properties": {
+                "serviceUri": {
+                    "description": "Required. Immutable. The name of the Cloud Run service. Format: `projects/{project}/locations/{location}/services/{service}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "HttpBody": {
             "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
             "id": "HttpBody",
@@ -2321,7 +2705,7 @@
             "type": "object"
         },
         "InsightsConfig": {
-            "description": "The InsightsConfig resource is the core configuration object to capture events from your Software Development Lifecycle. It acts as the central hub for managing how Developer connect understands your application, its runtime environments, and the artifacts deployed within them.",
+            "description": "The InsightsConfig resource is the core configuration object to capture events from your Software Development Lifecycle. It acts as the central hub for managing how Developer Connect understands your application, its runtime environments, and the artifacts deployed within them.",
             "id": "InsightsConfig",
             "properties": {
                 "annotations": {
@@ -2343,7 +2727,7 @@
                     "type": "array"
                 },
                 "createTime": {
-                    "description": "Output only. [Output only] Create timestamp",
+                    "description": "Output only. Create timestamp.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -2366,6 +2750,10 @@
                 "name": {
                     "description": "Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}",
                     "type": "string"
+                },
+                "projects": {
+                    "$ref": "Projects",
+                    "description": "Optional. The projects to track with the InsightsConfig."
                 },
                 "reconciling": {
                     "description": "Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of InsightsConfig does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.",
@@ -2397,7 +2785,7 @@
                     "type": "string"
                 },
                 "updateTime": {
-                    "description": "Output only. [Output only] Update timestamp",
+                    "description": "Output only. Update timestamp.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -2522,6 +2910,24 @@
             },
             "type": "object"
         },
+        "ListDeploymentEventsResponse": {
+            "description": "Response to listing DeploymentEvents.",
+            "id": "ListDeploymentEventsResponse",
+            "properties": {
+                "deploymentEvents": {
+                    "description": "The list of DeploymentEvents.",
+                    "items": {
+                        "$ref": "DeploymentEvent"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListGitRepositoryLinksResponse": {
             "description": "Message for response to listing GitRepositoryLinks",
             "id": "ListGitRepositoryLinksResponse",
@@ -2604,6 +3010,13 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2672,7 +3085,7 @@
             "id": "OAuthCredential",
             "properties": {
                 "oauthTokenSecretVersion": {
-                    "description": "Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format: `projects/*/secrets/*/versions/*`.",
+                    "description": "Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format: `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location).",
                     "type": "string"
                 },
                 "username": {
@@ -2817,6 +3230,20 @@
             },
             "type": "object"
         },
+        "Projects": {
+            "description": "Projects represents the projects to track with the InsightsConfig.",
+            "id": "Projects",
+            "properties": {
+                "projectIds": {
+                    "description": "Optional. The project IDs. Format: {project}",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ProviderOAuthConfig": {
             "description": "ProviderOAuthConfig is the OAuth config for a provider.",
             "id": "ProviderOAuthConfig",
@@ -2829,7 +3256,7 @@
                     "type": "array"
                 },
                 "systemProviderId": {
-                    "description": "Immutable. Developer Connect provided OAuth.",
+                    "description": "Optional. Immutable. Developer Connect provided OAuth.",
                     "enum": [
                         "SYSTEM_PROVIDER_UNSPECIFIED",
                         "GITHUB",
@@ -2841,16 +3268,27 @@
                         "DATASTAX",
                         "DYNATRACE"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true
+                    ],
                     "enumDescriptions": [
                         "No system provider specified.",
                         "GitHub provider. Scopes can be found at https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes",
                         "GitLab provider. Scopes can be found at https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes",
-                        "Google provider. Recommended scopes: \"https://www.googleapis.com/auth/drive.readonly\", \"https://www.googleapis.com/auth/documents.readonly\"",
-                        "Sentry provider. Scopes can be found at https://docs.sentry.io/api/permissions/",
-                        "Rovo provider. Must select the \"rovo\" scope.",
-                        "New Relic provider. No scopes are allowed.",
-                        "Datastax provider. No scopes are allowed.",
-                        "Dynatrace provider."
+                        "Deprecated: This provider is no longer supported. Google provider. Recommended scopes: \"https://www.googleapis.com/auth/drive.readonly\", \"https://www.googleapis.com/auth/documents.readonly\"",
+                        "Deprecated: This provider is no longer supported. Sentry provider. Scopes can be found at https://docs.sentry.io/api/permissions/",
+                        "Deprecated: This provider is no longer supported. Rovo provider. Must select the \"rovo\" scope.",
+                        "Deprecated: This provider is no longer supported. New Relic provider. No scopes are allowed.",
+                        "Deprecated: This provider is no longer supported. Datastax provider. No scopes are allowed.",
+                        "Deprecated: This provider is no longer supported. Dynatrace provider."
                     ],
                     "type": "string"
                 }
@@ -2861,6 +3299,11 @@
             "description": "RuntimeConfig represents the runtimes where the application is deployed.",
             "id": "RuntimeConfig",
             "properties": {
+                "appHubService": {
+                    "$ref": "AppHubService",
+                    "description": "Output only. App Hub Service.",
+                    "readOnly": true
+                },
                 "appHubWorkload": {
                     "$ref": "AppHubWorkload",
                     "description": "Output only. App Hub Workload.",
@@ -2869,6 +3312,11 @@
                 "gkeWorkload": {
                     "$ref": "GKEWorkload",
                     "description": "Output only. Google Kubernetes Engine runtime.",
+                    "readOnly": true
+                },
+                "googleCloudRun": {
+                    "$ref": "GoogleCloudRun",
+                    "description": "Output only. Cloud Run runtime.",
                     "readOnly": true
                 },
                 "state": {
@@ -2893,12 +3341,94 @@
             },
             "type": "object"
         },
+        "SecureSourceManagerInstanceConfig": {
+            "description": "Configuration for connections to SSM instance",
+            "id": "SecureSourceManagerInstanceConfig",
+            "properties": {
+                "instance": {
+                    "description": "Required. Immutable. SSM instance resource, formatted as `projects/*/locations/*/instances/*`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ServiceDirectoryConfig": {
             "description": "ServiceDirectoryConfig represents Service Directory configuration for a connection.",
             "id": "ServiceDirectoryConfig",
             "properties": {
                 "service": {
                     "description": "Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StartOAuthResponse": {
+            "description": "Message for responding to starting an OAuth flow.",
+            "id": "StartOAuthResponse",
+            "properties": {
+                "authUri": {
+                    "description": "The authorization server URL to the OAuth flow of the service provider.",
+                    "type": "string"
+                },
+                "clientId": {
+                    "description": "The client ID to the OAuth App of the service provider.",
+                    "type": "string"
+                },
+                "codeChallenge": {
+                    "description": "Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1",
+                    "type": "string"
+                },
+                "codeChallengeMethod": {
+                    "description": "Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2",
+                    "type": "string"
+                },
+                "scopes": {
+                    "description": "The list of scopes requested by the application.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "systemProviderId": {
+                    "description": "The ID of the system provider.",
+                    "enum": [
+                        "SYSTEM_PROVIDER_UNSPECIFIED",
+                        "GITHUB",
+                        "GITLAB",
+                        "GOOGLE",
+                        "SENTRY",
+                        "ROVO",
+                        "NEW_RELIC",
+                        "DATASTAX",
+                        "DYNATRACE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true
+                    ],
+                    "enumDescriptions": [
+                        "No system provider specified.",
+                        "GitHub provider. Scopes can be found at https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes",
+                        "GitLab provider. Scopes can be found at https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes",
+                        "Deprecated: This provider is no longer supported. Google provider. Recommended scopes: \"https://www.googleapis.com/auth/drive.readonly\", \"https://www.googleapis.com/auth/documents.readonly\"",
+                        "Deprecated: This provider is no longer supported. Sentry provider. Scopes can be found at https://docs.sentry.io/api/permissions/",
+                        "Deprecated: This provider is no longer supported. Rovo provider. Must select the \"rovo\" scope.",
+                        "Deprecated: This provider is no longer supported. New Relic provider. No scopes are allowed.",
+                        "Deprecated: This provider is no longer supported. Datastax provider. No scopes are allowed.",
+                        "Deprecated: This provider is no longer supported. Dynatrace provider."
+                    ],
+                    "type": "string"
+                },
+                "ticket": {
+                    "description": "The ticket to be used for post processing the callback from the service provider.",
                     "type": "string"
                 }
             },
@@ -2964,7 +3494,7 @@
             "id": "UserCredential",
             "properties": {
                 "userTokenSecretVersion": {
-                    "description": "Required. A SecretManager resource containing the user token that authorizes the Developer Connect connection. Format: `projects/*/secrets/*/versions/*`.",
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Developer Connect connection. Format: `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are supported in that location).",
                     "type": "string"
                 },
                 "username": {

@@ -1499,12 +1499,15 @@ class FilesResource {
   ///
   /// [timedTextTrackName] - The timed text track name.
   ///
-  /// [visibility] - The visibility of the new file. This parameter is only
-  /// relevant when the source is not a native Google Doc and convert=false.
+  /// [visibility] - The visibility of the new file. Permissions are still
+  /// inherited from parent folders. This parameter is only relevant when the
+  /// source is not a Google Doc file and when `convert=false`.
   /// Possible string values are:
   /// - "DEFAULT" : The visibility of the new file is determined by the user's
-  /// default visibility/sharing policies.
-  /// - "PRIVATE" : The new file will be visible to only the owner.
+  /// default visibility or sharing policies.
+  /// - "PRIVATE" : The user's default visibility or sharing policies are
+  /// ignored, and the new file is only visible to the owner and any users with
+  /// permissions inherited from the parent folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1921,12 +1924,15 @@ class FilesResource {
   /// [useContentAsIndexableText] - Whether to use the content as indexable
   /// text.
   ///
-  /// [visibility] - The visibility of the new file. This parameter is only
-  /// relevant when convert=false.
+  /// [visibility] - The visibility of the new file. Permissions are still
+  /// inherited from parent folders. This parameter is only relevant when
+  /// `convert=false`.
   /// Possible string values are:
   /// - "DEFAULT" : The visibility of the new file is determined by the user's
-  /// default visibility/sharing policies.
-  /// - "PRIVATE" : The new file will be visible to only the owner.
+  /// default visibility or sharing policies.
+  /// - "PRIVATE" : The user's default visibility or sharing policies are
+  /// ignored, and the new file is only visible to the owner and any users with
+  /// permissions inherited from the parent folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4213,6 +4219,14 @@ class RevisionsResource {
   }
 
   /// Lists a file's revisions.
+  ///
+  /// **Important:** The list of revisions returned by this method might be
+  /// incomplete for files with a large revision history, including frequently
+  /// edited Google Docs, Sheets, and Slides. Older revisions might be omitted
+  /// from the response, meaning the first revision returned may not be the
+  /// oldest existing revision. The revision history visible in the Workspace
+  /// editor user interface might be more complete than the list returned by the
+  /// API.
   ///
   /// Request parameters:
   ///

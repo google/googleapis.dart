@@ -274,9 +274,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -537,6 +537,48 @@ class ProjectsLocationsRepositoriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports an artifact to a Cloud Storage bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [repository] - Required. The repository of the artifact to export. Format:
+  /// projects/{project}/locations/{location}/repositories/{repository}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> exportArtifact(
+    ExportArtifactRequest request,
+    core.String repository, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$repository') + ':exportArtifact';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3742,12 +3784,25 @@ class CommonRemoteRepository {
 /// resource, using camelcase keys (i.e. metadata.imageSizeBytes): *
 /// imageSizeBytes * mediaType * buildTime
 class DockerImage {
+  /// ArtifactType of this image, e.g. "application/vnd.example+type".
+  ///
+  /// If the `subject_digest` is set and no `artifact_type` is given, the
+  /// `media_type` will be considered as the `artifact_type`. This field is
+  /// returned as the `metadata.artifactType` field in the Version resource.
+  core.String? artifactType;
+
   /// The time this image was built.
   ///
   /// This field is returned as the 'metadata.buildTime' field in the Version
   /// resource. The build time is returned to the client as an RFC 3339 string,
   /// which can be easily used with the JavaScript Date constructor.
   core.String? buildTime;
+
+  /// For multi-arch images (manifest lists), this field contains the list of
+  /// image manifests.
+  ///
+  /// Optional.
+  core.List<ImageManifest>? imageManifests;
 
   /// Calculated size of the image.
   ///
@@ -3796,7 +3851,9 @@ class DockerImage {
   core.String? uri;
 
   DockerImage({
+    this.artifactType,
     this.buildTime,
+    this.imageManifests,
     this.imageSizeBytes,
     this.mediaType,
     this.name,
@@ -3808,7 +3865,16 @@ class DockerImage {
 
   DockerImage.fromJson(core.Map json_)
     : this(
+        artifactType: json_['artifactType'] as core.String?,
         buildTime: json_['buildTime'] as core.String?,
+        imageManifests:
+            (json_['imageManifests'] as core.List?)
+                ?.map(
+                  (value) => ImageManifest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         imageSizeBytes: json_['imageSizeBytes'] as core.String?,
         mediaType: json_['mediaType'] as core.String?,
         name: json_['name'] as core.String?,
@@ -3822,7 +3888,9 @@ class DockerImage {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactType != null) 'artifactType': artifactType!,
     if (buildTime != null) 'buildTime': buildTime!,
+    if (imageManifests != null) 'imageManifests': imageManifests!,
     if (imageSizeBytes != null) 'imageSizeBytes': imageSizeBytes!,
     if (mediaType != null) 'mediaType': mediaType!,
     if (name != null) 'name': name!,
@@ -3897,6 +3965,42 @@ typedef DownloadFileResponse = $Empty;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// The request for exporting an artifact to a destination.
+class ExportArtifactRequest {
+  /// The Cloud Storage path to export the artifact to.
+  ///
+  /// Should start with the bucket name, and optionally have a directory path.
+  /// Examples: `dst_bucket`, `dst_bucket/sub_dir`. Existing objects with the
+  /// same path will be overwritten.
+  core.String? gcsPath;
+
+  /// The artifact tag to export.
+  ///
+  /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+  core.String? sourceTag;
+
+  /// The artifact version to export.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+  core.String? sourceVersion;
+
+  ExportArtifactRequest({this.gcsPath, this.sourceTag, this.sourceVersion});
+
+  ExportArtifactRequest.fromJson(core.Map json_)
+    : this(
+        gcsPath: json_['gcsPath'] as core.String?,
+        sourceTag: json_['sourceTag'] as core.String?,
+        sourceVersion: json_['sourceVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gcsPath != null) 'gcsPath': gcsPath!,
+    if (sourceTag != null) 'sourceTag': sourceTag!,
+    if (sourceVersion != null) 'sourceVersion': sourceVersion!,
+  };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4281,6 +4385,87 @@ class Hash {
   core.Map<core.String, core.dynamic> toJson() => {
     if (type != null) 'type': type!,
     if (value != null) 'value': value!,
+  };
+}
+
+/// Details of a single image manifest within a multi-arch image.
+class ImageManifest {
+  /// The CPU architecture of the image.
+  ///
+  /// Values are provided by the Docker client and are not validated by Artifact
+  /// Registry. Example values include "amd64", "arm64", "ppc64le", "s390x",
+  /// "riscv64", "mips64le", etc.
+  ///
+  /// Optional.
+  core.String? architecture;
+
+  /// The manifest digest, in the format "sha256:".
+  ///
+  /// Optional.
+  core.String? digest;
+
+  /// The media type of the manifest, e.g.,
+  /// "application/vnd.docker.distribution.manifest.v2+json"
+  ///
+  /// Optional.
+  core.String? mediaType;
+
+  /// The operating system of the image.
+  ///
+  /// Values are provided by the Docker client and are not validated by Artifact
+  /// Registry. Example values include "linux", "windows", "darwin", "aix", etc.
+  ///
+  /// Optional.
+  core.String? os;
+
+  /// The required OS features for the image, for example on Windows `win32k`.
+  ///
+  /// Optional.
+  core.List<core.String>? osFeatures;
+
+  /// The OS version of the image, for example on Windows `10.0.14393.1066`.
+  ///
+  /// Optional.
+  core.String? osVersion;
+
+  /// The variant of the CPU in the image, for example `v7` to specify ARMv7
+  /// when architecture is `arm`.
+  ///
+  /// Optional.
+  core.String? variant;
+
+  ImageManifest({
+    this.architecture,
+    this.digest,
+    this.mediaType,
+    this.os,
+    this.osFeatures,
+    this.osVersion,
+    this.variant,
+  });
+
+  ImageManifest.fromJson(core.Map json_)
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        digest: json_['digest'] as core.String?,
+        mediaType: json_['mediaType'] as core.String?,
+        os: json_['os'] as core.String?,
+        osFeatures:
+            (json_['osFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        osVersion: json_['osVersion'] as core.String?,
+        variant: json_['variant'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (architecture != null) 'architecture': architecture!,
+    if (digest != null) 'digest': digest!,
+    if (mediaType != null) 'mediaType': mediaType!,
+    if (os != null) 'os': os!,
+    if (osFeatures != null) 'osFeatures': osFeatures!,
+    if (osVersion != null) 'osVersion': osVersion!,
+    if (variant != null) 'variant': variant!,
   };
 }
 
@@ -5534,6 +5719,7 @@ class Repository {
   /// - "KFP" : Kubeflow Pipelines package format.
   /// - "GO" : Go package format.
   /// - "GENERIC" : Generic package format.
+  /// - "RUBY" : Ruby package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's
@@ -6191,6 +6377,15 @@ class Version {
   /// Optional.
   core.String? description;
 
+  /// Immutable reference for the version, calculated based on the version's
+  /// content.
+  ///
+  /// Currently we only support dirsum_sha256 hash algorithm. Additional hash
+  /// algorithms may be added in the future.
+  ///
+  /// Output only.
+  core.List<Hash>? fingerprints;
+
   /// Repository-specific Metadata stored against this version.
   ///
   /// The fields returned are defined by the underlying repository-specific
@@ -6223,6 +6418,7 @@ class Version {
     this.annotations,
     this.createTime,
     this.description,
+    this.fingerprints,
     this.metadata,
     this.name,
     this.relatedTags,
@@ -6236,6 +6432,14 @@ class Version {
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
+        fingerprints:
+            (json_['fingerprints'] as core.List?)
+                ?.map(
+                  (value) => Hash.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         metadata:
             json_.containsKey('metadata')
                 ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -6256,6 +6460,7 @@ class Version {
     if (annotations != null) 'annotations': annotations!,
     if (createTime != null) 'createTime': createTime!,
     if (description != null) 'description': description!,
+    if (fingerprints != null) 'fingerprints': fingerprints!,
     if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
     if (relatedTags != null) 'relatedTags': relatedTags!,
@@ -6298,7 +6503,8 @@ class VulnerabilityScanningConfig {
   /// Optional.
   /// Possible string values are:
   /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Not set. This will be treated as
-  /// INHERITED.
+  /// INHERITED for Docker repositories and DISABLED for non-Docker
+  /// repositories.
   /// - "INHERITED" : Scanning is Enabled, but dependent on API enablement.
   /// - "DISABLED" : No automatic vulnerability scanning will be performed for
   /// this repository.

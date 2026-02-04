@@ -15,6 +15,218 @@
     "description": "Manage Apache Kafka clusters and resources. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/managed-service-for-apache-kafka/docs",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://managedkafka.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +237,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250911",
+    "revision": "20260129",
     "rootUrl": "https://managedkafka.googleapis.com/",
     "servicePath": "",
     "title": "Managed Service for Apache Kafka API",
@@ -139,7 +351,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "managedkafka.projects.locations.list",
@@ -148,7 +360,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -271,6 +483,21 @@
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "Optional. Specifies the view of the Cluster resource to be returned. Defaults to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values.",
+                                            "enum": [
+                                                "CLUSTER_VIEW_UNSPECIFIED",
+                                                "CLUSTER_VIEW_BASIC",
+                                                "CLUSTER_VIEW_FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "The default / unset value. The API will default to the BASIC view.",
+                                                "Include the basic metadata of the Cluster. This is the default value (for both ListClusters and GetCluster).",
+                                                "Include everything, including data fetched from the Kafka cluster source of truth."
+                                            ],
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -643,6 +870,11 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "filter": {
+                                                    "description": "Optional. Filter expression for the result. Only supports filtering by topic name as a key in the `topics` map.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "pageSize": {
                                                     "description": "Optional. The maximum number of consumer groups to return. The service may return fewer than this value. If unset or zero, all consumer groups for the parent is returned.",
                                                     "format": "int32",
@@ -659,6 +891,21 @@
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                                     "required": true,
+                                                    "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to be returned in the response. Defaults to FULL view.",
+                                                    "enum": [
+                                                        "CONSUMER_GROUP_VIEW_UNSPECIFIED",
+                                                        "CONSUMER_GROUP_VIEW_BASIC",
+                                                        "CONSUMER_GROUP_VIEW_FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "The default / unset value. The API will default to the FULL view.",
+                                                        "Include the name of the ConsumerGroup. This hides partition and topic metadata.",
+                                                        "Include everything, including partition and topic metadata. This is the default value."
+                                                    ],
+                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
@@ -1429,6 +1676,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -3028,6 +3280,30 @@
             },
             "type": "object"
         },
+        "BrokerDetails": {
+            "description": "Details of a broker in the Kafka cluster.",
+            "id": "BrokerDetails",
+            "properties": {
+                "brokerIndex": {
+                    "description": "Output only. The index of the broker.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "nodeId": {
+                    "description": "Output only. The node id of the broker.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "rack": {
+                    "description": "Output only. The rack of the broker.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
@@ -3122,6 +3398,14 @@
             "description": "An Apache Kafka cluster deployed in a location.",
             "id": "Cluster",
             "properties": {
+                "brokerDetails": {
+                    "description": "Output only. Only populated when FULL view is requested. Details of each broker in the cluster.",
+                    "items": {
+                        "$ref": "BrokerDetails"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "capacityConfig": {
                     "$ref": "CapacityConfig",
                     "description": "Required. Capacity configuration for the Kafka cluster."
@@ -3135,6 +3419,11 @@
                 "gcpConfig": {
                     "$ref": "GcpConfig",
                     "description": "Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform."
+                },
+                "kafkaVersion": {
+                    "description": "Output only. Only populated when FULL view is requested. The Kafka version of the cluster.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "labels": {
                     "additionalProperties": {
@@ -3167,13 +3456,15 @@
                         "STATE_UNSPECIFIED",
                         "CREATING",
                         "ACTIVE",
-                        "DELETING"
+                        "DELETING",
+                        "UPDATING"
                     ],
                     "enumDescriptions": [
                         "A state was not specified.",
                         "The cluster is being created.",
                         "The cluster is active.",
-                        "The cluster is being deleted."
+                        "The cluster is being deleted.",
+                        "The cluster is being updated."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3260,18 +3551,20 @@
                     "type": "boolean"
                 },
                 "state": {
-                    "description": "Output only. The current state of the cluster.",
+                    "description": "Output only. The current state of the Kafka Connect cluster.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "CREATING",
                         "ACTIVE",
-                        "DELETING"
+                        "DELETING",
+                        "DETACHED"
                     ],
                     "enumDescriptions": [
                         "A state was not specified.",
                         "The cluster is being created.",
                         "The cluster is active.",
-                        "The cluster is being deleted."
+                        "The cluster is being deleted.",
+                        "The cluster is detached."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3308,7 +3601,8 @@
             "id": "ConnectNetworkConfig",
             "properties": {
                 "additionalSubnets": {
-                    "description": "Optional. Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.",
                     "items": {
                         "type": "string"
                     },
@@ -3696,6 +3990,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -4193,7 +4494,7 @@
             "type": "object"
         },
         "TaskRetryPolicy": {
-            "description": "Task Retry Policy is implemented on a best-effort basis. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between consecutive task restarts may not always precisely match the configured settings. This can happen when the ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for minimum and maximum backoffs are 60 seconds and 30 minutes respectively.",
+            "description": "Task Retry Policy is implemented on a best-effort basis. The default policy retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of 12 hours. You can disable the policy by setting the task_retry_disabled field to true. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between consecutive task restarts may not always precisely match the configured settings. This can happen when the ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for minimum and maximum backoffs are 60 seconds and 12 hours respectively.",
             "id": "TaskRetryPolicy",
             "properties": {
                 "maximumBackoff": {
@@ -4205,6 +4506,10 @@
                     "description": "Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.",
                     "format": "google-duration",
                     "type": "string"
+                },
+                "taskRetryDisabled": {
+                    "description": "Optional. If true, task retry is disabled.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

@@ -23,10 +23,13 @@
 /// Create an instance of [DisplayVideoApi] to access these resources:
 ///
 /// - [AdvertisersResource]
+///   - [AdvertisersAdAssetsResource]
 ///   - [AdvertisersAdGroupAdsResource]
 ///   - [AdvertisersAdGroupsResource]
 ///     - [AdvertisersAdGroupsTargetingTypesResource]
 ///       - [AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource]
+///     - [AdvertisersAdGroupsYoutubeAssetTypesResource]
+/// - [AdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResource]
 ///   - [AdvertisersAssetsResource]
 ///   - [AdvertisersCampaignsResource]
 ///     - [AdvertisersCampaignsTargetingTypesResource]
@@ -41,6 +44,8 @@
 ///   - [AdvertisersLineItemsResource]
 ///     - [AdvertisersLineItemsTargetingTypesResource]
 /// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource]
+///     - [AdvertisersLineItemsYoutubeAssetTypesResource]
+/// - [AdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResource]
 ///   - [AdvertisersLocationListsResource]
 ///     - [AdvertisersLocationListsAssignedLocationsResource]
 ///   - [AdvertisersNegativeKeywordListsResource]
@@ -164,6 +169,8 @@ class DisplayVideoApi {
 class AdvertisersResource {
   final commons.ApiRequester _requester;
 
+  AdvertisersAdAssetsResource get adAssets =>
+      AdvertisersAdAssetsResource(_requester);
   AdvertisersAdGroupAdsResource get adGroupAds =>
       AdvertisersAdGroupAdsResource(_requester);
   AdvertisersAdGroupsResource get adGroups =>
@@ -618,6 +625,289 @@ class AdvertisersResource {
   }
 }
 
+class AdvertisersAdAssetsResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersAdAssetsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates multiple ad assets in a single request.
+  ///
+  /// Returns the newly-created ad assets if successful. Only supports the
+  /// creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser these ad assets belong
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkCreateAdAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkCreateAdAssetsResponse> bulkCreate(
+    BulkCreateAdAssetsRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adAssets:bulkCreate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BulkCreateAdAssetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates an ad asset.
+  ///
+  /// Returns the newly-created ad asset if successful. Only supports the
+  /// creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this ad asset belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdAsset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdAsset> create(
+    CreateAdAssetRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/adAssets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdAsset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an ad asset.
+  ///
+  /// Only supports the retrieval of assets of AdAssetType
+  /// `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this ad asset belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adAssetId] - Required. The ID of the ad asset to fetch. Only supports
+  /// assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdAsset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdAsset> get(
+    core.String advertiserId,
+    core.String adAssetId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adAssets/' +
+        core.Uri.encodeFull('$adAssetId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AdAsset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ad assets under an advertiser ID.
+  ///
+  /// Only supports the retrieval of assets of AdAssetType
+  /// `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the ad assets belong
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Allows filtering of the results by ad asset fields.
+  /// Supported syntax: * A restriction has the form of `{field} {operator}
+  /// {value}`. * All fields must use the `EQUALS (=)` operator. Supported
+  /// fields: * `youtubeVideoAsset.youtubeVideoId` * `entityStatus` Examples: *
+  /// All active YouTube video ad assets under an advertiser:
+  /// `entityStatus=ENTITY_STATUS_ACTIVE`
+  ///
+  /// [orderBy] - Optional. Field by which to sort the list. Acceptable values
+  /// are: * `entityStatus` * `youtubeVideoAsset.youtubeVideoId` * `adAssetId`
+  /// (default) The default sorting order is ascending. To specify descending
+  /// order for a field, a suffix "desc" should be added to the field name.
+  /// Example: `adAssetId desc`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and
+  /// `5000`. If unspecified will default to `5000`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `ListAdAssets` method. If not specified, the
+  /// first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdAssetsResponse> list(
+    core.String advertiserId, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/adAssets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAdAssetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Uploads and creates an ad asset.
+  ///
+  /// Returns the ID of the newly-created ad asset if successful. Only supports
+  /// the uploading of assets with the AdAssetType `AD_ASSET_TYPE_IMAGE`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this ad asset belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadAdAssetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadAdAssetResponse> upload(
+    UploadAdAssetRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'v4/advertisers/' +
+          core.Uri.encodeFull('$advertiserId') +
+          '/adAssets:uploadAdAsset';
+    } else {
+      url_ =
+          '/upload/v4/advertisers/' +
+          core.Uri.encodeFull('$advertiserId') +
+          '/adAssets:uploadAdAsset';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadAdAssetResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class AdvertisersAdGroupAdsResource {
   final commons.ApiRequester _requester;
 
@@ -632,7 +922,7 @@ class AdvertisersAdGroupAdsResource {
   /// belongs to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [adGroupAdId] - Required. The ID of the ad group ad to fetch.
+  /// [adGroupAdId] - Required. The ID of the ad to fetch.
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -672,19 +962,18 @@ class AdvertisersAdGroupAdsResource {
   ///
   /// Request parameters:
   ///
-  /// [advertiserId] - Required. The ID of the advertiser the ad groups belongs
-  /// to.
+  /// [advertiserId] - Required. The ID of the advertiser the ads belong to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Optional. Allows filtering by custom ad group ad fields.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence
-  /// of restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
-  /// operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus`
-  /// * `adGroupAdId` Examples: * All ad group ads under an ad group:
-  /// `adGroupId="1234"` * All ad group ads under an ad group with an
-  /// entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`:
+  /// [filter] - Optional. Allows filtering by ad group ad fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by `AND` and `OR`. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * All fields must use the `EQUALS (=)` operator. Supported
+  /// fields: * `adGroupId` * `displayName` * `entityStatus` * `adGroupAdId`
+  /// Examples: * All ad group ads under an ad group: `adGroupId="1234"` * All
+  /// ad group ads under an ad group with an entityStatus of
+  /// `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`:
   /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of
   /// this field should be no more than 500 characters. Reference our \[filter
@@ -752,6 +1041,8 @@ class AdvertisersAdGroupsResource {
 
   AdvertisersAdGroupsTargetingTypesResource get targetingTypes =>
       AdvertisersAdGroupsTargetingTypesResource(_requester);
+  AdvertisersAdGroupsYoutubeAssetTypesResource get youtubeAssetTypes =>
+      AdvertisersAdGroupsYoutubeAssetTypesResource(_requester);
 
   AdvertisersAdGroupsResource(commons.ApiRequester client)
     : _requester = client;
@@ -1376,6 +1667,266 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
       queryParams: queryParams_,
     );
     return ListAdGroupAssignedTargetingOptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AdvertisersAdGroupsYoutubeAssetTypesResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResource
+  get youtubeAssetAssociations =>
+      AdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResource(
+        _requester,
+      );
+
+  AdvertisersAdGroupsYoutubeAssetTypesResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class AdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new association between the identified resource and a YouTube
+  /// asset.
+  ///
+  /// Returns the newly-created association. *Warning:* This method is only
+  /// available to an informed subset of users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - The ID of an ad group.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset associated with
+  /// the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [linkedEntity_lineItemId] - The ID of a line item.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [YoutubeAssetAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<YoutubeAssetAssociation> create(
+    YoutubeAssetAssociation request,
+    core.String advertiserId,
+    core.String adGroupId,
+    core.String youtubeAssetType, {
+    core.String? linkedEntity_lineItemId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_lineItemId != null)
+        'linkedEntity.lineItemId': [linkedEntity_lineItemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return YoutubeAssetAssociation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an existing association between the identified resource and a
+  /// YouTube asset.
+  ///
+  /// *Warning:* This method is only available to an informed subset of users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - The ID of an ad group.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset associated with
+  /// the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [youtubeAssetAssociationId] - Required. The ID of the YouTube asset in the
+  /// association. For `YOUTUBE_ASSET_TYPE_LOCATION` and
+  /// `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION` associations: This should be the
+  /// ID of the asset set linked, or 0 if the location_asset_filter or
+  /// affiliate_location_asset_filter is `DISABLED`. For
+  /// `YOUTUBE_ASSET_TYPE_SITELINK` associations: This should be the ID of the
+  /// sitelink asset linked.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [linkedEntity_lineItemId] - The ID of a line item.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String adGroupId,
+    core.String youtubeAssetType,
+    core.String youtubeAssetAssociationId, {
+    core.String? linkedEntity_lineItemId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_lineItemId != null)
+        'linkedEntity.lineItemId': [linkedEntity_lineItemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations/' +
+        core.Uri.encodeFull('$youtubeAssetAssociationId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the YouTube asset associations linked to the given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - The ID of an ad group.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset being associated
+  /// with the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [linkedEntity_lineItemId] - The ID of a line item.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the list. The only acceptable
+  /// values are: * `linkedYoutubeAsset.locationAssetFilter.assetSetId`, *
+  /// `linkedYoutubeAsset.affiliateLocationAssetFilter.assetSetId`, *
+  /// `linkedYoutubeAsset.sitelinkAsset.assetId` The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix " desc"
+  /// should be added to the field name. Example:
+  /// `linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and
+  /// `10000`. If unspecified will default to `100`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `ListYoutubeAssetAssociations` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListYoutubeAssetAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListYoutubeAssetAssociationsResponse> list(
+    core.String advertiserId,
+    core.String adGroupId,
+    core.String youtubeAssetType, {
+    core.String? linkedEntity_lineItemId,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_lineItemId != null)
+        'linkedEntity.lineItemId': [linkedEntity_lineItemId],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListYoutubeAssetAssociationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4460,6 +5011,8 @@ class AdvertisersLineItemsResource {
 
   AdvertisersLineItemsTargetingTypesResource get targetingTypes =>
       AdvertisersLineItemsTargetingTypesResource(_requester);
+  AdvertisersLineItemsYoutubeAssetTypesResource get youtubeAssetTypes =>
+      AdvertisersLineItemsYoutubeAssetTypesResource(_requester);
 
   AdvertisersLineItemsResource(commons.ApiRequester client)
     : _requester = client;
@@ -5927,6 +6480,266 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       queryParams: queryParams_,
     );
     return ListLineItemAssignedTargetingOptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AdvertisersLineItemsYoutubeAssetTypesResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResource
+  get youtubeAssetAssociations =>
+      AdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResource(
+        _requester,
+      );
+
+  AdvertisersLineItemsYoutubeAssetTypesResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class AdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new association between the identified resource and a YouTube
+  /// asset.
+  ///
+  /// Returns the newly-created association. *Warning:* This method is only
+  /// available to an informed subset of users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [lineItemId] - The ID of a line item.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset associated with
+  /// the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [linkedEntity_adGroupId] - The ID of an ad group.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [YoutubeAssetAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<YoutubeAssetAssociation> create(
+    YoutubeAssetAssociation request,
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String youtubeAssetType, {
+    core.String? linkedEntity_adGroupId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_adGroupId != null)
+        'linkedEntity.adGroupId': [linkedEntity_adGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/lineItems/' +
+        core.Uri.encodeFull('$lineItemId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return YoutubeAssetAssociation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an existing association between the identified resource and a
+  /// YouTube asset.
+  ///
+  /// *Warning:* This method is only available to an informed subset of users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [lineItemId] - The ID of a line item.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset associated with
+  /// the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [youtubeAssetAssociationId] - Required. The ID of the YouTube asset in the
+  /// association. For `YOUTUBE_ASSET_TYPE_LOCATION` and
+  /// `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION` associations: This should be the
+  /// ID of the asset set linked, or 0 if the location_asset_filter or
+  /// affiliate_location_asset_filter is `DISABLED`. For
+  /// `YOUTUBE_ASSET_TYPE_SITELINK` associations: This should be the ID of the
+  /// sitelink asset linked.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [linkedEntity_adGroupId] - The ID of an ad group.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String youtubeAssetType,
+    core.String youtubeAssetAssociationId, {
+    core.String? linkedEntity_adGroupId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_adGroupId != null)
+        'linkedEntity.adGroupId': [linkedEntity_adGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/lineItems/' +
+        core.Uri.encodeFull('$lineItemId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations/' +
+        core.Uri.encodeFull('$youtubeAssetAssociationId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the YouTube asset associations linked to the given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the linked entity
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [lineItemId] - The ID of a line item.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [youtubeAssetType] - Required. The type of YouTube asset being associated
+  /// with the resource.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  ///
+  /// [linkedEntity_adGroupId] - The ID of an ad group.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the list. The only acceptable
+  /// values are: * `linkedYoutubeAsset.locationAssetFilter.assetSetId`, *
+  /// `linkedYoutubeAsset.affiliateLocationAssetFilter.assetSetId`, *
+  /// `linkedYoutubeAsset.sitelinkAsset.assetId` The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix " desc"
+  /// should be added to the field name. Example:
+  /// `linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and
+  /// `10000`. If unspecified will default to `100`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `ListYoutubeAssetAssociations` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListYoutubeAssetAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListYoutubeAssetAssociationsResponse> list(
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String youtubeAssetType, {
+    core.String? linkedEntity_adGroupId,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (linkedEntity_adGroupId != null)
+        'linkedEntity.adGroupId': [linkedEntity_adGroupId],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/lineItems/' +
+        core.Uri.encodeFull('$lineItemId') +
+        '/youtubeAssetTypes/' +
+        core.Uri.encodeFull('$youtubeAssetType') +
+        '/youtubeAssetAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListYoutubeAssetAssociationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -9174,7 +9987,7 @@ class FloodlightGroupsFloodlightActivitiesResource {
   /// suffix "desc" should be added to the field name. Example: `displayName
   /// desc`.
   ///
-  /// [pageSize] - Optional. Requested page size. Must be between `1` and `100`.
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and `200`.
   /// If unspecified will default to `100`. Returns error code
   /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
@@ -13088,6 +13901,82 @@ class UsersResource {
 typedef ActiveViewVideoViewabilityMetricConfig =
     $ActiveViewVideoViewabilityMetricConfig;
 
+/// A single ad asset.
+class AdAsset {
+  /// The ID of the ad asset.
+  ///
+  /// Referred to as the asset ID when assigned to an ad.
+  ///
+  /// Output only.
+  core.String? adAssetId;
+
+  /// The type of the ad asset.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AD_ASSET_TYPE_UNSPECIFIED" : The ad asset type is unspecified.
+  /// - "AD_ASSET_TYPE_IMAGE" : The ad asset is a YouTube/DemandGen image.
+  /// - "AD_ASSET_TYPE_YOUTUBE_VIDEO" : The ad asset is a YouTube video.
+  core.String? adAssetType;
+
+  /// The entity status of the ad asset.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
+  /// or is unknown in this version.
+  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
+  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
+  /// spending are disabled. An entity can be deleted after archived. Deleted
+  /// entities cannot be retrieved.
+  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
+  /// spending are disabled.
+  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
+  /// entity.
+  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
+  /// deletion.
+  core.String? entityStatus;
+
+  /// Identifier.
+  ///
+  /// The resource name of the ad asset.
+  core.String? name;
+
+  /// Youtube video asset data.
+  YoutubeVideoAsset? youtubeVideoAsset;
+
+  AdAsset({
+    this.adAssetId,
+    this.adAssetType,
+    this.entityStatus,
+    this.name,
+    this.youtubeVideoAsset,
+  });
+
+  AdAsset.fromJson(core.Map json_)
+    : this(
+        adAssetId: json_['adAssetId'] as core.String?,
+        adAssetType: json_['adAssetType'] as core.String?,
+        entityStatus: json_['entityStatus'] as core.String?,
+        name: json_['name'] as core.String?,
+        youtubeVideoAsset:
+            json_.containsKey('youtubeVideoAsset')
+                ? YoutubeVideoAsset.fromJson(
+                  json_['youtubeVideoAsset']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAssetId != null) 'adAssetId': adAssetId!,
+    if (adAssetType != null) 'adAssetType': adAssetType!,
+    if (entityStatus != null) 'entityStatus': entityStatus!,
+    if (name != null) 'name': name!,
+    if (youtubeVideoAsset != null) 'youtubeVideoAsset': youtubeVideoAsset!,
+  };
+}
+
 /// A single ad group associated with a line item.
 class AdGroup {
   /// The format of the ads in the ad group.
@@ -13105,7 +13994,6 @@ class AdGroup {
   /// including in-stream and bumper ads.
   /// - "AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is surfaced on the top
   /// slot on the YouTube homepage.
-  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads.
   core.String? adGroupFormat;
 
   /// The unique ID of the ad group.
@@ -13223,15 +14111,29 @@ class AdGroupAd {
   /// The unique ID of the ad.
   ///
   /// Assigned by the system.
+  ///
+  /// Output only.
   core.String? adGroupAdId;
 
   /// The unique ID of the ad group that the ad belongs to.
+  ///
+  /// *Caution*: Parent ad groups for Demand Gen ads are not currently
+  /// retrieveable using `advertisers.adGroups.list` or
+  /// `advertisers.adGroups.get`. Demand Gen ads can be identified by the
+  /// absence of the `ad_details` union field.
   core.String? adGroupId;
+
+  /// The policy approval status of the ad.
+  ///
+  /// Output only.
+  AdPolicy? adPolicy;
 
   /// List of URLs used by the ad.
   core.List<AdUrl>? adUrls;
 
   /// The unique ID of the advertiser the ad belongs to.
+  ///
+  /// Output only.
   core.String? advertiserId;
 
   /// Details of an \[audio
@@ -13278,6 +14180,8 @@ class AdGroupAd {
   MastheadAd? mastheadAd;
 
   /// The resource name of the ad.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Details of a \[non-skippable short in-stream video
@@ -13298,6 +14202,7 @@ class AdGroupAd {
   AdGroupAd({
     this.adGroupAdId,
     this.adGroupId,
+    this.adPolicy,
     this.adUrls,
     this.advertiserId,
     this.audioAd,
@@ -13317,6 +14222,12 @@ class AdGroupAd {
     : this(
         adGroupAdId: json_['adGroupAdId'] as core.String?,
         adGroupId: json_['adGroupId'] as core.String?,
+        adPolicy:
+            json_.containsKey('adPolicy')
+                ? AdPolicy.fromJson(
+                  json_['adPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         adUrls:
             (json_['adUrls'] as core.List?)
                 ?.map(
@@ -13386,6 +14297,7 @@ class AdGroupAd {
   core.Map<core.String, core.dynamic> toJson() => {
     if (adGroupAdId != null) 'adGroupAdId': adGroupAdId!,
     if (adGroupId != null) 'adGroupId': adGroupId!,
+    if (adPolicy != null) 'adPolicy': adPolicy!,
     if (adUrls != null) 'adUrls': adUrls!,
     if (advertiserId != null) 'advertiserId': advertiserId!,
     if (audioAd != null) 'audioAd': audioAd!,
@@ -13435,6 +14347,676 @@ class AdGroupAssignedTargetingOption {
       'assignedTargetingOption': assignedTargetingOption!,
   };
 }
+
+/// A single ad policy associated with an ad group ad.
+class AdPolicy {
+  /// The policy approval status of an ad, indicating the approval decision.
+  /// Possible string values are:
+  /// - "AD_POLICY_APPROVAL_STATUS_UNKNOWN" : Unknown or not specified.
+  /// - "DISAPPROVED" : Will not serve.
+  /// - "APPROVED_LIMITED" : Will serve with restrictions.
+  /// - "APPROVED" : Will serve without restrictions.
+  /// - "AREA_OF_INTEREST_ONLY" : Will not serve in targeted countries, but may
+  /// serve for users who are searching for information about the targeted
+  /// countries.
+  core.String? adPolicyApprovalStatus;
+
+  /// The policy review status of an ad, indicating where in the review process
+  /// the ad is currently.
+  /// Possible string values are:
+  /// - "AD_POLICY_REVIEW_STATUS_UNKNOWN" : Unknown or not specified.
+  /// - "REVIEW_IN_PROGRESS" : Currently under review.
+  /// - "REVIEWED" : Primary review complete. Other reviews may still be in
+  /// progress.
+  /// - "UNDER_APPEAL" : Resubmitted for approval or a policy decision has been
+  /// appealed.
+  /// - "ELIGIBLE_MAY_SERVE" : Deemed eligible and may be serving. Further
+  /// review could still follow.
+  core.String? adPolicyReviewStatus;
+
+  /// The entries for each policy topic identified as relating to the ad.
+  ///
+  /// Each entry includes the topic, restriction level, and guidance on how to
+  /// fix policy issues.
+  core.List<AdPolicyTopicEntry>? adPolicyTopicEntry;
+
+  AdPolicy({
+    this.adPolicyApprovalStatus,
+    this.adPolicyReviewStatus,
+    this.adPolicyTopicEntry,
+  });
+
+  AdPolicy.fromJson(core.Map json_)
+    : this(
+        adPolicyApprovalStatus: json_['adPolicyApprovalStatus'] as core.String?,
+        adPolicyReviewStatus: json_['adPolicyReviewStatus'] as core.String?,
+        adPolicyTopicEntry:
+            (json_['adPolicyTopicEntry'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyTopicEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adPolicyApprovalStatus != null)
+      'adPolicyApprovalStatus': adPolicyApprovalStatus!,
+    if (adPolicyReviewStatus != null)
+      'adPolicyReviewStatus': adPolicyReviewStatus!,
+    if (adPolicyTopicEntry != null) 'adPolicyTopicEntry': adPolicyTopicEntry!,
+  };
+}
+
+/// Represents a country restriction.
+typedef AdPolicyCriterionRestriction = $AdPolicyCriterionRestriction;
+
+/// Information on how to appeal a policy decision.
+typedef AdPolicyTopicAppealInfo = $AdPolicyTopicAppealInfo;
+
+/// Details on ad serving constraints.
+class AdPolicyTopicConstraint {
+  /// Countries where the resource's domain is not covered by the certificates
+  /// associated with it.
+  AdPolicyTopicConstraintAdPolicyCountryConstraintList?
+  certificateDomainMismatchCountryList;
+
+  /// Countries where a certificate is required for serving.
+  AdPolicyTopicConstraintAdPolicyCountryConstraintList?
+  certificateMissingCountryList;
+
+  /// Countries where the ad cannot serve.
+  AdPolicyTopicConstraintAdPolicyCountryConstraintList? countryConstraint;
+
+  /// Certificate is required to serve in any country and the existing
+  /// certificate does not cover the ad's domain.
+  AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint?
+  globalCertificateDomainMismatch;
+
+  /// Certificate is required to serve in any country.
+  AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint?
+  globalCertificateMissing;
+
+  /// Link to the form to request a certificate for the constraint.
+  core.String? requestCertificateFormLink;
+
+  /// Reseller constraint.
+  AdPolicyTopicConstraintAdPolicyResellerConstraint? resellerConstraint;
+
+  AdPolicyTopicConstraint({
+    this.certificateDomainMismatchCountryList,
+    this.certificateMissingCountryList,
+    this.countryConstraint,
+    this.globalCertificateDomainMismatch,
+    this.globalCertificateMissing,
+    this.requestCertificateFormLink,
+    this.resellerConstraint,
+  });
+
+  AdPolicyTopicConstraint.fromJson(core.Map json_)
+    : this(
+        certificateDomainMismatchCountryList:
+            json_.containsKey('certificateDomainMismatchCountryList')
+                ? AdPolicyTopicConstraintAdPolicyCountryConstraintList.fromJson(
+                  json_['certificateDomainMismatchCountryList']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        certificateMissingCountryList:
+            json_.containsKey('certificateMissingCountryList')
+                ? AdPolicyTopicConstraintAdPolicyCountryConstraintList.fromJson(
+                  json_['certificateMissingCountryList']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        countryConstraint:
+            json_.containsKey('countryConstraint')
+                ? AdPolicyTopicConstraintAdPolicyCountryConstraintList.fromJson(
+                  json_['countryConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        globalCertificateDomainMismatch:
+            json_.containsKey('globalCertificateDomainMismatch')
+                ? AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint.fromJson(
+                  json_['globalCertificateDomainMismatch']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        globalCertificateMissing:
+            json_.containsKey('globalCertificateMissing')
+                ? AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint.fromJson(
+                  json_['globalCertificateMissing']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestCertificateFormLink:
+            json_['requestCertificateFormLink'] as core.String?,
+        resellerConstraint:
+            json_.containsKey('resellerConstraint')
+                ? AdPolicyTopicConstraintAdPolicyResellerConstraint.fromJson(
+                  json_['resellerConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (certificateDomainMismatchCountryList != null)
+      'certificateDomainMismatchCountryList':
+          certificateDomainMismatchCountryList!,
+    if (certificateMissingCountryList != null)
+      'certificateMissingCountryList': certificateMissingCountryList!,
+    if (countryConstraint != null) 'countryConstraint': countryConstraint!,
+    if (globalCertificateDomainMismatch != null)
+      'globalCertificateDomainMismatch': globalCertificateDomainMismatch!,
+    if (globalCertificateMissing != null)
+      'globalCertificateMissing': globalCertificateMissing!,
+    if (requestCertificateFormLink != null)
+      'requestCertificateFormLink': requestCertificateFormLink!,
+    if (resellerConstraint != null) 'resellerConstraint': resellerConstraint!,
+  };
+}
+
+/// A list of countries where the ad cannot serve due to policy constraints.
+class AdPolicyTopicConstraintAdPolicyCountryConstraintList {
+  /// Countries where the ad cannot serve.
+  core.List<AdPolicyCriterionRestriction>? countries;
+
+  AdPolicyTopicConstraintAdPolicyCountryConstraintList({this.countries});
+
+  AdPolicyTopicConstraintAdPolicyCountryConstraintList.fromJson(core.Map json_)
+    : this(
+        countries:
+            (json_['countries'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyCriterionRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countries != null) 'countries': countries!,
+  };
+}
+
+/// Certificate is required to serve in any country and the existing certificate
+/// does not cover the ad's domain.
+typedef AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint =
+    $Empty;
+
+/// Certificate is required to serve in any country.
+typedef AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint =
+    $Empty;
+
+/// Policy topic was constrained due to disapproval of the website for reseller
+/// purposes.
+typedef AdPolicyTopicConstraintAdPolicyResellerConstraint = $Empty;
+
+/// An entry describing how an ad has been identified as relating to an ad
+/// policy.
+class AdPolicyTopicEntry {
+  /// Information on how to appeal the policy decision.
+  AdPolicyTopicAppealInfo? appealInfo;
+
+  /// Ad policy help center link for the policy topic.
+  core.String? helpCenterLink;
+
+  /// The source of the policy decision.
+  /// Possible string values are:
+  /// - "AD_POLICY_DECISION_TYPE_UNKNOWN" : Unknown or not specified.
+  /// - "PURSUANT_TO_NOTICE" : The decision is from a legal notice, court order,
+  /// or trademark content owner complaint, etc.
+  /// - "GOOGLE_INVESTIGATION" : The decision is from a Google-owned
+  /// investigation.
+  core.String? policyDecisionType;
+
+  /// The policy enforcement means used in the policy review.
+  /// Possible string values are:
+  /// - "AD_POLICY_ENFORCEMENT_MEANS_UNKNOWN" : Unknown or not specified.
+  /// - "AUTOMATED" : The enforcement process was fully automated.
+  /// - "HUMAN_REVIEW" : A human was partially or fully involved in the decision
+  /// enforcement process.
+  core.String? policyEnforcementMeans;
+
+  /// Localized label text for policy.
+  ///
+  /// Examples include "Trademarks in text", "Contains Alcohol", etc.
+  core.String? policyLabel;
+
+  /// The policy topic.
+  ///
+  /// Examples include "TRADEMARKS", "ALCOHOL", etc.
+  core.String? policyTopic;
+
+  /// The serving constraints relevant to the policy decision.
+  core.List<AdPolicyTopicConstraint>? policyTopicConstraints;
+
+  /// A short summary description of the policy topic.
+  core.String? policyTopicDescription;
+
+  /// The evidence used in the policy decision.
+  core.List<AdPolicyTopicEvidence>? policyTopicEvidences;
+
+  /// How ad serving will be affected due to the relation to the ad policy
+  /// topic.
+  /// Possible string values are:
+  /// - "AD_POLICY_TOPIC_ENTRY_TYPE_UNKNOWN" : Unknown or not specified.
+  /// - "PROHIBITED" : The resource will not serve.
+  /// - "FULLY_LIMITED" : The resource will not serve in all targeted countries.
+  /// - "LIMITED" : The resource cannot serve in some countries.
+  /// - "DESCRIPTIVE" : The resource can serve.
+  /// - "BROADENING" : The resource can serve, and may serve beyond normal
+  /// coverage.
+  /// - "AREA_OF_INTEREST_ONLY" : The resource is constrained for all targeted
+  /// countries, but may serve for users who are searching for information about
+  /// the targeted countries.
+  core.String? policyTopicType;
+
+  AdPolicyTopicEntry({
+    this.appealInfo,
+    this.helpCenterLink,
+    this.policyDecisionType,
+    this.policyEnforcementMeans,
+    this.policyLabel,
+    this.policyTopic,
+    this.policyTopicConstraints,
+    this.policyTopicDescription,
+    this.policyTopicEvidences,
+    this.policyTopicType,
+  });
+
+  AdPolicyTopicEntry.fromJson(core.Map json_)
+    : this(
+        appealInfo:
+            json_.containsKey('appealInfo')
+                ? AdPolicyTopicAppealInfo.fromJson(
+                  json_['appealInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        helpCenterLink: json_['helpCenterLink'] as core.String?,
+        policyDecisionType: json_['policyDecisionType'] as core.String?,
+        policyEnforcementMeans: json_['policyEnforcementMeans'] as core.String?,
+        policyLabel: json_['policyLabel'] as core.String?,
+        policyTopic: json_['policyTopic'] as core.String?,
+        policyTopicConstraints:
+            (json_['policyTopicConstraints'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyTopicConstraint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        policyTopicDescription: json_['policyTopicDescription'] as core.String?,
+        policyTopicEvidences:
+            (json_['policyTopicEvidences'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyTopicEvidence.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        policyTopicType: json_['policyTopicType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (appealInfo != null) 'appealInfo': appealInfo!,
+    if (helpCenterLink != null) 'helpCenterLink': helpCenterLink!,
+    if (policyDecisionType != null) 'policyDecisionType': policyDecisionType!,
+    if (policyEnforcementMeans != null)
+      'policyEnforcementMeans': policyEnforcementMeans!,
+    if (policyLabel != null) 'policyLabel': policyLabel!,
+    if (policyTopic != null) 'policyTopic': policyTopic!,
+    if (policyTopicConstraints != null)
+      'policyTopicConstraints': policyTopicConstraints!,
+    if (policyTopicDescription != null)
+      'policyTopicDescription': policyTopicDescription!,
+    if (policyTopicEvidences != null)
+      'policyTopicEvidences': policyTopicEvidences!,
+    if (policyTopicType != null) 'policyTopicType': policyTopicType!,
+  };
+}
+
+/// Evidence information used in the policy decision.
+class AdPolicyTopicEvidence {
+  /// Counterfeit enforcement that caused a policy violation.
+  AdPolicyTopicEvidenceCounterfeit? counterfeit;
+
+  /// A mismatch between the ad destination URLs.
+  AdPolicyTopicEvidenceDestinationMismatch? destinationMismatch;
+
+  /// Information on HTTP or DNS errors related to the ad destination.
+  AdPolicyTopicEvidenceDestinationNotWorking? destinationNotWorking;
+
+  /// The text in the destination of the ad that is causing a policy violation.
+  AdPolicyTopicEvidenceDestinationTextList? destinationTextList;
+
+  /// HTTP code returned when the final URL was crawled.
+  core.int? httpCode;
+
+  /// The language the ad was detected to be written in.
+  ///
+  /// This field uses IETF language tags, such as "en-US".
+  core.String? languageCode;
+
+  /// Legal related regulation enforcement that caused a policy violation.
+  AdPolicyTopicEvidenceLegalRemoval? legalRemoval;
+
+  /// T&S proactive enforcement that caused a policy violation.
+  AdPolicyTopicEvidenceRegionalRequirements? regionalRequirements;
+
+  /// List of evidence found in the text of the ad.
+  AdPolicyTopicEvidenceTextList? textList;
+
+  /// Trademark terms that caused a policy violation.
+  AdPolicyTopicEvidenceTrademark? trademark;
+
+  /// List of websites linked with the ad.
+  AdPolicyTopicEvidenceWebsiteList? websiteList;
+
+  AdPolicyTopicEvidence({
+    this.counterfeit,
+    this.destinationMismatch,
+    this.destinationNotWorking,
+    this.destinationTextList,
+    this.httpCode,
+    this.languageCode,
+    this.legalRemoval,
+    this.regionalRequirements,
+    this.textList,
+    this.trademark,
+    this.websiteList,
+  });
+
+  AdPolicyTopicEvidence.fromJson(core.Map json_)
+    : this(
+        counterfeit:
+            json_.containsKey('counterfeit')
+                ? AdPolicyTopicEvidenceCounterfeit.fromJson(
+                  json_['counterfeit'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationMismatch:
+            json_.containsKey('destinationMismatch')
+                ? AdPolicyTopicEvidenceDestinationMismatch.fromJson(
+                  json_['destinationMismatch']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationNotWorking:
+            json_.containsKey('destinationNotWorking')
+                ? AdPolicyTopicEvidenceDestinationNotWorking.fromJson(
+                  json_['destinationNotWorking']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationTextList:
+            json_.containsKey('destinationTextList')
+                ? AdPolicyTopicEvidenceDestinationTextList.fromJson(
+                  json_['destinationTextList']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        httpCode: json_['httpCode'] as core.int?,
+        languageCode: json_['languageCode'] as core.String?,
+        legalRemoval:
+            json_.containsKey('legalRemoval')
+                ? AdPolicyTopicEvidenceLegalRemoval.fromJson(
+                  json_['legalRemoval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        regionalRequirements:
+            json_.containsKey('regionalRequirements')
+                ? AdPolicyTopicEvidenceRegionalRequirements.fromJson(
+                  json_['regionalRequirements']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textList:
+            json_.containsKey('textList')
+                ? AdPolicyTopicEvidenceTextList.fromJson(
+                  json_['textList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        trademark:
+            json_.containsKey('trademark')
+                ? AdPolicyTopicEvidenceTrademark.fromJson(
+                  json_['trademark'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        websiteList:
+            json_.containsKey('websiteList')
+                ? AdPolicyTopicEvidenceWebsiteList.fromJson(
+                  json_['websiteList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (counterfeit != null) 'counterfeit': counterfeit!,
+    if (destinationMismatch != null)
+      'destinationMismatch': destinationMismatch!,
+    if (destinationNotWorking != null)
+      'destinationNotWorking': destinationNotWorking!,
+    if (destinationTextList != null)
+      'destinationTextList': destinationTextList!,
+    if (httpCode != null) 'httpCode': httpCode!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (legalRemoval != null) 'legalRemoval': legalRemoval!,
+    if (regionalRequirements != null)
+      'regionalRequirements': regionalRequirements!,
+    if (textList != null) 'textList': textList!,
+    if (trademark != null) 'trademark': trademark!,
+    if (websiteList != null) 'websiteList': websiteList!,
+  };
+}
+
+/// Details on the counterfeit enforcement that caused a policy violation.
+typedef AdPolicyTopicEvidenceCounterfeit = $AdPolicyTopicEvidenceCounterfeit;
+
+/// Details on a mismatch between destination URL types.
+typedef AdPolicyTopicEvidenceDestinationMismatch =
+    $AdPolicyTopicEvidenceDestinationMismatch;
+
+/// Details for on HTTP or DNS errors related to the ad destination.
+typedef AdPolicyTopicEvidenceDestinationNotWorking =
+    $AdPolicyTopicEvidenceDestinationNotWorking;
+
+/// A list of destination text that violated the policy.
+typedef AdPolicyTopicEvidenceDestinationTextList =
+    $AdPolicyTopicEvidenceDestinationTextList;
+
+/// Legal related regulation enforcement, either from DMCA or local legal
+/// regulation.
+class AdPolicyTopicEvidenceLegalRemoval {
+  /// The type of complaint causing the legal removal.
+  /// Possible string values are:
+  /// - "AD_POLICY_TOPIC_EVIDENCE_LEGAL_REMOVAL_COMPLAINT_TYPE_UNKNOWN" : Not
+  /// specified or unknown.
+  /// - "COPYRIGHT" : Copyright. Only applies to DMCA.
+  /// - "COURT_ORDER" : Court order. Only applies to local legal.
+  /// - "LOCAL_LEGAL" : Local legal regulation. Only applies to local legal.
+  core.String? complaintType;
+
+  /// The countries restricted due to the legal removal.
+  core.List<AdPolicyCriterionRestriction>? countryRestrictions;
+
+  /// Details on the DMCA regulation legal removal.
+  AdPolicyTopicEvidenceLegalRemovalDmca? dmca;
+
+  /// Details on the local legal regulation legal removal.
+  AdPolicyTopicEvidenceLegalRemovalLocalLegal? localLegal;
+
+  /// The urls restricted due to the legal removal.
+  core.List<core.String>? restrictedUris;
+
+  AdPolicyTopicEvidenceLegalRemoval({
+    this.complaintType,
+    this.countryRestrictions,
+    this.dmca,
+    this.localLegal,
+    this.restrictedUris,
+  });
+
+  AdPolicyTopicEvidenceLegalRemoval.fromJson(core.Map json_)
+    : this(
+        complaintType: json_['complaintType'] as core.String?,
+        countryRestrictions:
+            (json_['countryRestrictions'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyCriterionRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dmca:
+            json_.containsKey('dmca')
+                ? AdPolicyTopicEvidenceLegalRemovalDmca.fromJson(
+                  json_['dmca'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        localLegal:
+            json_.containsKey('localLegal')
+                ? AdPolicyTopicEvidenceLegalRemovalLocalLegal.fromJson(
+                  json_['localLegal'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        restrictedUris:
+            (json_['restrictedUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (complaintType != null) 'complaintType': complaintType!,
+    if (countryRestrictions != null)
+      'countryRestrictions': countryRestrictions!,
+    if (dmca != null) 'dmca': dmca!,
+    if (localLegal != null) 'localLegal': localLegal!,
+    if (restrictedUris != null) 'restrictedUris': restrictedUris!,
+  };
+}
+
+/// DMCA complaint details.
+typedef AdPolicyTopicEvidenceLegalRemovalDmca =
+    $AdPolicyTopicEvidenceLegalRemovalDmca;
+
+/// Local legal regulation details.
+typedef AdPolicyTopicEvidenceLegalRemovalLocalLegal =
+    $AdPolicyTopicEvidenceLegalRemovalLocalLegal;
+
+/// Trust & Safety (T&S) proactive enforcement for policies meant to address
+/// regional requirements.
+///
+/// This is considered a Google-owned investigation instead of a regulation
+/// notice since it's proactive T&S enforcement.
+class AdPolicyTopicEvidenceRegionalRequirements {
+  /// List of regional requirements.
+  core.List<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>?
+  regionalRequirementsEntries;
+
+  AdPolicyTopicEvidenceRegionalRequirements({this.regionalRequirementsEntries});
+
+  AdPolicyTopicEvidenceRegionalRequirements.fromJson(core.Map json_)
+    : this(
+        regionalRequirementsEntries:
+            (json_['regionalRequirementsEntries'] as core.List?)
+                ?.map(
+                  (value) =>
+                      AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (regionalRequirementsEntries != null)
+      'regionalRequirementsEntries': regionalRequirementsEntries!,
+  };
+}
+
+/// Policy level regional legal violation details.
+class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry {
+  /// The countries restricted due to the legal policy.
+  core.List<AdPolicyCriterionRestriction>? countryRestrictions;
+
+  /// The legal policy that is being violated.
+  core.String? legalPolicy;
+
+  AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry({
+    this.countryRestrictions,
+    this.legalPolicy,
+  });
+
+  AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry.fromJson(
+    core.Map json_,
+  ) : this(
+        countryRestrictions:
+            (json_['countryRestrictions'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyCriterionRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        legalPolicy: json_['legalPolicy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryRestrictions != null)
+      'countryRestrictions': countryRestrictions!,
+    if (legalPolicy != null) 'legalPolicy': legalPolicy!,
+  };
+}
+
+/// A list of fragments of text that violated the policy.
+typedef AdPolicyTopicEvidenceTextList = $AdPolicyTopicEvidenceTextList;
+
+/// Trademark terms that caused a policy violation.
+class AdPolicyTopicEvidenceTrademark {
+  /// Countries where the policy violation is relevant.
+  core.List<AdPolicyCriterionRestriction>? countryRestrictions;
+
+  /// The trademark content owner.
+  core.String? owner;
+
+  /// The trademark term.
+  core.String? term;
+
+  AdPolicyTopicEvidenceTrademark({
+    this.countryRestrictions,
+    this.owner,
+    this.term,
+  });
+
+  AdPolicyTopicEvidenceTrademark.fromJson(core.Map json_)
+    : this(
+        countryRestrictions:
+            (json_['countryRestrictions'] as core.List?)
+                ?.map(
+                  (value) => AdPolicyCriterionRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        owner: json_['owner'] as core.String?,
+        term: json_['term'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryRestrictions != null)
+      'countryRestrictions': countryRestrictions!,
+    if (owner != null) 'owner': owner!,
+    if (term != null) 'term': term!,
+  };
+}
+
+/// A list of websites that violated the policy.
+typedef AdPolicyTopicEvidenceWebsiteList = $AdPolicyTopicEvidenceWebsiteList;
 
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
@@ -15139,21 +16721,17 @@ class BiddingStrategy {
   /// A strategy that uses a fixed bid price.
   FixedBidStrategy? fixedBid;
 
-  /// A strategy that automatically adjusts the bid to optimize to your
-  /// performance goal while spending the full budget.
+  /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`,
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for
+  /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or `LINE_ITEM_TYPE_VIDEO_DEFAULT` line
+  /// items.
   ///
-  /// At insertion order level, the markup_type of line items cannot be set to
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, when
-  /// performance_goal_type is one of: *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` , the line_item_type of
-  /// the insertion order line items must be either: *
-  /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` * `LINE_ITEM_TYPE_VIDEO_DEFAULT` , and
-  /// when performance_goal_type is either: *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` the line_item_type of the
-  /// insertion order line items must be `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+  /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for
+  /// `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for
+  /// `LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP` line items.
   MaximizeSpendBidStrategy? maximizeSpendAutoBid;
 
   /// A strategy that automatically adjusts the bid to meet or beat a specified
@@ -15293,6 +16871,58 @@ class BudgetSummary {
     if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!,
     if (taxAmountMicros != null) 'taxAmountMicros': taxAmountMicros!,
     if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
+  };
+}
+
+/// A request message for BulkCreateAdAssets.
+class BulkCreateAdAssetsRequest {
+  /// Ad assets to create.
+  ///
+  /// Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// Required.
+  core.List<AdAsset>? adAssets;
+
+  BulkCreateAdAssetsRequest({this.adAssets});
+
+  BulkCreateAdAssetsRequest.fromJson(core.Map json_)
+    : this(
+        adAssets:
+            (json_['adAssets'] as core.List?)
+                ?.map(
+                  (value) => AdAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAssets != null) 'adAssets': adAssets!,
+  };
+}
+
+/// A response message for BulkCreateAdAssets.
+class BulkCreateAdAssetsResponse {
+  /// The created ad assets.
+  core.List<AdAsset>? adAssets;
+
+  BulkCreateAdAssetsResponse({this.adAssets});
+
+  BulkCreateAdAssetsResponse.fromJson(core.Map json_)
+    : this(
+        adAssets:
+            (json_['adAssets'] as core.List?)
+                ?.map(
+                  (value) => AdAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAssets != null) 'adAssets': adAssets!,
   };
 }
 
@@ -17009,6 +18639,32 @@ class ConversionCountingConfig {
 /// Counter event of the creative.
 typedef CounterEvent = $CounterEvent;
 
+/// A request message for CreateAdAsset.
+class CreateAdAssetRequest {
+  /// The ad asset to create.
+  ///
+  /// Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
+  ///
+  /// Required.
+  AdAsset? adAsset;
+
+  CreateAdAssetRequest({this.adAsset});
+
+  CreateAdAssetRequest.fromJson(core.Map json_)
+    : this(
+        adAsset:
+            json_.containsKey('adAsset')
+                ? AdAsset.fromJson(
+                  json_['adAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAsset != null) 'adAsset': adAsset!,
+  };
+}
+
 /// A request message for CreateAsset.
 typedef CreateAssetRequest = $CreateAssetRequest;
 
@@ -17242,6 +18898,8 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
   /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_9_1" : SDF version 9.1.
+  /// - "SDF_VERSION_9_2" : SDF version 9.2.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -19056,7 +20714,7 @@ class FirstPartyAndPartnerAudience {
 
   /// The type of the audience.
   ///
-  /// Output only.
+  /// Immutable.
   /// Possible string values are:
   /// - "AUDIENCE_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown.
@@ -19076,6 +20734,7 @@ class FirstPartyAndPartnerAudience {
   /// - "THIRD_PARTY" : Audience has been licensed for use from a third party.
   /// - "COMMERCE" : Audience provided by commerce partners for a fee.
   /// - "LINEAR" : Audience for Linear TV content.
+  /// - "AGENCY" : Audience provided by an agency.
   core.String? audienceType;
 
   /// Input only.
@@ -19088,7 +20747,7 @@ class FirstPartyAndPartnerAudience {
   ///
   /// Only applicable to first party audiences.
   ///
-  /// Output only.
+  /// Optional.
   core.String? description;
 
   /// The estimated audience size for the Display network.
@@ -19132,7 +20791,7 @@ class FirstPartyAndPartnerAudience {
 
   /// The display name of the first party and partner audience.
   ///
-  /// Output only.
+  /// Optional.
   core.String? displayName;
 
   /// Identifier.
@@ -19170,7 +20829,7 @@ class FirstPartyAndPartnerAudience {
   /// following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` *
   /// `CUSTOMER_MATCH_DEVICE_ID`
   ///
-  /// Output only.
+  /// Optional.
   core.String? membershipDurationDays;
 
   /// Input only.
@@ -19629,11 +21288,9 @@ class GenerateDefaultLineItemRequest {
   /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
   /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
   /// not otherwise specified. This field can then be updated using the UI, API,
-  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
-  /// field must be set. If not, either the value
-  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line
-  /// item if the parent advertiser has declared that it does not serve EU
-  /// political ads, or **the request will fail**.
+  /// or Structured Data Files. This field must be assigned when creating a new
+  /// line item. Otherwise, **the `advertisers.lineItems.create` request will
+  /// fail**.
   /// Possible string values are:
   /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
   /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
@@ -19942,6 +21599,8 @@ class GuaranteedOrder {
   /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
   /// - "EXCHANGE_SPOTIFY" : Spotify.
   /// - "EXCHANGE_TUBI" : Tubi.
+  /// - "EXCHANGE_SNAP" : Snap.
+  /// - "EXCHANGE_CADENT" : Cadent.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -20552,6 +22211,8 @@ typedef IntegralAdScience = $IntegralAdScience;
 typedef IntegrationDetails = $IntegrationDetails;
 
 /// An inventory source.
+///
+/// Next ID: 22
 class InventorySource {
   /// Whether the inventory source has a guaranteed or non-guaranteed delivery.
   /// Possible string values are:
@@ -20686,6 +22347,8 @@ class InventorySource {
   /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
   /// - "EXCHANGE_SPOTIFY" : Spotify.
   /// - "EXCHANGE_TUBI" : Tubi.
+  /// - "EXCHANGE_SNAP" : Snap.
+  /// - "EXCHANGE_CADENT" : Cadent.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -21254,11 +22917,9 @@ class LineItem {
   /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
   /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
   /// not otherwise specified. This field can then be updated using the UI, API,
-  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
-  /// field must be set when creating a new line item. If not, either the value
-  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned if the parent
-  /// advertiser has declared that it does not serve EU political ads, or **the
-  /// `advertisers.lineItems.create` request will fail**.
+  /// or Structured Data Files. This field must be assigned when creating a new
+  /// line item. Otherwise, **the `advertisers.lineItems.create` request will
+  /// fail**.
   /// Possible string values are:
   /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
   /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
@@ -21731,8 +23392,43 @@ class LineItemFlight {
   };
 }
 
+/// A response message for ListAdAssets.
+class ListAdAssetsResponse {
+  /// The list of ad assets.
+  ///
+  /// The list will only contain assets of AdAssetType
+  /// `AD_ASSET_TYPE_YOUTUBE_VIDEO`. This list will be absent if empty.
+  core.List<AdAsset>? adAssets;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListAdAssets` method to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  ListAdAssetsResponse({this.adAssets, this.nextPageToken});
+
+  ListAdAssetsResponse.fromJson(core.Map json_)
+    : this(
+        adAssets:
+            (json_['adAssets'] as core.List?)
+                ?.map(
+                  (value) => AdAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAssets != null) 'adAssets': adAssets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 class ListAdGroupAdsResponse {
-  /// The list of ad group ads.
+  /// The list of ads.
   ///
   /// This list will be absent if empty.
   core.List<AdGroupAd>? adGroupAds;
@@ -22974,6 +24670,46 @@ class ListUsersResponse {
   };
 }
 
+/// Response message for
+/// YoutubeAssetAssociationService.ListYoutubeAssetAssociations.
+class ListYoutubeAssetAssociationsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListYoutubeAssetAssociations` method to retrieve the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  /// The list of asset associations.
+  ///
+  /// This list will be absent if empty.
+  core.List<YoutubeAssetAssociation>? youtubeAssetAssociations;
+
+  ListYoutubeAssetAssociationsResponse({
+    this.nextPageToken,
+    this.youtubeAssetAssociations,
+  });
+
+  ListYoutubeAssetAssociationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        youtubeAssetAssociations:
+            (json_['youtubeAssetAssociations'] as core.List?)
+                ?.map(
+                  (value) => YoutubeAssetAssociation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (youtubeAssetAssociations != null)
+      'youtubeAssetAssociations': youtubeAssetAssociations!,
+  };
+}
+
 /// A list of locations used for targeting.
 typedef LocationList = $LocationList;
 
@@ -23094,7 +24830,76 @@ class MastheadAd {
 
 /// A strategy that automatically adjusts the bid to optimize a specified
 /// performance goal while spending the full budget.
-typedef MaximizeSpendBidStrategy = $MaximizeSpendBidStrategy;
+class MaximizeSpendBidStrategy {
+  /// The ID of the Custom Bidding Algorithm used by this strategy.
+  ///
+  /// Only applicable when performance_goal_type is set to
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+  /// bidding algorithm that uses floodlight activities not identified in
+  /// floodlightActivityConfigs will return an error.
+  core.String? customBiddingAlgorithmId;
+
+  /// The maximum average CPM that may be bid, in micros of the advertiser's
+  /// currency.
+  ///
+  /// Must be greater than or equal to a billable unit of the given currency.
+  /// For example, 1500000 represents 1.5 standard units of the currency.
+  core.String? maxAverageCpmBidAmountMicros;
+
+  /// The type of the performance goal that the bidding strategy tries to
+  /// minimize while spending the full budget.
+  ///
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for
+  /// this strategy.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
+  /// specified or is unknown in this version.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
+  /// algorithm.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
+  /// audible views.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
+  /// secs views.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
+  /// impressions.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH" : Maximize reach.
+  core.String? performanceGoalType;
+
+  /// Whether the strategy takes deal floor prices into account.
+  core.bool? raiseBidForDeals;
+
+  MaximizeSpendBidStrategy({
+    this.customBiddingAlgorithmId,
+    this.maxAverageCpmBidAmountMicros,
+    this.performanceGoalType,
+    this.raiseBidForDeals,
+  });
+
+  MaximizeSpendBidStrategy.fromJson(core.Map json_)
+    : this(
+        customBiddingAlgorithmId:
+            json_['customBiddingAlgorithmId'] as core.String?,
+        maxAverageCpmBidAmountMicros:
+            json_['maxAverageCpmBidAmountMicros'] as core.String?,
+        performanceGoalType: json_['performanceGoalType'] as core.String?,
+        raiseBidForDeals: json_['raiseBidForDeals'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customBiddingAlgorithmId != null)
+      'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+    if (maxAverageCpmBidAmountMicros != null)
+      'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
+    if (performanceGoalType != null)
+      'performanceGoalType': performanceGoalType!,
+    if (raiseBidForDeals != null) 'raiseBidForDeals': raiseBidForDeals!,
+  };
+}
 
 /// Measurement settings of a partner.
 typedef MeasurementConfig = $MeasurementConfig;
@@ -23640,7 +25445,105 @@ typedef PerformanceGoal = $PerformanceGoal;
 
 /// A strategy that automatically adjusts the bid to meet or beat a specified
 /// performance goal.
-typedef PerformanceGoalBidStrategy = $PerformanceGoalBidStrategy;
+class PerformanceGoalBidStrategy {
+  /// The ID of the Custom Bidding Algorithm used by this strategy.
+  ///
+  /// Only applicable when performance_goal_type is set to
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+  /// bidding algorithm that uses floodlight activities not identified in
+  /// floodlightActivityConfigs will return an error.
+  core.String? customBiddingAlgorithmId;
+
+  /// The maximum average CPM that may be bid, in micros of the advertiser's
+  /// currency.
+  ///
+  /// Must be greater than or equal to a billable unit of the given currency.
+  /// Not applicable when performance_goal_type is set to
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example,
+  /// 1500000 represents 1.5 standard units of the currency.
+  core.String? maxAverageCpmBidAmountMicros;
+
+  /// The performance goal the bidding strategy will attempt to meet or beat, in
+  /// micros of the advertiser's currency or in micro of the ROAS (Return On
+  /// Advertising Spend) value which is also based on advertiser's currency.
+  ///
+  /// Must be greater than or equal to a billable unit of the given currency and
+  /// smaller or equal to upper bounds. Each performance_goal_type has its upper
+  /// bound: * when performance_goal_type is
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD.
+  /// * when performance_goal_type is
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD.
+  /// * when performance_goal_type is
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is
+  /// 1000.00 USD. * when performance_goal_type is
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
+  /// 1000.00 and lower bound is 0.01. Example: If set to
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will
+  /// be based on the probability that each available impression will be
+  /// viewable. For example, if viewable CPM target is $2 and an impression is
+  /// 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
+  /// For example, 1500000 represents 1.5 standard units of the currency or ROAS
+  /// value.
+  ///
+  /// Required.
+  core.String? performanceGoalAmountMicros;
+
+  /// The type of the performance goal that the bidding strategy will try to
+  /// meet or beat.
+  ///
+  /// For line item level usage, the value must be one of: *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
+  /// specified or is unknown in this version.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
+  /// algorithm.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
+  /// audible views.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
+  /// secs views.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
+  /// impressions.
+  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH" : Maximize reach.
+  core.String? performanceGoalType;
+
+  PerformanceGoalBidStrategy({
+    this.customBiddingAlgorithmId,
+    this.maxAverageCpmBidAmountMicros,
+    this.performanceGoalAmountMicros,
+    this.performanceGoalType,
+  });
+
+  PerformanceGoalBidStrategy.fromJson(core.Map json_)
+    : this(
+        customBiddingAlgorithmId:
+            json_['customBiddingAlgorithmId'] as core.String?,
+        maxAverageCpmBidAmountMicros:
+            json_['maxAverageCpmBidAmountMicros'] as core.String?,
+        performanceGoalAmountMicros:
+            json_['performanceGoalAmountMicros'] as core.String?,
+        performanceGoalType: json_['performanceGoalType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customBiddingAlgorithmId != null)
+      'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+    if (maxAverageCpmBidAmountMicros != null)
+      'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
+    if (performanceGoalAmountMicros != null)
+      'performanceGoalAmountMicros': performanceGoalAmountMicros!,
+    if (performanceGoalType != null)
+      'performanceGoalType': performanceGoalType!,
+  };
+}
 
 /// Details for assigned POI targeting option.
 ///
@@ -23802,6 +25705,7 @@ class RateDetails {
   /// - "INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED" : The rate type is CPM (Fixed).
   /// - "INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR" : The rate type is CPM (Floor).
   /// - "INVENTORY_SOURCE_RATE_TYPE_CPD" : The rate type is Cost per Day.
+  /// - "INVENTORY_SOURCE_RATE_TYPE_CPH" : The rate type is Cost per Hour.
   /// - "INVENTORY_SOURCE_RATE_TYPE_FLAT" : The rate type is Flat.
   core.String? inventorySourceRateType;
 
@@ -25084,6 +26988,62 @@ class Transcode {
 /// This is part of the VAST 4.0 standard.
 typedef UniversalAdId = $UniversalAdId00;
 
+/// A request message for UploadAdAsset.
+class UploadAdAssetRequest {
+  /// The type of the ad asset.
+  ///
+  /// Only `AD_ASSET_TYPE_IMAGE` is supported.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AD_ASSET_TYPE_UNSPECIFIED" : The ad asset type is unspecified.
+  /// - "AD_ASSET_TYPE_IMAGE" : The ad asset is a YouTube/DemandGen image.
+  /// - "AD_ASSET_TYPE_YOUTUBE_VIDEO" : The ad asset is a YouTube video.
+  core.String? adAssetType;
+
+  /// The filename of the ad asset, including the file extension.
+  ///
+  /// The filename must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? filename;
+
+  UploadAdAssetRequest({this.adAssetType, this.filename});
+
+  UploadAdAssetRequest.fromJson(core.Map json_)
+    : this(
+        adAssetType: json_['adAssetType'] as core.String?,
+        filename: json_['filename'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAssetType != null) 'adAssetType': adAssetType!,
+    if (filename != null) 'filename': filename!,
+  };
+}
+
+/// A response message for UploadAdAsset.
+class UploadAdAssetResponse {
+  /// The created ad asset.
+  AdAsset? adAsset;
+
+  UploadAdAssetResponse({this.adAsset});
+
+  UploadAdAssetResponse.fromJson(core.Map json_)
+    : this(
+        adAsset:
+            json_.containsKey('adAsset')
+                ? AdAsset.fromJson(
+                  json_['adAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adAsset != null) 'adAsset': adAsset!,
+  };
+}
+
 /// Details for assigned URL targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -25605,12 +27565,393 @@ class YoutubeAndPartnersSettings {
   };
 }
 
+/// An association between a resource and a YouTube asset.
+class YoutubeAssetAssociation {
+  /// The YouTube asset associated with the resource.
+  ///
+  /// Required.
+  YoutubeAssetAssociationLinkedYouTubeAsset? linkedYoutubeAsset;
+
+  /// Identifier.
+  ///
+  /// The resource name of the association. For line item-level associations:
+  /// The name pattern is
+  /// `advertisers/{advertiser_id}/lineItems/{line_item_id}/youtubeAssetTypes/{youtube_asset_type}/youtubeAssetAssociations/{youtube_asset_association_id}`.
+  /// For ad group-level associations: The name pattern is
+  /// `advertisers/{advertiser_id}/adGroups/{ad_group_id}/youtubeAssetTypes/{youtube_asset_type}/youtubeAssetAssociations/{youtube_asset_association_id}`.
+  /// For `YOUTUBE_ASSET_TYPE_LOCATION` and
+  /// `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION` associations:
+  /// `youtube_asset_association_id` is the ID of the asset set linked, or 0 if
+  /// the location_matching_type or affiliate_location_matching_type is
+  /// `DISABLED`. For `YOUTUBE_ASSET_TYPE_SITELINK` associations:
+  /// `youtube_asset_association_id` is be the ID of the sitelink asset linked.
+  core.String? name;
+
+  /// The type of YouTube asset associated with the resource.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "YOUTUBE_ASSET_TYPE_UNSPECIFIED" : YouTube asset type is not specified
+  /// or is unknown in this version.
+  /// - "YOUTUBE_ASSET_TYPE_LOCATION" : Location asset.
+  /// - "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION" : Affiliate location asset.
+  /// - "YOUTUBE_ASSET_TYPE_SITELINK" : Sitelink asset.
+  core.String? youtubeAssetType;
+
+  YoutubeAssetAssociation({
+    this.linkedYoutubeAsset,
+    this.name,
+    this.youtubeAssetType,
+  });
+
+  YoutubeAssetAssociation.fromJson(core.Map json_)
+    : this(
+        linkedYoutubeAsset:
+            json_.containsKey('linkedYoutubeAsset')
+                ? YoutubeAssetAssociationLinkedYouTubeAsset.fromJson(
+                  json_['linkedYoutubeAsset']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        youtubeAssetType: json_['youtubeAssetType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (linkedYoutubeAsset != null) 'linkedYoutubeAsset': linkedYoutubeAsset!,
+    if (name != null) 'name': name!,
+    if (youtubeAssetType != null) 'youtubeAssetType': youtubeAssetType!,
+  };
+}
+
+/// An asset filter that matches eligible affiliate location assets for serving.
+class YoutubeAssetAssociationAffiliateLocationAssetFilter {
+  /// The matching function that determines how the affiliate location asset
+  /// filter matches affiliate location assets.
+  ///
+  /// This field is required and can only be set for if
+  /// affiliate_location_matching_type is `SELECTED_CHAINS`.
+  ///
+  /// Optional.
+  YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction?
+  affiliateLocationMatchingFunction;
+
+  /// The matching type of this affiliate location asset filter.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AFFILIATE_LOCATION_MATCHING_TYPE_UNSPECIFIED" : Affiliate location
+  /// matching type is not specified or is unknown in this version.
+  /// - "SELECT_ALL" : All available affiliate location assets are eligible for
+  /// serving.
+  /// - "SELECTED_CHAINS" : The selected affiliate location assets can serve.
+  /// - "DISABLED" : No affiliate location assets can serve.
+  core.String? affiliateLocationMatchingType;
+
+  /// The ID of the asset set that matches the affiliate location assets
+  /// eligible for serving.
+  ///
+  /// Output only.
+  core.String? assetSetId;
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilter({
+    this.affiliateLocationMatchingFunction,
+    this.affiliateLocationMatchingType,
+    this.assetSetId,
+  });
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilter.fromJson(core.Map json_)
+    : this(
+        affiliateLocationMatchingFunction:
+            json_.containsKey('affiliateLocationMatchingFunction')
+                ? YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction.fromJson(
+                  json_['affiliateLocationMatchingFunction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        affiliateLocationMatchingType:
+            json_['affiliateLocationMatchingType'] as core.String?,
+        assetSetId: json_['assetSetId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (affiliateLocationMatchingFunction != null)
+      'affiliateLocationMatchingFunction': affiliateLocationMatchingFunction!,
+    if (affiliateLocationMatchingType != null)
+      'affiliateLocationMatchingType': affiliateLocationMatchingType!,
+    if (assetSetId != null) 'assetSetId': assetSetId!,
+  };
+}
+
+/// A chain of affiliate locations.
+class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain {
+  /// ID of the affiliate location chain.
+  ///
+  /// Required.
+  core.String? chainId;
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain({
+    this.chainId,
+  });
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain.fromJson(
+    core.Map json_,
+  ) : this(chainId: json_['chainId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (chainId != null) 'chainId': chainId!,
+  };
+}
+
+/// The matching function for an affiliate location asset filter.
+class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction {
+  /// The selected affiliate location chain IDs.
+  ///
+  /// This field is required if affiliate_location_matching_type is
+  /// `SELECTED_CHAINS`.
+  ///
+  /// Optional.
+  core.List<
+    YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain
+  >?
+  chains;
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction({
+    this.chains,
+  });
+
+  YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction.fromJson(
+    core.Map json_,
+  ) : this(
+        chains:
+            (json_['chains'] as core.List?)
+                ?.map(
+                  (value) =>
+                      YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (chains != null) 'chains': chains!,
+  };
+}
+
+/// A YouTube asset linked to a resource in a YoutubeAssetAssociation.
+class YoutubeAssetAssociationLinkedYouTubeAsset {
+  /// An affiliate location asset filter.
+  ///
+  /// This can be set only when youtube_asset_type is
+  /// `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION`.
+  YoutubeAssetAssociationAffiliateLocationAssetFilter?
+  affiliateLocationAssetFilter;
+
+  /// A location asset filter.
+  ///
+  /// This can be set only when youtube_asset_type is
+  /// `YOUTUBE_ASSET_TYPE_LOCATION`.
+  YoutubeAssetAssociationLocationAssetFilter? locationAssetFilter;
+
+  /// A sitelink asset.
+  ///
+  /// This can be set only when youtube_asset_type is
+  /// `YOUTUBE_ASSET_TYPE_SITELINK`.
+  YoutubeAssetAssociationSitelinkAsset? sitelinkAsset;
+
+  YoutubeAssetAssociationLinkedYouTubeAsset({
+    this.affiliateLocationAssetFilter,
+    this.locationAssetFilter,
+    this.sitelinkAsset,
+  });
+
+  YoutubeAssetAssociationLinkedYouTubeAsset.fromJson(core.Map json_)
+    : this(
+        affiliateLocationAssetFilter:
+            json_.containsKey('affiliateLocationAssetFilter')
+                ? YoutubeAssetAssociationAffiliateLocationAssetFilter.fromJson(
+                  json_['affiliateLocationAssetFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationAssetFilter:
+            json_.containsKey('locationAssetFilter')
+                ? YoutubeAssetAssociationLocationAssetFilter.fromJson(
+                  json_['locationAssetFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sitelinkAsset:
+            json_.containsKey('sitelinkAsset')
+                ? YoutubeAssetAssociationSitelinkAsset.fromJson(
+                  json_['sitelinkAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (affiliateLocationAssetFilter != null)
+      'affiliateLocationAssetFilter': affiliateLocationAssetFilter!,
+    if (locationAssetFilter != null)
+      'locationAssetFilter': locationAssetFilter!,
+    if (sitelinkAsset != null) 'sitelinkAsset': sitelinkAsset!,
+  };
+}
+
+/// An asset filter that matches eligible location assets for serving.
+class YoutubeAssetAssociationLocationAssetFilter {
+  /// The ID of the asset set that matches the location assets eligible for
+  /// serving.
+  ///
+  /// Output only.
+  core.String? assetSetId;
+
+  /// The matching function that determines how the location asset filter
+  /// matches location assets.
+  ///
+  /// This field is required and can only be set for if location_matching_type
+  /// is `FILTER` or `SELECTED_ASSETS`.
+  ///
+  /// Optional.
+  YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction?
+  locationMatchingFunction;
+
+  /// The matching type of this location asset filter.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOCATION_MATCHING_TYPE_UNSPECIFIED" : Location matching type is not
+  /// specified or is unknown in this version.
+  /// - "SELECT_ALL" : All available location assets are eligible for serving.
+  /// - "FILTER" : The location assets that match a provided business name
+  /// and/or label filters can serve.
+  /// - "SELECTED_ASSETS" : Only the selected location assets can serve.
+  /// - "DISABLED" : No location assets can serve.
+  core.String? locationMatchingType;
+
+  YoutubeAssetAssociationLocationAssetFilter({
+    this.assetSetId,
+    this.locationMatchingFunction,
+    this.locationMatchingType,
+  });
+
+  YoutubeAssetAssociationLocationAssetFilter.fromJson(core.Map json_)
+    : this(
+        assetSetId: json_['assetSetId'] as core.String?,
+        locationMatchingFunction:
+            json_.containsKey('locationMatchingFunction')
+                ? YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction.fromJson(
+                  json_['locationMatchingFunction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationMatchingType: json_['locationMatchingType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (assetSetId != null) 'assetSetId': assetSetId!,
+    if (locationMatchingFunction != null)
+      'locationMatchingFunction': locationMatchingFunction!,
+    if (locationMatchingType != null)
+      'locationMatchingType': locationMatchingType!,
+  };
+}
+
+/// The matching function for a location asset filter.
+class YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction {
+  /// The business name to match with.
+  ///
+  /// This field is optional and can only be set if location_matching_type is
+  /// `FILTER`.
+  ///
+  /// Optional.
+  core.String? business;
+
+  /// The labels to match with.
+  ///
+  /// Labels are logically OR'ed together. This field is optional and can only
+  /// be set if location_matching_type is `FILTER`.
+  ///
+  /// Optional.
+  core.List<core.String>? labels;
+
+  /// The selected location asset IDs.
+  ///
+  /// This field is required if location_matching_type is `SELECTED_ASSETS`.
+  ///
+  /// Optional.
+  core.List<core.String>? locationAssetIds;
+
+  YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction({
+    this.business,
+    this.labels,
+    this.locationAssetIds,
+  });
+
+  YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction.fromJson(
+    core.Map json_,
+  ) : this(
+        business: json_['business'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        locationAssetIds:
+            (json_['locationAssetIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (business != null) 'business': business!,
+    if (labels != null) 'labels': labels!,
+    if (locationAssetIds != null) 'locationAssetIds': locationAssetIds!,
+  };
+}
+
+/// A sitelink asset.
+class YoutubeAssetAssociationSitelinkAsset {
+  /// ID of the sitelink asset.
+  ///
+  /// Required.
+  core.String? assetId;
+
+  YoutubeAssetAssociationSitelinkAsset({this.assetId});
+
+  YoutubeAssetAssociationSitelinkAsset.fromJson(core.Map json_)
+    : this(assetId: json_['assetId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (assetId != null) 'assetId': assetId!,
+  };
+}
+
 /// Details for YouTube channel assigned targeting option.
 ///
 /// This will be populated in the youtube_channel_details field when
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
 typedef YoutubeChannelAssignedTargetingOptionDetails =
     $YoutubeChannelAssignedTargetingOptionDetails;
+
+/// Data for a YouTube video ad asset.
+class YoutubeVideoAsset {
+  /// The YouTube video id of the asset.
+  ///
+  /// This is the 11 char string value used in the YouTube video URL.
+  ///
+  /// Required.
+  core.String? youtubeVideoId;
+
+  YoutubeVideoAsset({this.youtubeVideoId});
+
+  YoutubeVideoAsset.fromJson(core.Map json_)
+    : this(youtubeVideoId: json_['youtubeVideoId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (youtubeVideoId != null) 'youtubeVideoId': youtubeVideoId!,
+  };
+}
 
 /// Details for YouTube video assigned targeting option.
 ///

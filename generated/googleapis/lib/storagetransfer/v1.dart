@@ -766,6 +766,14 @@ class TransferOperationsResource {
   ///
   /// [pageToken] - The list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -781,12 +789,15 @@ class TransferOperationsResource {
     core.String filter, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1086,6 +1097,13 @@ class AwsS3Data {
   /// with a '/'.
   core.String? path;
 
+  /// Service Directory Service to be used as the endpoint for transfers from a
+  /// custom VPC.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/namespaces/{namespace}/services/{service}`
+  core.String? privateNetworkService;
+
   /// The Amazon Resource Name (ARN) of the role to support temporary
   /// credentials via `AssumeRoleWithWebIdentity`.
   ///
@@ -1103,6 +1121,7 @@ class AwsS3Data {
     this.credentialsSecret,
     this.managedPrivateNetwork,
     this.path,
+    this.privateNetworkService,
     this.roleArn,
   });
 
@@ -1119,6 +1138,7 @@ class AwsS3Data {
         credentialsSecret: json_['credentialsSecret'] as core.String?,
         managedPrivateNetwork: json_['managedPrivateNetwork'] as core.bool?,
         path: json_['path'] as core.String?,
+        privateNetworkService: json_['privateNetworkService'] as core.String?,
         roleArn: json_['roleArn'] as core.String?,
       );
 
@@ -1130,6 +1150,8 @@ class AwsS3Data {
     if (managedPrivateNetwork != null)
       'managedPrivateNetwork': managedPrivateNetwork!,
     if (path != null) 'path': path!,
+    if (privateNetworkService != null)
+      'privateNetworkService': privateNetworkService!,
     if (roleArn != null) 'roleArn': roleArn!,
   };
 }
@@ -1185,6 +1207,13 @@ class AzureBlobStorageData {
   /// with a '/'.
   core.String? path;
 
+  /// Service Directory Service to be used as the endpoint for transfers from a
+  /// custom VPC.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/namespaces/{namespace}/services/{service}`
+  core.String? privateNetworkService;
+
   /// The name of the Azure Storage account.
   ///
   /// Required.
@@ -1196,6 +1225,7 @@ class AzureBlobStorageData {
     this.credentialsSecret,
     this.federatedIdentityConfig,
     this.path,
+    this.privateNetworkService,
     this.storageAccount,
   });
 
@@ -1218,6 +1248,7 @@ class AzureBlobStorageData {
                 )
                 : null,
         path: json_['path'] as core.String?,
+        privateNetworkService: json_['privateNetworkService'] as core.String?,
         storageAccount: json_['storageAccount'] as core.String?,
       );
 
@@ -1228,6 +1259,8 @@ class AzureBlobStorageData {
     if (federatedIdentityConfig != null)
       'federatedIdentityConfig': federatedIdentityConfig!,
     if (path != null) 'path': path!,
+    if (privateNetworkService != null)
+      'privateNetworkService': privateNetworkService!,
     if (storageAccount != null) 'storageAccount': storageAccount!,
   };
 }
@@ -1545,7 +1578,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1558,11 +1603,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1938,6 +1988,11 @@ class ObjectConditions {
   /// `last_modified_before` to the end of the day
   core.String? lastModifiedSince;
 
+  /// If specified, only objects matching this glob are transferred.
+  ///
+  /// Optional.
+  core.String? matchGlob;
+
   /// Ensures that objects are not transferred if a specific maximum time has
   /// elapsed since the "last modification time".
   ///
@@ -1964,6 +2019,7 @@ class ObjectConditions {
     this.includePrefixes,
     this.lastModifiedBefore,
     this.lastModifiedSince,
+    this.matchGlob,
     this.maxTimeElapsedSinceLastModification,
     this.minTimeElapsedSinceLastModification,
   });
@@ -1980,6 +2036,7 @@ class ObjectConditions {
                 .toList(),
         lastModifiedBefore: json_['lastModifiedBefore'] as core.String?,
         lastModifiedSince: json_['lastModifiedSince'] as core.String?,
+        matchGlob: json_['matchGlob'] as core.String?,
         maxTimeElapsedSinceLastModification:
             json_['maxTimeElapsedSinceLastModification'] as core.String?,
         minTimeElapsedSinceLastModification:
@@ -1991,6 +2048,7 @@ class ObjectConditions {
     if (includePrefixes != null) 'includePrefixes': includePrefixes!,
     if (lastModifiedBefore != null) 'lastModifiedBefore': lastModifiedBefore!,
     if (lastModifiedSince != null) 'lastModifiedSince': lastModifiedSince!,
+    if (matchGlob != null) 'matchGlob': matchGlob!,
     if (maxTimeElapsedSinceLastModification != null)
       'maxTimeElapsedSinceLastModification':
           maxTimeElapsedSinceLastModification!,
@@ -2445,13 +2503,10 @@ class TransferJob {
   /// permissions.
   ///
   /// You can grant Cloud Storage bucket permissions to this service account
-  /// instead of to the Transfer Service service agent. Format is
-  /// `projects/-/serviceAccounts/ACCOUNT_EMAIL_OR_UNIQUEID` Either the service
+  /// instead of to the Transfer Service service agent. Either the service
   /// account email (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`)
-  /// or the unique ID (`123456789012345678901`) are accepted in the string. The
-  /// `-` wildcard character is required; replacing it with a project ID is
-  /// invalid. See
-  /// https://cloud.google.com//storage-transfer/docs/delegate-service-agent-permissions
+  /// or the unique ID (`123456789012345678901`) are accepted. See
+  /// https://docs.cloud.google.com/storage-transfer/docs/delegate-service-agent-permissions
   /// for required permissions.
   ///
   /// Optional.

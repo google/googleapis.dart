@@ -33,6 +33,8 @@
 ///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource]
 ///       - [ProjectsLocationsKeyRingsImportJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsSingleTenantHsmInstancesResource]
+///       - [ProjectsLocationsSingleTenantHsmInstancesProposalsResource]
 library;
 
 import 'dart:async' as async;
@@ -122,8 +124,8 @@ class FoldersResource {
     );
   }
 
-  /// Gets the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// Request parameters:
   ///
@@ -161,7 +163,7 @@ class FoldersResource {
     );
   }
 
-  /// Updates the AutokeyConfig for a folder.
+  /// Updates the AutokeyConfig for a folder or a project.
   ///
   /// The caller must have both `cloudkms.autokeyConfigs.update` permission on
   /// the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the
@@ -175,7 +177,6 @@ class FoldersResource {
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
   /// `folders/{FOLDER_NUMBER}/autokeyConfig`
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -216,8 +217,8 @@ class FoldersResource {
     );
   }
 
-  /// Updates the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -271,8 +272,8 @@ class OrganizationsResource {
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// Request parameters:
   ///
@@ -310,8 +311,8 @@ class OrganizationsResource {
     );
   }
 
-  /// Updates the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -407,8 +408,8 @@ class ProjectsResource {
     );
   }
 
-  /// Gets the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// Request parameters:
   ///
@@ -574,7 +575,7 @@ class ProjectsResource {
     );
   }
 
-  /// Updates the AutokeyConfig for a folder.
+  /// Updates the AutokeyConfig for a folder or a project.
   ///
   /// The caller must have both `cloudkms.autokeyConfigs.update` permission on
   /// the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the
@@ -588,7 +589,6 @@ class ProjectsResource {
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
   /// `folders/{FOLDER_NUMBER}/autokeyConfig`
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   /// Value must have pattern `^projects/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -629,8 +629,8 @@ class ProjectsResource {
     );
   }
 
-  /// Updates the KeyAccessJustificationsPolicyConfig for a given
-  /// organization/folder/projects.
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+  /// folder, or project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -692,6 +692,9 @@ class ProjectsLocationsResource {
       ProjectsLocationsKeyRingsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsSingleTenantHsmInstancesResource
+  get singleTenantHsmInstances =>
+      ProjectsLocationsSingleTenantHsmInstancesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -814,9 +817,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3557,6 +3560,544 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsSingleTenantHsmInstancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSingleTenantHsmInstancesProposalsResource get proposals =>
+      ProjectsLocationsSingleTenantHsmInstancesProposalsResource(_requester);
+
+  ProjectsLocationsSingleTenantHsmInstancesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new SingleTenantHsmInstance in a given Project and Location.
+  ///
+  /// User must create a RegisterTwoFactorAuthKeys proposal with this
+  /// single-tenant HSM instance to finish setup of the instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location associated with the
+  /// SingleTenantHsmInstance, in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [singleTenantHsmInstanceId] - Optional. It must be unique within a
+  /// location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SingleTenantHsmInstance request,
+    core.String parent, {
+    core.String? singleTenantHsmInstanceId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (singleTenantHsmInstanceId != null)
+        'singleTenantHsmInstanceId': [singleTenantHsmInstanceId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/singleTenantHsmInstances';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns metadata for a given SingleTenantHsmInstance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SingleTenantHsmInstance to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SingleTenantHsmInstance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SingleTenantHsmInstance> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SingleTenantHsmInstance.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SingleTenantHsmInstances.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location associated with the
+  /// SingleTenantHsmInstances to list, in the format `projects / * /locations /
+  /// * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For more information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the results will be sorted in the default order. For more
+  /// information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageSize] - Optional. Optional limit on the number of
+  /// SingleTenantHsmInstances to include in the response. Further
+  /// SingleTenantHsmInstances can subsequently be obtained by including the
+  /// ListSingleTenantHsmInstancesResponse.next_page_token in a subsequent
+  /// request. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListSingleTenantHsmInstancesResponse.next_page_token.
+  ///
+  /// [showDeleted] - Optional. If set to true,
+  /// HsmManagement.ListSingleTenantHsmInstances will also return
+  /// SingleTenantHsmInstances in DELETED state.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSingleTenantHsmInstancesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSingleTenantHsmInstancesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/singleTenantHsmInstances';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSingleTenantHsmInstancesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSingleTenantHsmInstancesProposalsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Approves a SingleTenantHsmInstanceProposal for a given
+  /// SingleTenantHsmInstance.
+  ///
+  /// The proposal must be in the PENDING state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SingleTenantHsmInstanceProposal to
+  /// approve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+/proposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ApproveSingleTenantHsmInstanceProposalResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApproveSingleTenantHsmInstanceProposalResponse> approve(
+    ApproveSingleTenantHsmInstanceProposalRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ApproveSingleTenantHsmInstanceProposalResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new SingleTenantHsmInstanceProposal for a given
+  /// SingleTenantHsmInstance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the SingleTenantHsmInstance associated
+  /// with the SingleTenantHsmInstanceProposals.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+$`.
+  ///
+  /// [singleTenantHsmInstanceProposalId] - Optional. It must be unique within a
+  /// location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SingleTenantHsmInstanceProposal request,
+    core.String parent, {
+    core.String? singleTenantHsmInstanceProposalId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (singleTenantHsmInstanceProposalId != null)
+        'singleTenantHsmInstanceProposalId': [
+          singleTenantHsmInstanceProposalId,
+        ],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/proposals';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a SingleTenantHsmInstanceProposal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SingleTenantHsmInstanceProposal to
+  /// delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+/proposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a SingleTenantHsmInstanceProposal for a given
+  /// SingleTenantHsmInstance.
+  ///
+  /// The proposal must be in the APPROVED state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SingleTenantHsmInstanceProposal to
+  /// execute.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+/proposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> execute(
+    ExecuteSingleTenantHsmInstanceProposalRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':execute';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns metadata for a given SingleTenantHsmInstanceProposal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SingleTenantHsmInstanceProposal to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+/proposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SingleTenantHsmInstanceProposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SingleTenantHsmInstanceProposal> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SingleTenantHsmInstanceProposal.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SingleTenantHsmInstanceProposals.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the single tenant HSM instance
+  /// associated with the SingleTenantHsmInstanceProposals to list, in the
+  /// format `projects / * /locations / * /singleTenantHsmInstances / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/singleTenantHsmInstances/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For more information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the results will be sorted in the default order. For more
+  /// information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageSize] - Optional. Optional limit on the number of
+  /// SingleTenantHsmInstanceProposals to include in the response. Further
+  /// SingleTenantHsmInstanceProposals can subsequently be obtained by including
+  /// the ListSingleTenantHsmInstanceProposalsResponse.next_page_token in a
+  /// subsequent request. If unspecified, the server will pick an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListSingleTenantHsmInstanceProposalsResponse.next_page_token.
+  ///
+  /// [showDeleted] - Optional. If set to true,
+  /// HsmManagement.ListSingleTenantHsmInstanceProposals will also return
+  /// SingleTenantHsmInstanceProposals in DELETED state.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSingleTenantHsmInstanceProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSingleTenantHsmInstanceProposalsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/proposals';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSingleTenantHsmInstanceProposalsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+/// Add a quorum member to the SingleTenantHsmInstance.
+///
+/// This will increase the total_approver_count by 1. The
+/// SingleTenantHsmInstance must be in the ACTIVE state to perform this
+/// operation.
+class AddQuorumMember {
+  /// The public key associated with the 2FA key for the new quorum member to
+  /// add.
+  ///
+  /// Public keys must be associated with RSA 2048 keys.
+  ///
+  /// Required.
+  core.String? twoFactorPublicKeyPem;
+
+  AddQuorumMember({this.twoFactorPublicKeyPem});
+
+  AddQuorumMember.fromJson(core.Map json_)
+    : this(
+        twoFactorPublicKeyPem: json_['twoFactorPublicKeyPem'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (twoFactorPublicKeyPem != null)
+      'twoFactorPublicKeyPem': twoFactorPublicKeyPem!,
+  };
+}
+
+/// Request message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
+class ApproveSingleTenantHsmInstanceProposalRequest {
+  /// The reply to QuorumParameters for approving the proposal.
+  ///
+  /// Required.
+  QuorumReply? quorumReply;
+
+  /// The reply to RequiredActionQuorumParameters for approving the proposal.
+  ///
+  /// Required.
+  RequiredActionQuorumReply? requiredActionQuorumReply;
+
+  ApproveSingleTenantHsmInstanceProposalRequest({
+    this.quorumReply,
+    this.requiredActionQuorumReply,
+  });
+
+  ApproveSingleTenantHsmInstanceProposalRequest.fromJson(core.Map json_)
+    : this(
+        quorumReply:
+            json_.containsKey('quorumReply')
+                ? QuorumReply.fromJson(
+                  json_['quorumReply'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requiredActionQuorumReply:
+            json_.containsKey('requiredActionQuorumReply')
+                ? RequiredActionQuorumReply.fromJson(
+                  json_['requiredActionQuorumReply']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (quorumReply != null) 'quorumReply': quorumReply!,
+    if (requiredActionQuorumReply != null)
+      'requiredActionQuorumReply': requiredActionQuorumReply!,
+  };
+}
+
+/// Response message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
+typedef ApproveSingleTenantHsmInstanceProposalResponse = $Empty;
+
 /// Request message for KeyManagementService.AsymmetricDecrypt.
 class AsymmetricDecryptRequest {
   /// The data encrypted with the named CryptoKeyVersion's public key using
@@ -3640,6 +4181,8 @@ class AsymmetricDecryptResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -3782,6 +4325,8 @@ class AsymmetricSignResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// The created signature.
@@ -3917,7 +4462,7 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Cloud KMS Autokey configuration for a folder or project.
+/// Cloud KMS Autokey configuration for a folder.
 class AutokeyConfig {
   /// A checksum computed by the server based on the value of other fields.
   ///
@@ -3943,11 +4488,34 @@ class AutokeyConfig {
   /// Optional.
   core.String? keyProject;
 
+  /// KeyProjectResolutionMode for the AutokeyConfig.
+  ///
+  /// Valid values are `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, or
+  /// `DISABLED`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED" : Default value.
+  /// KeyProjectResolutionMode when not specified will act as
+  /// `DEDICATED_KEY_PROJECT`.
+  /// - "DEDICATED_KEY_PROJECT" : Keys are created in a dedicated project
+  /// specified by `key_project`.
+  /// - "RESOURCE_PROJECT" : Keys are created in the same project as the
+  /// resource requesting the key. `key_project` must not be set when this mode
+  /// is used.
+  /// - "DISABLED" : Disables the AutokeyConfig. When this mode is set, any
+  /// AutokeyConfig from higher levels in the resource hierarchy are ignored for
+  /// this resource and its descendants. This setting can be overridden by a
+  /// more specific configuration at a lower level. For example, if Autokey is
+  /// disabled on a folder, it can be re-enabled on a sub-folder or project
+  /// within that folder by setting a different mode (e.g.,
+  /// DEDICATED_KEY_PROJECT or RESOURCE_PROJECT).
+  core.String? keyProjectResolutionMode;
+
   /// Identifier.
   ///
   /// Name of the AutokeyConfig resource, e.g.
   /// `folders/{FOLDER_NUMBER}/autokeyConfig`
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   core.String? name;
 
   /// The state for the AutokeyConfig.
@@ -3962,12 +4530,20 @@ class AutokeyConfig {
   /// reset to its default uninitialized state.
   core.String? state;
 
-  AutokeyConfig({this.etag, this.keyProject, this.name, this.state});
+  AutokeyConfig({
+    this.etag,
+    this.keyProject,
+    this.keyProjectResolutionMode,
+    this.name,
+    this.state,
+  });
 
   AutokeyConfig.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
         keyProject: json_['keyProject'] as core.String?,
+        keyProjectResolutionMode:
+            json_['keyProjectResolutionMode'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
       );
@@ -3975,6 +4551,8 @@ class AutokeyConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (etag != null) 'etag': etag!,
     if (keyProject != null) 'keyProject': keyProject!,
+    if (keyProjectResolutionMode != null)
+      'keyProjectResolutionMode': keyProjectResolutionMode!,
     if (name != null) 'name': name!,
     if (state != null) 'state': state!,
   };
@@ -4202,6 +4780,77 @@ class Certificate {
 /// https://tools.ietf.org/html/rfc5246#section-7.4.2.
 typedef CertificateChains = $CertificateChains;
 
+/// A challenge to be signed by a 2FA key.
+class Challenge {
+  /// The challenge to be signed by the 2FA key indicated by the public key.
+  ///
+  /// Output only.
+  core.String? challenge;
+  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
+
+  set challengeAsBytes(core.List<core.int> bytes_) {
+    challenge = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The public key associated with the 2FA key that should sign the challenge.
+  ///
+  /// Output only.
+  core.String? publicKeyPem;
+
+  Challenge({this.challenge, this.publicKeyPem});
+
+  Challenge.fromJson(core.Map json_)
+    : this(
+        challenge: json_['challenge'] as core.String?,
+        publicKeyPem: json_['publicKeyPem'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (challenge != null) 'challenge': challenge!,
+    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
+  };
+}
+
+/// A reply to a challenge signed by a 2FA key.
+class ChallengeReply {
+  /// The public key associated with the 2FA key.
+  ///
+  /// Required.
+  core.String? publicKeyPem;
+
+  /// The signed challenge associated with the 2FA key.
+  ///
+  /// The signature must be RSASSA-PKCS1 v1.5 with a SHA256 digest.
+  ///
+  /// Required.
+  core.String? signedChallenge;
+  core.List<core.int> get signedChallengeAsBytes =>
+      convert.base64.decode(signedChallenge!);
+
+  set signedChallengeAsBytes(core.List<core.int> bytes_) {
+    signedChallenge = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ChallengeReply({this.publicKeyPem, this.signedChallenge});
+
+  ChallengeReply.fromJson(core.Map json_)
+    : this(
+        publicKeyPem: json_['publicKeyPem'] as core.String?,
+        signedChallenge: json_['signedChallenge'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
+    if (signedChallenge != null) 'signedChallenge': signedChallenge!,
+  };
+}
+
 /// Data with integrity verification field.
 class ChecksummedData {
   /// Integrity verification field.
@@ -4259,8 +4908,11 @@ class CryptoKey {
   ///
   /// Only applicable if CryptoKeyVersions have a ProtectionLevel of
   /// EXTERNAL_VPC, with the resource name in the format `projects / *
-  /// /locations / * /ekmConnections / * `. Note, this list is non-exhaustive
-  /// and may apply to additional ProtectionLevels in the future.
+  /// /locations / * /ekmConnections / * `. Only applicable if CryptoKeyVersions
+  /// have a ProtectionLevel of HSM_SINGLE_TENANT, with the resource name in the
+  /// format `projects / * /locations / * /singleTenantHsmInstances / * `. Note,
+  /// this list is non-exhaustive and may apply to additional ProtectionLevels
+  /// in the future.
   ///
   /// Immutable.
   core.String? cryptoKeyBackend;
@@ -4506,13 +5158,26 @@ class CryptoKeyVersion {
   /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
   /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
   /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_44" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_87" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 5. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
   /// hash-based digital signature algorithm, at security level 1. Randomized
   /// pre-hash version supporting SHA256 digests.
+  /// - "PQ_SIGN_ML_DSA_44_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 1. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_65_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 3. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 5. Randomized version
+  /// supporting externally-computed message representatives.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -4606,6 +5271,8 @@ class CryptoKeyVersion {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Whether or not this key version is eligible for reimport, by being
@@ -4795,6 +5462,8 @@ class DecapsulateResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// The decapsulated shared_secret originally encapsulated with the matching
@@ -4994,6 +5663,8 @@ class DecryptResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Whether the Decryption was performed using the primary key version.
@@ -5021,6 +5692,13 @@ class DecryptResponse {
     if (usedPrimary != null) 'usedPrimary': usedPrimary!,
   };
 }
+
+/// Delete the SingleTenantHsmInstance.
+///
+/// Deleting a SingleTenantHsmInstance will make all CryptoKeys attached to the
+/// SingleTenantHsmInstance unusable. The SingleTenantHsmInstance must not be in
+/// the DELETING or DELETED state to perform this operation.
+typedef DeleteSingleTenantHsmInstance = $Empty;
 
 /// Request message for KeyManagementService.DestroyCryptoKeyVersion.
 typedef DestroyCryptoKeyVersionRequest = $Empty;
@@ -5075,6 +5753,12 @@ class Digest {
     if (sha512 != null) 'sha512': sha512!,
   };
 }
+
+/// Disable the SingleTenantHsmInstance.
+///
+/// The SingleTenantHsmInstance must be in the ACTIVE state to perform this
+/// operation.
+typedef DisableSingleTenantHsmInstance = $Empty;
 
 /// An EkmConfig is a singleton resource that represents configuration
 /// parameters that apply to all CryptoKeys and CryptoKeyVersions with a
@@ -5205,6 +5889,20 @@ class EkmConnection {
     if (serviceResolvers != null) 'serviceResolvers': serviceResolvers!,
   };
 }
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// Enable the SingleTenantHsmInstance.
+///
+/// The SingleTenantHsmInstance must be in the DISABLED state to perform this
+/// operation.
+typedef EnableSingleTenantHsmInstance = $Empty;
 
 /// Request message for KeyManagementService.Encrypt.
 class EncryptRequest {
@@ -5351,6 +6049,8 @@ class EncryptResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -5409,6 +6109,9 @@ class EncryptResponse {
   };
 }
 
+/// Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal.
+typedef ExecuteSingleTenantHsmInstanceProposalRequest = $Empty;
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -5451,6 +6154,8 @@ class GenerateRandomBytesRequest {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   GenerateRandomBytesRequest({this.lengthBytes, this.protectionLevel});
@@ -5584,13 +6289,26 @@ class ImportCryptoKeyVersionRequest {
   /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
   /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
   /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_44" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_87" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 5. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
   /// hash-based digital signature algorithm, at security level 1. Randomized
   /// pre-hash version supporting SHA256 digests.
+  /// - "PQ_SIGN_ML_DSA_44_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 1. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_65_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 3. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 5. Randomized version
+  /// supporting externally-computed message representatives.
   core.String? algorithm;
 
   /// The optional name of an existing CryptoKeyVersion to target for an import
@@ -5722,6 +6440,18 @@ class ImportJob {
   /// Output only.
   core.String? createTime;
 
+  /// The resource name of the backend environment where the key material for
+  /// the wrapping key resides and where all related cryptographic operations
+  /// are performed.
+  ///
+  /// Currently, this field is only populated for keys stored in
+  /// HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to
+  /// additional ProtectionLevels in the future. Supported resources: *
+  /// `"projects / * /locations / * /singleTenantHsmInstances / * "`
+  ///
+  /// Immutable.
+  core.String? cryptoKeyBackend;
+
   /// The time this ImportJob expired.
   ///
   /// Only present if state is EXPIRED.
@@ -5798,6 +6528,8 @@ class ImportJob {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// The public key with which to wrap key material prior to import.
@@ -5824,6 +6556,7 @@ class ImportJob {
   ImportJob({
     this.attestation,
     this.createTime,
+    this.cryptoKeyBackend,
     this.expireEventTime,
     this.expireTime,
     this.generateTime,
@@ -5843,6 +6576,7 @@ class ImportJob {
                 )
                 : null,
         createTime: json_['createTime'] as core.String?,
+        cryptoKeyBackend: json_['cryptoKeyBackend'] as core.String?,
         expireEventTime: json_['expireEventTime'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         generateTime: json_['generateTime'] as core.String?,
@@ -5861,6 +6595,7 @@ class ImportJob {
   core.Map<core.String, core.dynamic> toJson() => {
     if (attestation != null) 'attestation': attestation!,
     if (createTime != null) 'createTime': createTime!,
+    if (cryptoKeyBackend != null) 'cryptoKeyBackend': cryptoKeyBackend!,
     if (expireEventTime != null) 'expireEventTime': expireEventTime!,
     if (expireTime != null) 'expireTime': expireTime!,
     if (generateTime != null) 'generateTime': generateTime!,
@@ -6342,6 +7077,97 @@ class ListLocationsResponse {
   };
 }
 
+/// Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.
+class ListSingleTenantHsmInstanceProposalsResponse {
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListSingleTenantHsmInstanceProposalsRequest.page_token
+  /// to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  /// The list of SingleTenantHsmInstanceProposals.
+  core.List<SingleTenantHsmInstanceProposal>? singleTenantHsmInstanceProposals;
+
+  /// The total number of SingleTenantHsmInstanceProposals that matched the
+  /// query.
+  ///
+  /// This field is not populated if
+  /// ListSingleTenantHsmInstanceProposalsRequest.filter is applied.
+  core.int? totalSize;
+
+  ListSingleTenantHsmInstanceProposalsResponse({
+    this.nextPageToken,
+    this.singleTenantHsmInstanceProposals,
+    this.totalSize,
+  });
+
+  ListSingleTenantHsmInstanceProposalsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        singleTenantHsmInstanceProposals:
+            (json_['singleTenantHsmInstanceProposals'] as core.List?)
+                ?.map(
+                  (value) => SingleTenantHsmInstanceProposal.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (singleTenantHsmInstanceProposals != null)
+      'singleTenantHsmInstanceProposals': singleTenantHsmInstanceProposals!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
+}
+
+/// Response message for HsmManagement.ListSingleTenantHsmInstances.
+class ListSingleTenantHsmInstancesResponse {
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListSingleTenantHsmInstancesRequest.page_token to
+  /// retrieve the next page of results.
+  core.String? nextPageToken;
+
+  /// The list of SingleTenantHsmInstances.
+  core.List<SingleTenantHsmInstance>? singleTenantHsmInstances;
+
+  /// The total number of SingleTenantHsmInstances that matched the query.
+  ///
+  /// This field is not populated if ListSingleTenantHsmInstancesRequest.filter
+  /// is applied.
+  core.int? totalSize;
+
+  ListSingleTenantHsmInstancesResponse({
+    this.nextPageToken,
+    this.singleTenantHsmInstances,
+    this.totalSize,
+  });
+
+  ListSingleTenantHsmInstancesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        singleTenantHsmInstances:
+            (json_['singleTenantHsmInstances'] as core.List?)
+                ?.map(
+                  (value) => SingleTenantHsmInstance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (singleTenantHsmInstances != null)
+      'singleTenantHsmInstances': singleTenantHsmInstances!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -6433,6 +7259,8 @@ class MacSignResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -6568,6 +7396,8 @@ class MacVerifyResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// This field indicates whether or not the verification operation for
@@ -6902,13 +7732,26 @@ class PublicKey {
   /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
   /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
   /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_44" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_87" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 5. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
   /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
   /// hash-based digital signature algorithm, at security level 1. Randomized
   /// pre-hash version supporting SHA256 digests.
+  /// - "PQ_SIGN_ML_DSA_44_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 1. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_65_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 3. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 5. Randomized version
+  /// supporting externally-computed message representatives.
   core.String? algorithm;
 
   /// The name of the CryptoKeyVersion public key.
@@ -6947,6 +7790,8 @@ class PublicKey {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// This field contains the public key (with integrity verification),
@@ -7011,6 +7856,139 @@ class PublicKey {
     if (protectionLevel != null) 'protectionLevel': protectionLevel!,
     if (publicKey != null) 'publicKey': publicKey!,
     if (publicKeyFormat != null) 'publicKeyFormat': publicKeyFormat!,
+  };
+}
+
+/// Configuration for M of N quorum auth.
+class QuorumAuth {
+  /// The required numbers of approvers.
+  ///
+  /// The M value used for M of N quorum auth. Must be greater than or equal to
+  /// 2 and less than or equal to total_approver_count - 1.
+  ///
+  /// Output only.
+  core.int? requiredApproverCount;
+
+  /// The total number of approvers.
+  ///
+  /// This is the N value used for M of N quorum auth. Must be greater than or
+  /// equal to 3 and less than or equal to 16.
+  ///
+  /// Required.
+  core.int? totalApproverCount;
+
+  /// The public keys associated with the 2FA keys for M of N quorum auth.
+  ///
+  /// Output only.
+  core.List<core.String>? twoFactorPublicKeyPems;
+
+  QuorumAuth({
+    this.requiredApproverCount,
+    this.totalApproverCount,
+    this.twoFactorPublicKeyPems,
+  });
+
+  QuorumAuth.fromJson(core.Map json_)
+    : this(
+        requiredApproverCount: json_['requiredApproverCount'] as core.int?,
+        totalApproverCount: json_['totalApproverCount'] as core.int?,
+        twoFactorPublicKeyPems:
+            (json_['twoFactorPublicKeyPems'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (requiredApproverCount != null)
+      'requiredApproverCount': requiredApproverCount!,
+    if (totalApproverCount != null) 'totalApproverCount': totalApproverCount!,
+    if (twoFactorPublicKeyPems != null)
+      'twoFactorPublicKeyPems': twoFactorPublicKeyPems!,
+  };
+}
+
+/// Parameters of quorum approval for the SingleTenantHsmInstanceProposal.
+class QuorumParameters {
+  /// The public keys associated with the 2FA keys that have already approved
+  /// the SingleTenantHsmInstanceProposal by signing the challenge.
+  ///
+  /// Output only.
+  core.List<core.String>? approvedTwoFactorPublicKeyPems;
+
+  /// The challenges to be signed by 2FA keys for quorum auth.
+  ///
+  /// M of N of these challenges are required to be signed to approve the
+  /// operation.
+  ///
+  /// Output only.
+  core.List<Challenge>? challenges;
+
+  /// The required numbers of approvers.
+  ///
+  /// This is the M value used for M of N quorum auth. It is less than the
+  /// number of public keys.
+  ///
+  /// Output only.
+  core.int? requiredApproverCount;
+
+  QuorumParameters({
+    this.approvedTwoFactorPublicKeyPems,
+    this.challenges,
+    this.requiredApproverCount,
+  });
+
+  QuorumParameters.fromJson(core.Map json_)
+    : this(
+        approvedTwoFactorPublicKeyPems:
+            (json_['approvedTwoFactorPublicKeyPems'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        challenges:
+            (json_['challenges'] as core.List?)
+                ?.map(
+                  (value) => Challenge.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        requiredApproverCount: json_['requiredApproverCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (approvedTwoFactorPublicKeyPems != null)
+      'approvedTwoFactorPublicKeyPems': approvedTwoFactorPublicKeyPems!,
+    if (challenges != null) 'challenges': challenges!,
+    if (requiredApproverCount != null)
+      'requiredApproverCount': requiredApproverCount!,
+  };
+}
+
+/// The reply to QuorumParameters for approving the proposal.
+class QuorumReply {
+  /// The challenge replies to approve the proposal.
+  ///
+  /// Challenge replies can be sent across multiple requests. The proposal will
+  /// be approved when required_approver_count challenge replies are provided.
+  ///
+  /// Required.
+  core.List<ChallengeReply>? challengeReplies;
+
+  QuorumReply({this.challengeReplies});
+
+  QuorumReply.fromJson(core.Map json_)
+    : this(
+        challengeReplies:
+            (json_['challengeReplies'] as core.List?)
+                ?.map(
+                  (value) => ChallengeReply.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (challengeReplies != null) 'challengeReplies': challengeReplies!,
   };
 }
 
@@ -7194,6 +8172,8 @@ class RawDecryptResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -7488,6 +8468,8 @@ class RawEncryptResponse {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
   /// backend.
+  /// - "HSM_SINGLE_TENANT" : Crypto operations are performed in a single-tenant
+  /// HSM.
   core.String? protectionLevel;
 
   /// The length of the authentication tag that is appended to the end of the
@@ -7576,6 +8558,207 @@ class RawEncryptResponse {
       'verifiedInitializationVectorCrc32c': verifiedInitializationVectorCrc32c!,
     if (verifiedPlaintextCrc32c != null)
       'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
+  };
+}
+
+/// Refreshes the SingleTenantHsmInstance.
+///
+/// This operation must be performed periodically to keep the
+/// SingleTenantHsmInstance active. This operation must be performed before
+/// unrefreshed_duration_until_disable has passed. The SingleTenantHsmInstance
+/// must be in the ACTIVE state to perform this operation.
+typedef RefreshSingleTenantHsmInstance = $Empty;
+
+/// Register 2FA keys for the SingleTenantHsmInstance.
+///
+/// This operation requires all Challenges to be signed by 2FA keys. The
+/// SingleTenantHsmInstance must be in the PENDING_TWO_FACTOR_AUTH_REGISTRATION
+/// state to perform this operation.
+class RegisterTwoFactorAuthKeys {
+  /// The required numbers of approvers to set for the SingleTenantHsmInstance.
+  ///
+  /// This is the M value used for M of N quorum auth. Must be greater than or
+  /// equal to 2 and less than or equal to total_approver_count - 1.
+  ///
+  /// Required.
+  core.int? requiredApproverCount;
+
+  /// The public keys associated with the 2FA keys for M of N quorum auth.
+  ///
+  /// Public keys must be associated with RSA 2048 keys.
+  ///
+  /// Required.
+  core.List<core.String>? twoFactorPublicKeyPems;
+
+  RegisterTwoFactorAuthKeys({
+    this.requiredApproverCount,
+    this.twoFactorPublicKeyPems,
+  });
+
+  RegisterTwoFactorAuthKeys.fromJson(core.Map json_)
+    : this(
+        requiredApproverCount: json_['requiredApproverCount'] as core.int?,
+        twoFactorPublicKeyPems:
+            (json_['twoFactorPublicKeyPems'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (requiredApproverCount != null)
+      'requiredApproverCount': requiredApproverCount!,
+    if (twoFactorPublicKeyPems != null)
+      'twoFactorPublicKeyPems': twoFactorPublicKeyPems!,
+  };
+}
+
+/// Remove a quorum member from the SingleTenantHsmInstance.
+///
+/// This will reduce total_approver_count by 1. The SingleTenantHsmInstance must
+/// be in the ACTIVE state to perform this operation.
+class RemoveQuorumMember {
+  /// The public key associated with the 2FA key for the quorum member to
+  /// remove.
+  ///
+  /// Public keys must be associated with RSA 2048 keys.
+  ///
+  /// Required.
+  core.String? twoFactorPublicKeyPem;
+
+  RemoveQuorumMember({this.twoFactorPublicKeyPem});
+
+  RemoveQuorumMember.fromJson(core.Map json_)
+    : this(
+        twoFactorPublicKeyPem: json_['twoFactorPublicKeyPem'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (twoFactorPublicKeyPem != null)
+      'twoFactorPublicKeyPem': twoFactorPublicKeyPem!,
+  };
+}
+
+/// Parameters for an approval that has both required challenges and a quorum.
+class RequiredActionQuorumParameters {
+  /// The public keys associated with the 2FA keys that have already approved
+  /// the SingleTenantHsmInstanceProposal by signing the challenge.
+  ///
+  /// Output only.
+  core.List<core.String>? approvedTwoFactorPublicKeyPems;
+
+  /// The challenges to be signed by 2FA keys for quorum auth.
+  ///
+  /// M of N of these challenges are required to be signed to approve the
+  /// operation.
+  ///
+  /// Output only.
+  core.List<Challenge>? quorumChallenges;
+
+  /// The required number of quorum approvers.
+  ///
+  /// This is the M value used for M of N quorum auth. It is less than the
+  /// number of public keys.
+  ///
+  /// Output only.
+  core.int? requiredApproverCount;
+
+  /// A list of specific challenges that must be signed.
+  ///
+  /// For some operations, this will contain a single challenge.
+  ///
+  /// Output only.
+  core.List<Challenge>? requiredChallenges;
+
+  RequiredActionQuorumParameters({
+    this.approvedTwoFactorPublicKeyPems,
+    this.quorumChallenges,
+    this.requiredApproverCount,
+    this.requiredChallenges,
+  });
+
+  RequiredActionQuorumParameters.fromJson(core.Map json_)
+    : this(
+        approvedTwoFactorPublicKeyPems:
+            (json_['approvedTwoFactorPublicKeyPems'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        quorumChallenges:
+            (json_['quorumChallenges'] as core.List?)
+                ?.map(
+                  (value) => Challenge.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        requiredApproverCount: json_['requiredApproverCount'] as core.int?,
+        requiredChallenges:
+            (json_['requiredChallenges'] as core.List?)
+                ?.map(
+                  (value) => Challenge.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (approvedTwoFactorPublicKeyPems != null)
+      'approvedTwoFactorPublicKeyPems': approvedTwoFactorPublicKeyPems!,
+    if (quorumChallenges != null) 'quorumChallenges': quorumChallenges!,
+    if (requiredApproverCount != null)
+      'requiredApproverCount': requiredApproverCount!,
+    if (requiredChallenges != null) 'requiredChallenges': requiredChallenges!,
+  };
+}
+
+/// The reply to RequiredActionQuorumParameters for approving the proposal.
+class RequiredActionQuorumReply {
+  /// Quorum members' signed challenge replies.
+  ///
+  /// These can be provided across multiple requests. The proposal will be
+  /// approved when required_approver_count quorum_challenge_replies are
+  /// provided and when all required_challenge_replies are provided.
+  ///
+  /// Required.
+  core.List<ChallengeReply>? quorumChallengeReplies;
+
+  /// All required challenges must be signed for the proposal to be approved.
+  ///
+  /// These can be sent across multiple requests.
+  ///
+  /// Required.
+  core.List<ChallengeReply>? requiredChallengeReplies;
+
+  RequiredActionQuorumReply({
+    this.quorumChallengeReplies,
+    this.requiredChallengeReplies,
+  });
+
+  RequiredActionQuorumReply.fromJson(core.Map json_)
+    : this(
+        quorumChallengeReplies:
+            (json_['quorumChallengeReplies'] as core.List?)
+                ?.map(
+                  (value) => ChallengeReply.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        requiredChallengeReplies:
+            (json_['requiredChallengeReplies'] as core.List?)
+                ?.map(
+                  (value) => ChallengeReply.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (quorumChallengeReplies != null)
+      'quorumChallengeReplies': quorumChallengeReplies!,
+    if (requiredChallengeReplies != null)
+      'requiredChallengeReplies': requiredChallengeReplies!,
   };
 }
 
@@ -7772,6 +8955,356 @@ class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (effectiveKajPolicy != null) 'effectiveKajPolicy': effectiveKajPolicy!,
+  };
+}
+
+/// A SingleTenantHsmInstance represents a single-tenant HSM instance.
+///
+/// It can be used for creating CryptoKeys with a ProtectionLevel of
+/// HSM_SINGLE_TENANT, as well as performing cryptographic operations using keys
+/// created within the SingleTenantHsmInstance.
+class SingleTenantHsmInstance {
+  /// The time at which the SingleTenantHsmInstance was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time at which the SingleTenantHsmInstance was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// The time at which the instance will be automatically disabled if not
+  /// refreshed.
+  ///
+  /// This field is updated upon creation and after each successful refresh
+  /// operation and enable. A RefreshSingleTenantHsmInstance operation must be
+  /// made via a SingleTenantHsmInstanceProposal before this time otherwise the
+  /// SingleTenantHsmInstance will become disabled.
+  ///
+  /// Output only.
+  core.String? disableTime;
+
+  /// Identifier.
+  ///
+  /// The resource name for this SingleTenantHsmInstance in the format `projects
+  /// / * /locations / * /singleTenantHsmInstances / * `.
+  core.String? name;
+
+  /// The quorum auth configuration for the SingleTenantHsmInstance.
+  ///
+  /// Required.
+  QuorumAuth? quorumAuth;
+
+  /// The state of the SingleTenantHsmInstance.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The SingleTenantHsmInstance is being created.
+  /// - "PENDING_TWO_FACTOR_AUTH_REGISTRATION" : The SingleTenantHsmInstance is
+  /// waiting for 2FA keys to be registered. This can be done by calling
+  /// CreateSingleTenantHsmInstanceProposal with the RegisterTwoFactorAuthKeys
+  /// operation.
+  /// - "ACTIVE" : The SingleTenantHsmInstance is ready to use. A
+  /// SingleTenantHsmInstance must be in the ACTIVE state for all CryptoKeys
+  /// created within the SingleTenantHsmInstance to be usable.
+  /// - "DISABLING" : The SingleTenantHsmInstance is being disabled.
+  /// - "DISABLED" : The SingleTenantHsmInstance is disabled.
+  /// - "DELETING" : The SingleTenantHsmInstance is being deleted. Requests to
+  /// the instance will be rejected in this state.
+  /// - "DELETED" : The SingleTenantHsmInstance has been deleted.
+  /// - "FAILED" : The SingleTenantHsmInstance has failed and can not be
+  /// recovered or used.
+  core.String? state;
+
+  /// The system-defined duration that an instance can remain unrefreshed until
+  /// it is automatically disabled.
+  ///
+  /// This will have a value of 120 days.
+  ///
+  /// Output only.
+  core.String? unrefreshedDurationUntilDisable;
+
+  SingleTenantHsmInstance({
+    this.createTime,
+    this.deleteTime,
+    this.disableTime,
+    this.name,
+    this.quorumAuth,
+    this.state,
+    this.unrefreshedDurationUntilDisable,
+  });
+
+  SingleTenantHsmInstance.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        disableTime: json_['disableTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        quorumAuth:
+            json_.containsKey('quorumAuth')
+                ? QuorumAuth.fromJson(
+                  json_['quorumAuth'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        unrefreshedDurationUntilDisable:
+            json_['unrefreshedDurationUntilDisable'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (disableTime != null) 'disableTime': disableTime!,
+    if (name != null) 'name': name!,
+    if (quorumAuth != null) 'quorumAuth': quorumAuth!,
+    if (state != null) 'state': state!,
+    if (unrefreshedDurationUntilDisable != null)
+      'unrefreshedDurationUntilDisable': unrefreshedDurationUntilDisable!,
+  };
+}
+
+/// A SingleTenantHsmInstanceProposal represents a proposal to perform an
+/// operation on a SingleTenantHsmInstance.
+class SingleTenantHsmInstanceProposal {
+  /// Add a quorum member to the SingleTenantHsmInstance.
+  ///
+  /// This will increase the total_approver_count by 1. The
+  /// SingleTenantHsmInstance must be in the ACTIVE state to perform this
+  /// operation.
+  AddQuorumMember? addQuorumMember;
+
+  /// The time at which the SingleTenantHsmInstanceProposal was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete the SingleTenantHsmInstance.
+  ///
+  /// Deleting a SingleTenantHsmInstance will make all CryptoKeys attached to
+  /// the SingleTenantHsmInstance unusable. The SingleTenantHsmInstance must be
+  /// in the DISABLED or PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform
+  /// this operation.
+  DeleteSingleTenantHsmInstance? deleteSingleTenantHsmInstance;
+
+  /// The time at which the SingleTenantHsmInstanceProposal was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Disable the SingleTenantHsmInstance.
+  ///
+  /// The SingleTenantHsmInstance must be in the ACTIVE state to perform this
+  /// operation.
+  DisableSingleTenantHsmInstance? disableSingleTenantHsmInstance;
+
+  /// Enable the SingleTenantHsmInstance.
+  ///
+  /// The SingleTenantHsmInstance must be in the DISABLED state to perform this
+  /// operation.
+  EnableSingleTenantHsmInstance? enableSingleTenantHsmInstance;
+
+  /// The time at which the SingleTenantHsmInstanceProposal will expire if not
+  /// approved and executed.
+  core.String? expireTime;
+
+  /// The root cause of the most recent failure.
+  ///
+  /// Only present if state is FAILED.
+  ///
+  /// Output only.
+  core.String? failureReason;
+
+  /// Identifier.
+  ///
+  /// The resource name for this SingleTenantHsmInstance in the format `projects
+  /// / * /locations / * /singleTenantHsmInstances / * /proposals / * `.
+  core.String? name;
+
+  /// The time at which the soft-deleted SingleTenantHsmInstanceProposal will be
+  /// permanently purged.
+  ///
+  /// This field is only populated when the state is DELETED and will be set a
+  /// time after expiration of the proposal, i.e. \>= expire_time or
+  /// (create_time + ttl).
+  ///
+  /// Output only.
+  core.String? purgeTime;
+
+  /// The quorum approval parameters for the SingleTenantHsmInstanceProposal.
+  ///
+  /// Output only.
+  QuorumParameters? quorumParameters;
+
+  /// Refreshes the SingleTenantHsmInstance.
+  ///
+  /// This operation must be performed periodically to keep the
+  /// SingleTenantHsmInstance active. This operation must be performed before
+  /// unrefreshed_duration_until_disable has passed. The SingleTenantHsmInstance
+  /// must be in the ACTIVE state to perform this operation.
+  RefreshSingleTenantHsmInstance? refreshSingleTenantHsmInstance;
+
+  /// Register 2FA keys for the SingleTenantHsmInstance.
+  ///
+  /// This operation requires all N Challenges to be signed by 2FA keys. The
+  /// SingleTenantHsmInstance must be in the
+  /// PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this operation.
+  RegisterTwoFactorAuthKeys? registerTwoFactorAuthKeys;
+
+  /// Remove a quorum member from the SingleTenantHsmInstance.
+  ///
+  /// This will reduce total_approver_count by 1. The SingleTenantHsmInstance
+  /// must be in the ACTIVE state to perform this operation.
+  RemoveQuorumMember? removeQuorumMember;
+
+  /// Parameters for an approval of a SingleTenantHsmInstanceProposal that has
+  /// both required challenges and a quorum.
+  ///
+  /// Output only.
+  RequiredActionQuorumParameters? requiredActionQuorumParameters;
+
+  /// The state of the SingleTenantHsmInstanceProposal.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The SingleTenantHsmInstanceProposal is being created.
+  /// - "PENDING" : The SingleTenantHsmInstanceProposal is pending approval.
+  /// - "APPROVED" : The SingleTenantHsmInstanceProposal has been approved.
+  /// - "RUNNING" : The SingleTenantHsmInstanceProposal is being executed.
+  /// - "SUCCEEDED" : The SingleTenantHsmInstanceProposal has been executed
+  /// successfully.
+  /// - "FAILED" : The SingleTenantHsmInstanceProposal has failed.
+  /// - "DELETED" : The SingleTenantHsmInstanceProposal has been deleted and
+  /// will be purged after the purge_time.
+  core.String? state;
+
+  /// Input only.
+  ///
+  /// The TTL for the SingleTenantHsmInstanceProposal. Proposals will expire
+  /// after this duration.
+  core.String? ttl;
+
+  SingleTenantHsmInstanceProposal({
+    this.addQuorumMember,
+    this.createTime,
+    this.deleteSingleTenantHsmInstance,
+    this.deleteTime,
+    this.disableSingleTenantHsmInstance,
+    this.enableSingleTenantHsmInstance,
+    this.expireTime,
+    this.failureReason,
+    this.name,
+    this.purgeTime,
+    this.quorumParameters,
+    this.refreshSingleTenantHsmInstance,
+    this.registerTwoFactorAuthKeys,
+    this.removeQuorumMember,
+    this.requiredActionQuorumParameters,
+    this.state,
+    this.ttl,
+  });
+
+  SingleTenantHsmInstanceProposal.fromJson(core.Map json_)
+    : this(
+        addQuorumMember:
+            json_.containsKey('addQuorumMember')
+                ? AddQuorumMember.fromJson(
+                  json_['addQuorumMember']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        deleteSingleTenantHsmInstance:
+            json_.containsKey('deleteSingleTenantHsmInstance')
+                ? DeleteSingleTenantHsmInstance.fromJson(
+                  json_['deleteSingleTenantHsmInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteTime: json_['deleteTime'] as core.String?,
+        disableSingleTenantHsmInstance:
+            json_.containsKey('disableSingleTenantHsmInstance')
+                ? DisableSingleTenantHsmInstance.fromJson(
+                  json_['disableSingleTenantHsmInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enableSingleTenantHsmInstance:
+            json_.containsKey('enableSingleTenantHsmInstance')
+                ? EnableSingleTenantHsmInstance.fromJson(
+                  json_['enableSingleTenantHsmInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expireTime: json_['expireTime'] as core.String?,
+        failureReason: json_['failureReason'] as core.String?,
+        name: json_['name'] as core.String?,
+        purgeTime: json_['purgeTime'] as core.String?,
+        quorumParameters:
+            json_.containsKey('quorumParameters')
+                ? QuorumParameters.fromJson(
+                  json_['quorumParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshSingleTenantHsmInstance:
+            json_.containsKey('refreshSingleTenantHsmInstance')
+                ? RefreshSingleTenantHsmInstance.fromJson(
+                  json_['refreshSingleTenantHsmInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        registerTwoFactorAuthKeys:
+            json_.containsKey('registerTwoFactorAuthKeys')
+                ? RegisterTwoFactorAuthKeys.fromJson(
+                  json_['registerTwoFactorAuthKeys']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        removeQuorumMember:
+            json_.containsKey('removeQuorumMember')
+                ? RemoveQuorumMember.fromJson(
+                  json_['removeQuorumMember']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requiredActionQuorumParameters:
+            json_.containsKey('requiredActionQuorumParameters')
+                ? RequiredActionQuorumParameters.fromJson(
+                  json_['requiredActionQuorumParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (addQuorumMember != null) 'addQuorumMember': addQuorumMember!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteSingleTenantHsmInstance != null)
+      'deleteSingleTenantHsmInstance': deleteSingleTenantHsmInstance!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (disableSingleTenantHsmInstance != null)
+      'disableSingleTenantHsmInstance': disableSingleTenantHsmInstance!,
+    if (enableSingleTenantHsmInstance != null)
+      'enableSingleTenantHsmInstance': enableSingleTenantHsmInstance!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (failureReason != null) 'failureReason': failureReason!,
+    if (name != null) 'name': name!,
+    if (purgeTime != null) 'purgeTime': purgeTime!,
+    if (quorumParameters != null) 'quorumParameters': quorumParameters!,
+    if (refreshSingleTenantHsmInstance != null)
+      'refreshSingleTenantHsmInstance': refreshSingleTenantHsmInstance!,
+    if (registerTwoFactorAuthKeys != null)
+      'registerTwoFactorAuthKeys': registerTwoFactorAuthKeys!,
+    if (removeQuorumMember != null) 'removeQuorumMember': removeQuorumMember!,
+    if (requiredActionQuorumParameters != null)
+      'requiredActionQuorumParameters': requiredActionQuorumParameters!,
+    if (state != null) 'state': state!,
+    if (ttl != null) 'ttl': ttl!,
   };
 }
 

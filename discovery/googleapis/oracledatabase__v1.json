@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250918",
+    "revision": "20260127",
     "rootUrl": "https://oracledatabase.googleapis.com/",
     "servicePath": "",
     "title": "Oracle Database@Google Cloud API",
@@ -139,7 +139,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "oracledatabase.projects.locations.list",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -469,6 +469,45 @@
                                     "path": "v1/{+parent}/autonomousDatabases",
                                     "response": {
                                         "$ref": "ListAutonomousDatabasesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the parameters of a single Autonomous Database.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "oracledatabase.projects.locations.autonomousDatabases.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. The name of the Autonomous Database resource in the following format: projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "AutonomousDatabase"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1118,7 +1157,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
+                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 Databases will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -1158,7 +1197,7 @@
                                     ],
                                     "parameters": {
                                         "pageSize": {
-                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
+                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbSystemInitialStorageSizes will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -1391,7 +1430,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
+                                            "description": "Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbVersions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -1666,6 +1705,48 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                }
+                            },
+                            "resources": {
+                                "dbNodes": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "Lists the database nodes of a VM Cluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}/dbNodes",
+                                            "httpMethod": "GET",
+                                            "id": "oracledatabase.projects.locations.exadbVmClusters.dbNodes.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "pageSize": {
+                                                    "description": "Optional. The maximum number of items to return. If unspecified, at most 50 db nodes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Optional. A token identifying a page of results the node should return.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. The parent value for database node in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. .",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/dbNodes",
+                                            "response": {
+                                                "$ref": "ListDbNodesResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
                                 }
                             }
                         },
@@ -2303,6 +2384,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -2418,11 +2504,11 @@
             "id": "AutonomousDatabase",
             "properties": {
                 "adminPassword": {
-                    "description": "Optional. The password for the default ADMIN user.",
+                    "description": "Optional. Immutable. The password for the default ADMIN user.",
                     "type": "string"
                 },
                 "cidr": {
-                    "description": "Optional. The subnet CIDR range for the Autonomous Database.",
+                    "description": "Optional. Immutable. The subnet CIDR range for the Autonomous Database.",
                     "type": "string"
                 },
                 "createTime": {
@@ -2432,7 +2518,7 @@
                     "type": "string"
                 },
                 "database": {
-                    "description": "Optional. The name of the Autonomous Database. The database name must be unique in the project. The name must begin with a letter and can contain a maximum of 30 alphanumeric characters.",
+                    "description": "Optional. Immutable. The name of the Autonomous Database. The database name must be unique in the project. The name must begin with a letter and can contain a maximum of 30 alphanumeric characters.",
                     "type": "string"
                 },
                 "disasterRecoverySupportedLocations": {
@@ -2444,7 +2530,7 @@
                     "type": "array"
                 },
                 "displayName": {
-                    "description": "Optional. The display name for the Autonomous Database. The name does not have to be unique within your project.",
+                    "description": "Optional. Immutable. The display name for the Autonomous Database. The name does not have to be unique within your project.",
                     "type": "string"
                 },
                 "entitlementId": {
@@ -2464,15 +2550,15 @@
                     "type": "string"
                 },
                 "network": {
-                    "description": "Optional. The name of the VPC network used by the Autonomous Database in the following format: projects/{project}/global/networks/{network}",
+                    "description": "Optional. Immutable. The name of the VPC network used by the Autonomous Database in the following format: projects/{project}/global/networks/{network}",
                     "type": "string"
                 },
                 "odbNetwork": {
-                    "description": "Optional. The name of the OdbNetwork associated with the Autonomous Database. Format: projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this should match the parent ODBNetwork of the OdbSubnet.",
+                    "description": "Optional. Immutable. The name of the OdbNetwork associated with the Autonomous Database. Format: projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this should match the parent ODBNetwork of the OdbSubnet.",
                     "type": "string"
                 },
                 "odbSubnet": {
-                    "description": "Optional. The name of the OdbSubnet associated with the Autonomous Database. Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
+                    "description": "Optional. Immutable. The name of the OdbSubnet associated with the Autonomous Database. Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
                     "type": "string"
                 },
                 "peerAutonomousDatabases": {
@@ -2489,7 +2575,7 @@
                 },
                 "sourceConfig": {
                     "$ref": "SourceConfig",
-                    "description": "Optional. The source Autonomous Database configuration for the standby Autonomous Database. The source Autonomous Database is configured while creating the Peer Autonomous Database and can't be updated after creation."
+                    "description": "Optional. Immutable. The source Autonomous Database configuration for the standby Autonomous Database. The source Autonomous Database is configured while creating the Peer Autonomous Database and can't be updated after creation."
                 }
             },
             "type": "object"
@@ -2813,7 +2899,7 @@
                     "type": "number"
                 },
                 "allowlistedIps": {
-                    "description": "Optional. The list of allowlisted IP addresses for the Autonomous Database.",
+                    "description": "Optional. Immutable. The list of allowlisted IP addresses for the Autonomous Database.",
                     "items": {
                         "type": "string"
                     },
@@ -2843,16 +2929,16 @@
                     "type": "array"
                 },
                 "backupRetentionPeriodDays": {
-                    "description": "Optional. The retention period for the Autonomous Database. This field is specified in days, can range from 1 day to 60 days, and has a default value of 60 days.",
+                    "description": "Optional. Immutable. The retention period for the Autonomous Database. This field is specified in days, can range from 1 day to 60 days, and has a default value of 60 days.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "characterSet": {
-                    "description": "Optional. The character set for the Autonomous Database. The default is AL32UTF8.",
+                    "description": "Optional. Immutable. The character set for the Autonomous Database. The default is AL32UTF8.",
                     "type": "string"
                 },
                 "computeCount": {
-                    "description": "Optional. The number of compute servers for the Autonomous Database.",
+                    "description": "Optional. Immutable. The number of compute servers for the Autonomous Database.",
                     "format": "float",
                     "type": "number"
                 },
@@ -2867,12 +2953,12 @@
                     "readOnly": true
                 },
                 "cpuCoreCount": {
-                    "description": "Optional. The number of CPU cores to be made available to the database.",
+                    "description": "Optional. Immutable. The number of CPU cores to be made available to the database.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "customerContacts": {
-                    "description": "Optional. The list of customer contacts.",
+                    "description": "Optional. Immutable. The list of customer contacts.",
                     "items": {
                         "$ref": "CustomerContact"
                     },
@@ -2906,12 +2992,12 @@
                     "type": "string"
                 },
                 "dataStorageSizeGb": {
-                    "description": "Optional. The size of the data stored in the database, in gigabytes.",
+                    "description": "Optional. Immutable. The size of the data stored in the database, in gigabytes.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "dataStorageSizeTb": {
-                    "description": "Optional. The size of the data stored in the database, in terabytes.",
+                    "description": "Optional. Immutable. The size of the data stored in the database, in terabytes.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -2939,7 +3025,7 @@
                     "type": "string"
                 },
                 "dbEdition": {
-                    "description": "Optional. The edition of the Autonomous Databases.",
+                    "description": "Optional. Immutable. The edition of the Autonomous Databases.",
                     "enum": [
                         "DATABASE_EDITION_UNSPECIFIED",
                         "STANDARD_EDITION",
@@ -2953,11 +3039,11 @@
                     "type": "string"
                 },
                 "dbVersion": {
-                    "description": "Optional. The Oracle Database version for the Autonomous Database.",
+                    "description": "Optional. Immutable. The Oracle Database version for the Autonomous Database.",
                     "type": "string"
                 },
                 "dbWorkload": {
-                    "description": "Required. The workload type of the Autonomous Database.",
+                    "description": "Required. Immutable. The workload type of the Autonomous Database.",
                     "enum": [
                         "DB_WORKLOAD_UNSPECIFIED",
                         "OLTP",
@@ -2980,6 +3066,18 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "encryptionKey": {
+                    "$ref": "EncryptionKey",
+                    "description": "Optional. The encryption key used to encrypt the Autonomous Database. Updating this field will add a new entry in the `encryption_key_history_entries` field with the former version."
+                },
+                "encryptionKeyHistoryEntries": {
+                    "description": "Output only. The history of the encryption keys used to encrypt the Autonomous Database.",
+                    "items": {
+                        "$ref": "EncryptionKeyHistoryEntry"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "failedDataRecoveryDuration": {
                     "description": "Output only. This field indicates the number of seconds of data loss during a Data Guard failover.",
                     "format": "google-duration",
@@ -2987,7 +3085,7 @@
                     "type": "string"
                 },
                 "isAutoScalingEnabled": {
-                    "description": "Optional. This field indicates if auto scaling is enabled for the Autonomous Database CPU core count.",
+                    "description": "Optional. Immutable. This field indicates if auto scaling is enabled for the Autonomous Database CPU core count.",
                     "type": "boolean"
                 },
                 "isLocalDataGuardEnabled": {
@@ -2996,11 +3094,11 @@
                     "type": "boolean"
                 },
                 "isStorageAutoScalingEnabled": {
-                    "description": "Optional. This field indicates if auto scaling is enabled for the Autonomous Database storage.",
+                    "description": "Optional. Immutable. This field indicates if auto scaling is enabled for the Autonomous Database storage.",
                     "type": "boolean"
                 },
                 "licenseType": {
-                    "description": "Required. The license type used for the Autonomous Database.",
+                    "description": "Required. Immutable. The license type used for the Autonomous Database.",
                     "enum": [
                         "LICENSE_TYPE_UNSPECIFIED",
                         "LICENSE_INCLUDED",
@@ -3057,7 +3155,7 @@
                     "type": "string"
                 },
                 "maintenanceScheduleType": {
-                    "description": "Optional. The maintenance schedule of the Autonomous Database.",
+                    "description": "Optional. Immutable. The maintenance schedule of the Autonomous Database.",
                     "enum": [
                         "MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED",
                         "EARLY",
@@ -3083,11 +3181,11 @@
                     "type": "integer"
                 },
                 "mtlsConnectionRequired": {
-                    "description": "Optional. This field specifies if the Autonomous Database requires mTLS connections.",
+                    "description": "Optional. Immutable. This field specifies if the Autonomous Database requires mTLS connections.",
                     "type": "boolean"
                 },
                 "nCharacterSet": {
-                    "description": "Optional. The national character set for the Autonomous Database. The default is AL16UTF16.",
+                    "description": "Optional. Immutable. The national character set for the Autonomous Database. The default is AL16UTF16.",
                     "type": "string"
                 },
                 "nextLongTermBackupTime": {
@@ -3173,11 +3271,11 @@
                     "type": "string"
                 },
                 "privateEndpointIp": {
-                    "description": "Optional. The private endpoint IP address for the Autonomous Database.",
+                    "description": "Optional. Immutable. The private endpoint IP address for the Autonomous Database.",
                     "type": "string"
                 },
                 "privateEndpointLabel": {
-                    "description": "Optional. The private endpoint label for the Autonomous Database.",
+                    "description": "Optional. Immutable. The private endpoint label for the Autonomous Database.",
                     "type": "string"
                 },
                 "refreshableMode": {
@@ -3240,7 +3338,12 @@
                     "type": "array"
                 },
                 "secretId": {
-                    "description": "Optional. The ID of the Oracle Cloud Infrastructure vault secret.",
+                    "description": "Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault secret.",
+                    "type": "string"
+                },
+                "serviceAgentEmail": {
+                    "description": "Output only. An Oracle-managed Google Cloud service account on which customers can grant roles to access resources in the customer project.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "sqlWebDeveloperUrl": {
@@ -3322,7 +3425,7 @@
                     "type": "integer"
                 },
                 "vaultId": {
-                    "description": "Optional. The ID of the Oracle Cloud Infrastructure vault.",
+                    "description": "Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault.",
                     "type": "string"
                 }
             },
@@ -5220,6 +5323,49 @@
             "properties": {},
             "type": "object"
         },
+        "EncryptionKey": {
+            "description": "The encryption key used to encrypt the Autonomous Database.",
+            "id": "EncryptionKey",
+            "properties": {
+                "kmsKey": {
+                    "description": "Optional. The KMS key used to encrypt the Autonomous Database. This field is required if the provider is GOOGLE_MANAGED. The name of the KMS key resource in the following format: `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "type": "string"
+                },
+                "provider": {
+                    "description": "Optional. The provider of the encryption key.",
+                    "enum": [
+                        "PROVIDER_UNSPECIFIED",
+                        "GOOGLE_MANAGED",
+                        "ORACLE_MANAGED"
+                    ],
+                    "enumDescriptions": [
+                        "Default unspecified value.",
+                        "Google Managed KMS key, if selected, please provide the KMS key name.",
+                        "Oracle Managed."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EncryptionKeyHistoryEntry": {
+            "description": "The history of the encryption keys used to encrypt the Autonomous Database.",
+            "id": "EncryptionKeyHistoryEntry",
+            "properties": {
+                "activationTime": {
+                    "description": "Output only. The date and time when the encryption key was activated on the Autonomous Database..",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "encryptionKey": {
+                    "$ref": "EncryptionKey",
+                    "description": "Output only. The encryption key used to encrypt the Autonomous Database.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
         "Entitlement": {
             "description": "Details of the Entitlement resource.",
             "id": "Entitlement",
@@ -5635,7 +5781,7 @@
             "id": "FailoverAutonomousDatabaseRequest",
             "properties": {
                 "peerAutonomousDatabase": {
-                    "description": "Required. The peer database name to fail over to.",
+                    "description": "Optional. The peer database name to fail over to. Required for cross-region standby, and must be omitted for in-region Data Guard.",
                     "type": "string"
                 }
             },
@@ -6151,6 +6297,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -6934,7 +7087,7 @@
             "id": "SwitchoverAutonomousDatabaseRequest",
             "properties": {
                 "peerAutonomousDatabase": {
-                    "description": "Required. The peer database name to switch over to.",
+                    "description": "Optional. The peer database name to switch over to. Required for cross-region standby, and must be omitted for in-region Data Guard.",
                     "type": "string"
                 }
             },

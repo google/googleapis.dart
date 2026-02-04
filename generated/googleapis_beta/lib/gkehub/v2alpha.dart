@@ -114,14 +114,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -554,6 +560,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -569,12 +583,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -901,16 +918,23 @@ class ConfigManagementBinauthzVersion {
 class ConfigManagementConfigSync {
   /// Configuration for deployment overrides.
   ///
+  /// Applies only to Config Sync deployments with containers that are not a
+  /// root or namespace reconciler: `reconciler-manager`, `otel-collector`,
+  /// `resource-group-controller-manager`, `admission-webhook`. To override a
+  /// root or namespace reconciler, use the rootsync or reposync fields at
+  /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/reference/rootsync-reposync-fields#override-resources
+  /// instead.
+  ///
   /// Optional.
   core.List<ConfigManagementDeploymentOverride>? deploymentOverrides;
 
-  /// Enables the installation of ConfigSync.
+  /// Enables the installation of Config Sync.
   ///
-  /// If set to true, ConfigSync resources will be created and the other
-  /// ConfigSync fields will be applied if exist. If set to false, all other
-  /// ConfigSync fields will be ignored, ConfigSync resources will be deleted.
-  /// If omitted, ConfigSync resources will be managed depends on the presence
-  /// of the git or oci field.
+  /// If set to true, the Feature will manage Config Sync resources, and apply
+  /// the other ConfigSync fields if they exist. If set to false, the Feature
+  /// will ignore all other ConfigSync fields and delete the Config Sync
+  /// resources. If omitted, ConfigSync is considered enabled if the git or oci
+  /// field is present.
   ///
   /// Optional.
   core.bool? enabled;
@@ -945,14 +969,20 @@ class ConfigManagementConfigSync {
 
   /// Set to true to enable the Config Sync admission webhook to prevent drifts.
   ///
-  /// If set to `false`, disables the Config Sync admission webhook and does not
-  /// prevent drifts.
+  /// If set to false, disables the Config Sync admission webhook and does not
+  /// prevent drifts. Defaults to false. See
+  /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/how-to/prevent-config-drift
+  /// for details.
   ///
   /// Optional.
   core.bool? preventDrift;
 
-  /// Specifies whether the Config Sync Repo is in "hierarchical" or
-  /// "unstructured" mode.
+  /// Specifies whether the Config Sync repo is in `hierarchical` or
+  /// `unstructured` mode.
+  ///
+  /// Defaults to `hierarchical`. See
+  /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs
+  /// for an explanation.
   ///
   /// Optional.
   core.String? sourceFormat;
@@ -1385,20 +1415,32 @@ class ConfigManagementContainerOverride {
 
   /// The cpu limit of the container.
   ///
+  /// Use the following CPU resource units:
+  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
+  ///
   /// Optional.
   core.String? cpuLimit;
 
   /// The cpu request of the container.
+  ///
+  /// Use the following CPU resource units:
+  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
   ///
   /// Optional.
   core.String? cpuRequest;
 
   /// The memory limit of the container.
   ///
+  /// Use the following memory resource units:
+  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
+  ///
   /// Optional.
   core.String? memoryLimit;
 
   /// The memory request of the container.
+  ///
+  /// Use the following memory resource units:
+  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
   ///
   /// Optional.
   core.String? memoryRequest;
@@ -1573,12 +1615,14 @@ class ConfigManagementGatekeeperDeploymentState {
 /// Git repo configuration for a single cluster.
 class ConfigManagementGitConfig {
   /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// gcpServiceAccount.
+  /// `gcpserviceaccount`.
   ///
   /// Optional.
   core.String? gcpServiceAccountEmail;
 
   /// URL for the HTTPS proxy to be used when communicating with the Git repo.
+  ///
+  /// Only specify when secret_type is `cookiefile`, `token`, or `none`.
   ///
   /// Optional.
   core.String? httpsProxy;
@@ -1593,8 +1637,9 @@ class ConfigManagementGitConfig {
 
   /// Type of secret configured for access to the Git repo.
   ///
-  /// Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount,
-  /// githubapp or none. The validation of this is case-sensitive.
+  /// Must be one of `ssh`, `cookiefile`, `gcenode`, `token`,
+  /// `gcpserviceaccount`, `githubapp` or `none`. The validation of this is
+  /// case-sensitive.
   ///
   /// Required.
   core.String? secretType;
@@ -1834,7 +1879,7 @@ class ConfigManagementInstallError {
 /// OCI repo configuration for a single cluster.
 class ConfigManagementOciConfig {
   /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// gcpServiceAccount.
+  /// `gcpserviceaccount`.
   ///
   /// Optional.
   core.String? gcpServiceAccountEmail;
@@ -1848,8 +1893,8 @@ class ConfigManagementOciConfig {
 
   /// Type of secret configured for access to the OCI repo.
   ///
-  /// Must be one of gcenode, gcpserviceaccount, k8sserviceaccount or none. The
-  /// validation of this is case-sensitive.
+  /// Must be one of `gcenode`, `gcpserviceaccount`, `k8sserviceaccount` or
+  /// `none`. The validation of this is case-sensitive.
   ///
   /// Required.
   core.String? secretType;
@@ -2134,9 +2179,7 @@ class ConfigManagementPolicyControllerVersion {
 ///
 /// Intended to parallel the ConfigManagement CR.
 class ConfigManagementSpec {
-  /// Binauthz conifguration for the cluster.
-  ///
-  /// Deprecated: This field will be ignored and should not be set.
+  /// Deprecated: Binauthz configuration will be ignored and should not be set.
   ///
   /// Optional.
   @core.Deprecated(
@@ -2144,14 +2187,16 @@ class ConfigManagementSpec {
   )
   ConfigManagementBinauthzConfig? binauthz;
 
-  /// The user-specified cluster name used by Config Sync cluster-name-selector
-  /// annotation or ClusterSelector, for applying configs to only a subset of
-  /// clusters.
+  /// User-specified cluster name used by the Config Sync cluster-name-selector
+  /// annotation or ClusterSelector object, for applying configs to only a
+  /// subset of clusters.
   ///
-  /// Omit this field if the cluster's fleet membership name is used by Config
-  /// Sync cluster-name-selector annotation or ClusterSelector. Set this field
-  /// if a name different from the cluster's fleet membership name is used by
-  /// Config Sync cluster-name-selector annotation or ClusterSelector.
+  /// Read more about the cluster-name-selector annotation and ClusterSelector
+  /// object at
+  /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/how-to/cluster-scoped-objects#limiting-configs.
+  /// Only set this field if a name different from the cluster's fleet
+  /// membership name is used by the Config Sync cluster-name-selector
+  /// annotation or ClusterSelector.
   ///
   /// Optional.
   core.String? cluster;
@@ -2173,7 +2218,8 @@ class ConfigManagementSpec {
   )
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
-  /// Enables automatic Feature management.
+  /// Deprecated: From version 1.21.0, automatic Feature management is
+  /// unavailable, and Config Sync only supports manual upgrades.
   ///
   /// Optional.
   /// Possible string values are:
@@ -2181,6 +2227,9 @@ class ConfigManagementSpec {
   /// - "MANAGEMENT_AUTOMATIC" : Google will manage the Feature for the cluster.
   /// - "MANAGEMENT_MANUAL" : User will manually manage the Feature for the
   /// cluster.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? management;
 
   /// Policy Controller configuration for the cluster.
@@ -2195,7 +2244,11 @@ class ConfigManagementSpec {
   )
   ConfigManagementPolicyController? policyController;
 
-  /// Version of ACM installed.
+  /// Version of Config Sync to install.
+  ///
+  /// Defaults to the latest supported Config Sync version if the config_sync
+  /// field is enabled. See supported versions at
+  /// https://cloud.google.com/kubernetes-engine/config-sync/docs/get-support-config-sync#version_support_policy.
   ///
   /// Optional.
   core.String? version;
@@ -2280,6 +2333,11 @@ class ConfigManagementState {
   /// Output only.
   ConfigManagementHierarchyControllerState? hierarchyControllerState;
 
+  /// The Kubernetes API server version of the cluster.
+  ///
+  /// Output only.
+  core.String? kubernetesApiServerVersion;
+
   /// Membership configuration in the cluster.
   ///
   /// This represents the actual state in the cluster, while the MembershipSpec
@@ -2303,6 +2361,7 @@ class ConfigManagementState {
     this.clusterName,
     this.configSyncState,
     this.hierarchyControllerState,
+    this.kubernetesApiServerVersion,
     this.membershipSpec,
     this.operatorState,
     this.policyControllerState,
@@ -2331,6 +2390,8 @@ class ConfigManagementState {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        kubernetesApiServerVersion:
+            json_['kubernetesApiServerVersion'] as core.String?,
         membershipSpec:
             json_.containsKey('membershipSpec')
                 ? ConfigManagementSpec.fromJson(
@@ -2359,6 +2420,8 @@ class ConfigManagementState {
     if (configSyncState != null) 'configSyncState': configSyncState!,
     if (hierarchyControllerState != null)
       'hierarchyControllerState': hierarchyControllerState!,
+    if (kubernetesApiServerVersion != null)
+      'kubernetesApiServerVersion': kubernetesApiServerVersion!,
     if (membershipSpec != null) 'membershipSpec': membershipSpec!,
     if (operatorState != null) 'operatorState': operatorState!,
     if (policyControllerState != null)
@@ -2634,6 +2697,9 @@ class FeatureState {
   /// The high-level state of this MembershipFeature.
   State? state;
 
+  /// Workload Identity state
+  WorkloadIdentityState? workloadidentity;
+
   FeatureState({
     this.appdevexperience,
     this.clusterupgrade,
@@ -2644,6 +2710,7 @@ class FeatureState {
     this.rbacrolebindingactuation,
     this.servicemesh,
     this.state,
+    this.workloadidentity,
   });
 
   FeatureState.fromJson(core.Map json_)
@@ -2708,6 +2775,13 @@ class FeatureState {
                   json_['state'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        workloadidentity:
+            json_.containsKey('workloadidentity')
+                ? WorkloadIdentityState.fromJson(
+                  json_['workloadidentity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2721,6 +2795,7 @@ class FeatureState {
       'rbacrolebindingactuation': rbacrolebindingactuation!,
     if (servicemesh != null) 'servicemesh': servicemesh!,
     if (state != null) 'state': state!,
+    if (workloadidentity != null) 'workloadidentity': workloadidentity!,
   };
 }
 
@@ -3693,7 +3768,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -3706,11 +3793,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -5245,5 +5337,69 @@ class WorkloadCertificateSpec {
   core.Map<core.String, core.dynamic> toJson() => {
     if (certificateManagement != null)
       'certificateManagement': certificateManagement!,
+  };
+}
+
+/// IdentityProviderStateDetail represents the state of an Identity Provider.
+class WorkloadIdentityIdentityProviderStateDetail {
+  /// The state of the Identity Provider.
+  /// Possible string values are:
+  /// - "IDENTITY_PROVIDER_STATE_UNSPECIFIED" : Unknown state.
+  /// - "IDENTITY_PROVIDER_STATE_OK" : The Identity Provider was created/updated
+  /// successfully.
+  /// - "IDENTITY_PROVIDER_STATE_ERROR" : The Identity Provider was not
+  /// created/updated successfully. The error message is in the description
+  /// field.
+  core.String? code;
+
+  /// A human-readable description of the current state or returned error.
+  core.String? description;
+
+  WorkloadIdentityIdentityProviderStateDetail({this.code, this.description});
+
+  WorkloadIdentityIdentityProviderStateDetail.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        description: json_['description'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (code != null) 'code': code!,
+    if (description != null) 'description': description!,
+  };
+}
+
+/// **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
+/// feature.
+class WorkloadIdentityState {
+  /// Deprecated, this field will be erased after code is changed to use the new
+  /// field.
+  core.String? description;
+
+  /// The state of the Identity Providers corresponding to the membership.
+  core.Map<core.String, WorkloadIdentityIdentityProviderStateDetail>?
+  identityProviderStateDetails;
+
+  WorkloadIdentityState({this.description, this.identityProviderStateDetails});
+
+  WorkloadIdentityState.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        identityProviderStateDetails: (json_['identityProviderStateDetails']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                WorkloadIdentityIdentityProviderStateDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (identityProviderStateDetails != null)
+      'identityProviderStateDetails': identityProviderStateDetails!,
   };
 }

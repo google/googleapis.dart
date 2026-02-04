@@ -26,7 +26,6 @@
 ///     - [ProjectsLocationsChannelsResource]
 ///     - [ProjectsLocationsEnrollmentsResource]
 ///     - [ProjectsLocationsGoogleApiSourcesResource]
-///     - [ProjectsLocationsKafkaSourcesResource]
 ///     - [ProjectsLocationsMessageBusesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPipelinesResource]
@@ -90,8 +89,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsEnrollmentsResource(_requester);
   ProjectsLocationsGoogleApiSourcesResource get googleApiSources =>
       ProjectsLocationsGoogleApiSourcesResource(_requester);
-  ProjectsLocationsKafkaSourcesResource get kafkaSources =>
-      ProjectsLocationsKafkaSourcesResource(_requester);
   ProjectsLocationsMessageBusesResource get messageBuses =>
       ProjectsLocationsMessageBusesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -180,14 +177,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1890,169 +1893,6 @@ class ProjectsLocationsGoogleApiSourcesResource {
   }
 }
 
-class ProjectsLocationsKafkaSourcesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsKafkaSourcesResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/kafkaSources/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/kafkaSources/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/kafkaSources/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
 class ProjectsLocationsMessageBusesResource {
   final commons.ApiRequester _requester;
 
@@ -2680,6 +2520,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2695,12 +2543,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5393,9 +5244,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -5409,11 +5269,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -6556,6 +6421,27 @@ class Pubsub {
   };
 }
 
+/// The retry policy configuration for the Trigger.
+///
+/// Can only be set with Cloud Run destinations.
+class RetryPolicy {
+  /// The maximum number of delivery attempts for any message.
+  ///
+  /// The only valid value is 1.
+  ///
+  /// Optional.
+  core.int? maxAttempts;
+
+  RetryPolicy({this.maxAttempts});
+
+  RetryPolicy.fromJson(core.Map json_)
+    : this(maxAttempts: json_['maxAttempts'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (maxAttempts != null) 'maxAttempts': maxAttempts!,
+  };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -6783,6 +6669,14 @@ class Trigger {
   /// Required.
   core.String? name;
 
+  /// The retry policy to use in the Trigger.
+  ///
+  /// If unset, event delivery will be retried for up to 24 hours by default:
+  /// https://cloud.google.com/eventarc/docs/retry-events
+  ///
+  /// Optional.
+  RetryPolicy? retryPolicy;
+
   /// Whether or not this Trigger satisfies the requirements of physical zone
   /// separation
   ///
@@ -6833,6 +6727,7 @@ class Trigger {
     this.eventFilters,
     this.labels,
     this.name,
+    this.retryPolicy,
     this.satisfiesPzs,
     this.serviceAccount,
     this.transport,
@@ -6873,6 +6768,12 @@ class Trigger {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        retryPolicy:
+            json_.containsKey('retryPolicy')
+                ? RetryPolicy.fromJson(
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         transport:
@@ -6896,6 +6797,7 @@ class Trigger {
     if (eventFilters != null) 'eventFilters': eventFilters!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
+    if (retryPolicy != null) 'retryPolicy': retryPolicy!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (transport != null) 'transport': transport!,

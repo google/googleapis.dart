@@ -111,6 +111,83 @@ class FlightsResource {
     );
   }
 
+  /// Stateless method to retrieve GHG emissions estimates for a set of flight
+  /// segments for Scope 3 reporting.
+  ///
+  /// The response will contain all entries that match the input
+  /// Scope3FlightSegment flight segments, in the same order provided. The
+  /// estimates will be computed using the following cascading logic (using the
+  /// first one that is available): 1. TIM-based emissions given origin,
+  /// destination, carrier, flightNumber, departureDate, and cabinClass. 2.
+  /// Typical flight emissions given origin, destination, year in departureDate,
+  /// and cabinClass. 3. Distance-based emissions calculated using distanceKm,
+  /// year in departureDate, and cabinClass. If there is a future flight
+  /// requested in this calendar year, we do not support Tier 1 emissions and
+  /// will fallback to Tier 2 or 3 emissions. If the requested future flight is
+  /// in not in this calendar year, we will return an empty response. We
+  /// recommend that for future flights, computeFlightEmissions API is used
+  /// instead. If there are no estimates available for a certain flight with any
+  /// of the three methods, the response will return a Scope3FlightEmissions
+  /// object with empty emission fields. The request will still be considered
+  /// successful. Generally, missing emissions estimates occur when the flight
+  /// is unknown to the server (e.g. no specific flight exists, or typical
+  /// flight emissions are not available for the requested pair). The request
+  /// will fail with an `INVALID_ARGUMENT` error if: * The request contains more
+  /// than 1,000 flight legs. * The input flight leg is missing one or more
+  /// identifiers. For example, missing origin/destination without a valid
+  /// distance for TIM_EMISSIONS or TYPICAL_FLIGHT_EMISSIONS type matching, or
+  /// missing distance for a DISTANCE_BASED_EMISSIONS type matching (if you want
+  /// to fallback to distance-based emissions or want a distance-based emissions
+  /// estimate, you need to specify a distance). * The flight date is before
+  /// 2019 (Scope 3 data is only available for 2019 and after). * The flight
+  /// distance is 0 or lower. * Missing cabin class. Because the request is
+  /// processed with fallback logic, it is possible that misconfigured requests
+  /// return valid emissions estimates using fallback methods. For example, if a
+  /// request has the wrong flight number but specifies the origin and
+  /// destination, the request will still succeed, but the returned emissions
+  /// will be based solely on the typical flight emissions. Similarly, if a
+  /// request is missing the origin for a typical flight emissions request, but
+  /// specifies a valid distance, the request could succeed based solely on the
+  /// distance-based emissions. Consequently, one should check the source of the
+  /// returned emissions (source) to confirm the results are as expected.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ComputeScope3FlightEmissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ComputeScope3FlightEmissionsResponse>
+  computeScope3FlightEmissions(
+    ComputeScope3FlightEmissionsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/flights:computeScope3FlightEmissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ComputeScope3FlightEmissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Retrieves typical flight emissions estimates between two airports, also
   /// known as a market.
   ///
@@ -203,6 +280,83 @@ class ComputeFlightEmissionsResponse {
             (json_['flightEmissions'] as core.List?)
                 ?.map(
                   (value) => FlightWithEmissions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        modelVersion:
+            json_.containsKey('modelVersion')
+                ? ModelVersion.fromJson(
+                  json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (flightEmissions != null) 'flightEmissions': flightEmissions!,
+    if (modelVersion != null) 'modelVersion': modelVersion!,
+  };
+}
+
+/// A list of flight segments to request the Scope 3 emissions for.
+class ComputeScope3FlightEmissionsRequest {
+  /// Flights to return emission estimates for.
+  ///
+  /// Required.
+  core.List<Scope3FlightSegment>? flights;
+
+  /// The model version under which emission estimates for all flights in this
+  /// request were computed.
+  ///
+  /// Optional.
+  ModelVersion? modelVersion;
+
+  ComputeScope3FlightEmissionsRequest({this.flights, this.modelVersion});
+
+  ComputeScope3FlightEmissionsRequest.fromJson(core.Map json_)
+    : this(
+        flights:
+            (json_['flights'] as core.List?)
+                ?.map(
+                  (value) => Scope3FlightSegment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        modelVersion:
+            json_.containsKey('modelVersion')
+                ? ModelVersion.fromJson(
+                  json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (flights != null) 'flights': flights!,
+    if (modelVersion != null) 'modelVersion': modelVersion!,
+  };
+}
+
+/// A list of flights with Scope 3 emission estimates.
+class ComputeScope3FlightEmissionsResponse {
+  /// List of flight segments with emission estimates.
+  core.List<Scope3FlightEmissions>? flightEmissions;
+
+  /// The model version under which emission estimates for all flights in this
+  /// response were computed.
+  ModelVersion? modelVersion;
+
+  ComputeScope3FlightEmissionsResponse({
+    this.flightEmissions,
+    this.modelVersion,
+  });
+
+  ComputeScope3FlightEmissionsResponse.fromJson(core.Map json_)
+    : this(
+        flightEmissions:
+            (json_['flightEmissions'] as core.List?)
+                ?.map(
+                  (value) => Scope3FlightEmissions.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
                 )
@@ -628,6 +782,203 @@ class ModelVersion {
     if (major != null) 'major': major!,
     if (minor != null) 'minor': minor!,
     if (patch != null) 'patch': patch!,
+  };
+}
+
+/// Scope 3 flight with emission estimates.
+class Scope3FlightEmissions {
+  /// Matches the flight identifiers in the request.
+  ///
+  /// Required.
+  Scope3FlightSegment? flight;
+
+  /// The source of the emissions data.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCOPE3_DATA_TYPE_UNSPECIFIED" : Unspecified data type.
+  /// - "TIM_EMISSIONS" : TIM-based emissions given origin, destination,
+  /// carrier, flight number, departure date, and year.
+  /// - "TYPICAL_FLIGHT_EMISSIONS" : Typical flight emissions given origin,
+  /// destination, and year.
+  /// - "DISTANCE_BASED_EMISSIONS" : Distance-based emissions based on the
+  /// distance traveled and year.
+  core.String? source;
+
+  /// Tank-to-wake flight emissions per passenger based on the requested info.
+  ///
+  /// Optional.
+  core.String? ttwEmissionsGramsPerPax;
+
+  /// Well-to-tank flight emissions per passenger based on the requested info.
+  ///
+  /// Optional.
+  core.String? wttEmissionsGramsPerPax;
+
+  /// Total flight emissions (sum of well-to-tank and tank-to-wake) per
+  /// passenger based on the requested info.
+  ///
+  /// This is the total emissions and unless you have specific reasons for using
+  /// TTW or WTT emissions, you should use this number.
+  ///
+  /// Optional.
+  core.String? wtwEmissionsGramsPerPax;
+
+  Scope3FlightEmissions({
+    this.flight,
+    this.source,
+    this.ttwEmissionsGramsPerPax,
+    this.wttEmissionsGramsPerPax,
+    this.wtwEmissionsGramsPerPax,
+  });
+
+  Scope3FlightEmissions.fromJson(core.Map json_)
+    : this(
+        flight:
+            json_.containsKey('flight')
+                ? Scope3FlightSegment.fromJson(
+                  json_['flight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        source: json_['source'] as core.String?,
+        ttwEmissionsGramsPerPax:
+            json_['ttwEmissionsGramsPerPax'] as core.String?,
+        wttEmissionsGramsPerPax:
+            json_['wttEmissionsGramsPerPax'] as core.String?,
+        wtwEmissionsGramsPerPax:
+            json_['wtwEmissionsGramsPerPax'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (flight != null) 'flight': flight!,
+    if (source != null) 'source': source!,
+    if (ttwEmissionsGramsPerPax != null)
+      'ttwEmissionsGramsPerPax': ttwEmissionsGramsPerPax!,
+    if (wttEmissionsGramsPerPax != null)
+      'wttEmissionsGramsPerPax': wttEmissionsGramsPerPax!,
+    if (wtwEmissionsGramsPerPax != null)
+      'wtwEmissionsGramsPerPax': wtwEmissionsGramsPerPax!,
+  };
+}
+
+/// Flight parameters with which the Scope 3 emissions are fetched.
+class Scope3FlightSegment {
+  /// The cabin class of the flight.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CABIN_CLASS_UNSPECIFIED" : Unspecified cabin class.
+  /// - "ECONOMY" : Economy class.
+  /// - "PREMIUM_ECONOMY" : Premium economy class.
+  /// - "BUSINESS" : Business class.
+  /// - "FIRST" : First class.
+  core.String? cabinClass;
+
+  /// 2-character
+  /// [IATA carrier code](https://www.iata.org/en/publications/directories/code-search/),
+  /// e.g. `KE`.
+  ///
+  /// This is required if specific flight matching is desired. Otherwise, this
+  /// is unused for typical flight and distance-based emissions models. This
+  /// could be both operating and marketing carrier code (i.e. codeshare is
+  /// covered).
+  ///
+  /// Optional.
+  core.String? carrierCode;
+
+  /// Date of the flight in the time zone of the origin airport.
+  ///
+  /// Only year is required for typical flight and distance-based emissions
+  /// models (month and day values are ignored and therefore, can be either
+  /// omitted, set to 0, or set to a valid date for those cases).
+  /// Correspondingly, if a specific date is not provided for TIM emissions, we
+  /// will fallback to typical flight (or distance-based) emissions.
+  ///
+  /// Required.
+  Date? departureDate;
+
+  /// 3-character
+  /// [IATA airport code](https://www.iata.org/en/publications/directories/code-search/)
+  /// for flight destination, e.g. `ICN`.
+  ///
+  /// This is used to match specific flight if provided alongside origin,
+  /// carrier, and flight number. If there is no match, we will first try to
+  /// match the flight to a typical flight between the provided origin and
+  /// destination airports. Otherwise, we will use the distance-based emissions
+  /// model if the flight distance is provided.
+  ///
+  /// Optional.
+  core.String? destination;
+
+  /// Distance in kilometers, e.g. `2423`, from \[1, 2.5e16) km.
+  ///
+  /// This is used to match a flight to distance-based emissions when origin and
+  /// destination are not provided or there are no matching typical flights.
+  ///
+  /// Optional.
+  core.String? distanceKm;
+
+  /// Up to 4-digit
+  /// [flight number](https://en.wikipedia.org/wiki/Flight_number), e.g. `71`,
+  /// from \[1, 9999\].
+  ///
+  /// This is first used to match a specific flight if a flight number is
+  /// specified alongside origin, destination, and carrier. If a flight number
+  /// is not specified, we will first try to match the flight to a typical
+  /// flight between the provided origin and destination airports. If that fails
+  /// and/or origin & destination are not provided, we will use the
+  /// distance-based emissions model based on the flight distance provided.
+  ///
+  /// Optional.
+  core.int? flightNumber;
+
+  /// 3-character
+  /// [IATA airport code](https://www.iata.org/en/publications/directories/code-search/)
+  /// for flight origin, e.g. `YVR`.
+  ///
+  /// This is used to match specific flight if provided alongside destination,
+  /// carrier, and flight number. If there is no match, we will first try to
+  /// match the flight to a typical flight between the provided origin and
+  /// destination airports. Otherwise, we will use the distance-based emissions
+  /// model if the flight distance is provided.
+  ///
+  /// Optional.
+  core.String? origin;
+
+  Scope3FlightSegment({
+    this.cabinClass,
+    this.carrierCode,
+    this.departureDate,
+    this.destination,
+    this.distanceKm,
+    this.flightNumber,
+    this.origin,
+  });
+
+  Scope3FlightSegment.fromJson(core.Map json_)
+    : this(
+        cabinClass: json_['cabinClass'] as core.String?,
+        carrierCode: json_['carrierCode'] as core.String?,
+        departureDate:
+            json_.containsKey('departureDate')
+                ? Date.fromJson(
+                  json_['departureDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destination: json_['destination'] as core.String?,
+        distanceKm: json_['distanceKm'] as core.String?,
+        flightNumber: json_['flightNumber'] as core.int?,
+        origin: json_['origin'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cabinClass != null) 'cabinClass': cabinClass!,
+    if (carrierCode != null) 'carrierCode': carrierCode!,
+    if (departureDate != null) 'departureDate': departureDate!,
+    if (destination != null) 'destination': destination!,
+    if (distanceKm != null) 'distanceKm': distanceKm!,
+    if (flightNumber != null) 'flightNumber': flightNumber!,
+    if (origin != null) 'origin': origin!,
   };
 }
 
